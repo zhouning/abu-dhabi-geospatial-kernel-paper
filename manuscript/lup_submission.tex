@@ -1,0 +1,33 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,longtable,array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{etoolbox}
+\setcounter{secnumdepth}{0}
+\newcounter{none}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+\setlength{\tabcolsep}{2.2pt}
+\renewcommand{\arraystretch}{1.12}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\AtBeginEnvironment{longtable}{\scriptsize\setlength{\tabcolsep}{1.7pt}\renewcommand{\arraystretch}{1.1}}
+\AtBeginEnvironment{figure}{\captionsetup{font=small,labelfont=bf}}
+\newcommand{\pandocbounded}[1]{\resizebox{\linewidth}{!}{#1}}
+\floatplacement{figure}{htbp}
+\title{Geospatial Kernel: a state--action--constraint core for urban land-cover planning}
+\author{Ning Zhou\\[2pt]\normalsize Beijing Freedo Technology Co., Ltd.\\[-1pt]\normalsize Corresponding author: Ning Zhou}
+\date{}
+\begin{document}
+\maketitle
+\begin{center}
+\small\textit{Research paper prepared for submission to Landscape and Urban Planning.}
+\end{center}
+\input{manuscript_pandoc.tex}
+\end{document}

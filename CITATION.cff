@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Geospatial Kernel for Abu Dhabi Land-Cover Simulation and Planning"
+message: "Please cite the repository commit and the associated manuscript."
+type: software
+authors:
+  - family-names: Zhou
+    given-names: Ning
+    affiliation: "Beijing Freedo Technology Co., Ltd."
+repository-code: "https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper"
+license: MIT
+date-released: 2026-09-04

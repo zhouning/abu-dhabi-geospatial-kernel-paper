@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+*.aux
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.xdv
+*.synctex.gz
+artifacts/gee/
+artifacts/osm/*.pbf
+artifacts/*/work/
+*.tif.ovr

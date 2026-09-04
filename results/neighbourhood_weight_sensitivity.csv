@@ -1,0 +1,9 @@
+year,neighbourhood_weight,mean_change_fom,purpose
+2023,0.000,0.19997,posthoc_sensitivity
+2023,0.175,0.20042,posthoc_sensitivity
+2023,0.350,0.20035,base_setting
+2023,0.700,0.20010,posthoc_sensitivity
+2024,0.000,0.26079,posthoc_sensitivity
+2024,0.175,0.26069,posthoc_sensitivity
+2024,0.350,0.26058,base_setting
+2024,0.700,0.26034,posthoc_sensitivity
