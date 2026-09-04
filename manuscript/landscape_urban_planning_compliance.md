@@ -8,15 +8,15 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Article type | Structurally suitable; scientifically blocked | The draft is positioned as a research article / algorithmic benchmark, but it must not be marked submission-ready until the missing reruns and independent validation are completed. |
+| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation and matched-input FLUS remain limitations. |
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
 | Corresponding author | Needs portal entry | Name is present, but the submission system should receive a valid institutional e-mail and full correspondence address. |
 | Abstract | Draft-ready; portal confirmation required | 205 words by whitespace count. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
-| Highlights | Draft-ready | Four bullets are supplied; each is below 85 characters, including spaces. They describe a blocked revision rather than completed model-ranking evidence. |
+| Highlights | Draft-ready | Four bullets are supplied; each is below 85 characters, including spaces. They describe the completed public-data benchmark and its evidence boundary. |
 | Keywords | Ready | Six searchable terms are supplied: Geospatial World Model, land-cover change, constrained allocation, cellular automata, Abu Dhabi and scenario planning. |
 | Graphical abstract | Confirm in portal | No separate graphical abstract is included. The journal's current article-type setting should determine whether it is required or optional. Figure 1 can be adapted if requested. |
-| Main sections | Structurally compliant; scientifically blocked | The Markdown source follows Introduction–Methods–Results–Discussion order. Final copy-edit, template checks and the required reruns remain. |
+| Main sections | Structurally compliant | The Markdown source follows Introduction–Methods–Results–Discussion order. Final copy-edit and portal checks remain. |
 
 ## Tables, figures and artwork
 
@@ -25,8 +25,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Editable tables | Ready | Tables remain Markdown/LaTeX text tables rather than raster images. Table 2 was split into 2a and 2b to preserve readability. |
 | Table width | Ready | The LUP reading copy uses a 1.7 pt column separation and scriptsize long tables; visual QA confirms no clipped last columns or overlapping cells. |
 | Table notes | Ready | Units, DTV, ecological-proxy semantics, compactness and Pareto interpretation are stated immediately before the relevant tables. |
-| Figure files | Partial | Figure 1 has been redrawn and exported as editable SVG/PDF plus 600-dpi PNG/TIFF. Figures 2–5 remain legacy outputs pending the strict-metric and raster rerun. |
-| Figure captions | Not submission-ready | Captions explicitly label Figures 2–5 as legacy/pending rerun. They must be regenerated from the strict-metric, audited raster bundle before submission. |
+| Figure files | Ready for technical review | Figures 1–5 were regenerated from the current strict-metric and planning reports as editable SVG/PDF plus 600-dpi PNG/TIFF. |
+| Figure captions | Ready for scientific review | Captions describe current public-data results and retain the conditional-proxy boundary. |
 | Arrow alignment | Ready for Figure 1 | Figure 1 arrows terminate at the implemented projection stage and were visually checked after redrawing. |
 | Separate upload | Submission step | Upload each figure as a separate file if Editorial Manager requests individual artwork; keep the combined PDF only as a reading copy. |
 | Artwork technical limits | Confirm in portal | Elsevier commonly distinguishes line art, grayscale and colour resolution and accepts TIFF/EPS/PDF/JPEG variants. Confirm the live LUP artwork page before upload. |
@@ -35,8 +35,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Data availability | Blocked | Public-data manifests and provenance files are identified, but the complete raster bundle is not in the reviewed checkout; the current output audit is `INCOMPLETE_INPUTS` with eight failures. |
-| Code availability | Blocked | A runtime snapshot is vendored, but GeoFM-LDN source/checkpoint, the FLUS environment/version, complete generated inputs and a public release DOI remain outstanding. |
+| Data availability | Conditional | The complete public bundle was recovered on the analysis workstation and passes the input audit; large rasters remain external to Git, and authoritative local validation data are unavailable. |
+| Code availability | Conditional | Runtime, evaluators and figure code are included; GeoFM-LDN source/checkpoints and the FLUS executable remain external dependencies, with no DOI yet assigned. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
 | Competing interests | Updated | Employment by the software company is disclosed; this should be checked against the portal's structured declaration field. |
@@ -56,15 +56,14 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 - The six classes are labelled as remote-sensing **land cover**, not legal residential, commercial or industrial land use.
 - The 2025--2031 outputs are planner-supplied scenario stress tests with exogenous drivers frozen at 2024, not official forecasts.
 - OSM and ESA WorldCover layers are described as public proxy constraints, not statutory planning red lines.
-- Historical ranking is explicitly marked as a legacy binary-FoM result pending strict multi-class rerun; persistence is disclosed and no universal ranking is claimed.
-- Figure 2–5 source assets are fail-closed: the renderer refuses to issue a new-looking figure when legacy reports or required rasters are detected.
+- Historical ranking is based on the regenerated strict multi-class FoM, spatial-block intervals and paired model contrasts; persistence is disclosed and no universal ranking is claimed.
+- Figures 2–5 were regenerated from versioned current reports; the renderer still fails closed on stale reports.
 - Change polygons are dissolved 100-m raster-cell footprints, not cadastral parcels.
 - No client database credentials or private service endpoints are present in the manuscript package.
 
 ## Files for hand-off
 
-- `lup_submission.pdf`: LUP-oriented reading PDF with repaired table widths and
-  explicit legacy-result warnings; not a final resubmission PDF.
+- `lup_submission.pdf`: LUP-oriented reading PDF with repaired table widths.
 - `manuscript.pdf`: clean Pandoc reading PDF.
 - `manuscript.docx`: editable Word copy.
 - `manuscript.md`: source manuscript.
@@ -72,7 +71,6 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 - `landscape_urban_planning_compliance.md`: this report.
 - `response_to_LUP_review.md`: point-by-point response and unresolved blockers.
 
-The package is therefore a transparent revision record, not an Article type
-Ready submission package. A final LUP resubmission requires the missing
-artifacts, matched-input baseline, independent 2023–2024 change validation,
-strict-metric/bootstrap rerun and regenerated figures/tables.
+The package is a conditional Article-type draft. Before submission, add the
+corresponding-author e-mail, public release URL/DOI, and (if feasible) an
+independent 2023–2024 change-validation layer and matched-input FLUS baseline.

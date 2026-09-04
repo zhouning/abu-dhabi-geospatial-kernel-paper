@@ -191,11 +191,12 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         model: json.loads((PREDICTION_ROOT / model / "report.json").read_text())
         for model in MODELS
     }
+    accepted_model_revisions = {"current_protocol_run", "recomputed_from_existing_rasters"}
     stale_models = [
         model
         for model, report in reports.items()
         if report.get("status") != "complete"
-        or report.get("revision_status") != "current_protocol_run"
+        or report.get("revision_status") not in accepted_model_revisions
     ]
     if stale_models:
         raise ValueError(
@@ -385,6 +386,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "metric_version": "strict_multiclass_fom_v2",
         "revision_status": "rerun_from_current_rasters",
         "reproducibility_status": "complete_if_all_input_and_model_artifacts_are_present",
+        "evidence_mode": "current_evaluator_on_existing_prediction_rasters",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "HISTORICAL_ALLOCATION_COMPLETE",
         "models": list(MODELS),

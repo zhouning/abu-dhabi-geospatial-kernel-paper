@@ -11,8 +11,8 @@ Model and compares it with GeoSOS-FLUS and GeoFM-LDN.
 - `manuscript.docx`: editable Word copy.
 - `manuscript.md`: clean manuscript source without author-facing editorial notes.
 - `main.tex`: Nature-class LaTeX source generated from the clean manuscript.
-- `main.pdf`: compiled LaTeX reading copy; Figures 2–5 are legacy plots pending
-  the strict-metric/raster rerun, while Figure 1 has been redrawn.
+- `main.pdf`: compiled LaTeX reading copy with recovered-data numerical results
+  and regenerated Figures 1–5.
 - `lup_submission.pdf`: LUP-oriented submission reading copy with repaired tables.
 - `figures/`: Python/Matplotlib Nature-style figures in editable SVG/PDF and
   600-dpi PNG/TIFF formats.
@@ -38,13 +38,13 @@ The historical benchmark uses public land-cover labels from 2017–2024 on a
 2024 exogenous drivers frozen in time. They are not official Abu Dhabi forecasts
 and do not infer statutory residential, commercial or industrial land use.
 
-The results support only a bounded implementation claim: Geospatial Kernel is
-an auditable, constraint-preserving allocation core. The earlier
-Pareto-frontier claim is withdrawn pending rerun with independent morphology
-objectives. GeoFM-LDN was stronger on the legacy 2024 two-step open-loop
-historical target, but that is a withdrawn binary-FoM continuity result. All
-quantitative rankings must be regenerated with strict multi-class FoM, zero
-models, spatial-block bootstrap and paired model-difference intervals.
+The recovered-data rerun supports a bounded implementation claim: Geospatial
+Kernel is an auditable, constraint-preserving allocation core. It leads the
+strict one-step 2023 transition FoM, while GeoFM-LDN leads the strict two-step
+2024 open-loop FoM; neither dominates both horizons. The only 2031 Pareto
+candidate under the declared public-data objectives is the Kernel's
+green-priority scenario. These are conditional pipeline and stress-test
+results, not official Abu Dhabi forecasts.
 
 ## Before submission
 
@@ -53,13 +53,12 @@ models, spatial-block bootstrap and paired model-difference intervals.
 2. Add an institutional correspondence e-mail when one is available; no e-mail
    is invented in this package.
 3. Add the final public repository URL and archival DOI after release review.
-4. Restore the complete public raster bundle, GeoFM-LDN checkpoint and FLUS
-   environment, then rerun all metrics and figures.
+4. Preserve the local recovered bundle or an equivalent external artifact
+   package if full numerical reproduction is required.
 5. Add independent built-area validation and authoritative local layers before
    presenting the outputs as client-facing planning evidence.
 6. The manuscript intentionally contains no private database credentials.
 
-The current output audit is `INCOMPLETE_INPUTS` (eight failures), and the
-figure renderer fails closed when it detects legacy reports. Existing Figures
-2–5 and numerical tables are retained for lineage only and are not
-submission-ready.
+The local recovered-data output audit passes 276 historical and planning
+predictions with zero failures. A clean external checkout still needs the
+large raster bundle and model runtimes to reproduce the numerical reports.

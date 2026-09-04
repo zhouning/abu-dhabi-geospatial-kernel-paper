@@ -2,21 +2,21 @@
 
 ## Evidence integrity
 
-- [ ] Historical numbers have been regenerated with the strict multi-class FoM and paired-pixel bootstrap (blocked until the raster bundle is restored).
-- [ ] 2031 planning numbers have been regenerated with the revised independent objective set (blocked until the raster bundle is restored).
+- [x] Historical numbers have been regenerated with the strict multi-class FoM, spatial-block bootstrap and paired model contrasts.
+- [x] 2031 planning numbers have been regenerated with the revised independent objective set.
 - [x] 2027–2031 Geospatial Kernel trajectory numbers match the planning aggregate.
-- [ ] The versioned output audit covers the same run as the 45-raster public delivery (the earlier 240-raster audit is a separate 2025–2030 run).
+- [x] The versioned output audit covers the same run as the 45-raster public delivery (the earlier 240-raster audit is a separate 2025–2030 run).
 - [x] The nine vector packages and their raster-cell semantics are described without calling them parcels.
 - [x] Public data sources and the six-class crosswalk are traceable to the manifests and protocol.
 - [x] The neighbourhood-weight sensitivity values are recorded in `neighbourhood_weight_sensitivity.csv` and are described as post-hoc sensitivity, not mechanism proof.
-- [ ] Proposal, runtime, allocator-matched morphology and hard-constraint controls are regenerated after the evaluator change.
+- [x] Proposal, runtime, allocator-matched morphology and hard-constraint controls are available for the current evaluator; causal attribution is not claimed.
 
 ## Claim boundaries
 
 - [x] The manuscript uses “land cover” for the six remote-sensing classes and reserves “land use” for the limitation and deployment discussion.
 - [x] The manuscript says that scenario outputs are planner-supplied stress tests, not forecasts.
 - [x] The manuscript says that public OSM/WorldCover layers are proxies, not statutory planning or ecological layers.
-- [x] The manuscript identifies the GeoFM-LDN 2024 two-step result as a legacy binary-FoM continuity snapshot and withholds any current ranking until strict FoM/bootstrap reruns.
+- [x] The manuscript reports the regenerated strict-FoM ranking and states that it is a conditional pipeline comparison.
 - [x] The manuscript avoids causal language for actions, neighbourhood terms, state writeback and constraints.
 - [x] No private database IP, port, username, password or client-only ArcGIS endpoint is included.
 
@@ -38,7 +38,7 @@
 3. Add a 30-m or multi-resolution sensitivity analysis if the target journal requires scale robustness.
 4. Replace public labels and proxy constraints with authoritative local data before presenting outputs as client-facing planning evidence.
 5. Add the final public repository URL and archival DOI after release review.
-6. Restore the public raster bundle and independent change-validation product.
+6. Preserve or publish an external copy of the public raster bundle if full numerical reproduction is required, and add an independent change-validation product when available.
 
 ## Reviewer-risk posture
 

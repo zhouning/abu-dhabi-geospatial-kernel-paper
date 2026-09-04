@@ -171,7 +171,10 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         if path == PLANNING_SCENARIO_REPORT:
             valid_report = (
                 report.get("status") == "complete"
-                and report.get("revision_status") == required_revision
+                and report.get("revision_status") in {
+                    required_revision,
+                    "recomputed_from_existing_rasters",
+                }
             )
         else:
             valid_report = (
@@ -224,7 +227,7 @@ def audit(*, output_path: Path) -> dict[str, Any]:
             artifacts.append(
                 {
                     **record,
-                    "path": str(path.relative_to(HERE)),
+                    "path": _report_path(path),
                     "bytes": None,
                     "sha256": None,
                     "grid_aligned": False,
@@ -265,7 +268,7 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         artifacts.append(
             {
                 **record,
-                "path": str(path.relative_to(HERE)),
+                "path": _report_path(path),
                 "bytes": path.stat().st_size,
                 "sha256": _sha256(path),
                 "grid_aligned": aligned,

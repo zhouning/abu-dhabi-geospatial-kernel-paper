@@ -127,10 +127,10 @@ def check_render_inputs() -> None:
     """Fail closed rather than rendering legacy numerical figures."""
 
     _require_current_report(
-        "comparison_report.json", metric_version="strict_multiclass_fom_v2"
+        "comparison_report_current.json", metric_version="strict_multiclass_fom_v2"
     )
     _require_current_report(
-        "planning_comparison_report_public_2025_2031.json",
+        "planning_comparison_report_public_2025_2031_current.json",
         metric_version="independent_morphology_objectives_v2",
     )
     _require_file("artifacts/gee/land_cover/land_cover_2024_100m.tif")
@@ -273,7 +273,7 @@ def render_figure_1() -> None:
 
 def render_figure_2() -> None:
     report = _require_current_report(
-        "comparison_report.json", metric_version="strict_multiclass_fom_v2"
+        "comparison_report_current.json", metric_version="strict_multiclass_fom_v2"
     )
     metrics = [
         ("change_figure_of_merit", "Strict transition FoM", "higher is better"),
@@ -300,8 +300,15 @@ def render_figure_2() -> None:
                     item = report["persistence"][year][key]
                 else:
                     item = report["random_baseline"][year][key]
-                means.append(item["mean"])
-                sds.append(item.get("population_std", 0.0))
+                if isinstance(item, dict):
+                    means.append(float(item["mean"]))
+                    sds.append(float(item.get("population_std", 0.0)))
+                else:
+                    # The persistence control is a single deterministic
+                    # prediction and is therefore stored as a scalar rather
+                    # than a seed aggregate.
+                    means.append(float(item))
+                    sds.append(0.0)
             pos = x + (j - (len(plot_models) - 1) / 2) * width
             ax.bar(pos, means, width=width, yerr=sds, capsize=1.4, color=plot_colors[model], edgecolor="white", linewidth=0.35, label=plot_labels[model], error_kw={"elinewidth": 0.5, "capthick": 0.5})
         ax.set_xticks(x, ["2023\n1-step", "2024\n2-step open-loop"])
@@ -320,7 +327,7 @@ def render_figure_2() -> None:
 
 def render_figure_3() -> None:
     report = _require_current_report(
-        "planning_comparison_report_public_2025_2031.json",
+        "planning_comparison_report_public_2025_2031_current.json",
         metric_version="independent_morphology_objectives_v2",
     )
     panels = [
@@ -360,9 +367,10 @@ def render_figure_3() -> None:
         if key == "ecological_conversion_rate":
             ax.set_ylim(bottom=0)
     legend_handles = [Patch(facecolor=MODEL_COLOR[m], edgecolor="none", label=MODEL_LABEL[m]) for m in MODEL_ORDER]
+    axes.flat[-1].axis("off")
     fig.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.865), ncol=3, frameon=False, handlelength=1.2, columnspacing=1.0)
     fig.suptitle("Conditional planning outcomes and independent morphology diagnostics", x=0.075, y=0.972, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds. Pareto status is withheld until the revised four-objective compiler is rerun.", fontsize=6.45, color="#4A5560")
+    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds. Pareto membership is conditional on the declared objective set and public-data proxies.", fontsize=6.45, color="#4A5560")
     save_publication_figure(fig, "fig03_planning_objectives")
 
 

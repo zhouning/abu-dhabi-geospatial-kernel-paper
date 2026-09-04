@@ -7,8 +7,9 @@ manuscript.
 ## Implemented in this revision
 
 The second-round methodological corrections are now implemented in the source
-tree. They do not create numerical evidence when the required raster and model
-artifacts are absent.
+tree. The complete public raster bundle and existing model artifacts were
+recovered from the companion local GIS workspace; large files remain external
+to Git.
 
 - Replaced independent-pixel bootstrap with an 8 × 8-pixel spatial-block
   bootstrap and added paired model-difference intervals using the same sampled
@@ -69,12 +70,12 @@ artifacts are absent.
   versioned files when present and falls back to legacy files only to report a
   blocked status.
 
-## Still blocked before a defensible LUP resubmission
+## Remaining limitations before a defensible LUP resubmission
 
-1. The current checkout does not contain the complete `artifacts/gee`,
-   `artifacts/bundle` or historical prediction rasters. The strict FoM,
-   bootstrap intervals, revised morphology metrics and all figures therefore
-   cannot be regenerated here.
+1. The recovered local bundle is not embedded in this Git repository. The
+   strict FoM, bootstrap intervals, revised morphology metrics and figures have
+   been regenerated locally; an external artifact package is still needed for
+   clean-checkout reproduction.
 2. The GeoFM-LDN source code and checkpoint are not in this repository.
 3. The external FLUS console, version and matched-input rerun are not
    archived. A fair baseline comparison still requires either a matched-input
@@ -88,9 +89,9 @@ artifacts are absent.
    data are still unavailable. The 2025–2031 maps must remain stress tests,
    not official land-use forecasts.
 
-## Required rerun command sequence
+## Rerun command sequence used for the current reports
 
-After restoring the input bundle and model artifacts, run:
+With the local input bundle and model artifacts available, run:
 
 ```bash
 python benchmarks/abu_dhabi_land_use_v1/run_geosos_flus.py
@@ -103,6 +104,7 @@ python benchmarks/abu_dhabi_land_use_v1/run_mechanism_ablations.py
 python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
 ```
 
-Only after these commands complete and an independent change-validation layer
-is added should the numerical tables, figures and LUP submission PDF be
-reissued.
+The current numerical tables, figures and LUP submission PDF were reissued
+after the strict reports and output audit completed. Independent change
+validation, matched-input FLUS comparison, model-source release and a public
+DOI remain recommended before claiming a validated Abu Dhabi forecast.

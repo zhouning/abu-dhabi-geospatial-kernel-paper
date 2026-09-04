@@ -72,21 +72,22 @@ values; GeoFM-LDN recursively writes back its predicted latent state.
 
 ## Current result status
 
-The checked-in historical and planning JSON files are legacy artifacts. They
-predate the strict multi-class FoM, spatial-block bootstrap and revised
-independent planning objective set; their metadata now marks them as
-`stale_artifact_not_for_inference` or `withdrawn_pending_public_2025_2031_rerun`.
-The earlier 240-raster audit belongs to a separate 2025–2030 run and is not an
-audit of the public 2025–2031 delivery.
+The immutable historical and planning JSON files are retained as legacy
+lineage. Current versioned reports are generated from the recovered local
+public-data bundle and use the strict multi-class FoM, spatial-block bootstrap
+and revised independent planning objective set. The earlier 240-raster audit
+belongs to a separate 2025–2030 run and is not an audit of the public
+2025–2031 delivery.
 
 The code needed for the revised analysis is present, including paired
 model-difference intervals and a score-independent minimum-change null. The
-current checkout
-does not contain the complete raster bundle, GeoFM-LDN checkpoint or an
-independent 2023–2024 built-area validation layer. Therefore no revised model
-ranking, bootstrap interval or Pareto frontier is claimed here. The original
-FLUS run also used a different feature set and frozen console defaults; a
-matched-input rerun is required before intrinsic model superiority is inferred.
+analysis workstation recovered the complete public raster bundle, GeoFM-LDN
+checkpoints and existing planning rasters from the companion GIS data workspace;
+the large files remain outside Git. The resulting ranking and Pareto membership
+are conditional pipeline comparisons. The original FLUS run used a different
+feature set and frozen console defaults, so a matched-input rerun remains
+required before intrinsic model superiority is inferred. Independent
+authoritative 2023–2024 change validation is still not available.
 
 All substantive findings remain conditional on Dynamic World labels, public
 OSM/WorldCover proxy constraints and planner-supplied scenario demand. They do

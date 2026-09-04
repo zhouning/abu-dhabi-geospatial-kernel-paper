@@ -131,7 +131,10 @@ def compile_report(
     ensemble_root: Path,
 ) -> dict[str, Any]:
     source = json.loads(input_path.read_text(encoding="utf-8"))
-    if source.get("status") != "complete" or source.get("revision_status") != "current_protocol_run":
+    if source.get("status") != "complete" or source.get("revision_status") not in {
+        "current_protocol_run",
+        "recomputed_from_existing_rasters",
+    }:
         raise ValueError(
             "planning_scenarios_not_current_protocol_run:"
             f"{source.get('status', 'no_status')}/"
@@ -182,7 +185,13 @@ def compile_report(
                         scenario_id=scenario_id,
                         year=year,
                     )
-                    state_data, _ = _read(HERE / year_record["prediction_path"])
+                    source_prediction_path = Path(year_record["prediction_path"])
+                    prediction_path = (
+                        source_prediction_path
+                        if source_prediction_path.is_absolute()
+                        else HERE / source_prediction_path
+                    )
+                    state_data, _ = _read(prediction_path)
                     state = state_data[0]
                     metrics = planning_metrics(
                         state,
@@ -198,7 +207,7 @@ def compile_report(
                         "scenario_id": scenario_id,
                         "seed": seed,
                         "target_year": year,
-                        "prediction_path": year_record["prediction_path"],
+                        "prediction_path": _report_path(prediction_path),
                         **metrics,
                     }
                     seed_metrics.append(row)
@@ -249,6 +258,7 @@ def compile_report(
         "revision_status": "rerun_from_current_rasters",
         "pareto_status": "conditional_on_declared_objectives",
         "reproducibility_status": "complete_if_all_input_and_model_artifacts_are_present",
+        "evidence_mode": "current_planning_evaluator_on_existing_prediction_rasters",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "complete",
         "origin_year": 2024,

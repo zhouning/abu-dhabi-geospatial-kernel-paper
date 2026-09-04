@@ -701,9 +701,18 @@ def render_planning_metrics(planning: dict[str, Any]) -> Path:
 def render_all() -> list[Path]:
     configure_style()
     valid = _read(BUNDLE_ROOT / "common_valid_mask_100m.tif")[0].astype(bool)
-    audit = _load_json(HERE / "data_audit.json")
-    historical = _load_json(HERE / "comparison_report.json")
-    planning = _load_json(HERE / "planning_comparison_report.json")
+    audit_path = HERE / "data_audit_local.json"
+    if not audit_path.is_file():
+        audit_path = HERE / "data_audit.json"
+    historical_path = HERE / "comparison_report_current.json"
+    if not historical_path.is_file():
+        historical_path = HERE / "comparison_report.json"
+    planning_path = HERE / "planning_comparison_report_public_2025_2031_current.json"
+    if not planning_path.is_file():
+        planning_path = HERE / "planning_comparison_report.json"
+    audit = _load_json(audit_path)
+    historical = _load_json(historical_path)
+    planning = _load_json(planning_path)
     return [
         render_land_cover_overview(valid, audit),
         render_driver_inputs(valid),

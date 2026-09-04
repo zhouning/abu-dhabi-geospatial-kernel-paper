@@ -18,14 +18,14 @@ The repository deliberately excludes customer databases, credentials, private im
 
 The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**. Current reruns write versioned report names, leaving legacy JSON lineage files immutable.
 
-This repository contains the benchmark protocol and an evidence-limited
-manuscript package. The strict multi-class change FoM, persistence/minimum-
-change controls, spatial-block bootstrap with paired model contrasts and
-independent morphology objective code are implemented, but the complete
-raster bundle, GeoFM-LDN checkpoint and independent authoritative change-
-validation data are not included. See
-[`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
-before treating any existing PDF or JSON as a final submission record.
+This repository contains the benchmark protocol and the manuscript package.
+The strict multi-class change FoM, persistence/minimum-change controls,
+spatial-block bootstrap with paired model contrasts and independent morphology
+objective code have been rerun against the complete public-data bundle recovered
+from the companion local GIS workspace. Large rasters and model runtimes remain
+external to Git; independent authoritative change-validation data are still not
+available. See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
+for the evidence boundary.
 
 ## Start here
 
@@ -36,6 +36,7 @@ before treating any existing PDF or JSON as a final submission record.
 - Benchmark instructions: [`benchmarks/abu_dhabi_land_use_v1/README.md`](benchmarks/abu_dhabi_land_use_v1/README.md)
 - Report lineage policy: [`benchmarks/abu_dhabi_land_use_v1/ARCHIVE_IMMUTABILITY.md`](benchmarks/abu_dhabi_land_use_v1/ARCHIVE_IMMUTABILITY.md)
 - Planning delivery manifest: [`results/planning_public_2025_2031_delivery_manifest.json`](results/planning_public_2025_2031_delivery_manifest.json)
+- Local data recovery and rerun record: [`docs/本机阿布扎比数据恢复与重算记录.md`](docs/本机阿布扎比数据恢复与重算记录.md)
 
 ## Reproduction
 
@@ -51,11 +52,11 @@ The scripts document the canonical boundary, grid, class labels, constraints, sc
 
 ## Results
 
-Historical and planning comparison reports are in `results/`. Selected ensemble
-rasters and transition GeoPackages are expected under
-`benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/` when the
-public-data rerun is materialized. They are not present in the current checkout;
-the delivery manifest is retained for lineage only and is marked unverified.
+Historical and planning comparison reports are in `results/` and the benchmark
+directory. The current reports are generated from the recovered public-data
+bundle; selected ensemble rasters and transition GeoPackages remain external
+artifacts under `benchmarks/abu_dhabi_land_use_v1/artifacts/` and are described
+by the delivery manifests.
 
 ## Citation
 
