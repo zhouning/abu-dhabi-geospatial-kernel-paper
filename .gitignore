@@ -26,4 +26,7 @@ benchmarks/abu_dhabi_land_use_v1/artifacts/mechanism_ablations
 benchmarks/abu_dhabi_land_use_v1/artifacts/predictions
 benchmarks/abu_dhabi_land_use_v1/artifacts/predictions_current
 benchmarks/abu_dhabi_land_use_v1/figures
+benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/*/*/seed_*
+benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/*/*/ensemble/prediction_2025.tif
+benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/*/*/ensemble/prediction_2026.tif
 figures/*.tiff
