@@ -14,3 +14,16 @@ artifacts/gee/
 artifacts/osm/*.pbf
 artifacts/*/work/
 *.tif.ovr
+
+# Local recovered benchmark bundle and generated staging outputs.  These are
+# intentionally kept outside Git; manifests and current reports record their
+# provenance without embedding hundreds of megabytes of rasters.
+benchmarks/abu_dhabi_land_use_v1/artifacts/abu_dhabi_city_100m_mask.tif
+benchmarks/abu_dhabi_land_use_v1/artifacts/bundle
+benchmarks/abu_dhabi_land_use_v1/artifacts/gee
+benchmarks/abu_dhabi_land_use_v1/artifacts/osm
+benchmarks/abu_dhabi_land_use_v1/artifacts/mechanism_ablations
+benchmarks/abu_dhabi_land_use_v1/artifacts/predictions
+benchmarks/abu_dhabi_land_use_v1/artifacts/predictions_current
+benchmarks/abu_dhabi_land_use_v1/figures
+figures/*.tiff
