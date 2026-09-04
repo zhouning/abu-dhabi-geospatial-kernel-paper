@@ -1,0 +1,856 @@
+\section{Geospatial Kernel: a state--action--constraint core for urban
+land-cover
+planning}\label{geospatial-kernel-a-stateactionconstraint-core-for-urban-land-cover-planning}
+
+\textbf{An Abu Dhabi benchmark with conditional multi-year scenario
+analysis}
+
+\textbf{Author:} Ning Zhou\\
+\textbf{Affiliation:} Beijing Freedo Technology Co., Ltd.\\
+\textbf{Corresponding author:} Ning Zhou
+
+\textbf{Manuscript status:} Nature-style research-article draft based on
+the public-data Abu Dhabi Land-Use Benchmark V1. This document is not an
+official Abu Dhabi planning forecast.
+
+\subsection{Abstract}\label{abstract}
+
+Urban land-change models are used to test how development demand could
+be distributed across space. Their practical value depends on more than
+pixel-level classification: a planning model must respond to explicit
+actions, preserve hard exclusions and carry its state into the next
+simulated year. Here we study Geospatial Kernel, the algorithmic core of
+a Geospatial World Model, as a state--action--constraint transition
+system for urban land-cover planning. We evaluate it against GeoSOS-FLUS
+and Paper58 on a common Abu Dhabi benchmark of annual public land-cover
+products from 2017 to 2024, a 100-m grid and three random seeds. In
+conditional historical allocation tests, Geospatial Kernel achieved the
+highest change Figure of Merit (FoM) for 2023 (0.2004, compared with
+0.1283 for GeoSOS-FLUS and 0.1670 for Paper58), whereas Paper58 achieved
+the highest FoM for the two-step 2024 open-loop target (0.2778, compared
+with 0.2606 for Geospatial Kernel). This horizon dependence argues
+against a universal model ranking. In planner-supplied 2025--2031 stress
+tests, Geospatial Kernel met class-count actions, preserved hard
+exclusions and placed all three scenarios on the Pareto frontier under
+frozen public-data objectives. At 2031, new built cells had
+neighbourhood compactness of 0.833--0.855 and mean distances of 323--365
+m to major roads and 111--140 m to pre-existing built cells. These
+results support Geospatial Kernel as an auditable allocation core for
+conditional planning experiments. They do not establish legal land use,
+policy causality or Abu Dhabi\textquotesingle s actual future because
+the benchmark uses noisy public labels, proxy constraints, frozen
+drivers and synthetic actions.
+
+\subsection{Highlights}\label{highlights}
+
+\begin{itemize}
+\tightlist
+\item
+  Geospatial Kernel separates transition proposals from constraint
+  projection.
+\item
+  One-step allocation favoured Kernel; two-step open-loop skill favoured
+  Paper58.
+\item
+  Kernel met scenario class totals and retained all declared hard
+  exclusions.
+\item
+  Public-data maps are stress tests, not statutory Abu Dhabi forecasts.
+\end{itemize}
+
+\subsection{Keywords}\label{keywords}
+
+Geospatial World Model; land-cover change; constrained allocation;
+cellular automata; Abu Dhabi; scenario planning
+
+\subsection{Summary paragraph for
+nonspecialists}\label{summary-paragraph-for-nonspecialists}
+
+Cities change through many small decisions: where new buildings are
+permitted, which open areas are protected and how new development
+connects to existing infrastructure. A useful spatial model therefore
+has to keep track of both the current map and the action that is being
+tested. It must also refuse allocations that violate protected areas or
+the requested amount of each land-cover class. Existing models often
+combine these tasks in a single simulation step, which makes it
+difficult to audit why a cell changed or to reproduce a multi-year
+rollout. Here we examine Geospatial Kernel, the
+state--action--constraint core of a Geospatial World Model, in Abu Dhabi
+using public satellite-derived land-cover products and open road data.
+The Kernel was not the best model at every historical horizon, but it
+produced exact, constraint-preserving allocations and more compact,
+road-accessible planning patterns under three controlled growth
+scenarios. The resulting maps and change polygons are useful as
+transparent stress tests. They should not be read as official land-use
+forecasts until authoritative local land-use, planning and
+infrastructure data are available.
+
+\subsection{Introduction}\label{introduction}
+
+Land-cover change is a spatial process. Development demand is expressed
+as a quantity, but its consequences depend on where each new cell is
+placed relative to roads, existing built areas, ecological features and
+other land-cover classes. This coupling matters for urban planning
+because two maps with the same total built area can imply very different
+infrastructure requirements and environmental pressures.
+Cellular-automata and suitability-based models have long provided a way
+to distribute land demand across a map, and the FLUS family is a
+prominent example of a model that combines a suitability surface with
+neighbourhood-based allocation {[}1{]}. Global Earth-observation
+products now make it possible to construct annual, spatially aligned
+inputs for cities that lack a harmonized local data archive {[}2,3{]}.
+
+The main technical difficulty is not producing another categorical
+raster. It is keeping the semantics of a planning action separate from
+the learned transition tendency. A model may predict that a cell is
+likely to become built, yet the resulting map can still violate a water
+exclusion, miss the requested class totals or become inconsistent when
+the next year is simulated from the model\textquotesingle s own output.
+These failure modes are particularly important when the model is used to
+compare scenarios rather than to reproduce one observed transition.
+Latent-dynamics approaches such as Paper58 can represent continuous
+geospatial state and condition transitions on demand, whereas
+traditional ANN-plus-cellular-automata systems such as GeoSOS-FLUS
+combine suitability with explicit neighbourhood evolution. Neither
+design, by itself, guarantees that action semantics, hard constraints,
+state persistence and evidence provenance are visible at the same
+execution boundary.
+
+We address this systems problem by studying Geospatial Kernel, the core
+transition layer of a Geospatial World Model (GWM). The Kernel
+represents one simulation step as a typed state, a typed action, a
+transition proposal, a constraint projection and a state writeback. The
+learned proposal remains domain-specific; the runtime contract is
+domain-neutral. For Abu Dhabi land-cover planning, the proposal is a
+six-class probability cube, and the projection allocates only mutable
+cells until the action\textquotesingle s feasible class totals are
+reached. This separation makes the planning operation inspectable: a
+reviewer can distinguish what the transition model preferred from what
+the constraints admitted.
+
+We evaluate this design in a controlled public-data benchmark rather
+than treating the benchmark as an official data release. All candidates
+consume the same 100-m grid, common valid mask, annual class-count
+actions, hard exclusions and evaluator. The historical track uses
+observed target counts to isolate spatial allocation skill from demand
+error. The planning track starts from the observed 2024 state and
+applies three planner-supplied actions: compact growth, ecological
+priority and outward growth. We ask four questions: whether the Kernel
+execution contract is auditable, whether its allocation skill is
+competitive, whether it produces preferable feasible planning
+allocations and which conclusions survive label and parameter
+sensitivity.
+
+The paper makes three bounded contributions. First, it gives a concrete
+state--action--constraint formulation for using a geospatial kernel as
+an algorithmic core rather than as an opaque end-to-end predictor.
+Second, it reports a fair, multi-horizon comparison with GeoSOS-FLUS and
+Paper58, including a case in which the Kernel does not win. Third, it
+turns the future maps into explicit stress-test artefacts, including
+cumulative rasters and vectorized transition footprints, while
+preserving the distinction between public-data land cover and
+authoritative legal land use.
+
+\subsection{Results}\label{results}
+
+\subsubsection{A common benchmark separates allocation skill from demand
+assumptions}\label{a-common-benchmark-separates-allocation-skill-from-demand-assumptions}
+
+The benchmark covers the Abu Dhabi city polygon represented by
+OpenStreetMap relation R4479763. The canonical grid is a 475 × 360
+lattice in EPSG:32640 at 100-m resolution. After the common coverage and
+alignment checks, 79,726 cells were used for scoring. Each cell
+represents 1 ha. Annual Dynamic World observations from 2017 to 2024
+were harmonized to six land-cover classes: water, woody vegetation, low
+vegetation, wetland, built and bare. AlphaEarth annual embeddings, VIIRS
+night-time lights, Copernicus DEM derivatives and OpenStreetMap road
+distances supplied transition drivers. ESA WorldCover and public
+OpenStreetMap geometries supplied water, wetland and infrastructure
+exclusion proxies.
+
+The comparison was designed so that differences in model output could
+not be attributed to different grids or target totals. GeoSOS-FLUS
+received the same continuous drivers and used an external ANN
+suitability model followed by cellular-automata allocation. Paper58 used
+demand-conditioned latent dynamics on the annual AlphaEarth embeddings,
+a semantic decoder and the constrained allocation interface. Geospatial
+Kernel used the same target action records and hard masks, but separated
+a learned per-cell transition proposal from a runtime constraint
+projection. All models were run with seeds 31, 47 and 73. The output
+audit accepted 240 prediction rasters, including 54 planning ensembles
+and 162 planning seed rasters, with no grid, class or hard-constraint
+failures.
+
+The execution trace makes the distinction between proposal and admission
+explicit. A Kernel step records the source state, action,
+probability-cube proposal, projected state, model identity, input
+evidence and next-state reference. The runtime checks that the action
+advances the source time and that the projected raster becomes the next
+state. This is the operational meaning of the Kernel in this study: not
+a claim that all GWM domains share the same learner, but a claim that
+they can share an auditable execution contract. The shared inputs and
+execution boundary are summarized in Fig. 1.
+
+\subsubsection{Historical performance is competitive but
+horizon-dependent}\label{historical-performance-is-competitive-but-horizon-dependent}
+
+The historical track used observed target class totals. This choice
+removes one source of uncertainty, demand estimation, and tests how each
+model allocates the requested changes in space. The primary metric was
+change FoM, which measures the overlap between observed and simulated
+changes while accounting for false alarms and misses {[}4{]}. Change F1,
+overall accuracy and macro-F1 were secondary metrics. Values below are
+means with population standard deviations over the three seeds.
+
+\textbf{Table 1 \textbar{} Historical conditional allocation
+performance.} The 2023 target is a one-step prediction from 2022. The
+2024 target is reached by a two-step open-loop rollout from 2022 without
+observed-state writeback. Values are mean ± population SD across three
+seeds; DTV is normalized demand total variation.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rlrrrrr@{}}
+\toprule\noalign{}
+Year & Method & Change FoM & Change F1 & Overall acc. & Macro-F1 &
+DTV \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2023 & GeoSOS-FLUS & 0.1283 ± 0.0043 & 0.2273 ± 0.0068 & 0.9183 ± 0.0008
+& 0.8441 ± 0.0034 & 0.002835 \\
+2023 & Geospatial Kernel & \textbf{0.2004 ± 0.0018} & \textbf{0.3338 ±
+0.0026} & \textbf{0.9362 ± 0.0002} & \textbf{0.8499 ± 0.0003} &
+0.000000 \\
+2023 & Paper58 & 0.1670 ± 0.0039 & 0.2862 ± 0.0058 & 0.9316 ± 0.0005 &
+0.8457 ± 0.0006 & 0.000000 \\
+2024 & GeoSOS-FLUS & 0.1815 ± 0.0125 & 0.3071 ± 0.0180 & 0.8595 ± 0.0030
+& 0.7483 ± 0.0062 & 0.005381 \\
+2024 & Geospatial Kernel & 0.2606 ± 0.0006 & 0.4134 ± 0.0008 & 0.8863 ±
+0.0002 & 0.7670 ± 0.0004 & 0.000000 \\
+2024 & Paper58 & \textbf{0.2778 ± 0.0061} & \textbf{0.4348 ± 0.0074} &
+\textbf{0.8905 ± 0.0014} & \textbf{0.7693 ± 0.0011} & 0.000000 \\
+\end{longtable}
+}
+
+Geospatial Kernel improved change FoM over GeoSOS-FLUS by 0.0721 in 2023
+and 0.0790 in 2024. Paper58 improved over GeoSOS-FLUS by 0.0388 and
+0.0963, respectively. The ranking changed at the longer horizon:
+Geospatial Kernel was strongest for the 2023 one-step target, while
+Paper58 was strongest for the 2024 two-step target. The result is
+scientifically useful precisely because it prevents an over-general
+conclusion. Geospatial Kernel was competitive in historical allocation,
+but its advantage in this benchmark is not a universal claim about
+future prediction accuracy. The four primary metrics and seed
+variability are shown in Fig. 2.
+
+The reliability subset tells a second, less favourable story about the
+data. Dynamic World mean top-probability was below 0.5 for approximately
+51.0\% of valid cells in 2017 and 61.3\% in 2024. When both origin and
+target cells were required to exceed 0.5, all models retained high
+static agreement but the change FoM became much lower because few
+high-confidence cells were labelled as changed. We therefore report the
+full-grid metric as the primary result and use the reliability subset
+only as a diagnostic of label volatility.
+
+\subsubsection{Constraint projection produces feasible and spatially
+distinct planning
+allocations}\label{constraint-projection-produces-feasible-and-spatially-distinct-planning-allocations}
+
+The planning track starts from the observed 2024 state and rolls forward
+to 2031. It uses three declared actions. Compact growth adds 500 built
+and 50 green cells per year. Ecological priority adds 350 built and 150
+green cells per year. Outward growth adds 1,000 built and 25 green cells
+per year. The 2031 targets extend the 2029--2030 annual differences and
+are marked as scenario targets. Exogenous drivers are held at their 2024
+values, so the exercise is a controlled stress test rather than a
+forecast.
+
+\textbf{Table 2a \textbar{} 2031 planning objectives and spatial
+accessibility.} Values are mean ± population SD across three seeds. DTV
+is normalized demand total variation; ecological conversion is the
+percentage of new built cells originating in the public
+vegetation/ecological proxy mask. Compactness is the fraction of eight
+neighbours that are built around a new built cell. Distances are
+measured in metres. \texttt{Kernel} denotes Geospatial Kernel.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llrrrrr@{}}
+\toprule\noalign{}
+Method & Scenario & DTV & Eco conv. (\%) & Compactness & Major road (m)
+& Prior built (m) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+GeoSOS-FLUS & Compact & 0.00068 & 1.68 & 0.7618 ± 0.0231 & 446.1 ± 39.5
+& 231.6 ± 21.3 \\
+GeoSOS-FLUS & Eco priority & 0.00528 & 1.77 & 0.7687 ± 0.0291 & 443.7 ±
+35.9 & 212.7 ± 11.4 \\
+GeoSOS-FLUS & Outward & 0.00045 & 1.31 & 0.8000 ± 0.0196 & 443.5 ± 37.2
+& 255.3 ± 27.8 \\
+Kernel & Compact & 0.00000 & 0.00 & \textbf{0.8410 ± 0.0045} &
+\textbf{334.7 ± 13.4} & \textbf{116.7 ± 1.2} \\
+Kernel & Eco priority & 0.00000 & 0.00 & \textbf{0.8332 ± 0.0068} &
+\textbf{323.1 ± 19.5} & \textbf{111.0 ± 0.5} \\
+Kernel & Outward & 0.00000 & 0.00 & \textbf{0.8545 ± 0.0047} &
+\textbf{365.5 ± 5.3} & \textbf{139.8 ± 1.5} \\
+Paper58 & Compact & 0.00000 & 0.00 & 0.7676 ± 0.0170 & 475.9 ± 35.7 &
+239.7 ± 44.6 \\
+Paper58 & Eco priority & 0.00000 & 0.00 & 0.7506 ± 0.0174 & 452.1 ± 22.0
+& 222.3 ± 19.8 \\
+Paper58 & Outward & 0.00000 & 0.00 & 0.8117 ± 0.0236 & 507.5 ± 56.4 &
+263.0 ± 71.8 \\
+\end{longtable}
+}
+
+\textbf{Table 2b \textbar{} 2031 planning demand and Pareto status.}
+Built gain is net built-cell change relative to 2024; retired counts
+cells that were built in 2024 and are not built in 2031; green gain is
+the corresponding net gain. Pareto status is conditional on the declared
+objective directions and public-data proxy constraints.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llrrrc@{}}
+\toprule\noalign{}
+Method & Scenario & Built gain & Retired & Green gain & Pareto \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+GeoSOS-FLUS & Compact & 3,500 & 3,436 & 296 & no \\
+GeoSOS-FLUS & Eco priority & 2,450 & 3,632 & 629 & no \\
+GeoSOS-FLUS & Outward & 7,000 & 2,724 & 139 & no \\
+Kernel & Compact & 3,500 & 0 & 350 & \textbf{yes} \\
+Kernel & Eco priority & 2,450 & 0 & 1,050 & \textbf{yes} \\
+Kernel & Outward & 7,000 & 0 & 175 & \textbf{yes} \\
+Paper58 & Compact & 3,500 & 0 & 350 & no \\
+Paper58 & Eco priority & 2,450 & 0 & 1,050 & no \\
+Paper58 & Outward & 7,000 & 0 & 175 & no \\
+\end{longtable}
+}
+
+All three Geospatial Kernel candidates were on the Pareto frontier under
+the frozen objective set. In the compact scenario, for example, the
+Kernel placed new built cells closer to major roads than either baseline
+and produced a higher neighbourhood compactness. The same ordering held
+for ecological priority and outward growth. The ecological conversion
+rate was zero for the Kernel and Paper58 because the projected
+allocations avoided conversion of the declared vegetation-origin cells
+in the public-data constraint system; GeoSOS-FLUS converted 1.31--1.77\%
+of its new built cells from ecological proxy classes. These values are
+proxy outcomes, not estimates of statutory ecological impact.
+
+The built-retirement contrast is also visible in the maps. GeoSOS-FLUS
+reclassified approximately 2,724--3,632 cells that were built in 2024
+while allocating new built cells elsewhere. Geospatial Kernel and
+Paper58 retained the prior built class under the same scenario target
+counts. This difference is a model behaviour under the frozen transition
+matrix, not evidence that either approach reproduces actual
+redevelopment or demolition. The objective trade-offs are summarized in
+Fig. 3.
+
+\subsubsection{Five-year trajectories and vectorized change
+footprints}\label{five-year-trajectories-and-vectorized-change-footprints}
+
+The Geospatial Kernel trajectories from 2027 to 2031 show how the action
+changes the spatial configuration as demand accumulates. In the compact
+scenario, net built gain increases from 1,500 cells (15 km²) in 2027 to
+3,500 cells (35 km²) in 2031, while green gain increases from 150 to 350
+cells (1.5--3.5 km²). Ecological priority reaches 2,450 built cells
+(24.5 km²) and 1,050 green cells (10.5 km²) by 2031. Outward growth
+reaches 7,000 built cells (70 km²) and 175 green cells (1.75 km²). The
+corresponding new-built compactness rises from 0.776--0.795 in 2027 to
+0.833--0.855 in 2031. Mean distance to pre-existing built cells remains
+lower than for the baselines, although it increases as the outward
+action expands.
+
+\textbf{Table 3 \textbar{} Geospatial Kernel trajectory under the three
+scenario actions.} Values are three-seed means. Built and green gains
+are cumulative net changes relative to 2024. \texttt{Eco\ priority} is
+the ecological-priority action.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrrr@{}}
+\toprule\noalign{}
+Scenario & Year & Built gain & Green gain & Compactness & Major road (m)
+& Prior built (m) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Compact & 2027 & 1,500 & 150 & 0.7913 & 320.5 & 102.9 \\
+Compact & 2028 & 2,000 & 200 & 0.8067 & 324.5 & 105.6 \\
+Compact & 2029 & 2,500 & 250 & 0.8217 & 327.0 & 108.8 \\
+Compact & 2030 & 3,000 & 300 & 0.8318 & 331.7 & 112.5 \\
+Compact & 2031 & 3,500 & 350 & 0.8410 & 334.7 & 116.7 \\
+Eco priority & 2027 & 1,050 & 450 & 0.7757 & 313.3 & 102.0 \\
+Eco priority & 2028 & 1,400 & 600 & 0.8003 & 314.3 & 103.8 \\
+Eco priority & 2029 & 1,750 & 750 & 0.8141 & 316.2 & 106.3 \\
+Eco priority & 2030 & 2,100 & 900 & 0.8229 & 319.5 & 108.5 \\
+Eco priority & 2031 & 2,450 & 1,050 & 0.8332 & 323.1 & 111.0 \\
+Outward growth & 2027 & 3,000 & 75 & 0.7948 & 341.5 & 107.7 \\
+Outward growth & 2028 & 4,000 & 100 & 0.8147 & 348.2 & 114.9 \\
+Outward growth & 2029 & 5,000 & 125 & 0.8304 & 354.4 & 123.0 \\
+Outward growth & 2030 & 6,000 & 150 & 0.8444 & 359.5 & 131.5 \\
+Outward growth & 2031 & 7,000 & 175 & 0.8545 & 365.5 & 139.8 \\
+\end{longtable}
+}
+
+For delivery, each model and scenario has an ensemble raster for each
+year 2027--2031 and a vector package containing annual and cumulative
+transition layers. The nine GeoPackage packages contain polygons formed
+by dissolving changed 100-m cells; they are therefore raster-cell
+transition footprints rather than parcel boundaries. This distinction
+matters for downstream planning because the polygons can support visual
+review and overlay analysis, but they do not represent cadastral lots or
+legally approved projects. The 2031 state and transition footprints are
+visualized in Fig. 5.
+
+\subsubsection{Sensitivity shows a stable but not fully explained
+neighbourhood
+contribution}\label{sensitivity-shows-a-stable-but-not-fully-explained-neighbourhood-contribution}
+
+The base Kernel allocation score adds a 7 × 7 target-class neighbourhood
+fraction with weight 0.35. A post-hoc three-seed sensitivity run varied
+this weight from 0 to 0.7. Mean 2023 change FoM was 0.19997, 0.20042,
+0.20035 and 0.20010 at weights 0, 0.175, 0.35 and 0.7. The corresponding
+2024 means were 0.26079, 0.26069, 0.26058 and 0.26034. The variation is
+small relative to the difference between the Kernel and GeoSOS-FLUS in
+the main benchmark, and it motivates the explicit mechanism controls
+below rather than a causal claim about neighbourhood context.
+
+\subsubsection{Mechanism controls separate learned proposal from runtime
+projection}\label{mechanism-controls-separate-learned-proposal-from-runtime-projection}
+
+We next used controlled variants to test which parts of the execution
+contract are consistent with the observed differences. These are
+mechanism controls, not causal policy experiments. Removing
+neighbourhood features from the proposal reduced mean change FoM from
+0.2004 to 0.1359 in 2023 and from 0.2606 to 0.2345 in 2024. Removing
+continuous spatial drivers produced smaller but consistent reductions
+(0.1969 and 0.2415), while shuffling those drivers gave 0.1951 and
+0.2423. A state-only/Markov proposal gave 0.1475 and 0.2048, and a
+random proposal gave 0.0283 and 0.0696. These contrasts support the
+value of neighbourhood and spatial-driver information for historical
+allocation, while also showing that the full learner is not equivalent
+to a persistence rule.
+
+Runtime controls changed the interpretation of the result. Deleting the
+action semantics reduced change FoM by 0.1161 in 2023 and 0.1760 in
+2024. Shuffling the action had a small positive effect at the one-step
+horizon (+0.0071) but a negative effect in the two-step rollout
+(−0.0937), demonstrating that action sensitivity is horizon-dependent
+rather than monotonically harmful. Removing the allocation neighbourhood
+term changed FoM by less than 0.001 in either year, whereas removing
+state writeback had little effect in 2023 but increased the 2024 FoM by
+0.0110; these controls therefore do not isolate a single source of
+historical skill.
+
+The planning controls clarify why morphology cannot be attributed to the
+learned proposal alone. At 2031, the full Kernel compactness was 0.841,
+0.833 and 0.855 for compact, ecological-priority and outward-growth
+actions. Removing the allocator neighbourhood term changed these values
+to 0.834, 0.822 and 0.851, whereas removing state writeback reduced them
+to 0.694, 0.693 and 0.738. A Markov proposal paired with the same
+allocator was even more compact (0.902, 0.909 and 0.903), showing that
+the planning objective and shared projection can dominate the visual
+morphology. Deleting hard constraints introduced 0.79\%, 0.85\% and
+1.48\% violation rates in the three scenarios, despite sometimes
+improving unconstrained objective values. Taken together, the controls
+support the claim that Geospatial Kernel is auditable and that its
+proposal features matter for historical allocation, but they do not
+identify a unique causal mechanism for the planning advantage. The full
+set of controls is shown in Fig. 4.
+
+\subsection{Discussion}\label{discussion}
+
+This study positions Geospatial Kernel at the level where a Geospatial
+World Model becomes usable for constrained spatial reasoning. The key
+result is not that one classifier wins every temporal test. It is that
+the transition proposal and the planning admission rule can be
+represented separately, inspected separately and evaluated under the
+same action and constraint contract. In Abu Dhabi, this design produced
+exact target counts, zero hard-constraint violations and spatial
+allocations that were more compact and closer to major roads and prior
+built cells than the two baselines under the declared 2031 objective
+set.
+
+The historical results place that planning result in context. Geospatial
+Kernel had the strongest one-step 2023 allocation score, but Paper58 had
+the strongest 2024 two-step open-loop score. A model that performs well
+at one horizon can lose its advantage when its own output becomes the
+next input. The appropriate conclusion is therefore task-specific:
+Geospatial Kernel is promising as a constrained allocation core, whereas
+Paper58 may be competitive for longer-horizon latent-state evolution in
+this public-data experiment. The benchmark does not support selecting
+one model as the universally most accurate future predictor.
+
+The spatial objective differences are consistent with the design of the
+Kernel projection. The score compares the learned probability of a
+target class with that of the current class and adds local support from
+the target-class neighbourhood. The projection then resolves deficits
+and excesses while refusing mutable changes inside the hard mask. This
+makes it natural for the Kernel to retain existing built cells and to
+fill target classes near already compatible neighbourhoods. The
+allocator-matched controls above qualify this interpretation: planning
+morphology also depends on the shared projection and recursive state
+handling, and the present experiments do not identify a single causal
+pathway.
+
+Several limitations define the boundary of the present evidence. The six
+classes are remote-sensing land cover, not statutory residential,
+commercial or industrial land use. Dynamic World labels show substantial
+annual uncertainty and apparent turnover, and the public road, wetland
+and protected-area layers are proxies rather than Abu Dhabi planning
+records. Future drivers are frozen at 2024, no observed 2025--2031
+labels exist for validation and the scenario targets are synthetic
+planner-supplied actions. The three-seed summaries quantify stochastic
+variation but are not population-level uncertainty intervals. The
+completed controls are public-data stress tests with matched seeds
+rather than randomized interventions on real planning decisions, and
+several variants alter more than one implementation detail at a time. We
+therefore report them as evidence consistent with the execution contract
+rather than as causal attribution.
+
+These limitations also indicate a practical path to deployment. An
+authoritative version would replace the Dynamic World class raster with
+a locally validated land-use/land-cover crosswalk, replace public proxy
+masks with statutory water, ecological, airport, port and
+growth-boundary layers, and supply approved development demand and
+infrastructure capacities. The Kernel contract can remain unchanged
+while those domain inputs are upgraded. This separation is useful for
+governance: a new data source changes the evidence attached to a
+transition, rather than silently changing the meaning of the execution
+trace.
+
+\subsection{Methods}\label{methods}
+
+\subsubsection{Study boundary, grid and temporal
+protocol}\label{study-boundary-grid-and-temporal-protocol}
+
+The study boundary is the polygon returned for OpenStreetMap relation
+R4479763, representing Abu Dhabi city. All rasters were aligned to a
+canonical 100-m grid in EPSG:32640 with 475 columns and 360 rows. A cell
+was included when its centre fell within the city polygon and when the
+common public-data mask indicated valid coverage. The benchmark profile
+records the source geometry, raster transform, dimensions and SHA-256
+hashes. The effective evaluation mask contains 79,726 cells.
+
+The observed sequence contains annual states for 2017--2024. Models were
+fit using the four transitions 2017→2018, 2018→2019, 2019→2020 and
+2020→2021. A 2021→2022 transition was used for validation during model
+development. The historical test starts from 2022 and evaluates 2023 and
+2024 in an open-loop rollout without observed-state writeback. The
+planning test starts from the observed 2024 state and recursively
+generates 2025--2031 under each scenario action.
+
+\subsubsection{Public data and class
+semantics}\label{public-data-and-class-semantics}
+
+Dynamic World V1 provides annual scene-argmax labels and mean top-class
+probabilities {[}2{]}. The nine Dynamic World labels were crosswalked to
+six canonical classes: water (source 0), woody vegetation (1), low
+vegetation (2, 4 and 5), wetland (3), built (6) and bare (7). Source
+class 8 was excluded. The resulting label is explicitly treated as land
+cover. No residential, commercial or industrial category is inferred
+from the raster labels.
+
+Annual 64-dimensional AlphaEarth embeddings were spatially averaged to
+the canonical grid and locally L2-normalized. Monthly VIIRS
+night-time-light radiance was averaged by year. Copernicus DEM supplied
+elevation and a finite-difference slope derivative. OpenStreetMap road
+geometries were rasterized into distance-to-road and
+distance-to-major-road surfaces. ESA WorldCover 2021 supplied public
+water and wetland/mangrove constraint proxies {[}5{]}. All dynamic and
+static layers were checked for exact CRS, transform, width and height
+agreement.
+
+\subsubsection{Geospatial Kernel state, action and transition
+proposal}\label{geospatial-kernel-state-action-and-transition-proposal}
+
+Let \(S_t(i)\) denote the six-class state at valid cell \(i\), \(A_t\)
+the action for the interval \(t\rightarrow t+1\), and \(X_t\) the
+aligned driver layers. The Kernel separates a proposal from a
+projection:
+
+\[
+Q_t(i,c)=p_\theta\big(c\mid x_i(S_t,X_t)\big),
+\qquad
+S_{t+1}=\Pi_{\mathcal C,A_t}(Q_t,S_t).
+\]
+
+The feature vector \(x_i\) contains 25 values: six one-hot current-class
+indicators; twelve neighbourhood proportions, comprising 3 × 3 and 7 × 7
+windows for each of the six classes; and seven continuous variables,
+namely normalized row and column coordinates, clipped elevation, clipped
+slope, log-transformed VIIRS radiance, log distance to roads and log
+distance to major roads. A histogram gradient-boosting classifier
+estimates the six-class probability vector. It uses learning rate 0.08,
+120 iterations, at most 31 leaf nodes, minimum leaf size 40 and L2
+regularization 1.0.
+
+Training samples combine all changed valid cells and a 20\% random
+sample of stable valid cells in each fit transition. The sample weight
+is the product of a change emphasis, \(1+5\mathbf{1}(S_t\ne S_{t+1})\),
+and a confidence factor, \(0.5+\min(r_t,r_{t+1})\), where \(r\) is the
+Dynamic World mean top probability. The target years 2023 and 2024 are
+not used during fitting or model selection. Across the three seeds, each
+fitted model used 71,892--72,202 pixel rows and all six classes.
+
+\subsubsection{Constraint projection and state
+writeback}\label{constraint-projection-and-state-writeback}
+
+For a mutable source cell \(i\) of class \(s\) and target class \(c\),
+the base allocation score is
+
+\[
+q_{i,s\rightarrow c}=\log p_\theta(c\mid x_i)-\log p_\theta(s\mid x_i)+\lambda\rho^{(7)}_{i,c},
+\]
+
+where \(\rho^{(7)}_{i,c}\) is the 7 × 7 fraction of neighbouring cells
+currently in class \(c\), and \(\lambda=0.35\). The algorithm computes
+class deficits and excesses from the action\textquotesingle s feasible
+target counts, ranks all admissible source--target candidates by \(q\),
+and changes cells in descending order until all deficits and excesses
+are zero. Permanent water and the protected wetland/ecological mask are
+held fixed. If the counts cannot be satisfied without changing a
+hard-exclusion cell, the step fails closed rather than silently
+violating the action.
+
+The projected raster is written as the next \texttt{KernelState}. Every
+step records a state reference, action evidence, model version,
+parameter reference, projection status and diagnostic counts. The
+runtime checks domain identity, source-time consistency and action time
+advancement. This execution contract is the Geospatial
+Kernel\textquotesingle s algorithmic contribution; the Abu Dhabi adapter
+supplies the land-cover-specific features, learner and constraint masks.
+
+\subsubsection{Baselines and common
+evaluator}\label{baselines-and-common-evaluator}
+
+GeoSOS-FLUS was run through the external FLUS console using seven
+continuous drivers: coordinates, elevation, slope, VIIRS radiance,
+distance to roads and distance to major roads. Its ANN suitability
+surface was passed to a cellular-automata allocation stage with the
+common class totals and public hard mask.
+
+Paper58 was trained as a demand-conditioned latent-dynamics network on
+AlphaEarth embeddings. A logistic semantic decoder maps the predicted
+embedding to six class probabilities, and the constrained allocation
+step converts those probabilities to a categorical raster. The latent
+and categorical states are both recursively carried into the next year.
+Paper58 is treated as an internal benchmark implementation in this
+manuscript; no external publication or performance claim is attributed
+to the name.
+
+The common evaluator computes actual class counts, normalized demand
+total variation, hard-mask violations, change FoM, change F1, overall
+accuracy and macro-F1 for historical runs. For planning runs it
+additionally computes ecological conversion, new-built neighbourhood
+compactness, component counts, distances to roads and prior built cells,
+infrastructure proxy distance and built retirement. Pareto membership is
+calculated over seven declared objective directions: minimize demand
+total variation, ecological conversion, major-road distance and
+prior-built distance; maximize compactness, built gain and green gain.
+
+\subsubsection{Scenario actions and
+uncertainty}\label{scenario-actions-and-uncertainty}
+
+The compact, ecological-priority and outward-growth actions are stored
+in the planning-scenario manifest in the benchmark directory. Each
+action supplies feasible class totals for 2025--2031. The 2031 totals
+are an explicit extension of the previous annual difference and are not
+derived from an official population, housing or infrastructure forecast.
+Future exogenous rasters are held at their 2024 values. Each candidate
+is run at seeds 31, 47 and 73, and planning tables report arithmetic
+means and population standard deviations. No p-values are reported
+because the three seeds describe computational variability, not
+independent field samples.
+
+\subsubsection{Change polygons and
+reproducibility}\label{change-polygons-and-reproducibility}
+
+For each model--scenario pair, annual and cumulative differences from
+the 2024 raster are extracted as changed 100-m cells and dissolved into
+GeoPackage layers. The output manifest covers 45 ensemble rasters for
+2027--2031 and nine vector packages. Every published raster passed the
+grid, class, nodata and hard-constraint audit. The vector layers
+preserve the raster-cell geometry and should not be interpreted as
+cadastral parcels.
+
+\subsection{Data availability}\label{data-availability}
+
+The public-data benchmark manifests, protocols, reports and generated
+delivery artefacts are organized under
+\texttt{benchmarks/abu\_dhabi\_land\_use\_v1/} in the accompanying
+repository. The main evidence files are:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{comparison\_report.json} and \texttt{comparison\_report.md}
+  for historical metrics;
+\item
+  \texttt{planning\_comparison\_report\_public\_2025\_2031.json} and its
+  Markdown rendering for 2031 planning objectives;
+\item
+  \texttt{planning\_scenario\_report\_public\_2025\_2031.json} for
+  per-seed rollout traces;
+\item
+  \texttt{planning\_public\_2025\_2031\_delivery\_manifest.json} for
+  raster and vector delivery;
+\item
+  \texttt{output\_audit.json} for the 240-raster audit;
+\item
+  \texttt{data\_audit.json}, \texttt{protocol.json},
+  \texttt{gee\_input\_manifest.json} and
+  \texttt{osm\_input\_manifest.json} for data provenance;
+\item
+  Large raster files are tracked through repository-relative paths and
+  SHA-256 manifests rather than embedded in this manuscript. No private
+  database address, credential or client-only service is required to
+  reproduce the public-data benchmark.
+\end{itemize}
+
+\subsection{Code availability}\label{code-availability}
+
+The analysis scripts, Geospatial Kernel runtime, benchmark protocol and
+figure-generation code are maintained in the accompanying repository.
+The principal entry points are \texttt{run\_geospatial\_kernel.py},
+\texttt{data\_agent/uwm/geospatial\_kernel/runtime.py} and
+\texttt{render\_nature\_figures.py}. A public repository URL and
+archival DOI will be added after release review; until then, the
+repository-relative paths and manifests define the reproducible code and
+data record.
+
+\subsection{Declarations}\label{declarations}
+
+\textbf{Funding.} No external funding was received for this study.
+
+\textbf{Competing interests.} The author declares no competing financial
+or personal interests.
+
+\textbf{CRediT author statement.} Ning Zhou: Conceptualization,
+methodology, software, data curation, formal analysis, visualization,
+writing---original draft, writing---review and editing.
+
+\textbf{Acknowledgements.} None.
+
+\textbf{Ethics statement.} Not applicable; the study used geospatial
+raster, vector and derived public-data products and did not involve
+human or animal participants.
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Liu, X. et al. A future land use simulation model (FLUS) for
+  simulating multiple land use scenarios by coupling human and natural
+  effects. \emph{Landscape and Urban Planning} \textbf{168}, 94--116
+  (2017). \url{https://doi.org/10.1016/j.landurbplan.2017.09.019}
+\item
+  Brown, C. F. et al. Dynamic World, Near real-time global 10 m land use
+  land cover mapping. \emph{Scientific Data} \textbf{9}, 251 (2022).
+  \url{https://doi.org/10.1038/s41597-022-01307-4}
+\item
+  Gorelick, N. et al. Google Earth Engine: Planetary-scale geospatial
+  analysis for everyone. \emph{Remote Sensing of Environment}
+  \textbf{202}, 18--27 (2017).
+  \url{https://doi.org/10.1016/j.rse.2017.06.031}
+\item
+  Pontius, R. G. Jr \& Millones, M. Death to Kappa: birth of quantity
+  disagreement and allocation disagreement for accuracy assessment.
+  \emph{International Journal of Remote Sensing} \textbf{32}, 4407--4429
+  (2011). \url{https://doi.org/10.1080/01431161.2011.552923}
+\item
+  Zanaga, D. et al. ESA WorldCover 10 m 2021 v200. Zenodo (2022).
+  \url{https://doi.org/10.5281/zenodo.7254221}
+\item
+  OpenStreetMap contributors. OpenStreetMap data, Abu Dhabi relation
+  R4479763 and Geofabrik GCC extract, accessed 31 July 2026.
+  \url{https://www.openstreetmap.org}
+\end{enumerate}
+
+\subsection{Figure legends}\label{figure-legends}
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 1: benchmark and execution contract}]{../figures/fig01_benchmark_contract.png}}
+
+\textbf{Figure 1 \textbar{} Benchmark and Geospatial Kernel execution
+contract.} Public annual land-cover, embedding, night-light, terrain and
+road layers are aligned to a common 100-m Abu Dhabi grid. Each model
+receives the same state, action and public proxy exclusions. The
+Geospatial Kernel exposes a learned proposal, constraint projection and
+state writeback. Historical, open-loop and planning tracks use one audit
+contract. The schematic does not imply statutory planning boundaries.
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 2: historical validation}]{../figures/fig02_historical_validation.png}}
+
+\textbf{Figure 2 \textbar{} Historical validation across horizons.}
+Change FoM, change F1, overall accuracy and macro-F1 for the 2023
+one-step target and 2024 two-step open-loop target. Bars show mean ±
+population SD over n=3 seeds. Geospatial Kernel leads in 2023, whereas
+Paper58 leads in 2024.
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 3: planning objectives}]{../figures/fig03_planning_objectives.png}}
+
+\textbf{Figure 3 \textbar{} Conditional planning objectives at 2031.}
+Demand total variation, ecological conversion, new-built compactness,
+distances to major roads and prior built cells, and built retirement are
+shown for the three scenario actions. Bars show mean ± population SD
+over n=3 seeds. Black outlines mark Geospatial Kernel candidates on the
+declared public-data Pareto frontier; exact zero values are shown at the
+baseline.
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 4: mechanism controls}]{../figures/fig04_mechanism_ablation.png}}
+
+\textbf{Figure 4 \textbar{} Mechanism controls.} Proposal ablations,
+runtime-control changes relative to the full Kernel, planning
+compactness controls and hard-constraint violations. These are
+public-data mechanism controls, not causal policy experiments; the
+Markov proposal demonstrates that planning morphology is not
+attributable to the learned proposal alone.
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 5: 2031 planning maps}]{../figures/fig05_planning_maps_2031.png}}
+
+\textbf{Figure 5 \textbar{} Spatial allocations and transition
+footprints at 2031.} Rows show compact, ecological-priority and
+outward-growth actions; columns show GeoSOS-FLUS, Geospatial Kernel and
+Paper58. Each panel is a 100-m ensemble raster. Overlays mark new built
+cells, new low-vegetation cells and built retirement relative to 2024.
+Transition polygons derived from these cells are not cadastral parcels.
+
+\subsection{Supplementary information
+outline}\label{supplementary-information-outline}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Supplementary Note 1:} Complete data crosswalk, quality
+  metrics and public/proxy status.
+\item
+  \textbf{Supplementary Note 2:} Kernel runtime schemas, audit fields
+  and adapter boundary.
+\item
+  \textbf{Supplementary Table S1:} Full 2025--2031 model--scenario
+  objective matrix with per-seed values.
+\item
+  \textbf{Supplementary Table S2:} Neighbourhood-weight sensitivity at
+  0, 0.175, 0.35 and 0.7.
+\item
+  \textbf{Supplementary Table S3:} Raster and vector delivery audit,
+  hashes and layer counts.
+\item
+  \textbf{Supplementary Figure S1:} Dynamic World confidence and
+  high-confidence change sensitivity.
+\item
+  \textbf{Supplementary Figure S2:} Historical maps and change-error
+  maps for 2024.
+\item
+  \textbf{Supplementary Figure S3:} Driver layers and experiment design
+  in English.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
