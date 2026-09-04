@@ -2,7 +2,9 @@
 
 Research and reproducibility package for the manuscript **“An auditable geospatial kernel for constraint-preserving land-cover simulation and planning stress tests in Abu Dhabi”** by Ning Zhou (Beijing Freedo Technology Co., Ltd.).
 
-The repository contains the cleaned manuscript and LUP-oriented submission copy, editable figures, benchmark scripts, selected public-data outputs for 2027–2031, and audit reports comparing:
+The repository contains the cleaned manuscript and LUP-oriented submission copy,
+editable figures, benchmark scripts, public-data manifests and legacy audit
+reports comparing:
 
 - GeoSOS-FLUS;
 - Geospatial Kernel, the allocation core of a Geospatial World Model; and
@@ -15,6 +17,14 @@ The benchmark uses public land-cover and proxy constraint data on a 100 m EPSG:3
 The repository deliberately excludes customer databases, credentials, private imagery, large raw downloads, and intermediate training caches. The public-data lineage and checksums are retained in the manifests under `benchmarks/abu_dhabi_land_use_v1/`.
 
 The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**.
+
+This repository is a revision-in-progress after an LUP review. The strict
+multi-class change FoM, persistence/random controls, paired-pixel bootstrap
+and independent morphology objective code are implemented, but the complete
+raster bundle, GeoFM-LDN checkpoint and independent authoritative change-
+validation data are not included. See
+[`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
+before treating any existing PDF or JSON as a final submission record.
 
 ## Start here
 
@@ -32,13 +42,18 @@ Run commands from the repository root. Some benchmark stages require external da
 ```bash
 python benchmarks/abu_dhabi_land_use_v1/audit_inputs.py
 python benchmarks/abu_dhabi_land_use_v1/audit_outputs.py
+python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
 ```
 
 The scripts document the canonical boundary, grid, class labels, constraints, scenario definitions, and validation contracts. See `protocol.json` before changing any input or output.
 
 ## Results
 
-Historical and planning comparison reports are in `results/`. Selected ensemble rasters are in `benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/<model>/<scenario>/ensemble/`, and transition GeoPackages are in the corresponding `vector/` directories.
+Historical and planning comparison reports are in `results/`. Selected ensemble
+rasters and transition GeoPackages are expected under
+`benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/` when the
+public-data rerun is materialized. They are not present in the current checkout;
+the delivery manifest is retained for lineage only and is marked unverified.
 
 ## Citation
 

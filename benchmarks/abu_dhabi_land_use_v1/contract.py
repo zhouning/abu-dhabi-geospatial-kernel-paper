@@ -54,7 +54,7 @@ def validate_protocol(protocol: Mapping[str, Any]) -> None:
     if max(years["test_target_years"]) >= min(years["scenario_years"]):
         raise BenchmarkContractError("test_and_scenario_years_overlap")
     model_ids = {str(row["id"]) for row in protocol.get("models") or []}
-    expected = {"geosos_flus", "gwm_geospatial_kernel", "paper58"}
+    expected = {"geosos_flus", "geospatial_kernel", "paper58"}
     if model_ids != expected:
         raise BenchmarkContractError("three_candidate_models_required")
 

@@ -93,6 +93,53 @@ def class_counts(
     return {int(cls): int(np.count_nonzero(valid & (values == cls))) for cls in classes}
 
 
+def random_feasible_allocation(
+    origin_state: np.ndarray,
+    *,
+    valid_mask: np.ndarray,
+    hard_exclusion_mask: np.ndarray,
+    target_counts: Mapping[int, int],
+    seed: int,
+    classes: Sequence[int] = CLASSES,
+) -> np.ndarray:
+    """Create a reproducible random categorical map with exact feasible totals.
+
+    The random control is deliberately independent of model scores.  Pixels in
+    the hard mask retain their origin class; all mutable valid pixels are
+    uniformly permuted and assigned the requested residual class totals.
+    """
+
+    origin = np.asarray(origin_state)
+    valid = np.asarray(valid_mask, dtype=bool)
+    hard = np.asarray(hard_exclusion_mask, dtype=bool)
+    if origin.shape != valid.shape or origin.shape != hard.shape:
+        raise BenchmarkContractError("random_allocation_shape_mismatch")
+    normalized_classes = tuple(int(value) for value in classes)
+    active = valid & np.isin(origin, normalized_classes)
+    fixed = active & hard
+    mutable = active & ~hard
+    desired = np.array(
+        [int(target_counts.get(value, 0)) for value in normalized_classes],
+        dtype=np.int64,
+    )
+    fixed_counts = np.array(
+        [np.count_nonzero(fixed & (origin == value)) for value in normalized_classes],
+        dtype=np.int64,
+    )
+    residual = desired - fixed_counts
+    if np.any(residual < 0) or int(residual.sum()) != int(mutable.sum()):
+        raise BenchmarkContractError("random_allocation_infeasible_target")
+    result = origin.copy()
+    mutable_indices = np.flatnonzero(mutable.ravel())
+    permutation = np.random.default_rng(seed).permutation(mutable_indices)
+    cursor = 0
+    for value, count in zip(normalized_classes, residual, strict=True):
+        next_cursor = cursor + int(count)
+        result.ravel()[permutation[cursor:next_cursor]] = value
+        cursor = next_cursor
+    return result
+
+
 def evaluate_prediction(
     prediction: np.ndarray,
     *,
@@ -177,13 +224,25 @@ def _metrics(
     count = int(mask.sum())
     if count <= 0:
         raise BenchmarkContractError("evaluation_mask_is_empty")
-    predicted_change = prediction[mask] != origin[mask]
-    observed_change = target[mask] != origin[mask]
-    hits = int(np.count_nonzero(predicted_change & observed_change))
-    misses = int(np.count_nonzero(~predicted_change & observed_change))
-    false_alarms = int(np.count_nonzero(predicted_change & ~observed_change))
-    denominator = hits + misses + false_alarms
-    change_fom = float(hits / denominator) if denominator else 1.0
+    predicted_values = prediction[mask]
+    origin_values = origin[mask]
+    target_values = target[mask]
+    predicted_change = predicted_values != origin_values
+    observed_change = target_values != origin_values
+    transition_hits = observed_change & predicted_change & (predicted_values == target_values)
+    wrong_changes = observed_change & predicted_change & (predicted_values != target_values)
+    misses = ~predicted_change & observed_change
+    false_alarms = predicted_change & ~observed_change
+    denominator = int(
+        np.count_nonzero(transition_hits)
+        + np.count_nonzero(wrong_changes)
+        + np.count_nonzero(misses)
+        + np.count_nonzero(false_alarms)
+    )
+    change_fom = float(np.count_nonzero(transition_hits) / denominator) if denominator else 1.0
+    binary_hits = int(np.count_nonzero(predicted_change & observed_change))
+    binary_denominator = binary_hits + int(np.count_nonzero(misses)) + int(np.count_nonzero(false_alarms))
+    binary_change_fom = float(binary_hits / binary_denominator) if binary_denominator else 1.0
     change_f1 = float(
         f1_score(observed_change, predicted_change, zero_division=1)
     )
@@ -200,10 +259,135 @@ def _metrics(
             )
         ),
         "change_figure_of_merit": change_fom,
+        "binary_change_figure_of_merit": binary_change_fom,
         "change_f1": change_f1,
-        "change_hits": hits,
-        "change_misses": misses,
-        "change_false_alarms": false_alarms,
+        "change_hits": int(np.count_nonzero(transition_hits)),
+        "change_wrong_transitions": int(np.count_nonzero(wrong_changes)),
+        "change_misses": int(np.count_nonzero(misses)),
+        "change_false_alarms": int(np.count_nonzero(false_alarms)),
         "predicted_change_pixels": int(predicted_change.sum()),
         "observed_change_pixels": int(observed_change.sum()),
+    }
+
+
+def paired_pixel_bootstrap_ci(
+    prediction: np.ndarray,
+    *,
+    origin_state: np.ndarray,
+    observed_target: np.ndarray,
+    valid_mask: np.ndarray,
+    n_resamples: int = 1000,
+    seed: int = 0,
+    alpha: float = 0.05,
+    classes: Sequence[int] = CLASSES,
+) -> dict[str, Any]:
+    """Bootstrap pixel triplets jointly for strict FoM, OA and macro-F1.
+
+    Each resample is equivalent to drawing valid pixel indices with
+    replacement while carrying ``(origin, prediction, target)`` together.
+    The implementation samples the joint contingency table, which is the
+    count-equivalent form of paired pixel resampling and avoids materialising
+    an ``n_resamples × n_pixels`` index matrix.  The result is an uncertainty
+    interval for computational agreement, not an independent-sample interval
+    for a geographic population.
+    """
+
+    predicted = np.asarray(prediction)
+    origin = np.asarray(origin_state)
+    target = np.asarray(observed_target)
+    valid = np.asarray(valid_mask, dtype=bool)
+    if not (predicted.shape == origin.shape == target.shape == valid.shape):
+        raise BenchmarkContractError("bootstrap_shape_mismatch")
+    if n_resamples < 100 or not 0 < alpha < 1:
+        raise BenchmarkContractError("bootstrap_parameters_invalid")
+    normalized_classes = tuple(int(value) for value in classes)
+    mask = valid & np.isin(origin, normalized_classes) & np.isin(target, normalized_classes)
+    mask &= np.isin(predicted, normalized_classes)
+    pred_values = predicted[mask]
+    origin_values = origin[mask]
+    target_values = target[mask]
+    count = int(mask.sum())
+    if count == 0:
+        raise BenchmarkContractError("bootstrap_mask_is_empty")
+
+    observed_change = target_values != origin_values
+    predicted_change = pred_values != origin_values
+    transition_hits = observed_change & predicted_change & (pred_values == target_values)
+    wrong_changes = observed_change & predicted_change & (pred_values != target_values)
+    misses = ~predicted_change & observed_change
+    false_alarms = predicted_change & ~observed_change
+    change_codes = (
+        transition_hits.astype(np.int8)
+        + 2 * wrong_changes.astype(np.int8)
+        + 3 * misses.astype(np.int8)
+        + 4 * false_alarms.astype(np.int8)
+    )
+    class_count = len(normalized_classes)
+    class_lookup = {value: index for index, value in enumerate(normalized_classes)}
+    confusion_codes = np.array(
+        [class_lookup[int(t)] * class_count + class_lookup[int(p)] for t, p in zip(target_values, pred_values)],
+        dtype=np.int64,
+    )
+    # A single joint table preserves the pairing between the change
+    # categories and the target/prediction confusion cells.  Sampling the two
+    # marginal tables independently would no longer be a paired bootstrap.
+    confusion_size = class_count * class_count
+    joint_codes = change_codes.astype(np.int64) * confusion_size + confusion_codes
+    joint_probabilities = np.bincount(
+        joint_codes, minlength=5 * confusion_size
+    ).astype(np.float64) / count
+    rng = np.random.default_rng(seed)
+    fom_values = np.empty(n_resamples, dtype=np.float64)
+    oa_values = np.empty(n_resamples, dtype=np.float64)
+    macro_values = np.empty(n_resamples, dtype=np.float64)
+    for index in range(n_resamples):
+        joint_counts = rng.multinomial(count, joint_probabilities).reshape(
+            5, class_count, class_count
+        )
+        change_counts = joint_counts.sum(axis=(1, 2))
+        hit, wrong, miss, false_alarm = (
+            change_counts[1],
+            change_counts[2],
+            change_counts[3],
+            change_counts[4],
+        )
+        denominator = int(hit + wrong + miss + false_alarm)
+        fom_values[index] = float(hit / denominator) if denominator else 1.0
+        confusion = joint_counts.sum(axis=0)
+        oa_values[index] = float(np.trace(confusion) / count)
+        diagonal = np.diag(confusion).astype(np.float64)
+        precision_denominator = confusion.sum(axis=0)
+        recall_denominator = confusion.sum(axis=1)
+        f1 = np.divide(
+            2 * diagonal,
+            precision_denominator + recall_denominator,
+            out=np.zeros(class_count, dtype=np.float64),
+            where=(precision_denominator + recall_denominator) > 0,
+        )
+        macro_values[index] = float(np.mean(f1))
+
+    lower = 100 * alpha / 2
+    upper = 100 * (1 - alpha / 2)
+    return {
+        "method": "paired_pixel_bootstrap",
+        "sampling_unit": "pixel_triplet_origin_prediction_target",
+        "n_resamples": int(n_resamples),
+        "seed": int(seed),
+        "alpha": float(alpha),
+        "pixel_count": count,
+        "change_figure_of_merit": {
+            "lower": float(np.percentile(fom_values, lower)),
+            "median": float(np.percentile(fom_values, 50)),
+            "upper": float(np.percentile(fom_values, upper)),
+        },
+        "overall_accuracy": {
+            "lower": float(np.percentile(oa_values, lower)),
+            "median": float(np.percentile(oa_values, 50)),
+            "upper": float(np.percentile(oa_values, upper)),
+        },
+        "macro_f1": {
+            "lower": float(np.percentile(macro_values, lower)),
+            "median": float(np.percentile(macro_values, 50)),
+            "upper": float(np.percentile(macro_values, upper)),
+        },
     }

@@ -15,13 +15,14 @@ except ImportError:  # Direct script execution from the benchmark directory.
 
 
 OBJECTIVES = {
-    "demand_total_variation": "min",
-    "ecological_conversion_rate": "min",
-    "new_built_neighbor_fraction": "max",
+    # These objectives are not directly optimized by the Kernel allocator and
+    # are therefore less circular than demand totals or the 7x7 neighbourhood
+    # term used in its score.  Demand satisfaction, ecological conversion and
+    # net gains remain descriptive scenario outcomes.
     "new_built_mean_major_road_distance_m": "min",
     "new_built_mean_prior_built_distance_m": "min",
-    "built_gain_pixels": "max",
-    "green_gain_pixels": "max",
+    "built_components_per_1000_pixels": "min",
+    "new_built_leapfrog_rate": "min",
 }
 
 
@@ -71,11 +72,22 @@ def planning_metrics(
         built_neighbors[new_built].astype(np.float64) / 8.0
     )
     _, built_component_count = label(built, structure=np.ones((3, 3), dtype=np.uint8))
-    built_count = max(1, int(built.sum()))
+    # Report component density per 1,000 valid cells, rather than per built
+    # cell.  The former is comparable across scenarios with different demand
+    # totals; the latter mechanically decreases as the built class grows and
+    # would confound morphology with the scenario action itself.
+    _, new_built_component_count = label(
+        new_built, structure=np.ones((3, 3), dtype=np.uint8)
+    )
 
     prior_built_distance = distance_transform_edt(
         ~(valid & (origin == 5)), sampling=float(pixel_size_m)
     )
+    # A leapfrog cell has no pre-existing built cell within 500 m.  The
+    # threshold is intentionally different from the allocator's 7x7 local
+    # neighbourhood term, so it is an external morphology diagnostic rather
+    # than a restatement of the allocation score.
+    leapfrog_pixels = new_built & (prior_built_distance > 5.0 * pixel_size_m)
     green_origin = int(np.count_nonzero(valid & np.isin(origin, (2, 3))))
     green_result = int(np.count_nonzero(valid & np.isin(result, (2, 3))))
     built_origin = int(np.count_nonzero(valid & (origin == 5)))
@@ -93,6 +105,7 @@ def planning_metrics(
         "built_gain_pixels": built_result - built_origin,
         "green_gain_pixels": green_result - green_origin,
         "new_built_pixels": new_built_count,
+        "new_built_component_count": int(new_built_component_count),
         "removed_built_pixels": int(removed_built.sum()),
         "ecological_conversion_pixels": int(ecological_conversion.sum()),
         "ecological_conversion_rate": float(
@@ -101,7 +114,11 @@ def planning_metrics(
         "new_built_neighbor_fraction": new_built_neighbor_fraction,
         "built_component_count": int(built_component_count),
         "built_components_per_1000_pixels": float(
-            built_component_count * 1000.0 / built_count
+            built_component_count * 1000.0 / total
+        ),
+        "new_built_leapfrog_pixels": int(leapfrog_pixels.sum()),
+        "new_built_leapfrog_rate": float(
+            leapfrog_pixels.sum() / max(1, new_built_count)
         ),
         "new_built_mean_road_distance_m": _mean_or_zero(road_distance[new_built]),
         "new_built_p90_road_distance_m": _percentile_or_zero(

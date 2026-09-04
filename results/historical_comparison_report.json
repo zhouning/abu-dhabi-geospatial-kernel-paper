@@ -1,5 +1,9 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
+  "metric_version": "legacy_binary_fom",
+  "revision_status": "stale_artifact_not_for_inference",
+  "reproducibility_status": "requires_raster_bundle_and_rerun",
+  "comparative_claim_status": "withdrawn_pending_strict_multiclass_rerun",
   "created_at": "2026-08-01T15:12:40.122272+00:00",
   "ensembles": {
     "geosos_flus": {
@@ -298,11 +302,10 @@
     }
   },
   "interpretation": [
-    "Geospatial Kernel has the strongest one-step 2023 mean change FoM.",
-    "GeoFM-LDN has the strongest two-step open-loop 2024 mean change FoM.",
-    "Both proposed candidates exceed external GeoSOS-FLUS mean change FoM in both years.",
-    "High-confidence sensitivity FoM is low for all candidates; full-grid gains may partly reflect Dynamic World label volatility.",
-    "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects."
+    "The archived model ordering is descriptive lineage only and is withdrawn pending strict multi-class FoM recomputation.",
+    "Persistence and random-feasible controls must be compared in the same revised table.",
+    "High-confidence sensitivity FoM is low for all candidates; full-grid differences may partly reflect Dynamic World label volatility.",
+    "These archived results do not establish future policy prediction or causal planning effects."
   ],
   "mean_change_fom_deltas": {
     "2023": {
@@ -419,7 +422,7 @@
     47,
     73
   ],
-  "status": "HISTORICAL_ALLOCATION_COMPLETE",
+  "status": "stale_artifact_not_for_inference",
   "summaries": {
     "geosos_flus": {
       "2023": {

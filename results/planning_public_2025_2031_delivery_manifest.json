@@ -1,4 +1,6 @@
 {
+  "verification_status": "unverified_in_current_checkout",
+  "reproducibility_status": "delivery_artifacts_not_present_in_current_checkout",
   "claim_boundary": [
     "Outputs are public-data scenario stress tests, not authoritative land-use forecasts.",
     "2031 demand targets are a documented extension of the prior annual scenario deltas.",
@@ -17,7 +19,7 @@
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN"
   },
-  "comparison_report": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/planning_comparison_report_public_2025_2031.json",
+  "comparison_report": "benchmarks/abu_dhabi_land_use_v1/planning_comparison_report_public_2025_2031.json",
   "created_at": "2026-08-21T12:37:16.700002+00:00",
   "delivery_years": [
     2027,
@@ -945,7 +947,7 @@
     }
   ],
   "schema": "gwm.abu_dhabi_public_planning_delivery.v1",
-  "status": "PASS",
+  "status": "LINEAGE_UNVERIFIED_MISSING_INPUTS",
   "vector_package_count": 9,
   "vector_packages": [
     {
@@ -1043,7 +1045,7 @@
         }
       ],
       "model_id": "geosos_flus",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geosos_flus/compact/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geosos_flus/compact/changes.gpkg",
       "scenario_id": "compact",
       "sha256": "4f7440ed4c6b9402a9fefac29d3485a8dd04591ccdbb8b2b027f11358218b9ea"
     },
@@ -1142,7 +1144,7 @@
         }
       ],
       "model_id": "geosos_flus",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geosos_flus/ecological_priority/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geosos_flus/ecological_priority/changes.gpkg",
       "scenario_id": "ecological_priority",
       "sha256": "1b64fa928ae8abaccb809832e89f8e38cd7c38f2382447a00febb4ee984116f1"
     },
@@ -1241,7 +1243,7 @@
         }
       ],
       "model_id": "geosos_flus",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geosos_flus/outward_growth/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geosos_flus/outward_growth/changes.gpkg",
       "scenario_id": "outward_growth",
       "sha256": "6dc88928aa162d164618f63490bd9ab0b68cff7d514c527c3c75a06d6e8c74b5"
     },
@@ -1340,7 +1342,7 @@
         }
       ],
       "model_id": "geospatial_kernel",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geospatial_kernel/compact/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geospatial_kernel/compact/changes.gpkg",
       "scenario_id": "compact",
       "sha256": "9d02db1aa33a7963a85f354069566aade99a62fa9c98bb5326414657f0511dd0"
     },
@@ -1439,7 +1441,7 @@
         }
       ],
       "model_id": "geospatial_kernel",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geospatial_kernel/ecological_priority/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geospatial_kernel/ecological_priority/changes.gpkg",
       "scenario_id": "ecological_priority",
       "sha256": "afb38afe3dc7c3c30ca912bbb45003096c8f2b8e7cb24fc2ff278d20f148f87e"
     },
@@ -1538,7 +1540,7 @@
         }
       ],
       "model_id": "geospatial_kernel",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geospatial_kernel/outward_growth/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/geospatial_kernel/outward_growth/changes.gpkg",
       "scenario_id": "outward_growth",
       "sha256": "b2ae203464c35832c912f81d7b14a433473822a11e282438faae850bfe1eeaa7"
     },
@@ -1637,7 +1639,7 @@
         }
       ],
       "model_id": "paper58",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/paper58/compact/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/paper58/compact/changes.gpkg",
       "scenario_id": "compact",
       "sha256": "cd2d5d239dfe2abd7d2aa72cc4accf4a38a3178d86f7e332f3f0f6e11609ffb1"
     },
@@ -1736,7 +1738,7 @@
         }
       ],
       "model_id": "paper58",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/paper58/ecological_priority/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/paper58/ecological_priority/changes.gpkg",
       "scenario_id": "ecological_priority",
       "sha256": "d590aaf3b142785577ee5ac35f402e42a341073faec2fd145df6373715463df2"
     },
@@ -1835,7 +1837,7 @@
         }
       ],
       "model_id": "paper58",
-      "path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/paper58/outward_growth/changes.gpkg",
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/vector/paper58/outward_growth/changes.gpkg",
       "scenario_id": "outward_growth",
       "sha256": "e39d2c0e9a3f06622e00064cac35c318f08a8d0f551f7157f1a23c266add3f72"
     }

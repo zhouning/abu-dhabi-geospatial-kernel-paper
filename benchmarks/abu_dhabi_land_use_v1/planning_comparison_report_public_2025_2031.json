@@ -1,4 +1,8 @@
 {
+  "metric_version": "legacy_planning_metrics",
+  "revision_status": "stale_artifact_not_for_inference",
+  "pareto_status": "withdrawn_pending_public_2025_2031_rerun",
+  "reproducibility_status": "requires_raster_bundle_and_rerun",
   "aggregate": {
     "geosos_flus": {
       "compact": {
@@ -5745,7 +5749,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -5787,7 +5791,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -5829,7 +5833,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -5871,7 +5875,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -5913,7 +5917,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -5955,7 +5959,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -5997,7 +6001,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2031.tif"
         }
       },
       "ecological_priority": {
@@ -6041,7 +6045,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -6083,7 +6087,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -6125,7 +6129,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -6167,7 +6171,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -6209,7 +6213,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -6251,7 +6255,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -6293,7 +6297,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2031.tif"
         }
       },
       "outward_growth": {
@@ -6337,7 +6341,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -6379,7 +6383,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -6421,7 +6425,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -6463,7 +6467,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -6505,7 +6509,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -6547,7 +6551,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -6589,7 +6593,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2031.tif"
         }
       }
     },
@@ -6635,7 +6639,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -6677,7 +6681,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -6719,7 +6723,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -6761,7 +6765,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -6803,7 +6807,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -6845,7 +6849,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -6887,7 +6891,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2031.tif"
         }
       },
       "ecological_priority": {
@@ -6931,7 +6935,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -6973,7 +6977,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -7015,7 +7019,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -7057,7 +7061,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -7099,7 +7103,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -7141,7 +7145,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -7183,7 +7187,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2031.tif"
         }
       },
       "outward_growth": {
@@ -7227,7 +7231,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -7269,7 +7273,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -7311,7 +7315,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -7353,7 +7357,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -7395,7 +7399,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -7437,7 +7441,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -7479,7 +7483,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2031.tif"
         }
       }
     },
@@ -7525,7 +7529,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -7567,7 +7571,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -7609,7 +7613,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -7651,7 +7655,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -7693,7 +7697,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -7735,7 +7739,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -7777,7 +7781,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2031.tif"
         }
       },
       "ecological_priority": {
@@ -7821,7 +7825,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -7863,7 +7867,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -7905,7 +7909,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -7947,7 +7951,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -7989,7 +7993,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -8031,7 +8035,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -8073,7 +8077,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2031.tif"
         }
       },
       "outward_growth": {
@@ -8117,7 +8121,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2025.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2025.tif"
         },
         "2026": {
           "metrics": {
@@ -8159,7 +8163,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2026.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2026.tif"
         },
         "2027": {
           "metrics": {
@@ -8201,7 +8205,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2027.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2027.tif"
         },
         "2028": {
           "metrics": {
@@ -8243,7 +8247,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2028.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2028.tif"
         },
         "2029": {
           "metrics": {
@@ -8285,7 +8289,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2029.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2029.tif"
         },
         "2030": {
           "metrics": {
@@ -8327,7 +8331,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2030.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2030.tif"
         },
         "2031": {
           "metrics": {
@@ -8369,7 +8373,7 @@
             },
             "valid_pixel_count": 79726
           },
-          "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2031.tif"
+          "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2031.tif"
         }
       }
     }
@@ -9216,7 +9220,7 @@
     "geospatial_kernel:ecological_priority",
     "geospatial_kernel:outward_growth"
   ],
-  "scenario_config": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/planning_scenarios_public_2025_2031.json",
+  "scenario_config": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/planning_scenarios_public_2025_2031.json",
   "scenarios": [
     "compact",
     "ecological_priority",
@@ -12025,7 +12029,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 31,
@@ -12069,7 +12073,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 47,
@@ -12113,7 +12117,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 73,
@@ -12157,7 +12161,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 31,
@@ -12201,7 +12205,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 47,
@@ -12245,7 +12249,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 73,
@@ -12289,7 +12293,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 31,
@@ -12333,7 +12337,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 47,
@@ -12377,7 +12381,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 73,
@@ -12421,7 +12425,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 31,
@@ -12465,7 +12469,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 47,
@@ -12509,7 +12513,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 73,
@@ -12553,7 +12557,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 31,
@@ -12597,7 +12601,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 47,
@@ -12641,7 +12645,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 73,
@@ -12685,7 +12689,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 31,
@@ -12729,7 +12733,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 47,
@@ -12773,7 +12777,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 73,
@@ -12817,7 +12821,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_31/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 31,
@@ -12861,7 +12865,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_47/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 47,
@@ -12905,7 +12909,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3500,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/compact/seed_73/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "compact",
       "seed": 73,
@@ -12949,7 +12953,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 350,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 31,
@@ -12993,7 +12997,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 350,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 47,
@@ -13037,7 +13041,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 350,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 73,
@@ -13081,7 +13085,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 700,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 31,
@@ -13125,7 +13129,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 700,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 47,
@@ -13169,7 +13173,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 700,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 73,
@@ -13213,7 +13217,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1050,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 31,
@@ -13257,7 +13261,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1050,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 47,
@@ -13301,7 +13305,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1050,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 73,
@@ -13345,7 +13349,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1400,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 31,
@@ -13389,7 +13393,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1400,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 47,
@@ -13433,7 +13437,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1400,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 73,
@@ -13477,7 +13481,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1750,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 31,
@@ -13521,7 +13525,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1750,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 47,
@@ -13565,7 +13569,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1750,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 73,
@@ -13609,7 +13613,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2100,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 31,
@@ -13653,7 +13657,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2100,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 47,
@@ -13697,7 +13701,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2100,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 73,
@@ -13741,7 +13745,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2450,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_31/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 31,
@@ -13785,7 +13789,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2450,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_47/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 47,
@@ -13829,7 +13833,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2450,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/seed_73/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "ecological_priority",
       "seed": 73,
@@ -13873,7 +13877,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 31,
@@ -13917,7 +13921,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 47,
@@ -13961,7 +13965,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 1000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2025.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2025.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 73,
@@ -14005,7 +14009,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 31,
@@ -14049,7 +14053,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 47,
@@ -14093,7 +14097,7 @@
       "new_built_p90_prior_built_distance_m": 100.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 2000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2026.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2026.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 73,
@@ -14137,7 +14141,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 31,
@@ -14181,7 +14185,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 47,
@@ -14225,7 +14229,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 3000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2027.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2027.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 73,
@@ -14269,7 +14273,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 4000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 31,
@@ -14313,7 +14317,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 4000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 47,
@@ -14357,7 +14361,7 @@
       "new_built_p90_prior_built_distance_m": 141.4213562373095,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 4000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2028.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2028.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 73,
@@ -14401,7 +14405,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 5000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 31,
@@ -14445,7 +14449,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 5000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 47,
@@ -14489,7 +14493,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 5000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2029.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2029.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 73,
@@ -14533,7 +14537,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 6000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 31,
@@ -14577,7 +14581,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 6000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 47,
@@ -14621,7 +14625,7 @@
       "new_built_p90_prior_built_distance_m": 200.0,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 6000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2030.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2030.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 73,
@@ -14665,7 +14669,7 @@
       "new_built_p90_prior_built_distance_m": 223.60679774997897,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 7000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_31/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 31,
@@ -14709,7 +14713,7 @@
       "new_built_p90_prior_built_distance_m": 223.60679774997897,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 7000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_47/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 47,
@@ -14753,7 +14757,7 @@
       "new_built_p90_prior_built_distance_m": 223.60679774997897,
       "new_built_p90_road_distance_m": 0.0,
       "new_built_pixels": 7000,
-      "prediction_path": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2031.tif",
+      "prediction_path": "benchmarks/abu_dhabi_land_use_v1/artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/seed_73/prediction_2031.tif",
       "removed_built_pixels": 0,
       "scenario_id": "outward_growth",
       "seed": 73,
@@ -17546,7 +17550,7 @@
     47,
     73
   ],
-  "status": "complete",
+  "status": "stale_artifact_not_for_inference",
   "target_years": [
     2025,
     2026,

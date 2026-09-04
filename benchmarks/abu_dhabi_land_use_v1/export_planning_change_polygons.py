@@ -57,9 +57,9 @@ def _read(path: Path) -> tuple[np.ndarray, dict[str, Any]]:
 
 def _report_path(path: Path) -> str:
     try:
-        return str(path.relative_to(HERE))
+        return str(path.resolve().relative_to(HERE.resolve()))
     except ValueError:
-        return str(path.resolve())
+        return f"external/{path.name}"
 
 
 def _resolve(path: str) -> Path:

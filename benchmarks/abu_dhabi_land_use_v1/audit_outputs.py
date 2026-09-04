@@ -17,6 +17,9 @@ HERE = Path(__file__).resolve().parent
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 INPUT_ROOT = HERE / "artifacts/gee"
 DEFAULT_OUTPUT = HERE / "output_audit.json"
+HISTORICAL_REPORT = HERE / "comparison_report.json"
+PLANNING_REPORT = HERE / "planning_comparison_report_public_2025_2031.json"
+PLANNING_SCENARIO_REPORT = HERE / "planning_scenario_report_public_2025_2031.json"
 CLASSES = tuple(range(1, 7))
 
 
@@ -28,6 +31,15 @@ def _read(path: Path) -> tuple[np.ndarray, dict[str, Any]]:
 def _resolve(path_value: str) -> Path:
     path = Path(path_value)
     return path if path.is_absolute() else HERE / path
+
+
+def _report_path(path: Path) -> str:
+    """Return a repository-relative path without exposing local prefixes."""
+
+    try:
+        return str(path.resolve().relative_to(HERE.resolve()))
+    except ValueError:
+        return f"external/{path.name}"
 
 
 def _sha256(path: Path) -> str:
@@ -58,7 +70,7 @@ def _historical_records() -> list[dict[str, Any]]:
                         "origin_year": 2022,
                     }
                 )
-    comparison = json.loads((HERE / "comparison_report.json").read_text(encoding="utf-8"))
+    comparison = json.loads(HISTORICAL_REPORT.read_text(encoding="utf-8"))
     for model_id, years in comparison["ensembles"].items():
         for year, row in years.items():
             records.append(
@@ -76,9 +88,7 @@ def _historical_records() -> list[dict[str, Any]]:
 
 def _planning_records() -> list[dict[str, Any]]:
     records = []
-    source = json.loads(
-        (HERE / "planning_scenario_report.json").read_text(encoding="utf-8")
-    )
+    source = json.loads(PLANNING_SCENARIO_REPORT.read_text(encoding="utf-8"))
     for model_id, model in source["models"].items():
         for seed in model["seeds"]:
             for scenario in seed["scenarios"]:
@@ -95,7 +105,7 @@ def _planning_records() -> list[dict[str, Any]]:
                         }
                     )
     comparison = json.loads(
-        (HERE / "planning_comparison_report.json").read_text(encoding="utf-8")
+        PLANNING_REPORT.read_text(encoding="utf-8")
     )
     for model_id, scenarios in comparison["ensembles"].items():
         for scenario_id, years in scenarios.items():
@@ -115,6 +125,64 @@ def _planning_records() -> list[dict[str, Any]]:
 
 
 def audit(*, output_path: Path) -> dict[str, Any]:
+    required_inputs = [
+        BUNDLE_ROOT / "common_valid_mask_100m.tif",
+        INPUT_ROOT / "land_cover/land_cover_2022_100m.tif",
+        INPUT_ROOT / "land_cover/land_cover_2024_100m.tif",
+        BUNDLE_ROOT / "hard_exclusion_2022_100m.tif",
+        BUNDLE_ROOT / "hard_exclusion_2024_100m.tif",
+        HISTORICAL_REPORT,
+        PLANNING_SCENARIO_REPORT,
+        PLANNING_REPORT,
+    ]
+    missing_inputs = [_report_path(path) for path in required_inputs if not path.is_file()]
+    stale_reports = []
+    report_requirements = {
+        HISTORICAL_REPORT: "strict_multiclass_fom_v2",
+        PLANNING_REPORT: "independent_morphology_objectives_v2",
+        PLANNING_SCENARIO_REPORT: "current_protocol_run",
+    }
+    for path, required_revision in report_requirements.items():
+        if not path.is_file():
+            continue
+        try:
+            report = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            stale_reports.append(f"{_report_path(path)}:unreadable")
+            continue
+        if path == PLANNING_SCENARIO_REPORT:
+            valid_report = (
+                report.get("status") == "complete"
+                and report.get("revision_status") == required_revision
+            )
+        else:
+            valid_report = (
+                report.get("revision_status") == "rerun_from_current_rasters"
+                and report.get("metric_version") == required_revision
+            )
+        if not valid_report:
+            stale_reports.append(
+                f"{_report_path(path)}:"
+                f"{report.get('status', 'no_status')}/"
+                f"{report.get('revision_status', 'no_revision')}/"
+                f"{report.get('metric_version', 'no_metric_version')}"
+            )
+    if missing_inputs or stale_reports:
+        report = {
+            "schema": "gwm.abu_dhabi_output_audit.v2",
+            "benchmark_id": "abu-dhabi-land-use-v1",
+            "status": "INCOMPLETE_INPUTS",
+            "prediction_count": 0,
+            "failure_count": len(missing_inputs) + len(stale_reports),
+            "missing_inputs": missing_inputs,
+            "stale_reports": stale_reports,
+            "claim_boundary": "A PASS audit cannot be claimed until all raster artifacts and revised source reports are present.",
+        }
+        output_path.write_text(
+            json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        return report
     valid, reference = _read(BUNDLE_ROOT / "common_valid_mask_100m.tif")
     valid_mask = valid.astype(bool)
     origins = {
@@ -126,8 +194,6 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         for year in (2022, 2024)
     }
     records = _historical_records() + _planning_records()
-    if len(records) != 240:
-        raise ValueError(f"unexpected_prediction_record_count:{len(records)}")
     if len({_resolve(row["path"]).resolve() for row in records}) != len(records):
         raise ValueError("duplicate_prediction_paths")
 
@@ -135,6 +201,23 @@ def audit(*, output_path: Path) -> dict[str, Any]:
     failure_count = 0
     for record in records:
         path = _resolve(record["path"])
+        if not path.is_file():
+            failure_count += 1
+            artifacts.append(
+                {
+                    **record,
+                    "path": str(path.relative_to(HERE)),
+                    "bytes": None,
+                    "sha256": None,
+                    "grid_aligned": False,
+                    "invalid_class_pixels": None,
+                    "nonzero_outside_valid_pixels": None,
+                    "constraint_violation_pixels": None,
+                    "missing": True,
+                    "valid": False,
+                }
+            )
+            continue
         values, profile = _read(path)
         origin_year = int(record["origin_year"])
         aligned = (
@@ -175,7 +258,7 @@ def audit(*, output_path: Path) -> dict[str, Any]:
             }
         )
     report = {
-        "schema": "gwm.abu_dhabi_output_audit.v1",
+        "schema": "gwm.abu_dhabi_output_audit.v2",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "PASS" if failure_count == 0 else "FAIL",

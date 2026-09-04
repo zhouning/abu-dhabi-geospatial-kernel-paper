@@ -17,7 +17,7 @@ prediction accepted by `contract.validate_prediction`.
 - Historical fit: transitions ending no later than 2021.
 - Validation: 2021 to 2022.
 - Test: open-loop rollout from 2022 to 2023 and 2024.
-- Scenario origin: 2024; conditional annual rollout through 2030.
+- Scenario origin: 2024; conditional annual rollout through 2031.
 - Semantics: six-class land cover, not cadastral residential/commercial use.
 
 `protocol.json` is authoritative. It separates oracle-demand allocation skill,
@@ -38,16 +38,19 @@ lineage records are the reproducibility interface.
 
 ## Execute the three candidates
 
-Historical conditional allocation:
+Historical conditional allocation (strict multi-class FoM and zero controls are
+compiled by the comparison step):
 
 ```bash
 python benchmarks/abu_dhabi_land_use_v1/run_geosos_flus.py
 python benchmarks/abu_dhabi_land_use_v1/run_geospatial_kernel.py
-python ../paper58-geofm-world-model-rl/experiments/abu_dhabi/run_paper58_abu_dhabi.py
+# Provide the external GeoFM-LDN runner through GEOFM_LDN_RUNNER when available.
+GEOFM_LDN_RUNNER=/path/to/geofm_ldn/experiments/abu_dhabi/run_paper58_abu_dhabi.py \
+  python benchmarks/abu_dhabi_land_use_v1/run_planning_scenarios.py --models geofm_ldn
 python benchmarks/abu_dhabi_land_use_v1/compile_comparison.py
 ```
 
-Conditional 2025-2030 scenarios and multi-objective planning comparison:
+Conditional 2025-2031 scenarios and independent morphology comparison:
 
 ```bash
 python benchmarks/abu_dhabi_land_use_v1/run_planning_scenarios.py
@@ -61,20 +64,22 @@ start from the observed 2024 state and receive the same annual demand and hard
 constraints. Future exogenous raster drivers are held at their known 2024
 values; GeoFM-LDN recursively writes back its predicted latent state.
 
-## Current result
+## Current result status
 
-- Historical test: Geospatial Kernel has the best 2023 one-step change FoM;
-  GeoFM-LDN has the best 2024 two-step open-loop change FoM.
-- Planning test: all three Geospatial Kernel scenario allocations are on the
-  frozen 2030 Pareto frontier. GeoFM-LDN and GeoSOS-FLUS are dominated on the
-  current public-data proxy objectives.
-- FLUS retires roughly 2,900-3,650 existing built pixels while reallocating
-  more built pixels elsewhere; the two proposed models show no built retirement
-  under the same frozen scenario demands.
-- Every one of the 240 published seed and ensemble rasters passes grid, class,
-  nodata and hard-constraint checks in `output_audit.json`.
+The checked-in historical and planning JSON files are legacy artifacts. They
+predate the strict multi-class FoM, paired-pixel bootstrap and revised
+independent morphology objective set; their metadata now marks them as
+`stale_artifact_not_for_inference` or `withdrawn_pending_public_2025_2031_rerun`.
+The earlier 240-raster audit belongs to a separate 2025–2030 run and is not an
+audit of the public 2025–2031 delivery.
 
-These findings are conditional on Dynamic World labels, public OSM proxy
-constraints and planner-supplied scenario demand. They do not predict actual
-Abu Dhabi policy or establish causal planning effects. Required negative
-controls in `protocol.json` remain pending.
+The code needed for the revised analysis is present, but the current checkout
+does not contain the complete raster bundle, GeoFM-LDN checkpoint or an
+independent 2023–2024 built-area validation layer. Therefore no revised model
+ranking, bootstrap interval or Pareto frontier is claimed here. The original
+FLUS run also used a different feature set and frozen console defaults; a
+matched-input rerun is required before intrinsic model superiority is inferred.
+
+All substantive findings remain conditional on Dynamic World labels, public
+OSM/WorldCover proxy constraints and planner-supplied scenario demand. They do
+not predict actual Abu Dhabi policy or establish causal planning effects.

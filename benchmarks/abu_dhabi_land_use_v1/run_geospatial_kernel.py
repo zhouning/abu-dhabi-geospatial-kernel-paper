@@ -485,7 +485,8 @@ def run(*, seeds: tuple[int, ...], output_root: Path) -> dict[str, Any]:
     report = {
         "schema": "gwm.abu_dhabi_geospatial_kernel_run.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
-        "model_id": "gwm_geospatial_kernel",
+        "model_id": "geospatial_kernel",
+        "revision_status": "current_protocol_run",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "complete",
         "state_writeback": True,

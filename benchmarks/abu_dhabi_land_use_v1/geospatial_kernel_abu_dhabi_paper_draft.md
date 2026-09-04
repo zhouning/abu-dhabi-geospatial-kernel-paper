@@ -1,3 +1,9 @@
+# Archived pre-review draft
+
+This file is retained for provenance only and is not the revised manuscript or
+an inferential results record. Use `manuscript/manuscript.md` and
+`manuscript/response_to_LUP_review.md` for the post-review version.
+
 # Geospatial Kernel: a state–action–constraint core for urban land-cover planning
 
 **An Abu Dhabi benchmark with conditional multi-year scenario analysis**
@@ -263,6 +269,5 @@ Large raster files are tracked through repository-relative paths and SHA-256 man
 2. Re-render the main figures in English with colourblind-safe palettes, uncertainty marks and vector export.
 3. Add an allocator-matched ablation to separate the learned proposal from the shared projection implementation.
 4. Replace public proxy constraints and Dynamic World labels with authoritative local layers before making client-facing planning claims.
-
 
 

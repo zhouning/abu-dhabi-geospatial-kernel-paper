@@ -1,3 +1,10 @@
+# Archived pre-review draft
+
+This file is retained for provenance only and is not the revised manuscript or
+an inferential results record. Use `manuscript/manuscript.md` and
+`manuscript/response_to_LUP_review.md` for the post-review version. Its legacy
+binary metrics and seven-objective Pareto table must not be reused.
+
 # Geospatial Kernel: a state–action–constraint core for urban land-cover planning
 
 **An Abu Dhabi benchmark with conditional multi-year scenario analysis**
@@ -228,6 +235,5 @@ Large raster files are tracked through repository-relative paths and SHA-256 man
 - **Supplementary Figure S3:** Driver layers and experiment design in English.
 
 ---
-
 
 

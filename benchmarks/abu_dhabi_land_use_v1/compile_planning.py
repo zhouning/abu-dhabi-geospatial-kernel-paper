@@ -19,13 +19,18 @@ HERE = Path(__file__).resolve().parent
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 INPUT_ROOT = HERE / "artifacts/gee"
 OSM_ROOT = HERE / "artifacts/osm"
-DEFAULT_INPUT = HERE / "planning_scenario_report.json"
-DEFAULT_OUTPUT = HERE / "planning_comparison_report.json"
-DEFAULT_MARKDOWN = HERE / "planning_comparison_report.md"
-DEFAULT_SCENARIO_CONFIG = BUNDLE_ROOT / "planning_scenarios.json"
-DEFAULT_ENSEMBLE_ROOT = HERE / "artifacts/planning"
+DEFAULT_INPUT = HERE / "planning_scenario_report_public_2025_2031.json"
+DEFAULT_OUTPUT = HERE / "planning_comparison_report_public_2025_2031.json"
+DEFAULT_MARKDOWN = HERE / "planning_comparison_report_public_2025_2031.md"
+DEFAULT_SCENARIO_CONFIG = HERE / "planning_scenarios_public_2025_2031.json"
+DEFAULT_ENSEMBLE_ROOT = HERE / "artifacts/planning_public_2025_2031"
 MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")
 SCENARIO_IDS = ("compact", "ecological_priority", "outward_growth")
+SCENARIO_LABELS = {
+    "compact": "Moderate growth (legacy compact)",
+    "ecological_priority": "Green-priority growth",
+    "outward_growth": "High outward growth",
+}
 
 
 def _read(path: Path) -> tuple[np.ndarray, dict[str, Any]]:
@@ -35,9 +40,9 @@ def _read(path: Path) -> tuple[np.ndarray, dict[str, Any]]:
 
 def _report_path(path: Path) -> str:
     try:
-        return str(path.relative_to(HERE))
+        return str(path.resolve().relative_to(HERE.resolve()))
     except ValueError:
-        return str(path.resolve())
+        return f"external/{path.name}"
 
 
 def _write(path: Path, state: np.ndarray, reference: dict[str, Any]) -> None:
@@ -126,8 +131,12 @@ def compile_report(
     ensemble_root: Path,
 ) -> dict[str, Any]:
     source = json.loads(input_path.read_text(encoding="utf-8"))
-    if source["status"] != "complete":
-        raise ValueError(f"planning_scenarios_not_complete:{source['status']}")
+    if source.get("status") != "complete" or source.get("revision_status") != "current_protocol_run":
+        raise ValueError(
+            "planning_scenarios_not_current_protocol_run:"
+            f"{source.get('status', 'no_status')}/"
+            f"{source.get('revision_status', 'no_revision')}"
+        )
     if set(source["models"]) != set(MODEL_IDS):
         raise ValueError("planning_three_models_required")
 
@@ -236,6 +245,10 @@ def compile_report(
     report = {
         "schema": "gwm.abu_dhabi_planning_comparison.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
+        "metric_version": "independent_morphology_objectives_v2",
+        "revision_status": "rerun_from_current_rasters",
+        "pareto_status": "conditional_on_declared_objectives",
+        "reproducibility_status": "complete_if_all_input_and_model_artifacts_are_present",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "complete",
         "origin_year": 2024,
@@ -243,6 +256,11 @@ def compile_report(
         "target_years": list(years),
         "scenario_config": _report_path(scenario_config),
         "models": list(MODEL_IDS),
+        "model_display_names": {
+            "geosos_flus": "GeoSOS-FLUS",
+            "geospatial_kernel": "Geospatial Kernel",
+            "paper58": "GeoFM-LDN",
+        },
         "scenarios": list(scenario_ids),
         "seeds": list(seeds),
         "objective_directions": OBJECTIVES,
@@ -279,26 +297,26 @@ def render_markdown(report: dict[str, Any]) -> str:
     }
     frontier = set(report["pareto_frontier"])
     lines = [
-        f"# Abu Dhabi {report['target_years'][0]}-{report['final_year']} 土地利用情景模拟与优化",
+        f"# Abu Dhabi {report['target_years'][0]}-{report['final_year']} 土地覆盖情景压力测试",
         "",
         f"以下为 {report['final_year']} 年三随机种子均值。Pareto 表示在冻结目标集合下未被其他方案全面支配。",
         "",
         (
-            "| 模型 | 情景 | demand TV | 生态转建成率 | 新建成邻域紧凑度 | "
-            "距主干路(m) | 距原建成区(m) | 建成净增 | 建成退出 | 绿地净增 | Pareto |"
+            "| 模型 | 情景 | demand TV | 生态转建成率 | 新建成邻域比例 | "
+            "距主干路(m) | 距原建成区(m) | 建成斑块/千像元 | 蛙跳率 | Pareto |"
         ),
-        "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|:---:|",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|:---:|",
     ]
     for row in report["final_candidates"]:
         lines.append(
-            f"| {labels[row['model_id']]} | {row['scenario_id']} | "
+            f"| {labels[row['model_id']]} | {SCENARIO_LABELS.get(row['scenario_id'], row['scenario_id'])} | "
             f"{row['demand_total_variation']:.5f} | "
             f"{row['ecological_conversion_rate']:.4f} | "
             f"{row['new_built_neighbor_fraction']:.4f} | "
             f"{row['new_built_mean_major_road_distance_m']:.1f} | "
             f"{row['new_built_mean_prior_built_distance_m']:.1f} | "
-            f"{row['built_gain_pixels']:.0f} | {row['removed_built_pixels']:.0f} | "
-            f"{row['green_gain_pixels']:.0f} | "
+            f"{row['built_components_per_1000_pixels']:.3f} | "
+            f"{row['new_built_leapfrog_rate']:.3f} | "
             f"{'是' if row['candidate_id'] in frontier else '否'} |"
         )
     lines.extend(
@@ -308,8 +326,10 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "- 三组需求是规划压力测试，不是对阿布扎比未来的预测。",
             "- 生态和基础设施指标来自公开数据代理，不等于法定或货币化影响。",
-            "- Pareto 结果只在当前冻结目标、100 m 网格和公共约束下成立。",
-            "- FLUS 的既有建成退出是冻结转换规则下的模型行为，未做事后修正。",
+            "- Pareto 结果只在四个预先声明的形态指标、100 m 网格和公共约束下成立。",
+            "- 斑块数和蛙跳率是独立描述指标；需求满足、生态转化和净增量不参与 Pareto 判定。",
+            "- ‘Moderate growth’保留 legacy compact 路径名，但动作本身不含紧凑性优化。",
+            "- FLUS 的既有建成退出是其冻结转换规则下的模型行为，未做事后修正。",
             "",
         ]
     )

@@ -5,7 +5,7 @@
   "created_at": "2026-08-01T15:08:18.447535+00:00",
   "models": {
     "geosos_flus": {
-      "external_binary": "/Users/zhouning/FLUS_console_crossplatform/build/cmake-release/flus_console",
+      "external_binary": "external/flus_console",
       "future_exogenous_driver_policy": "hold_2024",
       "implementation": "external_flus_console_ann_ca",
       "model_id": "geosos_flus",
@@ -4219,7 +4219,7 @@
     47,
     73
   ],
-  "status": "complete",
+  "status": "stale_artifact_not_for_inference",
   "target_years": [
     2025,
     2026,

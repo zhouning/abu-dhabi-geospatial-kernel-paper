@@ -62,14 +62,22 @@ except ImportError:  # Direct script execution from the benchmark directory.
     from shared import class_counts
 
 HERE = Path(__file__).resolve().parent
-PAPER58_ROOT = HERE.parents[2] / "paper58-geofm-world-model-rl"
-PAPER58_RUNNER_PATH = PAPER58_ROOT / "experiments/abu_dhabi/run_paper58_abu_dhabi.py"
+PAPER58_RUNNER_PATH = Path(
+    os.environ.get(
+        "GEOFM_LDN_RUNNER",
+        "external/geofm_ldn/experiments/abu_dhabi/run_paper58_abu_dhabi.py",
+    )
+)
+if not PAPER58_RUNNER_PATH.is_absolute():
+    PAPER58_RUNNER_PATH = HERE / PAPER58_RUNNER_PATH
+PAPER58_ROOT = PAPER58_RUNNER_PATH.parents[2]
 BUNDLE_ROOT = HERE / "artifacts/bundle"
-DEFAULT_OUTPUT = HERE / "artifacts/planning"
-DEFAULT_REPORT = HERE / "planning_scenario_report.json"
-DEFAULT_SCENARIO_CONFIG = BUNDLE_ROOT / "planning_scenarios.json"
+DEFAULT_OUTPUT = HERE / "artifacts/planning_public_2025_2031"
+DEFAULT_REPORT = HERE / "planning_scenario_report_public_2025_2031.json"
+DEFAULT_SCENARIO_CONFIG = HERE / "planning_scenarios_public_2025_2031.json"
 SEEDS = (31, 47, 73)
 MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")
+MODEL_ALIASES = {"geofm_ldn": "paper58"}
 
 
 def _read(path: Path) -> tuple[np.ndarray, dict[str, Any]]:
@@ -140,9 +148,9 @@ def _prediction_path(
 
 def _report_path(path: Path) -> str:
     try:
-        return str(path.relative_to(HERE))
+        return str(path.resolve().relative_to(HERE.resolve()))
     except ValueError:
-        return str(path.resolve())
+        return f"external/{path.name}"
 
 
 def run_geospatial_kernel_scenarios(
@@ -314,7 +322,7 @@ def run_geosos_flus_scenarios(
     return {
         "model_id": "geosos_flus",
         "implementation": "external_flus_console_ann_ca",
-        "external_binary": str(binary.resolve()),
+        "external_binary": f"external/{binary.name}",
         "future_exogenous_driver_policy": "hold_2024",
         "seeds": rows,
         "wall_seconds": time.perf_counter() - started,
@@ -442,6 +450,7 @@ def run(
     start_year: int,
     end_year: int,
 ) -> dict[str, Any]:
+    model_ids = tuple(MODEL_ALIASES.get(value, value) for value in model_ids)
     output_root = output_root.resolve()
     report_path = report_path.resolve()
     binary = binary.resolve()
@@ -474,6 +483,8 @@ def run(
     report = {
         "schema": "gwm.abu_dhabi_planning_scenarios.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
+        "revision_status": "current_protocol_run",
+        "reproducibility_status": "requires_audit_and_independent_validation",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "running",
         "origin_year": 2024,
@@ -531,10 +542,14 @@ def main() -> None:
     parser.add_argument("--device", default="auto")
     parser.add_argument("--scenario-config", type=Path, default=DEFAULT_SCENARIO_CONFIG)
     parser.add_argument("--start-year", type=int, default=2025)
-    parser.add_argument("--end-year", type=int, default=2030)
+    parser.add_argument("--end-year", type=int, default=2031)
     args = parser.parse_args()
     report = run(
-        model_ids=tuple(value for value in args.models.split(",") if value),
+        model_ids=tuple(
+            MODEL_ALIASES.get(value, value)
+            for value in args.models.split(",")
+            if value
+        ),
         seeds=tuple(int(value) for value in args.seeds.split(",") if value),
         output_root=args.output,
         report_path=args.report,

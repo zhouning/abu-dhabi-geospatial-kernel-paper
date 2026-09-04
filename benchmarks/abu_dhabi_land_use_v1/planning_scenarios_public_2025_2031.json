@@ -1,0 +1,53 @@
+{
+  "schema": "gwm.abu_dhabi_planning_scenarios.v2",
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "status": "public_data_stress_test",
+  "origin_year": 2024,
+  "target_years": [2025, 2026, 2027, 2028, 2029, 2030, 2031],
+  "scenario_semantics": "Synthetic class-count actions for sensitivity analysis; not an Abu Dhabi population, housing or statutory planning forecast.",
+  "scenario_id_compatibility": "The compact identifier is retained for path compatibility but is labelled moderate_growth because the action file does not contain an explicit compactness objective.",
+  "scenarios": [
+    {
+      "scenario_id": "compact",
+      "display_name": "Moderate growth (legacy compact)",
+      "interpretation": "Moderate annual built-cell increase with a small low-vegetation increase; no explicit compactness optimization is asserted.",
+      "target_counts_by_year": {
+        "2025": {"1": 16060, "2": 906, "3": 458, "4": 1000, "5": 16098, "6": 45204},
+        "2026": {"1": 16060, "2": 906, "3": 508, "4": 1000, "5": 16598, "6": 44654},
+        "2027": {"1": 16060, "2": 906, "3": 558, "4": 1000, "5": 17098, "6": 44104},
+        "2028": {"1": 16060, "2": 906, "3": 608, "4": 1000, "5": 17598, "6": 43554},
+        "2029": {"1": 16060, "2": 906, "3": 658, "4": 1000, "5": 18098, "6": 43004},
+        "2030": {"1": 16060, "2": 906, "3": 708, "4": 1000, "5": 18598, "6": 42454},
+        "2031": {"1": 16060, "2": 906, "3": 758, "4": 1000, "5": 19098, "6": 41904}
+      }
+    },
+    {
+      "scenario_id": "ecological_priority",
+      "display_name": "Green-priority growth",
+      "interpretation": "A larger low-vegetation increment paired with a moderate built-cell increase; irrigation and water demand are not represented.",
+      "target_counts_by_year": {
+        "2025": {"1": 16060, "2": 906, "3": 558, "4": 1000, "5": 15948, "6": 45254},
+        "2026": {"1": 16060, "2": 906, "3": 708, "4": 1000, "5": 16298, "6": 44754},
+        "2027": {"1": 16060, "2": 906, "3": 858, "4": 1000, "5": 16648, "6": 44254},
+        "2028": {"1": 16060, "2": 906, "3": 1008, "4": 1000, "5": 16998, "6": 43754},
+        "2029": {"1": 16060, "2": 906, "3": 1158, "4": 1000, "5": 17348, "6": 43254},
+        "2030": {"1": 16060, "2": 906, "3": 1308, "4": 1000, "5": 17698, "6": 42754},
+        "2031": {"1": 16060, "2": 906, "3": 1458, "4": 1000, "5": 18048, "6": 42254}
+      }
+    },
+    {
+      "scenario_id": "outward_growth",
+      "display_name": "High outward growth",
+      "interpretation": "A larger annual built-cell increase with a small low-vegetation increment; the spatial result is evaluated for leapfrogging rather than assumed to be desirable.",
+      "target_counts_by_year": {
+        "2025": {"1": 16060, "2": 906, "3": 433, "4": 1000, "5": 16598, "6": 44729},
+        "2026": {"1": 16060, "2": 906, "3": 458, "4": 1000, "5": 17598, "6": 43704},
+        "2027": {"1": 16060, "2": 906, "3": 483, "4": 1000, "5": 18598, "6": 42679},
+        "2028": {"1": 16060, "2": 906, "3": 508, "4": 1000, "5": 19598, "6": 41654},
+        "2029": {"1": 16060, "2": 906, "3": 533, "4": 1000, "5": 20598, "6": 40629},
+        "2030": {"1": 16060, "2": 906, "3": 558, "4": 1000, "5": 21598, "6": 39604},
+        "2031": {"1": 16060, "2": 906, "3": 583, "4": 1000, "5": 22598, "6": 38579}
+      }
+    }
+  ]
+}

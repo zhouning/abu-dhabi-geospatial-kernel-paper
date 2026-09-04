@@ -26,7 +26,9 @@ INPUT_ROOT = HERE / "artifacts/gee"
 OSM_ROOT = HERE / "artifacts/osm"
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 DEFAULT_OUTPUT = HERE / "artifacts/predictions/geosos_flus"
-DEFAULT_BINARY = Path("/Users/zhouning/FLUS_console_crossplatform/build/cmake-release/flus_console")
+# The external FLUS executable is intentionally not bundled.  Callers should
+# pass ``--binary`` (or place a compatible executable at this placeholder).
+DEFAULT_BINARY = HERE / "external/flus_console"
 FIT_YEARS = (2021,)
 SEEDS = (31, 47, 73)
 FEATURE_NAMES = (
@@ -400,9 +402,10 @@ def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path) -> dict[str,
         "schema": "gwm.abu_dhabi_geosos_flus_run.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "model_id": "geosos_flus",
+        "revision_status": "current_protocol_run",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "complete",
-        "external_binary": str(binary.resolve()),
+        "external_binary": f"external/{binary.name}",
         "state_writeback": True,
         "test_label_access_during_fit": False,
         "seeds": reports,
