@@ -5,7 +5,7 @@
 ## 核心结论
 
 - Geospatial Kernel 在 2023 年单步历史分配中取得最高 change FoM（0.2004）。
-- Paper58 在 2024 年两步开环历史目标中取得最高 change FoM（0.2778）。因此稿件没有声称 Geospatial Kernel 在所有预测任务中最好。
+- GeoFM-LDN 在 2024 年两步开环历史目标中取得最高 change FoM（0.2778）。因此稿件没有声称 Geospatial Kernel 在所有预测任务中最好。
 - 在 2025–2031 的三类规划情景中，Geospatial Kernel 满足目标类别数量、没有违反公开数据代理约束，并在当前目标集合下进入 Pareto frontier。
 - 这些未来结果是 planner-supplied scenario stress tests，不是官方预测。
 

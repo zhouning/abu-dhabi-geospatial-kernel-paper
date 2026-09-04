@@ -16,7 +16,7 @@
 - [x] The manuscript uses “land cover” for the six remote-sensing classes and reserves “land use” for the limitation and deployment discussion.
 - [x] The manuscript says that scenario outputs are planner-supplied stress tests, not forecasts.
 - [x] The manuscript says that public OSM/WorldCover layers are proxies, not statutory planning or ecological layers.
-- [x] The manuscript reports that Paper58 wins the 2024 two-step historical FoM, so Geospatial Kernel is not presented as universally best.
+- [x] The manuscript reports that GeoFM-LDN wins the 2024 two-step historical FoM, so Geospatial Kernel is not presented as universally best.
 - [x] The manuscript avoids causal language for actions, neighbourhood terms, state writeback and constraints.
 - [x] No private database IP, port, username, password or client-only ArcGIS endpoint is included.
 

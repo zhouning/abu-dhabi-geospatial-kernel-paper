@@ -1,8 +1,9 @@
 # Abu Dhabi Land-Use Benchmark V1
 
 This directory is the single execution boundary for comparing GeoSOS-FLUS,
-the GWM Geospatial Kernel and Paper58 on Abu Dhabi city land-cover simulation
-and constrained planning optimization.
+the GWM Geospatial Kernel and GeoFM-LDN (Geospatial Foundation-Model Latent
+Dynamics Network) on Abu Dhabi city land-cover simulation and constrained
+planning optimization.
 
 The comparison is valid only when every candidate consumes the same canonical
 grid, origin state, action, hard constraints and driver versions, and writes a
@@ -55,17 +56,17 @@ python benchmarks/abu_dhabi_land_use_v1/audit_outputs.py
 ```
 
 `run_planning_scenarios.py` invokes the real external FLUS console, trains the
-explicit Geospatial Kernel and loads Paper58 LDN checkpoints. All candidates
+explicit Geospatial Kernel and loads GeoFM-LDN checkpoints. All candidates
 start from the observed 2024 state and receive the same annual demand and hard
 constraints. Future exogenous raster drivers are held at their known 2024
-values; Paper58 recursively writes back its predicted latent state.
+values; GeoFM-LDN recursively writes back its predicted latent state.
 
 ## Current result
 
 - Historical test: Geospatial Kernel has the best 2023 one-step change FoM;
-  Paper58 has the best 2024 two-step open-loop change FoM.
+  GeoFM-LDN has the best 2024 two-step open-loop change FoM.
 - Planning test: all three Geospatial Kernel scenario allocations are on the
-  frozen 2030 Pareto frontier. Paper58 and GeoSOS-FLUS are dominated on the
+  frozen 2030 Pareto frontier. GeoFM-LDN and GeoSOS-FLUS are dominated on the
   current public-data proxy objectives.
 - FLUS retires roughly 2,900-3,650 existing built pixels while reallocating
   more built pixels elsewhere; the two proposed models show no built retirement

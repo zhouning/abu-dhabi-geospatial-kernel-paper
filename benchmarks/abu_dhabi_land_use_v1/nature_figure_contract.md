@@ -11,14 +11,14 @@
 
 ## Figure 1
 
-- Core conclusion: the Abu Dhabi benchmark gives GeoSOS-FLUS, Geospatial Kernel and Paper58 the same state, action and constraint contract, while the Kernel exposes proposal, projection and state writeback as inspectable steps.
+- Core conclusion: the Abu Dhabi benchmark gives GeoSOS-FLUS, Geospatial Kernel and GeoFM-LDN the same state, action and constraint contract, while the Kernel exposes proposal, projection and state writeback as inspectable steps.
 - Archetype: schematic-led composite.
 - Panel map: public inputs and common contract; Kernel execution loop; historical and planning evaluation tracks.
 - Review risk: do not imply that public proxy constraints are statutory planning red lines.
 
 ## Figure 2
 
-- Core conclusion: historical allocation performance is horizon-dependent, with Geospatial Kernel leading in 2023 and Paper58 leading in 2024.
+- Core conclusion: historical allocation performance is horizon-dependent, with Geospatial Kernel leading in 2023 and GeoFM-LDN leading in 2024.
 - Archetype: quantitative grid.
 - Panel map: change FoM, change F1, overall accuracy and macro-F1.
 - Statistics: mean ± population standard deviation over seeds 31, 47 and 73.

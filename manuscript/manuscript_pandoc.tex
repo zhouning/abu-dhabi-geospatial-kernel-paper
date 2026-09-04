@@ -22,11 +22,13 @@ actions, preserve hard exclusions and carry its state into the next
 simulated year. Here we study Geospatial Kernel, the algorithmic core of
 a Geospatial World Model, as a state--action--constraint transition
 system for urban land-cover planning. We evaluate it against GeoSOS-FLUS
-and Paper58 on a common Abu Dhabi benchmark of annual public land-cover
+and GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network), a
+demand-conditioned latent-state baseline built on annual AlphaEarth
+embeddings, on a common Abu Dhabi benchmark of annual public land-cover
 products from 2017 to 2024, a 100-m grid and three random seeds. In
 conditional historical allocation tests, Geospatial Kernel achieved the
 highest change Figure of Merit (FoM) for 2023 (0.2004, compared with
-0.1283 for GeoSOS-FLUS and 0.1670 for Paper58), whereas Paper58 achieved
+0.1283 for GeoSOS-FLUS and 0.1670 for GeoFM-LDN), whereas GeoFM-LDN achieved
 the highest FoM for the two-step 2024 open-loop target (0.2778, compared
 with 0.2606 for Geospatial Kernel). This horizon dependence argues
 against a universal model ranking. In planner-supplied 2025--2031 stress
@@ -50,7 +52,7 @@ drivers and synthetic actions.
   projection.
 \item
   One-step allocation favoured Kernel; two-step open-loop skill favoured
-  Paper58.
+  GeoFM-LDN.
 \item
   Kernel met scenario class totals and retained all declared hard
   exclusions.
@@ -108,7 +110,7 @@ exclusion, miss the requested class totals or become inconsistent when
 the next year is simulated from the model\textquotesingle s own output.
 These failure modes are particularly important when the model is used to
 compare scenarios rather than to reproduce one observed transition.
-Latent-dynamics approaches such as Paper58 can represent continuous
+Latent-dynamics approaches such as GeoFM-LDN can represent continuous
 geospatial state and condition transitions on demand, whereas
 traditional ANN-plus-cellular-automata systems such as GeoSOS-FLUS
 combine suitability with explicit neighbourhood evolution. Neither
@@ -145,7 +147,7 @@ The paper makes three bounded contributions. First, it gives a concrete
 state--action--constraint formulation for using a geospatial kernel as
 an algorithmic core rather than as an opaque end-to-end predictor.
 Second, it reports a fair, multi-horizon comparison with GeoSOS-FLUS and
-Paper58, including a case in which the Kernel does not win. Third, it
+GeoFM-LDN, including a case in which the Kernel does not win. Third, it
 turns the future maps into explicit stress-test artefacts, including
 cumulative rasters and vectorized transition footprints, while
 preserving the distinction between public-data land cover and
@@ -171,7 +173,7 @@ exclusion proxies.
 The comparison was designed so that differences in model output could
 not be attributed to different grids or target totals. GeoSOS-FLUS
 received the same continuous drivers and used an external ANN
-suitability model followed by cellular-automata allocation. Paper58 used
+suitability model followed by cellular-automata allocation. GeoFM-LDN used
 demand-conditioned latent dynamics on the annual AlphaEarth embeddings,
 a semantic decoder and the constrained allocation interface. Geospatial
 Kernel used the same target action records and hard masks, but separated
@@ -222,22 +224,22 @@ DTV \\
 2023 & Geospatial Kernel & \textbf{0.2004 ± 0.0018} & \textbf{0.3338 ±
 0.0026} & \textbf{0.9362 ± 0.0002} & \textbf{0.8499 ± 0.0003} &
 0.000000 \\
-2023 & Paper58 & 0.1670 ± 0.0039 & 0.2862 ± 0.0058 & 0.9316 ± 0.0005 &
+2023 & GeoFM-LDN & 0.1670 ± 0.0039 & 0.2862 ± 0.0058 & 0.9316 ± 0.0005 &
 0.8457 ± 0.0006 & 0.000000 \\
 2024 & GeoSOS-FLUS & 0.1815 ± 0.0125 & 0.3071 ± 0.0180 & 0.8595 ± 0.0030
 & 0.7483 ± 0.0062 & 0.005381 \\
 2024 & Geospatial Kernel & 0.2606 ± 0.0006 & 0.4134 ± 0.0008 & 0.8863 ±
 0.0002 & 0.7670 ± 0.0004 & 0.000000 \\
-2024 & Paper58 & \textbf{0.2778 ± 0.0061} & \textbf{0.4348 ± 0.0074} &
+2024 & GeoFM-LDN & \textbf{0.2778 ± 0.0061} & \textbf{0.4348 ± 0.0074} &
 \textbf{0.8905 ± 0.0014} & \textbf{0.7693 ± 0.0011} & 0.000000 \\
 \end{longtable}
 }
 
 Geospatial Kernel improved change FoM over GeoSOS-FLUS by 0.0721 in 2023
-and 0.0790 in 2024. Paper58 improved over GeoSOS-FLUS by 0.0388 and
+and 0.0790 in 2024. GeoFM-LDN improved over GeoSOS-FLUS by 0.0388 and
 0.0963, respectively. The ranking changed at the longer horizon:
 Geospatial Kernel was strongest for the 2023 one-step target, while
-Paper58 was strongest for the 2024 two-step target. The result is
+GeoFM-LDN was strongest for the 2024 two-step target. The result is
 scientifically useful precisely because it prevents an over-general
 conclusion. Geospatial Kernel was competitive in historical allocation,
 but its advantage in this benchmark is not a universal claim about
@@ -295,11 +297,11 @@ Kernel & Eco priority & 0.00000 & 0.00 & \textbf{0.8332 ± 0.0068} &
 \textbf{323.1 ± 19.5} & \textbf{111.0 ± 0.5} \\
 Kernel & Outward & 0.00000 & 0.00 & \textbf{0.8545 ± 0.0047} &
 \textbf{365.5 ± 5.3} & \textbf{139.8 ± 1.5} \\
-Paper58 & Compact & 0.00000 & 0.00 & 0.7676 ± 0.0170 & 475.9 ± 35.7 &
+GeoFM-LDN & Compact & 0.00000 & 0.00 & 0.7676 ± 0.0170 & 475.9 ± 35.7 &
 239.7 ± 44.6 \\
-Paper58 & Eco priority & 0.00000 & 0.00 & 0.7506 ± 0.0174 & 452.1 ± 22.0
+GeoFM-LDN & Eco priority & 0.00000 & 0.00 & 0.7506 ± 0.0174 & 452.1 ± 22.0
 & 222.3 ± 19.8 \\
-Paper58 & Outward & 0.00000 & 0.00 & 0.8117 ± 0.0236 & 507.5 ± 56.4 &
+GeoFM-LDN & Outward & 0.00000 & 0.00 & 0.8117 ± 0.0236 & 507.5 ± 56.4 &
 263.0 ± 71.8 \\
 \end{longtable}
 }
@@ -324,9 +326,9 @@ GeoSOS-FLUS & Outward & 7,000 & 2,724 & 139 & no \\
 Kernel & Compact & 3,500 & 0 & 350 & \textbf{yes} \\
 Kernel & Eco priority & 2,450 & 0 & 1,050 & \textbf{yes} \\
 Kernel & Outward & 7,000 & 0 & 175 & \textbf{yes} \\
-Paper58 & Compact & 3,500 & 0 & 350 & no \\
-Paper58 & Eco priority & 2,450 & 0 & 1,050 & no \\
-Paper58 & Outward & 7,000 & 0 & 175 & no \\
+GeoFM-LDN & Compact & 3,500 & 0 & 350 & no \\
+GeoFM-LDN & Eco priority & 2,450 & 0 & 1,050 & no \\
+GeoFM-LDN & Outward & 7,000 & 0 & 175 & no \\
 \end{longtable}
 }
 
@@ -335,7 +337,7 @@ the frozen objective set. In the compact scenario, for example, the
 Kernel placed new built cells closer to major roads than either baseline
 and produced a higher neighbourhood compactness. The same ordering held
 for ecological priority and outward growth. The ecological conversion
-rate was zero for the Kernel and Paper58 because the projected
+rate was zero for the Kernel and GeoFM-LDN because the projected
 allocations avoided conversion of the declared vegetation-origin cells
 in the public-data constraint system; GeoSOS-FLUS converted 1.31--1.77\%
 of its new built cells from ecological proxy classes. These values are
@@ -344,7 +346,7 @@ proxy outcomes, not estimates of statutory ecological impact.
 The built-retirement contrast is also visible in the maps. GeoSOS-FLUS
 reclassified approximately 2,724--3,632 cells that were built in 2024
 while allocating new built cells elsewhere. Geospatial Kernel and
-Paper58 retained the prior built class under the same scenario target
+GeoFM-LDN retained the prior built class under the same scenario target
 counts. This difference is a model behaviour under the frozen transition
 matrix, not evidence that either approach reproduces actual
 redevelopment or demolition. The objective trade-offs are summarized in
@@ -477,12 +479,12 @@ built cells than the two baselines under the declared 2031 objective
 set.
 
 The historical results place that planning result in context. Geospatial
-Kernel had the strongest one-step 2023 allocation score, but Paper58 had
+Kernel had the strongest one-step 2023 allocation score, but GeoFM-LDN had
 the strongest 2024 two-step open-loop score. A model that performs well
 at one horizon can lose its advantage when its own output becomes the
 next input. The appropriate conclusion is therefore task-specific:
 Geospatial Kernel is promising as a constrained allocation core, whereas
-Paper58 may be competitive for longer-horizon latent-state evolution in
+GeoFM-LDN may be competitive for longer-horizon latent-state evolution in
 this public-data experiment. The benchmark does not support selecting
 one model as the universally most accurate future predictor.
 
@@ -635,14 +637,15 @@ distance to roads and distance to major roads. Its ANN suitability
 surface was passed to a cellular-automata allocation stage with the
 common class totals and public hard mask.
 
-Paper58 was trained as a demand-conditioned latent-dynamics network on
-AlphaEarth embeddings. A logistic semantic decoder maps the predicted
-embedding to six class probabilities, and the constrained allocation
-step converts those probabilities to a categorical raster. The latent
-and categorical states are both recursively carried into the next year.
-Paper58 is treated as an internal benchmark implementation in this
-manuscript; no external publication or performance claim is attributed
-to the name.
+GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network) was
+trained as a demand-conditioned latent-dynamics network on AlphaEarth
+embeddings. A logistic semantic decoder maps the predicted embedding to
+six class probabilities, and the constrained allocation step converts
+those probabilities to a categorical raster. The latent and categorical
+states are both recursively carried into the next year. GeoFM-LDN is an
+internal benchmark implementation in this manuscript; the name describes
+its architecture and does not attribute an external publication or
+performance claim.
 
 The common evaluator computes actual class counts, normalized demand
 total variation, hard-mask violations, change FoM, change F1, overall
@@ -792,7 +795,7 @@ contract. The schematic does not imply statutory planning boundaries.
 Change FoM, change F1, overall accuracy and macro-F1 for the 2023
 one-step target and 2024 two-step open-loop target. Bars show mean ±
 population SD over n=3 seeds. Geospatial Kernel leads in 2023, whereas
-Paper58 leads in 2024.
+GeoFM-LDN leads in 2024.
 
 \pandocbounded{\includegraphics[keepaspectratio,alt={Figure 3: planning objectives}]{../figures/fig03_planning_objectives.png}}
 
@@ -818,7 +821,7 @@ attributable to the learned proposal alone.
 \textbf{Figure 5 \textbar{} Spatial allocations and transition
 footprints at 2031.} Rows show compact, ecological-priority and
 outward-growth actions; columns show GeoSOS-FLUS, Geospatial Kernel and
-Paper58. Each panel is a 100-m ensemble raster. Overlays mark new built
+GeoFM-LDN. Each panel is a 100-m ensemble raster. Overlays mark new built
 cells, new low-vegetation cells and built retirement relative to 2024.
 Transition polygons derived from these cells are not cadastral parcels.
 

@@ -299,7 +299,7 @@
   },
   "interpretation": [
     "Geospatial Kernel has the strongest one-step 2023 mean change FoM.",
-    "Paper58 has the strongest two-step open-loop 2024 mean change FoM.",
+    "GeoFM-LDN has the strongest two-step open-loop 2024 mean change FoM.",
     "Both proposed candidates exceed external GeoSOS-FLUS mean change FoM in both years.",
     "High-confidence sensitivity FoM is low for all candidates; full-grid gains may partly reflect Dynamic World label volatility.",
     "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects."

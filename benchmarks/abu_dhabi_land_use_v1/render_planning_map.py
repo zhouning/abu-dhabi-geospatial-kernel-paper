@@ -22,7 +22,7 @@ SCENARIO_IDS = ("compact", "ecological_priority", "outward_growth")
 MODEL_LABELS = {
     "geosos_flus": "GeoSOS-FLUS",
     "geospatial_kernel": "Geospatial Kernel",
-    "paper58": "Paper58",
+    "paper58": "GeoFM-LDN",
 }
 SCENARIO_LABELS = {
     "compact": "Compact",

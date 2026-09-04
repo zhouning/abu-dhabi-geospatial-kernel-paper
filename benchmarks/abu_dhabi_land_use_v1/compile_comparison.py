@@ -186,7 +186,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "mean_change_fom_deltas": deltas,
         "interpretation": [
             "Geospatial Kernel has the strongest one-step 2023 mean change FoM.",
-            "Paper58 has the strongest two-step open-loop 2024 mean change FoM.",
+            "GeoFM-LDN has the strongest two-step open-loop 2024 mean change FoM.",
             "Both proposed candidates exceed external GeoSOS-FLUS mean change FoM in both years.",
             (
                 "High-confidence sensitivity FoM is low for all candidates; full-grid gains "
@@ -220,7 +220,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     labels = {
         "geosos_flus": "GeoSOS-FLUS",
         "geospatial_kernel": "Geospatial Kernel",
-        "paper58": "Paper58",
+        "paper58": "GeoFM-LDN",
     }
     for year in YEARS:
         for model in MODELS:
@@ -239,7 +239,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "## 当前结论",
             "",
             "- 2023 单步：Geospatial Kernel 的平均 change FoM 最高。",
-            "- 2024 两步开环：Paper58 的平均 change FoM 最高。",
+            "- 2024 两步开环：GeoFM-LDN 的平均 change FoM 最高。",
             "- 两个拟议模型在两个年份均高于外部 GeoSOS-FLUS 的平均 change FoM。",
             "- 三者在高置信度标签子集上的 FoM 都很低，必须保留标签噪声警告。",
             "- 这是历史条件分配结果，不是未来政策预测，也不是因果效应证据。",

@@ -54,7 +54,7 @@ MODEL_ORDER = ["geosos_flus", "geospatial_kernel", "paper58"]
 MODEL_LABEL = {
     "geosos_flus": "GeoSOS-FLUS",
     "geospatial_kernel": "Geospatial Kernel",
-    "paper58": "Paper58",
+    "paper58": "GeoFM-LDN",
 }
 MODEL_COLOR = {
     "geosos_flus": "#0072B2",  # blue

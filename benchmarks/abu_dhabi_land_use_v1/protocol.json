@@ -3,7 +3,12 @@
   "benchmark_id": "abu-dhabi-land-use-v1",
   "title": "Abu Dhabi Bounded Land-Use Simulation and Optimization Benchmark",
   "status": "historical_and_planning_core_complete_required_controls_pending",
-  "scientific_question": "Under identical observed states, demand actions, spatial constraints and evaluation rules, how do GeoSOS-FLUS, the GWM Geospatial Kernel and Paper58 differ in land-cover allocation, multi-step rollout and constrained planning optimization for Abu Dhabi city?",
+  "model_display_names": {
+    "geosos_flus": "GeoSOS-FLUS",
+    "gwm_geospatial_kernel": "Geospatial Kernel",
+    "paper58": "GeoFM-LDN"
+  },
+  "scientific_question": "Under identical observed states, demand actions, spatial constraints and evaluation rules, how do GeoSOS-FLUS, the GWM Geospatial Kernel and GeoFM-LDN differ in land-cover allocation, multi-step rollout and constrained planning optimization for Abu Dhabi city?",
   "claim_boundary": {
     "supports": [
       "bounded urban land-cover transition simulation",

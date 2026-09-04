@@ -56,7 +56,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 - The six classes are labelled as remote-sensing **land cover**, not legal residential, commercial or industrial land use.
 - The 2025--2031 outputs are planner-supplied scenario stress tests with exogenous drivers frozen at 2024, not official forecasts.
 - OSM and ESA WorldCover layers are described as public proxy constraints, not statutory planning red lines.
-- Historical ranking is reported by horizon: Geospatial Kernel leads the 2023 one-step test, while Paper58 leads the 2024 two-step open-loop test.
+- Historical ranking is reported by horizon: Geospatial Kernel leads the 2023 one-step test, while GeoFM-LDN leads the 2024 two-step open-loop test.
 - Change polygons are dissolved 100-m raster-cell footprints, not cadastral parcels.
 - No client database credentials or private service endpoints are present in the manuscript package.
 

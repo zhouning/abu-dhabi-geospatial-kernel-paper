@@ -12,6 +12,11 @@
     "5": "built",
     "6": "bare"
   },
+  "model_display_names": {
+    "geosos_flus": "GeoSOS-FLUS",
+    "geospatial_kernel": "Geospatial Kernel",
+    "paper58": "GeoFM-LDN"
+  },
   "comparison_report": "/Users/zhouning/gisdataagent/benchmarks/abu_dhabi_land_use_v1/planning_comparison_report_public_2025_2031.json",
   "created_at": "2026-08-21T12:37:16.700002+00:00",
   "delivery_years": [

@@ -24,7 +24,7 @@ MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")
 MODEL_LABELS = {
     "geosos_flus": "GeoSOS-FLUS",
     "geospatial_kernel": "Geospatial Kernel",
-    "paper58": "Paper58",
+    "paper58": "GeoFM-LDN",
 }
 MODEL_COLORS = {
     "geosos_flus": "#4477aa",
@@ -383,7 +383,7 @@ def render_experiment_design() -> Path:
     models = (
         ("GeoSOS-FLUS\n外部 ANN + CA", "#dce8f5"),
         ("Geospatial Kernel\n显式状态 + 空间适宜性", "#dcefdc"),
-        ("Paper58\n需求条件 LDN + 潜状态", "#f2dfe5"),
+        ("GeoFM-LDN\n需求条件 LDN + 潜状态", "#f2dfe5"),
     )
     for index, (text, color) in enumerate(models):
         _box(axis, (0.52, 0.70 - index * 0.25), 0.20, 0.17, text, color, fontsize=9.5)

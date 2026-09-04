@@ -6,13 +6,15 @@ The repository contains the cleaned manuscript and LUP-oriented submission copy,
 
 - GeoSOS-FLUS;
 - Geospatial Kernel, the allocation core of a Geospatial World Model; and
-- Paper58.
+- GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network), the AlphaEarth latent-dynamics baseline.
 
 ## Scope and claim boundary
 
 The benchmark uses public land-cover and proxy constraint data on a 100 m EPSG:32640 grid. Future maps are scenario stress tests, not official Abu Dhabi forecasts. They should not be interpreted as statutory residential, commercial, industrial, or cadastral land-use plans. The vector files are raster-cell transition polygons and are not legal parcels.
 
 The repository deliberately excludes customer databases, credentials, private imagery, large raw downloads, and intermediate training caches. The public-data lineage and checksums are retained in the manifests under `benchmarks/abu_dhabi_land_use_v1/`.
+
+The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**.
 
 ## Start here
 

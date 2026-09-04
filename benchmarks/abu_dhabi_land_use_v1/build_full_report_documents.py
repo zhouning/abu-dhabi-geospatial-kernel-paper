@@ -168,7 +168,7 @@ def polish_docx(path: Path) -> None:
                             run.font.bold = True
 
     document.core_properties.title = "阿布扎比土地利用三模型模拟与优化完整报告"
-    document.core_properties.subject = "GeoSOS-FLUS、Geospatial Kernel 与 Paper58 统一实验"
+    document.core_properties.subject = "GeoSOS-FLUS、Geospatial Kernel 与 GeoFM-LDN 统一实验"
     document.core_properties.author = "GWM / Geospatial Kernel 研究工作"
     document.save(path)
 

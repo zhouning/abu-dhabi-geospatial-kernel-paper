@@ -275,7 +275,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     labels = {
         "geosos_flus": "GeoSOS-FLUS",
         "geospatial_kernel": "Geospatial Kernel",
-        "paper58": "Paper58",
+        "paper58": "GeoFM-LDN",
     }
     frontier = set(report["pareto_frontier"])
     lines = [
