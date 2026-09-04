@@ -1,0 +1,20 @@
+# Core benchmark/evaluation dependencies
+numpy>=1.24,<3
+scipy>=1.10,<2
+scikit-learn>=1.3,<2
+rasterio>=1.3,<2
+
+# Planning/vector export and document/figure tooling
+geopandas>=0.14,<2
+shapely>=2.0,<3
+fiona>=1.9,<2
+matplotlib>=3.7,<4
+python-docx>=1.1,<2
+
+# Model/runtime execution
+torch>=2.1,<3
+requests>=2.31,<3
+affine>=2.4,<3
+
+# Test tooling
+pytest>=8,<10

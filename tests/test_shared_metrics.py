@@ -3,6 +3,7 @@ import numpy as np
 from benchmarks.abu_dhabi_land_use_v1.shared import (
     evaluate_prediction,
     paired_pixel_bootstrap_ci,
+    paired_model_difference_bootstrap_ci,
     random_feasible_allocation,
 )
 from benchmarks.abu_dhabi_land_use_v1.planning import planning_metrics
@@ -43,6 +44,9 @@ def test_random_feasible_allocation_preserves_counts_and_hard_cells():
     )
     assert np.array_equal(prediction[hard], origin[hard])
     assert {value: int(np.count_nonzero(prediction == value)) for value in range(1, 7)} == counts
+    # Only one class-6 excess must be exchanged for class 3 and one for class 5;
+    # compatible mutable cells remain unchanged.
+    assert int(np.count_nonzero(prediction != origin)) == 2
 
 
 def test_paired_pixel_bootstrap_is_reproducible():
@@ -71,8 +75,36 @@ def test_paired_pixel_bootstrap_is_reproducible():
         seed=7,
     )
     assert first == second
-    assert first["method"] == "paired_pixel_bootstrap"
-    assert first["sampling_unit"] == "pixel_triplet_origin_prediction_target"
+    assert first["method"] == "spatial_block_bootstrap"
+    assert first["sampling_unit"] == "spatial_block_triplet_origin_prediction_target"
+    assert first["block_size_pixels"] == 8
+
+
+def test_paired_model_difference_bootstrap_uses_shared_blocks():
+    origin, target, valid, hard, counts = _fixture()
+    first = random_feasible_allocation(
+        origin,
+        valid_mask=valid,
+        hard_exclusion_mask=hard,
+        target_counts=counts,
+        seed=42,
+    )
+    second = target.copy()
+    result = paired_model_difference_bootstrap_ci(
+        first,
+        second,
+        origin_state=origin,
+        observed_target=target,
+        valid_mask=valid,
+        n_resamples=100,
+        seed=11,
+        block_size=2,
+    )
+    assert result["method"] == "paired_spatial_block_bootstrap_difference"
+    assert result["comparison"] == "prediction_a_minus_prediction_b"
+    assert result["block_size_pixels"] == 2
+    assert result["block_count"] > 0
+    assert set(result["change_figure_of_merit"]) == {"lower", "median", "upper"}
 
 
 def test_component_density_is_normalized_by_valid_pixels():

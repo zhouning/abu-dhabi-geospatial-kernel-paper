@@ -50,6 +50,12 @@ GEOFM_LDN_RUNNER=/path/to/geofm_ldn/experiments/abu_dhabi/run_paper58_abu_dhabi.
 python benchmarks/abu_dhabi_land_use_v1/compile_comparison.py
 ```
 
+The compiler writes `comparison_report_current.json` and
+`comparison_report_current.md` by default, leaving the legacy
+`comparison_report.json` untouched. The planning runner/compiler similarly
+write `planning_scenario_report_public_2025_2031_current.json` and
+`planning_comparison_report_public_2025_2031_current.json` by default.
+
 Conditional 2025-2031 scenarios and independent morphology comparison:
 
 ```bash
@@ -67,13 +73,15 @@ values; GeoFM-LDN recursively writes back its predicted latent state.
 ## Current result status
 
 The checked-in historical and planning JSON files are legacy artifacts. They
-predate the strict multi-class FoM, paired-pixel bootstrap and revised
-independent morphology objective set; their metadata now marks them as
+predate the strict multi-class FoM, spatial-block bootstrap and revised
+independent planning objective set; their metadata now marks them as
 `stale_artifact_not_for_inference` or `withdrawn_pending_public_2025_2031_rerun`.
 The earlier 240-raster audit belongs to a separate 2025–2030 run and is not an
 audit of the public 2025–2031 delivery.
 
-The code needed for the revised analysis is present, but the current checkout
+The code needed for the revised analysis is present, including paired
+model-difference intervals and a score-independent minimum-change null. The
+current checkout
 does not contain the complete raster bundle, GeoFM-LDN checkpoint or an
 independent 2023–2024 built-area validation layer. Therefore no revised model
 ranking, bootstrap interval or Pareto frontier is claimed here. The original

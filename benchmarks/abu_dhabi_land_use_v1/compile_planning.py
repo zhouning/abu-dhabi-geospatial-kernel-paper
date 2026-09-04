@@ -13,15 +13,15 @@ from typing import Any
 
 import numpy as np
 import rasterio
-from planning import OBJECTIVES, pareto_frontier, planning_metrics
+from planning import OBJECTIVE_METADATA, OBJECTIVES, pareto_frontier, planning_metrics
 
 HERE = Path(__file__).resolve().parent
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 INPUT_ROOT = HERE / "artifacts/gee"
 OSM_ROOT = HERE / "artifacts/osm"
-DEFAULT_INPUT = HERE / "planning_scenario_report_public_2025_2031.json"
-DEFAULT_OUTPUT = HERE / "planning_comparison_report_public_2025_2031.json"
-DEFAULT_MARKDOWN = HERE / "planning_comparison_report_public_2025_2031.md"
+DEFAULT_INPUT = HERE / "planning_scenario_report_public_2025_2031_current.json"
+DEFAULT_OUTPUT = HERE / "planning_comparison_report_public_2025_2031_current.json"
+DEFAULT_MARKDOWN = HERE / "planning_comparison_report_public_2025_2031_current.md"
 DEFAULT_SCENARIO_CONFIG = HERE / "planning_scenarios_public_2025_2031.json"
 DEFAULT_ENSEMBLE_ROOT = HERE / "artifacts/planning_public_2025_2031"
 MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")
@@ -264,6 +264,7 @@ def compile_report(
         "scenarios": list(scenario_ids),
         "seeds": list(seeds),
         "objective_directions": OBJECTIVES,
+        "objective_metadata": OBJECTIVE_METADATA,
         "final_candidates": final_candidates,
         "pareto_frontier": frontier,
         "aggregate": aggregate,
@@ -272,8 +273,8 @@ def compile_report(
         "claim_boundary": [
             "Scenario demands are planner-supplied stress tests, not forecasts.",
             (
-                "Ecology and infrastructure quantities are public-data proxies, not "
-                "monetary or statutory impacts."
+                "Ecological conversion, accessibility and stability quantities are "
+                "public-data proxies, not monetary, statutory or equity impacts."
             ),
             (
                 "Pareto membership is conditional on this frozen objective set and cannot "
@@ -302,15 +303,19 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"以下为 {report['final_year']} 年三随机种子均值。Pareto 表示在冻结目标集合下未被其他方案全面支配。",
         "",
         (
-            "| 模型 | 情景 | demand TV | 生态转建成率 | 新建成邻域比例 | "
+            "| 模型 | 情景 | demand TV | 集成目标偏差(px) | 生态转建成率 | 新建成邻域比例 | "
             "距主干路(m) | 距原建成区(m) | 建成斑块/千像元 | 蛙跳率 | Pareto |"
         ),
-        "|---|---|---:|---:|---:|---:|---:|---:|---:|:---:|",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|:---:|",
     ]
     for row in report["final_candidates"]:
+        ensemble_metrics = report["ensembles"][row["model_id"]][row["scenario_id"]][
+            str(report["final_year"])
+        ]["metrics"]
         lines.append(
             f"| {labels[row['model_id']]} | {SCENARIO_LABELS.get(row['scenario_id'], row['scenario_id'])} | "
             f"{row['demand_total_variation']:.5f} | "
+            f"{ensemble_metrics['demand_l1_error_pixels']} | "
             f"{row['ecological_conversion_rate']:.4f} | "
             f"{row['new_built_neighbor_fraction']:.4f} | "
             f"{row['new_built_mean_major_road_distance_m']:.1f} | "
@@ -326,8 +331,9 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "- 三组需求是规划压力测试，不是对阿布扎比未来的预测。",
             "- 生态和基础设施指标来自公开数据代理，不等于法定或货币化影响。",
-            "- Pareto 结果只在四个预先声明的形态指标、100 m 网格和公共约束下成立。",
-            "- 斑块数和蛙跳率是独立描述指标；需求满足、生态转化和净增量不参与 Pareto 判定。",
+            "- Pareto 结果只在预先声明的生态代理、可达性、蛙跳形态和建成稳定性指标、100 m 网格和公共约束下成立。",
+            "- 生态转化率、可达性和建成退出均为公开数据代理，不代表法定生态、水资源、成本或公平影响。",
+            "- 斑块密度、邻域比例和需求满足是描述性诊断，不参与当前 Pareto 判定。",
             "- ‘Moderate growth’保留 legacy compact 路径名，但动作本身不含紧凑性优化。",
             "- FLUS 的既有建成退出是其冻结转换规则下的模型行为，未做事后修正。",
             "",

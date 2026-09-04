@@ -16,11 +16,12 @@ The benchmark uses public land-cover and proxy constraint data on a 100 m EPSG:3
 
 The repository deliberately excludes customer databases, credentials, private imagery, large raw downloads, and intermediate training caches. The public-data lineage and checksums are retained in the manifests under `benchmarks/abu_dhabi_land_use_v1/`.
 
-The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**.
+The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**. Current reruns write versioned report names, leaving legacy JSON lineage files immutable.
 
-This repository is a revision-in-progress after an LUP review. The strict
-multi-class change FoM, persistence/random controls, paired-pixel bootstrap
-and independent morphology objective code are implemented, but the complete
+This repository contains the benchmark protocol and an evidence-limited
+manuscript package. The strict multi-class change FoM, persistence/minimum-
+change controls, spatial-block bootstrap with paired model contrasts and
+independent morphology objective code are implemented, but the complete
 raster bundle, GeoFM-LDN checkpoint and independent authoritative change-
 validation data are not included. See
 [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
@@ -33,6 +34,7 @@ before treating any existing PDF or JSON as a final submission record.
 - Manuscript source: [`manuscript/manuscript.md`](manuscript/manuscript.md)
 - Reproduction protocol: [`benchmarks/abu_dhabi_land_use_v1/protocol.json`](benchmarks/abu_dhabi_land_use_v1/protocol.json)
 - Benchmark instructions: [`benchmarks/abu_dhabi_land_use_v1/README.md`](benchmarks/abu_dhabi_land_use_v1/README.md)
+- Report lineage policy: [`benchmarks/abu_dhabi_land_use_v1/ARCHIVE_IMMUTABILITY.md`](benchmarks/abu_dhabi_land_use_v1/ARCHIVE_IMMUTABILITY.md)
 - Planning delivery manifest: [`results/planning_public_2025_2031_delivery_manifest.json`](results/planning_public_2025_2031_delivery_manifest.json)
 
 ## Reproduction

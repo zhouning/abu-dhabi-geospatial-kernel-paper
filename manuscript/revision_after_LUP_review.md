@@ -6,6 +6,29 @@ manuscript.
 
 ## Implemented in this revision
 
+The second-round methodological corrections are now implemented in the source
+tree. They do not create numerical evidence when the required raster and model
+artifacts are absent.
+
+- Replaced independent-pixel bootstrap with an 8 × 8-pixel spatial-block
+  bootstrap and added paired model-difference intervals using the same sampled
+  blocks for both predictions.
+- Replaced the global random permutation control with a score-independent
+  minimum-change allocation that preserves compatible cells, changes only
+  source excesses to target deficits, and preserves hard masks and exact
+  feasible totals.
+- Removed hard-coded model-ranking statements from `compile_comparison.py`;
+  interpretation text is generated from computed strict FoM values.
+- Expanded the planning objective metadata to cover four distinct dimensions:
+  ecological conversion proxy, major-road accessibility, 500-m leapfrog
+  morphology and built-state stability. Prior-built distance, component
+  density and neighbourhood fraction remain descriptive diagnostics.
+- Corrected the planning runner to import the vendored runtime module directly
+  and added a repository-level `requirements.txt`.
+- Removed legacy numerical tables, stale figure citations and peer-review
+  process language from the formal manuscript source. Legacy files remain in
+  the repository only as lineage artefacts.
+
 - Replaced the Nature-style nonspecialist summary and removed the explicit
   Nature-style status label.
 - Shortened the abstract to below 250 words and added the strict-metric and
@@ -16,17 +39,18 @@ manuscript.
 - Added a vendored `data_agent/uwm/geospatial_kernel/runtime.py` snapshot so
   the benchmark no longer imports the runtime from an absolute development
   checkout.
-- Added `random_feasible_allocation` and `paired_pixel_bootstrap_ci` to the
-  shared evaluator.
+- Added `random_feasible_allocation`, spatial-block bootstrap and paired model
+  difference intervals to the shared evaluator.
 - Changed the primary change metric to a strict multi-class FoM: a hit requires
   the correct observed destination class; wrong destination changes remain in
   the denominator. The earlier binary FoM remains a secondary diagnostic.
 - Added persistence and random-feasible zero-model outputs to the comparison
   compiler.
-- Replaced the circular/structural planning objective set with four diagnostics:
-  major-road distance, prior-built distance, built component density and a
-  500-m leapfrog rate. Demand totals, ecological conversion and net gains are
-  descriptive outcomes only.
+- Replaced the circular/structural planning objective set with four distinct
+  diagnostics: ecological conversion proxy, major-road accessibility, a
+  500-m leapfrog rate and removed built pixels (stability proxy). Demand totals,
+  prior-built distance, component density, neighbourhood fraction and net gains
+  are descriptive outcomes only.
 - Added a tracked 2025–2031 scenario manifest and changed planning defaults to
   the public 2031 run. The legacy `compact` path ID is retained only for file
   compatibility and is labelled moderate growth.
@@ -40,6 +64,10 @@ manuscript.
   the action; the action is applied at constraint projection.
 - Added a scale bar, north arrow and transition outlines to the map-rendering
   script.
+- Changed compiler defaults to versioned `*_current.json`/Markdown outputs so
+  new runs do not overwrite legacy report lineage; the audit prefers the
+  versioned files when present and falls back to legacy files only to report a
+  blocked status.
 
 ## Still blocked before a defensible LUP resubmission
 

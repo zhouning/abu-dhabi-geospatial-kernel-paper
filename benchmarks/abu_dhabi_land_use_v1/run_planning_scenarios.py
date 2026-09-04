@@ -14,11 +14,18 @@ from pathlib import Path
 from types import ModuleType
 from typing import Any
 
+# Make the repository root importable both for ``python -m`` and for the
+# documented direct-script invocation.  This is intentionally local to the
+# runner and does not depend on an editable install.
+REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
 import numpy as np
 import rasterio
 import torch
 
-from data_agent.uwm.geospatial_kernel import (
+from data_agent.uwm.geospatial_kernel.runtime import (
     GEOSPATIAL_KERNEL_RUNTIME_SCHEMA,
     GeospatialKernelRuntime,
     KernelAction,
@@ -73,7 +80,7 @@ if not PAPER58_RUNNER_PATH.is_absolute():
 PAPER58_ROOT = PAPER58_RUNNER_PATH.parents[2]
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 DEFAULT_OUTPUT = HERE / "artifacts/planning_public_2025_2031"
-DEFAULT_REPORT = HERE / "planning_scenario_report_public_2025_2031.json"
+DEFAULT_REPORT = HERE / "planning_scenario_report_public_2025_2031_current.json"
 DEFAULT_SCENARIO_CONFIG = HERE / "planning_scenarios_public_2025_2031.json"
 SEEDS = (31, 47, 73)
 MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")

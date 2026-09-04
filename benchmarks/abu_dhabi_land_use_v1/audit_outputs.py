@@ -17,9 +17,27 @@ HERE = Path(__file__).resolve().parent
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 INPUT_ROOT = HERE / "artifacts/gee"
 DEFAULT_OUTPUT = HERE / "output_audit.json"
-HISTORICAL_REPORT = HERE / "comparison_report.json"
-PLANNING_REPORT = HERE / "planning_comparison_report_public_2025_2031.json"
-PLANNING_SCENARIO_REPORT = HERE / "planning_scenario_report_public_2025_2031.json"
+LEGACY_HISTORICAL_REPORT = HERE / "comparison_report.json"
+LEGACY_PLANNING_REPORT = HERE / "planning_comparison_report_public_2025_2031.json"
+LEGACY_PLANNING_SCENARIO_REPORT = HERE / "planning_scenario_report_public_2025_2031.json"
+
+
+def _select_report(current_name: str, legacy_path: Path) -> Path:
+    """Prefer a versioned rerun without mutating the immutable legacy path."""
+
+    current = HERE / current_name
+    return current if current.is_file() else legacy_path
+
+
+HISTORICAL_REPORT = _select_report("comparison_report_current.json", LEGACY_HISTORICAL_REPORT)
+PLANNING_REPORT = _select_report(
+    "planning_comparison_report_public_2025_2031_current.json",
+    LEGACY_PLANNING_REPORT,
+)
+PLANNING_SCENARIO_REPORT = _select_report(
+    "planning_scenario_report_public_2025_2031_current.json",
+    LEGACY_PLANNING_SCENARIO_REPORT,
+)
 CLASSES = tuple(range(1, 7))
 
 

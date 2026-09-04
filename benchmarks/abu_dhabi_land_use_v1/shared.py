@@ -102,11 +102,15 @@ def random_feasible_allocation(
     seed: int,
     classes: Sequence[int] = CLASSES,
 ) -> np.ndarray:
-    """Create a reproducible random categorical map with exact feasible totals.
+    """Create a random *minimum-change* map with exact feasible totals.
 
-    The random control is deliberately independent of model scores.  Pixels in
-    the hard mask retain their origin class; all mutable valid pixels are
-    uniformly permuted and assigned the requested residual class totals.
+    A global permutation of all mutable cells is not an informative null for
+    land-change allocation: it rewrites stable cells that do not need to
+    change.  This control first preserves every mutable cell whose class count
+    is already compatible with the target, then randomly pairs only source
+    excesses with target deficits.  It is therefore independent of model
+    scores while using the smallest possible number of changed cells under the
+    oracle target counts.
     """
 
     origin = np.asarray(origin_state)
@@ -126,17 +130,31 @@ def random_feasible_allocation(
         [np.count_nonzero(fixed & (origin == value)) for value in normalized_classes],
         dtype=np.int64,
     )
+    current_mutable_counts = np.array(
+        [np.count_nonzero(mutable & (origin == value)) for value in normalized_classes],
+        dtype=np.int64,
+    )
     residual = desired - fixed_counts
     if np.any(residual < 0) or int(residual.sum()) != int(mutable.sum()):
         raise BenchmarkContractError("random_allocation_infeasible_target")
     result = origin.copy()
-    mutable_indices = np.flatnonzero(mutable.ravel())
-    permutation = np.random.default_rng(seed).permutation(mutable_indices)
-    cursor = 0
-    for value, count in zip(normalized_classes, residual, strict=True):
-        next_cursor = cursor + int(count)
-        result.ravel()[permutation[cursor:next_cursor]] = value
-        cursor = next_cursor
+    rng = np.random.default_rng(seed)
+    source_indices: list[int] = []
+    target_values: list[int] = []
+    for index, value in enumerate(normalized_classes):
+        excess = max(int(current_mutable_counts[index] - residual[index]), 0)
+        deficit = max(int(residual[index] - current_mutable_counts[index]), 0)
+        if excess:
+            candidates = np.flatnonzero(mutable & (origin == value)).tolist()
+            source_indices.extend(rng.permutation(candidates)[:excess].tolist())
+        if deficit:
+            target_values.extend([value] * deficit)
+    if len(source_indices) != len(target_values):
+        raise BenchmarkContractError("random_allocation_change_balance_failed")
+    if source_indices:
+        target_values = rng.permutation(np.asarray(target_values, dtype=np.int64)).tolist()
+        for flat_index, target_value in zip(source_indices, target_values, strict=True):
+            result.ravel()[flat_index] = target_value
     return result
 
 
@@ -210,6 +228,7 @@ def evaluate_prediction(
             ),
         }
     )
+    result["demand_target_exact"] = result["demand_l1_error_pixels"] == 0
     return result
 
 
@@ -270,7 +289,7 @@ def _metrics(
     }
 
 
-def paired_pixel_bootstrap_ci(
+def spatial_block_bootstrap_ci(
     prediction: np.ndarray,
     *,
     origin_state: np.ndarray,
@@ -279,17 +298,16 @@ def paired_pixel_bootstrap_ci(
     n_resamples: int = 1000,
     seed: int = 0,
     alpha: float = 0.05,
+    block_size: int = 8,
     classes: Sequence[int] = CLASSES,
 ) -> dict[str, Any]:
-    """Bootstrap pixel triplets jointly for strict FoM, OA and macro-F1.
+    """Bootstrap spatial blocks jointly for strict FoM, OA and macro-F1.
 
-    Each resample is equivalent to drawing valid pixel indices with
-    replacement while carrying ``(origin, prediction, target)`` together.
-    The implementation samples the joint contingency table, which is the
-    count-equivalent form of paired pixel resampling and avoids materialising
-    an ``n_resamples × n_pixels`` index matrix.  The result is an uncertainty
-    interval for computational agreement, not an independent-sample interval
-    for a geographic population.
+    Pixels in the same ``block_size × block_size`` tile are sampled together,
+    preserving some spatial autocorrelation.  This is a computational
+    uncertainty interval for the mapped domain, not a population interval.
+    The block size is recorded in the result and should be prespecified before
+    comparing models.
     """
 
     predicted = np.asarray(prediction)
@@ -298,7 +316,7 @@ def paired_pixel_bootstrap_ci(
     valid = np.asarray(valid_mask, dtype=bool)
     if not (predicted.shape == origin.shape == target.shape == valid.shape):
         raise BenchmarkContractError("bootstrap_shape_mismatch")
-    if n_resamples < 100 or not 0 < alpha < 1:
+    if n_resamples < 100 or not 0 < alpha < 1 or block_size < 1:
         raise BenchmarkContractError("bootstrap_parameters_invalid")
     normalized_classes = tuple(int(value) for value in classes)
     mask = valid & np.isin(origin, normalized_classes) & np.isin(target, normalized_classes)
@@ -310,6 +328,17 @@ def paired_pixel_bootstrap_ci(
     if count == 0:
         raise BenchmarkContractError("bootstrap_mask_is_empty")
 
+    block_rows = np.arange(predicted.shape[0])[:, None] // int(block_size)
+    block_cols = np.arange(predicted.shape[1])[None, :] // int(block_size)
+    block_ids = block_rows * int(block_cols.max() + 1) + block_cols
+    selected_blocks = block_ids[mask]
+    unique_blocks, inverse = np.unique(selected_blocks, return_inverse=True)
+    class_count = len(normalized_classes)
+    class_lookup = {value: index for index, value in enumerate(normalized_classes)}
+    confusion_size = class_count * class_count
+    block_joint_counts = np.zeros(
+        (len(unique_blocks), 5 * confusion_size), dtype=np.int64
+    )
     observed_change = target_values != origin_values
     predicted_change = pred_values != origin_values
     transition_hits = observed_change & predicted_change & (pred_values == target_values)
@@ -322,28 +351,31 @@ def paired_pixel_bootstrap_ci(
         + 3 * misses.astype(np.int8)
         + 4 * false_alarms.astype(np.int8)
     )
-    class_count = len(normalized_classes)
-    class_lookup = {value: index for index, value in enumerate(normalized_classes)}
     confusion_codes = np.array(
-        [class_lookup[int(t)] * class_count + class_lookup[int(p)] for t, p in zip(target_values, pred_values)],
+        [
+            class_lookup[int(t)] * class_count + class_lookup[int(p)]
+            for t, p in zip(target_values, pred_values, strict=True)
+        ],
         dtype=np.int64,
     )
-    # A single joint table preserves the pairing between the change
-    # categories and the target/prediction confusion cells.  Sampling the two
-    # marginal tables independently would no longer be a paired bootstrap.
-    confusion_size = class_count * class_count
     joint_codes = change_codes.astype(np.int64) * confusion_size + confusion_codes
-    joint_probabilities = np.bincount(
-        joint_codes, minlength=5 * confusion_size
-    ).astype(np.float64) / count
+    for block_index in range(len(unique_blocks)):
+        block_joint_counts[block_index] = np.bincount(
+            joint_codes[inverse == block_index], minlength=5 * confusion_size
+        )
     rng = np.random.default_rng(seed)
     fom_values = np.empty(n_resamples, dtype=np.float64)
     oa_values = np.empty(n_resamples, dtype=np.float64)
     macro_values = np.empty(n_resamples, dtype=np.float64)
     for index in range(n_resamples):
-        joint_counts = rng.multinomial(count, joint_probabilities).reshape(
+        block_weights = rng.multinomial(
+            len(unique_blocks),
+            np.full(len(unique_blocks), 1.0 / len(unique_blocks)),
+        )
+        joint_counts = (block_weights @ block_joint_counts).reshape(
             5, class_count, class_count
         )
+        resampled_count = int(joint_counts.sum())
         change_counts = joint_counts.sum(axis=(1, 2))
         hit, wrong, miss, false_alarm = (
             change_counts[1],
@@ -354,7 +386,7 @@ def paired_pixel_bootstrap_ci(
         denominator = int(hit + wrong + miss + false_alarm)
         fom_values[index] = float(hit / denominator) if denominator else 1.0
         confusion = joint_counts.sum(axis=0)
-        oa_values[index] = float(np.trace(confusion) / count)
+        oa_values[index] = float(np.trace(confusion) / max(1, resampled_count))
         diagonal = np.diag(confusion).astype(np.float64)
         precision_denominator = confusion.sum(axis=0)
         recall_denominator = confusion.sum(axis=1)
@@ -369,12 +401,14 @@ def paired_pixel_bootstrap_ci(
     lower = 100 * alpha / 2
     upper = 100 * (1 - alpha / 2)
     return {
-        "method": "paired_pixel_bootstrap",
-        "sampling_unit": "pixel_triplet_origin_prediction_target",
+        "method": "spatial_block_bootstrap",
+        "sampling_unit": "spatial_block_triplet_origin_prediction_target",
         "n_resamples": int(n_resamples),
         "seed": int(seed),
         "alpha": float(alpha),
         "pixel_count": count,
+        "block_size_pixels": int(block_size),
+        "block_count": int(len(unique_blocks)),
         "change_figure_of_merit": {
             "lower": float(np.percentile(fom_values, lower)),
             "median": float(np.percentile(fom_values, 50)),
@@ -389,5 +423,166 @@ def paired_pixel_bootstrap_ci(
             "lower": float(np.percentile(macro_values, lower)),
             "median": float(np.percentile(macro_values, 50)),
             "upper": float(np.percentile(macro_values, upper)),
+        },
+    }
+
+
+def paired_pixel_bootstrap_ci(
+    prediction: np.ndarray,
+    *,
+    origin_state: np.ndarray,
+    observed_target: np.ndarray,
+    valid_mask: np.ndarray,
+    n_resamples: int = 1000,
+    seed: int = 0,
+    alpha: float = 0.05,
+    block_size: int = 8,
+    classes: Sequence[int] = CLASSES,
+) -> dict[str, Any]:
+    """Backward-compatible alias for :func:`spatial_block_bootstrap_ci`.
+
+    The historical function name is retained for downstream scripts, but it
+    now performs spatial-block rather than independent-pixel resampling.
+    """
+
+    return spatial_block_bootstrap_ci(
+        prediction,
+        origin_state=origin_state,
+        observed_target=observed_target,
+        valid_mask=valid_mask,
+        n_resamples=n_resamples,
+        seed=seed,
+        alpha=alpha,
+        block_size=block_size,
+        classes=classes,
+    )
+
+
+def paired_model_difference_bootstrap_ci(
+    prediction_a: np.ndarray,
+    prediction_b: np.ndarray,
+    *,
+    origin_state: np.ndarray,
+    observed_target: np.ndarray,
+    valid_mask: np.ndarray,
+    n_resamples: int = 1000,
+    seed: int = 0,
+    alpha: float = 0.05,
+    block_size: int = 8,
+    classes: Sequence[int] = CLASSES,
+) -> dict[str, Any]:
+    """Estimate paired model differences using the same sampled spatial blocks."""
+
+    first = np.asarray(prediction_a)
+    second = np.asarray(prediction_b)
+    origin = np.asarray(origin_state)
+    target = np.asarray(observed_target)
+    valid = np.asarray(valid_mask, dtype=bool)
+    if not (first.shape == second.shape == origin.shape == target.shape == valid.shape):
+        raise BenchmarkContractError("bootstrap_shape_mismatch")
+    if n_resamples < 100 or not 0 < alpha < 1 or block_size < 1:
+        raise BenchmarkContractError("bootstrap_parameters_invalid")
+    normalized_classes = tuple(int(value) for value in classes)
+    mask = (
+        valid
+        & np.isin(origin, normalized_classes)
+        & np.isin(target, normalized_classes)
+        & np.isin(first, normalized_classes)
+        & np.isin(second, normalized_classes)
+    )
+    if not np.any(mask):
+        raise BenchmarkContractError("bootstrap_mask_is_empty")
+    block_rows = np.arange(first.shape[0])[:, None] // int(block_size)
+    block_cols = np.arange(first.shape[1])[None, :] // int(block_size)
+    block_ids = block_rows * int(block_cols.max() + 1) + block_cols
+    selected_blocks = block_ids[mask]
+    unique_blocks, inverse = np.unique(selected_blocks, return_inverse=True)
+    class_count = len(normalized_classes)
+    class_lookup = {value: index for index, value in enumerate(normalized_classes)}
+    confusion_size = class_count * class_count
+
+    def block_tables(prediction: np.ndarray) -> np.ndarray:
+        pred_values = prediction[mask]
+        origin_values = origin[mask]
+        target_values = target[mask]
+        observed_change = target_values != origin_values
+        predicted_change = pred_values != origin_values
+        hits = observed_change & predicted_change & (pred_values == target_values)
+        wrong = observed_change & predicted_change & (pred_values != target_values)
+        misses = ~predicted_change & observed_change
+        false_alarms = predicted_change & ~observed_change
+        change_codes = (
+            hits.astype(np.int8)
+            + 2 * wrong.astype(np.int8)
+            + 3 * misses.astype(np.int8)
+            + 4 * false_alarms.astype(np.int8)
+        )
+        confusion_codes = np.array(
+            [
+                class_lookup[int(t)] * class_count + class_lookup[int(p)]
+                for t, p in zip(target_values, pred_values, strict=True)
+            ],
+            dtype=np.int64,
+        )
+        codes = change_codes.astype(np.int64) * confusion_size + confusion_codes
+        tables = np.zeros((len(unique_blocks), 5 * confusion_size), dtype=np.int64)
+        for block_index in range(len(unique_blocks)):
+            tables[block_index] = np.bincount(
+                codes[inverse == block_index], minlength=5 * confusion_size
+            )
+        return tables
+
+    tables_a = block_tables(first)
+    tables_b = block_tables(second)
+
+    def metrics(table: np.ndarray) -> tuple[float, float, float]:
+        joint = table.reshape(5, class_count, class_count)
+        changes = joint.sum(axis=(1, 2))
+        hit, wrong, miss, false_alarm = changes[1:]
+        fom_denominator = hit + wrong + miss + false_alarm
+        fom = float(hit / fom_denominator) if fom_denominator else 1.0
+        confusion = joint.sum(axis=0)
+        total = max(1, int(confusion.sum()))
+        oa = float(np.trace(confusion) / total)
+        diagonal = np.diag(confusion).astype(np.float64)
+        precision_denominator = confusion.sum(axis=0)
+        recall_denominator = confusion.sum(axis=1)
+        f1 = np.divide(
+            2 * diagonal,
+            precision_denominator + recall_denominator,
+            out=np.zeros(class_count, dtype=np.float64),
+            where=(precision_denominator + recall_denominator) > 0,
+        )
+        return fom, oa, float(np.mean(f1))
+
+    rng = np.random.default_rng(seed)
+    differences = np.empty((n_resamples, 3), dtype=np.float64)
+    for index in range(n_resamples):
+        weights = rng.multinomial(
+            len(unique_blocks), np.full(len(unique_blocks), 1.0 / len(unique_blocks))
+        )
+        differences[index] = np.subtract(
+            metrics(weights @ tables_a), metrics(weights @ tables_b)
+        )
+    lower = 100 * alpha / 2
+    upper = 100 * (1 - alpha / 2)
+    names = ("change_figure_of_merit", "overall_accuracy", "macro_f1")
+    return {
+        "method": "paired_spatial_block_bootstrap_difference",
+        "sampling_unit": "shared_spatial_block_triplets",
+        "comparison": "prediction_a_minus_prediction_b",
+        "n_resamples": int(n_resamples),
+        "seed": int(seed),
+        "alpha": float(alpha),
+        "pixel_count": int(mask.sum()),
+        "block_size_pixels": int(block_size),
+        "block_count": int(len(unique_blocks)),
+        **{
+            name: {
+                "lower": float(np.percentile(differences[:, index], lower)),
+                "median": float(np.percentile(differences[:, index], 50)),
+                "upper": float(np.percentile(differences[:, index], upper)),
+            }
+            for index, name in enumerate(names)
         },
     }

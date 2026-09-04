@@ -44,7 +44,7 @@ Pareto-frontier claim is withdrawn pending rerun with independent morphology
 objectives. GeoFM-LDN was stronger on the legacy 2024 two-step open-loop
 historical target, but that is a withdrawn binary-FoM continuity result. All
 quantitative rankings must be regenerated with strict multi-class FoM, zero
-models and paired-pixel bootstrap.
+models, spatial-block bootstrap and paired model-difference intervals.
 
 ## Before submission
 

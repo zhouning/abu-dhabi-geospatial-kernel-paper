@@ -165,15 +165,16 @@
     "planning_optimization": {
       "purpose": "compare feasible plans under one shared objective and constraint set",
       "objective_terms": [
+        "ecological_conversion_rate",
         "new_built_mean_major_road_distance_m",
-        "new_built_mean_prior_built_distance_m",
-        "built_components_per_1000_pixels",
-        "new_built_leapfrog_rate"
+        "new_built_leapfrog_rate",
+        "removed_built_pixels"
       ],
       "descriptive_outcomes": [
         "demand_total_variation",
-        "ecological_conversion_rate",
         "new_built_neighbor_fraction",
+        "new_built_mean_prior_built_distance_m",
+        "built_components_per_1000_pixels",
         "built_gain_pixels",
         "green_gain_pixels",
         "removed_built_pixels"
@@ -190,7 +191,8 @@
     "action_shuffled",
     "constraint_deleted",
     "spatial_driver_shuffled",
-    "paired_pixel_bootstrap"
+    "spatial_block_bootstrap",
+    "paired_model_difference_bootstrap"
   ],
   "independent_validation": {
     "status": "pending_authoritative_or_independent_change_product",

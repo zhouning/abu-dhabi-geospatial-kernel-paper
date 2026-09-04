@@ -2,7 +2,7 @@
 
 ## Evidence integrity
 
-- [ ] Historical numbers have been regenerated with strict multi-class FoM and paired-pixel bootstrap (blocked until the raster bundle is restored).
+- [ ] Historical numbers have been regenerated with strict multi-class FoM, spatial-block bootstrap and paired model-difference intervals (blocked until the raster bundle is restored).
 - [ ] 2031 planning numbers have been regenerated with the revised independent objective set (blocked until the raster bundle is restored).
 - [x] 2027–2031 Geospatial Kernel trajectory numbers match the planning aggregate.
 - [ ] The versioned output audit covers the same run as the 45-raster public delivery (the earlier 240-raster audit is a separate 2025–2030 run).

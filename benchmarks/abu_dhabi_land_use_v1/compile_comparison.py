@@ -16,6 +16,7 @@ import rasterio
 from shared import (
     evaluate_prediction,
     paired_pixel_bootstrap_ci,
+    paired_model_difference_bootstrap_ci,
     random_feasible_allocation,
 )
 
@@ -23,11 +24,14 @@ HERE = Path(__file__).resolve().parent
 PREDICTION_ROOT = HERE / "artifacts/predictions"
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 INPUT_ROOT = HERE / "artifacts/gee"
-DEFAULT_OUTPUT = HERE / "comparison_report.json"
-DEFAULT_MARKDOWN = HERE / "comparison_report.md"
+# Versioned outputs prevent a new rerun from mutating the archived legacy
+# report.  Pass --output explicitly when publishing a numbered release.
+DEFAULT_OUTPUT = HERE / "comparison_report_current.json"
+DEFAULT_MARKDOWN = HERE / "comparison_report_current.md"
 MODELS = ("geosos_flus", "geospatial_kernel", "paper58")
 YEARS = (2023, 2024)
 BOOTSTRAP_RESAMPLES = 1000
+BOOTSTRAP_BLOCK_SIZE_PIXELS = 8
 MODEL_DISPLAY_NAMES = {
     "geosos_flus": "GeoSOS-FLUS",
     "geospatial_kernel": "Geospatial Kernel",
@@ -103,7 +107,7 @@ def _aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def _aggregate_bootstrap(rows: list[dict[str, Any]]) -> dict[str, Any]:
-    """Summarize per-seed paired-pixel bootstrap intervals."""
+    """Summarize per-seed spatial-block bootstrap intervals."""
 
     result: dict[str, Any] = {}
     for metric in ("change_figure_of_merit", "overall_accuracy", "macro_f1"):
@@ -115,6 +119,60 @@ def _aggregate_bootstrap(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "per_seed": intervals,
         }
     return result
+
+
+def _aggregate_difference_bootstrap(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summarize paired model-difference intervals over frozen seeds."""
+
+    result: dict[str, Any] = {}
+    for metric in ("change_figure_of_merit", "overall_accuracy", "macro_f1"):
+        intervals = [row[metric] for row in rows]
+        result[metric] = {
+            "lower_mean": statistics.mean(float(value["lower"]) for value in intervals),
+            "median_mean": statistics.mean(float(value["median"]) for value in intervals),
+            "upper_mean": statistics.mean(float(value["upper"]) for value in intervals),
+            "per_seed": intervals,
+        }
+    return result
+
+
+def _dynamic_interpretation(
+    summaries: dict[str, dict[str, dict[str, Any]]],
+    deltas: dict[str, dict[str, float]],
+) -> list[str]:
+    """Generate statements only from computed values; never pre-write rankings."""
+
+    lines: list[str] = []
+    for year in YEARS:
+        key = str(year)
+        ranked = sorted(
+            MODELS,
+            key=lambda model: summaries[model][key]["change_figure_of_merit"]["mean"],
+            reverse=True,
+        )
+        labels = [MODEL_DISPLAY_NAMES[model] for model in ranked]
+        lines.append(
+            f"Computed strict transition FoM ranking for {year}: " + " > ".join(labels) + "."
+        )
+        for left, right in (
+            ("geospatial_kernel", "geosos_flus"),
+            ("paper58", "geosos_flus"),
+            ("paper58", "geospatial_kernel"),
+        ):
+            delta = deltas[key][f"{left}_minus_{right}_change_fom"]
+            direction = "above" if delta > 0 else "below" if delta < 0 else "equal to"
+            lines.append(
+                f"{MODEL_DISPLAY_NAMES[left]} is {direction} {MODEL_DISPLAY_NAMES[right]} "
+                f"by {abs(delta):.6f} strict FoM at {year}."
+            )
+    lines.extend(
+        [
+            "Persistence and random-minimum-change controls are reported as prespecified zero models.",
+            "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
+            "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects.",
+        ]
+    )
+    return lines
 
 
 def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
@@ -147,7 +205,11 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
     summaries = {}
     ensembles = {}
     bootstrap = {}
+    pairwise_bootstrap: dict[str, Any] = {}
     baseline_bootstrap: dict[str, Any] = {"persistence": {}, "random_allocation": {}}
+    prediction_cache: dict[str, dict[int, dict[int, np.ndarray]]] = {
+        model: {seed: {} for seed in (31, 47, 73)} for model in MODELS
+    }
     for model in MODELS:
         summaries[model] = {}
         ensembles[model] = {}
@@ -168,6 +230,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 prediction, _ = _read(
                     PREDICTION_ROOT / model / f"seed_{seed}/prediction_{year}.tif"
                 )
+                prediction_cache[model][seed][year] = prediction[0]
                 evaluation = evaluate_prediction(
                     prediction[0],
                     origin_state=origin[0],
@@ -186,6 +249,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                         valid_mask=valid,
                         n_resamples=BOOTSTRAP_RESAMPLES,
                         seed=seed + year,
+                        block_size=BOOTSTRAP_BLOCK_SIZE_PIXELS,
                     )
                 )
             summaries[model][str(year)] = _aggregate(evaluation_rows)
@@ -208,6 +272,34 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                     requested_counts=target_counts,
                     reliability_mask=reliability[0].astype(bool),
                 ),
+            }
+
+    for year in YEARS:
+        year_key = str(year)
+        pairwise_bootstrap[year_key] = {}
+        for left, right in (
+            ("geospatial_kernel", "geosos_flus"),
+            ("paper58", "geosos_flus"),
+            ("paper58", "geospatial_kernel"),
+        ):
+            seed_rows = []
+            for seed in (31, 47, 73):
+                seed_rows.append(
+                    paired_model_difference_bootstrap_ci(
+                        prediction_cache[left][seed][year],
+                        prediction_cache[right][seed][year],
+                        origin_state=origin[0],
+                        observed_target=observed[year],
+                        valid_mask=valid,
+                        n_resamples=BOOTSTRAP_RESAMPLES,
+                        seed=200000 + seed + year,
+                        block_size=BOOTSTRAP_BLOCK_SIZE_PIXELS,
+                    )
+                )
+            pairwise_bootstrap[year_key][f"{left}_minus_{right}"] = {
+                "model_a": left,
+                "model_b": right,
+                "summary": _aggregate_difference_bootstrap(seed_rows),
             }
 
     persistence = {}
@@ -235,6 +327,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
             valid_mask=valid,
             n_resamples=BOOTSTRAP_RESAMPLES,
             seed=10000 + year,
+            block_size=BOOTSTRAP_BLOCK_SIZE_PIXELS,
         )
         persistence[str(year)] = persistence_eval
         baseline_bootstrap["persistence"][str(year)] = persistence_bootstrap
@@ -267,6 +360,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                     valid_mask=valid,
                     n_resamples=BOOTSTRAP_RESAMPLES,
                     seed=110000 + seed + year,
+                    block_size=BOOTSTRAP_BLOCK_SIZE_PIXELS,
                 )
             )
         random_baseline[str(year)] = _aggregate(random_rows)
@@ -298,6 +392,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "seeds": [31, 47, 73],
         "summaries": summaries,
         "bootstrap_95ci": bootstrap,
+        "pairwise_bootstrap_95ci": pairwise_bootstrap,
         "ensembles": ensembles,
         "persistence": persistence,
         "persistence_summary": {
@@ -315,20 +410,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "random_baseline": random_baseline,
         "baseline_bootstrap_95ci": baseline_bootstrap,
         "mean_change_fom_deltas": deltas,
-        "interpretation": [
-            "Geospatial Kernel has the strongest one-step 2023 strict transition FoM among learned candidates.",
-            "GeoFM-LDN has the strongest two-step open-loop 2024 strict transition FoM among learned candidates.",
-            "Persistence and random-feasible controls are reported as prespecified zero models.",
-            "Both proposed candidates exceed external GeoSOS-FLUS mean change FoM in both years.",
-            (
-                "High-confidence sensitivity FoM is low for all candidates; full-grid gains "
-                "may partly reflect Dynamic World label volatility."
-            ),
-            (
-                "These results establish historical conditional allocation skill, not future "
-                "policy prediction or causal planning effects."
-            ),
-        ],
+        "interpretation": _dynamic_interpretation(summaries, deltas),
     }
     output_path.write_text(
         json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
@@ -344,7 +426,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         f"生成时间：{report['created_at']}",
         "",
-        "同一 100 m 网格、需求动作、硬约束和评价器下的三随机种子均值；严格 FoM 与两个零模型均已列出。",
+        "同一 100 m 网格、需求动作、硬约束和评价器下的三随机种子均值；严格 FoM 与两个零模型均已列出。区间采用 8×8 像元空间块 bootstrap，并提供同一空间块上的模型差值区间。",
         "",
         "| 年份 | 模型 | change FoM | change F1 | OA | macro-F1 | demand TV |",
         "|---:|---|---:|---:|---:|---:|---:|",
@@ -381,6 +463,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "- 2023 单步和 2024 两步开环均同时报告严格多类别 FoM 与旧二值 FoM。",
             "- 持久性与随机可行分配是预先声明的零模型，不得从主模型表中省略。",
+            "- 模型比较应读取 JSON 中的 pairwise_bootstrap_95ci，而不是比较两个边际区间是否重叠。",
             "- 高置信度标签子集上的 FoM 若较低，必须保留 Dynamic World 标签噪声警告。",
             "- 这是历史条件分配结果，不是未来政策预测，也不是因果效应证据。",
             "",

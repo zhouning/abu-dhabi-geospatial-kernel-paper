@@ -14,15 +14,40 @@ except ImportError:  # Direct script execution from the benchmark directory.
     from shared import CLASSES, class_counts
 
 
+# The frontier deliberately spans distinct planning dimensions rather than
+# four correlated distance summaries.  Ecological conversion is a public-data
+# proxy (not a statutory habitat or water-budget measure); built retirement is
+# a stability proxy and should be replaced by authoritative redevelopment data
+# when available.  Demand totals and the allocator's neighbourhood term are
+# descriptive outcomes, not Pareto objectives.
 OBJECTIVES = {
-    # These objectives are not directly optimized by the Kernel allocator and
-    # are therefore less circular than demand totals or the 7x7 neighbourhood
-    # term used in its score.  Demand satisfaction, ecological conversion and
-    # net gains remain descriptive scenario outcomes.
+    "ecological_conversion_rate": "min",
     "new_built_mean_major_road_distance_m": "min",
-    "new_built_mean_prior_built_distance_m": "min",
-    "built_components_per_1000_pixels": "min",
     "new_built_leapfrog_rate": "min",
+    "removed_built_pixels": "min",
+}
+
+OBJECTIVE_METADATA = {
+    "ecological_conversion_rate": {
+        "direction": "min",
+        "dimension": "ecological_proxy",
+        "interpretation": "Fraction of new built cells originating in public vegetation/ecological proxy classes.",
+    },
+    "new_built_mean_major_road_distance_m": {
+        "direction": "min",
+        "dimension": "accessibility_proxy",
+        "interpretation": "Mean distance of new built cells to mapped major roads.",
+    },
+    "new_built_leapfrog_rate": {
+        "direction": "min",
+        "dimension": "morphology",
+        "interpretation": "Fraction of new built cells beyond 500 m from pre-existing built cells.",
+    },
+    "removed_built_pixels": {
+        "direction": "min",
+        "dimension": "stability_proxy",
+        "interpretation": "Built cells in 2024 that are non-built in the candidate state.",
+    },
 }
 
 
