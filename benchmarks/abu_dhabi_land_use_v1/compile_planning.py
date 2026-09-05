@@ -254,7 +254,7 @@ def compile_report(
     report = {
         "schema": "gwm.abu_dhabi_planning_comparison.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
-        "metric_version": "independent_morphology_objectives_v2",
+        "metric_version": "frozen_balanced_objectives_v3",
         "revision_status": "rerun_from_current_rasters",
         "pareto_status": "conditional_on_declared_objectives",
         "reproducibility_status": "complete_if_all_input_and_model_artifacts_are_present",
@@ -283,7 +283,7 @@ def compile_report(
         "claim_boundary": [
             "Scenario demands are planner-supplied stress tests, not forecasts.",
             (
-                "Ecological conversion, accessibility and stability quantities are "
+                "Accessibility, compactness, fragmentation and vegetation-balance quantities are "
                 "public-data proxies, not monetary, statutory or equity impacts."
             ),
             (
@@ -313,8 +313,8 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"以下为 {report['final_year']} 年三随机种子均值。Pareto 表示在冻结目标集合下未被其他方案全面支配。",
         "",
         (
-            "| 模型 | 情景 | demand TV | 集成目标偏差(px) | 生态转建成率 | 新建成邻域比例 | "
-            "距主干路(m) | 距原建成区(m) | 建成斑块/千像元 | 蛙跳率 | Pareto |"
+            "| 模型 | 情景 | demand TV | 集成目标偏差(px) | 绿色增益(px) | 距主干路(m) | "
+            "距原建成区(m) | 建成斑块/千像元 | 生态转建成率 | 蛙跳率 | Pareto |"
         ),
         "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|:---:|",
     ]
@@ -326,11 +326,11 @@ def render_markdown(report: dict[str, Any]) -> str:
             f"| {labels[row['model_id']]} | {SCENARIO_LABELS.get(row['scenario_id'], row['scenario_id'])} | "
             f"{row['demand_total_variation']:.5f} | "
             f"{ensemble_metrics['demand_l1_error_pixels']} | "
-            f"{row['ecological_conversion_rate']:.4f} | "
-            f"{row['new_built_neighbor_fraction']:.4f} | "
+            f"{row['green_gain_pixels']:.0f} | "
             f"{row['new_built_mean_major_road_distance_m']:.1f} | "
             f"{row['new_built_mean_prior_built_distance_m']:.1f} | "
             f"{row['built_components_per_1000_pixels']:.3f} | "
+            f"{row['ecological_conversion_rate']:.4f} | "
             f"{row['new_built_leapfrog_rate']:.3f} | "
             f"{'是' if row['candidate_id'] in frontier else '否'} |"
         )
@@ -341,9 +341,9 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "- 三组需求是规划压力测试，不是对阿布扎比未来的预测。",
             "- 生态和基础设施指标来自公开数据代理，不等于法定或货币化影响。",
-            "- Pareto 结果只在预先声明的生态代理、可达性、蛙跳形态和建成稳定性指标、100 m 网格和公共约束下成立。",
-            "- 生态转化率、可达性和建成退出均为公开数据代理，不代表法定生态、水资源、成本或公平影响。",
-            "- 斑块密度、邻域比例和需求满足是描述性诊断，不参与当前 Pareto 判定。",
+            "- Pareto 结果只在冻结的可达性、紧凑性、碎片化和植被平衡目标、100 m 网格和公共约束下成立。",
+            "- 斑块密度是碎片化目标；生态转化率、500 m 蛙跳率、邻域比例和建成退出是描述性诊断。",
+            "- 集成栅格采用三种子多数投票，可能不再精确满足动作总量；表中的集成目标偏差是对此的显式审计。",
             "- ‘Moderate growth’保留 legacy compact 路径名，但动作本身不含紧凑性优化。",
             "- FLUS 的既有建成退出是其冻结转换规则下的模型行为，未做事后修正。",
             "",

@@ -19,12 +19,24 @@ REPO = HERE.parents[1]
 OUT = HERE / "reproducibility"
 
 
-def sha256(path: Path) -> str:
+TEXT_SUFFIXES = {
+    ".c", ".cc", ".cpp", ".h", ".hpp", ".ini", ".json", ".md", ".py",
+    ".rst", ".toml", ".txt", ".yaml", ".yml",
+}
+
+
+def _hash_bytes(path: Path) -> tuple[str, str]:
+    """Hash text with canonical LF endings so Windows checkouts verify identically."""
+
+    raw = path.read_bytes()
+    if path.suffix.lower() in TEXT_SUFFIXES:
+        raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        mode = "text_lf_normalized"
+    else:
+        mode = "raw"
     digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    digest.update(raw)
+    return digest.hexdigest(), mode
 
 
 def _add(paths: set[Path], candidates: Iterable[Path]) -> None:
@@ -82,12 +94,13 @@ def build() -> dict[str, object]:
                     "path": rel,
                     "role": role,
                     "bytes": path.stat().st_size,
-                    "sha256": sha256(path),
+                    "sha256": _hash_bytes(path)[0],
+                    "hash_mode": _hash_bytes(path)[1],
                 }
             )
     records.sort(key=lambda row: str(row["path"]))
     manifest = {
-        "schema": "gwm.abu_dhabi_reproducibility_manifest.v1",
+        "schema": "gwm.abu_dhabi_reproducibility_manifest.v2",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "repository_root": ".",
         "generated_by": "benchmarks/abu_dhabi_land_use_v1/reproducibility/build_reproducibility_manifest.py",
@@ -96,7 +109,8 @@ def build() -> dict[str, object]:
     }
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "MANIFEST.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    sums = "\n".join(f"{row['sha256']}  {row['path']}" for row in records) + "\n"
+    sums = "# Text files are hashed after CRLF/CR -> LF normalization; see MANIFEST.json.\n"
+    sums += "\n".join(f"{row['sha256']}  {row['path']}" for row in records) + "\n"
     (OUT / "SHA256SUMS").write_text(sums, encoding="utf-8")
     return manifest
 

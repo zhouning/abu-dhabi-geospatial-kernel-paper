@@ -2,8 +2,8 @@
   "schema": "gwm.abu_dhabi_land_use_benchmark.v1",
   "benchmark_id": "abu-dhabi-land-use-v1",
   "title": "Abu Dhabi Bounded Land-Use Simulation and Optimization Benchmark",
-  "status": "revision_blocked_missing_artifacts_external_validation_pending",
-  "revision_status": "review_response_protocol_v2",
+  "status": "public_bundle_complete_authoritative_validation_pending",
+  "revision_status": "review_response_protocol_v3",
   "comparability_status": "pipeline_comparison_only_until_matched_flus_rerun",
   "model_display_names": {
     "geosos_flus": "GeoSOS-FLUS",
@@ -118,6 +118,7 @@
       "id": "geosos_flus",
       "role": "traditional_ann_suitability_plus_ca_allocation",
       "comparability_note": "Original run used seven continuous drivers and frozen default console settings; this is not information-balanced with the 25-feature Kernel until a matched-input rerun is completed.",
+      "binary_boundary": "Vendored Mach-O arm64 console; provenance cannot be traced to a reproducible upstream source/version and is not claimed bitwise equivalent to Liu et al. (2017); Windows/Linux require a compatible external build.",
       "frozen_parameters": {
         "ann_training_years": [2021],
         "ann_hidden_neurons": 8,
@@ -165,19 +166,18 @@
     "planning_optimization": {
       "purpose": "compare feasible plans under one shared objective and constraint set",
       "objective_terms": [
-        "ecological_conversion_rate",
         "new_built_mean_major_road_distance_m",
-        "new_built_leapfrog_rate",
-        "removed_built_pixels"
+        "new_built_mean_prior_built_distance_m",
+        "built_components_per_1000_pixels",
+        "green_gain_pixels"
       ],
       "descriptive_outcomes": [
         "demand_total_variation",
         "new_built_neighbor_fraction",
-        "new_built_mean_prior_built_distance_m",
-        "built_components_per_1000_pixels",
         "built_gain_pixels",
-        "green_gain_pixels",
-        "removed_built_pixels"
+        "removed_built_pixels",
+        "ecological_conversion_rate",
+        "new_built_leapfrog_rate"
       ],
       "reporting": "Pareto frontier plus every descriptive outcome; no hidden weighted aggregate."
     }

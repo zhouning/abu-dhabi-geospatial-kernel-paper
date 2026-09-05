@@ -1,0 +1,483 @@
+{
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "created_at": "2026-09-05T11:26:46.295686+00:00",
+  "device": "cpu",
+  "epochs": 8,
+  "losses": [
+    "change_weighted_embedding_cosine",
+    "semantic_cross_entropy",
+    "patch_demand_consistency",
+    "hard_constraint_state_consistency"
+  ],
+  "model_id": "paper58",
+  "revision_status": "current_protocol_run",
+  "schema": "paper58.abu_dhabi_land_use_run.v1",
+  "seeds": [
+    {
+      "checkpoint_path": "artifacts/predictions/paper58/seed_31/paper58_ldn.pt",
+      "decoder": {
+        "fit_seconds": 0.4421491250395775,
+        "label_years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021
+        ],
+        "training_accuracy": 0.8955360549408623,
+        "training_samples": 39315,
+        "validation_2022_accuracy": 0.8864862152873592
+      },
+      "seed": 31,
+      "training": {
+        "checkpoint_sha256": "46aa9c751b5cd5262fb94955ee241903741ed3a2bbb9ccb13e3676fc528f28f2",
+        "epochs": 0,
+        "loaded_checkpoint": "artifacts/predictions/paper58/seed_31/paper58_ldn.pt"
+      },
+      "years": [
+        {
+          "allocation": {
+            "moved_pixels": 3093,
+            "target_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            },
+            "binary_change_figure_of_merit": 0.1608316771135912,
+            "change_f1": 0.2770973264849203,
+            "change_false_alarms": 2041,
+            "change_figure_of_merit": 0.1560923406207002,
+            "change_hits": 1021,
+            "change_misses": 3448,
+            "change_wrong_transitions": 31,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.844869592217688,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9307628628051074,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 3093,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 3,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4996837322078984,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9990934403937058,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 3
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/paper58/seed_31/prediction_2023.tif",
+          "target_year": 2023
+        },
+        {
+          "allocation": {
+            "moved_pixels": 3741,
+            "target_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            },
+            "binary_change_figure_of_merit": 0.26943822089453157,
+            "change_f1": 0.42449993463197805,
+            "change_false_alarms": 3587,
+            "change_figure_of_merit": 0.2626338063231267,
+            "change_hits": 3165,
+            "change_misses": 5217,
+            "change_wrong_transitions": 82,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7689917848101163,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8885432606677872,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 6834,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.018518518518518517,
+              "change_f1": 0.03636363636363636,
+              "change_false_alarms": 52,
+              "change_figure_of_merit": 0.018518518518518517,
+              "change_hits": 2,
+              "change_misses": 54,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.5088582147392604,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9963934537783675,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 54
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/paper58/seed_31/prediction_2024.tif",
+          "target_year": 2024
+        }
+      ]
+    },
+    {
+      "checkpoint_path": "artifacts/predictions/paper58/seed_47/paper58_ldn.pt",
+      "decoder": {
+        "fit_seconds": 0.29963662498630583,
+        "label_years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021
+        ],
+        "training_accuracy": 0.8934249014371105,
+        "training_samples": 39315,
+        "validation_2022_accuracy": 0.8876527105335775
+      },
+      "seed": 47,
+      "training": {
+        "checkpoint_sha256": "b066bd0f473b6896ae08bd8b47c6490d6e942ab08f11197b525cbbad9499a9b1",
+        "epochs": 0,
+        "loaded_checkpoint": "artifacts/predictions/paper58/seed_47/paper58_ldn.pt"
+      },
+      "years": [
+        {
+          "allocation": {
+            "moved_pixels": 3093,
+            "target_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            },
+            "binary_change_figure_of_merit": 0.16851338873499538,
+            "change_f1": 0.2884235480047412,
+            "change_false_alarms": 1998,
+            "change_figure_of_merit": 0.1634349030470914,
+            "change_hits": 1062,
+            "change_misses": 3405,
+            "change_wrong_transitions": 33,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.8458047284816783,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.931816471414595,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 3093,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 2,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.49968847419341156,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9991258175225021,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 2
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/paper58/seed_47/prediction_2023.tif",
+          "target_year": 2023
+        },
+        {
+          "allocation": {
+            "moved_pixels": 3741,
+            "target_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            },
+            "binary_change_figure_of_merit": 0.27877622669898855,
+            "change_f1": 0.4360047064975814,
+            "change_false_alarms": 3499,
+            "change_figure_of_merit": 0.27192175875616487,
+            "change_hits": 3253,
+            "change_misses": 5129,
+            "change_wrong_transitions": 82,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7682314829405278,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8907508215638562,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 6834,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.017857142857142856,
+              "change_f1": 0.03508771929824561,
+              "change_false_alarms": 56,
+              "change_figure_of_merit": 0.017857142857142856,
+              "change_hits": 2,
+              "change_misses": 54,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.5060468445262551,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9962573576945324,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 58
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/paper58/seed_47/prediction_2024.tif",
+          "target_year": 2024
+        }
+      ]
+    },
+    {
+      "checkpoint_path": "artifacts/predictions/paper58/seed_73/paper58_ldn.pt",
+      "decoder": {
+        "fit_seconds": 0.3445381249766797,
+        "label_years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021
+        ],
+        "training_accuracy": 0.8920513798804528,
+        "training_samples": 39315,
+        "validation_2022_accuracy": 0.8865113012066327
+      },
+      "seed": 73,
+      "training": {
+        "checkpoint_sha256": "37881646bac41da7c99a8eef1dd9b43635b9cfc58e32be79a2a0b5e64784ba6d",
+        "epochs": 0,
+        "loaded_checkpoint": "artifacts/predictions/paper58/seed_73/paper58_ldn.pt"
+      },
+      "years": [
+        {
+          "allocation": {
+            "moved_pixels": 3093,
+            "target_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            },
+            "binary_change_figure_of_merit": 0.17067530064754857,
+            "change_f1": 0.2915843540102726,
+            "change_false_alarms": 1986,
+            "change_figure_of_merit": 0.16512488436632747,
+            "change_hits": 1071,
+            "change_misses": 3393,
+            "change_wrong_transitions": 36,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.8463246908078822,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9320798735669669,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 3093,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 7,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4994939965419156,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9989639318785211,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 7
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/paper58/seed_73/prediction_2023.tif",
+          "target_year": 2023
+        },
+        {
+          "allocation": {
+            "moved_pixels": 3741,
+            "target_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            },
+            "binary_change_figure_of_merit": 0.28511424731182794,
+            "change_f1": 0.4437181330892927,
+            "change_false_alarms": 3440,
+            "change_figure_of_merit": 0.2778057795698925,
+            "change_hits": 3307,
+            "change_misses": 5070,
+            "change_wrong_transitions": 87,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7708034063165835,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8921681760028096,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 6834,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.02,
+              "change_f1": 0.0392156862745098,
+              "change_false_alarms": 44,
+              "change_figure_of_merit": 0.02,
+              "change_hits": 2,
+              "change_misses": 54,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.5129556340505106,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9966656459460379,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 46
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/paper58/seed_73/prediction_2024.tif",
+          "target_year": 2024
+        }
+      ]
+    }
+  ],
+  "state_writeback": true,
+  "status": "complete",
+  "test_label_access_during_fit": false,
+  "wall_seconds": 5.922598417149857
+}

@@ -10,12 +10,12 @@ This study is not an official Abu Dhabi planning forecast. Correspondence: Ning 
 
 ## Abstract
 
-Urban land-change models test how development demand may be distributed across space. Their planning value depends on explicit actions, hard constraints and consistent multi-year state transitions. We examine Geospatial Kernel, the algorithmic core of a Geospatial World Model, as an auditable state–action–constraint transition system for urban land-cover allocation. The Abu Dhabi benchmark specifies annual public land-cover products from 2017–2024, a 100-m grid, three computational seeds, destination-correct multi-class change Figure of Merit, persistence and minimum-change controls, spatial-block bootstrap intervals, and a planning objective set spanning ecological conversion, accessibility, leapfrog morphology and built-state stability. The implementation contribution is an inspectable proposal–projection–writeback execution boundary with fail-closed data and output audits. On the analysis workstation, the complete aligned public raster bundle, three-model prediction rasters and GeoFM-LDN checkpoints were recovered from the companion GIS data workspace and re-evaluated with the revised protocol; the repository continues to keep these large files external to version control. The resulting rankings are conditional pipeline comparisons, not claims of intrinsic learner superiority or official Abu Dhabi forecasting. The benchmark keeps public land-cover stress tests separate from authoritative statutory land use.
+Urban land-change models test how development demand may be distributed across space. Their planning value depends on explicit actions, hard constraints and consistent multi-year state transitions. We examine Geospatial Kernel, the algorithmic core of a Geospatial World Model, as an auditable state–action–constraint transition system for urban land-cover allocation. The Abu Dhabi benchmark specifies annual public land-cover products from 2017–2024, a 100-m grid, three computational seeds, destination-correct multi-class change Figure of Merit, persistence and minimum-change controls, spatial-block bootstrap intervals, and a frozen planning objective set spanning accessibility, compactness, fragmentation and vegetation balance. The implementation contribution is an inspectable proposal–projection–writeback execution boundary with fail-closed data and output audits. The public benchmark bundle, model source, checkpoints, historical prediction rasters, planning rasters, vector change packages and mechanism-control report are released with the repository and addressed by a reproducibility manifest. The resulting rankings are conditional pipeline comparisons, not claims of intrinsic learner superiority or official Abu Dhabi forecasting. The benchmark keeps public land-cover stress tests separate from authoritative statutory land use.
 
 ## Highlights
 
-- Geospatial Kernel separates transition proposals from constraint projection.
-- The execution contract separates learned proposals from constrained admission.
+- Geospatial Kernel separates transition proposals from constrained admission.
+- Typed state–action–constraint traces make recursive updates auditable.
 - Spatial-block uncertainty and paired model contrasts are prespecified.
 - Four planning dimensions are reported without a weighted composite score.
 - Public-data scenarios are stress tests, not statutory Abu Dhabi forecasts.
@@ -80,11 +80,11 @@ The projected raster is written as the next `KernelState`. Every step records a 
 
 ### Baselines and common evaluator
 
-GeoSOS-FLUS was run through the external FLUS console using seven continuous drivers: normalized row and column coordinates, elevation, slope, VIIRS radiance, distance to roads and distance to major roads. Its ANN suitability surface was passed to a cellular-automata allocation stage with the common class totals and public hard mask. The archived run used one 2021 training year, eight ANN hidden neurons, a 3 × 3 CA neighbourhood, neighbourhood strength 1.0, acceleration factor 0.1 and 1,000 iterations. Its frozen transition matrix protected water and wetland but did not prohibit built-to-non-built transitions; this configuration is recorded as a baseline limitation rather than a calibrated Abu Dhabi model.
+GeoSOS-FLUS was run through the external FLUS console using seven continuous drivers: normalized row and column coordinates, elevation, slope, VIIRS radiance, distance to roads and distance to major roads. Its ANN suitability surface was passed to a cellular-automata allocation stage with the common class totals and public hard mask. The archived run used one 2021 training year, eight ANN hidden neurons, a 3 × 3 CA neighbourhood, neighbourhood strength 1.0, acceleration factor 0.1 and 1,000 iterations. Its frozen transition matrix protected water and wetland but did not prohibit built-to-non-built transitions; this configuration is recorded as a baseline limitation rather than a calibrated Abu Dhabi model. The supplied Mach-O executable cannot be traced to a reproducible upstream release or source commit, so we do not claim bitwise equivalence to the Liu et al. (2017) FLUS implementation.
 
-GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network) was trained as a demand-conditioned latent-dynamics network on AlphaEarth embeddings. A logistic semantic decoder maps the predicted embedding to six class probabilities, and the constrained allocation step converts those probabilities to a categorical raster. The latent and categorical states are both recursively carried into the next year. GeoFM-LDN is an internal benchmark implementation in this manuscript; the name describes its architecture and does not attribute an external publication or performance claim.
+GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network; the repository's former `paper58` path identifier) was implemented as a demand-conditioned residual latent-dynamics network on 64-channel AlphaEarth patches. Three 128-channel convolutions use dilation rates 1, 2 and 4, followed by a 1 × 1 projection to a 64-dimensional latent state. A 12-dimensional action vector (origin and target counts for six classes) is encoded by a two-layer MLP and broadcast across the patch before concatenation with the embedding. Group normalization and GELU activations are used in the residual blocks. A scikit-learn logistic-regression decoder maps the predicted latent embedding to six semantic classes. Training uses 64 × 64 patches, batch size 2, eight epochs, AdamW with learning rate $3\times10^{-4}$ and weight decay $10^{-4}$; the loss is the weighted sum of cosine embedding loss, 0.5 semantic cross-entropy, 0.1 demand-consistency loss and 0.2 hard-constraint consistency loss. The released checkpoints correspond to seeds 31, 47 and 73 and were trained in August 2026. The default reproduction loads these fixed checkpoints rather than retraining; the runner exposes retraining separately. During allocation, GeoFM-LDN directly calls the Geospatial Kernel `allocate_action` routine, so both methods share the same constrained projection and differ primarily in their proposal model. The comparison is therefore a proposal/pipeline comparison, not a comparison of two independent projection architectures. The name describes this benchmark implementation and does not attribute an external publication or performance claim.
 
-The common evaluator computes actual class counts, normalized demand total variation, hard-mask violations, strict multi-class change FoM, binary change FoM, change F1, overall accuracy and macro-F1 for historical runs. The strict FoM counts a hit only when the predicted destination class equals the observed destination class; wrong destination changes are retained in the denominator. It also generates persistence and minimum-change zero controls, spatial-block bootstrap intervals and paired model-difference intervals for strict FoM, overall accuracy and macro-F1. For planning runs it additionally computes ecological conversion, new-built neighbourhood fraction, built component counts, built components per 1,000 valid pixels, a 500-m leapfrog rate, distances to roads and prior built cells, infrastructure proxy distance and built retirement. Pareto membership is calculated over four distinct dimensions: ecological conversion proxy, major-road accessibility, leapfrog morphology and built-state stability.
+The common evaluator computes actual class counts, normalized demand total variation, hard-mask violations, strict multi-class change FoM, binary change FoM, change F1, overall accuracy and macro-F1 for historical runs. The strict FoM counts a hit only when the predicted destination class equals the observed destination class; wrong destination changes are retained in the denominator. It also generates persistence and minimum-change zero controls, spatial-block bootstrap intervals and paired model-difference intervals for strict FoM, overall accuracy and macro-F1. For planning runs it additionally computes ecological conversion, new-built neighbourhood fraction, built component counts, built components per 1,000 valid pixels, a 500-m leapfrog rate, distances to roads and prior built cells, infrastructure proxy distance and built retirement. Pareto membership is calculated only over the frozen four-dimensional set of major-road distance, prior-built distance, built-component density and green-cell gain; the remaining quantities are reported as descriptive diagnostics.
 
 ### Scenario actions and uncertainty
 
@@ -100,11 +100,11 @@ For each model–scenario pair, annual and cumulative differences from the 2024 
 
 The benchmark covers the Abu Dhabi city polygon represented by OpenStreetMap relation R4479763. The canonical grid is a 475 × 360 lattice in EPSG:32640 at 100-m resolution. After the common coverage and alignment checks, 79,726 cells were used for scoring. Each cell represents 1 ha. Annual Dynamic World observations from 2017 to 2024 were harmonized to six land-cover classes: water, woody vegetation, low vegetation, wetland, built and bare. AlphaEarth annual embeddings, VIIRS night-time lights, Copernicus DEM derivatives and OpenStreetMap road distances supplied transition drivers. ESA WorldCover and public OpenStreetMap geometries supplied water, wetland and infrastructure exclusion proxies.
 
-The comparison shared the canonical grid, origin states, target actions, hard masks and evaluator, but the original public-data run was not information-balanced. GeoSOS-FLUS used seven continuous drivers in its external ANN suitability model, whereas Geospatial Kernel used 25 features including current-class indicators and neighbourhood proportions; GeoFM-LDN used AlphaEarth latent embeddings. We therefore treat the historical ranking as a pipeline comparison, not evidence that one learner is intrinsically superior. A matched-input FLUS rerun is required before making model-level superiority claims. All models used seeds 31, 47 and 73. The earlier output audit reported 240 seed and ensemble rasters for a separate 2025–2030 run; the public 2025–2031 delivery is a separate artifact set and must be audited separately.
+The comparison shared the canonical grid, origin states, target actions, hard masks and evaluator, but the public-data run was not information-balanced. GeoSOS-FLUS used seven continuous drivers in its external ANN suitability model, whereas Geospatial Kernel used 25 features including current-class indicators and neighbourhood proportions; GeoFM-LDN used AlphaEarth latent embeddings and the Kernel allocator. We therefore report an unmatched-input pipeline comparison, not evidence that one learner is intrinsically superior. A matched-input FLUS rerun remains necessary for a model-level comparison. The archived FLUS console is a Mach-O arm64 executable whose original source/version cannot be independently rebuilt from this release, so FLUS results are bounded to the supplied Apple-Silicon binary and are not asserted to be bitwise equivalent to an upstream Liu et al. build. All models used seeds 31, 47 and 73.
 
 The execution trace makes the distinction between proposal and admission explicit. A Kernel step records the source state, action, probability-cube proposal, projected state, model identity, input evidence and next-state reference. The runtime checks that the action advances the source time and that the projected raster becomes the next state. This is the operational meaning of the Kernel in this study: not a claim that all GWM domains share the same learner, but a claim that they can share an auditable execution contract. The shared inputs and execution boundary are summarized in Fig. 1.
 
-### Results status and prespecified reporting
+### Historical and planning results
 
 The historical track uses observed target class totals to isolate spatial
 allocation from demand estimation. The primary metric is strict multi-class
@@ -117,19 +117,35 @@ same resampled blocks for each frozen seed. Persistence and random
 minimum-change allocation are prespecified controls.
 
 The planning track starts from the observed 2024 state and applies three
-synthetic class-count actions through 2031. The four Pareto dimensions are
-ecological conversion rate (a public proxy), mean distance of new built cells
-to major roads, 500-m leapfrog rate and removed built pixels. Built-component
-density, prior-built distance, demand error and neighbourhood fraction remain
-descriptive diagnostics. No weighted composite score is used.
+synthetic class-count actions through 2031. Before this recompilation, the
+objective set was frozen to four non-redundant dimensions: mean distance of new
+built cells to major roads (accessibility proxy), mean distance to pre-existing
+built cells (compactness proxy), built components per 1,000 valid cells
+(fragmentation) and green-cell gain (vegetation-balance direction). Ecological
+conversion, 500-m leapfrog rate, built retirement and demand error remain
+descriptive diagnostics because the exact-count projection makes some of them
+structural zeros or unstable across models. No weighted composite score is used.
+The choice follows a transparent planning logic: accessibility and proximity to
+existing development represent infrastructure-efficient urban form, component
+density penalizes spatial fragmentation, and the opposing vegetation-gain
+direction prevents a compactness-only objective from defining the frontier.
+These are measurable public-data proxies rather than claims about welfare,
+equity or statutory zoning.
 
 The recovered public-data bundle supports a complete re-scoring of the frozen
 historical rasters and a re-compilation of the 2025–2031 planning rasters. The
 strict multi-class transition FoM (mean across three seeds) was 0.1256, 0.1961
 and 0.1619 for GeoSOS-FLUS, Geospatial Kernel and GeoFM-LDN in 2023, and
-0.1782, 0.2529 and 0.2708 in 2024, respectively. Thus the Kernel led the
-one-step 2023 comparison, whereas GeoFM-LDN led the two-step 2024 open-loop
-comparison; no single model dominated both horizons.
+0.1782, 0.2529 and 0.2708 in 2024, respectively. Under this unmatched
+public-data pipeline, Geospatial Kernel had the largest 2023 value, whereas
+GeoFM-LDN had the largest 2024 value after recursive two-step rollout; no
+single model dominated both horizons. These rankings are conditional on the
+different inputs, learners and shared evaluation projection.
+
+**Table 1 | Historical allocation scores.** Values are means across the three
+frozen computational seeds; the strict multi-class change FoM is the primary
+metric and the remaining columns are diagnostics. Persistence and random
+minimum-change are prespecified controls rather than learned models.
 
 | Target year | GeoSOS-FLUS | Geospatial Kernel | GeoFM-LDN | Persistence | Random minimum-change |
 |---:|---:|---:|---:|---:|---:|
@@ -142,37 +158,71 @@ Kernel minus FLUS was 0.0703 [0.0558, 0.0866] and GeoFM-LDN minus Kernel was
 [0.0033, 0.0314]. These are conditional pipeline contrasts on public labels,
 not independent-sample significance tests. The persistence control had higher
 overall accuracy than every learned candidate (0.9436 in 2023 and 0.8938 in
-2024), illustrating why change-specific metrics are necessary.
+2024), illustrating why change-specific metrics are necessary. Figure 2 shows
+the four historical metrics alongside the persistence and random minimum-change
+controls; bars use three-seed population standard deviations, whereas the
+paired spatial-block intervals above are the uncertainty summaries used for
+model contrasts.
+
+The reliability sensitivity is substantially less favourable. Requiring both
+the origin and target Dynamic World mean top probability to exceed 0.5 leaves
+strict FoM at 0.000 for all three models in 2023; in 2024 the means are 0.004
+for GeoSOS-FLUS, 0.005 for Geospatial Kernel and 0.019 for GeoFM-LDN. This is
+a label-quality diagnostic, not an independent validation set. Dynamic World
+also reports built pixels increasing from 9,359 in 2022 to 15,598 in 2024
+(67%), while the median one-year reversion fraction is 0.3611 and the mean
+fraction of cells below confidence 0.5 is 0.5497. Test-year change counts are
+approximately twice the training-transition counts. Because the same grid
+cells recur across years and the Kernel includes coordinate features, a
+training–test memory effect cannot be excluded; the reported scores should
+therefore be interpreted as conditional agreement with the public product.
 
 The planning compiler evaluated all nine model–scenario candidates under the
-declared four-objective set. The only 2031 Pareto candidate was
-Geospatial Kernel under the green-priority-growth action. This membership is
-conditional on public ecological and road proxies, synthetic demand actions
-and the stated objective directions; it is not an official development
-recommendation or a forecast of policy outcomes. All 276 historical and
-planning prediction records passed the raster audit, including grid alignment,
-class validity, outside-mask cleanliness and hard-exclusion checks.
+frozen balanced objective set. Six candidates—each GeoSOS-FLUS scenario and
+each Geospatial Kernel scenario—were non-dominated; no GeoFM-LDN candidate was
+on this conditional frontier. The result should not be read as a model ranking:
+the frontier is sensitive to public proxy layers, synthetic actions and the
+declared directions. Geospatial Kernel had lower mean distances to roads and
+prior built cells than the other candidates, but its built-component density was
+2.92–4.28 per 1,000 valid cells, compared with 0.92–1.23 for GeoSOS-FLUS and
+3.21–4.35 for GeoFM-LDN. This fragmentation disadvantage is retained rather
+than hidden by the objective set (Fig. 3). The 2031 majority-vote ensemble L1 demand
+errors were 8, 44 and 42 pixels for Geospatial Kernel's moderate, green-priority
+and high-outward scenarios, respectively; the corresponding GeoFM-LDN errors
+were 1,580, 1,524 and 1,148 pixels and GeoSOS-FLUS errors were 2,504, 2,888
+and 2,568 pixels. Seed-level projections meet their feasible class totals, but
+majority voting can produce a different raster and therefore a non-zero ensemble
+error. All 276 historical and planning prediction records passed the raster
+audit, including grid alignment, class validity, outside-mask cleanliness and
+hard-exclusion checks. The resulting 2031 ensemble rasters and their dissolved
+cell-change footprints are shown in Fig. 5; they are scenario-conditioned
+land-cover maps, not parcel boundaries or statutory zoning maps.
 
 ### Sensitivity shows a stable but not fully explained neighbourhood contribution
 
-The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference.
+The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference. Figure 4A shows the proposal controls, while Fig. 4B–D reports runtime and planning controls.
 
 ### Mechanism controls separate learned proposal from runtime projection
 
 Mechanism controls separate the learned proposal from runtime projection, hard
 constraints and recursive writeback. They are not causal policy experiments.
-The ablation report is evaluated with the same strict evaluator and is used to
-describe which components alter allocation morphology and hard-mask behaviour;
-the controls are not treated as independent replications of a planning
-intervention.
+Deleting the action reduces mean strict FoM by 0.114 in 2023 and 0.171 in
+2024, whereas deleting the hard constraint increases it by 0.014 and 0.011,
+respectively. The former is expected because the historical task supplies
+oracle target counts; it shows that much of the measured skill belongs to the
+action-conditioned allocator rather than to a demand forecast. The latter is
+an important warning: allowing changes inside the exclusion mask can improve
+agreement with noisy labels while violating the planning contract. The
+controls therefore support an execution-level interpretation but do not prove
+that either component causes an urban outcome.
 
 ## Discussion
 
-This study positions Geospatial Kernel as a candidate execution layer for constrained spatial reasoning. The defensible contribution is that a transition proposal and a planning admission rule can be represented and inspected separately. The recovered public-data rerun shows a horizon-dependent result: the Kernel has the highest strict transition FoM at the one-step horizon, while GeoFM-LDN has the highest value after recursive two-step rollout. We therefore avoid a universal superiority claim and treat the planning frontier as conditional on declared public-data proxy objectives.
+This study positions Geospatial Kernel as a candidate execution layer for constrained spatial reasoning. The defensible contribution is that a transition proposal and a planning admission rule can be represented and inspected separately. Under the unmatched public-data pipeline, Geospatial Kernel has the largest strict transition FoM at the one-step horizon, while GeoFM-LDN has the largest value after recursive two-step rollout. We therefore avoid a universal superiority claim and treat the planning frontier as conditional on the frozen public-data proxy objectives.
 
-The proposed mechanism is explicit: the score compares the learned probability of a target class with that of the current class and adds local support from the target-class neighbourhood. The projection then resolves deficits and excesses while refusing mutable changes inside the hard mask. This can preserve existing built cells when demand is non-decreasing, but that outcome is a structural consequence of the projection and should not be interpreted as evidence of redevelopment realism. Allocator-matched controls are required before attributing morphology to the learned proposal.
+The proposed mechanism is explicit: the score compares the learned probability of a target class with that of the current class and adds local support from the target-class neighbourhood. The projection then resolves deficits and excesses while refusing mutable changes inside the hard mask. This can preserve existing built cells when demand is non-decreasing, but that outcome is a structural consequence of the projection and should not be interpreted as evidence of redevelopment realism. The balanced objective set makes a different trade-off visible: the Kernel is compact and road-accessible but has substantially higher built-component density than FLUS. Allocator-matched controls are required before attributing morphology to the learned proposal.
 
-Several limitations define the boundary of the present evidence. The six classes are remote-sensing land cover, not statutory residential, commercial or industrial land use. Dynamic World labels show substantial annual uncertainty and apparent turnover, and the public road, wetland and protected-area layers are proxies rather than Abu Dhabi planning records. Future drivers are frozen at 2024, no observed 2025–2031 labels exist for validation and the scenario targets are synthetic planner-supplied actions. The three-seed summaries quantify stochastic variation but are not population-level uncertainty intervals. The completed controls are public-data stress tests with matched seeds rather than randomized interventions on real planning decisions, and several variants alter more than one implementation detail at a time. We therefore report them as evidence consistent with the execution contract rather than as causal attribution.
+Several limitations define the boundary of the present evidence. The six classes are remote-sensing land cover, not statutory residential, commercial or industrial land use. Dynamic World labels show substantial annual uncertainty and apparent turnover, and the public road, wetland and protected-area layers are proxies rather than Abu Dhabi planning records. Future drivers are frozen at 2024, no independent 2023–2024 change product is available and no observed 2025–2031 labels exist for validation. The scenario targets are synthetic planner-supplied actions; the green-priority action is not an irrigation or water-budget model. FLUS remains an unmatched Apple-Silicon binary baseline, and the three-seed summaries quantify computational variation rather than population-level uncertainty. The completed controls are public-data stress tests with matched seeds rather than randomized interventions on real planning decisions, and several variants alter more than one implementation detail at a time. We therefore report them as evidence consistent with the execution contract rather than as causal attribution or a validated Abu Dhabi forecast.
 
 These limitations also indicate a practical path to deployment. An authoritative version would replace the Dynamic World class raster with a locally validated land-use/land-cover crosswalk, replace public proxy masks with statutory water, ecological, airport, port and growth-boundary layers, and supply approved development demand and infrastructure capacities. The Kernel contract can remain unchanged while those domain inputs are upgraded. This separation is useful for governance: a new data source changes the evidence attached to a transition, rather than silently changing the meaning of the execution trace.
 
@@ -183,20 +233,28 @@ The public-data benchmark manifests, protocols, reports and generated delivery a
 - `comparison_report_current.json` and `comparison_report_current.md` for historical metrics when a data-complete rerun is available;
 - `planning_comparison_report_public_2025_2031_current.json` and its Markdown rendering for 2031 planning objectives;
 - `planning_scenario_report_public_2025_2031_current.json` for per-seed rollout traces;
-- `planning_public_2025_2031_delivery_manifest.json` for raster and vector delivery;
-- `output_audit.json` for the versioned raster audit; the revised audit does not treat the earlier 240-raster 2025–2030 record as evidence for the separate 2025–2031 delivery;
+- `planning_public_2025_2031_delivery_manifest_current.json` for raster and vector delivery;
+- `output_audit_reproducible.json` for the current raster audit, with `output_audit.json` retained only as legacy lineage;
 - `data_audit.json`, `protocol.json`, `gee_input_manifest.json` and `osm_input_manifest.json` for data provenance;
-- Large raster files are kept outside Git and tracked through repository-relative paths and SHA-256 manifests rather than embedded in this manuscript. For this analysis, the synchronized bundle was recovered from the local GIS data workspace (`gisdataagent/benchmarks/abu_dhabi_land_use_v1/artifacts`); the exact local path is machine-specific and is not treated as a public URL. A clean external checkout therefore still needs the bundle, the GeoFM-LDN checkpoints and the FLUS executable to reproduce the numerical reports. No private database address, credential or client-only service is required for the intended public-data benchmark, but authoritative Abu Dhabi land-use validation data remain outside this study.
+- The released bundle includes the aligned 2017–2024 public rasters, historical seed and ensemble prediction rasters, 2025–2031 planning seed and ensemble rasters, nine GeoPackages of dissolved change footprints, the mechanism-ablation report, model checkpoints, and the SHA-256 manifest. Text hashes use canonical LF line endings so that a Windows checkout with `core.autocrlf=true` verifies identically. No private database address, credential or client-only service is included. Authoritative Abu Dhabi land-use and independent change-validation data remain outside this study.
 
 ## Code availability
 
-The analysis scripts, a vendored Geospatial Kernel runtime snapshot, benchmark protocol and figure-generation code are maintained in the accompanying repository. Principal entry points are listed separately to keep the manuscript readable:
+The analysis scripts, a vendored Geospatial Kernel runtime snapshot, benchmark protocol, model runners and figure-generation code are maintained in the accompanying repository. Principal entry points are listed separately to keep the manuscript readable:
 
 - `run_geospatial_kernel.py` for the Kernel historical run;
 - `data_agent/uwm/geospatial_kernel/runtime.py` for the vendored runtime snapshot;
 - `render_nature_figures.py` for publication artwork.
+- `reproducibility/reproduce.py` for the end-to-end rerun;
+- `reproducibility_check.py` and `audit_outputs.py` for fail-closed integrity checks.
 
-GeoFM-LDN code and checkpoints are not included in this repository and remain a reproducibility blocker. A public release URL, archival DOI and corresponding-author e-mail should be added at submission.
+GeoFM-LDN source and the three fixed checkpoints are included under
+`benchmarks/abu_dhabi_land_use_v1/external/` and `artifacts/predictions/`.
+The vendored FLUS executable is a macOS arm64 binary; Linux and Windows users
+can reproduce the Kernel and GeoFM-LDN tracks, but must provide a compatible
+FLUS build or treat that baseline as unavailable. The repository is intended to
+be public; an archival DOI and the corresponding-author e-mail should be added
+to the submission metadata.
 
 ## Declarations
 
@@ -259,19 +317,24 @@ controls. Error bars show population standard deviation across the three frozen
 seeds; paired spatial-block intervals are reported in the machine-readable
 comparison report.
 
-**Figure 3 | Conditional planning objectives.** The 2031 outcomes compare the
-three models under moderate-growth, green-priority-growth and high-outward-growth
-actions. Ecological conversion, major-road distance, leapfrog morphology and
-built retirement define the conditional Pareto set; other quantities are shown
-as descriptive diagnostics.
-
 ![Figure 3: conditional planning objectives](figures/fig03_planning_objectives.png)
 
-**Figure 4 | Mechanism controls.** Proposal, allocator and writeback controls
-are compared under the same public-data protocol. These are diagnostic
-ablations, not causal policy experiments.
+**Figure 3 | Conditional planning objectives and morphology diagnostics.** The
+2031 outcomes compare the three models under moderate-growth, green-priority-
+growth and high-outward-growth actions. Panels A–D are the frozen Pareto
+objectives: distance to major roads, distance to prior built cells, built
+components per 1,000 valid cells and vegetation gain. Panels E–F are
+descriptive diagnostics (ecological conversion and 500-m leapfrog rate). Stars
+mark non-dominated candidates under the four-objective set; bars show means ±
+population SD across three seeds.
 
 ![Figure 4: mechanism controls](figures/fig04_mechanism_ablation.png)
+
+**Figure 4 | Mechanism controls.** Proposal, allocator, action, constraint and
+writeback controls are compared under the same public-data protocol. Deleting
+the action lowers historical strict FoM, whereas deleting the hard constraint
+raises agreement with noisy labels while violating the planning contract.
+These are diagnostic ablations, not causal policy experiments.
 
 ![Figure 5: 2031 spatial footprints](figures/fig05_planning_maps_2031.png)
 

@@ -6,10 +6,10 @@ manuscript.
 
 ## Implemented in this revision
 
-The second-round methodological corrections are now implemented in the source
-tree. The complete public raster bundle and existing model artifacts were
-recovered from the companion local GIS workspace; large files remain external
-to Git.
+The third-round corrections are implemented in the source tree. The complete
+public raster bundle, model source/checkpoints, historical and planning output
+rasters, change GeoPackages and mechanism-control report are included in the
+public release path; authoritative local validation data remain unavailable.
 
 - Replaced independent-pixel bootstrap with an 8 × 8-pixel spatial-block
   bootstrap and added paired model-difference intervals using the same sampled
@@ -20,10 +20,10 @@ to Git.
   feasible totals.
 - Removed hard-coded model-ranking statements from `compile_comparison.py`;
   interpretation text is generated from computed strict FoM values.
-- Expanded the planning objective metadata to cover four distinct dimensions:
-  ecological conversion proxy, major-road accessibility, 500-m leapfrog
-  morphology and built-state stability. Prior-built distance, component
-  density and neighbourhood fraction remain descriptive diagnostics.
+- Froze a non-redundant planning objective set before recompilation: major-road
+  distance, prior-built distance, built components per 1,000 valid cells and
+  green-cell gain. Ecological conversion, 500-m leapfrog rate and built
+  retirement remain descriptive diagnostics.
 - Corrected the planning runner to import the vendored runtime module directly
   and added a repository-level `requirements.txt`.
 - Removed legacy numerical tables, stale figure citations and peer-review
@@ -45,13 +45,15 @@ to Git.
 - Changed the primary change metric to a strict multi-class FoM: a hit requires
   the correct observed destination class; wrong destination changes remain in
   the denominator. The earlier binary FoM remains a secondary diagnostic.
-- Added persistence and random-feasible zero-model outputs to the comparison
+- Added persistence and random minimum-change zero-model outputs to the comparison
   compiler.
-- Replaced the circular/structural planning objective set with four distinct
-  diagnostics: ecological conversion proxy, major-road accessibility, a
-  500-m leapfrog rate and removed built pixels (stability proxy). Demand totals,
-  prior-built distance, component density, neighbourhood fraction and net gains
-  are descriptive outcomes only.
+- Replaced the circular/structural planning objective set with four frozen,
+  non-redundant objectives: major-road accessibility, distance to prior built
+  cells (compactness), built components per 1,000 valid cells (fragmentation)
+  and green-cell gain (an opposing ecological-balance direction). Ecological
+  conversion, 500-m leapfrog rate, built retirement and demand error remain
+  descriptive diagnostics because some are structural zeros under exact-count
+  projection.
 - Added a tracked 2025–2031 scenario manifest and changed planning defaults to
   the public 2031 run. The legacy `compact` path ID is retained only for file
   compatibility and is labelled moderate growth.
@@ -69,25 +71,28 @@ to Git.
   new runs do not overwrite legacy report lineage; the audit prefers the
   versioned files when present and falls back to legacy files only to report a
   blocked status.
+- Added all historical prediction rasters, planning seed/ensemble rasters,
+  nine vector change packages and the mechanism-ablation report to the release
+  manifest; large binary files use Git LFS where needed.
+- Changed input hashes so text files are normalized to LF before SHA-256,
+  making the manifest stable under Windows `core.autocrlf=true`.
+- Expanded the manuscript with the GeoFM-LDN architecture and fixed-checkpoint
+  protocol, high-confidence Dynamic World diagnostics, ensemble demand errors,
+  FLUS binary boundary and the action/constraint ablation interpretation.
 
 ## Remaining limitations before a defensible LUP resubmission
 
-1. The recovered local bundle is not embedded in this Git repository. The
-   strict FoM, bootstrap intervals, revised morphology metrics and figures have
-   been regenerated locally; an external artifact package is still needed for
-   clean-checkout reproduction.
-2. The GeoFM-LDN source code and checkpoint are not in this repository.
-3. The external FLUS console, version and matched-input rerun are not
-   archived. A fair baseline comparison still requires either a matched-input
-   rerun or a deliberately limited claim.
-4. No independent 2023–2024 built-area product or manually interpreted sample
+1. No independent 2023–2024 built-area product or manually interpreted sample
    is available. This is mandatory for validating whether Dynamic World label
    changes represent real Abu Dhabi expansion.
-5. The GitHub repository is private and has no DOI. The author must provide a
-   working corresponding-author email, public release URL and archival DOI.
-6. Authoritative planning, reclamation, infrastructure-capacity and irrigation
+2. The released FLUS console is a macOS arm64 binary; its original source/version
+   and a matched-input rerun are not archived. A fair baseline comparison still
+   requires a compatible build or a deliberately limited claim.
+3. Authoritative planning, reclamation, infrastructure-capacity and irrigation
    data are still unavailable. The 2025–2031 maps must remain stress tests,
    not official land-use forecasts.
+4. An archival DOI and corresponding-author e-mail should be added to the
+   submission metadata.
 
 ## Rerun command sequence used for the current reports
 
@@ -105,6 +110,8 @@ python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
 ```
 
 The current numerical tables, figures and LUP submission PDF were reissued
-after the strict reports and output audit completed. Independent change
-validation, matched-input FLUS comparison, model-source release and a public
+after the strict reports and output audit completed. The public bundle now
+contains the historical/planning rasters, vector packages, mechanism report,
+GeoFM-LDN source and checkpoints. Independent change validation, a
+matched-input FLUS comparison, a compatible non-macOS FLUS build and a public
 DOI remain recommended before claiming a validated Abu Dhabi forecast.

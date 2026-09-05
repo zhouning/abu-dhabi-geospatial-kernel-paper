@@ -23,7 +23,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 PAPER8_ROOT = REPO_ROOT / "experiments/paper8"
 # This runner is vendored below the benchmark itself.  Deriving the default
 # from the file location keeps a clean checkout independent of the original
-# workstation path (the upstream project used ``/Users/.../gisdataagent``).
+# absolute development path; the runner is self-contained relative to the
+# benchmark root and does not depend on a particular checkout location.
 DEFAULT_BENCHMARK_ROOT = Path(__file__).resolve().parents[4]
 for path in (PAPER8_ROOT,):
     if str(path) not in sys.path:
@@ -439,8 +440,10 @@ def run_seed(
             device=device,
         )
     benchmark_module_path = str(benchmark_root)
-    if benchmark_module_path not in sys.path:
-        sys.path.insert(0, benchmark_module_path)
+    repository_root = str(benchmark_root.parents[1])
+    for module_path in (repository_root, benchmark_module_path):
+        if module_path not in sys.path:
+            sys.path.insert(0, module_path)
     from run_geospatial_kernel import allocate_action
     from shared import class_counts, evaluate_prediction
 

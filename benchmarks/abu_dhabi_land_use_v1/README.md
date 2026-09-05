@@ -33,8 +33,9 @@ python benchmarks/abu_dhabi_land_use_v1/prepare_grid.py
 ```
 
 The generated `boundary_manifest.json` and `grid_profile.json` retain source
-and artifact hashes. Large raster artifacts remain local; their hashes and
-lineage records are the reproducibility interface.
+and artifact hashes. Released raster/vector artifacts are validated by the
+output audit; the input manifest uses raw hashes for binaries and LF-normalized
+hashes for text files.
 
 ## Execute the three candidates
 
@@ -72,13 +73,13 @@ values; GeoFM-LDN recursively writes back its predicted latent state.
 
 ## Exact reproducibility
 
-The repository now contains the minimum public-data bundle needed for a clean
-checkout: the 2017--2024 land-cover, quality, VIIRS, AlphaEarth, terrain and
-WorldCover rasters; the OSM road-accessibility raster; the allocation and
-constraint bundle; the three GeoFM-LDN checkpoints; the vendored GeoFM-LDN
-runner; and the tested macOS arm64 FLUS console. Raw OSM PBF and regenerated
-planning rasters are intentionally excluded because they are not required to
-execute the benchmark and would duplicate derived data.
+The repository contains the public-data bundle needed for a clean checkout:
+the 2017--2024 land-cover, quality, VIIRS, AlphaEarth, terrain and WorldCover
+rasters; the OSM road-accessibility raster; the allocation and constraint
+bundle; the three GeoFM-LDN checkpoints; the vendored GeoFM-LDN runner; the
+tested macOS arm64 FLUS console; historical and planning prediction rasters;
+change GeoPackages; and mechanism-control outputs. Raw OSM PBF is excluded
+because it duplicates the released road-accessibility derivative.
 
 The exact Python pins are in
 `reproducibility/requirements.lock.txt`; platform and seed policy are in

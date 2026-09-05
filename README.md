@@ -14,16 +14,16 @@ reports comparing:
 
 The benchmark uses public land-cover and proxy constraint data on a 100 m EPSG:32640 grid. Future maps are scenario stress tests, not official Abu Dhabi forecasts. They should not be interpreted as statutory residential, commercial, industrial, or cadastral land-use plans. The vector files are raster-cell transition polygons and are not legal parcels.
 
-The repository deliberately excludes customer databases, credentials, private imagery, large raw downloads, and intermediate training caches. The public-data lineage and checksums are retained in the manifests under `benchmarks/abu_dhabi_land_use_v1/`.
+The repository deliberately excludes customer databases, credentials, private imagery, large raw downloads and intermediate training caches. Derived rasters and vector packages required for the declared rerun are included or tracked with Git LFS; public-data lineage and checksums are retained in the manifests under `benchmarks/abu_dhabi_land_use_v1/`.
 
 The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**. Current reruns write versioned report names, leaving legacy JSON lineage files immutable.
 
-This repository contains the benchmark protocol and the manuscript package.
-The strict multi-class change FoM, persistence/minimum-change controls,
-spatial-block bootstrap with paired model contrasts and independent morphology
-objective code have been rerun against the complete public-data bundle recovered
-from the companion local GIS workspace. Large rasters and model runtimes remain
-external to Git; independent authoritative change-validation data are still not
+This repository contains the benchmark protocol, public input bundle, model
+runtimes/checkpoints, historical and planning prediction rasters, vector change
+packages, mechanism controls and manuscript package. The strict multi-class
+change FoM, persistence/minimum-change controls, spatial-block bootstrap with
+paired model contrasts and frozen balanced planning objectives have been
+rerun. Independent authoritative change-validation data are still not
 available. See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
 for the evidence boundary.
 
@@ -35,7 +35,7 @@ for the evidence boundary.
 - Reproduction protocol: [`benchmarks/abu_dhabi_land_use_v1/protocol.json`](benchmarks/abu_dhabi_land_use_v1/protocol.json)
 - Benchmark instructions: [`benchmarks/abu_dhabi_land_use_v1/README.md`](benchmarks/abu_dhabi_land_use_v1/README.md)
 - Report lineage policy: [`benchmarks/abu_dhabi_land_use_v1/ARCHIVE_IMMUTABILITY.md`](benchmarks/abu_dhabi_land_use_v1/ARCHIVE_IMMUTABILITY.md)
-- Planning delivery manifest: [`results/planning_public_2025_2031_delivery_manifest.json`](results/planning_public_2025_2031_delivery_manifest.json)
+- Planning delivery manifest: [`benchmarks/abu_dhabi_land_use_v1/planning_public_2025_2031_delivery_manifest_current.json`](benchmarks/abu_dhabi_land_use_v1/planning_public_2025_2031_delivery_manifest_current.json)
 - Local data recovery and rerun record: [`docs/本机阿布扎比数据恢复与重算记录.md`](docs/本机阿布扎比数据恢复与重算记录.md)
 
 ## Reproduction
@@ -52,11 +52,12 @@ The scripts document the canonical boundary, grid, class labels, constraints, sc
 
 ## Results
 
-Historical and planning comparison reports are in `results/` and the benchmark
-directory. The current reports are generated from the recovered public-data
-bundle; selected ensemble rasters and transition GeoPackages remain external
-artifacts under `benchmarks/abu_dhabi_land_use_v1/artifacts/` and are described
-by the delivery manifests.
+The `results/` directory contains earlier exported lineage files. The current
+historical and planning reports are the versioned `_current` files under
+`benchmarks/abu_dhabi_land_use_v1/`, generated from the released public-data
+bundle. Historical/planning rasters, transition GeoPackages and mechanism
+controls are included under that benchmark's `artifacts/` directory and are
+described by the current delivery manifest.
 
 ## Citation
 

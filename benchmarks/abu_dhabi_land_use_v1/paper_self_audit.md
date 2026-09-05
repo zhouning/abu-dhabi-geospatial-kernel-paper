@@ -1,4 +1,9 @@
-# Self-audit for the Geospatial Kernel Abu Dhabi manuscript
+# Self-audit for the Geospatial Kernel Abu Dhabi manuscript (legacy checklist)
+
+This historical checklist predates the recovered-data rerun. Use
+`manuscript/paper_self_audit.md` for the current evidence status; the current
+machine-readable checks are `reproducibility_check.json` and
+`output_audit_reproducible.json`.
 
 ## Evidence integrity
 

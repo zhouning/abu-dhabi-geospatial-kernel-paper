@@ -14,39 +14,39 @@ except ImportError:  # Direct script execution from the benchmark directory.
     from shared import CLASSES, class_counts
 
 
-# The frontier deliberately spans distinct planning dimensions rather than
-# four correlated distance summaries.  Ecological conversion is a public-data
-# proxy (not a statutory habitat or water-budget measure); built retirement is
-# a stability proxy and should be replaced by authoritative redevelopment data
-# when available.  Demand totals and the allocator's neighbourhood term are
-# descriptive outcomes, not Pareto objectives.
+# Frozen before the current recompilation.  The set deliberately combines
+# access, compactness, fragmentation and an opposing ecological-balance
+# direction.  All quantities are public-data proxies rather than statutory
+# planning measures; ecological conversion, leapfrog rate and built
+# retirement remain descriptive diagnostics because they are structural zeros
+# or unstable under the exact-count projection.
 OBJECTIVES = {
-    "ecological_conversion_rate": "min",
     "new_built_mean_major_road_distance_m": "min",
-    "new_built_leapfrog_rate": "min",
-    "removed_built_pixels": "min",
+    "new_built_mean_prior_built_distance_m": "min",
+    "built_components_per_1000_pixels": "min",
+    "green_gain_pixels": "max",
 }
 
 OBJECTIVE_METADATA = {
-    "ecological_conversion_rate": {
-        "direction": "min",
-        "dimension": "ecological_proxy",
-        "interpretation": "Fraction of new built cells originating in public vegetation/ecological proxy classes.",
-    },
     "new_built_mean_major_road_distance_m": {
         "direction": "min",
         "dimension": "accessibility_proxy",
         "interpretation": "Mean distance of new built cells to mapped major roads.",
     },
-    "new_built_leapfrog_rate": {
+    "new_built_mean_prior_built_distance_m": {
         "direction": "min",
-        "dimension": "morphology",
-        "interpretation": "Fraction of new built cells beyond 500 m from pre-existing built cells.",
+        "dimension": "compactness",
+        "interpretation": "Mean distance of new built cells to pre-existing built cells; lower values favour contiguous growth.",
     },
-    "removed_built_pixels": {
+    "built_components_per_1000_pixels": {
         "direction": "min",
-        "dimension": "stability_proxy",
-        "interpretation": "Built cells in 2024 that are non-built in the candidate state.",
+        "dimension": "fragmentation",
+        "interpretation": "Connected built components per 1,000 valid cells; lower values indicate less fragmented urban form.",
+    },
+    "green_gain_pixels": {
+        "direction": "max",
+        "dimension": "ecological_balance",
+        "interpretation": "Net gain of woody/low vegetation cells; this opposing direction prevents compactness from being the sole planning preference.",
     },
 }
 

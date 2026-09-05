@@ -19,9 +19,9 @@ from shapely.geometry import shape
 HERE = Path(__file__).resolve().parent
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 INPUT_ROOT = HERE / "artifacts/gee"
-DEFAULT_COMPARISON_REPORT = HERE / "planning_comparison_report_public_2025_2031.json"
+DEFAULT_COMPARISON_REPORT = HERE / "planning_comparison_report_public_2025_2031_current.json"
 DEFAULT_OUTPUT_ROOT = HERE / "artifacts/planning_public_2025_2031/vector"
-DEFAULT_MANIFEST = HERE / "planning_public_2025_2031_delivery_manifest.json"
+DEFAULT_MANIFEST = HERE / "planning_public_2025_2031_delivery_manifest_current.json"
 CLASS_LABELS = {
     1: "water",
     2: "woody_vegetation",

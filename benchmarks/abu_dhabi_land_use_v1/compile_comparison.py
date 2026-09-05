@@ -446,7 +446,11 @@ def render_markdown(report: dict[str, Any]) -> str:
         return report["random_baseline"][str(year)][key]
 
     table_models = list(MODELS) + ["persistence", "random_allocation"]
-    table_labels = {**labels, "persistence": "Persistence zero model", "random_allocation": "Random-feasible zero model"}
+    table_labels = {
+        **labels,
+        "persistence": "Persistence zero model",
+        "random_allocation": "Random minimum-change zero model",
+    }
     for year in YEARS:
         for model in table_models:
             row = {key: metric_summary(model, year, key) for key in ("change_figure_of_merit", "change_f1", "overall_accuracy", "macro_f1", "demand_total_variation")}

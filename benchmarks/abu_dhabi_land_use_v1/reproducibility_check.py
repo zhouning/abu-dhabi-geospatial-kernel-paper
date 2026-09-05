@@ -31,11 +31,14 @@ def _display(path: Path) -> str:
         return f"external/{path.name}"
 
 
-def _sha256(path: Path) -> str:
+def _sha256(path: Path, hash_mode: str) -> str:
+    raw = path.read_bytes()
+    if hash_mode == "text_lf_normalized":
+        raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    elif hash_mode != "raw":
+        raise ValueError(f"unknown_hash_mode:{hash_mode}")
     digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
+    digest.update(raw)
     return digest.hexdigest()
 
 
@@ -49,12 +52,14 @@ def _manifest_checks() -> tuple[dict[str, bool], list[dict[str, object]]]:
         relative = Path(str(record["path"]))
         path = REPO / relative
         exists = path.is_file()
-        actual = _sha256(path) if exists else None
+        hash_mode = str(record.get("hash_mode", "raw"))
+        actual = _sha256(path, hash_mode) if exists else None
         expected = str(record["sha256"])
         checks.append(
             {
                 "path": relative.as_posix(),
                 "role": record.get("role"),
+                "hash_mode": hash_mode,
                 "exists": exists,
                 "bytes_ok": exists and path.stat().st_size == int(record["bytes"]),
                 "sha256_ok": exists and actual == expected,

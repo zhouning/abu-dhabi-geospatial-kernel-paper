@@ -1,0 +1,464 @@
+{
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "created_at": "2026-09-05T11:27:23.699026+00:00",
+  "external_binary": "vendor/flus_console",
+  "model_id": "geosos_flus",
+  "revision_status": "current_protocol_run",
+  "schema": "gwm.abu_dhabi_geosos_flus_run.v1",
+  "seeds": [
+    {
+      "seed": 31,
+      "training": {
+        "feature_names": [
+          "x_utm",
+          "y_utm",
+          "elevation",
+          "slope",
+          "log_viirs",
+          "log_distance_road",
+          "log_distance_major_road"
+        ],
+        "fit_label_years": [
+          2021
+        ],
+        "fit_seconds": 2.7606347498949617,
+        "seed": 31,
+        "target_driver_year": 2022,
+        "target_pixel_rows": 79726,
+        "training_pixel_rows": 79726
+      },
+      "years": [
+        {
+          "ca_seconds": 4.561288458062336,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 457,
+              "3": 466,
+              "4": 1011,
+              "5": 12260,
+              "6": 50094
+            },
+            "binary_change_figure_of_merit": 0.1252536182875693,
+            "change_f1": 0.2226229114076211,
+            "change_false_alarms": 2893,
+            "change_figure_of_merit": 0.12227783038008927,
+            "change_hits": 904,
+            "change_misses": 3574,
+            "change_wrong_transitions": 22,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 456,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.0028597947971803427,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.8462585400685354,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.918608734917091,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 3819,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 145,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4930215128153148,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9944958881046428,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 145
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/geosos_flus/seed_31/prediction_2023.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 685,
+            "3": 465,
+            "4": 1011,
+            "5": 12260,
+            "6": 49867
+          },
+          "target_year": 2023
+        },
+        {
+          "ca_seconds": 4.596821209182963,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 437,
+              "3": 415,
+              "4": 1011,
+              "5": 15774,
+              "6": 46651
+            },
+            "binary_change_figure_of_merit": 0.16480955502148423,
+            "change_f1": 0.2829811179192197,
+            "change_false_alarms": 5267,
+            "change_figure_of_merit": 0.16138664336173622,
+            "change_hits": 2216,
+            "change_misses": 6201,
+            "change_wrong_transitions": 47,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 950,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.005957905827459047,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7551721822315672,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.855567819782756,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 7530,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0030581039755351682,
+              "change_f1": 0.006097560975609756,
+              "change_false_alarms": 598,
+              "change_figure_of_merit": 0.0030581039755351682,
+              "change_hits": 2,
+              "change_misses": 54,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4821332835541788,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9778163383348644,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 600
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/geosos_flus/seed_31/prediction_2024.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 912,
+            "3": 412,
+            "4": 1011,
+            "5": 15774,
+            "6": 46179
+          },
+          "target_year": 2024
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "training": {
+        "feature_names": [
+          "x_utm",
+          "y_utm",
+          "elevation",
+          "slope",
+          "log_viirs",
+          "log_distance_road",
+          "log_distance_major_road"
+        ],
+        "fit_label_years": [
+          2021
+        ],
+        "fit_seconds": 2.340001459000632,
+        "seed": 47,
+        "target_driver_year": 2022,
+        "target_pixel_rows": 79726,
+        "training_pixel_rows": 79726
+      },
+      "years": [
+        {
+          "ca_seconds": 4.606494375038892,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 480,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 50072
+            },
+            "binary_change_figure_of_merit": 0.1343745792379157,
+            "change_f1": 0.2369139465875371,
+            "change_false_alarms": 2927,
+            "change_figure_of_merit": 0.13195098963242224,
+            "change_hits": 980,
+            "change_misses": 3502,
+            "change_wrong_transitions": 18,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 410,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.0025713067255349574,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.8467905385828293,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9191355392218348,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 3925,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 179,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.491709372610128,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9933950657255715,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 179
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/geosos_flus/seed_47/prediction_2023.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 685,
+            "3": 465,
+            "4": 1011,
+            "5": 12260,
+            "6": 49867
+          },
+          "target_year": 2023
+        },
+        {
+          "ca_seconds": 4.6351148339454085,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 592,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46499
+            },
+            "binary_change_figure_of_merit": 0.19480999556409878,
+            "change_f1": 0.3260936823216385,
+            "change_false_alarms": 5062,
+            "change_figure_of_merit": 0.19214845482773918,
+            "change_hits": 2599,
+            "change_misses": 5829,
+            "change_wrong_transitions": 36,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 640,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.004013747083761884,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7494801694274159,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8629430800491684,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 7697,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.005597014925373134,
+              "change_f1": 0.011131725417439703,
+              "change_false_alarms": 480,
+              "change_figure_of_merit": 0.005597014925373134,
+              "change_hits": 3,
+              "change_misses": 53,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4862190659158654,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9818651968289612,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 483
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/geosos_flus/seed_47/prediction_2024.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 912,
+            "3": 412,
+            "4": 1011,
+            "5": 15774,
+            "6": 46179
+          },
+          "target_year": 2024
+        }
+      ]
+    },
+    {
+      "seed": 73,
+      "training": {
+        "feature_names": [
+          "x_utm",
+          "y_utm",
+          "elevation",
+          "slope",
+          "log_viirs",
+          "log_distance_road",
+          "log_distance_major_road"
+        ],
+        "fit_label_years": [
+          2021
+        ],
+        "fit_seconds": 3.2674892500508577,
+        "seed": 73,
+        "target_driver_year": 2022,
+        "target_pixel_rows": 79726,
+        "training_pixel_rows": 79726
+      },
+      "years": [
+        {
+          "ca_seconds": 4.620306666009128,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 440,
+              "3": 466,
+              "4": 1011,
+              "5": 12260,
+              "6": 50111
+            },
+            "binary_change_figure_of_merit": 0.1251494619370267,
+            "change_f1": 0.222458377612469,
+            "change_false_alarms": 3027,
+            "change_figure_of_merit": 0.12249236083432975,
+            "change_hits": 922,
+            "change_misses": 3558,
+            "change_wrong_transitions": 20,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 490,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.003073025111005193,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.8392412012267761,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9171537515992274,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 3969,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 137,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.49336768860814656,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9947549051350126,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 137
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/geosos_flus/seed_73/prediction_2023.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 685,
+            "3": 465,
+            "4": 1011,
+            "5": 12260,
+            "6": 49867
+          },
+          "target_year": 2023
+        },
+        {
+          "ca_seconds": 4.606240083230659,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 420,
+              "3": 417,
+              "4": 1011,
+              "5": 15774,
+              "6": 46666
+            },
+            "binary_change_figure_of_merit": 0.18498679189903142,
+            "change_f1": 0.3122174747662394,
+            "change_false_alarms": 5164,
+            "change_figure_of_merit": 0.181171118285882,
+            "change_hits": 2469,
+            "change_misses": 5943,
+            "change_wrong_transitions": 52,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 984,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.006171136141283898,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7402238133589881,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.860033113413441,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 7685,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0034904013961605585,
+              "change_f1": 0.006956521739130435,
+              "change_false_alarms": 517,
+              "change_figure_of_merit": 0.0034904013961605585,
+              "change_hits": 2,
+              "change_misses": 54,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.48473577164071346,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9805722840325269,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 519
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/geosos_flus/seed_73/prediction_2024.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 912,
+            "3": 412,
+            "4": 1011,
+            "5": 15774,
+            "6": 46179
+          },
+          "target_year": 2024
+        }
+      ]
+    }
+  ],
+  "state_writeback": true,
+  "status": "complete",
+  "test_label_access_during_fit": false,
+  "wall_seconds": 36.31672170897946
+}

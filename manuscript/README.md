@@ -39,12 +39,14 @@ The historical benchmark uses public land-cover labels from 2017–2024 on a
 and do not infer statutory residential, commercial or industrial land use.
 
 The recovered-data rerun supports a bounded implementation claim: Geospatial
-Kernel is an auditable, constraint-preserving allocation core. It leads the
-strict one-step 2023 transition FoM, while GeoFM-LDN leads the strict two-step
-2024 open-loop FoM; neither dominates both horizons. The only 2031 Pareto
-candidate under the declared public-data objectives is the Kernel's
-green-priority scenario. These are conditional pipeline and stress-test
-results, not official Abu Dhabi forecasts.
+Kernel is an auditable, constraint-preserving allocation core. Under the
+unmatched public-data pipeline it has the largest strict one-step 2023
+transition FoM, while GeoFM-LDN has the largest strict two-step 2024 open-loop
+FoM; neither dominates both horizons. Six of nine 2031 candidates (all three
+GeoSOS-FLUS and all three Kernel scenarios) are non-dominated under the frozen
+four-objective set; no GeoFM-LDN scenario is on that conditional frontier.
+These are conditional pipeline and stress-test results, not official Abu Dhabi
+forecasts.
 
 ## Before submission
 

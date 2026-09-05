@@ -22,8 +22,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Editable tables | Ready | Tables remain Markdown/LaTeX text tables rather than raster images. Table 2 was split into 2a and 2b to preserve readability. |
-| Table width | Ready | The LUP reading copy uses a 1.7 pt column separation and scriptsize long tables; visual QA confirms no clipped last columns or overlapping cells. |
+| Editable tables | Ready | The historical score table is numbered and captioned in the manuscript source; it remains a Markdown/LaTeX text table rather than a raster image. |
+| Table width | Ready | The LUP reading copy uses a 0.9 pt column separation and scriptsize long tables; visual QA confirms no clipped last columns or overlapping cells. |
 | Table notes | Ready | Units, DTV, ecological-proxy semantics, compactness and Pareto interpretation are stated immediately before the relevant tables. |
 | Figure files | Ready for technical review | Figures 1–5 were regenerated from the current strict-metric and planning reports as editable SVG/PDF plus 600-dpi PNG/TIFF. |
 | Figure captions | Ready for scientific review | Captions describe current public-data results and retain the conditional-proxy boundary. |
@@ -35,8 +35,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Data availability | Conditional | The complete public bundle was recovered on the analysis workstation and passes the input audit; large rasters remain external to Git, and authoritative local validation data are unavailable. |
-| Code availability | Conditional | Runtime, evaluators and figure code are included; GeoFM-LDN source/checkpoints and the FLUS executable remain external dependencies, with no DOI yet assigned. |
+| Data availability | Conditional | The complete public bundle, generated rasters, vectors and mechanism controls are included or tracked with Git LFS and pass the input/output audits; authoritative local validation data are unavailable. |
+| Code availability | Conditional | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; a compatible non-macOS FLUS build and DOI are not yet provided. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
 | Competing interests | Updated | Employment by the software company is disclosed; this should be checked against the portal's structured declaration field. |

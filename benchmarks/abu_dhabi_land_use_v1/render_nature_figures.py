@@ -131,7 +131,7 @@ def check_render_inputs() -> None:
     )
     _require_current_report(
         "planning_comparison_report_public_2025_2031_current.json",
-        metric_version="independent_morphology_objectives_v2",
+        metric_version="frozen_balanced_objectives_v3",
     )
     _require_file("artifacts/gee/land_cover/land_cover_2024_100m.tif")
     _require_file("artifacts/mechanism_ablations/report.json")
@@ -287,7 +287,7 @@ def render_figure_2() -> None:
     x = np.arange(len(years))
     plot_models = MODEL_ORDER + ["persistence", "random_allocation"]
     plot_colors = {**MODEL_COLOR, "persistence": "#777777", "random_allocation": "#CC79A7"}
-    plot_labels = {**MODEL_LABEL, "persistence": "Persistence", "random_allocation": "Random-feasible"}
+    plot_labels = {**MODEL_LABEL, "persistence": "Persistence", "random_allocation": "Random minimum-change"}
     width = 0.15
     for idx, (key, title, direction) in enumerate(metrics):
         ax = axes.flat[idx]
@@ -328,19 +328,27 @@ def render_figure_2() -> None:
 def render_figure_3() -> None:
     report = _require_current_report(
         "planning_comparison_report_public_2025_2031_current.json",
-        metric_version="independent_morphology_objectives_v2",
+        metric_version="frozen_balanced_objectives_v3",
     )
     panels = [
         ("new_built_mean_major_road_distance_m", "Distance to major road", "lower is better", 1.0, "m"),
         ("new_built_mean_prior_built_distance_m", "Distance to prior built", "lower is better", 1.0, "m"),
         ("built_components_per_1000_pixels", "Built components / 1,000 valid", "lower is better", 1.0, ""),
-        ("new_built_leapfrog_rate", "500-m leapfrog rate", "lower is better", 100.0, "%"),
-        ("removed_built_pixels", "Built retirement", "lower is better", 1.0, "cells"),
+        ("green_gain_pixels", "Vegetation gain", "higher is better", 1.0, "cells"),
+        ("ecological_conversion_rate", "Ecological conversion", "descriptive; lower is better", 100.0, "%"),
+        ("new_built_leapfrog_rate", "500-m leapfrog", "descriptive; lower is better", 100.0, "%"),
     ]
     fig, axes = plt.subplots(2, 3, figsize=(7.2, 4.95))
     fig.subplots_adjust(left=0.075, right=0.985, top=0.77, bottom=0.19, wspace=0.34, hspace=0.58)
     x = np.arange(len(SCENARIO_ORDER))
     width = 0.23
+    pareto = set(report.get("pareto_frontier", []))
+    objective_keys = {
+        "new_built_mean_major_road_distance_m",
+        "new_built_mean_prior_built_distance_m",
+        "built_components_per_1000_pixels",
+        "green_gain_pixels",
+    }
     for idx, (key, title, direction, scale, unit) in enumerate(panels):
         ax = axes.flat[idx]
         for j, model in enumerate(MODEL_ORDER):
@@ -355,6 +363,19 @@ def render_figure_3() -> None:
             for zero_pos, zero_value in zip(pos, means):
                 if abs(zero_value) < 1e-12:
                     ax.plot(zero_pos, 0, marker="_", markersize=9, markeredgewidth=1.4, color=MODEL_COLOR[model], clip_on=False)
+            if key in objective_keys:
+                for scenario_index, scenario in enumerate(SCENARIO_ORDER):
+                    if f"{model}:{scenario}" in pareto:
+                        ax.plot(
+                            pos[scenario_index],
+                            means[scenario_index],
+                            marker="*",
+                            markersize=6,
+                            markerfacecolor="white",
+                            markeredgecolor="#111111",
+                            markeredgewidth=0.55,
+                            zorder=5,
+                        )
         ax.set_xticks(x, ["Moderate", "Green-priority", "High outward"])
         ax.set_title(f"{title}\n({direction})", loc="left", pad=5)
         ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
@@ -364,13 +385,12 @@ def render_figure_3() -> None:
             ax.set_ylabel(unit)
         if key == "demand_total_variation":
             ax.ticklabel_format(axis="y", style="sci", scilimits=(-3, -3))
-        if key == "ecological_conversion_rate":
+        if key in {"ecological_conversion_rate", "new_built_leapfrog_rate"}:
             ax.set_ylim(bottom=0)
     legend_handles = [Patch(facecolor=MODEL_COLOR[m], edgecolor="none", label=MODEL_LABEL[m]) for m in MODEL_ORDER]
-    axes.flat[-1].axis("off")
     fig.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.865), ncol=3, frameon=False, handlelength=1.2, columnspacing=1.0)
     fig.suptitle("Conditional planning outcomes and independent morphology diagnostics", x=0.075, y=0.972, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds. Pareto membership is conditional on the declared objective set and public-data proxies.", fontsize=6.45, color="#4A5560")
+    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds; stars mark candidates on the four-objective Pareto frontier. Descriptive panels are not used for Pareto membership.", fontsize=6.25, color="#4A5560")
     save_publication_figure(fig, "fig03_planning_objectives")
 
 
@@ -467,7 +487,7 @@ def render_figure_4() -> None:
             means.append(vals.mean())
             sds.append(vals.std(ddof=0))
         ax.bar(x + (j - 1.5) * width_c, means, width=width_c, yerr=sds, capsize=1.4, color=["#D55E00", "#6A3D9A", "#E69F00", "#999999"][j], edgecolor="white", linewidth=0.35, label=label, error_kw={"elinewidth": 0.5, "capthick": 0.5})
-    ax.set_xticks(x, ["Compact", "Ecological\npriority", "Outward"])
+    ax.set_xticks(x, ["Moderate", "Green-priority", "High outward"])
     ax.set_ylim(0.62, 0.96)
     ax.set_ylabel("New-built compactness")
     ax.set_title("Planning morphology controls", loc="left", pad=5)
@@ -487,7 +507,7 @@ def render_figure_4() -> None:
             vals_mean.append(vals.mean())
             vals_sd.append(vals.std(ddof=0))
         ax.bar(x + (j - 0.5) * width_d, vals_mean, width=width_d, yerr=vals_sd, capsize=1.6, color=["#D55E00", "#7B3294"][j], edgecolor="white", linewidth=0.35, label=("Full constraints" if runtime == "full" else "Constraints deleted"), error_kw={"elinewidth": 0.55, "capthick": 0.55})
-    ax.set_xticks(x, ["Compact", "Ecological\npriority", "Outward"])
+    ax.set_xticks(x, ["Moderate", "Green-priority", "High outward"])
     ax.set_ylabel("Violation rate (%)")
     ax.set_title("Hard-constraint control", loc="left", pad=5)
     ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
