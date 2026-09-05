@@ -112,6 +112,10 @@ def check() -> dict[str, object]:
     manifests_ok = all(manifest_rows.values())
     external_ok = all(external_rows.values())
     hash_ok = bool(hash_summary.get("records_complete"))
+    data_rows = [row for row in hash_rows if row.get("role") == "data"]
+    generated_inputs_ok = bool(data_rows) and all(
+        row["exists"] and row["bytes_ok"] and row["sha256_ok"] for row in data_rows
+    )
     status = "PASS" if code_ok and manifests_ok and external_ok and hash_ok else "BLOCKED"
     return {
         "schema": "gwm.abu_dhabi_reproducibility_check.v2",
@@ -121,6 +125,7 @@ def check() -> dict[str, object]:
         "python": sys.version.split()[0],
         "platform": {"system": platform.system(), "machine": platform.machine()},
         "code_and_manifests_complete": code_ok and manifests_ok,
+        "generated_inputs_complete": generated_inputs_ok,
         "external_dependencies_complete": external_ok,
         "environment_lock_complete": (HERE / "reproducibility/requirements.lock.txt").is_file()
         and (HERE / "reproducibility/environment.json").is_file(),
