@@ -1,0 +1,35 @@
+{
+  "schema": "gwm.abu_dhabi_environment.v1",
+  "python": {
+    "implementation": "CPython",
+    "version": "3.11.15"
+  },
+  "reference_platform": {
+    "system": "Darwin",
+    "kernel": "25.5.0",
+    "machine": "arm64",
+    "note": "The vendored FLUS console is a macOS arm64 executable. GeoSpatial Kernel and GeoFM-LDN are Python code; a Linux rebuild requires a separately built FLUS binary."
+  },
+  "packages": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.0",
+    "rasterio": "1.4.4",
+    "geopandas": "1.1.4",
+    "shapely": "2.1.2",
+    "fiona": "1.10.1",
+    "matplotlib": "3.11.0",
+    "python-docx": "1.2.0",
+    "torch": "2.12.1",
+    "requests": "2.34.2",
+    "affine": "2.4.0",
+    "pandas": "3.0.5",
+    "pytest": "9.1.1"
+  },
+  "determinism": {
+    "seeds": [31, 47, 73],
+    "device_for_reference_rerun": "cpu",
+    "future_exogenous_driver_policy": "hold_2024",
+    "randomness_note": "NumPy, scikit-learn and PyTorch seeds are explicit. GPU/MPS runs may differ in the last floating-point bits; the reference comparison uses metric tolerances."
+  }
+}

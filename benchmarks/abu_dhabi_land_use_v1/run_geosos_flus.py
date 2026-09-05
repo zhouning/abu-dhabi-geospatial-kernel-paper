@@ -26,9 +26,9 @@ INPUT_ROOT = HERE / "artifacts/gee"
 OSM_ROOT = HERE / "artifacts/osm"
 BUNDLE_ROOT = HERE / "artifacts/bundle"
 DEFAULT_OUTPUT = HERE / "artifacts/predictions/geosos_flus"
-# The external FLUS executable is intentionally not bundled.  Callers should
-# pass ``--binary`` (or place a compatible executable at this placeholder).
-DEFAULT_BINARY = HERE / "external/flus_console"
+# A tested macOS arm64 binary is vendored with this benchmark.  A Linux or
+# Windows rerun must provide a locally built compatible binary with ``--binary``.
+DEFAULT_BINARY = HERE / "vendor/flus_console"
 FIT_YEARS = (2021,)
 SEEDS = (31, 47, 73)
 FEATURE_NAMES = (
@@ -405,7 +405,7 @@ def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path) -> dict[str,
         "revision_status": "current_protocol_run",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "complete",
-        "external_binary": f"external/{binary.name}",
+        "external_binary": f"vendor/{binary.name}",
         "state_writeback": True,
         "test_label_access_during_fit": False,
         "seeds": reports,

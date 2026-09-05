@@ -1,0 +1,1838 @@
+{
+  "claim_boundary": [
+    "Outputs are public-data scenario stress tests, not authoritative land-use forecasts.",
+    "2031 demand targets are a documented extension of the prior annual scenario deltas.",
+    "Vector polygons represent raster-cell transitions on the 100 m EPSG:32640 grid."
+  ],
+  "class_labels": {
+    "1": "water",
+    "2": "woody_vegetation",
+    "3": "low_vegetation",
+    "4": "wetland",
+    "5": "built",
+    "6": "bare"
+  },
+  "comparison_report": "planning_comparison_report_public_2025_2031_current.json",
+  "created_at": "2026-09-05T09:49:18.742847+00:00",
+  "delivery_years": [
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+  ],
+  "grid": {
+    "crs": "EPSG:32640",
+    "height": 360,
+    "pixel_area_m2": 10000.0,
+    "transform": [
+      100.0,
+      0.0,
+      226000.0,
+      0.0,
+      -100.0,
+      2723300.0
+    ],
+    "width": 475
+  },
+  "origin_year": 2024,
+  "raster_artifact_count": 45,
+  "raster_artifacts": [
+    {
+      "bytes": 11001,
+      "class_counts": {
+        "1": 16060,
+        "2": 869,
+        "3": 534,
+        "4": 1000,
+        "5": 16477,
+        "6": 44786
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2027.tif",
+      "scenario_id": "compact",
+      "sha256": "b47da817da3b301ec3faef83dfff625310b7b790a3e511c39e0b2a8c2fcefc25",
+      "year": 2027
+    },
+    {
+      "bytes": 11079,
+      "class_counts": {
+        "1": 16060,
+        "2": 872,
+        "3": 625,
+        "4": 1000,
+        "5": 16780,
+        "6": 44389
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2028.tif",
+      "scenario_id": "compact",
+      "sha256": "29aa0384410a0501fad2c716b5e1e6c4275605821c30307c2d9aa3b0553e5c5c",
+      "year": 2028
+    },
+    {
+      "bytes": 11135,
+      "class_counts": {
+        "1": 16060,
+        "2": 863,
+        "3": 704,
+        "4": 1000,
+        "5": 17151,
+        "6": 43948
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2029.tif",
+      "scenario_id": "compact",
+      "sha256": "23765981be858308b1ec06c64409bbec0953919ff8105b1a41d56d7b57405ada",
+      "year": 2029
+    },
+    {
+      "bytes": 11179,
+      "class_counts": {
+        "1": 16060,
+        "2": 861,
+        "3": 742,
+        "4": 1000,
+        "5": 17494,
+        "6": 43569
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2030.tif",
+      "scenario_id": "compact",
+      "sha256": "5d4ac8b572ad2f7da754cad606411bd05218f7a2a4bd0f1cd96a02743afe78a1",
+      "year": 2030
+    },
+    {
+      "bytes": 11195,
+      "class_counts": {
+        "1": 16060,
+        "2": 860,
+        "3": 796,
+        "4": 1000,
+        "5": 17892,
+        "6": 43118
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/compact/ensemble/prediction_2031.tif",
+      "scenario_id": "compact",
+      "sha256": "d82c66b4944099bef61d3e9639dbd6392472fcafa6ed183ffdbb170413be2d90",
+      "year": 2031
+    },
+    {
+      "bytes": 10981,
+      "class_counts": {
+        "1": 16060,
+        "2": 879,
+        "3": 820,
+        "4": 1000,
+        "5": 16126,
+        "6": 44841
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2027.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "39698de746a0e5b43cf6a8cd5505c087ee4b29ff0c0f4cb263c3830248d1d18c",
+      "year": 2027
+    },
+    {
+      "bytes": 11011,
+      "class_counts": {
+        "1": 16060,
+        "2": 878,
+        "3": 926,
+        "4": 1000,
+        "5": 16316,
+        "6": 44546
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2028.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "625e5b44c86d40e07fd31d16829564991fcb3d52b6fe970a1702df32acf7038b",
+      "year": 2028
+    },
+    {
+      "bytes": 11035,
+      "class_counts": {
+        "1": 16060,
+        "2": 877,
+        "3": 939,
+        "4": 1000,
+        "5": 16575,
+        "6": 44275
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2029.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "1a1f56486be2aa509da7d42da1778050a0b81718384ea36070d26c7ada2431fa",
+      "year": 2029
+    },
+    {
+      "bytes": 11099,
+      "class_counts": {
+        "1": 16060,
+        "2": 876,
+        "3": 947,
+        "4": 1000,
+        "5": 16837,
+        "6": 44006
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2030.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "fbfe5135b8ced14dbaf7593c53ce82a75c95c10052beaa346d480855d176fc08",
+      "year": 2030
+    },
+    {
+      "bytes": 11095,
+      "class_counts": {
+        "1": 16060,
+        "2": 876,
+        "3": 981,
+        "4": 1000,
+        "5": 17111,
+        "6": 43698
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/ensemble/prediction_2031.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "e6a264ae4a65d630bb1d4c1f8a8c2ff23efb046e024369d2a11d3502e6c76173",
+      "year": 2031
+    },
+    {
+      "bytes": 11359,
+      "class_counts": {
+        "1": 16060,
+        "2": 875,
+        "3": 448,
+        "4": 1000,
+        "5": 17767,
+        "6": 43576
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2027.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "408118133b4f04282eb148b5bacf06b97cd6e1db79d827cf3ebdc8f96eff0507",
+      "year": 2027
+    },
+    {
+      "bytes": 11363,
+      "class_counts": {
+        "1": 16060,
+        "2": 873,
+        "3": 515,
+        "4": 1000,
+        "5": 18543,
+        "6": 42735
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2028.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "7b2c811ac34b7c252e577c69567ec3b79ce0c998d0020cdf9651a1ca929f198e",
+      "year": 2028
+    },
+    {
+      "bytes": 11527,
+      "class_counts": {
+        "1": 16060,
+        "2": 869,
+        "3": 567,
+        "4": 1000,
+        "5": 19419,
+        "6": 41811
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2029.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "40523500aafbaf897d9715674f54311c0d1b6a7152903f2e0ffd4a1727a933ca",
+      "year": 2029
+    },
+    {
+      "bytes": 11605,
+      "class_counts": {
+        "1": 16060,
+        "2": 870,
+        "3": 582,
+        "4": 1000,
+        "5": 20343,
+        "6": 40871
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2030.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "2bbe3fad230051c6907e004ff30eb556059987316a6fe027fe1dbc8049aeb994",
+      "year": 2030
+    },
+    {
+      "bytes": 11705,
+      "class_counts": {
+        "1": 16060,
+        "2": 870,
+        "3": 604,
+        "4": 1000,
+        "5": 21350,
+        "6": 39842
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geosos_flus",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/ensemble/prediction_2031.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "1dc0945a717ac6650545bffe653a3dd5bcc3f7afb45d3e83730cc3bc070f4da6",
+      "year": 2031
+    },
+    {
+      "bytes": 12043,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 550,
+        "4": 1000,
+        "5": 17095,
+        "6": 44115
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2027.tif",
+      "scenario_id": "compact",
+      "sha256": "7397161b0b761c3a5fdd7b2f40851373fa850998bd332c188ec5d11e21708720",
+      "year": 2027
+    },
+    {
+      "bytes": 11915,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 599,
+        "4": 1000,
+        "5": 17584,
+        "6": 43577
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2028.tif",
+      "scenario_id": "compact",
+      "sha256": "be1b6b8fac5c5a16914a43256d9e720b301cf79e30b95a247d58d2218d61557d",
+      "year": 2028
+    },
+    {
+      "bytes": 11797,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 654,
+        "4": 1000,
+        "5": 18091,
+        "6": 43015
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2029.tif",
+      "scenario_id": "compact",
+      "sha256": "ac5e26f617984ac64883d3fe6211b0da4fc0c2b4d2c5271c59bc9b1260df5f4b",
+      "year": 2029
+    },
+    {
+      "bytes": 11705,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 705,
+        "4": 1000,
+        "5": 18595,
+        "6": 42460
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2030.tif",
+      "scenario_id": "compact",
+      "sha256": "509059458095029f871030763968c20c838ebf4aca155529eef1e033687c717c",
+      "year": 2030
+    },
+    {
+      "bytes": 11587,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 757,
+        "4": 1000,
+        "5": 19095,
+        "6": 41908
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/compact/ensemble/prediction_2031.tif",
+      "scenario_id": "compact",
+      "sha256": "35acf17e8010a8fd57493572dac6d6d4cba10699ab55bb2a3c1d1be9cb22df0f",
+      "year": 2031
+    },
+    {
+      "bytes": 12209,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 853,
+        "4": 1000,
+        "5": 16661,
+        "6": 44246
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2027.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "bb5208a79ed73757c45399a8fcd5a6b62cb7be159ed0b6aabea5cd9042a96d7a",
+      "year": 2027
+    },
+    {
+      "bytes": 12105,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 1020,
+        "4": 1000,
+        "5": 16999,
+        "6": 43741
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2028.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "4a7e1df4349c284f23413478ebd8ab76797fdf20ff7e3903fabfefffbd7092ea",
+      "year": 2028
+    },
+    {
+      "bytes": 12073,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 1175,
+        "4": 1000,
+        "5": 17336,
+        "6": 43249
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2029.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "1b74efc776625610d17e4edd5c511ae37c2b58ebd8ef05b9250de627fc0c0fa5",
+      "year": 2029
+    },
+    {
+      "bytes": 11999,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 1331,
+        "4": 1000,
+        "5": 17680,
+        "6": 42749
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2030.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "e5fe3fb43acbd8dd56579159b6817e7354abba9aa0c31ebf4d644317cb966616",
+      "year": 2030
+    },
+    {
+      "bytes": 11887,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 1480,
+        "4": 1000,
+        "5": 18034,
+        "6": 42246
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/ecological_priority/ensemble/prediction_2031.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "8aa66788c1df83a4c2bb528535ed634d14e67d06eff0f0ee40a97489e6bc624c",
+      "year": 2031
+    },
+    {
+      "bytes": 11697,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 470,
+        "4": 1000,
+        "5": 18595,
+        "6": 42695
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2027.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "72e1c582702c4b6f18b9f0d78d7bb258ae4693b3a35c5806c0de8991e466c2f9",
+      "year": 2027
+    },
+    {
+      "bytes": 11523,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 497,
+        "4": 1000,
+        "5": 19577,
+        "6": 41686
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2028.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "d4d4219c5c4d2ef06b6f9d46c5d40fd58669127a42629ae9751431c4b5280e6c",
+      "year": 2028
+    },
+    {
+      "bytes": 11489,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 532,
+        "4": 1000,
+        "5": 20582,
+        "6": 40646
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2029.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "dcefc2c3f41e755f1c10961e5678370cba9568ca1ef339acc28f3fa1fc5e32d4",
+      "year": 2029
+    },
+    {
+      "bytes": 11419,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 561,
+        "4": 1000,
+        "5": 21573,
+        "6": 39626
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2030.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "fcb6f317eeecd62fca08a6df0b2662a7c7d29ba46a27d9e0011b2843ffc61800",
+      "year": 2030
+    },
+    {
+      "bytes": 11321,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 593,
+        "4": 1000,
+        "5": 22577,
+        "6": 38590
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "geospatial_kernel",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/geospatial_kernel/outward_growth/ensemble/prediction_2031.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "11ef7ace8fae646ad9fbda5e2256020c0226036bcd05fb4ae0b15f7d1160c384",
+      "year": 2031
+    },
+    {
+      "bytes": 12453,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 562,
+        "4": 1000,
+        "5": 16895,
+        "6": 44303
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2027.tif",
+      "scenario_id": "compact",
+      "sha256": "617369936b6daf47cd0ef2761ef162666efd445b031127af285be273de968c84",
+      "year": 2027
+    },
+    {
+      "bytes": 12495,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 601,
+        "4": 1000,
+        "5": 17258,
+        "6": 43901
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2028.tif",
+      "scenario_id": "compact",
+      "sha256": "1e2eef643c09975584debb8c96462cf444a7c06d5a8e07318d766d183402e35a",
+      "year": 2028
+    },
+    {
+      "bytes": 12469,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 651,
+        "4": 1000,
+        "5": 17620,
+        "6": 43489
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2029.tif",
+      "scenario_id": "compact",
+      "sha256": "cd89b079619a874c6766ba97ebb8595732404a97e973da67398b26f4548f8448",
+      "year": 2029
+    },
+    {
+      "bytes": 12465,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 699,
+        "4": 1000,
+        "5": 17989,
+        "6": 43072
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2030.tif",
+      "scenario_id": "compact",
+      "sha256": "023c400f9bf21cca525dc4609503072cc77b53ed19410a29e7c92a87af9c5bf2",
+      "year": 2030
+    },
+    {
+      "bytes": 12559,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 737,
+        "4": 1000,
+        "5": 18329,
+        "6": 42694
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/compact/ensemble/prediction_2031.tif",
+      "scenario_id": "compact",
+      "sha256": "68cbdd9f1d66f9eaf3af2d3eff3591ee00fbf11c461b50c7f14e696be9cb98ba",
+      "year": 2031
+    },
+    {
+      "bytes": 12601,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 843,
+        "4": 1000,
+        "5": 16517,
+        "6": 44400
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2027.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "1ce117d504a97aefda25a2463d58f12d5e8ee619717a3d6865d052bdab5a1f7d",
+      "year": 2027
+    },
+    {
+      "bytes": 12667,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 964,
+        "4": 1000,
+        "5": 16752,
+        "6": 44044
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2028.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "39e792481efe977b28540577fe649e6e8ccd9b31f14c3d2f8ba62d0c97ebba16",
+      "year": 2028
+    },
+    {
+      "bytes": 12711,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 1078,
+        "4": 1000,
+        "5": 16980,
+        "6": 43702
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2029.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "63c2105087c6976ae06e0abf304477a8689ddf3c48cb4d7ff7342b61eeb718da",
+      "year": 2029
+    },
+    {
+      "bytes": 12745,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 1183,
+        "4": 1000,
+        "5": 17204,
+        "6": 43373
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2030.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "e92531b284c8f8ed0f9572b637af350853541c34557d1497f95fbcc3339ec0b4",
+      "year": 2030
+    },
+    {
+      "bytes": 12789,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 1325,
+        "4": 1000,
+        "5": 17419,
+        "6": 43016
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/ecological_priority/ensemble/prediction_2031.tif",
+      "scenario_id": "ecological_priority",
+      "sha256": "0fe841ae310c9e437a8d8231701e3be5f9d5cd1e5a5feb132c99875f552fbfaf",
+      "year": 2031
+    },
+    {
+      "bytes": 12373,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 480,
+        "4": 1000,
+        "5": 18337,
+        "6": 42943
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2027.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "047691559efa329ada3e4bcff8f240010a47f14f2bac223dfd8413fc481755a8",
+      "year": 2027
+    },
+    {
+      "bytes": 12401,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 510,
+        "4": 1000,
+        "5": 19233,
+        "6": 42017
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2028.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "99a1062eb17d0de5227c05bfa518f2572f8a76c76344d9811ac090bc325bc9c3",
+      "year": 2028
+    },
+    {
+      "bytes": 12325,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 541,
+        "4": 1000,
+        "5": 20174,
+        "6": 41045
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2029.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "fb2c6749b2d646fb29b3269cab4d0cd65c105ea76298691bb27024e1b1777cbc",
+      "year": 2029
+    },
+    {
+      "bytes": 12299,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 574,
+        "4": 1000,
+        "5": 21105,
+        "6": 40081
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2030.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "789c54f36dd1c00d3b82af4d0a9fcc2ed81967e6391936ec0ebdfe4ba10aa06e",
+      "year": 2030
+    },
+    {
+      "bytes": 12205,
+      "class_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 591,
+        "4": 1000,
+        "5": 22024,
+        "6": 39145
+      },
+      "grid_aligned": true,
+      "hard_constraint_violation_pixels": 0,
+      "invalid_class_pixels": 0,
+      "model_id": "paper58",
+      "nonzero_outside_valid_pixels": 0,
+      "path": "artifacts/planning_public_2025_2031/paper58/outward_growth/ensemble/prediction_2031.tif",
+      "scenario_id": "outward_growth",
+      "sha256": "a124e7c7da2f8f0ee137b7e9a375b2e62274a03661b6a5b98d43461647f4ad46",
+      "year": 2031
+    }
+  ],
+  "schema": "gwm.abu_dhabi_public_planning_delivery.v1",
+  "status": "PASS",
+  "vector_package_count": 9,
+  "vector_packages": [
+    {
+      "bytes": 4042752,
+      "layers": [
+        {
+          "changed_area_m2": 81140000.0,
+          "changed_pixels": 8114,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 1491,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 88360000.0,
+          "changed_pixels": 8836,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 1512,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 94030000.0,
+          "changed_pixels": 9403,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 1506,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 98220000.0,
+          "changed_pixels": 9822,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 1496,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 102390000.0,
+          "changed_pixels": 10239,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 1494,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 15210000.0,
+          "changed_pixels": 1521,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 893,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 11470000.0,
+          "changed_pixels": 1147,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 781,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 10360000.0,
+          "changed_pixels": 1036,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 735,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 9120000.0,
+          "changed_pixels": 912,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 678,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 9420000.0,
+          "changed_pixels": 942,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 676,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "geosos_flus",
+      "path": "artifacts/planning_public_2025_2031/vector/geosos_flus/compact/changes.gpkg",
+      "scenario_id": "compact",
+      "sha256": "8d0209b14238a6de8d82aec8f71b3ab62a20f009cea71be5f80cbb1ae157deda"
+    },
+    {
+      "bytes": 4026368,
+      "layers": [
+        {
+          "changed_area_m2": 81460000.0,
+          "changed_pixels": 8146,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 1476,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 88660000.0,
+          "changed_pixels": 8866,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 1459,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 92920000.0,
+          "changed_pixels": 9292,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 1457,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 96430000.0,
+          "changed_pixels": 9643,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 1432,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 99770000.0,
+          "changed_pixels": 9977,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 1431,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 14930000.0,
+          "changed_pixels": 1493,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 929,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 10750000.0,
+          "changed_pixels": 1075,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 707,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 8230000.0,
+          "changed_pixels": 823,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 637,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 7890000.0,
+          "changed_pixels": 789,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 586,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 7870000.0,
+          "changed_pixels": 787,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 594,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "geosos_flus",
+      "path": "artifacts/planning_public_2025_2031/vector/geosos_flus/ecological_priority/changes.gpkg",
+      "scenario_id": "ecological_priority",
+      "sha256": "b0b946630c5fed55656f4e03abe8d3fab459dd4cff5a2f90daca91e3b437cd62"
+    },
+    {
+      "bytes": 4538368,
+      "layers": [
+        {
+          "changed_area_m2": 87060000.0,
+          "changed_pixels": 8706,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 1621,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 96930000.0,
+          "changed_pixels": 9693,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 1550,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 104310000.0,
+          "changed_pixels": 10431,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 1610,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 111200000.0,
+          "changed_pixels": 11120,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 1600,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 117660000.0,
+          "changed_pixels": 11766,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 1587,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 18210000.0,
+          "changed_pixels": 1821,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 1002,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 15210000.0,
+          "changed_pixels": 1521,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 897,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 14090000.0,
+          "changed_pixels": 1409,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 893,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 13240000.0,
+          "changed_pixels": 1324,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 841,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 13650000.0,
+          "changed_pixels": 1365,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 896,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "geosos_flus",
+      "path": "artifacts/planning_public_2025_2031/vector/geosos_flus/outward_growth/changes.gpkg",
+      "scenario_id": "outward_growth",
+      "sha256": "1af4688a0c960e187a860eafb975141e67e16543ea7a14be74a20ea187a231b3"
+    },
+    {
+      "bytes": 2043904,
+      "layers": [
+        {
+          "changed_area_m2": 16390000.0,
+          "changed_pixels": 1639,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 619,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 21770000.0,
+          "changed_pixels": 2177,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 682,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 27390000.0,
+          "changed_pixels": 2739,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 689,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 32940000.0,
+          "changed_pixels": 3294,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 723,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 38460000.0,
+          "changed_pixels": 3846,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 689,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 5420000.0,
+          "changed_pixels": 542,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 423,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 5400000.0,
+          "changed_pixels": 540,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 434,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 5620000.0,
+          "changed_pixels": 562,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 434,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 5590000.0,
+          "changed_pixels": 559,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 429,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 5570000.0,
+          "changed_pixels": 557,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 428,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "geospatial_kernel",
+      "path": "artifacts/planning_public_2025_2031/vector/geospatial_kernel/compact/changes.gpkg",
+      "scenario_id": "compact",
+      "sha256": "371bd956b6dcafda3ba80054268a5bae2c770249bf479e349363247abda903ca"
+    },
+    {
+      "bytes": 1953792,
+      "layers": [
+        {
+          "changed_area_m2": 15080000.0,
+          "changed_pixels": 1508,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 582,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 20130000.0,
+          "changed_pixels": 2013,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 587,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 25050000.0,
+          "changed_pixels": 2505,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 617,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 30050000.0,
+          "changed_pixels": 3005,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 637,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 35080000.0,
+          "changed_pixels": 3508,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 657,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 5060000.0,
+          "changed_pixels": 506,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 384,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 5070000.0,
+          "changed_pixels": 507,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 378,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 4950000.0,
+          "changed_pixels": 495,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 375,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 5070000.0,
+          "changed_pixels": 507,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 390,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 5090000.0,
+          "changed_pixels": 509,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 390,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "geospatial_kernel",
+      "path": "artifacts/planning_public_2025_2031/vector/geospatial_kernel/ecological_priority/changes.gpkg",
+      "scenario_id": "ecological_priority",
+      "sha256": "386ebe9b13f9d06f29c9d012dc27ed043a522204234e8b1de76da82b45405838"
+    },
+    {
+      "bytes": 2760704,
+      "layers": [
+        {
+          "changed_area_m2": 30590000.0,
+          "changed_pixels": 3059,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 847,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 40680000.0,
+          "changed_pixels": 4068,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 800,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 51080000.0,
+          "changed_pixels": 5108,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 775,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 61280000.0,
+          "changed_pixels": 6128,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 745,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 71640000.0,
+          "changed_pixels": 7164,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 667,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 9970000.0,
+          "changed_pixels": 997,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 687,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 10120000.0,
+          "changed_pixels": 1012,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 681,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 10410000.0,
+          "changed_pixels": 1041,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 670,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 10230000.0,
+          "changed_pixels": 1023,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 670,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 10440000.0,
+          "changed_pixels": 1044,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 681,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "geospatial_kernel",
+      "path": "artifacts/planning_public_2025_2031/vector/geospatial_kernel/outward_growth/changes.gpkg",
+      "scenario_id": "outward_growth",
+      "sha256": "11cf2ae8c22f1ee65c3ed5e36855540cc5383d42ff7077face0fa042f082bd63"
+    },
+    {
+      "bytes": 1761280,
+      "layers": [
+        {
+          "changed_area_m2": 14510000.0,
+          "changed_pixels": 1451,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 632,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 18530000.0,
+          "changed_pixels": 1853,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 692,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 22650000.0,
+          "changed_pixels": 2265,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 722,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 26820000.0,
+          "changed_pixels": 2682,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 740,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 30600000.0,
+          "changed_pixels": 3060,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 746,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 4080000.0,
+          "changed_pixels": 408,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 295,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 4050000.0,
+          "changed_pixels": 405,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 252,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 4120000.0,
+          "changed_pixels": 412,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 255,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 4180000.0,
+          "changed_pixels": 418,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 272,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 3800000.0,
+          "changed_pixels": 380,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 259,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "paper58",
+      "path": "artifacts/planning_public_2025_2031/vector/paper58/compact/changes.gpkg",
+      "scenario_id": "compact",
+      "sha256": "12c230179c4ec5d8df36686ec382f11ffa6efa0bd7ae12fffb774cb1f7de96d1"
+    },
+    {
+      "bytes": 1748992,
+      "layers": [
+        {
+          "changed_area_m2": 13540000.0,
+          "changed_pixels": 1354,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 600,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 17100000.0,
+          "changed_pixels": 1710,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 655,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 20520000.0,
+          "changed_pixels": 2052,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 703,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 23810000.0,
+          "changed_pixels": 2381,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 731,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 27380000.0,
+          "changed_pixels": 2738,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 751,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 3900000.0,
+          "changed_pixels": 390,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 291,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 3600000.0,
+          "changed_pixels": 360,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 202,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 3440000.0,
+          "changed_pixels": 344,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 214,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 3300000.0,
+          "changed_pixels": 330,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 210,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 3590000.0,
+          "changed_pixels": 359,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 223,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "paper58",
+      "path": "artifacts/planning_public_2025_2031/vector/paper58/ecological_priority/changes.gpkg",
+      "scenario_id": "ecological_priority",
+      "sha256": "643760816c0e000994f9ea230b85e2ba84e2b3c9a7d0f6e99f7bae1198959404"
+    },
+    {
+      "bytes": 2715648,
+      "layers": [
+        {
+          "changed_area_m2": 28110000.0,
+          "changed_pixels": 2811,
+          "comparison": "baseline",
+          "end_year": 2027,
+          "feature_count": 955,
+          "layer": "from_2024_2027",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 37370000.0,
+          "changed_pixels": 3737,
+          "comparison": "baseline",
+          "end_year": 2028,
+          "feature_count": 1008,
+          "layer": "from_2024_2028",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 47090000.0,
+          "changed_pixels": 4709,
+          "comparison": "baseline",
+          "end_year": 2029,
+          "feature_count": 979,
+          "layer": "from_2024_2029",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 56730000.0,
+          "changed_pixels": 5673,
+          "comparison": "baseline",
+          "end_year": 2030,
+          "feature_count": 948,
+          "layer": "from_2024_2030",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 66090000.0,
+          "changed_pixels": 6609,
+          "comparison": "baseline",
+          "end_year": 2031,
+          "feature_count": 889,
+          "layer": "from_2024_2031",
+          "start_year": 2024
+        },
+        {
+          "changed_area_m2": 8680000.0,
+          "changed_pixels": 868,
+          "comparison": "annual",
+          "end_year": 2027,
+          "feature_count": 514,
+          "layer": "annual_2027",
+          "start_year": 2026
+        },
+        {
+          "changed_area_m2": 9270000.0,
+          "changed_pixels": 927,
+          "comparison": "annual",
+          "end_year": 2028,
+          "feature_count": 526,
+          "layer": "annual_2028",
+          "start_year": 2027
+        },
+        {
+          "changed_area_m2": 9760000.0,
+          "changed_pixels": 976,
+          "comparison": "annual",
+          "end_year": 2029,
+          "feature_count": 544,
+          "layer": "annual_2029",
+          "start_year": 2028
+        },
+        {
+          "changed_area_m2": 9680000.0,
+          "changed_pixels": 968,
+          "comparison": "annual",
+          "end_year": 2030,
+          "feature_count": 586,
+          "layer": "annual_2030",
+          "start_year": 2029
+        },
+        {
+          "changed_area_m2": 9390000.0,
+          "changed_pixels": 939,
+          "comparison": "annual",
+          "end_year": 2031,
+          "feature_count": 537,
+          "layer": "annual_2031",
+          "start_year": 2030
+        }
+      ],
+      "model_id": "paper58",
+      "path": "artifacts/planning_public_2025_2031/vector/paper58/outward_growth/changes.gpkg",
+      "scenario_id": "outward_growth",
+      "sha256": "045e35f2e5ef956604e757c9bc7c63d12e01f3cdc06f9aa86a69f569217acf08"
+    }
+  ]
+}

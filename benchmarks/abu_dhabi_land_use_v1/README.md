@@ -70,6 +70,43 @@ start from the observed 2024 state and receive the same annual demand and hard
 constraints. Future exogenous raster drivers are held at their known 2024
 values; GeoFM-LDN recursively writes back its predicted latent state.
 
+## Exact reproducibility
+
+The repository now contains the minimum public-data bundle needed for a clean
+checkout: the 2017--2024 land-cover, quality, VIIRS, AlphaEarth, terrain and
+WorldCover rasters; the OSM road-accessibility raster; the allocation and
+constraint bundle; the three GeoFM-LDN checkpoints; the vendored GeoFM-LDN
+runner; and the tested macOS arm64 FLUS console. Raw OSM PBF and regenerated
+planning rasters are intentionally excluded because they are not required to
+execute the benchmark and would duplicate derived data.
+
+The exact Python pins are in
+`reproducibility/requirements.lock.txt`; platform and seed policy are in
+`reproducibility/environment.json`. `reproducibility/MANIFEST.json` and
+`reproducibility/SHA256SUMS` cover every declared input, model asset and source
+file. The fail-closed gate is:
+
+```bash
+python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
+```
+
+After installing the lock file in Python 3.11, a complete rerun is:
+
+```bash
+python benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py --device cpu
+```
+
+It regenerates the historical model rasters, the 2025--2031 three-model
+scenarios, strict comparison reports, mechanism controls, 45 ensemble rasters,
+9 multi-layer GeoPackages, the output audit and publication figures. The
+reference run completed with 276 audited predictions and zero failures. The
+vendored FLUS executable is macOS arm64; on another operating system provide
+an explicitly built compatible binary with `run_geosos_flus.py --binary`.
+
+The default rerun uses the declared GeoFM-LDN checkpoints so that model assets
+remain immutable. The full training path remains available by invoking the
+vendored runner without `--use-checkpoints`.
+
 ## Current result status
 
 The immutable historical and planning JSON files are retained as legacy
@@ -81,13 +118,11 @@ belongs to a separate 2025–2030 run and is not an audit of the public
 
 The code needed for the revised analysis is present, including paired
 model-difference intervals and a score-independent minimum-change null. The
-analysis workstation recovered the complete public raster bundle, GeoFM-LDN
-checkpoints and existing planning rasters from the companion GIS data workspace;
-the large files remain outside Git. The resulting ranking and Pareto membership
-are conditional pipeline comparisons. The original FLUS run used a different
-feature set and frozen console defaults, so a matched-input rerun remains
-required before intrinsic model superiority is inferred. Independent
-authoritative 2023–2024 change validation is still not available.
+resulting ranking and Pareto membership are conditional pipeline comparisons.
+The original FLUS run used a different feature set and frozen console defaults,
+so intrinsic model superiority should not be inferred without a matched-input
+rerun. Independent authoritative 2023–2024 change validation is still not
+available.
 
 All substantive findings remain conditional on Dynamic World labels, public
 OSM/WorldCover proxy constraints and planner-supplied scenario demand. They do

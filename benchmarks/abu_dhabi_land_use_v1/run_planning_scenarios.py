@@ -329,7 +329,7 @@ def run_geosos_flus_scenarios(
     return {
         "model_id": "geosos_flus",
         "implementation": "external_flus_console_ann_ca",
-        "external_binary": f"external/{binary.name}",
+        "external_binary": f"vendor/{binary.name}",
         "future_exogenous_driver_policy": "hold_2024",
         "seeds": rows,
         "wall_seconds": time.perf_counter() - started,

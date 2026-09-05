@@ -1,0 +1,65 @@
+{
+  "schema": "gwm.land_use_scenario_set.v1",
+  "origin_year": 2024,
+  "scenario_horizon": [2025, 2031],
+  "extension_note": "2031 targets extend each scenario's 2029-to-2030 annual class-count delta. They are planner-supplied public-data stress-test actions, not forecasts or statutory plans.",
+  "scenarios": [
+    {
+      "annual_built_gain_pixels": 500,
+      "annual_green_gain_pixels": 50,
+      "interpretation": "Planner-supplied public-data stress-test action, not a forecast.",
+      "origin_year": 2024,
+      "scenario_id": "compact",
+      "scenario_label_zh": "紧凑增长",
+      "schema": "gwm.land_use_scenario.v1",
+      "source": "scenario_target",
+      "target_counts_by_year": {
+        "2025": {"1": 16060, "2": 906, "3": 458, "4": 1000, "5": 16098, "6": 45204},
+        "2026": {"1": 16060, "2": 906, "3": 508, "4": 1000, "5": 16598, "6": 44654},
+        "2027": {"1": 16060, "2": 906, "3": 558, "4": 1000, "5": 17098, "6": 44104},
+        "2028": {"1": 16060, "2": 906, "3": 608, "4": 1000, "5": 17598, "6": 43554},
+        "2029": {"1": 16060, "2": 906, "3": 658, "4": 1000, "5": 18098, "6": 43004},
+        "2030": {"1": 16060, "2": 906, "3": 708, "4": 1000, "5": 18598, "6": 42454},
+        "2031": {"1": 16060, "2": 906, "3": 758, "4": 1000, "5": 19098, "6": 41904}
+      }
+    },
+    {
+      "annual_built_gain_pixels": 350,
+      "annual_green_gain_pixels": 150,
+      "interpretation": "Planner-supplied public-data stress-test action, not a forecast.",
+      "origin_year": 2024,
+      "scenario_id": "ecological_priority",
+      "scenario_label_zh": "生态优先",
+      "schema": "gwm.land_use_scenario.v1",
+      "source": "scenario_target",
+      "target_counts_by_year": {
+        "2025": {"1": 16060, "2": 906, "3": 558, "4": 1000, "5": 15948, "6": 45254},
+        "2026": {"1": 16060, "2": 906, "3": 708, "4": 1000, "5": 16298, "6": 44754},
+        "2027": {"1": 16060, "2": 906, "3": 858, "4": 1000, "5": 16648, "6": 44254},
+        "2028": {"1": 16060, "2": 906, "3": 1008, "4": 1000, "5": 16998, "6": 43754},
+        "2029": {"1": 16060, "2": 906, "3": 1158, "4": 1000, "5": 17348, "6": 43254},
+        "2030": {"1": 16060, "2": 906, "3": 1308, "4": 1000, "5": 17698, "6": 42754},
+        "2031": {"1": 16060, "2": 906, "3": 1458, "4": 1000, "5": 18048, "6": 42254}
+      }
+    },
+    {
+      "annual_built_gain_pixels": 1000,
+      "annual_green_gain_pixels": 25,
+      "interpretation": "Planner-supplied public-data stress-test action, not a forecast.",
+      "origin_year": 2024,
+      "scenario_id": "outward_growth",
+      "scenario_label_zh": "外延增长",
+      "schema": "gwm.land_use_scenario.v1",
+      "source": "scenario_target",
+      "target_counts_by_year": {
+        "2025": {"1": 16060, "2": 906, "3": 433, "4": 1000, "5": 16598, "6": 44729},
+        "2026": {"1": 16060, "2": 906, "3": 458, "4": 1000, "5": 17598, "6": 43704},
+        "2027": {"1": 16060, "2": 906, "3": 483, "4": 1000, "5": 18598, "6": 42679},
+        "2028": {"1": 16060, "2": 906, "3": 508, "4": 1000, "5": 19598, "6": 41654},
+        "2029": {"1": 16060, "2": 906, "3": 533, "4": 1000, "5": 20598, "6": 40629},
+        "2030": {"1": 16060, "2": 906, "3": 558, "4": 1000, "5": 21598, "6": 39604},
+        "2031": {"1": 16060, "2": 906, "3": 583, "4": 1000, "5": 22598, "6": 38579}
+      }
+    }
+  ]
+}

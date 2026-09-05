@@ -1,0 +1,513 @@
+{
+  "schema": "gwm.abu_dhabi_reproducibility_manifest.v1",
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "repository_root": ".",
+  "generated_by": "benchmarks/abu_dhabi_land_use_v1/reproducibility/build_reproducibility_manifest.py",
+  "generated_files_are_not_inputs": true,
+  "records": [
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/__init__.py",
+      "role": "code",
+      "bytes": 72,
+      "sha256": "5809bb625ce43cfa1d41099f21679f00f3644a99c5a44a74fa1fb8dc9c668213"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/abu_dhabi_city_100m_mask.tif",
+      "role": "data",
+      "bytes": 2800,
+      "sha256": "8dd5a6c6d99658df021ea438ae2b61ac9b579ab040ea3d465d407daf40c94582"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/allocation_actions.json",
+      "role": "data",
+      "bytes": 1392,
+      "sha256": "5fe122636d8aaefaaf0d82a31c038e648b77b2af23357b93c397e6e4c551585c"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/common_valid_mask_100m.tif",
+      "role": "data",
+      "bytes": 2885,
+      "sha256": "64bb412360ce3579c27f2d841d49be88e75abbd90809582261b1d3237b50e392"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/hard_exclusion_2022_100m.tif",
+      "role": "data",
+      "bytes": 5605,
+      "sha256": "c8b204a821d61aebbacd8a2a38f541d3c9056d36c207da5c3eb937c29ce3f3fe"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/hard_exclusion_2024_100m.tif",
+      "role": "data",
+      "bytes": 5647,
+      "sha256": "5ae9779ccf9d7865cd661af671b349b6b95e5ec52d356467263be865cb5f4bde"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/planning_scenarios.json",
+      "role": "data",
+      "bytes": 3882,
+      "sha256": "5dbdbc4aec497607a9f4eca9895b37975bf33c944b67ec35f824edfbcd7103ee"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/planning_scenarios_public_2025_2031.json",
+      "role": "data",
+      "bytes": 3337,
+      "sha256": "9681fcd84d9ce5ecf48614b681250802d5e96787f06e6e9f7ec59524450e5451"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/reliability_2022_2023_100m.tif",
+      "role": "data",
+      "bytes": 10225,
+      "sha256": "f2bc5eed1f516d7886042c90de4a6421d1d5771563de96d4ce7b7196b62065cb"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/reliability_2023_2024_100m.tif",
+      "role": "data",
+      "bytes": 10297,
+      "sha256": "ca2f2ce8618f78aac27e82651a6c8db05187091f5da2f34499f85d8289341796"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2017_100m.tif",
+      "role": "data",
+      "bytes": 19100454,
+      "sha256": "faea516c30b213631c1002ba91232e05eeebb052747a79a4a50e128873894073"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2018_100m.tif",
+      "role": "data",
+      "bytes": 19087858,
+      "sha256": "a333223e29e405d5800885ca5365b05e23140d5387fe08de40d1a913cd0f1014"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2019_100m.tif",
+      "role": "data",
+      "bytes": 19097688,
+      "sha256": "7c81312127ecaaee3e1ecad54067f8c35655bf22207462e4ff910c1dcaa27f3c"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2020_100m.tif",
+      "role": "data",
+      "bytes": 19086578,
+      "sha256": "89169645eef65090e99298bae1b38e2b3a33238684433c6f8574a6d8253bae9b"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2021_100m.tif",
+      "role": "data",
+      "bytes": 19098660,
+      "sha256": "059c42c21e0f2de7ad759ca2d31a5745118b6d44cbe7353944742200b0d107d8"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2022_100m.tif",
+      "role": "data",
+      "bytes": 19095504,
+      "sha256": "1affc98c5f2902407c6643f6499c374f21a2da1b70c16988ab21fb80fd640970"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2023_100m.tif",
+      "role": "data",
+      "bytes": 19094928,
+      "sha256": "4699a65a1102bcc24ae551f947efae4b677bfa955fb2fb1cb95d58d99a9a0101"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2024_100m.tif",
+      "role": "data",
+      "bytes": 19092716,
+      "sha256": "2ec5050a0140e4b83ff90cde05a081a75265bc74404e84567eca2b52475625d8"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/constraints/esa_worldcover_2021_water_ecological_100m.tif",
+      "role": "data",
+      "bytes": 8420,
+      "sha256": "24c5939f95a0abb07b5e98f3c31c5adaa5a1a10b15442d8bb4d398b0b732c3a0"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2017_100m.tif",
+      "role": "data",
+      "bytes": 9905,
+      "sha256": "42289e965921aea64a547659ad80f2f867f34741e4d3455e6249ec931aa50298"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2018_100m.tif",
+      "role": "data",
+      "bytes": 9223,
+      "sha256": "51d5cb5bf6ffa1af6b6e66f8432984e29c3335338991f286ae605d7e87ecdf9c"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2019_100m.tif",
+      "role": "data",
+      "bytes": 9773,
+      "sha256": "e80027491200b14a652b646e3485dadecd233330fb828bbce35277b679e561f8"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2020_100m.tif",
+      "role": "data",
+      "bytes": 10195,
+      "sha256": "fd33fd7970ade44ee63b9ac9262fc7d0ae7c879a6a6d84ff1210c3a4f175c1cc"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2021_100m.tif",
+      "role": "data",
+      "bytes": 9567,
+      "sha256": "4368e74c8bf4b2a508bb651bac88937433b2c6f379fc2b78bc097b46766671d5"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2022_100m.tif",
+      "role": "data",
+      "bytes": 9971,
+      "sha256": "9053048177fa8c4633a5215f9480b9c8141ce7bedf63a26e7cea61d386b93589"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2023_100m.tif",
+      "role": "data",
+      "bytes": 11107,
+      "sha256": "b1e95f035b010b07990557e4f9543e7d630107148e7fb70a99c5ef0c0820d997"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2024_100m.tif",
+      "role": "data",
+      "bytes": 12093,
+      "sha256": "4249304d306648d50d77b1d2bf9b90b9604aa26b494e4df5188835536aff77ba"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2017_100m.tif",
+      "role": "data",
+      "bytes": 360559,
+      "sha256": "0efe96fdd2a3a384bdc48116b29e82a52319d4962b9a49268c82b063bc690c75"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2018_100m.tif",
+      "role": "data",
+      "bytes": 373703,
+      "sha256": "ea4ae49e1517aecd1e9fcebd34132fa26c317da85a144e4f0705169aff2bf46b"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2019_100m.tif",
+      "role": "data",
+      "bytes": 370761,
+      "sha256": "0e3653d2f39e79cad3aa840a43feeb7ef61cde97ac0e4c38b87786ad3de36264"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2020_100m.tif",
+      "role": "data",
+      "bytes": 378215,
+      "sha256": "fd83341796bb1b881f66555cfacf6f6ebc3543d8243b2ac8a8a221067dffaeb3"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2021_100m.tif",
+      "role": "data",
+      "bytes": 371855,
+      "sha256": "25c92566ecb3f5aa68b30753aaf666768c73c2017f46f236461aba6d48663806"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
+      "role": "data",
+      "bytes": 371575,
+      "sha256": "021432ae6f5faca33db37506dc63d00a110a94027cf2f18e3db66b42bb9c7533"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
+      "role": "data",
+      "bytes": 373983,
+      "sha256": "4c201f87750dc1e939d42ab952bd52eb53f8e2b63a663014253cb29ba5ba5203"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2024_100m.tif",
+      "role": "data",
+      "bytes": 375751,
+      "sha256": "89d874df784401b28ce6ff29161d751512162e782fea72aa92b24c52378956a7"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/terrain/copernicus_dem_2024_1_slope_100m.tif",
+      "role": "data",
+      "bytes": 514392,
+      "sha256": "fecc3c2bfef7ce076aa56cbb902ce4e1caa9c5c33ed3719e9c49bb99fbd5b903"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2017_100m.tif",
+      "role": "data",
+      "bytes": 26683,
+      "sha256": "39bf4ac9dfdc581c6df7031c720543ff94cc354696c6e9bdf430ff034f9512f0"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2018_100m.tif",
+      "role": "data",
+      "bytes": 26313,
+      "sha256": "219750d3a62a4f830d7879d4f44581f116e36043c7c4b19bae358233a7f2dcd5"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2019_100m.tif",
+      "role": "data",
+      "bytes": 26419,
+      "sha256": "718fa3a6d323bf82e1f0886c2da2f30b9be371504b3e812f41bc6c4209a09942"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2020_100m.tif",
+      "role": "data",
+      "bytes": 26353,
+      "sha256": "e77969fe443fcf0fe316439cc82f5871d51622fa5ccb62c6438c715ed7a3e22a"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2021_100m.tif",
+      "role": "data",
+      "bytes": 26309,
+      "sha256": "8bd896d9f522348518dac188e462ca6ffe9b9b6af1b849bf4838688af9956e0a"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2022_100m.tif",
+      "role": "data",
+      "bytes": 26301,
+      "sha256": "f39cba97ab908fc715e1ad36bd083ffb5f1737ef856623ed959f480855d6db70"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2023_100m.tif",
+      "role": "data",
+      "bytes": 26333,
+      "sha256": "25b8a33e667d14b9a9401591d6dee83b636e76572291a460a4fb9baaa6a3f5fa"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2024_100m.tif",
+      "role": "data",
+      "bytes": 26333,
+      "sha256": "a341bc2bc22febbe5bf58f9081fdeeddd0dd3b968a49f3a03d9f25e2c18d1586"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/osm/road_accessibility_100m.tif",
+      "role": "data",
+      "bytes": 128596,
+      "sha256": "f4360003cfaf04ee8e309e5e2892a6fea11c7b61b90a3ba323a7597ffa673a06"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_31/paper58_ldn.pt",
+      "role": "model_assets",
+      "bytes": 1833741,
+      "sha256": "46aa9c751b5cd5262fb94955ee241903741ed3a2bbb9ccb13e3676fc528f28f2"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_47/paper58_ldn.pt",
+      "role": "model_assets",
+      "bytes": 1833741,
+      "sha256": "b066bd0f473b6896ae08bd8b47c6490d6e942ab08f11197b525cbbad9499a9b1"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_73/paper58_ldn.pt",
+      "role": "model_assets",
+      "bytes": 1833741,
+      "sha256": "37881646bac41da7c99a8eef1dd9b43635b9cfc58e32be79a2a0b5e64784ba6d"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/audit_inputs.py",
+      "role": "code",
+      "bytes": 13692,
+      "sha256": "ff6914c92abcce0cdfea11ca48130d4a489f7cffffab9edb0a510ad7c434aa2d"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/audit_outputs.py",
+      "role": "code",
+      "bytes": 11649,
+      "sha256": "2b90409ee1227235bec2f6864149a95ab58fcce0239b5e4cbebea128925db33f"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/boundary_manifest.json",
+      "role": "configuration",
+      "bytes": 816,
+      "sha256": "5b66af117475abefb76097c3128de832c389c37c643e55236c02abc660bd57b7"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/build_bundle.py",
+      "role": "code",
+      "bytes": 9610,
+      "sha256": "426c531311a2a2e56486f2668715a46b7d153b83c7ca6b79ea9495c616ad682f"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/build_full_report_documents.py",
+      "role": "code",
+      "bytes": 9027,
+      "sha256": "1ce5b4f2ae1d4bfd9653933fae697d9c11fa56e160e14c861d6925ec8e4221e6"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/compile_comparison.py",
+      "role": "code",
+      "bytes": 19836,
+      "sha256": "b06472ab94ffcaa1e59dbbb1a4675ba13895437ed3a9b0c6c88c97b210345eee"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/compile_planning.py",
+      "role": "code",
+      "bytes": 15177,
+      "sha256": "0a7e62da46291c2ed5e355adf53f8047d0c06f1415a493f887e0a121b2a340f8"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/contract.py",
+      "role": "code",
+      "bytes": 5674,
+      "sha256": "4caaa3d5b4b088af9e424f6c39c82e8995f12a4b2d2137f454fceb4eb08fb865"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/export_planning_change_polygons.py",
+      "role": "code",
+      "bytes": 20110,
+      "sha256": "8cf000a11a9145f194c908ac5c5aa36bb3d18cf4d101c24be512129290cf7fd0"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/external/geofm_ldn/experiments/abu_dhabi/run_paper58_abu_dhabi.py",
+      "role": "model_assets",
+      "bytes": 23331,
+      "sha256": "c25a950ef0450b83dbb76628b963b8b18474efbce2f6c390280b0230a437127f"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/external/geofm_ldn/experiments/paper8/paper58_runtime.py",
+      "role": "model_assets",
+      "bytes": 3322,
+      "sha256": "68b64d094d349d334e63a6597f3229c40d1099ed315664ee38098ee5c3a2bbf5"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/fetch_boundary.py",
+      "role": "code",
+      "bytes": 3999,
+      "sha256": "9569ce2d97e2889acbc6f8f9804a30afd1f0cbec2ca6e8174b8878f3d90d5f72"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/grid_profile.json",
+      "role": "configuration",
+      "bytes": 885,
+      "sha256": "d2bb0b757db5e7996e1f0fa5fb7ec66f07fc4c98253f391ac1db2046536bb94d"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/materialize_gee_inputs.py",
+      "role": "code",
+      "bytes": 24646,
+      "sha256": "7a88dbb83f4fb783dcacf297dc867f172fede0274d64322143e5b6280101c4d0"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/materialize_geofabrik_osm_inputs.py",
+      "role": "code",
+      "bytes": 11169,
+      "sha256": "2b1421c30abaf0c5fc046bf5ec697ca9ae96fb4804718365d293fefff24dc9a7"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/materialize_osm_inputs.py",
+      "role": "code",
+      "bytes": 14717,
+      "sha256": "d1115476de03bd6026600847475b61f49e46515d069b0b0efbc92c6258bd9dba"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/planning.py",
+      "role": "code",
+      "bytes": 8865,
+      "sha256": "58910c558ea6128fa657a5ffe53fab711cfff912d1b81302a2505cb79949057f"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/planning_scenarios_public_2025_2031.json",
+      "role": "configuration",
+      "bytes": 3300,
+      "sha256": "3598ec7fe59a1326dd08242dd219fefe41f8b89f53949cccdeb4cb83bac67dfb"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/prepare_grid.py",
+      "role": "code",
+      "bytes": 4518,
+      "sha256": "a827124dbd1310c268cce9d94dfe88fdd66a904e4c6fe11cc783ba09fdd0023d"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/protocol.json",
+      "role": "configuration",
+      "bytes": 9373,
+      "sha256": "392ce29a2756da10d8400d1a65af02620660a2ddf1aa3a8ba61680ea3e193ce1"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/render_full_report_figures.py",
+      "role": "code",
+      "bytes": 23799,
+      "sha256": "e6d38930992194b34c456ec826e1e52d02fd321b132258ef4eb90535802d9704"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/render_nature_figures.py",
+      "role": "code",
+      "bytes": 29878,
+      "sha256": "85a611230d0eb7e16f93fa3ac235d605c98cc2f2888287ec0c174c8aa6fc5fa1"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/render_planning_map.py",
+      "role": "code",
+      "bytes": 5282,
+      "sha256": "b5cdfca5421cd7a807919d2e70edfe6fd25bb7959aa01eee0ce51d9c586bfd0a"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/build_reproducibility_manifest.py",
+      "role": "configuration",
+      "bytes": 4067,
+      "sha256": "a14f1dd141fea1f073274b15e8c80dd8a98474061bb9442fc3b19c747334f9ec"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/environment.json",
+      "role": "configuration",
+      "bytes": 1094,
+      "sha256": "4ade59f39de447974f6f5ac67bd550d182d5d77804818014da4e808218f0ff26"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py",
+      "role": "configuration",
+      "bytes": 4826,
+      "sha256": "c88116970b77ab2a5c71bc4f6e26f765765f8966c7fe826f0c3aefc5e9013316"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt",
+      "role": "configuration",
+      "bytes": 368,
+      "sha256": "102cf580a9c8e193ac4fe19bd26d80e6ee6cdd7ee117145044b4c6620d1bdcef"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py",
+      "role": "code",
+      "bytes": 5831,
+      "sha256": "4050eecd419221239ea8b17ab140117731817f54d65ba74bfec101413cb5a7be"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_geosos_flus.py",
+      "role": "code",
+      "bytes": 15406,
+      "sha256": "0ce10fd3eb1089b3b921275bbc14db04e4c93d68aa0aa942b74bc70c06c9c74c"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_geospatial_kernel.py",
+      "role": "code",
+      "bytes": 19217,
+      "sha256": "46c0b1d7098a17572a0c864bf9c8df687f6957b69cd7d368d20ee2b9560e117a"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_mechanism_ablations.py",
+      "role": "code",
+      "bytes": 21419,
+      "sha256": "21c8fd8ae79465b5ed4a24f70dbe74352493cad643540c22810129d32b639fa2"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_planning_scenarios.py",
+      "role": "code",
+      "bytes": 21279,
+      "sha256": "c3fe69af2ec09068e686da6dd39d89c49b6c8f7c373775f3fa196f2e7f836e29"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/shared.py",
+      "role": "code",
+      "bytes": 23804,
+      "sha256": "53b15653bfeca06401685395628d086d4f8d69d3bfb8e7806f5509c7ef75d6cd"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/vendor/flus_console",
+      "role": "model_assets",
+      "bytes": 2558784,
+      "sha256": "9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964"
+    },
+    {
+      "path": "data_agent/uwm/geospatial_kernel/__init__.py",
+      "role": "code",
+      "bytes": 510,
+      "sha256": "770867db0bf170fbbd3b125af3bd6f9b48b591bb5f890c2257d55ad9f6cf639f"
+    },
+    {
+      "path": "data_agent/uwm/geospatial_kernel/runtime.py",
+      "role": "code",
+      "bytes": 14683,
+      "sha256": "3deaaf8c2c1a64826e3e2a2c9aa6c1932e9fe345e24ce7299529b474cda5b272"
+    }
+  ]
+}

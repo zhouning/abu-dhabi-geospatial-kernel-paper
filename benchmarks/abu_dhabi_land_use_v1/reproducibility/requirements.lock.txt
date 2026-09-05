@@ -1,0 +1,16 @@
+# Exact runtime used for the published rerun on macOS arm64 (2026-09-05).
+# Install with Python 3.11; the FLUS console is a macOS arm64 executable.
+numpy==2.4.6
+scipy==1.17.1
+scikit-learn==1.9.0
+rasterio==1.4.4
+geopandas==1.1.4
+shapely==2.1.2
+fiona==1.10.1
+matplotlib==3.11.0
+python-docx==1.2.0
+torch==2.12.1
+requests==2.34.2
+affine==2.4.0
+pandas==3.0.5
+pytest==9.1.1

@@ -1,0 +1,56 @@
+{
+  "actions": [
+    {
+      "action_id": "oracle_allocation_2022_2023",
+      "desired_observed_counts": {
+        "1": 15985,
+        "2": 682,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49381
+      },
+      "feasible_target_counts": {
+        "1": 15438,
+        "2": 685,
+        "3": 465,
+        "4": 1011,
+        "5": 12260,
+        "6": 49867
+      },
+      "hard_exclusion_origin_year": 2022,
+      "model_may_read_reliability_mask": false,
+      "reliability_mask": "artifacts/bundle/reliability_2022_2023_100m.tif",
+      "schema": "gwm.land_use_demand_action.v1",
+      "source": "observed_allocation",
+      "start_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "action_id": "oracle_allocation_2023_2024",
+      "desired_observed_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "feasible_target_counts": {
+        "1": 15438,
+        "2": 912,
+        "3": 412,
+        "4": 1011,
+        "5": 15774,
+        "6": 46179
+      },
+      "hard_exclusion_origin_year": 2022,
+      "model_may_read_reliability_mask": false,
+      "reliability_mask": "artifacts/bundle/reliability_2023_2024_100m.tif",
+      "schema": "gwm.land_use_demand_action.v1",
+      "source": "observed_allocation",
+      "start_year": 2023,
+      "target_year": 2024
+    }
+  ]
+}

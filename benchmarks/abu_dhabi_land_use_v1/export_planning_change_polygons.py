@@ -359,6 +359,7 @@ def export(
     output_root: Path,
     manifest_path: Path,
     delivery_years: tuple[int, ...],
+    overwrite: bool = False,
 ) -> dict[str, Any]:
     report = json.loads(comparison_report.read_text(encoding="utf-8"))
     if report.get("status") != "complete":
@@ -408,7 +409,18 @@ def export(
                 )
             package = output_root / model_id / scenario_id / "changes.gpkg"
             if package.exists():
-                raise FileExistsError(f"refusing_to_overwrite_vector_package:{package}")
+                if not overwrite:
+                    raise FileExistsError(f"refusing_to_overwrite_vector_package:{package}")
+                package.unlink()
+                for sidecar in package.parent.glob(f"{package.stem}.*"):
+                    if sidecar != package and sidecar.is_file():
+                        sidecar.unlink()
+            if overwrite and package.parent.exists():
+                # The package is the only generated object in this directory;
+                # remove stale layer sidecars before rebuilding it.
+                for stale in package.parent.glob(f"{package.stem}.*"):
+                    if stale.is_file():
+                        stale.unlink()
             layers = []
             for year in delivery_years:
                 layers.append(
@@ -493,12 +505,14 @@ def main() -> None:
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--delivery-years", default="2027,2028,2029,2030,2031")
+    parser.add_argument("--overwrite", action="store_true")
     args = parser.parse_args()
     manifest = export(
         comparison_report=args.comparison_report,
         output_root=args.output_root,
         manifest_path=args.manifest,
         delivery_years=tuple(int(value) for value in args.delivery_years.split(",") if value),
+        overwrite=args.overwrite,
     )
     print(
         json.dumps(

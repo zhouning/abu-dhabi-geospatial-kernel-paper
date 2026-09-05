@@ -1,11 +1,17 @@
 {
-  "schema": "gwm.abu_dhabi_reproducibility_check.v1",
+  "schema": "gwm.abu_dhabi_reproducibility_check.v2",
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-04T14:44:03.553652+00:00",
-  "status": "BLOCKED",
+  "created_at": "2026-09-05T09:53:52.515039+00:00",
+  "status": "PASS",
+  "python": "3.11.15",
+  "platform": {
+    "system": "Darwin",
+    "machine": "arm64"
+  },
   "code_and_manifests_complete": true,
-  "generated_inputs_complete": false,
-  "external_dependencies_complete": false,
+  "external_dependencies_complete": true,
+  "environment_lock_complete": true,
+  "hash_manifest_complete": true,
   "checks": {
     "required_code": {
       "benchmarks/abu_dhabi_land_use_v1/run_geospatial_kernel.py": true,
@@ -13,30 +19,626 @@
       "benchmarks/abu_dhabi_land_use_v1/run_planning_scenarios.py": true,
       "benchmarks/abu_dhabi_land_use_v1/compile_comparison.py": true,
       "benchmarks/abu_dhabi_land_use_v1/compile_planning.py": true,
+      "benchmarks/abu_dhabi_land_use_v1/export_planning_change_polygons.py": true,
+      "benchmarks/abu_dhabi_land_use_v1/audit_outputs.py": true,
       "benchmarks/abu_dhabi_land_use_v1/shared.py": true,
       "benchmarks/abu_dhabi_land_use_v1/planning.py": true,
-      "data_agent/uwm/geospatial_kernel/runtime.py": true
+      "data_agent/uwm/geospatial_kernel/runtime.py": true,
+      "benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py": true
     },
-    "required_public_manifests": {
+    "required_manifests": {
       "benchmarks/abu_dhabi_land_use_v1/planning_scenarios_public_2025_2031.json": true,
       "benchmarks/abu_dhabi_land_use_v1/protocol.json": true,
       "benchmarks/abu_dhabi_land_use_v1/boundary_manifest.json": true,
-      "benchmarks/abu_dhabi_land_use_v1/grid_profile.json": true
-    },
-    "generated_public_inputs": {
-      "artifacts/gee": false,
-      "artifacts/bundle": false,
-      "artifacts/predictions": false,
-      "artifacts/bundle/common_valid_mask_100m.tif": false,
-      "artifacts/bundle/hard_exclusion_2022_100m.tif": false,
-      "artifacts/bundle/hard_exclusion_2024_100m.tif": false,
-      "artifacts/gee/land_cover/land_cover_2022_100m.tif": false,
-      "artifacts/gee/land_cover/land_cover_2024_100m.tif": false
+      "benchmarks/abu_dhabi_land_use_v1/grid_profile.json": true,
+      "benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt": true,
+      "benchmarks/abu_dhabi_land_use_v1/reproducibility/environment.json": true,
+      "benchmarks/abu_dhabi_land_use_v1/reproducibility/MANIFEST.json": true,
+      "benchmarks/abu_dhabi_land_use_v1/reproducibility/SHA256SUMS": true
     },
     "external_model_dependencies": {
-      "benchmarks/abu_dhabi_land_use_v1/external/geofm_ldn/experiments/abu_dhabi/run_paper58_abu_dhabi.py": false,
-      "benchmarks/abu_dhabi_land_use_v1/external/flus_console": false
+      "benchmarks/abu_dhabi_land_use_v1/vendor/flus_console": true,
+      "benchmarks/abu_dhabi_land_use_v1/external/geofm_ldn/experiments/abu_dhabi/run_paper58_abu_dhabi.py": true,
+      "benchmarks/abu_dhabi_land_use_v1/external/geofm_ldn/experiments/paper8/paper58_runtime.py": true,
+      "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_31/paper58_ldn.pt": true,
+      "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_47/paper58_ldn.pt": true,
+      "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_73/paper58_ldn.pt": true
+    },
+    "hash_manifest": {
+      "manifest_file": true,
+      "sha256sums_file": true,
+      "records_complete": true
     }
   },
-  "claim_boundary": "BLOCKED means the checkout is not sufficient for a clean rerun; existing reports are not treated as proof of reproducibility."
+  "hash_records": [
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/__init__.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/abu_dhabi_city_100m_mask.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/allocation_actions.json",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/common_valid_mask_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/hard_exclusion_2022_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/hard_exclusion_2024_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/planning_scenarios.json",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/planning_scenarios_public_2025_2031.json",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/reliability_2022_2023_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/reliability_2023_2024_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2017_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2018_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2019_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2020_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2021_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2022_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2023_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/alphaearth/alphaearth_2024_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/constraints/esa_worldcover_2021_water_ecological_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2017_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2018_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2019_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2020_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2021_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2022_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2023_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2024_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2017_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2018_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2019_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2020_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2021_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2024_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/terrain/copernicus_dem_2024_1_slope_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2017_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2018_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2019_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2020_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2021_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2022_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2023_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/viirs/viirs_2024_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/osm/road_accessibility_100m.tif",
+      "role": "data",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_31/paper58_ldn.pt",
+      "role": "model_assets",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_47/paper58_ldn.pt",
+      "role": "model_assets",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/paper58/seed_73/paper58_ldn.pt",
+      "role": "model_assets",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/audit_inputs.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/audit_outputs.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/boundary_manifest.json",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/build_bundle.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/build_full_report_documents.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/compile_comparison.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/compile_planning.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/contract.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/export_planning_change_polygons.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/external/geofm_ldn/experiments/abu_dhabi/run_paper58_abu_dhabi.py",
+      "role": "model_assets",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/external/geofm_ldn/experiments/paper8/paper58_runtime.py",
+      "role": "model_assets",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/fetch_boundary.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/grid_profile.json",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/materialize_gee_inputs.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/materialize_geofabrik_osm_inputs.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/materialize_osm_inputs.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/planning.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/planning_scenarios_public_2025_2031.json",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/prepare_grid.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/protocol.json",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/render_full_report_figures.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/render_nature_figures.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/render_planning_map.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/build_reproducibility_manifest.py",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/environment.json",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt",
+      "role": "configuration",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_geosos_flus.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_geospatial_kernel.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_mechanism_ablations.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_planning_scenarios.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/shared.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/vendor/flus_console",
+      "role": "model_assets",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "data_agent/uwm/geospatial_kernel/__init__.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "data_agent/uwm/geospatial_kernel/runtime.py",
+      "role": "code",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    }
+  ],
+  "claim_boundary": "PASS means the checkout contains the declared public inputs and model assets and every declared hash matches. It does not claim that a private authoritative client dataset is present."
 }
