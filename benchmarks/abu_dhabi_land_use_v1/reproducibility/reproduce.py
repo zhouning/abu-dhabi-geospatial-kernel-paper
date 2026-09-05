@@ -52,9 +52,15 @@ def _hash_outputs() -> dict[str, object]:
     for path in paths:
         if not path.is_file():
             continue
-        digest = hashlib.sha256(path.read_bytes()).hexdigest()
-        records.append({"path": path.relative_to(REPO).as_posix(), "bytes": path.stat().st_size, "sha256": digest})
-    report = {"schema": "gwm.abu_dhabi_generated_output_hashes.v1", "records": records}
+        raw = path.read_bytes()
+        if path.suffix.lower() in {".json", ".md", ".py", ".txt"}:
+            raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+            hash_mode = "text_lf_normalized"
+        else:
+            hash_mode = "raw"
+        digest = hashlib.sha256(raw).hexdigest()
+        records.append({"path": path.relative_to(REPO).as_posix(), "bytes": len(raw), "sha256": digest, "hash_mode": hash_mode})
+    report = {"schema": "gwm.abu_dhabi_generated_output_hashes.v2", "records": records}
     target = HERE / "reproducibility/generated_output_hashes.json"
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return report
@@ -88,7 +94,7 @@ def main() -> None:
         "--device",
         args.device,
     )
-    _run("GeoSOS-FLUS historical predictions", HERE / "run_geosos_flus.py", "--binary", str(HERE / "vendor/flus_console"), "--seeds", SEEDS)
+    _run("FLUS-style ANN–CA console historical predictions", HERE / "run_geosos_flus.py", "--binary", str(HERE / "vendor/flus_console"), "--seeds", SEEDS)
     _run("Geospatial Kernel historical predictions", HERE / "run_geospatial_kernel.py", "--seeds", SEEDS)
     _run("Historical comparison", HERE / "compile_comparison.py")
     _run(

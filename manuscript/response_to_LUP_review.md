@@ -1,60 +1,54 @@
 # Response to the LUP review
 
-This document records the revision state after the 4 September 2026 review. It
-is an internal response draft, not a cover letter. The complete public-data
-bundle and model artifacts are now released in the repository and re-evaluated
-under one frozen protocol; authoritative local change-validation data remain
-unavailable.
+This is an internal point-by-point response draft for the review dated 5
+September 2026. It records what the repository now supports and what remains
+outside the evidence boundary. The manuscript remains a public-data benchmark
+and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
 
-The current code is fail-closed: it repairs the evaluation design and removes
-pre-written conclusions. Current versioned reports
-and figures now use the released current rasters rather than immutable legacy reports.
+## Fourth-round major comments
 
-## Major comments
-
-| Review concern | Revision made | Remaining status |
+| Review concern | Revision made | Remaining boundary |
 |---|---|---|
-| Contribution was framed mainly as a software contract | The Introduction and Discussion now define the Kernel as a conditional land-cover allocation core and explicitly limit the contribution to an auditable execution boundary. | A planning-science contribution still requires independent, authoritative Abu Dhabi data. |
-| FLUS received fewer features and was run with frozen defaults | The manuscript calls the comparison a pipeline comparison, records the FLUS configuration in `protocol.json`, and removes intrinsic-superiority language. | A matched-input FLUS rerun remains required. |
-| GeoFM-LDN implementation was underspecified and not archived | The manuscript now documents the residual dilated CNN, 12-dimensional action encoder, latent dimension, loss, optimizer, patch/batch/epoch settings, checkpoint mode and shared `allocate_action` projection. Source and three checkpoints are released. | Retraining remains optional; default reproduction loads fixed August 2026 checkpoints. |
-| Planning objectives were circular or structurally zero | The objective set was frozen before recompilation to major-road distance, prior-built distance, built components per 1,000 valid cells and green-cell gain. Ecological conversion, leapfrog rate and built retirement are descriptive diagnostics. | Recompiled; six of nine candidates are non-dominated (all FLUS and Kernel scenarios). Kernel's fragmentation disadvantage is reported explicitly. |
-| Built-component counts were omitted | `planning_metrics` reports component density and the compiler/figure include it as a frozen fragmentation objective. | Recomputed from the released planning rasters; Kernel has 2.92–4.28 components per 1,000 valid cells versus 0.92–1.23 for FLUS. |
-| Dynamic World label noise and persistence baseline were hidden | The manuscript discusses label volatility, names persistence and minimum-change controls, and uses strict multi-class FoM as the prespecified primary metric. | Recomputed; the input audit reports 0.5497 mean fraction below confidence 0.5 and 0.3611 median one-year reversion. |
-| FoM definition was binary rather than destination-specific | `shared.py` now counts a hit only when the predicted destination class equals the observed destination class and retains wrong destination changes in the denominator. The old binary FoM is retained only as a secondary diagnostic. | Recomputed with strict multi-class FoM and spatial-block intervals. |
-| Reclamation and fixed-water treatment were underreported | `protocol.json` now records the feasible-target projection and its effect on observed target totals; the manuscript states that fixed-water constraints exclude reclamation changes from the current skill test. | A coastline/reclamation sensitivity analysis is still needed. |
-| Ablations did not support the original causal interpretation | The Discussion now treats action deletion, state-writeback deletion, allocator matching and constraint deletion as mechanism controls rather than causal experiments. | The released report shows action deletion lowers FoM by 0.114/0.171, while constraint deletion raises it by 0.014/0.011 for 2023/2024. |
-| The earlier Pareto claim was too strong | The claim that all Kernel candidates occupy the Pareto frontier is withdrawn. Legacy JSON files remain immutable and the current compiler writes an explicit objective version. | Recompiled; six of nine candidates are non-dominated under the frozen balanced objective set. |
-| Outputs and audit files mixed 2025–2030 and 2025–2031 runs | The public 2025–2031 scenario/report paths are now the defaults; the audit reads the public scenario report and fails closed when the bundle is absent. | Current `_current` reports and the reproducible output audit are the manuscript evidence; older reports are lineage only. |
-| Bootstrap treated autocorrelated pixels as independent | `shared.py` now samples spatial blocks and records block size/count; `paired_model_difference_bootstrap_ci` computes model-A minus model-B intervals from the same resampled blocks. | Recomputed with 8×8 blocks and paired contrasts. |
-| Random baseline rewrote stable pixels | `random_feasible_allocation` now preserves compatible mutable cells and randomly pairs only source excesses with target deficits under oracle counts. | Recomputed and included as the random minimum-change control. |
-| Compiler embedded uncomputed rankings | `compile_comparison.py` now generates interpretation statements from computed summaries and never writes a ranking before data validation. | The compiler still fails closed when reports or inputs are stale/missing. |
-| Formal manuscript included review-process and withdrawn legacy tables | The manuscript source now reports the protocol and evidence boundary without peer-review status language; legacy numerical tables and figures are withheld from the formal text. | A data-complete rerun is still required before submission. |
-| Reproducibility claims were too strong | The runtime snapshot, public input bundle, historical/planning rasters, vectors, mechanism report, GeoFM-LDN source/checkpoints and FLUS binary are released. Manifest hashes normalize text line endings for Windows. | Independent authoritative validation, matched-input FLUS and a compatible non-macOS FLUS build remain outside this release. |
+| Manuscript, tables and PDFs used older numbers | All numerical statements, Table 1, Table 2 and regenerated PDFs now read the current reports. Strict FoM is 0.1256/0.1950/0.1616 in 2023 and 0.1782/0.2520/0.2708 in 2024 for the FLUS-style control, Kernel and GeoFM-LDN, respectively. The obsolete `results/*_current.*` copies were removed. | The canonical current evidence remains under `benchmarks/abu_dhabi_land_use_v1/`; older unversioned reports remain lineage only. |
+| `evidence_mode` and report metadata were stale | The historical compiler records `current_evaluator_on_current_reproduced_prediction_rasters`; the planning compiler records its corresponding current-planning mode. The manuscript and availability statements name the current files. | None beyond the stated public-data and locked-environment limits. |
+| Kernel was not bitwise identical across platforms | Methods, Results and Data availability now disclose the macOS arm64/Python 3.11/scikit-learn 1.9.0 reference environment. A Windows rerun differs by about 498–592 cells per seed in 2023 and 1,005–1,147 in 2024, approximately 1% of valid cells and about 0.001 strict FoM. The reported paired spatial-block intervals are wider and preserve the reported rankings. | The manifest verifies declared files cross-platform; it does not claim cross-platform bitwise identity of the histogram-gradient learner. |
+| Planning objectives were repeatedly called frozen and contained a scenario input | The paper discloses the four-round objective-set history as a limitation. The release objective set is major-road distance, prior-built distance, **newly built** component density and ecological-conversion rate. Vegetation gain is now descriptive only. | Objective selection remains a post-hoc analytical choice, not a preregistered planning preference. |
+| Fragmentation allowed built retirement to benefit FLUS | Fragmentation is calculated from newly built cells, not all final built cells. Existing built retirement remains a descriptive model-behaviour diagnostic and is not used to reward a candidate on the frontier. | No fixed-exit counterfactual has been added because it would require a distinct rerun protocol. |
+| Pareto mixed scenario selection with model behaviour | The primary frontier compares the three models within each scenario. FLUS-style and Kernel candidates are non-dominated in all three scenarios; GeoFM-LDN is additionally non-dominated in green-priority growth. The global nine-candidate frontier is retained only as lineage. | Pareto membership is conditional on public proxy layers and synthetic scenario actions. |
+| Objective sensitivity was qualitative | The Results now state the numerical neighbourhood sensitivity: mean strict FoM changes 0.19997 to 0.20042 in 2023 and 0.26079 to 0.26034 in 2024 across weights 0–0.7. All three declared objective-set sensitivity variants retain the FLUS-style/Kernel structure; GeoFM-LDN remains additionally non-dominated only in green-priority growth when ecological conversion is included. | These are robustness diagnostics on released rasters, not independent planning samples. |
+| FLUS was called GeoSOS-FLUS despite no traceable source | All reader-facing labels now use **FLUS-style ANN–CA console (untraceable build)**. The text does not claim equivalence to Liu et al. (2017); the internal `geosos_flus` identifier remains only for artifact compatibility. | Its source commit cannot be recovered from the supplied Mach-O binary. |
+| Matched-input FLUS was not attempted | `run_geosos_flus.py` now constructs the 25 Kernel-matched features and exposes `--feature-mode matched_kernel`. The documented run with seed 31 terminated with SIGSEGV in the supplied Mach-O arm64 binary before writing a valid probability surface. It is reported as a blocked binary limitation, not a completed comparison. | A reproducibly sourced, compatible FLUS implementation is needed for an information-matched comparator. |
+| Windows reproducibility gate failed after CRLF conversion | The manifest builder now records canonical LF byte lengths for text files, and the gate applies the same normalization to its byte check. Generated-output hashes are schema v2 and also use LF-normalized text bytes/hashes. | Raw binaries and rasters still require exact raw bytes, as intended. |
+| High-confidence subset was only a diagnostic | The title, Abstract, Results and Discussion now center the high-confidence result: all models score 0.000 strict FoM in 2023 and the 2024 maximum is 0.0188. The paper is framed as an audit protocol under noisy annual labels rather than a claim of validated model superiority. | An independent 2023–2024 change product or documented manual reference sample is still absent. |
 
-## Structure, figures and reporting
+## Figures, tables and artefacts
 
-- The manuscript is now ordered Introduction → Methods → Results → Discussion,
-  followed by availability, declarations and references.
-- Figure 1 was redrawn with the action arrow terminating at the projection
-  stage, where the current implementation actually applies the action. State
-  variables use math-text subscripts and the output is written to the tracked
-  `figures/` directory.
-- Figure 2 includes explicit visual encodings for persistence and random minimum-change
-  controls and was regenerated after the strict-metric run.
-- Figure 3 separates the four frozen Pareto objectives from two descriptive
-  diagnostics and marks non-dominated candidates; fragmentation is now a target.
-- Figure 5 includes a scale bar, north arrow and transition outlines from the
-  released ensemble rasters.
-- The manuscript no longer presents the old compactness/Pareto tables as final
-  evidence; current tables are generated from the revised compiler.
+- Table 1 reports regenerated historical FoM values and the paired model
+  contrasts: Kernel minus FLUS-style is 0.0692 [0.0546, 0.0859] in 2023;
+  GeoFM-LDN minus Kernel is -0.0333 [-0.0478, -0.0201] in 2023 and 0.0184
+  [0.0046, 0.0321] in 2024.
+- Table 2 reports all nine 2031 model–scenario candidates, their four release
+  objectives, and within-scenario frontier membership.
+- Figure 1 was redrawn so that the action arrow terminates at constraint
+  projection, and its aligned-state text stays inside the box.
+- Figure 2 panel spacing was repaired. Bars retain three-seed population SDs;
+  paired spatial-block bootstrap intervals are reported in the table/text and
+  machine-readable report rather than incorrectly drawn as seed SDs.
+- Figure 3 uses newly built component density and ecological conversion as the
+  four release objectives. Vegetation gain is explicitly labelled diagnostic.
+- Figure 5 now has a legible scale bar, north arrows and more distinct built
+  versus newly built overlays.
 
 ## Remaining limitations before resubmission
 
-1. A matched-input FLUS experiment remains recommended; the released FLUS
-   console is a macOS arm64 binary and its original source/version cannot be
-   rebuilt from this repository.
-2. Validate 2023–2024 built change with an independent product or a documented
-   manual sample, including a sensitivity analysis for fixed-water/reclamation
-   treatment.
-3. Figures 2–5 and the PDF/DOCX have been regenerated. Add the archival DOI and
-   corresponding-author e-mail to the submission metadata.
+1. Independent authoritative 2023–2024 change validation, or a documented
+   manual reference sample, is necessary to validate whether Dynamic World
+   changes represent real Abu Dhabi land-cover change.
+2. The FLUS-style binary is a macOS arm64 executable with no recoverable source
+   provenance. Its 25-feature run is blocked by a segmentation fault, so the
+   comparison remains explicitly unmatched.
+3. Authoritative planning, reclamation, infrastructure-capacity, irrigation and
+   stakeholder data are unavailable. The 2025–2031 maps must remain scenario
+   stress tests, not statutory land-use forecasts.
+4. Add an archival DOI, public repository URL and corresponding-author e-mail
+   before formal submission.

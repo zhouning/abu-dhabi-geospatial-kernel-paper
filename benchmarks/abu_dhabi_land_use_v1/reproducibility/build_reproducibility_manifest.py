@@ -25,7 +25,7 @@ TEXT_SUFFIXES = {
 }
 
 
-def _hash_bytes(path: Path) -> tuple[str, str]:
+def _hash_bytes(path: Path) -> tuple[str, str, int]:
     """Hash text with canonical LF endings so Windows checkouts verify identically."""
 
     raw = path.read_bytes()
@@ -36,7 +36,7 @@ def _hash_bytes(path: Path) -> tuple[str, str]:
         mode = "raw"
     digest = hashlib.sha256()
     digest.update(raw)
-    return digest.hexdigest(), mode
+    return digest.hexdigest(), mode, len(raw)
 
 
 def _add(paths: set[Path], candidates: Iterable[Path]) -> None:
@@ -89,13 +89,14 @@ def build() -> dict[str, object]:
     for role, paths in groups.items():
         for path in sorted(paths):
             rel = path.relative_to(REPO).as_posix()
+            sha256, hash_mode, canonical_bytes = _hash_bytes(path)
             records.append(
                 {
                     "path": rel,
                     "role": role,
-                    "bytes": path.stat().st_size,
-                    "sha256": _hash_bytes(path)[0],
-                    "hash_mode": _hash_bytes(path)[1],
+                    "bytes": canonical_bytes,
+                    "sha256": sha256,
+                    "hash_mode": hash_mode,
                 }
             )
     records.sort(key=lambda row: str(row["path"]))

@@ -14,18 +14,17 @@ except ImportError:  # Direct script execution from the benchmark directory.
     from shared import CLASSES, class_counts
 
 
-# Frozen before the current recompilation.  The set deliberately combines
-# access, compactness, fragmentation and an opposing ecological-balance
-# direction.  All quantities are public-data proxies rather than statutory
-# planning measures; ecological conversion, leapfrog rate and built
-# retirement remain descriptive diagnostics because they are structural zeros
-# or unstable under the exact-count projection.
+# Release objective set v5. Earlier exploratory sets remain lineage only. The
+# release set compares model outcomes within each scenario and excludes
+# scenario-supplied vegetation demand from the model objective.
 OBJECTIVES = {
     "new_built_mean_major_road_distance_m": "min",
     "new_built_mean_prior_built_distance_m": "min",
-    "built_components_per_1000_pixels": "min",
-    "green_gain_pixels": "max",
+    "new_built_components_per_1000_pixels": "min",
+    "ecological_conversion_rate": "min",
 }
+
+OBJECTIVE_SET_VERSION = "release_objectives_v5_within_scenario"
 
 OBJECTIVE_METADATA = {
     "new_built_mean_major_road_distance_m": {
@@ -41,12 +40,17 @@ OBJECTIVE_METADATA = {
     "built_components_per_1000_pixels": {
         "direction": "min",
         "dimension": "fragmentation",
-        "interpretation": "Connected built components per 1,000 valid cells; lower values indicate less fragmented urban form.",
+        "interpretation": "All built components per 1,000 valid cells; retained as a descriptive diagnostic.",
     },
-    "green_gain_pixels": {
-        "direction": "max",
-        "dimension": "ecological_balance",
-        "interpretation": "Net gain of woody/low vegetation cells; this opposing direction prevents compactness from being the sole planning preference.",
+    "new_built_components_per_1000_pixels": {
+        "direction": "min",
+        "dimension": "fragmentation",
+        "interpretation": "Connected components formed by newly built cells per 1,000 valid cells; lower values indicate less fragmented growth.",
+    },
+    "ecological_conversion_rate": {
+        "direction": "min",
+        "dimension": "ecological_pressure_proxy",
+        "interpretation": "Fraction of new built cells replacing mapped vegetation-origin cells; a public land-cover proxy.",
     },
 }
 
@@ -131,6 +135,9 @@ def planning_metrics(
         "green_gain_pixels": green_result - green_origin,
         "new_built_pixels": new_built_count,
         "new_built_component_count": int(new_built_component_count),
+        "new_built_components_per_1000_pixels": float(
+            new_built_component_count * 1000.0 / total
+        ),
         "removed_built_pixels": int(removed_built.sum()),
         "ecological_conversion_pixels": int(ecological_conversion.sum()),
         "ecological_conversion_rate": float(

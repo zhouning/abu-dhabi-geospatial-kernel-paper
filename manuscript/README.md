@@ -3,7 +3,8 @@
 This package contains a revised LUP-oriented research-article draft based on
 the public-data Abu Dhabi Land-Use Benchmark V1. The manuscript evaluates
 Geospatial Kernel as the state–action–constraint core of a Geospatial World
-Model and compares it with GeoSOS-FLUS and GeoFM-LDN.
+Model and compares it with a FLUS-style ANN–CA console (untraceable build) and
+GeoFM-LDN.
 
 ## Main files
 
@@ -42,11 +43,12 @@ The recovered-data rerun supports a bounded implementation claim: Geospatial
 Kernel is an auditable, constraint-preserving allocation core. Under the
 unmatched public-data pipeline it has the largest strict one-step 2023
 transition FoM, while GeoFM-LDN has the largest strict two-step 2024 open-loop
-FoM; neither dominates both horizons. Six of nine 2031 candidates (all three
-GeoSOS-FLUS and all three Kernel scenarios) are non-dominated under the frozen
-four-objective set; no GeoFM-LDN scenario is on that conditional frontier.
-These are conditional pipeline and stress-test results, not official Abu Dhabi
-forecasts.
+FoM; neither dominates both horizons. Within each 2031 scenario, the
+FLUS-style control and Kernel are non-dominated; GeoFM-LDN is additionally
+non-dominated only for green-priority growth. The release objectives are
+major-road distance, prior-built distance, newly built component density and
+ecological conversion. These are conditional pipeline and stress-test results,
+not official Abu Dhabi forecasts.
 
 ## Before submission
 

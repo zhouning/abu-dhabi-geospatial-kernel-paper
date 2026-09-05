@@ -22,7 +22,7 @@ BUNDLE_ROOT = HERE / "artifacts/bundle"
 OSM_ROOT = HERE / "artifacts/osm"
 MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")
 MODEL_LABELS = {
-    "geosos_flus": "GeoSOS-FLUS",
+    "geosos_flus": "FLUS-style ANN–CA\nconsole (untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
 }
@@ -381,7 +381,7 @@ def render_experiment_design() -> Path:
         "#e7e5df",
     )
     models = (
-        ("GeoSOS-FLUS\n外部 ANN + CA", "#dce8f5"),
+        ("FLUS 式控制台\n外部 ANN + CA（不可溯源）", "#dce8f5"),
         ("Geospatial Kernel\n显式状态 + 空间适宜性", "#dcefdc"),
         ("GeoFM-LDN\n需求条件 LDN + 潜状态", "#f2dfe5"),
     )

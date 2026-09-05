@@ -3,10 +3,10 @@
   "benchmark_id": "abu-dhabi-land-use-v1",
   "title": "Abu Dhabi Bounded Land-Use Simulation and Optimization Benchmark",
   "status": "public_bundle_complete_authoritative_validation_pending",
-  "revision_status": "review_response_protocol_v3",
+  "revision_status": "review_response_protocol_v4",
   "comparability_status": "pipeline_comparison_only_until_matched_flus_rerun",
   "model_display_names": {
-    "geosos_flus": "GeoSOS-FLUS",
+    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN"
   },
@@ -14,7 +14,7 @@
     "paper58": "GeoFM-LDN legacy path identifier",
     "geofm_ldn": "Accepted command-line alias for paper58"
   },
-  "scientific_question": "Under identical observed states, demand actions, spatial constraints and evaluation rules, how do GeoSOS-FLUS, the GWM Geospatial Kernel and GeoFM-LDN differ in land-cover allocation, multi-step rollout and constrained planning optimization for Abu Dhabi city?",
+  "scientific_question": "Under identical observed states, demand actions, spatial constraints and evaluation rules, how do a FLUS-style ANN–CA console, the GWM Geospatial Kernel and GeoFM-LDN differ in land-cover allocation, multi-step rollout and constrained planning stress tests for Abu Dhabi city?",
   "claim_boundary": {
     "supports": [
       "bounded urban land-cover transition simulation",
@@ -117,7 +117,8 @@
     {
       "id": "geosos_flus",
       "role": "traditional_ann_suitability_plus_ca_allocation",
-      "comparability_note": "Original run used seven continuous drivers and frozen default console settings; this is not information-balanced with the 25-feature Kernel until a matched-input rerun is completed.",
+      "comparability_note": "Original run used seven continuous drivers and frozen default console settings. A matched 25-feature input attempt was executed but the supplied binary terminated with SIGSEGV before writing a valid probability surface; therefore the released comparison remains an unmatched pipeline comparison.",
+      "matched_input_status": "attempted_and_blocked_by_binary_segmentation_fault",
       "binary_boundary": "Vendored Mach-O arm64 console; provenance cannot be traced to a reproducible upstream source/version and is not claimed bitwise equivalent to Liu et al. (2017); Windows/Linux require a compatible external build.",
       "frozen_parameters": {
         "ann_training_years": [2021],
@@ -168,15 +169,16 @@
       "objective_terms": [
         "new_built_mean_major_road_distance_m",
         "new_built_mean_prior_built_distance_m",
-        "built_components_per_1000_pixels",
-        "green_gain_pixels"
+        "new_built_components_per_1000_pixels",
+        "ecological_conversion_rate"
       ],
       "descriptive_outcomes": [
         "demand_total_variation",
         "new_built_neighbor_fraction",
         "built_gain_pixels",
         "removed_built_pixels",
-        "ecological_conversion_rate",
+        "green_gain_pixels",
+        "built_components_per_1000_pixels",
         "new_built_leapfrog_rate"
       ],
       "reporting": "Pareto frontier plus every descriptive outcome; no hidden weighted aggregate."

@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Run the external GeoSOS-FLUS ANN+CA on the unified Abu Dhabi bundle."""
+"""Run the FLUS-style ANN–CA console on the unified Abu Dhabi bundle.
+
+The vendored executable cannot be traced to an upstream source release.  The
+runner therefore reports a FLUS-style control rather than claiming official
+GeoSOS-FLUS equivalence.
+"""
 
 from __future__ import annotations
 
@@ -15,6 +20,7 @@ from typing import Any
 import numpy as np
 import rasterio
 from rasterio.transform import from_origin
+from scipy.ndimage import uniform_filter
 
 try:
     from .shared import CLASSES, evaluate_prediction
@@ -31,7 +37,7 @@ DEFAULT_OUTPUT = HERE / "artifacts/predictions/geosos_flus"
 DEFAULT_BINARY = HERE / "vendor/flus_console"
 FIT_YEARS = (2021,)
 SEEDS = (31, 47, 73)
-FEATURE_NAMES = (
+BASELINE_FEATURE_NAMES = (
     "x_utm",
     "y_utm",
     "elevation",
@@ -144,6 +150,36 @@ class FlusInputs:
             ]
         ).astype(np.float32)
 
+    def matched_kernel_features(self, year: int) -> np.ndarray:
+        """Return the same 25-dimensional state/context feature family as Kernel."""
+        state = self.states[year]
+        one_hot = np.stack([(state == value).astype(np.float32) for value in CLASSES])
+        valid_float = self.valid.astype(np.float32)
+        neighbourhoods = []
+        for value in CLASSES:
+            indicator = ((state == value) & self.valid).astype(np.float32)
+            for size in (3, 7):
+                numerator = uniform_filter(indicator, size=size, mode="constant")
+                denominator = uniform_filter(valid_float, size=size, mode="constant")
+                neighbourhoods.append(
+                    np.divide(numerator, denominator, out=np.zeros_like(numerator), where=denominator > 0)
+                )
+        # Match the Geospatial Kernel coordinate convention exactly: normalized
+        # column/row indices, not projected map coordinates rescaled by their
+        # maximum centre value.
+        continuous = np.stack(
+            [
+                self.x,
+                self.y,
+                np.clip(self.elevation, -20, 200) / 200.0,
+                np.clip(self.slope, 0, 30) / 30.0,
+                np.log1p(np.clip(self.viirs[year], 0, None)) / 8.0,
+                np.log1p(np.clip(self.road_distance, 0, None)) / 12.0,
+                np.log1p(np.clip(self.major_road_distance, 0, None)) / 12.0,
+            ]
+        )
+        return np.concatenate([one_hot, np.stack(neighbourhoods), continuous], axis=0)[:, self.valid].T.astype(np.float32)
+
 
 def train_suitability(
     inputs: FlusInputs,
@@ -152,12 +188,20 @@ def train_suitability(
     seed: int,
     work_root: Path,
     target_driver_year: int = 2022,
+    feature_mode: str = "baseline_7",
 ) -> tuple[np.ndarray, dict[str, Any]]:
-    training_features = np.concatenate([inputs.features(year) for year in FIT_YEARS])
+    feature_fn = inputs.features if feature_mode == "baseline_7" else inputs.matched_kernel_features
+    feature_names = list(BASELINE_FEATURE_NAMES) if feature_mode == "baseline_7" else [
+        *(f"current_class_{value}" for value in CLASSES),
+        *(f"neighbourhood_{size}_class_{value}" for value in CLASSES for size in (3, 7)),
+        "x_norm", "y_norm", "elevation_norm", "slope_norm", "log_viirs_norm",
+        "log_distance_road_norm", "log_distance_major_road_norm",
+    ]
+    training_features = np.concatenate([feature_fn(year) for year in FIT_YEARS])
     training_labels = np.concatenate(
         [inputs.states[year][inputs.valid].astype(np.uint8) for year in FIT_YEARS]
     )
-    target_features = inputs.features(target_driver_year)
+    target_features = feature_fn(target_driver_year)
     packed_target = np.full_like(training_features, 0.5, dtype=np.float32)
     packed_target[: len(target_features)] = target_features
     ann_root = work_root / "ann"
@@ -167,7 +211,7 @@ def train_suitability(
     _write_compact(label_path, training_labels[None, :], nodata=0)
     training_paths = []
     target_paths = []
-    for index, name in enumerate(FEATURE_NAMES):
+    for index, name in enumerate(feature_names):
         training_path = ann_root / f"train_{index}_{name}.tif"
         target_path = ann_root / f"target_{index}_{name}.tif"
         _write_compact(training_path, training_features[:, index][None, :], nodata=-1)
@@ -224,7 +268,8 @@ def train_suitability(
         "seed": seed,
         "training_pixel_rows": len(training_features),
         "target_pixel_rows": len(target_features),
-        "feature_names": list(FEATURE_NAMES),
+        "feature_names": feature_names,
+        "feature_mode": feature_mode,
         "fit_label_years": list(FIT_YEARS),
         "target_driver_year": target_driver_year,
         "fit_seconds": time.perf_counter() - started,
@@ -336,6 +381,7 @@ def run_seed(
     seed: int,
     output_root: Path,
     temporary_root: Path,
+    feature_mode: str = "baseline_7",
 ) -> dict[str, Any]:
     seed_work = temporary_root / f"seed_{seed}"
     seed_work.mkdir(parents=True, exist_ok=True)
@@ -344,6 +390,7 @@ def run_seed(
         binary=binary,
         seed=seed,
         work_root=seed_work,
+        feature_mode=feature_mode,
     )
     current = inputs.states[2022].copy()
     year_rows = []
@@ -380,7 +427,7 @@ def run_seed(
     return {"seed": seed, "training": training, "years": year_rows}
 
 
-def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path) -> dict[str, Any]:
+def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path, feature_mode: str = "baseline_7") -> dict[str, Any]:
     if not binary.is_file() or not os.access(binary, os.X_OK):
         raise FileNotFoundError(f"flus_binary_not_executable:{binary}")
     started = time.perf_counter()
@@ -395,6 +442,7 @@ def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path) -> dict[str,
                 seed=seed,
                 output_root=output_root,
                 temporary_root=work_root,
+                feature_mode=feature_mode,
             )
         )
         print(f"geosos_flus:seed_{seed}:complete", flush=True)
@@ -402,6 +450,8 @@ def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path) -> dict[str,
         "schema": "gwm.abu_dhabi_geosos_flus_run.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "model_id": "geosos_flus",
+        "display_name": "FLUS-style ANN–CA console (untraceable build)",
+        "feature_mode": feature_mode,
         "revision_status": "current_protocol_run",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "complete",
@@ -424,11 +474,18 @@ def main() -> None:
     parser.add_argument("--binary", type=Path, default=DEFAULT_BINARY)
     parser.add_argument("--seeds", default=",".join(str(value) for value in SEEDS))
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--feature-mode",
+        choices=("baseline_7", "matched_kernel"),
+        default="baseline_7",
+        help="baseline drivers or the 25-feature Kernel-matched control",
+    )
     args = parser.parse_args()
     report = run(
         binary=args.binary,
         seeds=tuple(int(value) for value in args.seeds.split(",") if value.strip()),
         output_root=args.output,
+        feature_mode=args.feature_mode,
     )
     print(json.dumps({"status": report["status"], "wall_seconds": report["wall_seconds"]}))
 

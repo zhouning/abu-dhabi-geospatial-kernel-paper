@@ -6,7 +6,7 @@ The repository contains the cleaned manuscript and LUP-oriented submission copy,
 editable figures, benchmark scripts, public-data manifests and legacy audit
 reports comparing:
 
-- GeoSOS-FLUS;
+- FLUS-style ANN–CA console (untraceable build);
 - Geospatial Kernel, the allocation core of a Geospatial World Model; and
 - GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network), the AlphaEarth latent-dynamics baseline.
 
@@ -22,9 +22,10 @@ This repository contains the benchmark protocol, public input bundle, model
 runtimes/checkpoints, historical and planning prediction rasters, vector change
 packages, mechanism controls and manuscript package. The strict multi-class
 change FoM, persistence/minimum-change controls, spatial-block bootstrap with
-paired model contrasts and frozen balanced planning objectives have been
-rerun. Independent authoritative change-validation data are still not
-available. See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
+paired model contrasts and the release planning objectives have been rerun.
+Independent authoritative change-validation data are still not available, and
+the matched-input FLUS attempt is documented as blocked by a segmentation
+fault in the supplied binary. See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
 for the evidence boundary.
 
 ## Start here

@@ -4,9 +4,9 @@
 
 ## 核心结论
 
-- 严格多类别 change FoM 显示，在未匹配输入的公共数据 pipeline 中，Geospatial Kernel 的 2023 年单步均值为 0.1961，GeoFM-LDN 的 2024 年两步开环均值为 0.2708；这不是普适模型优越性结论。
+- 严格多类别 change FoM 显示，在未匹配输入的公共数据 pipeline 中，Geospatial Kernel 的 2023 年单步均值为 0.1950，GeoFM-LDN 的 2024 年两步开环均值为 0.2708；这不是普适模型优越性结论。
 - 持久性和随机可行分配零模型已加入评价代码；持久性在静态 OA 与 macro-F1 上优于主模型的事实必须在重算表中保留。
-- 原始 Pareto frontier 结论已撤回。当前冻结目标集为道路距离、既有建成区距离、建成斑块密度和绿色像元增益；2031 年 9 个候选中有 6 个非支配（全部 FLUS 和 Kernel 情景）。
+- 原始 Pareto frontier 结论已撤回。当前发布目标集为道路距离、既有建成区距离、新增建成斑块密度和生态转化率，并在每个情景内比较三个模型；FLUS 式控制与 Kernel 在三个情景均为非支配，GeoFM-LDN 仅在生态优先情景额外为非支配。
 - 当前输出审计为 `PASS`（276 条记录、0 项失败）；`output_audit.json` 仅作为旧 lineage 文件保留，正式证据使用 `output_audit_reproducible.json`。
 - 这些未来结果是 planner-supplied scenario stress tests，不是官方预测。
 
@@ -30,4 +30,4 @@
 4. 如果要把结果用于客户决策，应替换为权威本地土地利用、规划红线、基础设施容量和审批需求数据，并完成语义交叉表和真实历史验证。
 5. 发布代码前完成公共仓库 URL、DOI、许可证和大文件存储策略的最终审核。
 6. 当前完整复现命令为 `reproducibility/reproduce.py --device cpu`；它加载固定 GeoFM-LDN 检查点，并在 macOS arm64 上调用随仓库提供的 FLUS 二进制。
-7. 投稿前仍需引入独立建成区产品或人工判读样本，验证 Dynamic World 2023–2024 的变化真实性；另需补充匹配输入 FLUS 对照（或继续维持限定性表述）。
+7. 投稿前仍需引入独立建成区产品或人工判读样本，验证 Dynamic World 2023–2024 的变化真实性；匹配输入 FLUS 已尝试，但所供二进制在产生有效概率面前因 SIGSEGV 终止，因此必须继续维持限定性表述。

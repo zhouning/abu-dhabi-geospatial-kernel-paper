@@ -11,7 +11,7 @@
 
 ## Figure 1
 
-- Core conclusion: the Abu Dhabi benchmark gives GeoSOS-FLUS, Geospatial Kernel and GeoFM-LDN the same state, action and constraint contract, while the Kernel exposes proposal, projection and state writeback as inspectable steps.
+- Core conclusion: the Abu Dhabi benchmark gives a FLUS-style ANN–CA console, Geospatial Kernel and GeoFM-LDN the same state, action and constraint contract, while the Kernel exposes proposal, projection and state writeback as inspectable steps.
 - Archetype: schematic-led composite.
 - Panel map: public inputs and common contract; Kernel execution loop; historical and planning evaluation tracks.
 - Review risk: do not imply that public proxy constraints are statutory planning red lines.
@@ -25,7 +25,7 @@
 
 ## Figure 3
 
-- Core conclusion: under the frozen public-data objective set, Geospatial Kernel produces feasible and compact, road-accessible 2031 allocations across all three declared scenarios.
+- Core conclusion: under the released public-data objective set, the three models trade off road accessibility, prior-built proximity, newly built fragmentation and ecological conversion differently within each scenario.
 - Archetype: quantitative grid.
 - Panel map: demand error, ecological conversion, compactness, distance to major roads, distance to prior built cells and built retirement.
 - Statistics: three-seed means and population standard deviations where available; objective directions are stated in each panel.

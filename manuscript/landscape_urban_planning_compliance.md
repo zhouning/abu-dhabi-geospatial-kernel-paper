@@ -8,7 +8,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation and matched-input FLUS remain limitations. |
+| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent, and the matched-input FLUS attempt is blocked by a segmentation fault in the supplied binary. |
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
 | Corresponding author | Needs portal entry | Name is present, but the submission system should receive a valid institutional e-mail and full correspondence address. |
@@ -36,7 +36,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Requirement | Status | Check |
 |---|---|---|
 | Data availability | Conditional | The complete public bundle, generated rasters, vectors and mechanism controls are included or tracked with Git LFS and pass the input/output audits; authoritative local validation data are unavailable. |
-| Code availability | Conditional | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; a compatible non-macOS FLUS build and DOI are not yet provided. |
+| Code availability | Conditional | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; a compatible, traceable FLUS build is required for an information-matched comparison, and a DOI is not yet provided. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
 | Competing interests | Updated | Employment by the software company is disclosed; this should be checked against the portal's structured declaration field. |
@@ -72,5 +72,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 - `response_to_LUP_review.md`: point-by-point response and unresolved blockers.
 
 The package is a conditional Article-type draft. Before submission, add the
-corresponding-author e-mail, public release URL/DOI, and (if feasible) an
-independent 2023–2024 change-validation layer and matched-input FLUS baseline.
+corresponding-author e-mail, public release URL/DOI and an independent
+2023–2024 change-validation layer. A matched-input FLUS baseline additionally
+requires a compatible, traceable implementation because the supplied binary
+segfaults before producing a valid probability surface.

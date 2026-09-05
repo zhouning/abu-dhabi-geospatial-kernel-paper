@@ -608,7 +608,7 @@
       }
     }
   },
-  "created_at": "2026-09-05T11:53:27.855935+00:00",
+  "created_at": "2026-09-05T14:49:48.272581+00:00",
   "ensembles": {
     "geosos_flus": {
       "2023": {
@@ -935,17 +935,17 @@
       }
     }
   },
-  "evidence_mode": "current_evaluator_on_existing_prediction_rasters",
+  "evidence_mode": "current_evaluator_on_current_reproduced_prediction_rasters",
   "interpretation": [
-    "Computed strict transition FoM ranking for 2023: Geospatial Kernel > GeoFM-LDN > GeoSOS-FLUS.",
-    "Geospatial Kernel is above GeoSOS-FLUS by 0.069462 strict FoM at 2023.",
-    "GeoFM-LDN is above GeoSOS-FLUS by 0.035977 strict FoM at 2023.",
+    "Computed strict transition FoM ranking for 2023: Geospatial Kernel > GeoFM-LDN > FLUS-style ANN–CA console (untraceable build).",
+    "Geospatial Kernel is above FLUS-style ANN–CA console (untraceable build) by 0.069462 strict FoM at 2023.",
+    "GeoFM-LDN is above FLUS-style ANN–CA console (untraceable build) by 0.035977 strict FoM at 2023.",
     "GeoFM-LDN is below Geospatial Kernel by 0.033485 strict FoM at 2023.",
-    "Computed strict transition FoM ranking for 2024: GeoFM-LDN > Geospatial Kernel > GeoSOS-FLUS.",
-    "Geospatial Kernel is above GeoSOS-FLUS by 0.073802 strict FoM at 2024.",
-    "GeoFM-LDN is above GeoSOS-FLUS by 0.092552 strict FoM at 2024.",
+    "Computed strict transition FoM ranking for 2024: GeoFM-LDN > Geospatial Kernel > FLUS-style ANN–CA console (untraceable build).",
+    "Geospatial Kernel is above FLUS-style ANN–CA console (untraceable build) by 0.073802 strict FoM at 2024.",
+    "GeoFM-LDN is above FLUS-style ANN–CA console (untraceable build) by 0.092552 strict FoM at 2024.",
     "GeoFM-LDN is above Geospatial Kernel by 0.018749 strict FoM at 2024.",
-    "Persistence and random-minimum-change controls are reported as prespecified zero models.",
+    "Persistence and random-minimum-change controls are reported as explicit zero-model controls.",
     "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
     "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects."
   ],
@@ -963,7 +963,7 @@
   },
   "metric_version": "strict_multiclass_fom_v2",
   "model_display_names": {
-    "geosos_flus": "GeoSOS-FLUS",
+    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN"
   },

@@ -1,9 +1,9 @@
 # Abu Dhabi Land-Use Benchmark V1
 
-This directory is the single execution boundary for comparing GeoSOS-FLUS,
-the GWM Geospatial Kernel and GeoFM-LDN (Geospatial Foundation-Model Latent
-Dynamics Network) on Abu Dhabi city land-cover simulation and constrained
-planning optimization.
+This directory is the single execution boundary for comparing a FLUS-style
+ANN–CA console (untraceable build), the GWM Geospatial Kernel and GeoFM-LDN
+(Geospatial Foundation-Model Latent Dynamics Network) on Abu Dhabi city
+land-cover simulation and constrained planning stress tests.
 
 The comparison is valid only when every candidate consumes the same canonical
 grid, origin state, action, hard constraints and driver versions, and writes a
@@ -120,10 +120,13 @@ belongs to a separate 2025–2030 run and is not an audit of the public
 The code needed for the revised analysis is present, including paired
 model-difference intervals and a score-independent minimum-change null. The
 resulting ranking and Pareto membership are conditional pipeline comparisons.
-The original FLUS run used a different feature set and frozen console defaults,
-so intrinsic model superiority should not be inferred without a matched-input
-rerun. Independent authoritative 2023–2024 change validation is still not
-available.
+The original FLUS run used a different feature set and frozen console defaults.
+A matched 25-feature input attempt was made, but the supplied Mach-O binary
+terminated with SIGSEGV before producing a valid probability surface; this
+limitation is recorded in the run artefacts and protocol. The released FLUS
+result therefore remains an unmatched baseline, and intrinsic model superiority
+should not be inferred. Independent authoritative 2023–2024 change validation
+is still not available.
 
 All substantive findings remain conditional on Dynamic World labels, public
 OSM/WorldCover proxy constraints and planner-supplied scenario demand. They do

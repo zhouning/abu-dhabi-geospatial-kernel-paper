@@ -33,7 +33,7 @@ YEARS = (2023, 2024)
 BOOTSTRAP_RESAMPLES = 1000
 BOOTSTRAP_BLOCK_SIZE_PIXELS = 8
 MODEL_DISPLAY_NAMES = {
-    "geosos_flus": "GeoSOS-FLUS",
+    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
 }
@@ -167,7 +167,7 @@ def _dynamic_interpretation(
             )
     lines.extend(
         [
-            "Persistence and random-minimum-change controls are reported as prespecified zero models.",
+            "Persistence and random-minimum-change controls are reported as explicit zero-model controls.",
             "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
             "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects.",
         ]
@@ -386,7 +386,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "metric_version": "strict_multiclass_fom_v2",
         "revision_status": "rerun_from_current_rasters",
         "reproducibility_status": "complete_if_all_input_and_model_artifacts_are_present",
-        "evidence_mode": "current_evaluator_on_existing_prediction_rasters",
+        "evidence_mode": "current_evaluator_on_current_reproduced_prediction_rasters",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "HISTORICAL_ALLOCATION_COMPLETE",
         "models": list(MODELS),
@@ -434,7 +434,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "|---:|---|---:|---:|---:|---:|---:|",
     ]
     labels = {
-        "geosos_flus": "GeoSOS-FLUS",
+        "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
         "geospatial_kernel": "Geospatial Kernel",
         "paper58": "GeoFM-LDN",
     }

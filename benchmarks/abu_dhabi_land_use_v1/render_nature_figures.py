@@ -52,7 +52,7 @@ mpl.rcParams.update(
 
 MODEL_ORDER = ["geosos_flus", "geospatial_kernel", "paper58"]
 MODEL_LABEL = {
-    "geosos_flus": "GeoSOS-FLUS",
+    "geosos_flus": "FLUS-style ANN–CA\n(untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
 }
@@ -131,7 +131,7 @@ def check_render_inputs() -> None:
     )
     _require_current_report(
         "planning_comparison_report_public_2025_2031_current.json",
-        metric_version="frozen_balanced_objectives_v3",
+        metric_version="planning_objectives_v5",
     )
     _require_file("artifacts/gee/land_cover/land_cover_2024_100m.tif")
     _require_file("artifacts/mechanism_ablations/report.json")
@@ -236,8 +236,8 @@ def render_figure_1() -> None:
     box(ax_inputs, (0.53, 0.70), (0.45, 0.18), "Embeddings +\nnight lights", face="#EEF6EC", edge="#4DAF4A")
     box(ax_inputs, (0.02, 0.43), (0.45, 0.18), "Terrain +\nroad distance", face="#FFF2E7", edge="#D55E00")
     box(ax_inputs, (0.53, 0.43), (0.45, 0.18), "Water / wetland /\nproxy exclusions", face="#F3ECF7", edge="#7B3294")
-    box(ax_inputs, (0.20, 0.11), (0.60, 0.18), "Aligned state $S_t$  |  action $A_t$  |  common 100-m grid", face="#FFFFFF", edge="#343A40", fontsize=7.0, weight="bold")
-    for p in [((0.24, 0.70), (0.38, 0.30)), ((0.75, 0.70), (0.62, 0.30)), ((0.24, 0.43), (0.38, 0.30)), ((0.75, 0.43), (0.62, 0.30))]:
+    box(ax_inputs, (0.15, 0.09), (0.70, 0.22), "Aligned state $S_t$  |  action $A_t$\ncommon 100-m grid", face="#FFFFFF", edge="#343A40", fontsize=6.7, weight="bold")
+    for p in [((0.24, 0.70), (0.38, 0.32)), ((0.75, 0.70), (0.62, 0.32)), ((0.24, 0.43), (0.38, 0.32)), ((0.75, 0.43), (0.62, 0.32))]:
         arrow(ax_inputs, *p)
     ax_inputs.text(0.02, 0.01, "79,726 valid cells • six land-cover classes • 3 seeds", transform=ax_inputs.transAxes, fontsize=6.4, color="#4A5560")
 
@@ -320,7 +320,7 @@ def render_figure_2() -> None:
         if idx in (0, 2):
             ax.set_ylabel("Score")
     fig.legend(handles=[Patch(facecolor=plot_colors[m], edgecolor="none", label=plot_labels[m]) for m in plot_models], loc="upper center", bbox_to_anchor=(0.5, 0.885), ncol=5, frameon=False, handlelength=1.0, columnspacing=0.7)
-    fig.suptitle("Historical allocation skill with prespecified zero models", x=0.08, y=0.975, ha="left", fontsize=10.5, fontweight="bold")
+    fig.suptitle("Historical allocation skill with explicit zero models", x=0.08, y=0.975, ha="left", fontsize=10.5, fontweight="bold")
     fig.text(0.08, 0.055, "Bars show mean ± population SD across n=3 seeds; strict FoM counts wrong destination changes in the denominator. Bootstrap intervals are reported in the JSON table.", fontsize=6.2, color="#4A5560")
     save_publication_figure(fig, "fig02_historical_validation")
 
@@ -328,26 +328,26 @@ def render_figure_2() -> None:
 def render_figure_3() -> None:
     report = _require_current_report(
         "planning_comparison_report_public_2025_2031_current.json",
-        metric_version="frozen_balanced_objectives_v3",
+        metric_version="planning_objectives_v5",
     )
     panels = [
         ("new_built_mean_major_road_distance_m", "Distance to major road", "lower is better", 1.0, "m"),
         ("new_built_mean_prior_built_distance_m", "Distance to prior built", "lower is better", 1.0, "m"),
-        ("built_components_per_1000_pixels", "Built components / 1,000 valid", "lower is better", 1.0, ""),
-        ("green_gain_pixels", "Vegetation gain", "higher is better", 1.0, "cells"),
-        ("ecological_conversion_rate", "Ecological conversion", "descriptive; lower is better", 100.0, "%"),
+        ("new_built_components_per_1000_pixels", "New-built components / 1,000 valid", "lower is better", 1.0, ""),
+        ("ecological_conversion_rate", "Ecological conversion", "lower is better", 100.0, "%"),
+        ("green_gain_pixels", "Vegetation gain (diagnostic)", "descriptive", 1.0, "cells"),
         ("new_built_leapfrog_rate", "500-m leapfrog", "descriptive; lower is better", 100.0, "%"),
     ]
     fig, axes = plt.subplots(2, 3, figsize=(7.2, 4.95))
-    fig.subplots_adjust(left=0.075, right=0.985, top=0.77, bottom=0.19, wspace=0.34, hspace=0.58)
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.76, bottom=0.20, wspace=0.34, hspace=0.72)
     x = np.arange(len(SCENARIO_ORDER))
     width = 0.23
     pareto = set(report.get("pareto_frontier", []))
     objective_keys = {
         "new_built_mean_major_road_distance_m",
         "new_built_mean_prior_built_distance_m",
-        "built_components_per_1000_pixels",
-        "green_gain_pixels",
+        "new_built_components_per_1000_pixels",
+        "ecological_conversion_rate",
     }
     for idx, (key, title, direction, scale, unit) in enumerate(panels):
         ax = axes.flat[idx]
@@ -390,7 +390,7 @@ def render_figure_3() -> None:
     legend_handles = [Patch(facecolor=MODEL_COLOR[m], edgecolor="none", label=MODEL_LABEL[m]) for m in MODEL_ORDER]
     fig.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.865), ncol=3, frameon=False, handlelength=1.2, columnspacing=1.0)
     fig.suptitle("Conditional planning outcomes and independent morphology diagnostics", x=0.075, y=0.972, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds; stars mark candidates on the four-objective Pareto frontier. Descriptive panels are not used for Pareto membership.", fontsize=6.25, color="#4A5560")
+    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds; stars mark within-scenario candidates on the four-objective frontier. Vegetation gain is a scenario-input diagnostic.", fontsize=6.25, color="#4A5560")
     save_publication_figure(fig, "fig03_planning_objectives")
 
 
@@ -529,7 +529,7 @@ def render_figure_5() -> None:
     cmap = ListedColormap(CLASS_COLORS)
     norm = BoundaryNorm(np.arange(-0.5, 7.5, 1), cmap.N)
     fig, axes = plt.subplots(3, 3, figsize=(7.2, 7.1))
-    fig.subplots_adjust(left=0.085, right=0.985, top=0.90, bottom=0.13, wspace=0.06, hspace=0.20)
+    fig.subplots_adjust(left=0.105, right=0.985, top=0.88, bottom=0.16, wspace=0.08, hspace=0.28)
     for j, model in enumerate(MODEL_ORDER):
         axes[0, j].set_title(MODEL_LABEL[model], fontsize=8.2, fontweight="bold", pad=7)
     for i, scenario in enumerate(SCENARIO_ORDER):
@@ -557,13 +557,13 @@ def render_figure_5() -> None:
                 spine.set_color("#AAB2BC")
             if j == 0:
                 ax.set_ylabel(SCENARIO_LABEL[scenario], fontsize=7.3, labelpad=6, rotation=90)
-            if i == 0 and j == 0:
-                ax.annotate("N", xy=(0.94, 0.18), xytext=(0.94, 0.05), xycoords="axes fraction", textcoords="axes fraction", ha="center", va="center", fontsize=7.0, fontweight="bold", arrowprops={"arrowstyle": "-|>", "lw": 0.65, "color": "#202020"})
+            if i == 0:
+                ax.annotate("N", xy=(0.93, 0.24), xytext=(0.93, 0.08), xycoords="axes fraction", textcoords="axes fraction", ha="center", va="center", fontsize=7.0, fontweight="bold", arrowprops={"arrowstyle": "-|>", "lw": 0.8, "color": "#202020"})
             if i == 2 and j == 0:
                 height, width_px = final.shape
-                x0, y0 = max(8, int(width_px * 0.06)), max(12, int(height * 0.91))
-                ax.plot([x0, x0 + 10], [y0, y0], color="#202020", linewidth=1.25, solid_capstyle="butt")
-                ax.text(x0 + 5, y0 - 5, "1 km", ha="center", va="bottom", fontsize=5.8, color="#202020", bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.75, "pad": 0.6})
+                x0, y0 = max(8, int(width_px * 0.05)), max(12, int(height * 0.90))
+                ax.plot([x0, x0 + 10], [y0, y0], color="#202020", linewidth=1.8, solid_capstyle="butt")
+                ax.text(x0 + 5, y0 - 6, "1 km", ha="center", va="bottom", fontsize=6.2, color="#202020", bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.82, "pad": 0.8})
     fig.suptitle("Different models produce distinct 2031 transition footprints under identical scenario targets", x=0.085, y=0.965, ha="left", fontsize=10.5, fontweight="bold")
     handles = [Patch(facecolor=CLASS_COLORS[k], edgecolor="none", label=CLASS_LABEL[k]) for k in range(1, 7)]
     handles += [Patch(facecolor="#E66101", alpha=0.6, label="New built (2024→2031)"), Patch(facecolor="#1B9E77", alpha=0.6, label="New low vegetation"), Patch(facecolor="#6A3D9A", alpha=0.6, label="Built retirement")]

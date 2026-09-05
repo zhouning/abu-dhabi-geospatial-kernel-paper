@@ -42,6 +42,15 @@ def _sha256(path: Path, hash_mode: str) -> str:
     return digest.hexdigest()
 
 
+def _canonical_bytes(path: Path, hash_mode: str) -> bytes:
+    raw = path.read_bytes()
+    if hash_mode == "text_lf_normalized":
+        return raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    if hash_mode == "raw":
+        return raw
+    raise ValueError(f"unknown_hash_mode:{hash_mode}")
+
+
 def _manifest_checks() -> tuple[dict[str, bool], list[dict[str, object]]]:
     if not MANIFEST.is_file():
         return {"manifest_file": False, "sha256sums_file": SUMS.is_file()}, []
@@ -54,6 +63,7 @@ def _manifest_checks() -> tuple[dict[str, bool], list[dict[str, object]]]:
         exists = path.is_file()
         hash_mode = str(record.get("hash_mode", "raw"))
         actual = _sha256(path, hash_mode) if exists else None
+        canonical_length = len(_canonical_bytes(path, hash_mode)) if exists else None
         expected = str(record["sha256"])
         checks.append(
             {
@@ -61,7 +71,11 @@ def _manifest_checks() -> tuple[dict[str, bool], list[dict[str, object]]]:
                 "role": record.get("role"),
                 "hash_mode": hash_mode,
                 "exists": exists,
-                "bytes_ok": exists and path.stat().st_size == int(record["bytes"]),
+                # ``bytes`` is the canonical byte length for the declared hash
+                # mode.  This keeps text records valid after Windows CRLF
+                # checkout while preserving raw byte checks for rasters and
+                # binaries.
+                "bytes_ok": exists and canonical_length == int(record["bytes"]),
                 "sha256_ok": exists and actual == expected,
             }
         )

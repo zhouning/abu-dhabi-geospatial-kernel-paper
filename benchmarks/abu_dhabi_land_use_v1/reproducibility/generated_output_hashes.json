@@ -1,30 +1,35 @@
 {
-  "schema": "gwm.abu_dhabi_generated_output_hashes.v1",
+  "schema": "gwm.abu_dhabi_generated_output_hashes.v2",
   "records": [
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/comparison_report_current.json",
-      "bytes": 70086,
-      "sha256": "1605d234b51d6ae34c16c4c12a65925c4b0497b8339c1a422570e599f428fea0"
+      "bytes": 70352,
+      "sha256": "8c020413d5a9e8be3b4cd3ef8384dad36830b1d759bd6e5e397dca9423e6a231",
+      "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/planning_scenario_report_public_2025_2031_current.json",
       "bytes": 498286,
-      "sha256": "59b559c246b795bb125fb8e51cb5a3b7f6d21b63f76dc6d9bff44576d433c1ad"
+      "sha256": "59b559c246b795bb125fb8e51cb5a3b7f6d21b63f76dc6d9bff44576d433c1ad",
+      "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/planning_comparison_report_public_2025_2031_current.json",
-      "bytes": 616033,
-      "sha256": "c6716191c51194f65bf1a6efb5481d030a952caa7a6df655986679c37b12365f"
+      "bytes": 642833,
+      "sha256": "577b77384dd165ef06d4cfb2f2da483d9cbb1a5c25014573f0704554f5c1c084",
+      "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/output_audit_reproducible.json",
       "bytes": 155232,
-      "sha256": "74ffc8edf1fa28d76b3747ecdb85fd57160427e3bfc23d9507afac57c0244e43"
+      "sha256": "98ad5fa0ebdb171b4b0a46037db3e982ccd1cf9b0a86f4d2901ce308ec56ca6d",
+      "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/planning_public_2025_2031_delivery_manifest_current.json",
       "bytes": 54506,
-      "sha256": "071f511db1b869641e6489e97e5ee57dc0fd005513ede6e6482e4e67d7b60eef"
+      "sha256": "071f511db1b869641e6489e97e5ee57dc0fd005513ede6e6482e4e67d7b60eef",
+      "hash_mode": "text_lf_normalized"
     }
   ]
 }
