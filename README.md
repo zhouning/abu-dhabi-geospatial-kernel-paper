@@ -10,6 +10,10 @@ reports comparing:
 - Geospatial Kernel, the allocation core of a Geospatial World Model; and
 - GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network), the AlphaEarth latent-dynamics baseline.
 
+The `docs/` directory contains internal capability-boundary and data-recovery
+notes for project coordination; those files are not part of the journal
+submission package.
+
 ## Scope and claim boundary
 
 The benchmark uses public land-cover and proxy constraint data on a 100 m EPSG:32640 grid. Future maps are scenario stress tests, not official Abu Dhabi forecasts. They should not be interpreted as statutory residential, commercial, industrial, or cadastral land-use plans. The vector files are raster-cell transition polygons and are not legal parcels.
@@ -25,8 +29,10 @@ change FoM, persistence/minimum-change controls, spatial-block bootstrap with
 paired model contrasts and the release planning objectives have been rerun.
 Independent authoritative change-validation data are still not available. The
 earlier matched-input FLUS failure was a relative-path configuration error;
-corrected 13-, 19- and 25-feature seed-31 diagnostics completed with absolute
-paths and are archived under `benchmarks/abu_dhabi_land_use_v1/artifacts/`.
+corrected 13-, 19- and 25-feature diagnostics completed with absolute paths.
+The 25-feature matched-input baseline is archived for seeds 31, 47 and 73;
+the 13-feature run is retained as an identity-leakage diagnostic under
+`benchmarks/abu_dhabi_land_use_v1/artifacts/`.
 See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
 for the evidence boundary.
 

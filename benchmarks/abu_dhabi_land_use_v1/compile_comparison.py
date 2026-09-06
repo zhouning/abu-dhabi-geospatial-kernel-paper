@@ -29,6 +29,7 @@ INPUT_ROOT = HERE / "artifacts/gee"
 DEFAULT_OUTPUT = HERE / "comparison_report_current.json"
 DEFAULT_MARKDOWN = HERE / "comparison_report_current.md"
 MODELS = ("geosos_flus", "geospatial_kernel", "paper58")
+MATCHED_MODEL = "flus_matched_input"
 YEARS = (2023, 2024)
 BOOTSTRAP_RESAMPLES = 1000
 BOOTSTRAP_BLOCK_SIZE_PIXELS = 8
@@ -36,6 +37,7 @@ MODEL_DISPLAY_NAMES = {
     "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
+    MATCHED_MODEL: "FLUS matched-input baseline (25 features)",
 }
 
 
@@ -275,6 +277,62 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 ),
             }
 
+    # The matched-input run is a separate baseline: it shares the Kernel's
+    # 25-dimensional feature family, but its ANN is still trained on same-year
+    # labels and therefore does not share the Kernel's next-state transition
+    # target or projection implementation.
+    matched_report_path = PREDICTION_ROOT / "flus_matched_inputs_abs/report.json"
+    matched_report = json.loads(matched_report_path.read_text(encoding="utf-8"))
+    matched_seed_ids = [int(row["seed"]) for row in matched_report["seeds"]]
+    if matched_seed_ids != [31, 47, 73]:
+        raise ValueError(f"three_matched_input_seeds_required:{matched_seed_ids}")
+    matched_cache: dict[int, dict[int, np.ndarray]] = {seed: {} for seed in matched_seed_ids}
+    matched_summaries: dict[str, Any] = {}
+    matched_bootstrap: dict[str, Any] = {}
+    for year in YEARS:
+        action = action_by_year[year]
+        reliability, _ = _read(HERE / action["reliability_mask"])
+        target_counts = {int(key): int(value) for key, value in action["feasible_target_counts"].items()}
+        evaluation_rows = []
+        bootstrap_rows = []
+        for seed_row in matched_report["seeds"]:
+            seed = int(seed_row["seed"])
+            prediction, _ = _read(PREDICTION_ROOT / "flus_matched_inputs_abs" / f"seed_{seed}/prediction_{year}.tif")
+            matched_cache[seed][year] = prediction[0]
+            evaluation = evaluate_prediction(
+                prediction[0], origin_state=origin[0], observed_target=observed[year],
+                valid_mask=valid, hard_exclusion_mask=hard_mask,
+                requested_counts=target_counts, reliability_mask=reliability[0].astype(bool),
+            )
+            evaluation_rows.append(evaluation)
+            bootstrap_rows.append(
+                paired_pixel_bootstrap_ci(
+                    prediction[0], origin_state=origin[0], observed_target=observed[year],
+                    valid_mask=valid, n_resamples=BOOTSTRAP_RESAMPLES,
+                    seed=500000 + seed + year, block_size=BOOTSTRAP_BLOCK_SIZE_PIXELS,
+                )
+            )
+        matched_summaries[str(year)] = _aggregate(evaluation_rows)
+        matched_bootstrap[str(year)] = _aggregate_bootstrap(bootstrap_rows)
+
+    matched_pairwise: dict[str, Any] = {}
+    for year in YEARS:
+        seed_rows = []
+        for seed in (31, 47, 73):
+            seed_rows.append(
+                paired_model_difference_bootstrap_ci(
+                    prediction_cache["geospatial_kernel"][seed][year], matched_cache[seed][year],
+                    origin_state=origin[0], observed_target=observed[year], valid_mask=valid,
+                    n_resamples=BOOTSTRAP_RESAMPLES, seed=600000 + seed + year,
+                    block_size=BOOTSTRAP_BLOCK_SIZE_PIXELS,
+                )
+            )
+        matched_pairwise[str(year)] = {
+            "model_a": "geospatial_kernel",
+            "model_b": MATCHED_MODEL,
+            "summary": _aggregate_difference_bootstrap(seed_rows),
+        }
+
     for year in YEARS:
         year_key = str(year)
         pairwise_bootstrap[year_key] = {}
@@ -302,6 +360,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 "model_b": right,
                 "summary": _aggregate_difference_bootstrap(seed_rows),
             }
+        pairwise_bootstrap[year_key]["geospatial_kernel_minus_flus_matched_input"] = matched_pairwise[year_key]
 
     persistence = {}
     random_baseline = {}
@@ -393,6 +452,15 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "model_display_names": MODEL_DISPLAY_NAMES,
         "seeds": [31, 47, 73],
         "summaries": summaries,
+        "matched_input_baseline": {
+            "model_id": MATCHED_MODEL,
+            "display_name": MODEL_DISPLAY_NAMES[MATCHED_MODEL],
+            "feature_count": 25,
+            "training_target_boundary": "same-year label suitability; not next-state transition learning",
+            "source_report": "artifacts/predictions/flus_matched_inputs_abs/report.json",
+            "summaries": matched_summaries,
+            "bootstrap_95ci": matched_bootstrap,
+        },
         "bootstrap_95ci": bootstrap,
         "pairwise_bootstrap_95ci": pairwise_bootstrap,
         "ensembles": ensembles,
@@ -462,6 +530,24 @@ def render_markdown(report: dict[str, Any]) -> str:
                 f"{row['macro_f1']['mean']:.4f} | "
                 f"{row['demand_total_variation']['mean']:.5f} |"
             )
+    lines.extend(
+        [
+            "",
+            "## Matched-input FLUS baseline",
+            "",
+            "The 25-feature FLUS run shares the Kernel feature family but not its next-state training target or projection semantics. It is therefore reported as a separate baseline.",
+            "",
+            "| 年份 | FLUS matched-input strict FoM | Kernel − matched-input paired interval |",
+            "|---:|---:|---:|",
+        ]
+    )
+    matched = report["matched_input_baseline"]
+    for year in YEARS:
+        pair = report["pairwise_bootstrap_95ci"][str(year)]["geospatial_kernel_minus_flus_matched_input"]["summary"]["change_figure_of_merit"]
+        lines.append(
+            f"| {year} | {matched['summaries'][str(year)]['change_figure_of_merit']['mean']:.4f} | "
+            f"[{pair['lower_mean']:.4f}, {pair['upper_mean']:.4f}] |"
+        )
     lines.extend(
         [
             "",

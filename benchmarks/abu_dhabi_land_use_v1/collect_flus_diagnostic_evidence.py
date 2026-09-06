@@ -35,6 +35,17 @@ def collect() -> dict[str, object]:
         report = json.loads(report_path.read_text(encoding="utf-8"))
         seed = report["seeds"][0]
         ann = root / "work/seed_31/ann"
+        seed_metrics = {
+            str(seed_row["seed"]): {
+                str(row["target_year"]): {
+                    "strict_fom": row["evaluation"]["change_figure_of_merit"],
+                    "demand_total_variation": row["evaluation"]["demand_total_variation"],
+                    "high_confidence_strict_fom": row["evaluation"]["reliability_sensitivity"]["change_figure_of_merit"],
+                }
+                for row in seed_row["years"]
+            }
+            for seed_row in report["seeds"]
+        }
         runs[mode] = {
             "output_root": str(root.relative_to(HERE)),
             "status": report["status"],
@@ -48,6 +59,8 @@ def collect() -> dict[str, object]:
                 }
                 for row in seed["years"]
             },
+            "seed_metrics": seed_metrics,
+            "seeds": [int(seed_row["seed"]) for seed_row in report["seeds"]],
             "probability_surface_present": (ann / "target_probability.tif").is_file(),
             "prediction_2023_present": (root / "seed_31/prediction_2023.tif").is_file(),
             "prediction_2024_present": (root / "seed_31/prediction_2024.tif").is_file(),
@@ -66,7 +79,7 @@ def collect() -> dict[str, object]:
             "interpretation": "The console returned a configuration-path error. This record does not support a SIGSEGV claim.",
         },
         "corrected_absolute_path_runs": runs,
-        "claim_boundary": "All corrected runs use one computational seed and diagnose feature-input compatibility. They do not replace the three-seed seven-driver headline control.",
+        "claim_boundary": "The 25-feature corrected run is now archived for seeds 31, 47 and 73 and is reported as a matched-input baseline. It shares the Kernel feature family only; FLUS still learns same-year label suitability rather than the Kernel's next-state transition target and does not share the Kernel projection implementation. The 13-feature identity-leakage diagnostic is retained separately. The original seven-driver run remains the unmatched headline control.",
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")

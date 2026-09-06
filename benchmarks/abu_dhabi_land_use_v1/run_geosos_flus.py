@@ -480,6 +480,10 @@ def run_seed(
 def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path, feature_mode: str = "baseline_7") -> dict[str, Any]:
     if not binary.is_file() or not os.access(binary, os.X_OK):
         raise FileNotFoundError(f"flus_binary_not_executable:{binary}")
+    # The console resolves configuration paths relative to its working
+    # directory.  Always materialize an absolute output root so generated
+    # ANN/CA configs remain valid when the caller supplies a relative path.
+    output_root = output_root.resolve()
     started = time.perf_counter()
     inputs = FlusInputs()
     reports = []

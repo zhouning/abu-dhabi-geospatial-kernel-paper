@@ -344,8 +344,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/audit_cross_platform.py",
       "role": "code",
-      "bytes": 6560,
-      "sha256": "8a119283a56df13c0f5133da1abf0057343342497f807310ba0142afb4e46064",
+      "bytes": 6803,
+      "sha256": "5c9b9c561c48535f5bb25a17493538c46be419e5dad6a720f8141d1a9b4fcee8",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -386,15 +386,15 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/collect_flus_diagnostic_evidence.py",
       "role": "code",
-      "bytes": 3487,
-      "sha256": "587f9f9595ecd38b0152c86393964e22e1db062f5d70a58e0633c06c8c3201f9",
+      "bytes": 4431,
+      "sha256": "bf2053abc71a1f51779ca50df366f03726d6c92b3c8cb88ebbf8ee4e3661f47d",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/compile_comparison.py",
       "role": "code",
-      "bytes": 19959,
-      "sha256": "9c3ca069cbaae41f249ead1a7de2c160f8985374d4b25d8f06081658ac91b824",
+      "bytes": 24513,
+      "sha256": "74890fca851dd8b13b09fafe6f8e1e6d78acade03ed0b4834b8cc1077feb694a",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -505,8 +505,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/render_nature_figures.py",
       "role": "code",
-      "bytes": 31242,
-      "sha256": "2d502ee5edfd901c9384562308828624cb8a6ff49f19a4683c2cc5179f6d324a",
+      "bytes": 31264,
+      "sha256": "e318e02ffe5f068eb0402969f37e29c883434304e037d58f60b30062d8f82f90",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -533,8 +533,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py",
       "role": "configuration",
-      "bytes": 6772,
-      "sha256": "19e1dcd19d1332cc284bf63d3a93c956e3d38bf660140d4d776db958ded3b68e",
+      "bytes": 9232,
+      "sha256": "fefd48ccfb6e8215f0920e19ddb304ad74313f657e750de419cb0519e8e5f7d2",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -554,8 +554,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/run_geosos_flus.py",
       "role": "code",
-      "bytes": 20784,
-      "sha256": "bc721ab279644f6530d9072e06947949ff12dd59999f2bc9de29c57129063a96",
+      "bytes": 21045,
+      "sha256": "979fd9148aafb8d2034a44fca061f967fa50bf3d602f792a80ad126b4c9d5597",
       "hash_mode": "text_lf_normalized"
     },
     {

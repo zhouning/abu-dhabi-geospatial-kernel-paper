@@ -546,7 +546,7 @@ def render_figure_5() -> None:
             new_built = (origin != 5) & (final == 5) & (origin != 0) & (final != 0)
             new_green = (origin != 3) & (final == 3) & (origin != 0) & (final != 0)
             retired = (origin == 5) & (final != 5) & (final != 0)
-            for mask, color, alpha in ((new_built, "#E66101", 0.48), (new_green, "#1B9E77", 0.42), (retired, "#6A3D9A", 0.45)):
+            for mask, color, alpha in ((new_built, "#FDE725", 0.72), (new_green, "#1B9E77", 0.42), (retired, "#6A3D9A", 0.45)):
                 layer = np.where(mask, 1.0, np.nan)
                 ax.imshow(layer, cmap=ListedColormap([color]), interpolation="nearest", alpha=alpha, aspect="equal")
             # Add a thin outline so transition overlays remain distinguishable
@@ -570,7 +570,7 @@ def render_figure_5() -> None:
                 ax.text(x0 + 10, y0 - 6, "2 km", ha="center", va="bottom", fontsize=6.6, color="#202020", bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.88, "pad": 0.8})
     fig.suptitle("Different models produce distinct 2031 transition footprints under identical scenario targets", x=0.085, y=0.965, ha="left", fontsize=10.5, fontweight="bold")
     handles = [Patch(facecolor=CLASS_COLORS[k], edgecolor="none", label=CLASS_LABEL[k]) for k in range(1, 7)]
-    handles += [Patch(facecolor="#E66101", alpha=0.6, label="New built (2024→2031)"), Patch(facecolor="#1B9E77", alpha=0.6, label="New low vegetation"), Patch(facecolor="#6A3D9A", alpha=0.6, label="Built retirement")]
+    handles += [Patch(facecolor="#FDE725", alpha=0.72, edgecolor="#7F2704", label="New built (2024→2031)"), Patch(facecolor="#1B9E77", alpha=0.6, label="New low vegetation"), Patch(facecolor="#6A3D9A", alpha=0.6, label="Built retirement")]
     fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.035), ncol=5, frameon=False, handlelength=1.0, columnspacing=0.95)
     fig.text(0.085, 0.092, "Each panel is a 100-m ensemble raster; overlays show dissolved transition cells relative to the observed 2024 state. Cells are not cadastral parcels.", fontsize=6.35, color="#4A5560")
     save_publication_figure(fig, "fig05_planning_maps_2031")

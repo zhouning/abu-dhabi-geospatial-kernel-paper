@@ -1,6 +1,6 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-06T07:38:28.833389+00:00",
+  "created_at": "2026-09-06T10:52:51.274324+00:00",
   "display_name": "FLUS-style ANN–CA console (untraceable build)",
   "external_binary": "vendor/flus_console",
   "feature_mode": "baseline_plus_onehot",
@@ -30,7 +30,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.5039296250324696,
+        "fit_seconds": 0.5205063750036061,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -38,7 +38,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.601820749929175,
+          "ca_seconds": 4.680004916153848,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -101,7 +101,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.617437625071034,
+          "ca_seconds": 4.682430499931797,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -164,10 +164,324 @@
           "target_year": 2024
         }
       ]
+    },
+    {
+      "seed": 47,
+      "training": {
+        "feature_mode": "baseline_plus_onehot",
+        "feature_names": [
+          "x_utm",
+          "y_utm",
+          "elevation",
+          "slope",
+          "log_viirs",
+          "log_distance_road",
+          "log_distance_major_road",
+          "current_class_1",
+          "current_class_2",
+          "current_class_3",
+          "current_class_4",
+          "current_class_5",
+          "current_class_6"
+        ],
+        "fit_label_years": [
+          2021
+        ],
+        "fit_seconds": 0.4369887080974877,
+        "seed": 47,
+        "target_driver_year": 2022,
+        "target_pixel_rows": 79726,
+        "training_pixel_rows": 79726
+      },
+      "years": [
+        {
+          "ca_seconds": 4.615437207976356,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 493,
+              "3": 471,
+              "4": 1011,
+              "5": 9359,
+              "6": 52954
+            },
+            "binary_change_figure_of_merit": 0.0,
+            "change_f1": 0.0,
+            "change_false_alarms": 0,
+            "change_figure_of_merit": 0.0,
+            "change_hits": 0,
+            "change_misses": 4500,
+            "change_wrong_transitions": 0,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 6186,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.038795374156485964,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.868429656837138,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9435566816345985,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 0,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 0,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4996979573556162,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9991905717800945,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 0
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_47/prediction_2023.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 685,
+            "3": 465,
+            "4": 1011,
+            "5": 12260,
+            "6": 49867
+          },
+          "target_year": 2023
+        },
+        {
+          "ca_seconds": 4.625326750101522,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 493,
+              "3": 471,
+              "4": 1011,
+              "5": 9359,
+              "6": 52954
+            },
+            "binary_change_figure_of_merit": 0.0,
+            "change_f1": 0.0,
+            "change_false_alarms": 0,
+            "change_figure_of_merit": 0.0,
+            "change_hits": 0,
+            "change_misses": 8464,
+            "change_wrong_transitions": 0,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 13668,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.08571858615758975,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7906708471378602,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8938363896344982,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 0,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 0,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 56,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.6658857436095251,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9980946548263073,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 0
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_47/prediction_2024.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 912,
+            "3": 412,
+            "4": 1011,
+            "5": 15774,
+            "6": 46179
+          },
+          "target_year": 2024
+        }
+      ]
+    },
+    {
+      "seed": 73,
+      "training": {
+        "feature_mode": "baseline_plus_onehot",
+        "feature_names": [
+          "x_utm",
+          "y_utm",
+          "elevation",
+          "slope",
+          "log_viirs",
+          "log_distance_road",
+          "log_distance_major_road",
+          "current_class_1",
+          "current_class_2",
+          "current_class_3",
+          "current_class_4",
+          "current_class_5",
+          "current_class_6"
+        ],
+        "fit_label_years": [
+          2021
+        ],
+        "fit_seconds": 0.5479524158872664,
+        "seed": 73,
+        "target_driver_year": 2022,
+        "target_pixel_rows": 79726,
+        "training_pixel_rows": 79726
+      },
+      "years": [
+        {
+          "ca_seconds": 4.553072459064424,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 493,
+              "3": 471,
+              "4": 1011,
+              "5": 9359,
+              "6": 52954
+            },
+            "binary_change_figure_of_merit": 0.0,
+            "change_f1": 0.0,
+            "change_false_alarms": 0,
+            "change_figure_of_merit": 0.0,
+            "change_hits": 0,
+            "change_misses": 4500,
+            "change_wrong_transitions": 0,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 6186,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.038795374156485964,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.868429656837138,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9435566816345985,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 0,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 0,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4996979573556162,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9991905717800945,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 0
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_73/prediction_2023.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 685,
+            "3": 465,
+            "4": 1011,
+            "5": 12260,
+            "6": 49867
+          },
+          "target_year": 2023
+        },
+        {
+          "ca_seconds": 4.611628874903545,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 493,
+              "3": 471,
+              "4": 1011,
+              "5": 9359,
+              "6": 52954
+            },
+            "binary_change_figure_of_merit": 0.0,
+            "change_f1": 0.0,
+            "change_false_alarms": 0,
+            "change_figure_of_merit": 0.0,
+            "change_hits": 0,
+            "change_misses": 8464,
+            "change_wrong_transitions": 0,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 13668,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.08571858615758975,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7906708471378602,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8938363896344982,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 0,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 0,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 56,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.6658857436095251,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9980946548263073,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 0
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_73/prediction_2024.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 912,
+            "3": 412,
+            "4": 1011,
+            "5": 15774,
+            "6": 46179
+          },
+          "target_year": 2024
+        }
+      ]
     }
   ],
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 9.999204208143055
+  "wall_seconds": 29.76312058302574
 }

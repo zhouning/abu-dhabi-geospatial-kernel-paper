@@ -1,7 +1,9 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-05T11:27:23.699026+00:00",
+  "created_at": "2026-09-06T10:52:20.526739+00:00",
+  "display_name": "FLUS-style ANN–CA console (untraceable build)",
   "external_binary": "vendor/flus_console",
+  "feature_mode": "baseline_7",
   "model_id": "geosos_flus",
   "revision_status": "current_protocol_run",
   "schema": "gwm.abu_dhabi_geosos_flus_run.v1",
@@ -9,6 +11,7 @@
     {
       "seed": 31,
       "training": {
+        "feature_mode": "baseline_7",
         "feature_names": [
           "x_utm",
           "y_utm",
@@ -21,7 +24,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 2.7606347498949617,
+        "fit_seconds": 2.7196047080215067,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -29,7 +32,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.561288458062336,
+          "ca_seconds": 4.544340749969706,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -92,7 +95,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.596821209182963,
+          "ca_seconds": 4.529464290942997,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -159,6 +162,7 @@
     {
       "seed": 47,
       "training": {
+        "feature_mode": "baseline_7",
         "feature_names": [
           "x_utm",
           "y_utm",
@@ -171,7 +175,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 2.340001459000632,
+        "fit_seconds": 2.3805901668965816,
         "seed": 47,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -179,7 +183,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.606494375038892,
+          "ca_seconds": 4.556335832923651,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -242,7 +246,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.6351148339454085,
+          "ca_seconds": 4.587350792018697,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -309,6 +313,7 @@
     {
       "seed": 73,
       "training": {
+        "feature_mode": "baseline_7",
         "feature_names": [
           "x_utm",
           "y_utm",
@@ -321,7 +326,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 3.2674892500508577,
+        "fit_seconds": 3.149155166000128,
         "seed": 73,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -329,7 +334,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.620306666009128,
+          "ca_seconds": 4.633338416926563,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -392,7 +397,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.606240083230659,
+          "ca_seconds": 4.692722209030762,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -460,5 +465,5 @@
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 36.31672170897946
+  "wall_seconds": 36.25194266694598
 }

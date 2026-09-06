@@ -30,6 +30,8 @@ GeoFM-LDN.
 - `response_to_LUP_review.md`: point-by-point revision and blocker record.
 - `../benchmarks/abu_dhabi_land_use_v1/matched_input_review.md`: archived
   FLUS 13-, 19- and 25-feature input diagnostics and corrected command record.
+  The 25-feature matched-input baseline covers seeds 31, 47 and 73; the
+  13-feature identity-leakage run remains a seed-31 diagnostic.
 
 The manuscript calls the latent-dynamics baseline **GeoFM-LDN** (Geospatial
 Foundation-Model Latent Dynamics Network). Legacy machine-readable artifacts

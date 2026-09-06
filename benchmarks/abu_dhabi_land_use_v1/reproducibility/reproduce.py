@@ -18,6 +18,7 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -40,16 +41,56 @@ def _verify_gate() -> None:
     subprocess.run(command, cwd=REPO, check=True)
 
 
+def _verify_manuscript_report_consistency() -> None:
+    """Fail closed when the manuscript's reported planning counts drift."""
+
+    report = json.loads(
+        (HERE / "planning_comparison_report_public_2025_2031_current.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    manuscript = (REPO / "manuscript/manuscript.md").read_text(encoding="utf-8")
+    expected = {
+        "Kernel integrated demand errors": [
+            int(
+                report["ensembles"]["geospatial_kernel"][scenario]["2031"]["metrics"][
+                    "demand_l1_error_pixels"
+                ]
+            )
+            for scenario in ("compact", "ecological_priority", "outward_growth")
+        ],
+        "GeoFM-LDN integrated demand errors": [
+            int(
+                report["ensembles"]["paper58"][scenario]["2031"]["metrics"][
+                    "demand_l1_error_pixels"
+                ]
+            )
+            for scenario in ("compact", "ecological_priority", "outward_growth")
+        ],
+    }
+    kernel_values = ", ".join(f"{value:,}" for value in expected["Kernel integrated demand errors"][:-1]) + " and " + f"{expected['Kernel integrated demand errors'][-1]:,}"
+    geofm_values = ", ".join(f"{value:,}" for value in expected["GeoFM-LDN integrated demand errors"][:-1]) + " and " + f"{expected['GeoFM-LDN integrated demand errors'][-1]:,}"
+    required_fragments = (
+        f"The 2031 majority-vote ensemble L1 demand errors were {kernel_values} pixels",
+        f"the corresponding GeoFM-LDN errors were {geofm_values} pixels",
+    )
+    for fragment in required_fragments:
+        if fragment not in manuscript:
+            raise RuntimeError(f"manuscript_consistency_missing:{fragment}")
+
+
 def _hash_outputs() -> dict[str, object]:
     paths = [
         HERE / "comparison_report_current.json",
         HERE / "planning_scenario_report_public_2025_2031_current.json",
         HERE / "planning_comparison_report_public_2025_2031_current.json",
         HERE / "output_audit_reproducible.json",
+        HERE / "output_audit.json",
         HERE / "planning_public_2025_2031_delivery_manifest_current.json",
         HERE / "neighbourhood_weight_sensitivity.csv",
         HERE / "artifacts/mechanism_ablations/neighbourhood_weight_sensitivity_report.json",
         HERE / "artifacts/flus_matched_input_review/evidence.json",
+        HERE / "artifacts/predictions/flus_matched_inputs_abs/report.json",
         HERE / "artifacts/cross_platform/linux_vs_macos_kernel_comparison.json",
         REPO / "manuscript/supplementary_table_S2_neighbourhood_weight_sensitivity.md",
         REPO / "manuscript/main.pdf",
@@ -125,7 +166,7 @@ def main() -> None:
             "--binary",
             str(HERE / "vendor/flus_console"),
             "--seeds",
-            "31",
+            SEEDS,
             "--output",
             str(HERE / "artifacts/predictions" / directory),
             "--feature-mode",
@@ -167,10 +208,22 @@ def main() -> None:
         str(HERE / "planning_public_2025_2031_delivery_manifest_current.json"),
         "--overwrite",
     )
-    _run("Output audit", HERE / "audit_outputs.py", "--output", str(HERE / "output_audit_reproducible.json"))
+    _run("Output audit", HERE / "audit_outputs.py", "--output", str(HERE / "output_audit.json"))
+    shutil.copyfile(HERE / "output_audit.json", HERE / "output_audit_reproducible.json")
+    _verify_manuscript_report_consistency()
     if not args.skip_figures:
         _run("Publication figures", HERE / "render_nature_figures.py")
     result = _hash_outputs()
+    _run(
+        "Final input manifest",
+        HERE / "reproducibility/build_reproducibility_manifest.py",
+    )
+    _run(
+        "Final reproducibility gate",
+        HERE / "reproducibility_check.py",
+        "--output",
+        str(HERE / "reproducibility_check.json"),
+    )
     print(json.dumps({"status": "complete", "generated_output_count": len(result["records"])}, ensure_ascii=False))
 
 

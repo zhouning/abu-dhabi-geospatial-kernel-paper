@@ -101,6 +101,12 @@ def compare(*, linux_root: Path, output: Path) -> dict[str, object]:
         "reference_environment": "macOS arm64 reference checkout (the released prediction rasters)",
         "comparison_environment": "Linux rerun archived under artifacts/cross_platform/linux_geospatial_kernel",
         "archived_linux_environment": {
+            "system": "Linux",
+            "machine": str(
+                json.loads(
+                    (linux_root / "report.json").read_text(encoding="utf-8")
+                ).get("platform", {}).get("machine", "unknown")
+            ),
             "python": "3.12.3",
             "numpy": "2.3.5",
             "scikit_learn": "1.8.0",

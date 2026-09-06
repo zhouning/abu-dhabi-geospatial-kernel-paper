@@ -1,6 +1,6 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-05T11:28:39.399352+00:00",
+  "created_at": "2026-09-06T10:55:18.662408+00:00",
   "kernel_capabilities": {
     "adapter_count": 1,
     "adapters": [
@@ -65,7 +65,7 @@
       "seed": 31,
       "training": {
         "feature_count": 25,
-        "fit_seconds": 23.77172724995762,
+        "fit_seconds": 23.699597750091925,
         "fit_transitions": [
           {
             "selected_changed_pixels": 2887,
@@ -431,7 +431,7 @@
       "seed": 47,
       "training": {
         "feature_count": 25,
-        "fit_seconds": 27.48830116703175,
+        "fit_seconds": 24.50978466682136,
         "fit_transitions": [
           {
             "selected_changed_pixels": 2887,
@@ -797,7 +797,7 @@
       "seed": 73,
       "training": {
         "feature_count": 25,
-        "fit_seconds": 21.50808283314109,
+        "fit_seconds": 21.03547800006345,
         "fit_transitions": [
           {
             "selected_changed_pixels": 2887,
@@ -1142,5 +1142,5 @@
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 74.64963312493637
+  "wall_seconds": 71.14535045786761
 }

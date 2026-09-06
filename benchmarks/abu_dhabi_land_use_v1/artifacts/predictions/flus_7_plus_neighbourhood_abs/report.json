@@ -1,6 +1,6 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-06T07:38:43.021041+00:00",
+  "created_at": "2026-09-06T10:53:33.988293+00:00",
   "display_name": "FLUS-style ANN–CA console (untraceable build)",
   "external_binary": "vendor/flus_console",
   "feature_mode": "baseline_plus_neighborhood",
@@ -36,7 +36,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 3.6889414999168366,
+        "fit_seconds": 3.646906000096351,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -44,7 +44,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.651127292076126,
+          "ca_seconds": 4.6241352499928325,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -107,7 +107,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.6481818340253085,
+          "ca_seconds": 4.624047625111416,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -170,10 +170,336 @@
           "target_year": 2024
         }
       ]
+    },
+    {
+      "seed": 47,
+      "training": {
+        "feature_mode": "baseline_plus_neighborhood",
+        "feature_names": [
+          "x_utm",
+          "y_utm",
+          "elevation",
+          "slope",
+          "log_viirs",
+          "log_distance_road",
+          "log_distance_major_road",
+          "neighbourhood_3_class_1",
+          "neighbourhood_7_class_1",
+          "neighbourhood_3_class_2",
+          "neighbourhood_7_class_2",
+          "neighbourhood_3_class_3",
+          "neighbourhood_7_class_3",
+          "neighbourhood_3_class_4",
+          "neighbourhood_7_class_4",
+          "neighbourhood_3_class_5",
+          "neighbourhood_7_class_5",
+          "neighbourhood_3_class_6",
+          "neighbourhood_7_class_6"
+        ],
+        "fit_label_years": [
+          2021
+        ],
+        "fit_seconds": 4.5390914171002805,
+        "seed": 47,
+        "target_driver_year": 2022,
+        "target_pixel_rows": 79726,
+        "training_pixel_rows": 79726
+      },
+      "years": [
+        {
+          "ca_seconds": 4.5813954579643905,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 498,
+              "3": 465,
+              "4": 1011,
+              "5": 11226,
+              "6": 51088
+            },
+            "binary_change_figure_of_merit": 0.16389029109877165,
+            "change_f1": 0.28162498192858176,
+            "change_false_alarms": 1443,
+            "change_figure_of_merit": 0.16170284368164226,
+            "change_hits": 961,
+            "change_misses": 3526,
+            "change_wrong_transitions": 13,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 2442,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.01531495371647894,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.8486167163951231,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9375109750896822,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 2417,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 20,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.49879938191856316,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9985430292041702,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 20
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_47/prediction_2023.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 685,
+            "3": 465,
+            "4": 1011,
+            "5": 12260,
+            "6": 49867
+          },
+          "target_year": 2023
+        },
+        {
+          "ca_seconds": 4.620380624895915,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 502,
+              "3": 419,
+              "4": 1011,
+              "5": 11277,
+              "6": 51079
+            },
+            "binary_change_figure_of_merit": 0.14209813522241901,
+            "change_f1": 0.24883699717230684,
+            "change_false_alarms": 1135,
+            "change_figure_of_merit": 0.13855609959370768,
+            "change_hits": 1330,
+            "change_misses": 7100,
+            "change_wrong_transitions": 34,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 9814,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.061548302937561146,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7722190332085032,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8962822667636655,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 2499,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.024691358024691357,
+              "change_f1": 0.04819277108433735,
+              "change_false_alarms": 25,
+              "change_figure_of_merit": 0.024691358024691357,
+              "change_hits": 2,
+              "change_misses": 54,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.665292471662779,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.997312102344255,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 27
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_47/prediction_2024.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 912,
+            "3": 412,
+            "4": 1011,
+            "5": 15774,
+            "6": 46179
+          },
+          "target_year": 2024
+        }
+      ]
+    },
+    {
+      "seed": 73,
+      "training": {
+        "feature_mode": "baseline_plus_neighborhood",
+        "feature_names": [
+          "x_utm",
+          "y_utm",
+          "elevation",
+          "slope",
+          "log_viirs",
+          "log_distance_road",
+          "log_distance_major_road",
+          "neighbourhood_3_class_1",
+          "neighbourhood_7_class_1",
+          "neighbourhood_3_class_2",
+          "neighbourhood_7_class_2",
+          "neighbourhood_3_class_3",
+          "neighbourhood_7_class_3",
+          "neighbourhood_3_class_4",
+          "neighbourhood_7_class_4",
+          "neighbourhood_3_class_5",
+          "neighbourhood_7_class_5",
+          "neighbourhood_3_class_6",
+          "neighbourhood_7_class_6"
+        ],
+        "fit_label_years": [
+          2021
+        ],
+        "fit_seconds": 5.615644250065088,
+        "seed": 73,
+        "target_driver_year": 2022,
+        "target_pixel_rows": 79726,
+        "training_pixel_rows": 79726
+      },
+      "years": [
+        {
+          "ca_seconds": 4.555159416049719,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 514,
+              "3": 465,
+              "4": 1011,
+              "5": 9999,
+              "6": 52299
+            },
+            "binary_change_figure_of_merit": 0.10868787987129067,
+            "change_f1": 0.19606578523057078,
+            "change_false_alarms": 1094,
+            "change_figure_of_merit": 0.10707901322845906,
+            "change_hits": 599,
+            "change_misses": 3892,
+            "change_wrong_transitions": 9,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 4864,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.030504477836590323,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.848113851229456,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9373479166144043,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 1702,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 9,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 25,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.4993566652979462,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9988991776209286,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 9
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_73/prediction_2023.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 685,
+            "3": 465,
+            "4": 1011,
+            "5": 12260,
+            "6": 49867
+          },
+          "target_year": 2023
+        },
+        {
+          "ca_seconds": 4.524995249928907,
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 516,
+              "3": 412,
+              "4": 1011,
+              "5": 10055,
+              "6": 52294
+            },
+            "binary_change_figure_of_merit": 0.09186602870813397,
+            "change_f1": 0.16827344434706398,
+            "change_false_alarms": 941,
+            "change_figure_of_merit": 0.08718766613503455,
+            "change_hits": 820,
+            "change_misses": 7600,
+            "change_wrong_transitions": 44,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 12230,
+            "demand_target_exact": false,
+            "demand_total_variation": 0.07670019817876227,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7665452753751142,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8923186915184507,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 1805,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.0,
+              "change_f1": 0.0,
+              "change_false_alarms": 23,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 56,
+              "change_wrong_transitions": 0,
+              "macro_f1": 0.6652358456130824,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.997312102344255,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 23
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_73/prediction_2024.tif",
+          "target_counts": {
+            "1": 15438,
+            "2": 912,
+            "3": 412,
+            "4": 1011,
+            "5": 15774,
+            "6": 46179
+          },
+          "target_year": 2024
+        }
+      ]
     }
   ],
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 13.2254848331213
+  "wall_seconds": 41.78252370888367
 }

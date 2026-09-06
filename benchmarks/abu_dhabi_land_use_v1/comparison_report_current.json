@@ -608,7 +608,7 @@
       }
     }
   },
-  "created_at": "2026-09-05T14:49:48.272581+00:00",
+  "created_at": "2026-09-06T10:55:33.119157+00:00",
   "ensembles": {
     "geosos_flus": {
       "2023": {
@@ -949,6 +949,301 @@
     "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
     "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects."
   ],
+  "matched_input_baseline": {
+    "bootstrap_95ci": {
+      "2023": {
+        "change_figure_of_merit": {
+          "lower_mean": 0.039627933001539856,
+          "median_mean": 0.04401480379954557,
+          "per_seed": [
+            {
+              "lower": 0.11888379900461957,
+              "median": 0.1320444113986367,
+              "upper": 0.14454690552104058
+            },
+            {
+              "lower": 0.0,
+              "median": 0.0,
+              "upper": 0.0
+            },
+            {
+              "lower": 0.0,
+              "median": 0.0,
+              "upper": 0.0
+            }
+          ],
+          "upper_mean": 0.04818230184034686
+        },
+        "macro_f1": {
+          "lower_mean": 0.8471690443443515,
+          "median_mean": 0.8639267974809791,
+          "per_seed": [
+            {
+              "lower": 0.8383533051191533,
+              "median": 0.8555857759927868,
+              "upper": 0.8697865753384939
+            },
+            {
+              "lower": 0.8506950212154863,
+              "median": 0.8675186661983316,
+              "upper": 0.881086638981615
+            },
+            {
+              "lower": 0.8524588066984148,
+              "median": 0.868675950251819,
+              "upper": 0.8830318972935043
+            }
+          ],
+          "upper_mean": 0.877968370537871
+        },
+        "overall_accuracy": {
+          "lower_mean": 0.9337988098513172,
+          "median_mean": 0.9385910554270244,
+          "per_seed": [
+            {
+              "lower": 0.9233733445480495,
+              "median": 0.9285054186645372,
+              "upper": 0.9333508092018015
+            },
+            {
+              "lower": 0.9389296571023986,
+              "median": 0.9436608389297367,
+              "upper": 0.9479813227946694
+            },
+            {
+              "lower": 0.9390934279035035,
+              "median": 0.9436069086867993,
+              "upper": 0.948085777125472
+            }
+          ],
+          "upper_mean": 0.9431393030406476
+        }
+      },
+      "2024": {
+        "change_figure_of_merit": {
+          "lower_mean": 0.06033019589484714,
+          "median_mean": 0.06524826314187683,
+          "per_seed": [
+            {
+              "lower": 0.1809905876845414,
+              "median": 0.1957447894256305,
+              "upper": 0.2124405637552261
+            },
+            {
+              "lower": 0.0,
+              "median": 0.0,
+              "upper": 0.0
+            },
+            {
+              "lower": 0.0,
+              "median": 0.0,
+              "upper": 0.0
+            }
+          ],
+          "upper_mean": 0.07081352125174203
+        },
+        "macro_f1": {
+          "lower_mean": 0.7662722678910124,
+          "median_mean": 0.7877844116455359,
+          "per_seed": [
+            {
+              "lower": 0.7603242600227877,
+              "median": 0.7819550810253176,
+              "upper": 0.800800300409478
+            },
+            {
+              "lower": 0.7686743622034627,
+              "median": 0.7906036291595052,
+              "upper": 0.8087202806943166
+            },
+            {
+              "lower": 0.7698181814467869,
+              "median": 0.790794524751785,
+              "upper": 0.8083327626125464
+            }
+          ],
+          "upper_mean": 0.8059511145721137
+        },
+        "overall_accuracy": {
+          "lower_mean": 0.879903224915292,
+          "median_mean": 0.8875182830237803,
+          "per_seed": [
+            {
+              "lower": 0.8667568040255658,
+              "median": 0.8746091188138683,
+              "upper": 0.8821600921277688
+            },
+            {
+              "lower": 0.8862470995472104,
+              "median": 0.8939203170757577,
+              "upper": 0.9007785010365676
+            },
+            {
+              "lower": 0.8867057711731,
+              "median": 0.8940254131817151,
+              "upper": 0.9018299204816114
+            }
+          ],
+          "upper_mean": 0.8949228378819826
+        }
+      }
+    },
+    "display_name": "FLUS matched-input baseline (25 features)",
+    "feature_count": 25,
+    "model_id": "flus_matched_input",
+    "source_report": "artifacts/predictions/flus_matched_inputs_abs/report.json",
+    "summaries": {
+      "2023": {
+        "binary_change_figure_of_merit": {
+          "mean": 0.045064268658232993,
+          "population_std": 0.0637304999148979,
+          "values": [
+            0.135192805974699,
+            0.0,
+            0.0
+          ]
+        },
+        "change_f1": {
+          "mean": 0.07939491586108127,
+          "population_std": 0.1122813667942119,
+          "values": [
+            0.23818474758324382,
+            0.0,
+            0.0
+          ]
+        },
+        "change_figure_of_merit": {
+          "mean": 0.04399735812630188,
+          "population_std": 0.06222166057080222,
+          "values": [
+            0.13199207437890564,
+            0.0,
+            0.0
+          ]
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "population_std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "demand_total_variation": {
+          "mean": 0.026624522322287167,
+          "population_std": 0.0172121837295574,
+          "values": [
+            0.0022828186538895717,
+            0.038795374156485964,
+            0.038795374156485964
+          ]
+        },
+        "macro_f1": {
+          "mean": 0.8642695212848095,
+          "population_std": 0.005883320119413435,
+          "values": [
+            0.8559492501801526,
+            0.868429656837138,
+            0.868429656837138
+          ]
+        },
+        "overall_accuracy": {
+          "mean": 0.9385604027126241,
+          "population_std": 0.007065805412855085,
+          "values": [
+            0.9285678448686752,
+            0.9435566816345985,
+            0.9435566816345985
+          ]
+        },
+        "reliability_change_figure_of_merit": {
+          "mean": 0.0,
+          "population_std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "2024": {
+        "binary_change_figure_of_merit": {
+          "mean": 0.06632393498808471,
+          "population_std": 0.09379620837010084,
+          "values": [
+            0.19897180496425415,
+            0.0,
+            0.0
+          ]
+        },
+        "change_f1": {
+          "mean": 0.11063468667649291,
+          "population_std": 0.15646107436679424,
+          "values": [
+            0.33190406002947875,
+            0.0,
+            0.0
+          ]
+        },
+        "change_figure_of_merit": {
+          "mean": 0.06533322622968378,
+          "population_std": 0.09239513460760843,
+          "values": [
+            0.19599967868905133,
+            0.0,
+            0.0
+          ]
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "population_std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "demand_total_variation": {
+          "mean": 0.05887665253493214,
+          "population_std": 0.03796022656948077,
+          "values": [
+            0.005192785289616938,
+            0.08571858615758975,
+            0.08571858615758975
+          ]
+        },
+        "macro_f1": {
+          "mean": 0.7881942360186809,
+          "population_std": 0.003502457033467316,
+          "values": [
+            0.7832410137803224,
+            0.7906708471378602,
+            0.7906708471378602
+          ]
+        },
+        "overall_accuracy": {
+          "mean": 0.8873767654215688,
+          "population_std": 0.009135288169758247,
+          "values": [
+            0.8744575169957103,
+            0.8938363896344982,
+            0.8938363896344982
+          ]
+        },
+        "reliability_change_figure_of_merit": {
+          "mean": 0.0004789272030651341,
+          "population_std": 0.000677305345964126,
+          "values": [
+            0.0014367816091954023,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "training_target_boundary": "same-year label suitability; not next-state transition learning"
+  },
   "mean_change_fom_deltas": {
     "2023": {
       "geospatial_kernel_minus_geosos_flus_change_fom": 0.06946191185338543,
@@ -963,6 +1258,7 @@
   },
   "metric_version": "strict_multiclass_fom_v2",
   "model_display_names": {
+    "flus_matched_input": "FLUS matched-input baseline (25 features)",
     "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN"
@@ -974,6 +1270,78 @@
   ],
   "pairwise_bootstrap_95ci": {
     "2023": {
+      "geospatial_kernel_minus_flus_matched_input": {
+        "model_a": "geospatial_kernel",
+        "model_b": "flus_matched_input",
+        "summary": {
+          "change_figure_of_merit": {
+            "lower_mean": 0.1350451003169917,
+            "median_mean": 0.1509573835322008,
+            "per_seed": [
+              {
+                "lower": 0.04795890315766901,
+                "median": 0.05949578118314376,
+                "upper": 0.07263156915183128
+              },
+              {
+                "lower": 0.17703630968527662,
+                "median": 0.19623149225052344,
+                "upper": 0.21323157937485618
+              },
+              {
+                "lower": 0.18014008810802953,
+                "median": 0.19714487716293522,
+                "upper": 0.21599532029200832
+              }
+            ],
+            "upper_mean": 0.16728615627289858
+          },
+          "macro_f1": {
+            "lower_mean": -0.021723668745853728,
+            "median_mean": -0.014332381929366608,
+            "per_seed": [
+              {
+                "lower": -0.013159819690098797,
+                "median": -0.006506471015571502,
+                "upper": -0.0004062116985268387
+              },
+              {
+                "lower": -0.027287579351434915,
+                "median": -0.018963438639459484,
+                "upper": -0.012019176200962437
+              },
+              {
+                "lower": -0.024723607196027474,
+                "median": -0.017527236133068835,
+                "upper": -0.011507742847429432
+              }
+            ],
+            "upper_mean": -0.007977710248972902
+          },
+          "overall_accuracy": {
+            "lower_mean": -0.0045938333355680944,
+            "median_mean": -0.002502765935564514,
+            "per_seed": [
+              {
+                "lower": 0.005035373461317233,
+                "median": 0.00699933229726335,
+                "upper": 0.00918333749228858
+              },
+              {
+                "lower": -0.009590344276649062,
+                "median": -0.0073693727325108704,
+                "upper": -0.004971430857843651
+              },
+              {
+                "lower": -0.009226529191372453,
+                "median": -0.007138257371446022,
+                "upper": -0.004868051692258718
+              }
+            ],
+            "upper_mean": -0.00021871501927126324
+          }
+        }
+      },
       "geospatial_kernel_minus_geosos_flus": {
         "model_a": "geospatial_kernel",
         "model_b": "geosos_flus",
@@ -1192,6 +1560,78 @@
       }
     },
     "2024": {
+      "geospatial_kernel_minus_flus_matched_input": {
+        "model_a": "geospatial_kernel",
+        "model_b": "flus_matched_input",
+        "summary": {
+          "change_figure_of_merit": {
+            "lower_mean": 0.168749408992881,
+            "median_mean": 0.18671361224449987,
+            "per_seed": [
+              {
+                "lower": 0.04545810548681487,
+                "median": 0.055754908309528686,
+                "upper": 0.06593201483607528
+              },
+              {
+                "lower": 0.22953773920638018,
+                "median": 0.2521294740039348,
+                "upper": 0.27257020563409706
+              },
+              {
+                "lower": 0.23125238228544792,
+                "median": 0.2522564544200361,
+                "upper": 0.27144191283691693
+              }
+            ],
+            "upper_mean": 0.2033147111023631
+          },
+          "macro_f1": {
+            "lower_mean": -0.03165301884564959,
+            "median_mean": -0.021400320080747288,
+            "per_seed": [
+              {
+                "lower": -0.025120417761163555,
+                "median": -0.01563419166367036,
+                "upper": -0.007335523592332613
+              },
+              {
+                "lower": -0.03668092039691973,
+                "median": -0.025101663614174208,
+                "upper": -0.01547763847828279
+              },
+              {
+                "lower": -0.033157718378865476,
+                "median": -0.0234651049643973,
+                "upper": -0.014983887877771163
+              }
+            ],
+            "upper_mean": -0.012599016649462188
+          },
+          "overall_accuracy": {
+            "lower_mean": -0.0056001851288042075,
+            "median_mean": -0.001384935884065815,
+            "per_seed": [
+              {
+                "lower": 0.008354327947749391,
+                "median": 0.011572249064032425,
+                "upper": 0.014963068674613247
+              },
+              {
+                "lower": -0.012467636753828882,
+                "median": -0.007694548880986862,
+                "upper": -0.002951655276944884
+              },
+              {
+                "lower": -0.012687246580333131,
+                "median": -0.008032507835243008,
+                "upper": -0.0029849360079331343
+              }
+            ],
+            "upper_mean": 0.0030088257965784093
+          }
+        }
+      },
       "geospatial_kernel_minus_geosos_flus": {
         "model_a": "geospatial_kernel",
         "model_b": "geosos_flus",

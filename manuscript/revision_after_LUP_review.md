@@ -1,6 +1,6 @@
 # LUP review revision record
 
-This internal record describes the fifth-round revision to the public-data
+This internal record describes the sixth-round revision to the public-data
 manuscript. It is not part of the submitted paper.
 
 ## Implemented in this revision
@@ -29,14 +29,26 @@ manuscript. It is not part of the submitted paper.
   identifier.
 - Implemented 13-feature, 19-feature and 25-feature matched-input FLUS modes.
   The earlier failure was a relative-path configuration error. Corrected
-  absolute-path runs completed for seed 31 and produced valid probability
-  surfaces; the reports and sanitized logs are archived as one-seed
-  dimensionality diagnostics rather than replacing the primary baseline.
+  absolute-path 25-feature runs completed for seeds 31, 47 and 73 and are
+  reported as a separate matched-input baseline; the 13- and 19-feature runs
+  remain seed-31 mechanism diagnostics.
 - Made high-confidence subset failure a principal finding: strict FoM is zero
   for all models in 2023 and reaches only 0.0188 at best in 2024.
 - Regenerated Figures 1–5: repaired the Figure 1 action arrow/text, Figure 2
   panel spacing, Figure 3 objective labels and legend spacing, and Figure 5
   scale/north-arrow/overlay legibility.
+- Corrected the 2031 integrated raster-demand errors to Kernel 60/68/86 and
+  GeoFM-LDN 1,596/1,536/1,174, with a reproduction-time manuscript/report
+  consistency check.
+- Extended the 25-feature matched-input FLUS baseline to seeds 31, 47 and 73;
+  added paired Kernel-minus-matched-input spatial-block intervals and explained
+  the 13-feature identity-leakage mechanism.
+- Recorded the archived Linux runner architecture (arm64), disclosed that the
+  author-run comparison is same-architecture, and retained the earlier x86_64
+  difference as an uncharacterised cross-architecture limitation.
+- Made `output_audit.json` the current audit file and retained
+  `output_audit_reproducible.json` only as a compatibility copy. The manifest is
+  now rebuilt as the final reproduction step.
 
 ## Objective-set history and interpretation
 
@@ -64,8 +76,10 @@ the release objectives. Ecological conversion remains a reported diagnostic.
 1. There is no independent 2023–2024 built-area product or manually interpreted
    reference sample.
 2. The FLUS-style console remains an untraceable macOS arm64 binary. The
-   successful matched-input runs are one-seed diagnostics; the headline
-   comparison remains the original three-seed seven-driver control.
+   25-feature matched-input baseline is reported separately because matching
+   feature inputs does not match the learning target or projection semantics;
+   the headline comparison remains the original three-seed seven-driver
+   control.
 3. Authoritative planning, reclamation, infrastructure-capacity, irrigation and
    stakeholder data are unavailable. The maps are not official forecasts.
 4. Add the archival DOI, repository URL and corresponding-author e-mail before
