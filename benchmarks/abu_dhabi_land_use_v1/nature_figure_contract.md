@@ -25,7 +25,7 @@
 
 ## Figure 3
 
-- Core conclusion: under the released public-data objective set, the three models trade off road accessibility, prior-built proximity, newly built fragmentation and ecological conversion differently within each scenario.
+- Core conclusion: under the released public-data objective set, the three models trade off road accessibility, prior-built proximity and union-built fragmentation differently within each scenario; ecological conversion is a diagnostic because it is structurally zero for the exact-count allocators.
 - Archetype: quantitative grid.
 - Panel map: demand error, ecological conversion, compactness, distance to major roads, distance to prior built cells and built retirement.
 - Statistics: three-seed means and population standard deviations where available; objective directions are stated in each panel.

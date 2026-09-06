@@ -1,0 +1,117 @@
+{
+  "archived_linux_environment": {
+    "numpy": "2.3.5",
+    "python": "3.12.3",
+    "rasterio": "1.5.0",
+    "scikit_learn": "1.8.0"
+  },
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "claim_boundary": "This measures numerical/platform sensitivity of the released Kernel implementation. It does not establish domain validity or official Abu Dhabi forecasting skill.",
+  "comparison_environment": "Linux rerun archived under artifacts/cross_platform/linux_geospatial_kernel",
+  "comparison_scope": "Geospatial Kernel historical predictions for seeds 31, 47 and 73 and target years 2023 and 2024",
+  "comparison_script_platform": {
+    "machine": "arm64",
+    "python": "3.13.13",
+    "system": "Darwin"
+  },
+  "created_at": "2026-09-06T09:15:17.317282+00:00",
+  "reference_environment": "macOS arm64 reference checkout (the released prediction rasters)",
+  "rows": [
+    {
+      "differing_cell_rate": 0.0,
+      "differing_cells": 0,
+      "linux_demand_total_variation": 0.0,
+      "linux_prediction": "artifacts/cross_platform/linux_geospatial_kernel/seed_31/prediction_2023.tif",
+      "linux_strict_fom": 0.19193827743662414,
+      "macos_demand_total_variation": 0.0,
+      "macos_prediction": "artifacts/predictions/geospatial_kernel/seed_31/prediction_2023.tif",
+      "macos_strict_fom": 0.19193827743662414,
+      "seed": 31,
+      "strict_fom_delta_linux_minus_macos": 0.0,
+      "target_year": 2023,
+      "valid_pixel_count": 79726
+    },
+    {
+      "differing_cell_rate": 0.0,
+      "differing_cells": 0,
+      "linux_demand_total_variation": 0.0,
+      "linux_prediction": "artifacts/cross_platform/linux_geospatial_kernel/seed_31/prediction_2024.tif",
+      "linux_strict_fom": 0.2518329351676415,
+      "macos_demand_total_variation": 0.0,
+      "macos_prediction": "artifacts/predictions/geospatial_kernel/seed_31/prediction_2024.tif",
+      "macos_strict_fom": 0.2518329351676415,
+      "seed": 31,
+      "strict_fom_delta_linux_minus_macos": 0.0,
+      "target_year": 2024,
+      "valid_pixel_count": 79726
+    },
+    {
+      "differing_cell_rate": 0.0,
+      "differing_cells": 0,
+      "linux_demand_total_variation": 0.0,
+      "linux_prediction": "artifacts/cross_platform/linux_geospatial_kernel/seed_47/prediction_2023.tif",
+      "linux_strict_fom": 0.19570028453999366,
+      "macos_demand_total_variation": 0.0,
+      "macos_prediction": "artifacts/predictions/geospatial_kernel/seed_47/prediction_2023.tif",
+      "macos_strict_fom": 0.19570028453999366,
+      "seed": 47,
+      "strict_fom_delta_linux_minus_macos": 0.0,
+      "target_year": 2023,
+      "valid_pixel_count": 79726
+    },
+    {
+      "differing_cell_rate": 0.0,
+      "differing_cells": 0,
+      "linux_demand_total_variation": 0.0,
+      "linux_prediction": "artifacts/cross_platform/linux_geospatial_kernel/seed_47/prediction_2024.tif",
+      "linux_strict_fom": 0.25179204086677104,
+      "macos_demand_total_variation": 0.0,
+      "macos_prediction": "artifacts/predictions/geospatial_kernel/seed_47/prediction_2024.tif",
+      "macos_strict_fom": 0.25179204086677104,
+      "seed": 47,
+      "strict_fom_delta_linux_minus_macos": 0.0,
+      "target_year": 2024,
+      "valid_pixel_count": 79726
+    },
+    {
+      "differing_cell_rate": 0.0,
+      "differing_cells": 0,
+      "linux_demand_total_variation": 0.0,
+      "linux_prediction": "artifacts/cross_platform/linux_geospatial_kernel/seed_73/prediction_2023.tif",
+      "linux_strict_fom": 0.19746835443037974,
+      "macos_demand_total_variation": 0.0,
+      "macos_prediction": "artifacts/predictions/geospatial_kernel/seed_73/prediction_2023.tif",
+      "macos_strict_fom": 0.19746835443037974,
+      "seed": 73,
+      "strict_fom_delta_linux_minus_macos": 0.0,
+      "target_year": 2023,
+      "valid_pixel_count": 79726
+    },
+    {
+      "differing_cell_rate": 0.0,
+      "differing_cells": 0,
+      "linux_demand_total_variation": 0.0,
+      "linux_prediction": "artifacts/cross_platform/linux_geospatial_kernel/seed_73/prediction_2024.tif",
+      "linux_strict_fom": 0.25248786906817994,
+      "macos_demand_total_variation": 0.0,
+      "macos_prediction": "artifacts/predictions/geospatial_kernel/seed_73/prediction_2024.tif",
+      "macos_strict_fom": 0.25248786906817994,
+      "seed": 73,
+      "strict_fom_delta_linux_minus_macos": 0.0,
+      "target_year": 2024,
+      "valid_pixel_count": 79726
+    }
+  ],
+  "schema": "gwm.abu_dhabi_cross_platform_kernel_comparison.v1",
+  "summary": {
+    "differing_cell_rate_max": 0.0,
+    "differing_cell_rate_min": 0.0,
+    "differing_cells_max": 0,
+    "differing_cells_mean": 0.0,
+    "differing_cells_min": 0,
+    "n_comparisons": 6,
+    "strict_fom_delta_max": 0.0,
+    "strict_fom_delta_mean": 0.0,
+    "strict_fom_delta_min": 0.0
+  }
+}

@@ -131,7 +131,7 @@ def check_render_inputs() -> None:
     )
     _require_current_report(
         "planning_comparison_report_public_2025_2031_current.json",
-        metric_version="planning_objectives_v5",
+        metric_version="planning_objectives_v6",
     )
     _require_file("artifacts/gee/land_cover/land_cover_2024_100m.tif")
     _require_file("artifacts/mechanism_ablations/report.json")
@@ -281,8 +281,11 @@ def render_figure_2() -> None:
         ("overall_accuracy", "Overall accuracy", "higher is better"),
         ("macro_f1", "Macro-F1", "higher is better"),
     ]
-    fig, axes = plt.subplots(2, 2, figsize=(7.2, 4.95), sharex=False)
-    fig.subplots_adjust(left=0.08, right=0.985, top=0.78, bottom=0.16, wspace=0.27, hspace=0.42)
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.15), sharex=False)
+    # Reserve a dedicated upper band for the two-row legend.  This keeps the
+    # legend away from panel titles and leaves enough vertical separation for
+    # the two-line horizon labels in the bottom row.
+    fig.subplots_adjust(left=0.08, right=0.985, top=0.70, bottom=0.16, wspace=0.27, hspace=0.58)
     years = ["2023", "2024"]
     x = np.arange(len(years))
     plot_models = MODEL_ORDER + ["persistence", "random_allocation"]
@@ -319,7 +322,7 @@ def render_figure_2() -> None:
         panel_label(ax, "ABCD"[idx])
         if idx in (0, 2):
             ax.set_ylabel("Score")
-    fig.legend(handles=[Patch(facecolor=plot_colors[m], edgecolor="none", label=plot_labels[m]) for m in plot_models], loc="upper center", bbox_to_anchor=(0.5, 0.885), ncol=5, frameon=False, handlelength=1.0, columnspacing=0.7)
+    fig.legend(handles=[Patch(facecolor=plot_colors[m], edgecolor="none", label=plot_labels[m]) for m in plot_models], loc="upper center", bbox_to_anchor=(0.5, 0.835), ncol=3, frameon=False, handlelength=1.0, columnspacing=1.0)
     fig.suptitle("Historical allocation skill with explicit zero models", x=0.08, y=0.975, ha="left", fontsize=10.5, fontweight="bold")
     fig.text(0.08, 0.055, "Bars show mean ± population SD across n=3 seeds; strict FoM counts wrong destination changes in the denominator. Bootstrap intervals are reported in the JSON table.", fontsize=6.2, color="#4A5560")
     save_publication_figure(fig, "fig02_historical_validation")
@@ -328,26 +331,27 @@ def render_figure_2() -> None:
 def render_figure_3() -> None:
     report = _require_current_report(
         "planning_comparison_report_public_2025_2031_current.json",
-        metric_version="planning_objectives_v5",
+        metric_version="planning_objectives_v6",
     )
     panels = [
         ("new_built_mean_major_road_distance_m", "Distance to major road", "lower is better", 1.0, "m"),
         ("new_built_mean_prior_built_distance_m", "Distance to prior built", "lower is better", 1.0, "m"),
-        ("new_built_components_per_1000_pixels", "New-built components / 1,000 valid", "lower is better", 1.0, ""),
-        ("ecological_conversion_rate", "Ecological conversion", "lower is better", 100.0, "%"),
+        ("combined_built_components_per_1000_pixels", "Existing + new built components / 1,000 valid", "lower is better", 1.0, ""),
+        ("ecological_conversion_rate", "Ecological conversion (diagnostic)", "descriptive", 100.0, "%"),
         ("green_gain_pixels", "Vegetation gain (diagnostic)", "descriptive", 1.0, "cells"),
         ("new_built_leapfrog_rate", "500-m leapfrog", "descriptive; lower is better", 100.0, "%"),
     ]
-    fig, axes = plt.subplots(2, 3, figsize=(7.2, 4.95))
-    fig.subplots_adjust(left=0.075, right=0.985, top=0.76, bottom=0.20, wspace=0.34, hspace=0.72)
+    fig, axes = plt.subplots(2, 3, figsize=(7.2, 5.35))
+    # The title and legend occupy a separate band so that long diagnostic
+    # titles cannot collide with either the legend or the upper-row axes.
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.66, bottom=0.19, wspace=0.34, hspace=0.88)
     x = np.arange(len(SCENARIO_ORDER))
     width = 0.23
     pareto = set(report.get("pareto_frontier", []))
     objective_keys = {
         "new_built_mean_major_road_distance_m",
         "new_built_mean_prior_built_distance_m",
-        "new_built_components_per_1000_pixels",
-        "ecological_conversion_rate",
+        "combined_built_components_per_1000_pixels",
     }
     for idx, (key, title, direction, scale, unit) in enumerate(panels):
         ax = axes.flat[idx]
@@ -388,9 +392,9 @@ def render_figure_3() -> None:
         if key in {"ecological_conversion_rate", "new_built_leapfrog_rate"}:
             ax.set_ylim(bottom=0)
     legend_handles = [Patch(facecolor=MODEL_COLOR[m], edgecolor="none", label=MODEL_LABEL[m]) for m in MODEL_ORDER]
-    fig.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.865), ncol=3, frameon=False, handlelength=1.2, columnspacing=1.0)
+    fig.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.785), ncol=3, frameon=False, handlelength=1.2, columnspacing=1.0)
     fig.suptitle("Conditional planning outcomes and independent morphology diagnostics", x=0.075, y=0.972, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds; stars mark within-scenario candidates on the four-objective frontier. Vegetation gain is a scenario-input diagnostic.", fontsize=6.25, color="#4A5560")
+    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds; stars mark within-scenario candidates on the three-objective frontier. Ecological conversion and vegetation gain are diagnostics.", fontsize=6.25, color="#4A5560")
     save_publication_figure(fig, "fig03_planning_objectives")
 
 
@@ -562,8 +566,8 @@ def render_figure_5() -> None:
             if i == 2 and j == 0:
                 height, width_px = final.shape
                 x0, y0 = max(8, int(width_px * 0.05)), max(12, int(height * 0.90))
-                ax.plot([x0, x0 + 10], [y0, y0], color="#202020", linewidth=1.8, solid_capstyle="butt")
-                ax.text(x0 + 5, y0 - 6, "1 km", ha="center", va="bottom", fontsize=6.2, color="#202020", bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.82, "pad": 0.8})
+                ax.plot([x0, x0 + 20], [y0, y0], color="#202020", linewidth=2.4, solid_capstyle="butt")
+                ax.text(x0 + 10, y0 - 6, "2 km", ha="center", va="bottom", fontsize=6.6, color="#202020", bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.88, "pad": 0.8})
     fig.suptitle("Different models produce distinct 2031 transition footprints under identical scenario targets", x=0.085, y=0.965, ha="left", fontsize=10.5, fontweight="bold")
     handles = [Patch(facecolor=CLASS_COLORS[k], edgecolor="none", label=CLASS_LABEL[k]) for k in range(1, 7)]
     handles += [Patch(facecolor="#E66101", alpha=0.6, label="New built (2024→2031)"), Patch(facecolor="#1B9E77", alpha=0.6, label="New low vegetation"), Patch(facecolor="#6A3D9A", alpha=0.6, label="Built retirement")]

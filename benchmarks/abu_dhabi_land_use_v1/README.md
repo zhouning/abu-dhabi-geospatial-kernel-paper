@@ -121,12 +121,23 @@ The code needed for the revised analysis is present, including paired
 model-difference intervals and a score-independent minimum-change null. The
 resulting ranking and Pareto membership are conditional pipeline comparisons.
 The original FLUS run used a different feature set and frozen console defaults.
-A matched 25-feature input attempt was made, but the supplied Mach-O binary
-terminated with SIGSEGV before producing a valid probability surface; this
-limitation is recorded in the run artefacts and protocol. The released FLUS
-result therefore remains an unmatched baseline, and intrinsic model superiority
+The earlier matched-input failure was traced to relative paths in the console
+configuration, not to a verified segmentation fault. Corrected absolute-path
+runs completed for seed 31 with 13, 19 and 25 features; the full mode wrote a
+valid probability surface and 2023/2024 predictions. The reports and sanitized
+console evidence are archived under `artifacts/flus_matched_input_review/` and
+summarized in `matched_input_review.md`. The released three-seed FLUS result
+remains the seven-driver unmatched baseline, so intrinsic model superiority
 should not be inferred. Independent authoritative 2023–2024 change validation
 is still not available.
+
+The author-run Linux Kernel check is archived under `artifacts/cross_platform/`.
+For the six seed/year rasters, the Linux and reference macOS categorical arrays
+were identical and their strict FoM deltas were zero. This is a measured result
+for the archived environments, not a guarantee for every numerical stack. A
+present FLUS binary that is not executable on the current operating system is
+reported by `reproducibility_check.py` as a portability warning rather than an
+integrity-gate failure.
 
 All substantive findings remain conditional on Dynamic World labels, public
 OSM/WorldCover proxy constraints and planner-supplied scenario demand. They do

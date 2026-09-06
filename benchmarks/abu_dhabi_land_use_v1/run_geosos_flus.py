@@ -103,7 +103,18 @@ def _run_process(command: list[str], *, cwd: Path, seed: int, log_path: Path) ->
         check=False,
     )
     log_path.write_text(
-        "$ " + " ".join(command) + "\n\n" + completed.stdout + completed.stderr,
+        "\n".join(
+            [
+                "$ " + " ".join(command),
+                f"cwd={cwd}",
+                f"FLUS_RANDOM_SEED={seed}",
+                f"returncode={completed.returncode}",
+                "[stdout]",
+                completed.stdout,
+                "[stderr]",
+                completed.stderr,
+            ]
+        ),
         encoding="utf-8",
     )
     if completed.returncode:
@@ -180,6 +191,48 @@ class FlusInputs:
         )
         return np.concatenate([one_hot, np.stack(neighbourhoods), continuous], axis=0)[:, self.valid].T.astype(np.float32)
 
+    def feature_bundle(self, year: int, feature_mode: str) -> tuple[np.ndarray, list[str]]:
+        """Return an explicitly named ANN feature ablation.
+
+        The intermediate modes are used to diagnose whether the console's
+        input dimensionality is the source of a matched-input failure.  The
+        full mode preserves the Kernel feature order exactly.
+        """
+        baseline = self.features(year)
+        baseline_names = list(BASELINE_FEATURE_NAMES)
+        state = self.states[year]
+        one_hot = np.stack([(state == value).astype(np.float32) for value in CLASSES])
+        valid_float = self.valid.astype(np.float32)
+        neighbourhoods = []
+        neighbourhood_names = []
+        for value in CLASSES:
+            indicator = ((state == value) & self.valid).astype(np.float32)
+            for size in (3, 7):
+                numerator = uniform_filter(indicator, size=size, mode="constant")
+                denominator = uniform_filter(valid_float, size=size, mode="constant")
+                neighbourhoods.append(
+                    np.divide(numerator, denominator, out=np.zeros_like(numerator), where=denominator > 0)
+                )
+                neighbourhood_names.append(f"neighbourhood_{size}_class_{value}")
+        one_hot_valid = one_hot[:, self.valid].T.astype(np.float32)
+        neighbourhood_valid = np.stack(neighbourhoods)[:, self.valid].T.astype(np.float32)
+        if feature_mode == "baseline_7":
+            return baseline, baseline_names
+        if feature_mode == "baseline_plus_onehot":
+            return np.concatenate([baseline, one_hot_valid], axis=1), baseline_names + [
+                f"current_class_{value}" for value in CLASSES
+            ]
+        if feature_mode == "baseline_plus_neighborhood":
+            return np.concatenate([baseline, neighbourhood_valid], axis=1), baseline_names + neighbourhood_names
+        if feature_mode == "matched_kernel":
+            return self.matched_kernel_features(year), [
+                *(f"current_class_{value}" for value in CLASSES),
+                *neighbourhood_names,
+                "x_norm", "y_norm", "elevation_norm", "slope_norm", "log_viirs_norm",
+                "log_distance_road_norm", "log_distance_major_road_norm",
+            ]
+        raise ValueError(f"unknown_feature_mode:{feature_mode}")
+
 
 def train_suitability(
     inputs: FlusInputs,
@@ -190,18 +243,15 @@ def train_suitability(
     target_driver_year: int = 2022,
     feature_mode: str = "baseline_7",
 ) -> tuple[np.ndarray, dict[str, Any]]:
-    feature_fn = inputs.features if feature_mode == "baseline_7" else inputs.matched_kernel_features
-    feature_names = list(BASELINE_FEATURE_NAMES) if feature_mode == "baseline_7" else [
-        *(f"current_class_{value}" for value in CLASSES),
-        *(f"neighbourhood_{size}_class_{value}" for value in CLASSES for size in (3, 7)),
-        "x_norm", "y_norm", "elevation_norm", "slope_norm", "log_viirs_norm",
-        "log_distance_road_norm", "log_distance_major_road_norm",
-    ]
-    training_features = np.concatenate([feature_fn(year) for year in FIT_YEARS])
+    training_bundles = [inputs.feature_bundle(year, feature_mode) for year in FIT_YEARS]
+    training_features = np.concatenate([bundle[0] for bundle in training_bundles])
+    feature_names = training_bundles[0][1]
     training_labels = np.concatenate(
         [inputs.states[year][inputs.valid].astype(np.uint8) for year in FIT_YEARS]
     )
-    target_features = feature_fn(target_driver_year)
+    target_features, target_feature_names = inputs.feature_bundle(target_driver_year, feature_mode)
+    if target_feature_names != feature_names:
+        raise AssertionError("feature_name_order_changed_between_fit_and_target")
     packed_target = np.full_like(training_features, 0.5, dtype=np.float32)
     packed_target[: len(target_features)] = target_features
     ann_root = work_root / "ann"
@@ -476,9 +526,9 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument(
         "--feature-mode",
-        choices=("baseline_7", "matched_kernel"),
+        choices=("baseline_7", "baseline_plus_onehot", "baseline_plus_neighborhood", "matched_kernel"),
         default="baseline_7",
-        help="baseline drivers or the 25-feature Kernel-matched control",
+        help="baseline drivers, intermediate feature ablations, or the 25-feature Kernel-matched control",
     )
     args = parser.parse_args()
     report = run(

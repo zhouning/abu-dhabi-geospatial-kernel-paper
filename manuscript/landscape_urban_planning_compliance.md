@@ -1,6 +1,6 @@
 # Landscape and Urban Planning submission check
 
-Checked: 4 September 2026
+Checked: 6 September 2026
 
 Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
@@ -8,11 +8,11 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent, and the matched-input FLUS attempt is blocked by a segmentation fault in the supplied binary. |
+| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent. The supplied FLUS binary is untraceable, but corrected absolute-path 13-, 19- and 25-feature diagnostics now complete for seed 31; the primary comparison remains the seven-driver unmatched control. |
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
 | Corresponding author | Needs portal entry | Name is present, but the submission system should receive a valid institutional e-mail and full correspondence address. |
-| Abstract | Draft-ready; portal confirmation required | 205 words by whitespace count. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
+| Abstract | Draft-ready; portal confirmation required | 206 words by whitespace count. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
 | Highlights | Draft-ready | Four bullets are supplied; each is below 85 characters, including spaces. They describe the completed public-data benchmark and its evidence boundary. |
 | Keywords | Ready | Six searchable terms are supplied: Geospatial World Model, land-cover change, constrained allocation, cellular automata, Abu Dhabi and scenario planning. |
 | Graphical abstract | Confirm in portal | No separate graphical abstract is included. The journal's current article-type setting should determine whether it is required or optional. Figure 1 can be adapted if requested. |
@@ -23,10 +23,10 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Requirement | Status | Check |
 |---|---|---|
 | Editable tables | Ready | The historical score table is numbered and captioned in the manuscript source; it remains a Markdown/LaTeX text table rather than a raster image. |
-| Table width | Ready | The LUP reading copy uses a 0.9 pt column separation and scriptsize long tables; visual QA confirms no clipped last columns or overlapping cells. |
+| Table width | Ready | The LUP reading copy uses a 0.9 pt column separation and scriptsize long tables; visual QA of the latest PDF confirms no clipped last columns or overlapping cells. |
 | Table notes | Ready | Units, DTV, ecological-proxy semantics, compactness and Pareto interpretation are stated immediately before the relevant tables. |
 | Figure files | Ready for technical review | Figures 1–5 were regenerated from the current strict-metric and planning reports as editable SVG/PDF plus 600-dpi PNG/TIFF. |
-| Figure captions | Ready for scientific review | Captions describe current public-data results and retain the conditional-proxy boundary. |
+| Figure captions | Ready for scientific review | Captions describe current public-data results and retain the conditional-proxy boundary; duplicate auto-captions were removed from the latest reading PDF. |
 | Arrow alignment | Ready for Figure 1 | Figure 1 arrows terminate at the implemented projection stage and were visually checked after redrawing. |
 | Separate upload | Submission step | Upload each figure as a separate file if Editorial Manager requests individual artwork; keep the combined PDF only as a reading copy. |
 | Artwork technical limits | Confirm in portal | Elsevier commonly distinguishes line art, grayscale and colour resolution and accepts TIFF/EPS/PDF/JPEG variants. Confirm the live LUP artwork page before upload. |
@@ -35,7 +35,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Data availability | Conditional | The complete public bundle, generated rasters, vectors and mechanism controls are included or tracked with Git LFS and pass the input/output audits; authoritative local validation data are unavailable. |
+| Data availability | Conditional | The complete public bundle, generated rasters, vectors and mechanism controls are included or tracked with Git LFS and pass the input/output audits; authoritative local validation data are unavailable. The author-run Linux/macOS Kernel comparison and FLUS matched-input diagnostics are archived with commands and reports. |
 | Code availability | Conditional | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; a compatible, traceable FLUS build is required for an information-matched comparison, and a DOI is not yet provided. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
@@ -73,6 +73,6 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 The package is a conditional Article-type draft. Before submission, add the
 corresponding-author e-mail, public release URL/DOI and an independent
-2023–2024 change-validation layer. A matched-input FLUS baseline additionally
-requires a compatible, traceable implementation because the supplied binary
-segfaults before producing a valid probability surface.
+2023–2024 change-validation layer. The supplied FLUS build remains untraceable;
+the successful matched-input runs are one-seed diagnostics and do not replace
+the primary three-seed comparison.

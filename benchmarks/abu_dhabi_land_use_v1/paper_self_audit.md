@@ -1,5 +1,9 @@
 # Self-audit for the Geospatial Kernel Abu Dhabi manuscript (legacy checklist)
 
+> **Archive notice:** This checklist predates the recovered-data rerun. The
+> unchecked items below are historical blockers and do not describe the current
+> revision status. Use `manuscript/paper_self_audit.md` for the current audit.
+
 This historical checklist predates the recovered-data rerun. Use
 `manuscript/paper_self_audit.md` for the current evidence status; the current
 machine-readable checks are `reproducibility_check.json` and

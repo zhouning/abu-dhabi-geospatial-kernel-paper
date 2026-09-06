@@ -1,0 +1,414 @@
+{
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "created_at": "2026-09-06T07:14:54.148768+00:00",
+  "kernel_capabilities": {
+    "adapter_count": 1,
+    "adapters": [
+      {
+        "action_semantics": "year-bound feasible class totals derived by the benchmark protocol",
+        "adapter_id": "abu-dhabi-lu-gk-runtime-adapter",
+        "adapter_version": "1.0.0",
+        "constraint_semantics": "hard exclusion preservation and exact feasible class-total allocation",
+        "domain": "land_use_raster",
+        "state_semantics": "100 metre categorical land-use raster within the frozen city mask",
+        "transition_semantics": "learned cell transition probabilities with spatial neighborhood context"
+      }
+    ],
+    "claim_boundary": {
+      "cross_domain_skill_transfer_proven": false,
+      "shared_execution_semantics": true,
+      "shared_learning_algorithm": false,
+      "shared_parameters": false
+    },
+    "domains": [
+      "land_use_raster"
+    ],
+    "runtime_schema": "gwm.geospatial_kernel.runtime.v1",
+    "schema": "gwm.geospatial_kernel.capabilities.v1",
+    "shared_contract": [
+      "typed_state",
+      "typed_action",
+      "transition_proposal",
+      "constraint_projection",
+      "state_writeback",
+      "rollout_trace",
+      "evidence_provenance"
+    ]
+  },
+  "kernel_runtime_schema": "gwm.geospatial_kernel.runtime.v1",
+  "model_id": "geospatial_kernel",
+  "revision_status": "current_protocol_run",
+  "schema": "gwm.abu_dhabi_geospatial_kernel_run.v1",
+  "seeds": [
+    {
+      "kernel_runtime_execution_summary": {
+        "adapter_id": "abu-dhabi-lu-gk-runtime-adapter",
+        "adapter_version": "1.0.0",
+        "all_completed_steps_accounted": true,
+        "all_expected_steps_completed": true,
+        "all_steps_admitted": false,
+        "claim_boundary": {
+          "execution_completed_does_not_imply_domain_validation": true,
+          "projected_steps_are_not_admitted": true
+        },
+        "completed_step_count": 2,
+        "domain": "land_use_raster",
+        "expected_step_count": 2,
+        "runtime_schema": "gwm.geospatial_kernel.runtime.v1",
+        "schema": "gwm.geospatial_kernel.execution_summary.v1",
+        "status_counts": {
+          "admitted": 0,
+          "projected": 2,
+          "rejected": 0
+        }
+      },
+      "seed": 31,
+      "training": {
+        "feature_count": 25,
+        "fit_seconds": 19.07272900803946,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18074,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 18144,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17960,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 18024,
+            "start_year": 2020,
+            "target_year": 2021
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "seed": 31,
+        "training_pixel_rows": 72202
+      },
+      "years": [
+        {
+          "allocation": {
+            "hard_exclusion_changed_pixels": 0,
+            "moved_pixels": 3093,
+            "target_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            },
+            "binary_change_figure_of_merit": 0.19555975436939066,
+            "change_f1": 0.327143421572501,
+            "change_false_alarms": 1851,
+            "change_figure_of_merit": 0.19193827743662414,
+            "change_hits": 1219,
+            "change_misses": 3258,
+            "change_wrong_transitions": 23,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.8495147592211086,
+            "observed_change_pixels": 4500,
+            "overall_accuracy": 0.9356295311441688,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 3093,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.010309278350515464,
+              "change_f1": 0.02040816326530612,
+              "change_false_alarms": 72,
+              "change_figure_of_merit": 0.0,
+              "change_hits": 0,
+              "change_misses": 24,
+              "change_wrong_transitions": 1,
+              "macro_f1": 0.49804627843433513,
+              "observed_change_pixels": 25,
+              "overall_accuracy": 0.9968594185067668,
+              "pixel_count": 30886,
+              "predicted_change_pixels": 73
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 685,
+              "3": 465,
+              "4": 1011,
+              "5": 12260,
+              "6": 49867
+            }
+          },
+          "kernel_step": {
+            "action": {
+              "action_id": "oracle_allocation_2022_2023",
+              "evidence": [
+                {
+                  "role": "bounded_allocation_action",
+                  "uri": "artifacts/bundle/allocation_actions.json"
+                }
+              ],
+              "source_time": "2022",
+              "target_time": "2023"
+            },
+            "adapter": {
+              "action_semantics": "year-bound feasible class totals derived by the benchmark protocol",
+              "adapter_id": "abu-dhabi-lu-gk-runtime-adapter",
+              "adapter_version": "1.0.0",
+              "constraint_semantics": "hard exclusion preservation and exact feasible class-total allocation",
+              "domain": "land_use_raster",
+              "state_semantics": "100 metre categorical land-use raster within the frozen city mask",
+              "transition_semantics": "learned cell transition probabilities with spatial neighborhood context"
+            },
+            "constraint_projection": {
+              "diagnostics": {
+                "hard_exclusion_changed_pixels": 0,
+                "moved_pixels": 3093,
+                "target_counts": {
+                  "1": 15438,
+                  "2": 685,
+                  "3": 465,
+                  "4": 1011,
+                  "5": 12260,
+                  "6": 49867
+                }
+              },
+              "status": "projected",
+              "violations": []
+            },
+            "result": {
+              "provenance": {
+                "evidence": [
+                  {
+                    "role": "initial_state",
+                    "uri": "artifacts/gee/land_cover/land_cover_2022_100m.tif"
+                  },
+                  {
+                    "role": "bounded_allocation_action",
+                    "uri": "artifacts/bundle/allocation_actions.json"
+                  }
+                ],
+                "metadata": {
+                  "benchmark_id": "abu-dhabi-land-use-v1",
+                  "oracle_allocation_action": true,
+                  "reliability_mask_read_by_model": false
+                },
+                "model_id": "HistGradientBoostingClassifier+LU-GK-allocation",
+                "model_version": "1.0.0",
+                "parameter_ref": "in-memory-fit:seed-31"
+              },
+              "state_ref": "abu-dhabi-lu-gk:oracle_allocation_2022_2023:2023",
+              "time_id": "2023"
+            },
+            "schema": "gwm.geospatial_kernel.step.v1",
+            "source": {
+              "domain": "land_use_raster",
+              "evidence": [
+                {
+                  "role": "initial_state",
+                  "uri": "artifacts/gee/land_cover/land_cover_2022_100m.tif"
+                }
+              ],
+              "state_ref": "artifacts/gee/land_cover/land_cover_2022_100m.tif",
+              "time_id": "2022"
+            },
+            "transition_diagnostics": {
+              "candidate_kind": "land_use_class_probability_cube",
+              "class_count": 6,
+              "driver_year": 2022,
+              "valid_pixel_count": 79726
+            }
+          },
+          "prediction_path": "artifacts/cross_platform/linux_seed31_abs2/seed_31/prediction_2023.tif",
+          "target_year": 2023
+        },
+        {
+          "allocation": {
+            "hard_exclusion_changed_pixels": 0,
+            "moved_pixels": 3741,
+            "target_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "evaluation": {
+            "actual_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            },
+            "binary_change_figure_of_merit": 0.26023560425076203,
+            "change_f1": 0.4129951627663747,
+            "change_false_alarms": 3675,
+            "change_figure_of_merit": 0.2518329351676415,
+            "change_hits": 3057,
+            "change_misses": 5305,
+            "change_wrong_transitions": 102,
+            "constraint_violation_pixels": 0,
+            "constraint_violation_rate": 0.0,
+            "demand_l1_error_pixels": 0,
+            "demand_target_exact": true,
+            "demand_total_variation": 0.0,
+            "evaluation_pixel_count": 79726,
+            "macro_f1": 0.7670648882734099,
+            "observed_change_pixels": 8464,
+            "overall_accuracy": 0.8860848405789831,
+            "pixel_count": 79726,
+            "predicted_change_pixels": 6834,
+            "reliability_sensitivity": {
+              "binary_change_figure_of_merit": 0.010416666666666666,
+              "change_f1": 0.020618556701030927,
+              "change_false_alarms": 328,
+              "change_figure_of_merit": 0.005208333333333333,
+              "change_hits": 2,
+              "change_misses": 52,
+              "change_wrong_transitions": 2,
+              "macro_f1": 0.4951056463557169,
+              "observed_change_pixels": 56,
+              "overall_accuracy": 0.9870028239937396,
+              "pixel_count": 29391,
+              "predicted_change_pixels": 332
+            },
+            "requested_class_counts": {
+              "1": 15438,
+              "2": 912,
+              "3": 412,
+              "4": 1011,
+              "5": 15774,
+              "6": 46179
+            }
+          },
+          "kernel_step": {
+            "action": {
+              "action_id": "oracle_allocation_2023_2024",
+              "evidence": [
+                {
+                  "role": "bounded_allocation_action",
+                  "uri": "artifacts/bundle/allocation_actions.json"
+                }
+              ],
+              "source_time": "2023",
+              "target_time": "2024"
+            },
+            "adapter": {
+              "action_semantics": "year-bound feasible class totals derived by the benchmark protocol",
+              "adapter_id": "abu-dhabi-lu-gk-runtime-adapter",
+              "adapter_version": "1.0.0",
+              "constraint_semantics": "hard exclusion preservation and exact feasible class-total allocation",
+              "domain": "land_use_raster",
+              "state_semantics": "100 metre categorical land-use raster within the frozen city mask",
+              "transition_semantics": "learned cell transition probabilities with spatial neighborhood context"
+            },
+            "constraint_projection": {
+              "diagnostics": {
+                "hard_exclusion_changed_pixels": 0,
+                "moved_pixels": 3741,
+                "target_counts": {
+                  "1": 15438,
+                  "2": 912,
+                  "3": 412,
+                  "4": 1011,
+                  "5": 15774,
+                  "6": 46179
+                }
+              },
+              "status": "projected",
+              "violations": []
+            },
+            "result": {
+              "provenance": {
+                "evidence": [
+                  {
+                    "role": "initial_state",
+                    "uri": "artifacts/gee/land_cover/land_cover_2022_100m.tif"
+                  },
+                  {
+                    "role": "bounded_allocation_action",
+                    "uri": "artifacts/bundle/allocation_actions.json"
+                  },
+                  {
+                    "role": "bounded_allocation_action",
+                    "uri": "artifacts/bundle/allocation_actions.json"
+                  }
+                ],
+                "metadata": {
+                  "benchmark_id": "abu-dhabi-land-use-v1",
+                  "oracle_allocation_action": true,
+                  "reliability_mask_read_by_model": false
+                },
+                "model_id": "HistGradientBoostingClassifier+LU-GK-allocation",
+                "model_version": "1.0.0",
+                "parameter_ref": "in-memory-fit:seed-31"
+              },
+              "state_ref": "abu-dhabi-lu-gk:oracle_allocation_2023_2024:2024",
+              "time_id": "2024"
+            },
+            "schema": "gwm.geospatial_kernel.step.v1",
+            "source": {
+              "domain": "land_use_raster",
+              "evidence": [
+                {
+                  "role": "initial_state",
+                  "uri": "artifacts/gee/land_cover/land_cover_2022_100m.tif"
+                },
+                {
+                  "role": "bounded_allocation_action",
+                  "uri": "artifacts/bundle/allocation_actions.json"
+                }
+              ],
+              "state_ref": "abu-dhabi-lu-gk:oracle_allocation_2022_2023:2023",
+              "time_id": "2023"
+            },
+            "transition_diagnostics": {
+              "candidate_kind": "land_use_class_probability_cube",
+              "class_count": 6,
+              "driver_year": 2022,
+              "valid_pixel_count": 79726
+            }
+          },
+          "prediction_path": "artifacts/cross_platform/linux_seed31_abs2/seed_31/prediction_2024.tif",
+          "target_year": 2024
+        }
+      ]
+    }
+  ],
+  "state_writeback": true,
+  "status": "complete",
+  "test_label_access_during_fit": false,
+  "wall_seconds": 20.603290050989017
+}

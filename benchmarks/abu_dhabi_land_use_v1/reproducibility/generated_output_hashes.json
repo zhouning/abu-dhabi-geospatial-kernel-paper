@@ -15,14 +15,14 @@
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/planning_comparison_report_public_2025_2031_current.json",
-      "bytes": 642833,
-      "sha256": "577b77384dd165ef06d4cfb2f2da483d9cbb1a5c25014573f0704554f5c1c084",
+      "bytes": 664745,
+      "sha256": "47d0653e65fb9b7cd059969db396da53e8ded1b2b5d140287ac6431c0fcf7440",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/output_audit_reproducible.json",
       "bytes": 155232,
-      "sha256": "98ad5fa0ebdb171b4b0a46037db3e982ccd1cf9b0a86f4d2901ce308ec56ca6d",
+      "sha256": "4896b10794e4137c63eb02a50dadc24a6d1b9c42f8d8cdfe7b8b256e81a0d0d6",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -30,6 +30,186 @@
       "bytes": 54506,
       "sha256": "071f511db1b869641e6489e97e5ee57dc0fd005513ede6e6482e4e67d7b60eef",
       "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/neighbourhood_weight_sensitivity.csv",
+      "bytes": 824,
+      "sha256": "db28034ba4c8cafce6d3c8c117293e8717e75d102f3c0d06f13bbc24a20397e3",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/mechanism_ablations/neighbourhood_weight_sensitivity_report.json",
+      "bytes": 6594,
+      "sha256": "3e5f492fda99533333903d55de436358e1541d6c877183c0c005d830dac96bcf",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/flus_matched_input_review/evidence.json",
+      "bytes": 31429,
+      "sha256": "cf1a6a4d1c5162d1086dfae2cf83c44b66d9fca9b883973448c8f419b3b812f7",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/cross_platform/linux_vs_macos_kernel_comparison.json",
+      "bytes": 4753,
+      "sha256": "18e44fe7da0bb00ee0aed7f1a6b8105a15a5d75ffd71ab0982f425c1ffab2fe8",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "manuscript/supplementary_table_S2_neighbourhood_weight_sensitivity.md",
+      "bytes": 894,
+      "sha256": "bf7df55204df63e9c96102e89e4587136749dd459feac6d21b8a25841945f4f7",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "manuscript/main.pdf",
+      "bytes": 3539809,
+      "sha256": "5aabec8fdd1dffb93ae9ee52c5bd6ef313812d6bd1652365a9124c83b5a9d123",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "manuscript/lup_submission.pdf",
+      "bytes": 3539812,
+      "sha256": "736e1f79ccba7b23c715d6f23b1c0d2c3194d887e0254454f52f36a7778d9805",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "manuscript/manuscript.pdf",
+      "bytes": 3506623,
+      "sha256": "b8087818174ddd876ca1c7012d4efb01931af3e234a4c65c283688a5f3174b81",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "manuscript/manuscript.docx",
+      "bytes": 3219491,
+      "sha256": "fa0442aea9e5690d22eab57800b765ff12148981dbfa93de29595f4c65a1a4a4",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "manuscript/manuscript_pandoc.tex",
+      "bytes": 50673,
+      "sha256": "545b449f59898f9bed0910aa45c62e6600e9db6991686559d96cc7e81ba37bd8",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "figures/fig01_benchmark_contract.pdf",
+      "bytes": 97010,
+      "sha256": "01eccc56cf3e90e736fdc68bfd69d704640a038348cfef283779c8ce5161cfab",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig01_benchmark_contract.svg",
+      "bytes": 28484,
+      "sha256": "2d9e4b56a8cfb2b972c068299578aa9ab891e6e38e9bb221fbb31148a2b4f22b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig01_benchmark_contract.png",
+      "bytes": 579075,
+      "sha256": "a5929cd746271c11b2005283d35000b3f8347c49ac7bbeb6b27cfab48496a398",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig01_benchmark_contract.tiff",
+      "bytes": 44980442,
+      "sha256": "57f5c35d3dc4388c533ec02f0a072379bc134a256955187cb10e8e6b9cde7762",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig02_historical_validation.pdf",
+      "bytes": 54922,
+      "sha256": "c221ee8fcad55e16febf3011b07752f0889f478e3efec4a341f14792b249ba9b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig02_historical_validation.svg",
+      "bytes": 57153,
+      "sha256": "748a03138e49246de870218ec39f256b5ebf4bf928961a06439fffb4a136eec5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig02_historical_validation.png",
+      "bytes": 342950,
+      "sha256": "85685c6e1bacd7c2f6e1f7876ed5deb82e29342b34c1d8d051702f5e43382103",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig02_historical_validation.tiff",
+      "bytes": 48481718,
+      "sha256": "f1b8284c52c355a5f17a715f3eb7978a50971edc25046cf4f400f9df4685f155",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig03_planning_objectives.pdf",
+      "bytes": 58719,
+      "sha256": "e9e46212c94534830144fc253d031c65f0bfa6aecc96caf5cdf74a886087b5aa",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig03_planning_objectives.svg",
+      "bytes": 82732,
+      "sha256": "e72f08a1bb5f2b0da5c6043f97f005c5403e9dea9ca020fc0ec62d0ee4b0088f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig03_planning_objectives.png",
+      "bytes": 449085,
+      "sha256": "eefa2fb2b12e52aeae6523d4c07353aacc22448456ffd7307e206274139d17c0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig03_planning_objectives.tiff",
+      "bytes": 54156286,
+      "sha256": "6e2548a865ce47a67fd77a7c978c59f90727736a2446187d4a2928f00d61160b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig04_mechanism_ablation.pdf",
+      "bytes": 59442,
+      "sha256": "dd2ea078560227f1c00a8cb8ce5ca7cfe7777b90a0a93b8546accf8d055f4fe9",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig04_mechanism_ablation.svg",
+      "bytes": 59073,
+      "sha256": "a1692dbc977984116bf941001b4de84b81c9e5eb2695154a1063cb8caa04833c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig04_mechanism_ablation.png",
+      "bytes": 435916,
+      "sha256": "39a36e106b04430c19e5ba8f8fe42c18a19d669631a13eed8b3ee55290f600cf",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig04_mechanism_ablation.tiff",
+      "bytes": 48481718,
+      "sha256": "8c573351150ec242f88c6c353036ea61b8e7a48a6aa7d9b4690e1f013cd220c1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig05_planning_maps_2031.pdf",
+      "bytes": 452921,
+      "sha256": "8a6777ec2d23ce568e97168d19c4d2b9f3d50c80585b74f72f5363fdc06affe3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig05_planning_maps_2031.svg",
+      "bytes": 1996769,
+      "sha256": "8ad5f028fdb2b67cdac5d2213dd982709e35c207dd32dfec56e3b7e1f0c804e7",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig05_planning_maps_2031.png",
+      "bytes": 1690097,
+      "sha256": "13c5b691947b8a72d61dbff85eb547b29f31f1ab57c9f03b824fd06b5bb61e48",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig05_planning_maps_2031.tiff",
+      "bytes": 62151262,
+      "sha256": "1915d443a0d31824a871d1e2bbb8c6134f4813920c44548ad813494143d9fcda",
+      "hash_mode": "raw"
     }
   ]
 }

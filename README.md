@@ -16,16 +16,18 @@ The benchmark uses public land-cover and proxy constraint data on a 100 m EPSG:3
 
 The repository deliberately excludes customer databases, credentials, private imagery, large raw downloads and intermediate training caches. Derived rasters and vector packages required for the declared rerun are included or tracked with Git LFS; public-data lineage and checksums are retained in the manifests under `benchmarks/abu_dhabi_land_use_v1/`.
 
-The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**. Current reruns write versioned report names, leaving legacy JSON lineage files immutable.
+The machine-readable reports retain the legacy internal identifier `paper58` for backward compatibility with the original runner and artifact paths. In the manuscript and all reader-facing labels, that implementation is called **GeoFM-LDN**. Current reruns write versioned report names, leaving legacy JSON lineage files immutable. The release planning objective set is v6: major-road distance, prior-built distance and connected-component density in the union of 2024 built and newly built cells; ecological conversion is diagnostic only.
 
 This repository contains the benchmark protocol, public input bundle, model
 runtimes/checkpoints, historical and planning prediction rasters, vector change
 packages, mechanism controls and manuscript package. The strict multi-class
 change FoM, persistence/minimum-change controls, spatial-block bootstrap with
 paired model contrasts and the release planning objectives have been rerun.
-Independent authoritative change-validation data are still not available, and
-the matched-input FLUS attempt is documented as blocked by a segmentation
-fault in the supplied binary. See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
+Independent authoritative change-validation data are still not available. The
+earlier matched-input FLUS failure was a relative-path configuration error;
+corrected 13-, 19- and 25-feature seed-31 diagnostics completed with absolute
+paths and are archived under `benchmarks/abu_dhabi_land_use_v1/artifacts/`.
+See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
 for the evidence boundary.
 
 ## Start here

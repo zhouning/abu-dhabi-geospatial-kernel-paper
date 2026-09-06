@@ -45,15 +45,14 @@ MODEL_DISPLAY_NAMES = {
 }
 
 SENSITIVITY_OBJECTIVES = {
-    "access_compact_new_fragmentation": {
+    "access_compact_combined_fragmentation": {
         "new_built_mean_major_road_distance_m": "min",
         "new_built_mean_prior_built_distance_m": "min",
-        "new_built_components_per_1000_pixels": "min",
+        "combined_built_components_per_1000_pixels": "min",
     },
-    "release_with_ecological_pressure": dict(OBJECTIVES),
-    "result_only_morphology": {
-        "new_built_components_per_1000_pixels": "min",
-        "ecological_conversion_rate": "min",
+    "release_without_structural_zero": dict(OBJECTIVES),
+    "morphology_with_leapfrog": {
+        "combined_built_components_per_1000_pixels": "min",
         "new_built_leapfrog_rate": "min",
     },
 }
@@ -296,7 +295,7 @@ def compile_report(
     report = {
         "schema": "gwm.abu_dhabi_planning_comparison.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
-        "metric_version": "planning_objectives_v5",
+        "metric_version": "planning_objectives_v6",
         "objective_set_version": OBJECTIVE_SET_VERSION,
         "revision_status": "rerun_from_current_rasters",
         "pareto_status": "conditional_on_declared_objectives",
@@ -355,7 +354,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         (
             "| 模型 | 情景 | demand TV | 集成目标偏差(px) | 绿色增益(px) | 距主干路(m) | "
-            "距原建成区(m) | 新增建成斑块/千像元 | 生态转建成率 | 蛙跳率 | Pareto |"
+            "距原建成区(m) | 既有∪新增建成斑块/千像元 | 生态转建成率 | 蛙跳率 | Pareto |"
         ),
         "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|:---:|",
     ]
@@ -370,7 +369,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             f"{row['green_gain_pixels']:.0f} | "
             f"{row['new_built_mean_major_road_distance_m']:.1f} | "
             f"{row['new_built_mean_prior_built_distance_m']:.1f} | "
-            f"{row['new_built_components_per_1000_pixels']:.3f} | "
+            f"{row['combined_built_components_per_1000_pixels']:.3f} | "
             f"{row['ecological_conversion_rate']:.4f} | "
             f"{row['new_built_leapfrog_rate']:.3f} | "
             f"{'是' if row['candidate_id'] in frontier else '否'} |"
@@ -383,7 +382,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "- 三组需求是规划压力测试，不是对阿布扎比未来的预测。",
             "- 生态和基础设施指标来自公开数据代理，不等于法定或货币化影响。",
             "- Pareto 结果在每个情景内比较三个模型，且只在声明的目标、100 m 网格和公共约束下成立。",
-            "- 主要碎片化指标是新增建成像元的连通分量密度；生态转化率是模型结果型压力代理。",
+            "- 主要碎片化指标是 2024 年既有建成与新增建成的并集连通分量密度；生态转化率是描述性压力代理，不参与 Pareto 目标。",
             "- 植被增益、500 m 蛙跳率、邻域比例、建成退出和全部建成分量密度为描述性诊断。",
             "- 目标集敏感性结果见 JSON 的 objective_set_sensitivity，属于发布后稳健性分析。",
             "- 集成栅格采用三种子多数投票，可能不再精确满足动作总量；表中的集成目标偏差是对此的显式审计。",

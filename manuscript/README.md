@@ -12,13 +12,15 @@ GeoFM-LDN.
 - `manuscript.docx`: editable Word copy.
 - `manuscript.md`: clean manuscript source without author-facing editorial notes.
 - `main.tex`: Nature-class LaTeX source generated from the clean manuscript.
-- `main.pdf`: compiled LaTeX reading copy with recovered-data numerical results
-  and regenerated Figures 1–5.
+- `main.pdf`: compiled LaTeX reading copy with recovered-data numerical results,
+  regenerated Figures 1–5 and single-caption figure layout.
 - `lup_submission.pdf`: LUP-oriented submission reading copy with repaired tables.
 - `figures/`: Python/Matplotlib Nature-style figures in editable SVG/PDF and
   600-dpi PNG/TIFF formats.
 - `paper_self_audit.md`: evidence and claim-boundary audit.
 - `neighbourhood_weight_sensitivity.csv`: post-hoc sensitivity source data.
+- `supplementary_table_S2_neighbourhood_weight_sensitivity.md`: synchronized
+  strict-FoM Supplementary Table S2.
 - `journal_recommendation.md`: target-journal recommendation and submission
   positioning.
 - `submission_notes_zh.md`: Chinese hand-off notes and submission checklist.
@@ -26,6 +28,8 @@ GeoFM-LDN.
   the package is structurally aligned but scientifically blocked and is not
   Article type Ready.
 - `response_to_LUP_review.md`: point-by-point revision and blocker record.
+- `../benchmarks/abu_dhabi_land_use_v1/matched_input_review.md`: archived
+  FLUS 13-, 19- and 25-feature input diagnostics and corrected command record.
 
 The manuscript calls the latent-dynamics baseline **GeoFM-LDN** (Geospatial
 Foundation-Model Latent Dynamics Network). Legacy machine-readable artifacts
@@ -39,15 +43,16 @@ The historical benchmark uses public land-cover labels from 2017–2024 on a
 2024 exogenous drivers frozen in time. They are not official Abu Dhabi forecasts
 and do not infer statutory residential, commercial or industrial land use.
 
-The recovered-data rerun supports a bounded implementation claim: Geospatial
+The released-data rerun supports a bounded implementation claim: Geospatial
 Kernel is an auditable, constraint-preserving allocation core. Under the
 unmatched public-data pipeline it has the largest strict one-step 2023
 transition FoM, while GeoFM-LDN has the largest strict two-step 2024 open-loop
 FoM; neither dominates both horizons. Within each 2031 scenario, the
-FLUS-style control and Kernel are non-dominated; GeoFM-LDN is additionally
-non-dominated only for green-priority growth. The release objectives are
-major-road distance, prior-built distance, newly built component density and
-ecological conversion. These are conditional pipeline and stress-test results,
+FLUS-style control and Kernel are non-dominated; GeoFM-LDN is dominated after
+the structural-zero ecological-conversion term is removed from the release
+objectives. The release objectives are major-road distance, prior-built distance
+and components in the 2024-built ∪ newly-built footprint. Ecological conversion
+is retained as a diagnostic only. These are conditional pipeline and stress-test results,
 not official Abu Dhabi forecasts.
 
 ## Before submission

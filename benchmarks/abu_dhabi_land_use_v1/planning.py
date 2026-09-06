@@ -14,17 +14,17 @@ except ImportError:  # Direct script execution from the benchmark directory.
     from shared import CLASSES, class_counts
 
 
-# Release objective set v5. Earlier exploratory sets remain lineage only. The
-# release set compares model outcomes within each scenario and excludes
-# scenario-supplied vegetation demand from the model objective.
+# Release objective set v6. Earlier exploratory sets remain lineage only. The
+# release set compares model outcomes within each scenario, excludes
+# scenario-supplied vegetation demand and excludes ecological conversion,
+# which is structurally zero for the two exact-count allocators.
 OBJECTIVES = {
     "new_built_mean_major_road_distance_m": "min",
     "new_built_mean_prior_built_distance_m": "min",
-    "new_built_components_per_1000_pixels": "min",
-    "ecological_conversion_rate": "min",
+    "combined_built_components_per_1000_pixels": "min",
 }
 
-OBJECTIVE_SET_VERSION = "release_objectives_v5_within_scenario"
+OBJECTIVE_SET_VERSION = "release_objectives_v6_within_scenario"
 
 OBJECTIVE_METADATA = {
     "new_built_mean_major_road_distance_m": {
@@ -40,12 +40,12 @@ OBJECTIVE_METADATA = {
     "built_components_per_1000_pixels": {
         "direction": "min",
         "dimension": "fragmentation",
-        "interpretation": "All built components per 1,000 valid cells; retained as a descriptive diagnostic.",
+        "interpretation": "Connected components in the final built raster per 1,000 valid cells; retained as a descriptive diagnostic because built retirement can change it.",
     },
-    "new_built_components_per_1000_pixels": {
+    "combined_built_components_per_1000_pixels": {
         "direction": "min",
         "dimension": "fragmentation",
-        "interpretation": "Connected components formed by newly built cells per 1,000 valid cells; lower values indicate less fragmented growth.",
+        "interpretation": "Connected components in the union of 2024 built cells and newly built cells per 1,000 valid cells; lower values indicate a less fragmented overall built pattern and are not altered by built retirement.",
     },
     "ecological_conversion_rate": {
         "direction": "min",
@@ -108,6 +108,15 @@ def planning_metrics(
     _, new_built_component_count = label(
         new_built, structure=np.ones((3, 3), dtype=np.uint8)
     )
+    # Fragmentation is measured on the union of the 2024 built footprint and
+    # newly built cells. This avoids the semantic inversion that occurs when
+    # only the new cells are labelled: edge-filling growth can then be split
+    # into many components by the existing built mask. It also prevents
+    # built retirement from changing the morphology metric.
+    combined_built = valid & ((origin == 5) | new_built)
+    _, combined_built_component_count = label(
+        combined_built, structure=np.ones((3, 3), dtype=np.uint8)
+    )
 
     prior_built_distance = distance_transform_edt(
         ~(valid & (origin == 5)), sampling=float(pixel_size_m)
@@ -137,6 +146,10 @@ def planning_metrics(
         "new_built_component_count": int(new_built_component_count),
         "new_built_components_per_1000_pixels": float(
             new_built_component_count * 1000.0 / total
+        ),
+        "combined_built_component_count": int(combined_built_component_count),
+        "combined_built_components_per_1000_pixels": float(
+            combined_built_component_count * 1000.0 / total
         ),
         "removed_built_pixels": int(removed_built.sum()),
         "ecological_conversion_pixels": int(ecological_conversion.sum()),

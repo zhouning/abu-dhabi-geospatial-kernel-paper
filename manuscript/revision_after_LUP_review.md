@@ -1,6 +1,6 @@
 # LUP review revision record
 
-This internal record describes the fourth-round revision to the public-data
+This internal record describes the fifth-round revision to the public-data
 manuscript. It is not part of the submitted paper.
 
 ## Implemented in this revision
@@ -13,27 +13,30 @@ manuscript. It is not part of the submitted paper.
 - Corrected report `evidence_mode` fields and made text byte counts canonical
   under LF normalization in the reproducibility manifest and gate. Generated
   output hashes now use the same text normalization.
-- Disclosed that the locked macOS arm64 reference rerun is reproducible within
-  its environment but a Windows Kernel rerun differs by approximately 1% of
-  cells and roughly 0.001 strict FoM.
-- Replaced prior planning objectives with the release v5 set: distance to major
-  roads, distance to prior built cells, newly built component density and
-  ecological-conversion rate. Vegetation gain and all-built component density
-  are descriptive diagnostics only.
+- Added an author-run Linux comparison of six Kernel historical rasters (three
+  seeds × two target years). The categorical arrays were identical to the
+  macOS reference rasters and strict-FoM deltas were zero; the comparison JSON
+  records the paths and evaluator outputs without generalising to all stacks.
+- Replaced prior planning objectives with the release v6 set: distance to major
+  roads, distance to prior built cells and connected-component density in the
+  union of 2024 built and newly built cells. Ecological conversion and
+  vegetation gain are descriptive diagnostics only.
 - Changed Pareto evaluation from a global nine-candidate comparison to a
   within-scenario comparison of the three model outputs; added three declared
   objective-set sensitivity variants.
 - Renamed the reader-facing FLUS baseline to **FLUS-style ANN–CA console
   (untraceable build)** and retained `geosos_flus` solely as a compatibility
   identifier.
-- Implemented a 25-feature matched-input FLUS mode. The supplied binary
-  segfaulted before producing a valid probability surface, which is documented
-  rather than represented as a completed experiment.
+- Implemented 13-feature, 19-feature and 25-feature matched-input FLUS modes.
+  The earlier failure was a relative-path configuration error. Corrected
+  absolute-path runs completed for seed 31 and produced valid probability
+  surfaces; the reports and sanitized logs are archived as one-seed
+  dimensionality diagnostics rather than replacing the primary baseline.
 - Made high-confidence subset failure a principal finding: strict FoM is zero
   for all models in 2023 and reaches only 0.0188 at best in 2024.
 - Regenerated Figures 1–5: repaired the Figure 1 action arrow/text, Figure 2
-  panel spacing, Figure 3 objectives, and Figure 5 scale/north-arrow/overlay
-  legibility.
+  panel spacing, Figure 3 objective labels and legend spacing, and Figure 5
+  scale/north-arrow/overlay legibility.
 
 ## Objective-set history and interpretation
 
@@ -46,20 +49,23 @@ preregistered and is not called prespecified in the paper.
 | v2 | Road distance, prior-built distance, all-built component density, leapfrog rate | Not used for a released planning rerun. |
 | v3 | Ecological conversion, road distance, leapfrog rate, built retirement | Withdrawn: outcomes were structurally problematic and comparison scope was unclear. |
 | v4 | Road distance, prior-built distance, all-built component density, vegetation gain | Withdrawn: vegetation gain is scenario-supplied and all-built density can reward retirement. |
-| v5 | Road distance, prior-built distance, newly built component density, ecological conversion | Current release objective set; evaluated within scenario and accompanied by sensitivity variants. |
+| v5 | Road distance, prior-built distance, newly built component density, ecological conversion | Superseded: ecological conversion was structurally zero for exact-count allocators and new-only fragmentation had the wrong planning semantics. |
+| v6 | Road distance, prior-built distance, union-built component density | Current release objective set; evaluated within scenario and accompanied by strict-FoM and objective-set sensitivity variants. |
 
-The v5 frontier reports a trade-off rather than a winner. Across the three
+The v6 frontier reports a trade-off rather than a winner. Across the three
 scenarios, Kernel allocations are closer to roads and pre-existing built cells,
-but have more newly built components than the FLUS-style control. GeoFM-LDN is
-additionally non-dominated only for green-priority growth because it shares the
-zero ecological-conversion result while offering intermediate fragmentation.
+but the union-built morphology metric does not make them uniformly less
+fragmented than the FLUS-style control. GeoFM-LDN is dominated in all three
+scenarios once the structurally zero ecological-conversion term is removed from
+the release objectives. Ecological conversion remains a reported diagnostic.
 
 ## Remaining limitations before a defensible LUP resubmission
 
 1. There is no independent 2023–2024 built-area product or manually interpreted
    reference sample.
-2. The FLUS-style console remains an untraceable macOS arm64 binary and cannot
-   complete a matched-input run with the supplied build.
+2. The FLUS-style console remains an untraceable macOS arm64 binary. The
+   successful matched-input runs are one-seed diagnostics; the headline
+   comparison remains the original three-seed seven-driver control.
 3. Authoritative planning, reclamation, infrastructure-capacity, irrigation and
    stakeholder data are unavailable. The maps are not official forecasts.
 4. Add the archival DOI, repository URL and corresponding-author e-mail before

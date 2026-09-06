@@ -1,8 +1,15 @@
 # Archived pre-review draft
 
+> **Archive notice:** Historical draft retained for provenance only. Do not use
+> its legacy metrics or objective definitions as current evidence.
+
 This file is retained for provenance only and is not the revised manuscript or
 an inferential results record. Use `manuscript/manuscript.md` and
 `manuscript/response_to_LUP_review.md` for the post-review version.
+
+The current release also corrects the former matched-input interpretation: the
+relative-path attempt returned a console configuration error, while corrected
+absolute-path diagnostics completed for seed 31. See `matched_input_review.md`.
 
 # Geospatial Kernel: a state–action–constraint core for urban land-cover planning
 
@@ -111,7 +118,7 @@ For delivery, each model and scenario has an ensemble raster for each year 2027�
 
 ### Sensitivity shows a stable but not fully explained neighbourhood contribution
 
-The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. A post-hoc three-seed sensitivity run varied this weight from 0 to 0.7. Mean 2023 change FoM was 0.19997, 0.20042, 0.20035 and 0.20010 at weights 0, 0.175, 0.35 and 0.7. The corresponding 2024 means were 0.26079, 0.26069, 0.26058 and 0.26034. The variation is small relative to the difference between the Kernel and GeoSOS-FLUS in the main benchmark, but it does not isolate a causal contribution of neighbourhood context. The protocol-specified action-deleted, action-shuffled, constraint-deleted, spatial-driver-shuffled and persistence controls remain required before such a mechanism claim would be justified.
+The historical version of this file reported an earlier binary-FoM sensitivity scan. That scan is retained for provenance only and must not be labelled strict FoM. The current strict multi-class scan is archived in `neighbourhood_weight_sensitivity.csv` and `artifacts/mechanism_ablations/neighbourhood_weight_sensitivity_report.json`; see the revised manuscript for interpretation.
 
 ## Discussion
 
@@ -269,5 +276,3 @@ Large raster files are tracked through repository-relative paths and SHA-256 man
 2. Re-render the main figures in English with colourblind-safe palettes, uncertainty marks and vector export.
 3. Add an allocator-matched ablation to separate the learned proposal from the shared projection implementation.
 4. Replace public proxy constraints and Dynamic World labels with authoritative local layers before making client-facing planning claims.
-
-

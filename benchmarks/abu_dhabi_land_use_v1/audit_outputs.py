@@ -157,7 +157,7 @@ def audit(*, output_path: Path) -> dict[str, Any]:
     stale_reports = []
     report_requirements = {
         HISTORICAL_REPORT: "strict_multiclass_fom_v2",
-        PLANNING_REPORT: "planning_objectives_v5",
+        PLANNING_REPORT: "planning_objectives_v6",
         PLANNING_SCENARIO_REPORT: "current_protocol_run",
     }
     for path, required_revision in report_requirements.items():

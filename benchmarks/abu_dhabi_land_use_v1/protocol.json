@@ -3,8 +3,8 @@
   "benchmark_id": "abu-dhabi-land-use-v1",
   "title": "Abu Dhabi Bounded Land-Use Simulation and Optimization Benchmark",
   "status": "public_bundle_complete_authoritative_validation_pending",
-  "revision_status": "review_response_protocol_v4",
-  "comparability_status": "pipeline_comparison_only_until_matched_flus_rerun",
+  "revision_status": "review_response_protocol_v6",
+  "comparability_status": "unmatched_headline_pipeline_with_completed_seed31_flus_input_diagnostics",
   "model_display_names": {
     "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
     "geospatial_kernel": "Geospatial Kernel",
@@ -117,8 +117,8 @@
     {
       "id": "geosos_flus",
       "role": "traditional_ann_suitability_plus_ca_allocation",
-      "comparability_note": "Original run used seven continuous drivers and frozen default console settings. A matched 25-feature input attempt was executed but the supplied binary terminated with SIGSEGV before writing a valid probability surface; therefore the released comparison remains an unmatched pipeline comparison.",
-      "matched_input_status": "attempted_and_blocked_by_binary_segmentation_fault",
+      "comparability_note": "Original headline run used seven continuous drivers and frozen default console settings. A 25-feature Kernel-matched input was subsequently executed with absolute paths and completed for seed 31, producing a valid probability surface and 2023/2024 predictions. The matched run is archived as a one-seed dimensionality diagnostic; the released three-seed comparison remains an unmatched pipeline comparison because the baseline and Kernel proposal representations differ.",
+      "matched_input_status": "completed_seed31_absolute_path_diagnostics",
       "binary_boundary": "Vendored Mach-O arm64 console; provenance cannot be traced to a reproducible upstream source/version and is not claimed bitwise equivalent to Liu et al. (2017); Windows/Linux require a compatible external build.",
       "frozen_parameters": {
         "ann_training_years": [2021],
@@ -166,11 +166,11 @@
     },
     "planning_optimization": {
       "purpose": "compare feasible plans under one shared objective and constraint set",
+      "objective_set_version": "release_objectives_v6_within_scenario",
       "objective_terms": [
         "new_built_mean_major_road_distance_m",
         "new_built_mean_prior_built_distance_m",
-        "new_built_components_per_1000_pixels",
-        "ecological_conversion_rate"
+        "combined_built_components_per_1000_pixels"
       ],
       "descriptive_outcomes": [
         "demand_total_variation",
@@ -178,6 +178,10 @@
         "built_gain_pixels",
         "removed_built_pixels",
         "green_gain_pixels",
+        "new_built_components_per_1000_pixels",
+        "combined_built_component_count",
+        "combined_built_components_per_1000_pixels",
+        "ecological_conversion_rate",
         "built_components_per_1000_pixels",
         "new_built_leapfrog_rate"
       ],

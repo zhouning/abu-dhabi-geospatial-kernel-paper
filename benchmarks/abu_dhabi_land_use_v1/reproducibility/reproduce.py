@@ -47,13 +47,32 @@ def _hash_outputs() -> dict[str, object]:
         HERE / "planning_comparison_report_public_2025_2031_current.json",
         HERE / "output_audit_reproducible.json",
         HERE / "planning_public_2025_2031_delivery_manifest_current.json",
+        HERE / "neighbourhood_weight_sensitivity.csv",
+        HERE / "artifacts/mechanism_ablations/neighbourhood_weight_sensitivity_report.json",
+        HERE / "artifacts/flus_matched_input_review/evidence.json",
+        HERE / "artifacts/cross_platform/linux_vs_macos_kernel_comparison.json",
+        REPO / "manuscript/supplementary_table_S2_neighbourhood_weight_sensitivity.md",
+        REPO / "manuscript/main.pdf",
+        REPO / "manuscript/lup_submission.pdf",
+        REPO / "manuscript/manuscript.pdf",
+        REPO / "manuscript/manuscript.docx",
+        REPO / "manuscript/manuscript_pandoc.tex",
     ]
+    for stem in (
+        "fig01_benchmark_contract",
+        "fig02_historical_validation",
+        "fig03_planning_objectives",
+        "fig04_mechanism_ablation",
+        "fig05_planning_maps_2031",
+    ):
+        for suffix in (".pdf", ".svg", ".png", ".tiff"):
+            paths.append(REPO / "figures" / f"{stem}{suffix}")
     records = []
     for path in paths:
         if not path.is_file():
             continue
         raw = path.read_bytes()
-        if path.suffix.lower() in {".json", ".md", ".py", ".txt"}:
+        if path.suffix.lower() in {".json", ".md", ".py", ".txt", ".csv", ".tex"}:
             raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
             hash_mode = "text_lf_normalized"
         else:
@@ -95,7 +114,26 @@ def main() -> None:
         args.device,
     )
     _run("FLUS-style ANN–CA console historical predictions", HERE / "run_geosos_flus.py", "--binary", str(HERE / "vendor/flus_console"), "--seeds", SEEDS)
+    for mode, directory in (
+        ("baseline_plus_onehot", "flus_7_plus_onehot_abs"),
+        ("baseline_plus_neighborhood", "flus_7_plus_neighbourhood_abs"),
+        ("matched_kernel", "flus_matched_inputs_abs"),
+    ):
+        _run(
+            f"FLUS input diagnostic: {mode}",
+            HERE / "run_geosos_flus.py",
+            "--binary",
+            str(HERE / "vendor/flus_console"),
+            "--seeds",
+            "31",
+            "--output",
+            str(HERE / "artifacts/predictions" / directory),
+            "--feature-mode",
+            mode,
+        )
+    _run("Archive FLUS input diagnostics", HERE / "collect_flus_diagnostic_evidence.py")
     _run("Geospatial Kernel historical predictions", HERE / "run_geospatial_kernel.py", "--seeds", SEEDS)
+    _run("Cross-platform Kernel comparison", HERE / "audit_cross_platform.py")
     _run("Historical comparison", HERE / "compile_comparison.py")
     _run(
         "Planning scenarios 2025-2031",
@@ -112,6 +150,12 @@ def main() -> None:
     _run("Planning comparison", HERE / "compile_planning.py")
     if not args.skip_ablations:
         _run("Mechanism ablations", HERE / "run_mechanism_ablations.py", "--seeds", SEEDS)
+        _run(
+            "Strict neighbourhood-weight sensitivity",
+            HERE / "run_neighbourhood_sensitivity.py",
+            "--seeds",
+            SEEDS,
+        )
     _run(
         "Planning change polygons",
         HERE / "export_planning_change_polygons.py",
