@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Run the FLUS-style ANN–CA console on the unified Abu Dhabi bundle.
+"""Run the GeoSOS-derived, author-modified FLUS-style ANN–CA console.
 
-The vendored executable cannot be traced to an upstream source release.  The
-runner therefore reports a FLUS-style control rather than claiming official
-GeoSOS-FLUS equivalence.
+The executable is rebuilt from the public GeoSOS source base with the
+author's reproducibility entry points and deterministic seeding patch.
 """
 
 from __future__ import annotations
@@ -500,21 +499,57 @@ def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path, feature_mode
             )
         )
         print(f"geosos_flus:seed_{seed}:complete", flush=True)
+    for seed_report in reports:
+        for year_row in seed_report["years"]:
+            evaluation = year_row["evaluation"]
+            zero_change = int(evaluation["predicted_change_pixels"]) == 0
+            evaluation["zero_change_output"] = zero_change
+            evaluation["degeneracy_reason"] = (
+                "current_class_identity_leakage_zero_change"
+                if zero_change and feature_mode in {"baseline_plus_onehot", "matched_kernel"}
+                else "zero_change_output_detected" if zero_change else None
+            )
     report = {
         "schema": "gwm.abu_dhabi_geosos_flus_run.v1",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "model_id": "geosos_flus",
-        "display_name": "FLUS-style ANN–CA console (untraceable build)",
+        "display_name": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
         "feature_mode": feature_mode,
         "revision_status": "current_protocol_run",
         "created_at": datetime.now(UTC).isoformat(),
         "status": "complete",
         "external_binary": f"vendor/{binary.name}",
+        "source_provenance": {
+            "upstream": "GeoSOS FLUS public source release (geosimulation.cn; Liu et al., 2017)",
+            "author_modified_repository": "https://github.com/zhouning/FLUS_console_crossplatform",
+            "author_modified_commit": "deb0a54",
+            "author_modified_tag": "paper-benchmark-flus-v1",
+            "macos_arm64_binary_sha256": "9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964",
+            "modifications": [
+                "train and train-update command-line entry points",
+                "FLUS_RANDOM_SEED deterministic ANN and CA seeding",
+            ],
+        },
         "state_writeback": True,
         "test_label_access_during_fit": False,
         "seeds": reports,
         "wall_seconds": time.perf_counter() - started,
     }
+    if feature_mode == "matched_kernel":
+        collapsed = [
+            int(seed_report["seed"])
+            for seed_report in reports
+            if all(
+                bool(year_row["evaluation"]["zero_change_output"])
+                for year_row in seed_report["years"]
+            )
+        ]
+        valid = [int(seed_report["seed"]) for seed_report in reports if int(seed_report["seed"]) not in collapsed]
+        report["matched_input_diagnostic"] = {
+            "valid_seed": valid[0] if len(valid) == 1 else valid,
+            "collapsed_seeds": collapsed,
+            "interpretation": "Collapsed seeds are retained as identity-leakage diagnostics and must not be averaged into the matched-input baseline.",
+        }
     output_root.mkdir(parents=True, exist_ok=True)
     (output_root / "report.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",

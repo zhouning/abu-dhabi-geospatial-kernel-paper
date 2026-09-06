@@ -1,0 +1,99 @@
+$ /Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v1/vendor/flus_console train-update /Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/flus_matched_inputs_abs/work/seed_47/ann/CCregiontrainlogCC.txt /Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/flus_matched_inputs_abs/work/seed_47/ann/update_drivers.csv
+cwd=/Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v1/artifacts/predictions/flus_matched_inputs_abs/work/seed_47/ann
+FLUS_RANDOM_SEED=47
+returncode=0
+[stdout]
+convert success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+
+load update data
+
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+load success!
+
+Normalizing data, please wait...
+Select sampling in proportion...
+FLUS NN random seed: 47 (FLUS_RANDOM_SEED)
+Start training, please wait...
+Run time: 0.854 s
+Precision evaluation: 
+RMSE =  1.6635e-05
+Average error =  1.12714e-05
+Average relative error =  3.38141e-05
+Waiting for prediction...
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+Write data successed!
+update prediction data
+write success!
+
+[stderr]

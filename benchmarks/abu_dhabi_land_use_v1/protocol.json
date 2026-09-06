@@ -3,10 +3,10 @@
   "benchmark_id": "abu-dhabi-land-use-v1",
   "title": "Abu Dhabi Bounded Land-Use Simulation and Optimization Benchmark",
   "status": "public_bundle_complete_authoritative_validation_pending",
-  "revision_status": "review_response_protocol_v6",
-  "comparability_status": "unmatched_headline_pipeline_with_completed_seed31_flus_input_diagnostics",
+  "revision_status": "review_response_protocol_v7",
+  "comparability_status": "unmatched_headline_pipeline_with_three_seed_matched_input_diagnostics",
   "model_display_names": {
-    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
+    "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN"
   },
@@ -117,9 +117,9 @@
     {
       "id": "geosos_flus",
       "role": "traditional_ann_suitability_plus_ca_allocation",
-      "comparability_note": "Original headline run used seven continuous drivers and frozen default console settings. A 25-feature Kernel-matched input was subsequently executed with absolute paths and completed for seed 31, producing a valid probability surface and 2023/2024 predictions. The matched run is archived as a one-seed dimensionality diagnostic; the released three-seed comparison remains an unmatched pipeline comparison because the baseline and Kernel proposal representations differ.",
-      "matched_input_status": "completed_seed31_absolute_path_diagnostics",
-      "binary_boundary": "Vendored Mach-O arm64 console; provenance cannot be traced to a reproducible upstream source/version and is not claimed bitwise equivalent to Liu et al. (2017); Windows/Linux require a compatible external build.",
+      "comparability_note": "Original headline run used seven continuous drivers and frozen default console settings. A 25-feature Kernel-matched input was subsequently executed with absolute paths for seeds 31, 47 and 73, producing probability surfaces and 2023/2024 predictions. Seeds 47 and 73 collapse to zero-change outputs through current-class identity leakage and are retained as diagnostics; only seed 31 is used for the matched-input point comparison. The released three-seed comparison remains an unmatched pipeline comparison because the baseline and Kernel proposal representations differ.",
+      "matched_input_status": "completed_three_seed_absolute_path_diagnostics_with_two_collapsed_outputs",
+      "binary_boundary": "Vendored Mach-O arm64 console; provenance based on the public GeoSOS source with author modifications archived at FLUS_console_crossplatform commit deb0a54; not claimed bitwise equivalent to an unmodified Liu et al. (2017) release; Windows/Linux require a compatible external build.",
       "frozen_parameters": {
         "ann_training_years": [2021],
         "ann_hidden_neurons": 8,
@@ -151,6 +151,7 @@
       "purpose": "isolate spatial allocation skill from demand forecast error",
       "primary_metric": "strict_multiclass_change_figure_of_merit_on_all_valid_pixels",
       "secondary_metrics": ["binary_change_figure_of_merit", "change_f1", "changed_destination_macro_f1", "overall_accuracy", "macro_f1"],
+      "degenerate_output_rule": "For every model/year/seed, record predicted_change_pixels and zero_change_output; zero-change outputs are diagnostics reviewed alongside structural-zero metrics and are not evidence of superiority or real stability.",
       "prespecified_label_reliability_sensitivity": {
         "confidence_threshold": 0.5,
         "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5",

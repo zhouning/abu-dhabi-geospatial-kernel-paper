@@ -1,9 +1,21 @@
-# Response to the sixth-round LUP review
+# Response to the seventh-round LUP review
 
-This is an internal point-by-point response draft for the review dated 5
+This is an internal point-by-point response draft for the review dated 6
 September 2026. It records what the repository now supports and what remains
 outside the evidence boundary. The manuscript remains a public-data benchmark
 and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
+
+## Seventh-round revisions
+
+| ID | Review concern | Revision made | Evidence / remaining boundary |
+|---|---|---|---|
+| R7.1 | FLUS was described as lacking traceability although its GeoSOS base is public | Corrected all reader-facing labels and provenance statements. The GeoSOS public source is cited, and the author-modified `FLUS_console_crossplatform` source is archived at tag `paper-benchmark-flus-v1` (commit `deb0a54`). `NOTICE` now discloses the added `train`/`train-update` commands and `FLUS_RANDOM_SEED` seeding changes. | The bundled Mach-O is an author-modified macOS arm64 build, not an unmodified GeoSOS release. |
+| R7.2 | The 25-feature matched-input mean and paired interval hid two zero-change runs | Table 1 now reports seed 31 only (0.1320 in 2023; 0.1960 in 2024), with raw point contrasts 0.0599 and 0.0558 and within-seed block-bootstrap medians 0.0595 and 0.0558. Seeds 47 and 73 are explicitly reported as zero-change identity-leakage degeneracies and are not averaged. | Per-seed metrics and reasons are in `comparison_report_current.json`; no three-seed matched-input interval is used as a baseline claim. |
+| R7.3 | ANN logs for seeds 47 and 73 were not archived | `collect_flus_diagnostic_evidence.py` now copies all three matched-input ANN logs into the tracked evidence directory and records return code, random seed, RMSE and paths. | The logs document successful ANN completion; zero-change is detected at the prediction/evaluation stage. |
+| R7.4 | Reproduction protocol did not detect zero-change outputs | Compiler diagnostics now record `predicted_change_pixels`, `zero_change_output` and a degeneracy reason for every model/year/seed. The portable audit protocol requires review of zero-change outputs alongside structural-zero metrics. | A zero-change result is a diagnostic, not an automatic failure or evidence of stability. |
+| R7.5 | Figure 2 omitted the matched-input column | Figure 2 now includes the seed-31 matched-input diagnostic and its caption explains why no three-seed error bar is shown. | Main-model bars remain three-seed population SDs; matched-input seed-level details stay in the report. |
+| R7.6 | Cross-platform FLUS reproduction path was incomplete | Code availability now documents an open Python ANN + public FLUS CA fallback for Linux/Windows and distinguishes upstream time seeding from the author's deterministic patch. | The fallback is protocol-compatible and same-order, but is not claimed bitwise identical to the patched macOS build. |
+| R7.7 | Manuscript/report numerical consistency checks were narrow | The current compiler report now carries full per-seed diagnostics and matched-input primary contrasts; reproduction checks are extended to the revised Table 1 values and planning demand-error statements. | Exact checks execute after reports are regenerated from the released rasters. |
 
 ## Sixth-round minor revisions
 
@@ -37,7 +49,7 @@ and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
 | R5.m3 | Figure 2 error bars were seed SDs despite a bootstrap claim | The caption and Results now state exactly that bars use three-seed population SDs; paired spatial-block bootstrap intervals are reported separately in text, Table 1 discussion and the machine-readable report. |
 | R5.m4 | Figure 5 scale and change overlays were difficult to read | The figure was regenerated with a legible 2-km scale bar, north arrows and more distinct built/new-built colours. |
 | R5.m5 | Results still said “recovered public-data bundle” | Replaced this with “released public-data bundle.” |
-| R5.m6 | The Abstract did not qualify the FLUS build at first mention | The first Abstract mention now reads “FLUS-style ANN–CA console (untraceable build).” |
+| R5.m6 | The Abstract did not qualify the FLUS build at first mention | The first Abstract mention now reads “GeoSOS-derived FLUS-style ANN–CA console (author-modified build).” |
 | R5.m7 | Scenario-design limitations were dispersed | The Discussion now consolidates the lack of official demand basis, irrigation/water budget, reclamation authority, infrastructure capacity and stakeholder input within the public-data scenario-stress-test boundary. |
 
 ## Fourth-round major comments
@@ -51,7 +63,7 @@ and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
 | Fragmentation allowed built retirement to benefit FLUS | Fragmentation is now calculated from the union of 2024 built cells and newly built cells. This avoids both the semantic inversion of new-only components and the influence of model-specific built retirement. The former new-only metric is retained only as a diagnostic. | The revised metric is a post-processing change on the released rasters; no model rerun is required. |
 | Pareto mixed scenario selection with model behaviour | The primary frontier compares the three models within each scenario. FLUS-style and Kernel candidates are non-dominated in all three scenarios; GeoFM-LDN is dominated after the structural-zero ecological-conversion term is removed. The global nine-candidate frontier is retained only as lineage. | Pareto membership is conditional on public proxy layers and synthetic scenario actions. |
 | Objective sensitivity was qualitative | The strict evaluator was rerun at weights 0, 0.175, 0.35 and 0.7. Mean strict FoM ranges from 0.19598 to 0.19472 in 2023 and 0.25280 to 0.25130 in 2024; the full table and seed-level report are archived. All declared objective-set sensitivity variants retain the FLUS-style/Kernel structure. | These are robustness diagnostics on released rasters, not independent planning samples. |
-| FLUS was called GeoSOS-FLUS despite no traceable source | All reader-facing labels now use **FLUS-style ANN–CA console (untraceable build)**. The text does not claim equivalence to Liu et al. (2017); the internal `geosos_flus` identifier remains only for artifact compatibility. | Its source commit cannot be recovered from the supplied Mach-O binary. |
+| FLUS was called GeoSOS-FLUS despite no traceable source | All reader-facing labels now use **GeoSOS-derived FLUS-style ANN–CA console (author-modified build)**. The text does not claim equivalence to Liu et al. (2017); the internal `geosos_flus` identifier remains only for artifact compatibility. | Its source modifications are archived at FLUS_console_crossplatform commit deb0a54. |
 | Matched-input FLUS was not attempted | The earlier failure is now identified as a relative-path configuration error (`read config file error`), not a verified segmentation fault. With absolute paths, the supplied Mach-O arm64 console completed the 25-feature matched-input run for seeds 31, 47 and 73 and wrote valid probability surfaces plus 2023/2024 predictions. Two intermediate configurations (13 features: seven drivers plus current-class indicators; 19 features: seven drivers plus neighbourhood fractions) remain archived as diagnostics. Commands, configurations, logs and reports are archived under the corresponding `artifacts/predictions/` directories. | The headline comparison remains the original three-seed seven-driver FLUS-style control; the matched-input baseline is reported separately because matching features does not match the FLUS same-year suitability target to the Kernel next-state transition target or projection semantics. |
 | Windows reproducibility gate failed after CRLF conversion | The manifest builder now records canonical LF byte lengths for text files, and the gate applies the same normalization to its byte check. Generated-output hashes are schema v2 and also use LF-normalized text bytes/hashes. A present but non-executable host-specific FLUS binary is now reported as `warning_not_executable`; it no longer blocks the public-input integrity PASS. | Raw binaries and rasters still require exact raw bytes, and a compatible FLUS build remains necessary to execute that baseline on another OS. |
 | High-confidence subset was only a diagnostic | The title, Abstract, Results and Discussion now center the high-confidence result: all models score 0.000 strict FoM in 2023 and the 2024 maximum is 0.0188. The paper is framed as an audit protocol under noisy annual labels rather than a claim of validated model superiority. | An independent 2023–2024 change product or documented manual reference sample is still absent. |
@@ -79,8 +91,8 @@ and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
 1. Independent authoritative 2023–2024 change validation, or a documented
    manual reference sample, is necessary to validate whether Dynamic World
    changes represent real Abu Dhabi land-cover change.
-2. The FLUS-style binary is a macOS arm64 executable with no recoverable source
-   provenance. Its seven-driver run remains the headline unmatched control;
+2. The FLUS-style binary is a macOS arm64 executable whose GeoSOS source base
+   and author modifications are archived at commit `deb0a54`. Its seven-driver run remains the headline unmatched control;
    the 25-feature runs are reported as a separate matched-input baseline but do
    not make the learning tasks or projection semantics equivalent.
 3. Authoritative planning, reclamation, infrastructure-capacity, irrigation and

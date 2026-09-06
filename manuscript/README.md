@@ -3,7 +3,7 @@
 This package contains a revised LUP-oriented research-article draft based on
 the public-data Abu Dhabi Land-Use Benchmark V1. The manuscript evaluates
 Geospatial Kernel as the state–action–constraint core of a Geospatial World
-Model and compares it with a FLUS-style ANN–CA console (untraceable build) and
+Model and compares it with a FLUS-style ANN–CA console (author-modified build) and
 GeoFM-LDN.
 
 ## Main files
@@ -53,7 +53,7 @@ FoM; neither dominates both horizons. Within each 2031 scenario, the
 FLUS-style control and Kernel are non-dominated; GeoFM-LDN is dominated after
 the structural-zero ecological-conversion term is removed from the release
 objectives. The release objectives are major-road distance, prior-built distance
-and components in the 2024-built ∪ newly-built footprint. Ecological conversion
+and components in the combined 2024-built and newly built footprint. Ecological conversion
 is retained as a diagnostic only. These are conditional pipeline and stress-test results,
 not official Abu Dhabi forecasts.
 

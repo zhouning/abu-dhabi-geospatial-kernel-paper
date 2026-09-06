@@ -1,9 +1,23 @@
 # LUP review revision record
 
-This internal record describes the sixth-round revision to the public-data
+This internal record describes the seventh-round revision to the public-data
 manuscript. It is not part of the submitted paper.
 
 ## Implemented in this revision
+
+- Corrected FLUS provenance: the algorithmic base is the public GeoSOS source;
+  the bundled console is an author-modified build archived in
+  `FLUS_console_crossplatform` at commit `deb0a54`. The source adds
+  `train`/`train-update` entry points and `FLUS_RANDOM_SEED` deterministic
+  seeding, and `NOTICE` now records those differences.
+- Replaced the 25-feature three-seed matched-input mean and paired interval with
+  the valid seed-31 point comparison (0.1320 / 0.1960 FoM; 0.0599 / 0.0558
+  Kernel-minus-matched contrasts). Seeds 47 and 73 are reported as explicit
+  zero-change identity-leakage degeneracies.
+- Added compiler-level zero-change diagnostics and automatic archiving of the
+  matched-input ANN logs for seeds 31, 47 and 73, including RMSE and return-code
+  metadata. Updated Figure 2 to show the seed-31 diagnostic and revised the
+  portable audit protocol accordingly.
 
 - Regenerated and synchronized the manuscript, Table 1, Table 2, figure
   captions, PDF and DOCX with the current reports produced from the released
@@ -25,7 +39,7 @@ manuscript. It is not part of the submitted paper.
   within-scenario comparison of the three model outputs; added three declared
   objective-set sensitivity variants.
 - Renamed the reader-facing FLUS baseline to **FLUS-style ANN–CA console
-  (untraceable build)** and retained `geosos_flus` solely as a compatibility
+  (author-modified build)** and retained `geosos_flus` solely as a compatibility
   identifier.
 - Implemented 13-feature, 19-feature and 25-feature matched-input FLUS modes.
   The earlier failure was a relative-path configuration error. Corrected
@@ -75,8 +89,9 @@ the release objectives. Ecological conversion remains a reported diagnostic.
 
 1. There is no independent 2023–2024 built-area product or manually interpreted
    reference sample.
-2. The FLUS-style console remains an untraceable macOS arm64 binary. The
-   25-feature matched-input baseline is reported separately because matching
+2. The FLUS-style console is a GeoSOS-derived macOS arm64 binary with author
+   modifications archived at commit `deb0a54`. The 25-feature matched-input run
+   is reported separately because matching
    feature inputs does not match the learning target or projection semantics;
    the headline comparison remains the original three-seed seven-driver
    control.

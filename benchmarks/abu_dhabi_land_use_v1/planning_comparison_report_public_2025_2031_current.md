@@ -4,9 +4,9 @@
 
 | 模型 | 情景 | demand TV | 集成目标偏差(px) | 绿色增益(px) | 距主干路(m) | 距原建成区(m) | 既有∪新增建成斑块/千像元 | 生态转建成率 | 蛙跳率 | Pareto |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|:---:|
-| FLUS-style ANN–CA console (untraceable build) | Moderate growth (legacy compact) | 0.00068 | 2504 | 296 | 446.1 | 231.6 | 3.035 | 0.0168 | 0.083 | 是 |
-| FLUS-style ANN–CA console (untraceable build) | Green-priority growth | 0.00528 | 2888 | 629 | 443.7 | 212.7 | 3.265 | 0.0177 | 0.066 | 是 |
-| FLUS-style ANN–CA console (untraceable build) | High outward growth | 0.00045 | 2568 | 139 | 443.5 | 255.3 | 2.484 | 0.0131 | 0.107 | 是 |
+| GeoSOS-derived FLUS-style ANN–CA console (author-modified build) | Moderate growth (legacy compact) | 0.00068 | 2504 | 296 | 446.1 | 231.6 | 3.035 | 0.0168 | 0.083 | 是 |
+| GeoSOS-derived FLUS-style ANN–CA console (author-modified build) | Green-priority growth | 0.00528 | 2888 | 629 | 443.7 | 212.7 | 3.265 | 0.0177 | 0.066 | 是 |
+| GeoSOS-derived FLUS-style ANN–CA console (author-modified build) | High outward growth | 0.00045 | 2568 | 139 | 443.5 | 255.3 | 2.484 | 0.0131 | 0.107 | 是 |
 | Geospatial Kernel | Moderate growth (legacy compact) | 0.00000 | 60 | 350 | 336.7 | 117.4 | 3.922 | 0.0000 | 0.000 | 是 |
 | Geospatial Kernel | Green-priority growth | 0.00000 | 68 | 1050 | 319.8 | 111.3 | 4.256 | 0.0000 | 0.000 | 是 |
 | Geospatial Kernel | High outward growth | 0.00000 | 86 | 175 | 362.5 | 141.7 | 2.969 | 0.0000 | 0.001 | 是 |

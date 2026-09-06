@@ -608,7 +608,7 @@
       }
     }
   },
-  "created_at": "2026-09-06T10:55:33.119157+00:00",
+  "created_at": "2026-09-06T15:01:46.195231+00:00",
   "ensembles": {
     "geosos_flus": {
       "2023": {
@@ -937,20 +937,24 @@
   },
   "evidence_mode": "current_evaluator_on_current_reproduced_prediction_rasters",
   "interpretation": [
-    "Computed strict transition FoM ranking for 2023: Geospatial Kernel > GeoFM-LDN > FLUS-style ANN–CA console (untraceable build).",
-    "Geospatial Kernel is above FLUS-style ANN–CA console (untraceable build) by 0.069462 strict FoM at 2023.",
-    "GeoFM-LDN is above FLUS-style ANN–CA console (untraceable build) by 0.035977 strict FoM at 2023.",
+    "Computed strict transition FoM ranking for 2023: Geospatial Kernel > GeoFM-LDN > GeoSOS-derived FLUS-style ANN–CA console (author-modified build).",
+    "Geospatial Kernel is above GeoSOS-derived FLUS-style ANN–CA console (author-modified build) by 0.069462 strict FoM at 2023.",
+    "GeoFM-LDN is above GeoSOS-derived FLUS-style ANN–CA console (author-modified build) by 0.035977 strict FoM at 2023.",
     "GeoFM-LDN is below Geospatial Kernel by 0.033485 strict FoM at 2023.",
-    "Computed strict transition FoM ranking for 2024: GeoFM-LDN > Geospatial Kernel > FLUS-style ANN–CA console (untraceable build).",
-    "Geospatial Kernel is above FLUS-style ANN–CA console (untraceable build) by 0.073802 strict FoM at 2024.",
-    "GeoFM-LDN is above FLUS-style ANN–CA console (untraceable build) by 0.092552 strict FoM at 2024.",
+    "Computed strict transition FoM ranking for 2024: GeoFM-LDN > Geospatial Kernel > GeoSOS-derived FLUS-style ANN–CA console (author-modified build).",
+    "Geospatial Kernel is above GeoSOS-derived FLUS-style ANN–CA console (author-modified build) by 0.073802 strict FoM at 2024.",
+    "GeoFM-LDN is above GeoSOS-derived FLUS-style ANN–CA console (author-modified build) by 0.092552 strict FoM at 2024.",
     "GeoFM-LDN is above Geospatial Kernel by 0.018749 strict FoM at 2024.",
     "Persistence and random-minimum-change controls are reported as explicit zero-model controls.",
     "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
     "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects."
   ],
   "matched_input_baseline": {
-    "bootstrap_95ci": {
+    "collapsed_seeds": [
+      47,
+      73
+    ],
+    "diagnostic_bootstrap_95ci": {
       "2023": {
         "change_figure_of_merit": {
           "lower_mean": 0.039627933001539856,
@@ -1088,11 +1092,7 @@
         }
       }
     },
-    "display_name": "FLUS matched-input baseline (25 features)",
-    "feature_count": 25,
-    "model_id": "flus_matched_input",
-    "source_report": "artifacts/predictions/flus_matched_inputs_abs/report.json",
-    "summaries": {
+    "diagnostic_summaries": {
       "2023": {
         "binary_change_figure_of_merit": {
           "mean": 0.045064268658232993,
@@ -1242,7 +1242,103 @@
         }
       }
     },
-    "training_target_boundary": "same-year label suitability; not next-state transition learning"
+    "display_name": "FLUS matched-input baseline (25 features)",
+    "feature_count": 25,
+    "interpretation": "Three seeds were run; seeds 47 and 73 collapsed to zero-change outputs because current-class one-hot inputs leak the same-year label target. They are retained as diagnostics, not averaged into the baseline or paired interval.",
+    "model_id": "flus_matched_input",
+    "per_seed": {
+      "2023": [
+        {
+          "change_f1": 0.23818474758324382,
+          "change_figure_of_merit": 0.13199207437890564,
+          "degeneracy_reason": null,
+          "demand_total_variation": 0.0022828186538895717,
+          "macro_f1": 0.8559492501801526,
+          "overall_accuracy": 0.9285678448686752,
+          "predicted_change_pixels": 2948,
+          "seed": 31,
+          "target_year": 2023,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.0,
+          "change_figure_of_merit": 0.0,
+          "degeneracy_reason": "current_class_identity_leakage_zero_change",
+          "demand_total_variation": 0.038795374156485964,
+          "macro_f1": 0.868429656837138,
+          "overall_accuracy": 0.9435566816345985,
+          "predicted_change_pixels": 0,
+          "seed": 47,
+          "target_year": 2023,
+          "zero_change_output": true
+        },
+        {
+          "change_f1": 0.0,
+          "change_figure_of_merit": 0.0,
+          "degeneracy_reason": "current_class_identity_leakage_zero_change",
+          "demand_total_variation": 0.038795374156485964,
+          "macro_f1": 0.868429656837138,
+          "overall_accuracy": 0.9435566816345985,
+          "predicted_change_pixels": 0,
+          "seed": 73,
+          "target_year": 2023,
+          "zero_change_output": true
+        }
+      ],
+      "2024": [
+        {
+          "change_f1": 0.33190406002947875,
+          "change_figure_of_merit": 0.19599967868905133,
+          "degeneracy_reason": null,
+          "demand_total_variation": 0.005192785289616938,
+          "macro_f1": 0.7832410137803224,
+          "overall_accuracy": 0.8744575169957103,
+          "predicted_change_pixels": 6462,
+          "seed": 31,
+          "target_year": 2024,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.0,
+          "change_figure_of_merit": 0.0,
+          "degeneracy_reason": "current_class_identity_leakage_zero_change",
+          "demand_total_variation": 0.08571858615758975,
+          "macro_f1": 0.7906708471378602,
+          "overall_accuracy": 0.8938363896344982,
+          "predicted_change_pixels": 0,
+          "seed": 47,
+          "target_year": 2024,
+          "zero_change_output": true
+        },
+        {
+          "change_f1": 0.0,
+          "change_figure_of_merit": 0.0,
+          "degeneracy_reason": "current_class_identity_leakage_zero_change",
+          "demand_total_variation": 0.08571858615758975,
+          "macro_f1": 0.7906708471378602,
+          "overall_accuracy": 0.8938363896344982,
+          "predicted_change_pixels": 0,
+          "seed": 73,
+          "target_year": 2024,
+          "zero_change_output": true
+        }
+      ]
+    },
+    "primary": {
+      "2023": {
+        "kernel_minus_matched_block_bootstrap_median": 0.05949578118314376,
+        "kernel_minus_matched_point_contrast": 0.0599462030577185,
+        "matched_strict_fom": 0.13199207437890564
+      },
+      "2024": {
+        "kernel_minus_matched_block_bootstrap_median": 0.055754908309528686,
+        "kernel_minus_matched_point_contrast": 0.055833256478590165,
+        "matched_strict_fom": 0.19599967868905133
+      }
+    },
+    "source_report": "artifacts/predictions/flus_matched_inputs_abs/report.json",
+    "training_target_boundary": "same-year label suitability; not next-state transition learning",
+    "valid_seed": 31
   },
   "mean_change_fom_deltas": {
     "2023": {
@@ -1259,7 +1355,7 @@
   "metric_version": "strict_multiclass_fom_v2",
   "model_display_names": {
     "flus_matched_input": "FLUS matched-input baseline (25 features)",
-    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
+    "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN"
   },
@@ -1270,77 +1366,92 @@
   ],
   "pairwise_bootstrap_95ci": {
     "2023": {
-      "geospatial_kernel_minus_flus_matched_input": {
+      "geospatial_kernel_minus_flus_matched_input_diagnostic": {
+        "diagnostic_per_seed": [
+          {
+            "alpha": 0.05,
+            "block_count": 1340,
+            "block_size_pixels": 8,
+            "change_figure_of_merit": {
+              "lower": 0.04795890315766901,
+              "median": 0.05949578118314376,
+              "upper": 0.07263156915183128
+            },
+            "comparison": "prediction_a_minus_prediction_b",
+            "macro_f1": {
+              "lower": -0.013159819690098797,
+              "median": -0.006506471015571502,
+              "upper": -0.0004062116985268387
+            },
+            "method": "paired_spatial_block_bootstrap_difference",
+            "n_resamples": 1000,
+            "overall_accuracy": {
+              "lower": 0.005035373461317233,
+              "median": 0.00699933229726335,
+              "upper": 0.00918333749228858
+            },
+            "pixel_count": 79726,
+            "sampling_unit": "shared_spatial_block_triplets",
+            "seed": 602054
+          },
+          {
+            "alpha": 0.05,
+            "block_count": 1340,
+            "block_size_pixels": 8,
+            "change_figure_of_merit": {
+              "lower": 0.17703630968527662,
+              "median": 0.19623149225052344,
+              "upper": 0.21323157937485618
+            },
+            "comparison": "prediction_a_minus_prediction_b",
+            "macro_f1": {
+              "lower": -0.027287579351434915,
+              "median": -0.018963438639459484,
+              "upper": -0.012019176200962437
+            },
+            "method": "paired_spatial_block_bootstrap_difference",
+            "n_resamples": 1000,
+            "overall_accuracy": {
+              "lower": -0.009590344276649062,
+              "median": -0.0073693727325108704,
+              "upper": -0.004971430857843651
+            },
+            "pixel_count": 79726,
+            "sampling_unit": "shared_spatial_block_triplets",
+            "seed": 602070
+          },
+          {
+            "alpha": 0.05,
+            "block_count": 1340,
+            "block_size_pixels": 8,
+            "change_figure_of_merit": {
+              "lower": 0.18014008810802953,
+              "median": 0.19714487716293522,
+              "upper": 0.21599532029200832
+            },
+            "comparison": "prediction_a_minus_prediction_b",
+            "macro_f1": {
+              "lower": -0.024723607196027474,
+              "median": -0.017527236133068835,
+              "upper": -0.011507742847429432
+            },
+            "method": "paired_spatial_block_bootstrap_difference",
+            "n_resamples": 1000,
+            "overall_accuracy": {
+              "lower": -0.009226529191372453,
+              "median": -0.007138257371446022,
+              "upper": -0.004868051692258718
+            },
+            "pixel_count": 79726,
+            "sampling_unit": "shared_spatial_block_triplets",
+            "seed": 602096
+          }
+        ],
         "model_a": "geospatial_kernel",
         "model_b": "flus_matched_input",
-        "summary": {
-          "change_figure_of_merit": {
-            "lower_mean": 0.1350451003169917,
-            "median_mean": 0.1509573835322008,
-            "per_seed": [
-              {
-                "lower": 0.04795890315766901,
-                "median": 0.05949578118314376,
-                "upper": 0.07263156915183128
-              },
-              {
-                "lower": 0.17703630968527662,
-                "median": 0.19623149225052344,
-                "upper": 0.21323157937485618
-              },
-              {
-                "lower": 0.18014008810802953,
-                "median": 0.19714487716293522,
-                "upper": 0.21599532029200832
-              }
-            ],
-            "upper_mean": 0.16728615627289858
-          },
-          "macro_f1": {
-            "lower_mean": -0.021723668745853728,
-            "median_mean": -0.014332381929366608,
-            "per_seed": [
-              {
-                "lower": -0.013159819690098797,
-                "median": -0.006506471015571502,
-                "upper": -0.0004062116985268387
-              },
-              {
-                "lower": -0.027287579351434915,
-                "median": -0.018963438639459484,
-                "upper": -0.012019176200962437
-              },
-              {
-                "lower": -0.024723607196027474,
-                "median": -0.017527236133068835,
-                "upper": -0.011507742847429432
-              }
-            ],
-            "upper_mean": -0.007977710248972902
-          },
-          "overall_accuracy": {
-            "lower_mean": -0.0045938333355680944,
-            "median_mean": -0.002502765935564514,
-            "per_seed": [
-              {
-                "lower": 0.005035373461317233,
-                "median": 0.00699933229726335,
-                "upper": 0.00918333749228858
-              },
-              {
-                "lower": -0.009590344276649062,
-                "median": -0.0073693727325108704,
-                "upper": -0.004971430857843651
-              },
-              {
-                "lower": -0.009226529191372453,
-                "median": -0.007138257371446022,
-                "upper": -0.004868051692258718
-              }
-            ],
-            "upper_mean": -0.00021871501927126324
-          }
-        }
+        "primary_block_bootstrap_median": 0.05949578118314376,
+        "primary_point_contrast": 0.0599462030577185,
+        "primary_seed": 31
       },
       "geospatial_kernel_minus_geosos_flus": {
         "model_a": "geospatial_kernel",
@@ -1560,77 +1671,92 @@
       }
     },
     "2024": {
-      "geospatial_kernel_minus_flus_matched_input": {
+      "geospatial_kernel_minus_flus_matched_input_diagnostic": {
+        "diagnostic_per_seed": [
+          {
+            "alpha": 0.05,
+            "block_count": 1340,
+            "block_size_pixels": 8,
+            "change_figure_of_merit": {
+              "lower": 0.04545810548681487,
+              "median": 0.055754908309528686,
+              "upper": 0.06593201483607528
+            },
+            "comparison": "prediction_a_minus_prediction_b",
+            "macro_f1": {
+              "lower": -0.025120417761163555,
+              "median": -0.01563419166367036,
+              "upper": -0.007335523592332613
+            },
+            "method": "paired_spatial_block_bootstrap_difference",
+            "n_resamples": 1000,
+            "overall_accuracy": {
+              "lower": 0.008354327947749391,
+              "median": 0.011572249064032425,
+              "upper": 0.014963068674613247
+            },
+            "pixel_count": 79726,
+            "sampling_unit": "shared_spatial_block_triplets",
+            "seed": 602055
+          },
+          {
+            "alpha": 0.05,
+            "block_count": 1340,
+            "block_size_pixels": 8,
+            "change_figure_of_merit": {
+              "lower": 0.22953773920638018,
+              "median": 0.2521294740039348,
+              "upper": 0.27257020563409706
+            },
+            "comparison": "prediction_a_minus_prediction_b",
+            "macro_f1": {
+              "lower": -0.03668092039691973,
+              "median": -0.025101663614174208,
+              "upper": -0.01547763847828279
+            },
+            "method": "paired_spatial_block_bootstrap_difference",
+            "n_resamples": 1000,
+            "overall_accuracy": {
+              "lower": -0.012467636753828882,
+              "median": -0.007694548880986862,
+              "upper": -0.002951655276944884
+            },
+            "pixel_count": 79726,
+            "sampling_unit": "shared_spatial_block_triplets",
+            "seed": 602071
+          },
+          {
+            "alpha": 0.05,
+            "block_count": 1340,
+            "block_size_pixels": 8,
+            "change_figure_of_merit": {
+              "lower": 0.23125238228544792,
+              "median": 0.2522564544200361,
+              "upper": 0.27144191283691693
+            },
+            "comparison": "prediction_a_minus_prediction_b",
+            "macro_f1": {
+              "lower": -0.033157718378865476,
+              "median": -0.0234651049643973,
+              "upper": -0.014983887877771163
+            },
+            "method": "paired_spatial_block_bootstrap_difference",
+            "n_resamples": 1000,
+            "overall_accuracy": {
+              "lower": -0.012687246580333131,
+              "median": -0.008032507835243008,
+              "upper": -0.0029849360079331343
+            },
+            "pixel_count": 79726,
+            "sampling_unit": "shared_spatial_block_triplets",
+            "seed": 602097
+          }
+        ],
         "model_a": "geospatial_kernel",
         "model_b": "flus_matched_input",
-        "summary": {
-          "change_figure_of_merit": {
-            "lower_mean": 0.168749408992881,
-            "median_mean": 0.18671361224449987,
-            "per_seed": [
-              {
-                "lower": 0.04545810548681487,
-                "median": 0.055754908309528686,
-                "upper": 0.06593201483607528
-              },
-              {
-                "lower": 0.22953773920638018,
-                "median": 0.2521294740039348,
-                "upper": 0.27257020563409706
-              },
-              {
-                "lower": 0.23125238228544792,
-                "median": 0.2522564544200361,
-                "upper": 0.27144191283691693
-              }
-            ],
-            "upper_mean": 0.2033147111023631
-          },
-          "macro_f1": {
-            "lower_mean": -0.03165301884564959,
-            "median_mean": -0.021400320080747288,
-            "per_seed": [
-              {
-                "lower": -0.025120417761163555,
-                "median": -0.01563419166367036,
-                "upper": -0.007335523592332613
-              },
-              {
-                "lower": -0.03668092039691973,
-                "median": -0.025101663614174208,
-                "upper": -0.01547763847828279
-              },
-              {
-                "lower": -0.033157718378865476,
-                "median": -0.0234651049643973,
-                "upper": -0.014983887877771163
-              }
-            ],
-            "upper_mean": -0.012599016649462188
-          },
-          "overall_accuracy": {
-            "lower_mean": -0.0056001851288042075,
-            "median_mean": -0.001384935884065815,
-            "per_seed": [
-              {
-                "lower": 0.008354327947749391,
-                "median": 0.011572249064032425,
-                "upper": 0.014963068674613247
-              },
-              {
-                "lower": -0.012467636753828882,
-                "median": -0.007694548880986862,
-                "upper": -0.002951655276944884
-              },
-              {
-                "lower": -0.012687246580333131,
-                "median": -0.008032507835243008,
-                "upper": -0.0029849360079331343
-              }
-            ],
-            "upper_mean": 0.0030088257965784093
-          }
-        }
+        "primary_block_bootstrap_median": 0.055754908309528686,
+        "primary_point_contrast": 0.055833256478590165,
+        "primary_seed": 31
       },
       "geospatial_kernel_minus_geosos_flus": {
         "model_a": "geospatial_kernel",
@@ -2362,7 +2488,225 @@
   },
   "reproducibility_status": "complete_if_all_input_and_model_artifacts_are_present",
   "revision_status": "rerun_from_current_rasters",
-  "schema": "gwm.abu_dhabi_three_model_comparison.v1",
+  "schema": "gwm.abu_dhabi_three_model_comparison.v2",
+  "seed_diagnostics": {
+    "geosos_flus": {
+      "2023": [
+        {
+          "change_f1": 0.2226229114076211,
+          "change_figure_of_merit": 0.12227783038008927,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8462585400685354,
+          "overall_accuracy": 0.918608734917091,
+          "predicted_change_pixels": 3819,
+          "seed": 31,
+          "target_year": 2023,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.2369139465875371,
+          "change_figure_of_merit": 0.13195098963242224,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8467905385828293,
+          "overall_accuracy": 0.9191355392218348,
+          "predicted_change_pixels": 3925,
+          "seed": 47,
+          "target_year": 2023,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.222458377612469,
+          "change_figure_of_merit": 0.12249236083432975,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8392412012267761,
+          "overall_accuracy": 0.9171537515992274,
+          "predicted_change_pixels": 3969,
+          "seed": 73,
+          "target_year": 2023,
+          "zero_change_output": false
+        }
+      ],
+      "2024": [
+        {
+          "change_f1": 0.2829811179192197,
+          "change_figure_of_merit": 0.16138664336173622,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7551721822315672,
+          "overall_accuracy": 0.855567819782756,
+          "predicted_change_pixels": 7530,
+          "seed": 31,
+          "target_year": 2024,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.3260936823216385,
+          "change_figure_of_merit": 0.19214845482773918,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7494801694274159,
+          "overall_accuracy": 0.8629430800491684,
+          "predicted_change_pixels": 7697,
+          "seed": 47,
+          "target_year": 2024,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.3122174747662394,
+          "change_figure_of_merit": 0.181171118285882,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7402238133589881,
+          "overall_accuracy": 0.860033113413441,
+          "predicted_change_pixels": 7685,
+          "seed": 73,
+          "target_year": 2024,
+          "zero_change_output": false
+        }
+      ]
+    },
+    "geospatial_kernel": {
+      "2023": [
+        {
+          "change_f1": 0.327143421572501,
+          "change_figure_of_merit": 0.19193827743662414,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8495147592211086,
+          "overall_accuracy": 0.9356295311441688,
+          "predicted_change_pixels": 3093,
+          "seed": 31,
+          "target_year": 2023,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.33372843408402475,
+          "change_figure_of_merit": 0.19570028453999366,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8493754349790797,
+          "overall_accuracy": 0.936181421368186,
+          "predicted_change_pixels": 3093,
+          "seed": 47,
+          "target_year": 2023,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.3353088370867905,
+          "change_figure_of_merit": 0.19746835443037974,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8506021428387517,
+          "overall_accuracy": 0.9363821087223742,
+          "predicted_change_pixels": 3093,
+          "seed": 73,
+          "target_year": 2023,
+          "zero_change_output": false
+        }
+      ],
+      "2024": [
+        {
+          "change_f1": 0.4129951627663747,
+          "change_figure_of_merit": 0.2518329351676415,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7670648882734099,
+          "overall_accuracy": 0.8860848405789831,
+          "predicted_change_pixels": 6834,
+          "seed": 31,
+          "target_year": 2024,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.4132566348542293,
+          "change_figure_of_merit": 0.25179204086677104,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7654500018010375,
+          "overall_accuracy": 0.8860973835386198,
+          "predicted_change_pixels": 6834,
+          "seed": 47,
+          "target_year": 2024,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.41038044188782846,
+          "change_figure_of_merit": 0.25248786906817994,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7671304991115369,
+          "overall_accuracy": 0.8859970398615257,
+          "predicted_change_pixels": 6834,
+          "seed": 73,
+          "target_year": 2024,
+          "zero_change_output": false
+        }
+      ]
+    },
+    "paper58": {
+      "2023": [
+        {
+          "change_f1": 0.2770973264849203,
+          "change_figure_of_merit": 0.1560923406207002,
+          "degeneracy_reason": null,
+          "macro_f1": 0.844869592217688,
+          "overall_accuracy": 0.9307628628051074,
+          "predicted_change_pixels": 3093,
+          "seed": 31,
+          "target_year": 2023,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.2884235480047412,
+          "change_figure_of_merit": 0.1634349030470914,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8458047284816783,
+          "overall_accuracy": 0.931816471414595,
+          "predicted_change_pixels": 3093,
+          "seed": 47,
+          "target_year": 2023,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.2915843540102726,
+          "change_figure_of_merit": 0.16512488436632747,
+          "degeneracy_reason": null,
+          "macro_f1": 0.8463246908078822,
+          "overall_accuracy": 0.9320798735669669,
+          "predicted_change_pixels": 3093,
+          "seed": 73,
+          "target_year": 2023,
+          "zero_change_output": false
+        }
+      ],
+      "2024": [
+        {
+          "change_f1": 0.42449993463197805,
+          "change_figure_of_merit": 0.2626338063231267,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7689917848101163,
+          "overall_accuracy": 0.8885432606677872,
+          "predicted_change_pixels": 6834,
+          "seed": 31,
+          "target_year": 2024,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.4360047064975814,
+          "change_figure_of_merit": 0.27192175875616487,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7682314829405278,
+          "overall_accuracy": 0.8907508215638562,
+          "predicted_change_pixels": 6834,
+          "seed": 47,
+          "target_year": 2024,
+          "zero_change_output": false
+        },
+        {
+          "change_f1": 0.4437181330892927,
+          "change_figure_of_merit": 0.2778057795698925,
+          "degeneracy_reason": null,
+          "macro_f1": 0.7708034063165835,
+          "overall_accuracy": 0.8921681760028096,
+          "predicted_change_pixels": 6834,
+          "seed": 73,
+          "target_year": 2024,
+          "zero_change_output": false
+        }
+      ]
+    }
+  },
   "seeds": [
     31,
     47,

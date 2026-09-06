@@ -34,7 +34,7 @@ YEARS = (2023, 2024)
 BOOTSTRAP_RESAMPLES = 1000
 BOOTSTRAP_BLOCK_SIZE_PIXELS = 8
 MODEL_DISPLAY_NAMES = {
-    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
+    "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
     MATCHED_MODEL: "FLUS matched-input baseline (25 features)",
@@ -213,6 +213,9 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
     prediction_cache: dict[str, dict[int, dict[int, np.ndarray]]] = {
         model: {seed: {} for seed in (31, 47, 73)} for model in MODELS
     }
+    seed_diagnostics: dict[str, dict[str, list[dict[str, Any]]]] = {
+        model: {} for model in MODELS
+    }
     for model in MODELS:
         summaries[model] = {}
         ensembles[model] = {}
@@ -229,6 +232,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
             }
             evaluation_rows = []
             bootstrap_rows = []
+            diagnostic_rows = []
             for seed in seed_ids:
                 prediction, _ = _read(
                     PREDICTION_ROOT / model / f"seed_{seed}/prediction_{year}.tif"
@@ -244,6 +248,23 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                     reliability_mask=reliability[0].astype(bool),
                 )
                 evaluation_rows.append(evaluation)
+                diagnostic_rows.append(
+                    {
+                        "seed": seed,
+                        "target_year": year,
+                        "predicted_change_pixels": evaluation["predicted_change_pixels"],
+                        "zero_change_output": evaluation["predicted_change_pixels"] == 0,
+                        "degeneracy_reason": (
+                            "zero_change_output_detected"
+                            if evaluation["predicted_change_pixels"] == 0
+                            else None
+                        ),
+                        "change_figure_of_merit": evaluation["change_figure_of_merit"],
+                        "change_f1": evaluation["change_f1"],
+                        "overall_accuracy": evaluation["overall_accuracy"],
+                        "macro_f1": evaluation["macro_f1"],
+                    }
+                )
                 bootstrap_rows.append(
                     paired_pixel_bootstrap_ci(
                         prediction[0],
@@ -256,6 +277,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                     )
                 )
             summaries[model][str(year)] = _aggregate(evaluation_rows)
+            seed_diagnostics[model][str(year)] = diagnostic_rows
             bootstrap[model][str(year)] = _aggregate_bootstrap(bootstrap_rows)
             states = [
                 _read(PREDICTION_ROOT / model / f"seed_{seed}/prediction_{year}.tif")[0][0]
@@ -289,12 +311,14 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
     matched_cache: dict[int, dict[int, np.ndarray]] = {seed: {} for seed in matched_seed_ids}
     matched_summaries: dict[str, Any] = {}
     matched_bootstrap: dict[str, Any] = {}
+    matched_seed_diagnostics: dict[str, list[dict[str, Any]]] = {}
     for year in YEARS:
         action = action_by_year[year]
         reliability, _ = _read(HERE / action["reliability_mask"])
         target_counts = {int(key): int(value) for key, value in action["feasible_target_counts"].items()}
         evaluation_rows = []
         bootstrap_rows = []
+        diagnostic_rows = []
         for seed_row in matched_report["seeds"]:
             seed = int(seed_row["seed"])
             prediction, _ = _read(PREDICTION_ROOT / "flus_matched_inputs_abs" / f"seed_{seed}/prediction_{year}.tif")
@@ -305,6 +329,24 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 requested_counts=target_counts, reliability_mask=reliability[0].astype(bool),
             )
             evaluation_rows.append(evaluation)
+            diagnostic_rows.append(
+                {
+                    "seed": seed,
+                    "target_year": year,
+                    "predicted_change_pixels": evaluation["predicted_change_pixels"],
+                    "zero_change_output": evaluation["predicted_change_pixels"] == 0,
+                    "degeneracy_reason": (
+                        "current_class_identity_leakage_zero_change"
+                        if evaluation["predicted_change_pixels"] == 0
+                        else None
+                    ),
+                    "change_figure_of_merit": evaluation["change_figure_of_merit"],
+                    "change_f1": evaluation["change_f1"],
+                    "macro_f1": evaluation["macro_f1"],
+                    "overall_accuracy": evaluation["overall_accuracy"],
+                    "demand_total_variation": evaluation["demand_total_variation"],
+                }
+            )
             bootstrap_rows.append(
                 paired_pixel_bootstrap_ci(
                     prediction[0], origin_state=origin[0], observed_target=observed[year],
@@ -314,6 +356,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
             )
         matched_summaries[str(year)] = _aggregate(evaluation_rows)
         matched_bootstrap[str(year)] = _aggregate_bootstrap(bootstrap_rows)
+        matched_seed_diagnostics[str(year)] = diagnostic_rows
 
     matched_pairwise: dict[str, Any] = {}
     for year in YEARS:
@@ -330,7 +373,15 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         matched_pairwise[str(year)] = {
             "model_a": "geospatial_kernel",
             "model_b": MATCHED_MODEL,
-            "summary": _aggregate_difference_bootstrap(seed_rows),
+            "primary_seed": 31,
+            "primary_point_contrast": float(
+                summaries["geospatial_kernel"][str(year)]["change_figure_of_merit"]["values"][0]
+                - matched_seed_diagnostics[str(year)][0]["change_figure_of_merit"]
+            ),
+            "primary_block_bootstrap_median": float(
+                seed_rows[0]["change_figure_of_merit"]["median"]
+            ),
+            "diagnostic_per_seed": seed_rows,
         }
 
     for year in YEARS:
@@ -360,7 +411,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 "model_b": right,
                 "summary": _aggregate_difference_bootstrap(seed_rows),
             }
-        pairwise_bootstrap[year_key]["geospatial_kernel_minus_flus_matched_input"] = matched_pairwise[year_key]
+        pairwise_bootstrap[year_key]["geospatial_kernel_minus_flus_matched_input_diagnostic"] = matched_pairwise[year_key]
 
     persistence = {}
     random_baseline = {}
@@ -440,7 +491,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 - summaries[right][key]["change_figure_of_merit"]["mean"]
             )
     report = {
-        "schema": "gwm.abu_dhabi_three_model_comparison.v1",
+        "schema": "gwm.abu_dhabi_three_model_comparison.v2",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "metric_version": "strict_multiclass_fom_v2",
         "revision_status": "rerun_from_current_rasters",
@@ -458,9 +509,22 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
             "feature_count": 25,
             "training_target_boundary": "same-year label suitability; not next-state transition learning",
             "source_report": "artifacts/predictions/flus_matched_inputs_abs/report.json",
-            "summaries": matched_summaries,
-            "bootstrap_95ci": matched_bootstrap,
+            "valid_seed": 31,
+            "collapsed_seeds": [47, 73],
+            "primary": {
+                str(year): {
+                    "matched_strict_fom": matched_seed_diagnostics[str(year)][0]["change_figure_of_merit"],
+                    "kernel_minus_matched_point_contrast": matched_pairwise[str(year)]["primary_point_contrast"],
+                    "kernel_minus_matched_block_bootstrap_median": matched_pairwise[str(year)]["primary_block_bootstrap_median"],
+                }
+                for year in YEARS
+            },
+            "per_seed": matched_seed_diagnostics,
+            "diagnostic_summaries": matched_summaries,
+            "diagnostic_bootstrap_95ci": matched_bootstrap,
+            "interpretation": "Three seeds were run; seeds 47 and 73 collapsed to zero-change outputs because current-class one-hot inputs leak the same-year label target. They are retained as diagnostics, not averaged into the baseline or paired interval.",
         },
+        "seed_diagnostics": seed_diagnostics,
         "bootstrap_95ci": bootstrap,
         "pairwise_bootstrap_95ci": pairwise_bootstrap,
         "ensembles": ensembles,
@@ -502,7 +566,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "|---:|---|---:|---:|---:|---:|---:|",
     ]
     labels = {
-        "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
+        "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
         "geospatial_kernel": "Geospatial Kernel",
         "paper58": "GeoFM-LDN",
     }
@@ -535,18 +599,19 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Matched-input FLUS baseline",
             "",
-            "The 25-feature FLUS run shares the Kernel feature family but not its next-state training target or projection semantics. It is therefore reported as a separate baseline.",
+            "The 25-feature FLUS run shares the Kernel feature family but not its next-state training target or projection semantics. Three seeds were run; seeds 47 and 73 collapsed to zero-change outputs because current-class one-hot inputs leak the same-year label target. Only seed 31 is retained as the valid matched-input point comparison.",
             "",
-            "| 年份 | FLUS matched-input strict FoM | Kernel − matched-input paired interval |",
-            "|---:|---:|---:|",
+            "| 年份 | FLUS matched-input strict FoM (seed 31) | Kernel − matched-input raw point contrast | Within-seed block-bootstrap median |",
+            "|---:|---:|---:|---:|",
         ]
     )
     matched = report["matched_input_baseline"]
     for year in YEARS:
-        pair = report["pairwise_bootstrap_95ci"][str(year)]["geospatial_kernel_minus_flus_matched_input"]["summary"]["change_figure_of_merit"]
+        primary = matched["primary"][str(year)]
         lines.append(
-            f"| {year} | {matched['summaries'][str(year)]['change_figure_of_merit']['mean']:.4f} | "
-            f"[{pair['lower_mean']:.4f}, {pair['upper_mean']:.4f}] |"
+            f"| {year} | {primary['matched_strict_fom']:.4f} | "
+            f"{primary['kernel_minus_matched_point_contrast']:.4f} | "
+            f"{primary['kernel_minus_matched_block_bootstrap_median']:.4f} |"
         )
     lines.extend(
         [

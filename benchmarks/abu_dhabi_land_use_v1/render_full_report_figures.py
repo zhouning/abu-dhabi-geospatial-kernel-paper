@@ -22,7 +22,7 @@ BUNDLE_ROOT = HERE / "artifacts/bundle"
 OSM_ROOT = HERE / "artifacts/osm"
 MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")
 MODEL_LABELS = {
-    "geosos_flus": "FLUS-style ANN–CA\nconsole (untraceable build)",
+    "geosos_flus": "FLUS-style ANN–CA\nconsole (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
 }

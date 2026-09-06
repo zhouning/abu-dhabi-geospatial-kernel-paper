@@ -1,7 +1,7 @@
 # Abu Dhabi Land-Use Benchmark V1
 
 This directory is the single execution boundary for comparing a FLUS-style
-ANN–CA console (untraceable build), the GWM Geospatial Kernel and GeoFM-LDN
+ANN–CA console (author-modified build), the GWM Geospatial Kernel and GeoFM-LDN
 (Geospatial Foundation-Model Latent Dynamics Network) on Abu Dhabi city
 land-cover simulation and constrained planning stress tests.
 

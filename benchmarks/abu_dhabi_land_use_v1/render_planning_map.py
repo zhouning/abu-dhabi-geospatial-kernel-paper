@@ -20,7 +20,7 @@ DEFAULT_OUTPUT = HERE / "planning_2030_comparison.png"
 MODEL_IDS = ("geosos_flus", "geospatial_kernel", "paper58")
 SCENARIO_IDS = ("compact", "ecological_priority", "outward_growth")
 MODEL_LABELS = {
-    "geosos_flus": "FLUS-style ANN–CA (untraceable build)",
+    "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
 }

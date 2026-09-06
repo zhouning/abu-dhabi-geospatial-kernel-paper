@@ -7,6 +7,8 @@ venv/
 *.fls
 *.fdb_latexmk
 *.log
+!benchmarks/abu_dhabi_land_use_v1/artifacts/flus_matched_input_review/logs/
+!benchmarks/abu_dhabi_land_use_v1/artifacts/flus_matched_input_review/logs/**/*.log
 *.out
 *.xdv
 *.synctex.gz

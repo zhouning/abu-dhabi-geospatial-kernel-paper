@@ -17,16 +17,19 @@ The feature modes are:
 |---|---:|---:|---:|---|
 | `baseline_plus_onehot` | 13 (7 drivers + 6 current-class indicators) | 0.0000 | 0.0000 | `artifacts/predictions/flus_7_plus_onehot_abs/report.json` |
 | `baseline_plus_neighborhood` | 19 (7 drivers + 12 3×3/7×7 neighbourhood fractions) | 0.1371 | 0.1149 | `artifacts/predictions/flus_7_plus_neighbourhood_abs/report.json` |
-| `matched_kernel` | 25 (6 one-hot + 12 neighbourhood + 7 continuous, Kernel order) | 0.0440 (three-seed mean) | 0.0653 (three-seed mean) | `artifacts/predictions/flus_matched_inputs_abs/report.json` |
+| `matched_kernel` | 25 (6 one-hot + 12 neighbourhood + 7 continuous, Kernel order) | 0.1320 (valid seed 31 only) | 0.1960 (valid seed 31 only) | `artifacts/predictions/flus_matched_inputs_abs/report.json` |
 
-The 25-feature values are a separate matched-input baseline, not a replacement
+The 25-feature values are a separate matched-input diagnostic, not a replacement
 for the original seven-driver headline control. The feature family is matched,
 but the learning target is not: FLUS estimates same-year suitability from the
 current label, whereas the Kernel estimates next-state transitions before
-constraint projection. The 13-feature run is especially degenerate because the
-current-class indicators expose the same label used as the ANN target. Its ANN
-RMSE is approximately $1.6\times10^{-5}$, and the resulting CA changes zero
-pixels. This is identity leakage, not evidence of a no-change process.
+constraint projection. Seeds 47 and 73 of the 25-feature run change zero pixels
+in both target years and are explicitly excluded from the point comparison;
+their strict FoM is 0.0000 and their overall accuracy equals persistence. The
+13-feature run is likewise degenerate because the current-class indicators
+expose the same label used as the ANN target. Its ANN RMSE is approximately
+$1.6\times10^{-5}$, and the resulting CA changes zero pixels. These are
+identity-leakage diagnostics, not evidence of a no-change process.
 
 The full command pattern is:
 

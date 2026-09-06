@@ -6,7 +6,7 @@ The repository contains the cleaned manuscript and LUP-oriented submission copy,
 editable figures, benchmark scripts, public-data manifests and legacy audit
 reports comparing:
 
-- FLUS-style ANN–CA console (untraceable build);
+- GeoSOS-derived FLUS-style ANN–CA console (author-modified build);
 - Geospatial Kernel, the allocation core of a Geospatial World Model; and
 - GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network), the AlphaEarth latent-dynamics baseline.
 

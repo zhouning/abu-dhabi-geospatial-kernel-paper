@@ -22,22 +22,22 @@ annual 100-m land-cover products from 2017--2024, three computational
 seeds, destination-correct multi-class change Figure of Merit (FoM),
 spatial-block bootstrap contrasts and explicit state--action--constraint
 traces. The regenerated strict FoM was 0.1950 for Geospatial Kernel,
-0.1256 for the FLUS-style ANN--CA console (untraceable build) and 0.1616
-for GeoFM-LDN in 2023; after recursive two-step rollout in 2024 the
-values were 0.2520, 0.1782 and 0.2708, respectively. On the
-high-confidence label subset, all three models had FoM 0.000 in 2023 and
-the 2024 maximum was 0.0188, showing that full-grid agreement is
-strongly conditioned by label noise. The planning track is therefore
-reported as scenario stress testing, not official forecasting. The
-released public bundle, source, checkpoints, rasters, vector footprints
-and audit manifests support locked-environment reproduction. An
-author-run Linux comparison reproduced the six released Kernel rasters
-exactly at the categorical-cell level and yielded zero strict-FoM
-difference; this is a measurement of this controlled pair of
-environments, not a promise of bitwise identity for every numerical
-stack. The protocol's principal contribution is an inspectable
-proposal--projection--writeback boundary for separating model behaviour
-from action and constraint semantics.
+0.1256 for the GeoSOS-derived FLUS-style ANN--CA console
+(author-modified build) and 0.1616 for GeoFM-LDN in 2023; after
+recursive two-step rollout in 2024 the values were 0.2520, 0.1782 and
+0.2708, respectively. On the high-confidence label subset, all three
+models had FoM 0.000 in 2023 and the 2024 maximum was 0.0188, showing
+that full-grid agreement is strongly conditioned by label noise. The
+planning track is therefore reported as scenario stress testing, not
+official forecasting. The released public bundle, source, checkpoints,
+rasters, vector footprints and audit manifests support
+locked-environment reproduction. An author-run Linux comparison
+reproduced the six released Kernel rasters exactly at the
+categorical-cell level and yielded zero strict-FoM difference; this is a
+measurement of this controlled pair of environments, not a promise of
+bitwise identity for every numerical stack. The protocol's principal
+contribution is an inspectable proposal--projection--writeback boundary
+for separating model behaviour from action and constraint semantics.
 
 \subsection{Highlights}\label{highlights}
 
@@ -158,16 +158,21 @@ contrasts on a frozen evaluation mask; (v) an explicit check for
 structural-zero metrics before Pareto selection; (vi) a versioned
 objective table with direction, units and interpretation; and (vii) a
 state--action--constraint trace recording proposal, projection,
-hard-mask status and state writeback. The protocol reports domain
-validity separately from execution completeness and requires independent
-change validation before a categorical map is presented as an observed
-land-use product. A structural-zero metric is flagged operationally when
-its denominator is zero for every candidate under the declared action
-and constraint rules; for exact-count allocation, a conversion rate is
-also a structural zero when the protected/source rule makes the relevant
-source class monotonically non-decreasing, so no eligible source cells
-can contribute to that transition. Such a metric is reported
-descriptively and excluded from Pareto selection.
+hard-mask status and state writeback. The protocol also requires every
+model/year/seed record to report the number of predicted changed cells.
+A record with \texttt{predicted\_change\_pixels\ ==\ 0} is marked as a
+degenerate output and reviewed alongside structural-zero metrics; it
+cannot by itself be interpreted as model superiority or real land-cover
+stability. The protocol reports domain validity separately from
+execution completeness and requires independent change validation before
+a categorical map is presented as an observed land-use product. A
+structural-zero metric is flagged operationally when its denominator is
+zero for every candidate under the declared action and constraint rules;
+for exact-count allocation, a conversion rate is also a structural zero
+when the protected/source rule makes the relevant source class
+monotonically non-decreasing, so no eligible source cells can contribute
+to that transition. Such a metric is reported descriptively and excluded
+from Pareto selection.
 
 \subsubsection{Abu Dhabi implementation: boundary, grid and temporal
 protocol}\label{abu-dhabi-implementation-boundary-grid-and-temporal-protocol}
@@ -272,24 +277,29 @@ land-cover-specific features, learner and constraint masks.
 \subsubsection{Baselines and common
 evaluator}\label{baselines-and-common-evaluator}
 
-The baseline was run through a FLUS-style ANN--CA console using seven
-continuous drivers: normalized row and column coordinates, elevation,
-slope, VIIRS radiance, distance to roads and distance to major roads.
-Its ANN suitability surface was passed to a cellular-automata allocation
-stage with the common class totals and public hard mask. The archived
-run used one 2021 training year, eight ANN hidden neurons, a 3 × 3 CA
-neighbourhood, neighbourhood strength 1.0, acceleration factor 0.1 and
-1,000 iterations. Its frozen transition matrix protected water and
-wetland but did not prohibit built-to-non-built transitions. The
-supplied Mach-O executable cannot be traced to a reproducible upstream
-release or source commit, so we label this control ``FLUS-style ANN--CA
-console (untraceable build)'' and do not claim equivalence to the Liu et
-al.~(2017) implementation. A 25-feature Kernel-matched input was then
-executed with absolute paths for seeds 31, 47 and 73 and is reported as
-a separate matched-input baseline. It shares the Kernel feature family,
-but not the learning target or projection semantics: the FLUS ANN
-estimates same-year label suitability \(p(S_t\mid X_t)\), whereas the
-Kernel proposal is trained to estimate a next-state transition
+The baseline was run through a GeoSOS-derived FLUS-style ANN--CA console
+(author-modified build) using seven continuous drivers: normalized row
+and column coordinates, elevation, slope, VIIRS radiance, distance to
+roads and distance to major roads. Its ANN suitability surface was
+passed to a cellular-automata allocation stage with the common class
+totals and public hard mask. The archived run used one 2021 training
+year, eight ANN hidden neurons, a 3 × 3 CA neighbourhood, neighbourhood
+strength 1.0, acceleration factor 0.1 and 1,000 iterations. Its frozen
+transition matrix protected water and wetland but did not prohibit
+built-to-non-built transitions. The algorithmic base is traceable to the
+GeoSOS team's public FLUS source release (Liu et al., 2017;
+geosimulation.cn); the accompanying source repository
+\texttt{FLUS\_console\_crossplatform} at commit \texttt{deb0a54}
+contains the author modifications used for this paper. Those
+modifications add \texttt{train}/\texttt{train-update} entry points and
+\texttt{FLUS\_RANDOM\_SEED} deterministic seeding for both ANN sampling
+and CA roulette draws, so the build is not the unmodified upstream
+executable. A 25-feature Kernel-matched input was then executed with
+absolute paths for seeds 31, 47 and 73 and is reported as a separate
+matched-input diagnostic. It shares the Kernel feature family, but not
+the learning target or projection semantics: the FLUS ANN estimates
+same-year label suitability \(p(S_t\mid X_t)\), whereas the Kernel
+proposal is trained to estimate a next-state transition
 \(p(S_{t+1}\mid S_t,X_t)\) before constrained projection. Matching
 features therefore does not match the training task. Two intermediate
 configurations were retained as mechanism diagnostics: 13 features
@@ -417,14 +427,16 @@ and neighbourhood proportions; GeoFM-LDN used AlphaEarth latent
 embeddings and the Kernel allocator. We therefore report the original
 result as an unmatched-input pipeline comparison, not evidence that one
 learner is intrinsically superior. The additional 25-feature FLUS run is
-a matched-input baseline in feature space, but it still learns same-year
-suitability rather than next-state transitions and does not use the
-Kernel projection implementation. The archived FLUS console is a Mach-O
-arm64 executable whose original source/version cannot be independently
-rebuilt from this release, so its results are bounded to the supplied
-Apple-Silicon binary and are not asserted to be bitwise equivalent to an
-upstream build. All headline and matched-input runs used seeds 31, 47
-and 73.
+a matched-input diagnostic in feature space, but it still learns
+same-year suitability rather than next-state transitions and does not
+use the Kernel projection implementation. The archived FLUS console is a
+Mach-O arm64 executable rebuilt from the public GeoSOS source base with
+the author-modified \texttt{train}/\texttt{train-update} entry points
+and \texttt{FLUS\_RANDOM\_SEED} seeding patch; its exact source is
+archived at \texttt{FLUS\_console\_crossplatform} commit
+\texttt{deb0a54}. It is not asserted to be bitwise equivalent to an
+unmodified upstream build. All headline and matched-input runs used
+seeds 31, 47 and 73.
 
 The execution trace makes the distinction between proposal and admission
 explicit. A Kernel step records the source state, action,
@@ -485,14 +497,18 @@ largest 2024 value after recursive two-step rollout; no single model
 dominated both horizons. These rankings are conditional on the different
 inputs, learners and shared evaluation projection.
 
-\textbf{Table 1 \textbar{} Historical allocation scores.} Values are
-means across the three frozen computational seeds; the strict
-multi-class change FoM is the primary metric and the remaining columns
-are diagnostics. The 25-feature FLUS matched-input baseline is shown
-separately from the original seven-driver unmatched control because its
-same-year suitability target and CA semantics do not match the Kernel's
-next-state transition task. Persistence and random minimum-change are
-explicit zero-model controls rather than learned models.
+\textbf{Table 1 \textbar{} Historical allocation scores.} Except for the
+explicitly labelled matched-input column, values are means across the
+three frozen computational seeds; the strict multi-class change FoM is
+the primary metric and the remaining columns are diagnostics. The
+25-feature FLUS matched-input run is shown separately from the original
+seven-driver unmatched control because its same-year suitability target
+and CA semantics do not match the Kernel's next-state transition task.
+Three seeds were run, but seeds 47 and 73 collapsed to zero-change
+outputs through current-class identity leakage; they are retained as
+diagnostics rather than averaged. Seed 31 is the only valid
+matched-input point comparison. Persistence and random minimum-change
+are explicit zero-model controls rather than learned models.
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -523,9 +539,9 @@ Random minimum-change
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-2023 (1-step) & 0.1256 & 0.0440 & \textbf{0.1950} & 0.1616 & 0.0000 &
+2023 (1-step) & 0.1256 & 0.1320 & \textbf{0.1950} & 0.1616 & 0.0000 &
 0.0253 \\
-2024 (2-step open-loop) & 0.1782 & 0.0653 & 0.2520 & \textbf{0.2708} &
+2024 (2-step open-loop) & 0.1782 & 0.1960 & 0.2520 & \textbf{0.2708} &
 0.0000 & 0.0605 \\
 \end{longtable}
 }
@@ -539,26 +555,28 @@ independent-sample significance tests. The persistence control had
 higher overall accuracy than every learned candidate (0.9436 in 2023 and
 0.8938 in 2024), illustrating why change-specific metrics are necessary.
 Fig. 2 shows the four historical metrics alongside the persistence and
-random minimum-change controls; bars use three-seed population standard
-deviations, whereas the paired spatial-block intervals above are the
-uncertainty summaries used for model contrasts.
+random minimum-change controls and the seed-31 matched-input diagnostic;
+main-model bars use three-seed population standard deviations, whereas
+the paired spatial-block intervals above are the uncertainty summaries
+used for model contrasts.
 
 The reviewer-requested FLUS input-dimension analysis was also completed.
-Across seeds 31, 47 and 73, the 25-feature matched-input baseline had
-mean strict FoM 0.0440 in 2023 and 0.0653 in 2024; the corresponding
-Kernel-minus-matched-input paired spatial-block intervals were
-0.1350--0.1673 and 0.1687--0.2033, respectively. The 13-feature
-seven-driver-plus-current-class run had strict FoM 0.0000 for both years
-in seed 31 and produced no changed pixels. This occurs because the
-current-class indicators expose the same-year label used as the ANN
+The 25-feature matched-input run gives strict FoM 0.1320 in 2023 and
+0.1960 in 2024 for the only valid seed (31); the corresponding raw
+Kernel-minus-matched point contrasts are 0.0599 and 0.0558, while the
+within-seed spatial-block bootstrap medians are 0.0595 and 0.0558. No
+three-seed matched-input interval is reported. Seeds 47 and 73 give
+0.0000 FoM and zero predicted changes in both years, so the former
+three-seed mean and paired interval are withdrawn. This occurs because
+the current-class indicators expose the same-year label used as the ANN
 target: the network learns an almost exact identity mapping (training
-RMSE \(1.6\times10^{-5}\)), so the CA receives probabilities
-concentrated on the current class and makes no transitions. The
-19-feature diagnostic had strict FoM 0.1371 and 0.1149 in seed 31. These
-results show why matching feature dimensions cannot make the tasks
-equivalent: FLUS learns static suitability \(p(S_t\mid X_t)\), while the
-Kernel learns next-state transitions and then projects them against
-action deficits and hard constraints.
+RMSE \(1.7\times10^{-5}\) for seeds 47 and 73), so the CA receives
+probabilities concentrated on the current class and makes no
+transitions. The 19-feature diagnostic had strict FoM 0.1371 and 0.1149
+in seed 31. These results show why matching feature dimensions cannot
+make the tasks equivalent: FLUS learns static suitability
+\(p(S_t\mid X_t)\), while the Kernel learns next-state transitions and
+then projects them against action deficits and hard constraints.
 
 The reliability sensitivity is substantially less favourable. Requiring
 both the origin and target Dynamic World mean top probability to exceed
@@ -619,11 +637,11 @@ zoning maps.
 
 \textbf{Table 2 \textbar{} 2031 within-scenario planning objectives.}
 Values are means across three seeds. Distances are metres, union-built
-component density is the number of connected components in the
-2024-built ∪ newly-built footprint per 1,000 valid cells, and ecological
-conversion is a descriptive fraction of new-built cells whose origin
-class was woody, low vegetation or wetland. A star denotes membership in
-the primary within-scenario Pareto frontier.
+component density is the number of connected components in the combined
+2024-built and newly built footprint per 1,000 valid cells, and
+ecological conversion is a descriptive fraction of new-built cells whose
+origin class was woody, low vegetation or wetland. A star denotes
+membership in the primary within-scenario Pareto frontier.
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -730,14 +748,17 @@ turnover; no independent 2023--2024 change product or observed
 2025--2031 labels was available. Public roads, wetland and
 protected-area layers are proxies, future drivers are held at 2024, and
 the green-priority action has no water-budget constraint. The FLUS-style
-control remains an untraceable Apple-Silicon binary and its headline
-comparison uses seven drivers; the successful 25-feature run is a
-matched-input baseline reported separately from the primary unmatched
-control. These public-data stress tests therefore do not establish
-causal planning effects or a validated Abu Dhabi forecast. An
-authoritative deployment would replace public labels and masks with
-locally approved land-use, infrastructure, ecological and
-development-demand records while retaining the same execution contract.
+control is an Apple-Silicon binary rebuilt from the public GeoSOS source
+base with the author's \texttt{train}/\texttt{train-update} and
+deterministic-seeding patches; its headline comparison uses seven
+drivers. The successful 25-feature run is a matched-input diagnostic
+reported separately from the primary unmatched control, with two of its
+three seeds explicitly flagged as zero-change degeneracies. These
+public-data stress tests therefore do not establish causal planning
+effects or a validated Abu Dhabi forecast. An authoritative deployment
+would replace public labels and masks with locally approved land-use,
+infrastructure, ecological and development-demand records while
+retaining the same execution contract.
 
 \subsection{Data availability}\label{data-availability}
 
@@ -813,11 +834,25 @@ listed separately to keep the manuscript readable:
 GeoFM-LDN source and the three fixed checkpoints are included under
 \texttt{benchmarks/abu\_dhabi\_land\_use\_v1/external/} and
 \texttt{artifacts/predictions/}. The vendored FLUS executable is a macOS
-arm64 binary; Linux and Windows users can reproduce the Kernel and
-GeoFM-LDN tracks, but must provide a compatible FLUS build or treat that
-baseline as unavailable. The repository is intended to be public; an
-archival DOI and the corresponding-author e-mail should be added to the
-submission metadata.
+arm64 binary rebuilt from the GeoSOS public FLUS source base. The
+author-modified source, including \texttt{train-update} and
+\texttt{FLUS\_RANDOM\_SEED}, is archived at
+\texttt{https://github.com/zhouning/FLUS\_console\_crossplatform}, tag
+\texttt{paper-benchmark-flus-v1} at commit \texttt{deb0a54} (the GeoSOS
+source release and Liu et al.~(2017) are cited above). Rebuilding that
+commit on macOS arm64 produced SHA-256
+\texttt{9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964},
+identical to the vendored executable. The tagged author-modified source
+can also be built on Linux and Windows using the repository
+instructions, although cross-architecture categorical identity is not
+guaranteed. As an upstream-only fallback, the public FLUS CA source can
+be paired with an open Python ANN implementation; this reproduces the CA
+protocol and yields a same-order baseline, but the unmodified upstream
+CA uses time seeding rather than \texttt{FLUS\_RANDOM\_SEED}. A
+compatible local build is required to execute the FLUS track outside
+macOS arm64. The repository is intended to be public; an archival DOI
+and the corresponding-author e-mail should be added to the submission
+metadata.
 
 \subsection{Declarations}\label{declarations}
 
@@ -867,6 +902,11 @@ Liu, X., et al.~(2017). A future land use simulation model (FLUS) for
 simulating multiple land use scenarios by coupling human and natural
 effects. \emph{Landscape and Urban Planning}, 168, 94--116.
 https://doi.org/10.1016/j.landurbplan.2017.09.019
+
+GeoSOS team, Sun Yat-sen University. (n.d.). FLUS source code for
+non-commercial academic research.
+http://www.geosimulation.cn/FLUS-source-code.html (accessed 6 September
+2026).
 
 OpenStreetMap contributors. (2026). OpenStreetMap data, Abu Dhabi
 relation R4479763 and Geofabrik GCC extract, accessed 31 July 2026.
@@ -927,10 +967,13 @@ contract. The schematic does not imply statutory planning boundaries.
 \textbf{Figure 2 \textbar{} Historical allocation skill.} Bars show the
 revised strict multi-class FoM, change F1, overall accuracy and macro-F1
 for the 2023 one-step and 2024 two-step open-loop tests, with
-persistence and random minimum-change controls. Error bars show
-population standard deviation across the three frozen seeds; paired
-spatial-block intervals are reported in the machine-readable comparison
-report.
+persistence and random minimum-change controls and the FLUS
+matched-input seed-31 diagnostic. Error bars show population standard
+deviation across the three frozen seeds for the three main models; the
+matched-input bar has no error bar because seeds 47 and 73 are
+zero-change degeneracy diagnostics and are not averaged. Paired
+spatial-block intervals for the main models are reported in the
+machine-readable comparison report.
 
 \pandocbounded{\includegraphics[keepaspectratio]{figures/fig03_planning_objectives.png}}
 
@@ -938,12 +981,12 @@ report.
 morphology diagnostics.} The 2031 outcomes compare the three models
 under moderate-growth, green-priority- growth and high-outward-growth
 actions. Panels A--C show the release objectives: distance to major
-roads, distance to prior built cells and components in the 2024-built ∪
-newly-built footprint per 1,000 valid cells. Panel D shows ecological
-conversion as a descriptive diagnostic; panel E shows vegetation gain as
-a scenario-input diagnostic; panel F shows the 500-m leapfrog rate.
-Stars mark non-dominated candidates within each scenario; bars show
-means ± population SD across three seeds.
+roads, distance to prior built cells and components in the combined
+2024-built and newly built footprint per 1,000 valid cells. Panel D
+shows ecological conversion as a descriptive diagnostic; panel E shows
+vegetation gain as a scenario-input diagnostic; panel F shows the 500-m
+leapfrog rate. Stars mark non-dominated candidates within each scenario;
+bars show means ± population SD across three seeds.
 
 \pandocbounded{\includegraphics[keepaspectratio]{figures/fig04_mechanism_ablation.png}}
 

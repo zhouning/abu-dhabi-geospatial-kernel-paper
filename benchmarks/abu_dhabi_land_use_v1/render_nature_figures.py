@@ -52,7 +52,7 @@ mpl.rcParams.update(
 
 MODEL_ORDER = ["geosos_flus", "geospatial_kernel", "paper58"]
 MODEL_LABEL = {
-    "geosos_flus": "FLUS-style ANN–CA\n(untraceable build)",
+    "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA\n(author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
 }
@@ -288,10 +288,10 @@ def render_figure_2() -> None:
     fig.subplots_adjust(left=0.08, right=0.985, top=0.70, bottom=0.16, wspace=0.27, hspace=0.58)
     years = ["2023", "2024"]
     x = np.arange(len(years))
-    plot_models = MODEL_ORDER + ["persistence", "random_allocation"]
-    plot_colors = {**MODEL_COLOR, "persistence": "#777777", "random_allocation": "#CC79A7"}
-    plot_labels = {**MODEL_LABEL, "persistence": "Persistence", "random_allocation": "Random minimum-change"}
-    width = 0.15
+    plot_models = MODEL_ORDER + ["flus_matched_input", "persistence", "random_allocation"]
+    plot_colors = {**MODEL_COLOR, "flus_matched_input": "#6C757D", "persistence": "#777777", "random_allocation": "#CC79A7"}
+    plot_labels = {**MODEL_LABEL, "flus_matched_input": "FLUS matched (seed 31)", "persistence": "Persistence", "random_allocation": "Random minimum-change"}
+    width = 0.12
     for idx, (key, title, direction) in enumerate(metrics):
         ax = axes.flat[idx]
         for j, model in enumerate(plot_models):
@@ -299,6 +299,13 @@ def render_figure_2() -> None:
             for year in years:
                 if model in MODEL_ORDER:
                     item = report["summaries"][model][year][key]
+                elif model == "flus_matched_input":
+                    item = {
+                        "mean": report["matched_input_baseline"]["primary"][year]["matched_strict_fom"]
+                        if key == "change_figure_of_merit"
+                        else report["matched_input_baseline"]["per_seed"][year][0].get(key, 0.0),
+                        "population_std": 0.0,
+                    }
                 elif model == "persistence":
                     item = report["persistence"][year][key]
                 else:
@@ -324,7 +331,7 @@ def render_figure_2() -> None:
             ax.set_ylabel("Score")
     fig.legend(handles=[Patch(facecolor=plot_colors[m], edgecolor="none", label=plot_labels[m]) for m in plot_models], loc="upper center", bbox_to_anchor=(0.5, 0.835), ncol=3, frameon=False, handlelength=1.0, columnspacing=1.0)
     fig.suptitle("Historical allocation skill with explicit zero models", x=0.08, y=0.975, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.08, 0.055, "Bars show mean ± population SD across n=3 seeds; strict FoM counts wrong destination changes in the denominator. Bootstrap intervals are reported in the JSON table.", fontsize=6.2, color="#4A5560")
+    fig.text(0.08, 0.055, "Main-model bars show mean ± population SD across n=3 seeds. The matched-input bar is seed 31 only; seeds 47 and 73 are zero-change diagnostics and are not averaged. Bootstrap intervals are reported in the JSON table.", fontsize=6.2, color="#4A5560")
     save_publication_figure(fig, "fig02_historical_validation")
 
 

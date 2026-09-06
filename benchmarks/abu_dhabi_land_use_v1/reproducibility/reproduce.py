@@ -42,34 +42,89 @@ def _verify_gate() -> None:
 
 
 def _verify_manuscript_report_consistency() -> None:
-    """Fail closed when the manuscript's reported planning counts drift."""
+    """Fail closed when manuscript values drift from current reports."""
 
-    report = json.loads(
+    comparison = json.loads(
+        (HERE / "comparison_report_current.json").read_text(encoding="utf-8")
+    )
+    planning = json.loads(
         (HERE / "planning_comparison_report_public_2025_2031_current.json").read_text(
             encoding="utf-8"
         )
     )
     manuscript = (REPO / "manuscript/manuscript.md").read_text(encoding="utf-8")
-    expected = {
-        "Kernel integrated demand errors": [
-            int(
-                report["ensembles"]["geospatial_kernel"][scenario]["2031"]["metrics"][
-                    "demand_l1_error_pixels"
-                ]
-            )
-            for scenario in ("compact", "ecological_priority", "outward_growth")
-        ],
-        "GeoFM-LDN integrated demand errors": [
-            int(
-                report["ensembles"]["paper58"][scenario]["2031"]["metrics"][
-                    "demand_l1_error_pixels"
-                ]
-            )
-            for scenario in ("compact", "ecological_priority", "outward_growth")
-        ],
+    manuscript_numeric = manuscript.replace("−", "-")
+
+    # Table 1: all primary strict-FoM cells and the valid matched-input diagnostic.
+    for model in ("geosos_flus", "geospatial_kernel", "paper58"):
+        for year in ("2023", "2024"):
+            value = comparison["summaries"][model][year]["change_figure_of_merit"]["mean"]
+            if f"{value:.4f}" not in manuscript_numeric:
+                raise RuntimeError(f"manuscript_table1_fom_missing:{model}:{year}:{value:.4f}")
+    matched = comparison["matched_input_baseline"]["primary"]
+    for year in ("2023", "2024"):
+        for key in (
+            "matched_strict_fom",
+            "kernel_minus_matched_point_contrast",
+            "kernel_minus_matched_block_bootstrap_median",
+        ):
+            value = matched[year][key]
+            if f"{value:.4f}" not in manuscript_numeric:
+                raise RuntimeError(f"manuscript_matched_value_missing:{year}:{key}:{value:.4f}")
+
+    # Main paired contrasts reported in Results.
+    for year, pair_names in (
+        ("2023", ("geospatial_kernel_minus_geosos_flus", "paper58_minus_geospatial_kernel")),
+        ("2024", ("paper58_minus_geospatial_kernel",)),
+    ):
+        for pair_name in pair_names:
+            interval = comparison["pairwise_bootstrap_95ci"][year][pair_name]["summary"]["change_figure_of_merit"]
+            for bound in ("lower_mean", "median_mean", "upper_mean"):
+                fragment = f"{interval[bound]:.4f}"
+                if fragment not in manuscript_numeric:
+                    raise RuntimeError(
+                        f"manuscript_pairwise_value_missing:{year}:{pair_name}:{bound}:{fragment}"
+                    )
+
+    # Table 2: assert each displayed 2031 candidate row and frontier marker.
+    model_labels = {
+        "geosos_flus": "FLUS-style ANN–CA",
+        "geospatial_kernel": "Geospatial Kernel",
+        "paper58": "GeoFM-LDN",
     }
-    kernel_values = ", ".join(f"{value:,}" for value in expected["Kernel integrated demand errors"][:-1]) + " and " + f"{expected['Kernel integrated demand errors'][-1]:,}"
-    geofm_values = ", ".join(f"{value:,}" for value in expected["GeoFM-LDN integrated demand errors"][:-1]) + " and " + f"{expected['GeoFM-LDN integrated demand errors'][-1]:,}"
+    scenario_labels = {
+        "compact": "Moderate",
+        "ecological_priority": "Green-priority",
+        "outward_growth": "High outward",
+    }
+    frontier = {
+        candidate_id
+        for candidate_ids in planning["pareto_frontier_within_scenario"].values()
+        for candidate_id in candidate_ids
+    }
+    for candidate in planning["final_candidates"]:
+        marker = "*" if candidate["candidate_id"] in frontier else ""
+        fragment = (
+            f"| {model_labels[candidate['model_id']]} | {scenario_labels[candidate['scenario_id']]} | "
+            f"{candidate['new_built_mean_major_road_distance_m']:.1f} | "
+            f"{candidate['new_built_mean_prior_built_distance_m']:.1f} | "
+            f"{candidate['combined_built_components_per_1000_pixels']:.3f} | "
+            f"{candidate['ecological_conversion_rate']:.4f} | {marker} |"
+        )
+        if fragment not in manuscript:
+            raise RuntimeError(f"manuscript_table2_row_missing:{candidate['candidate_id']}")
+
+    scenarios = ("compact", "ecological_priority", "outward_growth")
+    kernel_errors = [
+        int(planning["ensembles"]["geospatial_kernel"][scenario]["2031"]["metrics"]["demand_l1_error_pixels"])
+        for scenario in scenarios
+    ]
+    geofm_errors = [
+        int(planning["ensembles"]["paper58"][scenario]["2031"]["metrics"]["demand_l1_error_pixels"])
+        for scenario in scenarios
+    ]
+    kernel_values = ", ".join(f"{value:,}" for value in kernel_errors[:-1]) + " and " + f"{kernel_errors[-1]:,}"
+    geofm_values = ", ".join(f"{value:,}" for value in geofm_errors[:-1]) + " and " + f"{geofm_errors[-1]:,}"
     required_fragments = (
         f"The 2031 majority-vote ensemble L1 demand errors were {kernel_values} pixels",
         f"the corresponding GeoFM-LDN errors were {geofm_values} pixels",

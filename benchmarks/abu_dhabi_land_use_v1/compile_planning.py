@@ -39,7 +39,7 @@ SCENARIO_LABELS = {
 }
 
 MODEL_DISPLAY_NAMES = {
-    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
+    "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN",
 }

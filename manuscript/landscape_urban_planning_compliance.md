@@ -8,7 +8,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent. The supplied FLUS binary is untraceable, but corrected absolute-path 13-, 19- and 25-feature diagnostics now complete for seed 31; the primary comparison remains the seven-driver unmatched control. |
+| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent. The supplied FLUS binary is a GeoSOS-derived author-modified build, with corrected absolute-path 13-, 19- and 25-feature diagnostics; the primary comparison remains the seven-driver unmatched control. |
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
 | Corresponding author | Needs portal entry | Name is present, but the submission system should receive a valid institutional e-mail and full correspondence address. |
@@ -73,6 +73,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 The package is a conditional Article-type draft. Before submission, add the
 corresponding-author e-mail, public release URL/DOI and an independent
-2023–2024 change-validation layer. The supplied FLUS build remains untraceable;
+2023–2024 change-validation layer. The supplied FLUS build is GeoSOS-derived and
+its author modifications are archived at `FLUS_console_crossplatform` commit
+`deb0a54`;
 the successful matched-input runs are one-seed diagnostics and do not replace
 the primary three-seed comparison.

@@ -3811,7 +3811,7 @@
     "Accessibility, compactness, fragmentation and ecological-conversion quantities are public-data proxies, not monetary, statutory or equity impacts.",
     "Pareto membership is conditional on this declared release objective set and cannot establish policy causality."
   ],
-  "created_at": "2026-09-06T11:00:49.892086+00:00",
+  "created_at": "2026-09-06T14:31:15.581001+00:00",
   "ensembles": {
     "geosos_flus": {
       "compact": {
@@ -7417,7 +7417,7 @@
   "final_year": 2031,
   "metric_version": "planning_objectives_v6",
   "model_display_names": {
-    "geosos_flus": "FLUS-style ANN–CA console (untraceable build)",
+    "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
     "paper58": "GeoFM-LDN"
   },
