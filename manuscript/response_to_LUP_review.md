@@ -18,9 +18,10 @@ and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
 **Eleventh-round release evidence.** The final `reproducibility_check.json` was
 regenerated after the manifest update and reports `status: PASS` at the UTC
 timestamp `2026-09-07T14:28:39.082507+00:00`, with all 89 manifest records
-verified. The repository commit containing this release is identified below.
-`pytest` and the raster audit were also rerun; no scientific result or model
-input was changed.
+verified. The eleventh-round release changes are contained in commit
+`e9e0921`; this commit identifier is recorded in a follow-up documentation
+commit to avoid self-reference. `pytest` and the raster audit were also rerun;
+no scientific result or model input was changed.
 
 ## Tenth-round editorial revisions
 
