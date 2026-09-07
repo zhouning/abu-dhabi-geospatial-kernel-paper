@@ -1,8 +1,8 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
   "common_action_and_constraint_contract": true,
-  "completed_at": "2026-09-06T11:00:46.107689+00:00",
-  "created_at": "2026-09-06T10:55:34.901022+00:00",
+  "completed_at": "2026-09-07T07:12:39.722734+00:00",
+  "created_at": "2026-09-07T07:07:59.052579+00:00",
   "models": {
     "geosos_flus": {
       "external_binary": "vendor/flus_console",
@@ -18,7 +18,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_31/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.811881041852757,
+                    "ca_seconds": 4.7490444160066545,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -42,7 +42,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_31/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 4.000642291037366,
+                    "ca_seconds": 4.03183599980548,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -66,7 +66,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_31/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 0.5373676670715213,
+                    "ca_seconds": 0.5420887088403106,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -90,7 +90,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_31/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 1.0464921658858657,
+                    "ca_seconds": 1.040549375116825,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -114,7 +114,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_31/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 2.4330611671321094,
+                    "ca_seconds": 2.440633791964501,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -138,7 +138,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_31/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 4.75667875004001,
+                    "ca_seconds": 4.773321708198637,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -162,7 +162,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_31/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 4.764392375014722,
+                    "ca_seconds": 4.773506500292569,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -191,7 +191,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_31/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.804841083008796,
+                    "ca_seconds": 4.844099040608853,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -215,7 +215,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_31/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 3.7632405417971313,
+                    "ca_seconds": 3.7263842499814928,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -239,7 +239,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_31/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 4.739207332953811,
+                    "ca_seconds": 4.725170332938433,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -263,7 +263,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_31/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 4.757504416862503,
+                    "ca_seconds": 4.74231579201296,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -287,7 +287,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_31/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 4.694201875012368,
+                    "ca_seconds": 4.70933383423835,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -311,7 +311,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_31/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 4.677262250101194,
+                    "ca_seconds": 4.674135124776512,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -335,7 +335,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_31/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 4.749123165849596,
+                    "ca_seconds": 4.657777999993414,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -364,7 +364,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_31/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.748416499933228,
+                    "ca_seconds": 4.78838195791468,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -388,7 +388,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_31/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 4.087978709023446,
+                    "ca_seconds": 4.109955207910389,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -412,7 +412,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_31/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 0.5977013329975307,
+                    "ca_seconds": 0.5916636670008302,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -436,7 +436,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_31/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 1.1155817918479443,
+                    "ca_seconds": 1.1211164169944823,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -460,7 +460,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_31/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 2.389105707872659,
+                    "ca_seconds": 2.380095541011542,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -484,7 +484,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_31/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 4.817538917064667,
+                    "ca_seconds": 4.753099707886577,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -508,7 +508,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_31/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 4.854105915874243,
+                    "ca_seconds": 4.735216500237584,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -547,7 +547,7 @@
             "fit_label_years": [
               2021
             ],
-            "fit_seconds": 2.8182089999318123,
+            "fit_seconds": 2.7803792087361217,
             "seed": 31,
             "target_driver_year": 2024,
             "target_pixel_rows": 79726,
@@ -562,7 +562,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_47/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.912951082922518,
+                    "ca_seconds": 4.685987500008196,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -586,7 +586,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_47/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 0.4003345409873873,
+                    "ca_seconds": 0.40527637489140034,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -610,7 +610,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_47/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 0.7189611669164151,
+                    "ca_seconds": 0.7989667919464409,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -634,7 +634,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_47/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 1.6090969170909375,
+                    "ca_seconds": 1.5679556671530008,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -658,7 +658,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_47/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 0.16142383310943842,
+                    "ca_seconds": 0.15526862489059567,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -682,7 +682,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_47/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 0.39397025015205145,
+                    "ca_seconds": 0.3905877093784511,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -706,7 +706,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_47/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 0.3045201248023659,
+                    "ca_seconds": 0.300565583165735,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -735,7 +735,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_47/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.792161958059296,
+                    "ca_seconds": 4.771489624865353,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -759,7 +759,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_47/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 0.4178148750215769,
+                    "ca_seconds": 0.4181247912347317,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -783,7 +783,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_47/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 2.1214355828706175,
+                    "ca_seconds": 2.171039749868214,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -807,7 +807,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_47/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 3.4803212080150843,
+                    "ca_seconds": 3.5078297089785337,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -831,7 +831,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_47/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 0.16743912501260638,
+                    "ca_seconds": 0.16223491681739688,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -855,7 +855,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_47/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 0.16559716686606407,
+                    "ca_seconds": 0.1631051660515368,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -879,7 +879,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_47/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 0.165512542007491,
+                    "ca_seconds": 0.16303354175761342,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -908,7 +908,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_47/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.747650332981721,
+                    "ca_seconds": 4.774150292389095,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -932,7 +932,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_47/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 0.6082700421102345,
+                    "ca_seconds": 0.6170424586161971,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -956,7 +956,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_47/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 1.414867667015642,
+                    "ca_seconds": 1.4268966247327626,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -980,7 +980,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_47/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 2.1305792501661927,
+                    "ca_seconds": 2.1229489580728114,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1004,7 +1004,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_47/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 0.2549209580756724,
+                    "ca_seconds": 0.23893016576766968,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1028,7 +1028,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_47/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 0.3024333748035133,
+                    "ca_seconds": 0.2962465831078589,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1052,7 +1052,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_47/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 0.3777362499386072,
+                    "ca_seconds": 0.3760795840062201,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1091,7 +1091,7 @@
             "fit_label_years": [
               2021
             ],
-            "fit_seconds": 2.465538791147992,
+            "fit_seconds": 2.337167709134519,
             "seed": 47,
             "target_driver_year": 2024,
             "target_pixel_rows": 79726,
@@ -1106,7 +1106,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_73/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.779473457951099,
+                    "ca_seconds": 4.789082792121917,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1130,7 +1130,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_73/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 4.877868416020647,
+                    "ca_seconds": 4.742768582887948,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1154,7 +1154,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_73/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 4.774113334016874,
+                    "ca_seconds": 4.734795707743615,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1178,7 +1178,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_73/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 4.822729165898636,
+                    "ca_seconds": 4.749945250339806,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1202,7 +1202,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_73/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 4.755404791096225,
+                    "ca_seconds": 4.773353875149041,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1226,7 +1226,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_73/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 4.813653707969934,
+                    "ca_seconds": 4.722012750338763,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1250,7 +1250,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/compact/seed_73/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 4.780320415971801,
+                    "ca_seconds": 4.757144667208195,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1279,7 +1279,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_73/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.903517457889393,
+                    "ca_seconds": 4.805066791828722,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1303,7 +1303,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_73/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 4.8247006251476705,
+                    "ca_seconds": 4.760159166995436,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1327,7 +1327,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_73/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 4.783744666958228,
+                    "ca_seconds": 4.740830291993916,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1351,7 +1351,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_73/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 4.791034457972273,
+                    "ca_seconds": 4.722798916976899,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1375,7 +1375,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_73/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 4.805535541148856,
+                    "ca_seconds": 4.685934375040233,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1399,7 +1399,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_73/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 4.7742509169038385,
+                    "ca_seconds": 4.715327875223011,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1423,7 +1423,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/ecological_priority/seed_73/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 4.7480997908860445,
+                    "ca_seconds": 4.728887333068997,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1452,7 +1452,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_73/prediction_2025.tif",
                   "simulation": {
-                    "ca_seconds": 4.7639757501892745,
+                    "ca_seconds": 4.815986167173833,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1476,7 +1476,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_73/prediction_2026.tif",
                   "simulation": {
-                    "ca_seconds": 4.788958917139098,
+                    "ca_seconds": 4.813176875002682,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1500,7 +1500,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_73/prediction_2027.tif",
                   "simulation": {
-                    "ca_seconds": 4.751716166967526,
+                    "ca_seconds": 4.7991127502173185,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1524,7 +1524,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_73/prediction_2028.tif",
                   "simulation": {
-                    "ca_seconds": 4.762801958015189,
+                    "ca_seconds": 4.814332082867622,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1548,7 +1548,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_73/prediction_2029.tif",
                   "simulation": {
-                    "ca_seconds": 4.804072584025562,
+                    "ca_seconds": 4.800789250060916,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1572,7 +1572,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_73/prediction_2030.tif",
                   "simulation": {
-                    "ca_seconds": 4.7952824998646975,
+                    "ca_seconds": 4.804335332941264,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1596,7 +1596,7 @@
                 {
                   "prediction_path": "artifacts/planning_public_2025_2031/geosos_flus/outward_growth/seed_73/prediction_2031.tif",
                   "simulation": {
-                    "ca_seconds": 4.819400082807988,
+                    "ca_seconds": 4.749054874759167,
                     "target_counts": {
                       "1": 16060,
                       "2": 906,
@@ -1635,7 +1635,7 @@
             "fit_label_years": [
               2021
             ],
-            "fit_seconds": 3.203304042108357,
+            "fit_seconds": 3.1784187080338597,
             "seed": 73,
             "target_driver_year": 2024,
             "target_pixel_rows": 79726,
@@ -1643,7 +1643,7 @@
           }
         }
       ],
-      "wall_seconds": 217.7974208339583
+      "wall_seconds": 218.58933345787227
     },
     "geospatial_kernel": {
       "future_exogenous_driver_policy": "hold_2024",
@@ -4457,7 +4457,7 @@
           "seed": 31,
           "training": {
             "feature_count": 25,
-            "fit_seconds": 9.179541707970202,
+            "fit_seconds": 6.1463190000504255,
             "fit_transitions": [
               {
                 "selected_changed_pixels": 2887,
@@ -7268,7 +7268,7 @@
           "seed": 47,
           "training": {
             "feature_count": 25,
-            "fit_seconds": 9.468869207892567,
+            "fit_seconds": 5.234778374899179,
             "fit_transitions": [
               {
                 "selected_changed_pixels": 2887,
@@ -10079,7 +10079,7 @@
           "seed": 73,
           "training": {
             "feature_count": 25,
-            "fit_seconds": 8.476258041104302,
+            "fit_seconds": 7.949193458072841,
             "fit_transitions": [
               {
                 "selected_changed_pixels": 2887,
@@ -10119,7 +10119,7 @@
           }
         }
       ],
-      "wall_seconds": 44.2704016668722
+      "wall_seconds": 30.38433204079047
     },
     "paper58": {
       "device": "cpu",
@@ -10129,7 +10129,7 @@
       "seeds": [
         {
           "decoder": {
-            "fit_seconds": 0.41676308307796717,
+            "fit_seconds": 0.3423682078719139,
             "label_years": [
               2017,
               2018,
@@ -10137,9 +10137,9 @@
               2020,
               2021
             ],
-            "training_accuracy": 0.8955360549408623,
+            "training_accuracy": 0.8953834414345669,
             "training_samples": 39315,
-            "validation_2022_accuracy": 0.8864862152873592
+            "validation_2022_accuracy": 0.8859719539422523
           },
           "scenarios": [
             {
@@ -10645,7 +10645,7 @@
         },
         {
           "decoder": {
-            "fit_seconds": 0.3186045419424772,
+            "fit_seconds": 0.22786404192447662,
             "label_years": [
               2017,
               2018,
@@ -10653,9 +10653,9 @@
               2020,
               2021
             ],
-            "training_accuracy": 0.8934249014371105,
+            "training_accuracy": 0.8935520793590233,
             "training_samples": 39315,
-            "validation_2022_accuracy": 0.8876527105335775
+            "validation_2022_accuracy": 0.8880791711612273
           },
           "scenarios": [
             {
@@ -11161,7 +11161,7 @@
         },
         {
           "decoder": {
-            "fit_seconds": 0.3742323750630021,
+            "fit_seconds": 0.19449312519282103,
             "label_years": [
               2017,
               2018,
@@ -11169,9 +11169,9 @@
               2020,
               2021
             ],
-            "training_accuracy": 0.8920513798804528,
+            "training_accuracy": 0.8919496375429226,
             "training_samples": 39315,
-            "validation_2022_accuracy": 0.8865113012066327
+            "validation_2022_accuracy": 0.8865865589644533
           },
           "scenarios": [
             {
@@ -11676,7 +11676,7 @@
           "seed": 73
         }
       ],
-      "wall_seconds": 49.0384828329552
+      "wall_seconds": 31.587754250038415
     }
   },
   "origin_year": 2024,

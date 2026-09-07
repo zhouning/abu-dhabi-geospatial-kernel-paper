@@ -21,6 +21,8 @@ GeoFM-LDN.
 - `neighbourhood_weight_sensitivity.csv`: post-hoc sensitivity source data.
 - `supplementary_table_S2_neighbourhood_weight_sensitivity.md`: synchronized
   strict-FoM Supplementary Table S2.
+- `supplementary_table_S3_flus_feature_diagnostics.md`: full 13-, 19- and
+  25-feature FLUS diagnostic table, including cross-platform boundary.
 - `journal_recommendation.md`: target-journal recommendation and submission
   positioning.
 - `submission_notes_zh.md`: Chinese hand-off notes and submission checklist.
@@ -30,8 +32,8 @@ GeoFM-LDN.
 - `response_to_LUP_review.md`: point-by-point revision and blocker record.
 - `../benchmarks/abu_dhabi_land_use_v1/matched_input_review.md`: archived
   FLUS 13-, 19- and 25-feature input diagnostics and corrected command record.
-  The 25-feature matched-input baseline covers seeds 31, 47 and 73; the
-  13-feature identity-leakage run remains a seed-31 diagnostic.
+  All modes cover seeds 31, 47 and 73. The 25-feature mode is not a valid
+  estimator because five of six platform–seed runs collapsed to zero change.
 
 The manuscript calls the latent-dynamics baseline **GeoFM-LDN** (Geospatial
 Foundation-Model Latent Dynamics Network). Legacy machine-readable artifacts

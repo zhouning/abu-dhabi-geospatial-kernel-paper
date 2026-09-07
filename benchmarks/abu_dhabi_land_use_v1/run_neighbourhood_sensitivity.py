@@ -82,6 +82,7 @@ def run(*, output: Path, report_path: Path, seeds: tuple[int, ...]) -> dict[str,
         writer = csv.DictWriter(
             handle,
             fieldnames=["year", "neighbourhood_weight", "mean_change_fom", "population_std", "metric", "purpose"],
+            lineterminator="\n",
         )
         writer.writeheader()
         for row in summary:

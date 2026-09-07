@@ -16,12 +16,12 @@
     {
       "year": 2023,
       "neighbourhood_weight": 0.0,
-      "mean_change_fom": 0.1959778280167658,
-      "population_std": 0.0017238814534895066,
+      "mean_change_fom": 0.19570436128884583,
+      "population_std": 0.0017138664191627823,
       "seed_values": [
-        0.1938180097776376,
-        0.19607843137254902,
-        0.19803704290011082
+        0.19328393504650795,
+        0.1970248457034341,
+        0.19680430311659547
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -29,12 +29,12 @@
     {
       "year": 2023,
       "neighbourhood_weight": 0.175,
-      "mean_change_fom": 0.1953496264085411,
-      "population_std": 0.0021832267755944805,
+      "mean_change_fom": 0.19609293506625647,
+      "population_std": 0.0017630950084235471,
       "seed_values": [
-        0.19268945958720654,
-        0.19532237673830594,
-        0.19803704290011082
+        0.19366030594543449,
+        0.19778305621536024,
+        0.19683544303797468
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -42,12 +42,12 @@
     {
       "year": 2023,
       "neighbourhood_weight": 0.35,
-      "mean_change_fom": 0.19503563880233252,
-      "population_std": 0.002306043271733294,
+      "mean_change_fom": 0.19608163298146838,
+      "population_std": 0.0014126666275218929,
       "seed_values": [
-        0.19193827743662414,
-        0.19570028453999366,
-        0.19746835443037974
+        0.19419466792869539,
+        0.19759341355288157,
+        0.19645681746282823
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -55,12 +55,12 @@
     {
       "year": 2023,
       "neighbourhood_weight": 0.7,
-      "mean_change_fom": 0.19472256537250188,
-      "population_std": 0.002623885429525675,
+      "mean_change_fom": 0.1957765169152204,
+      "population_std": 0.0013372187384691606,
       "seed_values": [
-        0.1911880409126672,
-        0.19551130077445866,
-        0.19746835443037974
+        0.19441376045447373,
+        0.19759341355288157,
+        0.19532237673830594
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -68,12 +68,12 @@
     {
       "year": 2024,
       "neighbourhood_weight": 0.0,
-      "mean_change_fom": 0.25280145357504114,
-      "population_std": 0.00020075331186480895,
+      "mean_change_fom": 0.2530439088706439,
+      "population_std": 0.0013985800235238204,
       "seed_values": [
-        0.2530716582831698,
-        0.2527418157829636,
-        0.25259088665899
+        0.2542890135268888,
+        0.2537522678541976,
+        0.25109044523084517
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -81,12 +81,12 @@
     {
       "year": 2024,
       "neighbourhood_weight": 0.175,
-      "mean_change_fom": 0.2528362649465196,
-      "population_std": 0.0006053590568520341,
+      "mean_change_fom": 0.2529673521242496,
+      "population_std": 0.001003636617050743,
       "seed_values": [
-        0.25369193960894315,
-        0.2524319868095631,
-        0.2523848684210526
+        0.2541646049810325,
+        0.25302892936619137,
+        0.2517085220255249
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -94,12 +94,12 @@
     {
       "year": 2024,
       "neighbourhood_weight": 0.35,
-      "mean_change_fom": 0.25203761503419747,
-      "population_std": 0.00031881510555913285,
+      "mean_change_fom": 0.25294628714999023,
+      "population_std": 0.000835156615580359,
       "seed_values": [
-        0.2518329351676415,
-        0.25179204086677104,
-        0.25248786906817994
+        0.253936845576717,
+        0.25300807647931434,
+        0.2518939393939394
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -107,12 +107,12 @@
     {
       "year": 2024,
       "neighbourhood_weight": 0.7,
-      "mean_change_fom": 0.25129585810644595,
-      "population_std": 0.0011165808208617562,
+      "mean_change_fom": 0.2527334230720341,
+      "population_std": 0.001180252774628117,
       "seed_values": [
-        0.25127614029310064,
-        0.24993829699712053,
-        0.25267313702911665
+        0.2541436464088398,
+        0.25280158206987474,
+        0.25125504073738786
       ],
       "metric": "strict_multiclass_change_figure_of_merit",
       "purpose": "posthoc_sensitivity"
@@ -123,145 +123,145 @@
       "year": 2023,
       "neighbourhood_weight": 0.0,
       "seed": 31,
-      "change_figure_of_merit": 0.1938180097776376
+      "change_figure_of_merit": 0.19328393504650795
     },
     {
       "year": 2024,
       "neighbourhood_weight": 0.0,
       "seed": 31,
-      "change_figure_of_merit": 0.2530716582831698
+      "change_figure_of_merit": 0.2542890135268888
     },
     {
       "year": 2023,
       "neighbourhood_weight": 0.0,
       "seed": 47,
-      "change_figure_of_merit": 0.19607843137254902
+      "change_figure_of_merit": 0.1970248457034341
     },
     {
       "year": 2024,
       "neighbourhood_weight": 0.0,
       "seed": 47,
-      "change_figure_of_merit": 0.2527418157829636
+      "change_figure_of_merit": 0.2537522678541976
     },
     {
       "year": 2023,
       "neighbourhood_weight": 0.0,
       "seed": 73,
-      "change_figure_of_merit": 0.19803704290011082
+      "change_figure_of_merit": 0.19680430311659547
     },
     {
       "year": 2024,
       "neighbourhood_weight": 0.0,
       "seed": 73,
-      "change_figure_of_merit": 0.25259088665899
+      "change_figure_of_merit": 0.25109044523084517
     },
     {
       "year": 2023,
       "neighbourhood_weight": 0.175,
       "seed": 31,
-      "change_figure_of_merit": 0.19268945958720654
+      "change_figure_of_merit": 0.19366030594543449
     },
     {
       "year": 2024,
       "neighbourhood_weight": 0.175,
       "seed": 31,
-      "change_figure_of_merit": 0.25369193960894315
+      "change_figure_of_merit": 0.2541646049810325
     },
     {
       "year": 2023,
       "neighbourhood_weight": 0.175,
       "seed": 47,
+      "change_figure_of_merit": 0.19778305621536024
+    },
+    {
+      "year": 2024,
+      "neighbourhood_weight": 0.175,
+      "seed": 47,
+      "change_figure_of_merit": 0.25302892936619137
+    },
+    {
+      "year": 2023,
+      "neighbourhood_weight": 0.175,
+      "seed": 73,
+      "change_figure_of_merit": 0.19683544303797468
+    },
+    {
+      "year": 2024,
+      "neighbourhood_weight": 0.175,
+      "seed": 73,
+      "change_figure_of_merit": 0.2517085220255249
+    },
+    {
+      "year": 2023,
+      "neighbourhood_weight": 0.35,
+      "seed": 31,
+      "change_figure_of_merit": 0.19419466792869539
+    },
+    {
+      "year": 2024,
+      "neighbourhood_weight": 0.35,
+      "seed": 31,
+      "change_figure_of_merit": 0.253936845576717
+    },
+    {
+      "year": 2023,
+      "neighbourhood_weight": 0.35,
+      "seed": 47,
+      "change_figure_of_merit": 0.19759341355288157
+    },
+    {
+      "year": 2024,
+      "neighbourhood_weight": 0.35,
+      "seed": 47,
+      "change_figure_of_merit": 0.25300807647931434
+    },
+    {
+      "year": 2023,
+      "neighbourhood_weight": 0.35,
+      "seed": 73,
+      "change_figure_of_merit": 0.19645681746282823
+    },
+    {
+      "year": 2024,
+      "neighbourhood_weight": 0.35,
+      "seed": 73,
+      "change_figure_of_merit": 0.2518939393939394
+    },
+    {
+      "year": 2023,
+      "neighbourhood_weight": 0.7,
+      "seed": 31,
+      "change_figure_of_merit": 0.19441376045447373
+    },
+    {
+      "year": 2024,
+      "neighbourhood_weight": 0.7,
+      "seed": 31,
+      "change_figure_of_merit": 0.2541436464088398
+    },
+    {
+      "year": 2023,
+      "neighbourhood_weight": 0.7,
+      "seed": 47,
+      "change_figure_of_merit": 0.19759341355288157
+    },
+    {
+      "year": 2024,
+      "neighbourhood_weight": 0.7,
+      "seed": 47,
+      "change_figure_of_merit": 0.25280158206987474
+    },
+    {
+      "year": 2023,
+      "neighbourhood_weight": 0.7,
+      "seed": 73,
       "change_figure_of_merit": 0.19532237673830594
     },
     {
       "year": 2024,
-      "neighbourhood_weight": 0.175,
-      "seed": 47,
-      "change_figure_of_merit": 0.2524319868095631
-    },
-    {
-      "year": 2023,
-      "neighbourhood_weight": 0.175,
-      "seed": 73,
-      "change_figure_of_merit": 0.19803704290011082
-    },
-    {
-      "year": 2024,
-      "neighbourhood_weight": 0.175,
-      "seed": 73,
-      "change_figure_of_merit": 0.2523848684210526
-    },
-    {
-      "year": 2023,
-      "neighbourhood_weight": 0.35,
-      "seed": 31,
-      "change_figure_of_merit": 0.19193827743662414
-    },
-    {
-      "year": 2024,
-      "neighbourhood_weight": 0.35,
-      "seed": 31,
-      "change_figure_of_merit": 0.2518329351676415
-    },
-    {
-      "year": 2023,
-      "neighbourhood_weight": 0.35,
-      "seed": 47,
-      "change_figure_of_merit": 0.19570028453999366
-    },
-    {
-      "year": 2024,
-      "neighbourhood_weight": 0.35,
-      "seed": 47,
-      "change_figure_of_merit": 0.25179204086677104
-    },
-    {
-      "year": 2023,
-      "neighbourhood_weight": 0.35,
-      "seed": 73,
-      "change_figure_of_merit": 0.19746835443037974
-    },
-    {
-      "year": 2024,
-      "neighbourhood_weight": 0.35,
-      "seed": 73,
-      "change_figure_of_merit": 0.25248786906817994
-    },
-    {
-      "year": 2023,
-      "neighbourhood_weight": 0.7,
-      "seed": 31,
-      "change_figure_of_merit": 0.1911880409126672
-    },
-    {
-      "year": 2024,
-      "neighbourhood_weight": 0.7,
-      "seed": 31,
-      "change_figure_of_merit": 0.25127614029310064
-    },
-    {
-      "year": 2023,
-      "neighbourhood_weight": 0.7,
-      "seed": 47,
-      "change_figure_of_merit": 0.19551130077445866
-    },
-    {
-      "year": 2024,
-      "neighbourhood_weight": 0.7,
-      "seed": 47,
-      "change_figure_of_merit": 0.24993829699712053
-    },
-    {
-      "year": 2023,
       "neighbourhood_weight": 0.7,
       "seed": 73,
-      "change_figure_of_merit": 0.19746835443037974
-    },
-    {
-      "year": 2024,
-      "neighbourhood_weight": 0.7,
-      "seed": 73,
-      "change_figure_of_merit": 0.25267313702911665
+      "change_figure_of_merit": 0.25125504073738786
     }
   ]
 }

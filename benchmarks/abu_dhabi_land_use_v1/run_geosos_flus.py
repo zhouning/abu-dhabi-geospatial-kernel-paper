@@ -52,6 +52,15 @@ def _read(path: Path) -> tuple[np.ndarray, dict[str, Any]]:
         return dataset.read(), dataset.profile.copy()
 
 
+def _report_path(path: Path) -> str:
+    """Return a stable path for reports, including outputs outside the repo."""
+
+    try:
+        return path.relative_to(HERE).as_posix()
+    except ValueError:
+        return str(path)
+
+
 def _write_compact(path: Path, values: np.ndarray, *, nodata: float) -> None:
     data = np.asarray(values)
     if data.ndim == 2:
@@ -469,7 +478,7 @@ def run_seed(
         year_rows.append(
             {
                 **simulation,
-                "prediction_path": str(output_path.relative_to(HERE)),
+                "prediction_path": _report_path(output_path),
                 "evaluation": evaluation,
             }
         )
@@ -546,9 +555,9 @@ def run(*, binary: Path, seeds: tuple[int, ...], output_root: Path, feature_mode
         ]
         valid = [int(seed_report["seed"]) for seed_report in reports if int(seed_report["seed"]) not in collapsed]
         report["matched_input_diagnostic"] = {
-            "valid_seed": valid[0] if len(valid) == 1 else valid,
+            "non_collapsed_seeds": valid,
             "collapsed_seeds": collapsed,
-            "interpretation": "Collapsed seeds are retained as identity-leakage diagnostics and must not be averaged into the matched-input baseline.",
+            "interpretation": "Collapsed seeds are retained as identity-leakage diagnostics. No seed is treated as a valid matched-input estimator because the non-collapsed result is platform-sensitive.",
         }
     output_root.mkdir(parents=True, exist_ok=True)
     (output_root / "report.json").write_text(

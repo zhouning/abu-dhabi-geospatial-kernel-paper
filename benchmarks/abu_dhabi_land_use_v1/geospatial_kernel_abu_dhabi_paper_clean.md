@@ -12,8 +12,10 @@ binary metrics and seven-objective Pareto table must not be reused.
 
 The current release also corrects the former matched-input interpretation: the
 relative-path attempt returned a console configuration error, while corrected
-absolute-path 13-, 19- and 25-feature diagnostics completed for seed 31. See
-`matched_input_review.md` for the archived evidence.
+absolute-path 13-, 19- and 25-feature diagnostics completed for all three
+seeds. The 25-feature mode is a platform-sensitive identity-leakage diagnostic,
+not a valid point estimate. See `matched_input_review.md` for the archived
+evidence.
 
 # Geospatial Kernel: a state–action–constraint core for urban land-cover planning
 

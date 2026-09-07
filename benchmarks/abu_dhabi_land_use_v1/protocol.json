@@ -3,7 +3,7 @@
   "benchmark_id": "abu-dhabi-land-use-v1",
   "title": "Abu Dhabi Bounded Land-Use Simulation and Optimization Benchmark",
   "status": "public_bundle_complete_authoritative_validation_pending",
-  "revision_status": "review_response_protocol_v7",
+  "revision_status": "review_response_protocol_v8",
   "comparability_status": "unmatched_headline_pipeline_with_three_seed_matched_input_diagnostics",
   "model_display_names": {
     "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
@@ -117,8 +117,8 @@
     {
       "id": "geosos_flus",
       "role": "traditional_ann_suitability_plus_ca_allocation",
-      "comparability_note": "Original headline run used seven continuous drivers and frozen default console settings. A 25-feature Kernel-matched input was subsequently executed with absolute paths for seeds 31, 47 and 73, producing probability surfaces and 2023/2024 predictions. Seeds 47 and 73 collapse to zero-change outputs through current-class identity leakage and are retained as diagnostics; only seed 31 is used for the matched-input point comparison. The released three-seed comparison remains an unmatched pipeline comparison because the baseline and Kernel proposal representations differ.",
-      "matched_input_status": "completed_three_seed_absolute_path_diagnostics_with_two_collapsed_outputs",
+      "comparability_note": "Original headline run used seven continuous drivers and frozen default console settings. Feature-expanded runs were subsequently executed with absolute paths. The 25-feature mode is diagnostic-only because five of six platform-seed runs collapsed to zero-change outputs through current-class identity leakage, including all three reviewer-provided Windows x86_64 runs. The 19-feature mode avoids zero-change but underfills observed demand in all three archived macOS seeds. Neither diagnostic is used as a headline estimator or paired model contrast.",
+      "matched_input_status": "platform_sensitive_diagnostic_not_a_comparable_estimator",
       "binary_boundary": "Vendored Mach-O arm64 console; provenance based on the public GeoSOS source with author modifications archived at FLUS_console_crossplatform commit deb0a54; not claimed bitwise equivalent to an unmodified Liu et al. (2017) release; Windows/Linux require a compatible external build.",
       "frozen_parameters": {
         "ann_training_years": [2021],
@@ -151,7 +151,7 @@
       "purpose": "isolate spatial allocation skill from demand forecast error",
       "primary_metric": "strict_multiclass_change_figure_of_merit_on_all_valid_pixels",
       "secondary_metrics": ["binary_change_figure_of_merit", "change_f1", "changed_destination_macro_f1", "overall_accuracy", "macro_f1"],
-      "degenerate_output_rule": "For every model/year/seed, record predicted_change_pixels and zero_change_output; zero-change outputs are diagnostics reviewed alongside structural-zero metrics and are not evidence of superiority or real stability.",
+      "degenerate_output_rule": "For every model/year/seed, record predicted_change_pixels and zero_change_output; zero-change outputs are diagnostics reviewed alongside structural-zero metrics and are not evidence of superiority or real stability. For the 25-feature FLUS diagnostic, the macOS arm64 seed-31 non-collapse is not a valid point estimate because macOS seeds 47 and 73 and reviewer-provided Windows x86_64 seeds 31, 47 and 73 all include zero-change outputs.",
       "prespecified_label_reliability_sensitivity": {
         "confidence_threshold": 0.5,
         "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5",

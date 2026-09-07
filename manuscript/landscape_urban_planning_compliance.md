@@ -8,7 +8,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent. The supplied FLUS binary is a GeoSOS-derived author-modified build, with corrected absolute-path 13-, 19- and 25-feature diagnostics; the primary comparison remains the seven-driver unmatched control. |
+| Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent. The supplied FLUS binary is a GeoSOS-derived author-modified build. The 25-feature mode is a platform-sensitive identity-leakage diagnostic, and the 19-feature mode underfills demand; the primary comparison remains the seven-driver unmatched control. |
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
 | Corresponding author | Needs portal entry | Name is present, but the submission system should receive a valid institutional e-mail and full correspondence address. |
@@ -35,7 +35,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Data availability | Conditional | The complete public bundle, generated rasters, vectors and mechanism controls are included or tracked with Git LFS and pass the input/output audits; authoritative local validation data are unavailable. The author-run Linux/macOS Kernel comparison and FLUS matched-input diagnostics are archived with commands and reports. |
+| Data availability | Conditional | The complete public bundle, generated rasters, vectors and mechanism controls are included or tracked with Git LFS and pass the input/output audits; authoritative local validation data are unavailable. The author-run Linux/macOS Kernel comparison and FLUS feature diagnostics are archived with commands and reports. Reviewer-provided Windows figures are provenance-labelled external verification because their rasters are not locally archived. |
 | Code availability | Conditional | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; a compatible, traceable FLUS build is required for an information-matched comparison, and a DOI is not yet provided. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
@@ -73,8 +73,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 The package is a conditional Article-type draft. Before submission, add the
 corresponding-author e-mail, public release URL/DOI and an independent
-2023–2024 change-validation layer. The supplied FLUS build is GeoSOS-derived and
-its author modifications are archived at `FLUS_console_crossplatform` commit
-`deb0a54`;
-the successful matched-input runs are one-seed diagnostics and do not replace
+2023–2024 change-validation layer. The supplied FLUS build is GeoSOS-derived
+and its author modifications are archived at `FLUS_console_crossplatform`
+commit `deb0a54`. The 25-feature run is platform sensitive and cannot replace
 the primary three-seed comparison.

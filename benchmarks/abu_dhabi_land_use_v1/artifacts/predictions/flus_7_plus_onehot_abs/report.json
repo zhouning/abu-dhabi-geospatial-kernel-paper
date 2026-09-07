@@ -1,7 +1,7 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-06T10:52:51.274324+00:00",
-  "display_name": "FLUS-style ANN–CA console (untraceable build)",
+  "created_at": "2026-09-07T07:06:09.892153+00:00",
+  "display_name": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
   "external_binary": "vendor/flus_console",
   "feature_mode": "baseline_plus_onehot",
   "model_id": "geosos_flus",
@@ -30,7 +30,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.5205063750036061,
+        "fit_seconds": 0.5348156671971083,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -38,7 +38,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.680004916153848,
+          "ca_seconds": 4.825807790737599,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -57,6 +57,7 @@
             "change_wrong_transitions": 0,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": "current_class_identity_leakage_zero_change",
             "demand_l1_error_pixels": 6186,
             "demand_target_exact": false,
             "demand_total_variation": 0.038795374156485964,
@@ -87,7 +88,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": true
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_31/prediction_2023.tif",
           "target_counts": {
@@ -101,7 +103,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.682430499931797,
+          "ca_seconds": 4.686215333174914,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -120,6 +122,7 @@
             "change_wrong_transitions": 0,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": "current_class_identity_leakage_zero_change",
             "demand_l1_error_pixels": 13668,
             "demand_target_exact": false,
             "demand_total_variation": 0.08571858615758975,
@@ -150,7 +153,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": true
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_31/prediction_2024.tif",
           "target_counts": {
@@ -187,7 +191,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.4369887080974877,
+        "fit_seconds": 0.4476979998871684,
         "seed": 47,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -195,7 +199,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.615437207976356,
+          "ca_seconds": 4.599707125220448,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -214,6 +218,7 @@
             "change_wrong_transitions": 0,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": "current_class_identity_leakage_zero_change",
             "demand_l1_error_pixels": 6186,
             "demand_target_exact": false,
             "demand_total_variation": 0.038795374156485964,
@@ -244,7 +249,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": true
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_47/prediction_2023.tif",
           "target_counts": {
@@ -258,7 +264,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.625326750101522,
+          "ca_seconds": 4.628430124837905,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -277,6 +283,7 @@
             "change_wrong_transitions": 0,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": "current_class_identity_leakage_zero_change",
             "demand_l1_error_pixels": 13668,
             "demand_target_exact": false,
             "demand_total_variation": 0.08571858615758975,
@@ -307,7 +314,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": true
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_47/prediction_2024.tif",
           "target_counts": {
@@ -344,7 +352,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.5479524158872664,
+        "fit_seconds": 0.559089541900903,
         "seed": 73,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -352,7 +360,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.553072459064424,
+          "ca_seconds": 4.602726208977401,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -371,6 +379,7 @@
             "change_wrong_transitions": 0,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": "current_class_identity_leakage_zero_change",
             "demand_l1_error_pixels": 6186,
             "demand_target_exact": false,
             "demand_total_variation": 0.038795374156485964,
@@ -401,7 +410,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": true
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_73/prediction_2023.tif",
           "target_counts": {
@@ -415,7 +425,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.611628874903545,
+          "ca_seconds": 4.665827458258718,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -434,6 +444,7 @@
             "change_wrong_transitions": 0,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": "current_class_identity_leakage_zero_change",
             "demand_l1_error_pixels": 13668,
             "demand_target_exact": false,
             "demand_total_variation": 0.08571858615758975,
@@ -464,7 +475,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": true
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_onehot_abs/seed_73/prediction_2024.tif",
           "target_counts": {
@@ -480,8 +492,19 @@
       ]
     }
   ],
+  "source_provenance": {
+    "author_modified_commit": "deb0a54",
+    "author_modified_repository": "https://github.com/zhouning/FLUS_console_crossplatform",
+    "author_modified_tag": "paper-benchmark-flus-v1",
+    "macos_arm64_binary_sha256": "9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964",
+    "modifications": [
+      "train and train-update command-line entry points",
+      "FLUS_RANDOM_SEED deterministic ANN and CA seeding"
+    ],
+    "upstream": "GeoSOS FLUS public source release (geosimulation.cn; Liu et al., 2017)"
+  },
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 29.76312058302574
+  "wall_seconds": 30.337414749898016
 }

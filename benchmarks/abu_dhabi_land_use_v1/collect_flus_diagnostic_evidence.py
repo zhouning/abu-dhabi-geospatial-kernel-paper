@@ -20,6 +20,48 @@ RUNS = {
     "matched_kernel": "flus_matched_inputs_abs",
 }
 
+# The Windows values were supplied by the independent reviewer after rebuilding
+# commit deb0a54. The underlying Windows rasters and logs are not present in
+# this repository, so this record is provenance-labelled external evidence.
+REVIEWER_WINDOWS_X86_64 = {
+    "evidence_status": "reviewer_provided_external_verification_no_local_rasters",
+    "platform": "Windows 11 x86_64",
+    "compiler": "MSVC 19.51",
+    "gdal": "3.12.4",
+    "source_commit": "deb0a54",
+    "path_requirement": "pure ASCII benchmark and working directories",
+    "same_platform_seed_31_repeat_difference_pixels": {"2023": 0, "2024": 0},
+    "baseline_7": {
+        "strict_fom": {
+            "31": {"2023": 0.1365, "2024": 0.1758},
+            "47": {"2023": 0.1379, "2024": 0.1873},
+            "73": {"2023": 0.1261, "2024": 0.1769},
+            "mean": {"2023": 0.1335, "2024": 0.1800},
+        },
+        "windows_vs_macos_difference_pixels": {
+            "31": {"2023": 1910, "2024": 3261},
+            "47": {"2023": 2137, "2024": 3325},
+            "73": {"2023": 2018, "2024": 3131},
+        },
+    },
+    "matched_kernel_25": {
+        "strict_fom_all_seeds": {"2023": 0.0, "2024": 0.0},
+        "predicted_change_pixels_all_seeds": {"2023": 0, "2024": 0},
+        "demand_total_variation_all_seeds": {"2023": 0.0388, "2024": 0.0857},
+        "ann_rmse": {"31": 1.66e-5, "47": 1.72e-5, "73": 1.66e-5},
+        "collapsed_seeds": [31, 47, 73],
+    },
+    "baseline_plus_neighborhood_19": {
+        "strict_fom": {
+            "31": {"2023": 0.1299, "2024": 0.1081},
+            "47": {"2023": 0.1897, "2024": 0.1724},
+            "73": {"2023": 0.1068, "2024": 0.0863},
+        },
+        "predicted_change_pixels_range_across_years": [1831, 3026],
+    },
+    "random_stream_boundary": "FLUS_RANDOM_SEED is deterministic within the tested platform, but C rand()/srand() sequences differ by platform runtime.",
+}
+
 
 def _sanitize(text: str) -> str:
     return text.replace(str(REPO), "<REPO>")
@@ -113,7 +155,7 @@ def collect() -> dict[str, object]:
             runs[mode]["seed_logs"] = log_records
     failed_root = PREDICTIONS / "flus_matched_inputs/work/seed_31/ann"
     report: dict[str, object] = {
-        "schema": "gwm.abu_dhabi_flus_matched_input_evidence.v2",
+        "schema": "gwm.abu_dhabi_flus_feature_diagnostic_evidence.v3",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "created_at": datetime.now(UTC).isoformat(),
         "failed_relative_path_attempt": {
@@ -122,7 +164,8 @@ def collect() -> dict[str, object]:
             "interpretation": "The console returned a configuration-path error. This record does not support a SIGSEGV claim.",
         },
         "corrected_absolute_path_runs": runs,
-        "claim_boundary": "The 25-feature corrected run is archived for seeds 31, 47 and 73 and is reported as a matched-input diagnostic. Seeds 47 and 73 produce zero-change outputs because current-class one-hot inputs leak the same-year label target; only seed 31 is retained as the valid point comparison. It shares the Kernel feature family only; FLUS still learns same-year label suitability rather than the Kernel's next-state transition target and does not share the Kernel projection implementation. The original seven-driver run remains the unmatched headline control.",
+        "reviewer_provided_windows_x86_64": REVIEWER_WINDOWS_X86_64,
+        "claim_boundary": "The 25-feature corrected run is diagnostic-only. Across the six platform-seed runs, five collapse to zero change through current-class identity leakage; the sole non-collapsed macOS seed-31 run is not a valid point estimate because it is not reproducible in the reviewer-provided Windows x86_64 build. The 19-feature mode produces changes for all three archived macOS seeds but underfills demand. Neither feature-expanded mode is used as a headline estimator or paired model contrast. The original seven-driver run remains the unmatched headline control.",
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")

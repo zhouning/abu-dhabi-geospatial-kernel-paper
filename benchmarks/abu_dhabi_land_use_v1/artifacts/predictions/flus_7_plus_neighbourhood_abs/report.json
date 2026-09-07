@@ -1,7 +1,7 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-06T10:53:33.988293+00:00",
-  "display_name": "FLUS-style ANN–CA console (untraceable build)",
+  "created_at": "2026-09-07T07:06:52.626663+00:00",
+  "display_name": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
   "external_binary": "vendor/flus_console",
   "feature_mode": "baseline_plus_neighborhood",
   "model_id": "geosos_flus",
@@ -36,7 +36,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 3.646906000096351,
+        "fit_seconds": 3.6856385418213904,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -44,7 +44,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.6241352499928325,
+          "ca_seconds": 4.622712792363018,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -63,6 +63,7 @@
             "change_wrong_transitions": 11,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 3568,
             "demand_target_exact": false,
             "demand_total_variation": 0.022376639991972504,
@@ -93,7 +94,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_31/prediction_2023.tif",
           "target_counts": {
@@ -107,7 +109,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.624047625111416,
+          "ca_seconds": 4.629831207916141,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -126,6 +128,7 @@
             "change_wrong_transitions": 39,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 10912,
             "demand_target_exact": false,
             "demand_total_variation": 0.06843438777814013,
@@ -156,7 +159,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_31/prediction_2024.tif",
           "target_counts": {
@@ -199,7 +203,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 4.5390914171002805,
+        "fit_seconds": 4.478082166984677,
         "seed": 47,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -207,7 +211,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.5813954579643905,
+          "ca_seconds": 4.5982544999569654,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -226,6 +230,7 @@
             "change_wrong_transitions": 13,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 2442,
             "demand_target_exact": false,
             "demand_total_variation": 0.01531495371647894,
@@ -256,7 +261,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_47/prediction_2023.tif",
           "target_counts": {
@@ -270,7 +276,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.620380624895915,
+          "ca_seconds": 4.569451957941055,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -289,6 +295,7 @@
             "change_wrong_transitions": 34,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 9814,
             "demand_target_exact": false,
             "demand_total_variation": 0.061548302937561146,
@@ -319,7 +326,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_47/prediction_2024.tif",
           "target_counts": {
@@ -362,7 +370,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 5.615644250065088,
+        "fit_seconds": 5.612099625170231,
         "seed": 73,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -370,7 +378,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.555159416049719,
+          "ca_seconds": 4.61125220824033,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -389,6 +397,7 @@
             "change_wrong_transitions": 9,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 4864,
             "demand_target_exact": false,
             "demand_total_variation": 0.030504477836590323,
@@ -419,7 +428,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_73/prediction_2023.tif",
           "target_counts": {
@@ -433,7 +443,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.524995249928907,
+          "ca_seconds": 4.584426082670689,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -452,6 +462,7 @@
             "change_wrong_transitions": 44,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 12230,
             "demand_target_exact": false,
             "demand_total_variation": 0.07670019817876227,
@@ -482,7 +493,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/flus_7_plus_neighbourhood_abs/seed_73/prediction_2024.tif",
           "target_counts": {
@@ -498,8 +510,19 @@
       ]
     }
   ],
+  "source_provenance": {
+    "author_modified_commit": "deb0a54",
+    "author_modified_repository": "https://github.com/zhouning/FLUS_console_crossplatform",
+    "author_modified_tag": "paper-benchmark-flus-v1",
+    "macos_arm64_binary_sha256": "9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964",
+    "modifications": [
+      "train and train-update command-line entry points",
+      "FLUS_RANDOM_SEED deterministic ANN and CA seeding"
+    ],
+    "upstream": "GeoSOS FLUS public source release (geosimulation.cn; Liu et al., 2017)"
+  },
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 41.78252370888367
+  "wall_seconds": 41.99803275009617
 }

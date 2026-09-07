@@ -55,22 +55,49 @@ def _verify_manuscript_report_consistency() -> None:
     manuscript = (REPO / "manuscript/manuscript.md").read_text(encoding="utf-8")
     manuscript_numeric = manuscript.replace("−", "-")
 
-    # Table 1: all primary strict-FoM cells and the valid matched-input diagnostic.
+    # Table 1: all primary strict-FoM cells. Feature-expanded FLUS runs are
+    # diagnostics and must not be treated as headline estimators.
     for model in ("geosos_flus", "geospatial_kernel", "paper58"):
         for year in ("2023", "2024"):
             value = comparison["summaries"][model][year]["change_figure_of_merit"]["mean"]
             if f"{value:.4f}" not in manuscript_numeric:
                 raise RuntimeError(f"manuscript_table1_fom_missing:{model}:{year}:{value:.4f}")
-    matched = comparison["matched_input_baseline"]["primary"]
-    for year in ("2023", "2024"):
-        for key in (
-            "matched_strict_fom",
-            "kernel_minus_matched_point_contrast",
-            "kernel_minus_matched_block_bootstrap_median",
+    matched = comparison["matched_input_diagnostic"]
+    if matched.get("estimator_status") != "invalid_platform_sensitive_identity_leakage_diagnostic":
+        raise RuntimeError("matched_input_diagnostic_status_missing")
+    if matched.get("collapsed_seeds_on_archive_platform") != [47, 73]:
+        raise RuntimeError("matched_input_archive_collapsed_seed_record_missing")
+    if matched.get("non_collapsed_seeds_on_archive_platform") != [31]:
+        raise RuntimeError("matched_input_archive_non_collapsed_seed_record_missing")
+    neighbourhood = comparison["neighbourhood_input_diagnostic"]
+    if neighbourhood.get("estimator_status") != "partial_demand_underfill_diagnostic":
+        raise RuntimeError("neighbourhood_input_diagnostic_status_missing")
+    expected_ranges = {
+        "2023": (0.1071, 0.1617, 1702, 2417, 4500, 0.0153, 0.0305),
+        "2024": (0.0872, 0.1386, 1805, 2499, 8464, 0.0615, 0.0767),
+    }
+    for year, values in expected_ranges.items():
+        actual = neighbourhood["ranges"][year]
+        if not (round(actual["strict_fom_min"], 4) == values[0] and round(actual["strict_fom_max"], 4) == values[1]):
+            raise RuntimeError(f"neighbourhood_fom_range_missing:{year}")
+        if (actual["predicted_change_pixels_min"], actual["predicted_change_pixels_max"], actual["observed_change_pixels"]) != values[2:5]:
+            raise RuntimeError(f"neighbourhood_change_range_missing:{year}")
+        if not (
+            round(actual["demand_total_variation_min"], 4) == values[5]
+            and round(actual["demand_total_variation_max"], 4) == values[6]
         ):
-            value = matched[year][key]
-            if f"{value:.4f}" not in manuscript_numeric:
-                raise RuntimeError(f"manuscript_matched_value_missing:{year}:{key}:{value:.4f}")
+            raise RuntimeError(f"neighbourhood_demand_variation_range_missing:{year}")
+        for fragment in (
+            f"{values[0]:.4f}",
+            f"{values[1]:.4f}",
+            f"{values[2]:,}",
+            f"{values[3]:,}",
+            f"{values[4]:,}",
+            f"{values[5]:.4f}",
+            f"{values[6]:.4f}",
+        ):
+            if fragment not in manuscript_numeric:
+                raise RuntimeError(f"manuscript_neighbourhood_diagnostic_missing:{year}:{fragment}")
 
     # Main paired contrasts reported in Results.
     for year, pair_names in (
@@ -148,6 +175,7 @@ def _hash_outputs() -> dict[str, object]:
         HERE / "artifacts/predictions/flus_matched_inputs_abs/report.json",
         HERE / "artifacts/cross_platform/linux_vs_macos_kernel_comparison.json",
         REPO / "manuscript/supplementary_table_S2_neighbourhood_weight_sensitivity.md",
+        REPO / "manuscript/supplementary_table_S3_flus_feature_diagnostics.md",
         REPO / "manuscript/main.pdf",
         REPO / "manuscript/lup_submission.pdf",
         REPO / "manuscript/manuscript.pdf",

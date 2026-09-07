@@ -1,6 +1,6 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-06T14:48:37.445935+00:00",
+  "created_at": "2026-09-07T07:07:25.077356+00:00",
   "display_name": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
   "external_binary": "vendor/flus_console",
   "feature_mode": "matched_kernel",
@@ -9,8 +9,10 @@
       47,
       73
     ],
-    "interpretation": "Collapsed seeds are retained as identity-leakage diagnostics and must not be averaged into the matched-input baseline.",
-    "valid_seed": 31
+    "interpretation": "Collapsed seeds are retained as identity-leakage diagnostics. No seed is treated as a valid matched-input estimator because the non-collapsed result is platform-sensitive.",
+    "non_collapsed_seeds": [
+      31
+    ]
   },
   "model_id": "geosos_flus",
   "revision_status": "current_protocol_run",
@@ -50,7 +52,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.4172364161349833,
+        "fit_seconds": 0.4105484578758478,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -58,7 +60,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.5975337501149625,
+          "ca_seconds": 4.732474749907851,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -123,7 +125,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.669181792065501,
+          "ca_seconds": 4.824521167203784,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -223,7 +225,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 1.0566532080993056,
+        "fit_seconds": 1.0709343748167157,
         "seed": 47,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -231,7 +233,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.57497033290565,
+          "ca_seconds": 4.636764042079449,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -296,7 +298,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.552152958000079,
+          "ca_seconds": 4.637113708071411,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -396,7 +398,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 1.10081083397381,
+        "fit_seconds": 1.0882341247051954,
         "seed": 73,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -404,7 +406,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.655260334024206,
+          "ca_seconds": 4.615894000045955,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -469,7 +471,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.569579791044816,
+          "ca_seconds": 4.632984000258148,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -539,6 +541,8 @@
   "source_provenance": {
     "author_modified_commit": "deb0a54",
     "author_modified_repository": "https://github.com/zhouning/FLUS_console_crossplatform",
+    "author_modified_tag": "paper-benchmark-flus-v1",
+    "macos_arm64_binary_sha256": "9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964",
     "modifications": [
       "train and train-update command-line entry points",
       "FLUS_RANDOM_SEED deterministic ANN and CA seeding"
@@ -548,5 +552,5 @@
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 31.017697292147204
+  "wall_seconds": 31.729033625219017
 }

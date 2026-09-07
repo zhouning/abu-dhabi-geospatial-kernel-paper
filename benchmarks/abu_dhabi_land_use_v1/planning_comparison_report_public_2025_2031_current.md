@@ -7,12 +7,12 @@
 | GeoSOS-derived FLUS-style ANN–CA console (author-modified build) | Moderate growth (legacy compact) | 0.00068 | 2504 | 296 | 446.1 | 231.6 | 3.035 | 0.0168 | 0.083 | 是 |
 | GeoSOS-derived FLUS-style ANN–CA console (author-modified build) | Green-priority growth | 0.00528 | 2888 | 629 | 443.7 | 212.7 | 3.265 | 0.0177 | 0.066 | 是 |
 | GeoSOS-derived FLUS-style ANN–CA console (author-modified build) | High outward growth | 0.00045 | 2568 | 139 | 443.5 | 255.3 | 2.484 | 0.0131 | 0.107 | 是 |
-| Geospatial Kernel | Moderate growth (legacy compact) | 0.00000 | 60 | 350 | 336.7 | 117.4 | 3.922 | 0.0000 | 0.000 | 是 |
-| Geospatial Kernel | Green-priority growth | 0.00000 | 68 | 1050 | 319.8 | 111.3 | 4.256 | 0.0000 | 0.000 | 是 |
-| Geospatial Kernel | High outward growth | 0.00000 | 86 | 175 | 362.5 | 141.7 | 2.969 | 0.0000 | 0.001 | 是 |
-| GeoFM-LDN | Moderate growth (legacy compact) | 0.00000 | 1596 | 350 | 475.5 | 239.8 | 4.081 | 0.0000 | 0.081 | 否 |
-| GeoFM-LDN | Green-priority growth | 0.00000 | 1536 | 1050 | 452.2 | 222.8 | 4.340 | 0.0000 | 0.073 | 否 |
-| GeoFM-LDN | High outward growth | 0.00000 | 1174 | 175 | 507.7 | 264.4 | 3.219 | 0.0000 | 0.089 | 否 |
+| Geospatial Kernel | Moderate growth (legacy compact) | 0.00000 | 8 | 350 | 334.7 | 116.7 | 3.943 | 0.0000 | 0.000 | 是 |
+| Geospatial Kernel | Green-priority growth | 0.00000 | 44 | 1050 | 323.1 | 111.0 | 4.277 | 0.0000 | 0.000 | 是 |
+| Geospatial Kernel | High outward growth | 0.00000 | 42 | 175 | 365.5 | 139.8 | 2.923 | 0.0000 | 0.001 | 是 |
+| GeoFM-LDN | Moderate growth (legacy compact) | 0.00000 | 1580 | 350 | 475.9 | 239.7 | 4.056 | 0.0000 | 0.081 | 否 |
+| GeoFM-LDN | Green-priority growth | 0.00000 | 1524 | 1050 | 452.1 | 222.3 | 4.348 | 0.0000 | 0.073 | 否 |
+| GeoFM-LDN | High outward growth | 0.00000 | 1148 | 175 | 507.5 | 263.0 | 3.207 | 0.0000 | 0.088 | 否 |
 
 ## 解释边界
 

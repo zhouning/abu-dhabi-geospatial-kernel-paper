@@ -1,6 +1,6 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-06T14:39:46.432469+00:00",
+  "created_at": "2026-09-07T07:05:38.784394+00:00",
   "display_name": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
   "external_binary": "vendor/flus_console",
   "feature_mode": "baseline_7",
@@ -24,7 +24,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 2.8233914161100984,
+        "fit_seconds": 2.886619625147432,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -32,7 +32,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.63056108308956,
+          "ca_seconds": 4.7024223753251135,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -51,6 +51,7 @@
             "change_wrong_transitions": 22,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 456,
             "demand_target_exact": false,
             "demand_total_variation": 0.0028597947971803427,
@@ -81,7 +82,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/geosos_flus/seed_31/prediction_2023.tif",
           "target_counts": {
@@ -95,7 +97,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.618900167057291,
+          "ca_seconds": 4.746403709053993,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -114,6 +116,7 @@
             "change_wrong_transitions": 47,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 950,
             "demand_target_exact": false,
             "demand_total_variation": 0.005957905827459047,
@@ -144,7 +147,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/geosos_flus/seed_31/prediction_2024.tif",
           "target_counts": {
@@ -175,7 +179,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 2.360280374996364,
+        "fit_seconds": 2.4648623750545084,
         "seed": 47,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -183,7 +187,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.6175727089867,
+          "ca_seconds": 4.7942536673508584,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -202,6 +206,7 @@
             "change_wrong_transitions": 18,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 410,
             "demand_target_exact": false,
             "demand_total_variation": 0.0025713067255349574,
@@ -232,7 +237,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/geosos_flus/seed_47/prediction_2023.tif",
           "target_counts": {
@@ -246,7 +252,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.604009749833494,
+          "ca_seconds": 4.844249709043652,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -265,6 +271,7 @@
             "change_wrong_transitions": 36,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 640,
             "demand_target_exact": false,
             "demand_total_variation": 0.004013747083761884,
@@ -295,7 +302,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/geosos_flus/seed_47/prediction_2024.tif",
           "target_counts": {
@@ -326,7 +334,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 3.1289467501919717,
+        "fit_seconds": 3.4493972081691027,
         "seed": 73,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -334,7 +342,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.557106916094199,
+          "ca_seconds": 4.795818583108485,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -353,6 +361,7 @@
             "change_wrong_transitions": 20,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 490,
             "demand_target_exact": false,
             "demand_total_variation": 0.003073025111005193,
@@ -383,7 +392,8 @@
               "4": 1011,
               "5": 12260,
               "6": 49867
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/geosos_flus/seed_73/prediction_2023.tif",
           "target_counts": {
@@ -397,7 +407,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.548047709045932,
+          "ca_seconds": 4.841476958245039,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -416,6 +426,7 @@
             "change_wrong_transitions": 52,
             "constraint_violation_pixels": 0,
             "constraint_violation_rate": 0.0,
+            "degeneracy_reason": null,
             "demand_l1_error_pixels": 984,
             "demand_target_exact": false,
             "demand_total_variation": 0.006171136141283898,
@@ -446,7 +457,8 @@
               "4": 1011,
               "5": 15774,
               "6": 46179
-            }
+            },
+            "zero_change_output": false
           },
           "prediction_path": "artifacts/predictions/geosos_flus/seed_73/prediction_2024.tif",
           "target_counts": {
@@ -465,6 +477,8 @@
   "source_provenance": {
     "author_modified_commit": "deb0a54",
     "author_modified_repository": "https://github.com/zhouning/FLUS_console_crossplatform",
+    "author_modified_tag": "paper-benchmark-flus-v1",
+    "macos_arm64_binary_sha256": "9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964",
     "modifications": [
       "train and train-update command-line entry points",
       "FLUS_RANDOM_SEED deterministic ANN and CA seeding"
@@ -474,5 +488,5 @@
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 36.386598374927416
+  "wall_seconds": 38.23621291713789
 }

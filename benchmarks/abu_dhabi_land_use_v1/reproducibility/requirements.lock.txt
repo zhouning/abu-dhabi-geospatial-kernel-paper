@@ -1,16 +1,54 @@
-# Exact runtime used for the published rerun on macOS arm64 (2026-09-05).
-# Install with Python 3.11; the FLUS console is a macOS arm64 executable.
-numpy==2.4.6
-scipy==1.17.1
-scikit-learn==1.9.0
-rasterio==1.4.4
-geopandas==1.1.4
-shapely==2.1.2
-fiona==1.10.1
-matplotlib==3.11.0
-python-docx==1.2.0
-torch==2.12.1
-requests==2.34.2
+# Fully resolved runtime used for the published rerun on macOS arm64 (2026-09-07).
+# Install with Python 3.11. This includes transitive dependencies so a clean
+# environment can run rasterio and pytest without relying on pre-installed packages.
+# The FLUS console itself is a macOS arm64 executable.
 affine==2.4.0
+attrs==26.1.0
+certifi==2026.7.22
+charset-normalizer==3.5.1
+click==8.5.0
+click-plugins==1.1.1.2
+cligj==0.7.2
+cloudpickle==3.1.2
+contourpy==1.3.3
+cycler==0.12.1
+filelock==3.32.5
+fiona==1.10.1
+fonttools==4.64.0
+fsspec==2026.7.0
+geopandas==1.1.4
+idna==3.19
+iniconfig==2.3.0
+jinja2==3.1.6
+joblib==1.6.0
+kiwisolver==1.5.1
+lxml==6.1.3
+markupsafe==3.0.3
+matplotlib==3.11.0
+mpmath==1.3.0
+narwhals==2.25.0
+networkx==3.6.1
+numpy==2.4.6
+packaging==26.3
 pandas==3.0.5
+pillow==12.3.0
+pluggy==1.6.0
+pygments==2.21.0
+pyogrio==0.13.0
+pyparsing==3.3.2
+pyproj==3.7.2
 pytest==9.1.1
+python-dateutil==2.9.0.post0
+python-docx==1.2.0
+rasterio==1.4.4
+requests==2.34.2
+scikit-learn==1.9.0
+scipy==1.17.1
+setuptools==81.0.0
+shapely==2.1.2
+six==1.17.0
+sympy==1.14.0
+threadpoolctl==3.6.0
+torch==2.12.1
+typing-extensions==4.16.0
+urllib3==2.7.0

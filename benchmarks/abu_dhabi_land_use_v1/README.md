@@ -123,21 +123,29 @@ resulting ranking and Pareto membership are conditional pipeline comparisons.
 The original FLUS run used a different feature set and frozen console defaults.
 The earlier matched-input failure was traced to relative paths in the console
 configuration, not to a verified segmentation fault. Corrected absolute-path
-runs completed for seed 31 with 13, 19 and 25 features; the full mode wrote a
-valid probability surface and 2023/2024 predictions. The reports and sanitized
-console evidence are archived under `artifacts/flus_matched_input_review/` and
-summarized in `matched_input_review.md`. The released three-seed FLUS result
-remains the seven-driver unmatched baseline, so intrinsic model superiority
-should not be inferred. Independent authoritative 2023–2024 change validation
-is still not available.
+runs completed for all three seeds in the 19- and 25-feature modes; the full
+mode wrote valid probability surfaces and 2023/2024 predictions. The reports
+and sanitized console evidence are archived under
+`artifacts/flus_matched_input_review/` and summarized in
+`matched_input_review.md`. The released three-seed FLUS result remains the
+seven-driver unmatched baseline, so intrinsic model superiority should not be
+inferred. Independent authoritative 2023–2024 change validation is still not
+available.
+
+The 25-feature mode is diagnostic-only. Five of six platform–seed runs,
+including all three reviewer-provided Windows x86_64 runs, collapsed to zero
+change through current-class identity leakage. The 19-feature mode avoids zero
+change but underfills observed demand in all three macOS seeds. Neither mode is
+used as a headline estimator or paired model contrast.
 
 The author-run Linux Kernel check is archived under `artifacts/cross_platform/`.
 For the six seed/year rasters, the Linux and reference macOS categorical arrays
-were identical and their strict FoM deltas were zero. This is a measured result
-for the archived environments, not a guarantee for every numerical stack. A
-present FLUS binary that is not executable on the current operating system is
-reported by `reproducibility_check.py` as a portability warning rather than an
-integrity-gate failure.
+differ by 498–1,147 valid cells (0.62%–1.44%); strict-FoM deltas range from
+-0.0023 to +0.0010. This quantifies numerical-stack sensitivity for the
+archived environments and is not a guarantee of categorical identity on every
+platform. A present FLUS binary that is not executable on the current operating
+system is reported by `reproducibility_check.py` as a portability warning rather
+than an integrity-gate failure.
 
 All substantive findings remain conditional on Dynamic World labels, public
 OSM/WorldCover proxy constraints and planner-supplied scenario demand. They do

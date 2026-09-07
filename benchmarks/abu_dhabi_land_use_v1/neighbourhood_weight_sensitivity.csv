@@ -1,9 +1,9 @@
 year,neighbourhood_weight,mean_change_fom,population_std,metric,purpose
-2023,0.000,0.19597783,0.00172388,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
-2023,0.175,0.19534963,0.00218323,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
-2023,0.350,0.19503564,0.00230604,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
-2023,0.700,0.19472257,0.00262389,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
-2024,0.000,0.25280145,0.00020075,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
-2024,0.175,0.25283626,0.00060536,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
-2024,0.350,0.25203762,0.00031882,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
-2024,0.700,0.25129586,0.00111658,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2023,0.000,0.19570436,0.00171387,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2023,0.175,0.19609294,0.00176310,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2023,0.350,0.19608163,0.00141267,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2023,0.700,0.19577652,0.00133722,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2024,0.000,0.25304391,0.00139858,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2024,0.175,0.25296735,0.00100364,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2024,0.350,0.25294629,0.00083516,strict_multiclass_change_figure_of_merit,posthoc_sensitivity
+2024,0.700,0.25273342,0.00118025,strict_multiclass_change_figure_of_merit,posthoc_sensitivity

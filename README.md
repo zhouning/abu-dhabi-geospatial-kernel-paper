@@ -30,9 +30,11 @@ paired model contrasts and the release planning objectives have been rerun.
 Independent authoritative change-validation data are still not available. The
 earlier matched-input FLUS failure was a relative-path configuration error;
 corrected 13-, 19- and 25-feature diagnostics completed with absolute paths.
-The 25-feature matched-input baseline is archived for seeds 31, 47 and 73;
-the 13-feature run is retained as an identity-leakage diagnostic under
-`benchmarks/abu_dhabi_land_use_v1/artifacts/`.
+The 13-, 19- and 25-feature diagnostics are archived for seeds 31, 47 and 73.
+The 25-feature mode is a platform-sensitive identity-leakage diagnostic: five
+of six platform–seed runs collapsed to zero change. The 19-feature mode avoids
+zero change but underfills demand. Neither mode is a headline estimator or a
+paired model contrast.
 See [`manuscript/revision_after_LUP_review.md`](manuscript/revision_after_LUP_review.md)
 for the evidence boundary.
 
