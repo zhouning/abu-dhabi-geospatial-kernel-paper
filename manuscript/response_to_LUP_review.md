@@ -110,5 +110,4 @@ and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
 3. Authoritative planning, reclamation, infrastructure-capacity, irrigation and
    stakeholder data are unavailable. The 2025–2031 maps must remain scenario
    stress tests, not statutory land-use forecasts.
-4. Add an archival DOI, public repository URL and corresponding-author e-mail
-   before formal submission.
+4. Add an archival DOI and final public repository URL before formal submission.

@@ -4,9 +4,9 @@
 
 **Author:** Ning Zhou  
 **Affiliation:** Beijing Freedo Technology Co., Ltd.  
-**Corresponding author:** Ning Zhou
+**Corresponding author:** Ning Zhou (`zhouning@freedotech.com`)
 
-This study is not an official Abu Dhabi planning forecast. Correspondence: Ning Zhou, Beijing Freedo Technology Co., Ltd.
+This study is not an official Abu Dhabi planning forecast. Correspondence: Ning Zhou, Beijing Freedo Technology Co., Ltd.; zhouning@freedotech.com.
 
 ## Abstract
 
@@ -384,9 +384,9 @@ execute the FLUS track outside macOS arm64 and will produce a different random
 stream. The macOS binary SHA statement is an author self-check. As an
 upstream-only fallback, the public FLUS CA source can be paired with an open
 Python ANN implementation, but the unmodified upstream CA uses time seeding
-rather than `FLUS_RANDOM_SEED`. The repository is intended to be public; an
-archival DOI and the corresponding-author e-mail should be added to the
-submission metadata.
+rather than `FLUS_RANDOM_SEED`. The corresponding-author e-mail is
+`zhouning@freedotech.com`; an archival DOI should be added after a persistent
+public release is created.
 
 ## Declarations
 

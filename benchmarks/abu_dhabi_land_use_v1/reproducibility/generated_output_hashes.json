@@ -81,32 +81,32 @@
     },
     {
       "path": "manuscript/main.pdf",
-      "bytes": 3230950,
-      "sha256": "8ffdf82ea5e1e644f5d42dad6291d6ced71cbd5b4c400ec3a49ef0ed2da550f3",
+      "bytes": 3231475,
+      "sha256": "d2f606f439861fe036f51424179b0b25fc1ec539e8c5871ede839ba2dbd23555",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/lup_submission.pdf",
-      "bytes": 3230950,
-      "sha256": "68e9b9e9a95f58f673f2317e22efb39ae72f875c6cb1c4e04c130038f743bb50",
+      "bytes": 3231475,
+      "sha256": "af9ea2b001ff61f51dda1043aa0bcc7694d86cc89e0c22534ad7bb48377332bb",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.pdf",
-      "bytes": 3227398,
-      "sha256": "52f8b59c4c89880af3572d9bbad5ee008ad2d0236697abf4dd5ceb66519d884b",
+      "bytes": 3227976,
+      "sha256": "f253011e588e5d09846cbf65988957d5c81cd6d0acbe571a9df8960403971268",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.docx",
-      "bytes": 3302042,
-      "sha256": "8350d1ffa609169562bdd951afd36179cb2595d05672c7f10ef8d8f017657d27",
+      "bytes": 3302080,
+      "sha256": "98c90b0d0dbb6ddbd37fb6b9fd1c2ba9c672b359fc54c6c74bb12d619771206c",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript_pandoc.tex",
-      "bytes": 56106,
-      "sha256": "cea4a77fce99fac7bd93856b04c175eda7743578721086c403cbb269f82d4992",
+      "bytes": 56177,
+      "sha256": "cccc37af414fde07bf6535be4b2b5cd5e7c6bd0182134f9639baa14ab67c9dbf",
       "hash_mode": "text_lf_normalized"
     },
     {

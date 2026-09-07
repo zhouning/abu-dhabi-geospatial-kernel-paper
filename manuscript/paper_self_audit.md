@@ -34,7 +34,7 @@
 ## Remaining blockers before submission
 
 1. The Markdown source now follows the LUP Introduction–Methods–Results–Discussion structure; final template and portal checks remain.
-2. Add an institutional correspondence e-mail when one is available; no e-mail is invented in this package.
+2. The corresponding-author e-mail is set to `zhouning@freedotech.com`; confirm any full correspondence-address field in the submission portal.
 3. Add a 30-m or multi-resolution sensitivity analysis if the target journal requires scale robustness.
 4. Replace public labels and proxy constraints with authoritative local data before presenting outputs as client-facing planning evidence.
 5. Add the final public repository URL and archival DOI after release review.

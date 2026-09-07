@@ -63,8 +63,8 @@ not official Abu Dhabi forecasts.
 
 1. Recheck the live LUP Guide for Authors immediately before upload, especially
    article-type limits, graphical-abstract status and artwork specifications.
-2. Add an institutional correspondence e-mail when one is available; no e-mail
-   is invented in this package.
+2. The corresponding-author e-mail is `zhouning@freedotech.com`; confirm the
+   submission portal's full correspondence-address field before upload.
 3. Add the final public repository URL and archival DOI after release review.
 4. Preserve the local recovered bundle or an equivalent external artifact
    package if full numerical reproduction is required.

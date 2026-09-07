@@ -11,7 +11,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Article type | Structurally suitable; conditional evidence | The draft is positioned as a research article / algorithmic benchmark. Public-data reruns are complete; independent authoritative change validation remains absent. The supplied FLUS binary is a GeoSOS-derived author-modified build. The 25-feature mode is a platform-sensitive identity-leakage diagnostic, and the 19-feature mode underfills demand; the primary comparison remains the seven-driver unmatched control. |
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
-| Corresponding author | Needs portal entry | Name is present, but the submission system should receive a valid institutional e-mail and full correspondence address. |
+| Corresponding author | Ready in manuscript; confirm portal address field | Ning Zhou; `zhouning@freedotech.com` is listed in the manuscript. Confirm any full correspondence-address field required by Editorial Manager before upload. |
 | Abstract | Draft-ready; portal confirmation required | 206 words by whitespace count. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
 | Highlights | Draft-ready | Four bullets are supplied; each is below 85 characters, including spaces. They describe the completed public-data benchmark and its evidence boundary. |
 | Keywords | Ready | Six searchable terms are supplied: Geospatial World Model, land-cover change, constrained allocation, cellular automata, Abu Dhabi and scenario planning. |
@@ -72,8 +72,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 - `response_to_LUP_review.md`: point-by-point response and unresolved blockers.
 
 The package is a conditional Article-type draft. Before submission, add the
-corresponding-author e-mail, public release URL/DOI and an independent
-2023–2024 change-validation layer. The supplied FLUS build is GeoSOS-derived
+public release URL/DOI and an independent 2023–2024 change-validation layer.
+The supplied FLUS build is GeoSOS-derived
 and its author modifications are archived at `FLUS_console_crossplatform`
 commit `deb0a54`. The 25-feature run is platform sensitive and cannot replace
 the primary three-seed comparison.

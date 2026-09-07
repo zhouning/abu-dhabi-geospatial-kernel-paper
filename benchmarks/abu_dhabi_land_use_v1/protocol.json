@@ -215,7 +215,10 @@
     "required_runtime_snapshot": "data_agent/uwm/geospatial_kernel/runtime.py",
     "required_public_raster_bundle": "artifacts/gee and artifacts/bundle",
     "required_external_model": "GeoFM-LDN source and checkpoint",
-    "required_release_metadata": ["public_repository_url", "archival_doi", "corresponding_author_email"]
+    "required_release_metadata": ["public_repository_url", "archival_doi", "corresponding_author_email"],
+    "provided_release_metadata": {
+      "corresponding_author_email": "zhouning@freedotech.com"
+    }
   },
   "data_firewall": {
     "fit_may_read_through_year": 2021,

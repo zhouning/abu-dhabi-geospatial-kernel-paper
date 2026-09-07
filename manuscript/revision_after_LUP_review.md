@@ -121,5 +121,4 @@ the release objectives. Ecological conversion remains a reported diagnostic.
    comparison remains the original three-seed seven-driver control.
 3. Authoritative planning, reclamation, infrastructure-capacity, irrigation and
    stakeholder data are unavailable. The maps are not official forecasts.
-4. Add the archival DOI, repository URL and corresponding-author e-mail before
-   submission.
+4. Add the archival DOI and final public repository URL before submission.

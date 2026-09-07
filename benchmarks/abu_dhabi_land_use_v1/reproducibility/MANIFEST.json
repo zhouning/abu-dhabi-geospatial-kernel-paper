@@ -491,8 +491,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/protocol.json",
       "role": "configuration",
-      "bytes": 10939,
-      "sha256": "2b57ea641a60d7c29a508e9b6e49e97e4abfeaa039b337622acfee426066800d",
+      "bytes": 11043,
+      "sha256": "24a523aa395646b007cb69694e6346ea4ca5c0b8bf125699174e5a6c056f9965",
       "hash_mode": "text_lf_normalized"
     },
     {
