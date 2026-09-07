@@ -12,11 +12,16 @@ and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
 | R13.1 | The two LaTeX wrappers added to the input/configuration manifest were hashed as raw bytes, so a Windows `core.autocrlf=true` checkout failed the gate | Added `.tex` to the manifest generator's text-suffix set. Both `manuscript/main.tex` and `manuscript/lup_submission.tex` are now recorded as `text_lf_normalized`, so their byte length and SHA-256 are evaluated after CRLF/CR-to-LF canonicalization. | The two canonical records remain 1,418 bytes with SHA-256 prefix `e1dde92b`; only their hash mode changed. |
 | R13.2 | The CI workflow did not exercise the Windows line-ending claim | Added a `windows-latest` manifest job. It configures `core.autocrlf=true`, forces a fresh CRLF working-tree checkout, and then runs `reproducibility_check.py` before any model execution. | The existing Ubuntu x86_64 categorical-raster regression remains unchanged. |
 
-**Thirteenth-round release evidence.** After the manifest and workflow changes,
-the stored gate reports `status: PASS` with all 91 records verified at UTC
-timestamp `2026-09-07T17:12:39.607432+00:00`. The release commit containing
-these changes is recorded in the follow-up documentation commit to avoid a
-self-referential commit identifier.
+**Thirteenth-round release evidence.** The implementation release is commit
+`45f0ac3` (`Fix Windows CRLF manifest verification`). After the manifest and
+workflow changes, the stored LF-working-tree gate reports `status: PASS` with
+all 91 records verified at UTC timestamp `2026-09-07T17:12:39.607432+00:00`.
+As a separate portability check, the same commit was checked out with
+`core.autocrlf=true` in an isolated working tree: both LaTeX wrappers were
+confirmed as CRLF files, and the complete 91-record gate again reported
+`status: PASS` at `2026-09-07T17:18:26.343327+00:00`. This local check tests
+the line-ending condition only; the added `windows-latest` job is the native
+Windows enforcement of that condition on every push and pull request.
 
 ## Twelfth-round revisions and proof-stage corrections
 
