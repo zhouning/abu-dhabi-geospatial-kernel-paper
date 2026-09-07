@@ -1,6 +1,6 @@
 # Abu Dhabi 三模型土地覆盖历史模拟比较
 
-生成时间：2026-09-07T09:50:04.677798+00:00
+生成时间：2026-09-07T10:25:34.947571+00:00
 
 同一 100 m 网格、需求动作、硬约束和评价器下的三随机种子均值；严格 FoM 与两个零模型均已列出。区间采用 8×8 像元空间块 bootstrap，并提供同一空间块上的模型差值区间。
 
@@ -19,7 +19,7 @@
 
 ## FLUS feature diagnostics
 
-The 25-feature run shares the Kernel feature family but not its next-state target or projection semantics. It is not a comparable estimator: five of six platform-seed runs collapsed to zero change, including every reviewer-provided Windows x86_64 run. The non-collapsed macOS seed-31 result is retained only as a platform-sensitive diagnostic.
+The 25-feature run shares the Kernel feature family but not its next-state target or projection semantics. It is not a comparable estimator: five of six platform-seed runs collapsed to zero change, including every independent external Windows x86_64 run. The non-collapsed macOS seed-31 result is retained only as a platform-sensitive diagnostic.
 
 | 年份 | 19-feature FoM range | Predicted change range | Observed change | Demand TV range |
 |---:|---:|---:|---:|---:|

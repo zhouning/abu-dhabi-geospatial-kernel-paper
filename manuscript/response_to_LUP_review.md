@@ -1,9 +1,19 @@
-# Response to the ninth-round LUP review
+# Response to the ninth- and tenth-round LUP reviews
 
 This is an internal point-by-point response draft for the review dated 7
 September 2026. It records what the repository now supports and what remains
 outside the evidence boundary. The manuscript remains a public-data benchmark
 and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
+
+## Tenth-round editorial revisions
+
+| ID | Review concern | Revision made | Evidence / remaining boundary |
+|---|---|---|---|
+| R10.1 | Main text cited reviewer-requested/provided FLUS analyses while the Acknowledgements said none | Renamed the Results subsection as an additional input-dimension analysis; moved the Windows FLUS quantitative cross-platform statement from the main text to Supplementary Table S3; replaced direct reviewer attribution in the manuscript with an external-verification provenance statement; and added an acknowledgement of anonymous reviewers' independent technical verification and methodological comments. | The external Windows source rasters and logs remain unavailable locally, and Supplementary Table S3 states that boundary explicitly. They are not author-run primary evidence or headline model-comparison estimates. |
+| R10.2 | The confidence-subset logic did not itself explain why full-grid rankings lack validated-skill status | Replaced the causal transition in the Discussion. The manuscript now states that the filtered subsets are not skill tests and that full-grid rankings remain unvalidated because no independent change product is available. | This keeps the selection-effect diagnosis separate from the independent-validation limitation. |
+| R10.3 | GitHub Actions run links are not persistent archives | The manuscript cites the repository-stored JSON audit and commit `e06a997`; the transient Actions URL remains only a machine-readable report field. | The archived JSON is covered by the reproducibility output-hash manifest. |
+| R10.4 | Windows report paths used backslashes | Normalized `mask_path`, `quality_path`, and generated ensemble `prediction_path` fields with `Path.as_posix()` before serializing the comparison report. | The regenerated report uses POSIX separators on the current platform and the implementation now preserves that representation on Windows. |
+| R10.5 | DOI must be added before formal submission | No DOI has been fabricated. The manuscript retains the explicit requirement to add archival DOI(s) after persistent public releases are created. | Creating Zenodo or equivalent releases is an external publishing action and remains required before formal submission. |
 
 ## Ninth-round revisions
 

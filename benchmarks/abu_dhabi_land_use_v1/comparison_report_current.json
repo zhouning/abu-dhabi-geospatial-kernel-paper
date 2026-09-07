@@ -608,7 +608,7 @@
       }
     }
   },
-  "created_at": "2026-09-07T09:50:04.677798+00:00",
+  "created_at": "2026-09-07T10:25:34.947571+00:00",
   "cross_platform_verification": {
     "flus_windows_x86_64": {
       "baseline_7_mean_strict_fom": {
@@ -1108,7 +1108,7 @@
     "display_name": "FLUS 25-feature input diagnostic",
     "estimator_status": "invalid_platform_sensitive_identity_leakage_diagnostic",
     "feature_count": 25,
-    "interpretation": "The macOS arm64 seed-31 run did not collapse, but it is not treated as a valid point estimate because reviewer-provided Windows x86_64 verification collapsed for all three seeds. Across the six platform-seed runs, five were zero-change outputs.",
+    "interpretation": "The macOS arm64 seed-31 run did not collapse, but it is not treated as a valid point estimate because independent external Windows x86_64 verification collapsed for all three seeds. Across the six platform-seed runs, five were zero-change outputs.",
     "model_id": "flus_matched_input",
     "non_collapsed_seeds_on_archive_platform": [
       31

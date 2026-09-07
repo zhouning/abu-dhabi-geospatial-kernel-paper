@@ -253,7 +253,7 @@ def _label_quality_diagnostics(
             "full_grid_observed_change_pixels": full_grid_changes,
             "dual_year_confidence": {
                 "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5",
-                "mask_path": str(Path(action["reliability_mask"])),
+                "mask_path": Path(action["reliability_mask"]).as_posix(),
                 **_mask_observation_summary(
                     mask=dual_year[0].astype(bool),
                     valid_mask=valid_mask,
@@ -264,7 +264,7 @@ def _label_quality_diagnostics(
             "preceding_year_confidence_only": {
                 "origin_year": preceding_year,
                 "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
-                "quality_path": str(preceding_path.relative_to(HERE)),
+                "quality_path": preceding_path.relative_to(HERE).as_posix(),
                 **_mask_observation_summary(
                     mask=preceding_mask,
                     valid_mask=valid_mask,
@@ -392,7 +392,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
             ensemble_path = PREDICTION_ROOT / model / "ensemble" / f"prediction_{year}.tif"
             _write(ensemble_path, ensemble, reference)
             ensembles[model][str(year)] = {
-                "prediction_path": str(ensemble_path.relative_to(HERE)),
+                "prediction_path": ensemble_path.relative_to(HERE).as_posix(),
                 "evaluation": evaluate_prediction(
                     ensemble,
                     origin_state=origin[0],
@@ -488,7 +488,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
             "non_collapsed_seeds_on_archive_platform": [31],
             "collapsed_seeds_on_archive_platform": [47, 73],
             "training_target_boundary": "same-year label suitability; not next-state transition learning",
-            "interpretation": "The macOS arm64 seed-31 run did not collapse, but it is not treated as a valid point estimate because reviewer-provided Windows x86_64 verification collapsed for all three seeds. Across the six platform-seed runs, five were zero-change outputs.",
+            "interpretation": "The macOS arm64 seed-31 run did not collapse, but it is not treated as a valid point estimate because independent external Windows x86_64 verification collapsed for all three seeds. Across the six platform-seed runs, five were zero-change outputs.",
         }
     )
     neighbourhood_input_diagnostic = compile_flus_feature_diagnostic(
@@ -734,7 +734,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## FLUS feature diagnostics",
             "",
-            "The 25-feature run shares the Kernel feature family but not its next-state target or projection semantics. It is not a comparable estimator: five of six platform-seed runs collapsed to zero change, including every reviewer-provided Windows x86_64 run. The non-collapsed macOS seed-31 result is retained only as a platform-sensitive diagnostic.",
+            "The 25-feature run shares the Kernel feature family but not its next-state target or projection semantics. It is not a comparable estimator: five of six platform-seed runs collapsed to zero change, including every independent external Windows x86_64 run. The non-collapsed macOS seed-31 result is retained only as a platform-sensitive diagnostic.",
             "",
             "| 年份 | 19-feature FoM range | Predicted change range | Observed change | Demand TV range |",
             "|---:|---:|---:|---:|---:|",

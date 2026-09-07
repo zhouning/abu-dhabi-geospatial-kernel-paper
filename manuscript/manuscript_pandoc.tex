@@ -309,12 +309,13 @@ features therefore does not match the training task. Two intermediate
 configurations were retained as mechanism diagnostics: 13 features
 (seven drivers plus current-class indicators) and 19 features (seven
 drivers plus neighbourhood fractions). The 25-feature run collapsed to
-zero change for macOS seeds 47 and 73 and for all three
-reviewer-provided Windows x86\_64 seeds; the remaining macOS seed-31 run
-is not used as a valid estimator. The 19-feature mode produced changes
-for all three macOS seeds but underfilled the observed 4,500 and 8,464
-changed cells in 2023 and 2024. Both modes are therefore
-diagnostic-only.
+zero change for macOS seeds 47 and 73 and for all three independent
+external Windows x86\_64 verification runs; the remaining macOS seed-31
+run is not used as a valid estimator. The external evidence is
+identified in Supplementary Table S3; its source rasters are not locally
+archived. The 19-feature mode produced changes for all three macOS seeds
+but underfilled the observed 4,500 and 8,464 changed cells in 2023 and
+2024. Both modes are therefore diagnostic-only.
 
 GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network; the
 repository's former \texttt{paper58} path identifier) was implemented as
@@ -567,19 +568,19 @@ intervals above are the uncertainty summaries used for model contrasts.
 The 25- and 19-feature FLUS diagnostics are reported in the
 machine-readable archive and Supplementary Table S3.
 
-The reviewer-requested FLUS input-dimension analysis was also completed.
-The 25-feature run is not a valid point estimator: macOS seeds 47 and 73
-and all three reviewer-provided Windows x86\_64 seeds produced
-zero-change outputs, whereas macOS seed 31 was the sole non-collapsed
-run. The six-run pattern is therefore platform-sensitive and is retained
-as an identity-leakage diagnostic, not as a Kernel contrast. The
-19-feature diagnostic was run for all three macOS seeds. Its strict FoM
-ranged from 0.1071 to 0.1617 in 2023 and from 0.0872 to 0.1386 in 2024;
-predicted changes ranged from 1,702 to 2,417 and from 1,805 to 2,499
-cells, respectively, compared with 4,500 and 8,464 observed changes.
-Demand total variation ranged from 0.0153 to 0.0305 in 2023 and from
-0.0615 to 0.0767 in 2024. These results show why matching feature
-dimensions cannot make the tasks equivalent: FLUS learns static
+An additional FLUS input-dimension analysis was also completed. The
+25-feature run is not a valid point estimator: macOS seeds 47 and 73 and
+all three independent external Windows x86\_64 verification runs
+produced zero-change outputs, whereas macOS seed 31 was the sole
+non-collapsed run. The six-run pattern is therefore platform-sensitive
+and is retained as an identity-leakage diagnostic, not as a Kernel
+contrast. The 19-feature diagnostic was run for all three macOS seeds.
+Its strict FoM ranged from 0.1071 to 0.1617 in 2023 and from 0.0872 to
+0.1386 in 2024; predicted changes ranged from 1,702 to 2,417 and from
+1,805 to 2,499 cells, respectively, compared with 4,500 and 8,464
+observed changes. Demand total variation ranged from 0.0153 to 0.0305 in
+2023 and from 0.0615 to 0.0767 in 2024. These results show why matching
+feature dimensions cannot make the tasks equivalent: FLUS learns static
 suitability \(p(S_t\mid X_t)\), while the Kernel learns next-state
 transitions and then projects them against action deficits and hard
 constraints.
@@ -617,13 +618,11 @@ each seed), it differs from the current reference by 498--1,147 cells
 Python 3.11.16 and scikit-learn 1.9.0 matched all six released
 categorical reference rasters exactly; its archived audit is linked in
 Code availability. This is a scoped locked-stack regression result, not
-universal bitwise identity. The reviewer-provided Windows FLUS rerun
-additionally showed 2--4\% differing cells from the macOS seven-driver
-outputs, consistent with the platform-dependent C
-\texttt{rand()}/\texttt{srand()} stream. The repository does not contain
-the reviewer's Windows FLUS raster files, so those values remain
-explicitly external verification. The archived comparison report records
-the exact paths and environment fields for the arm64 pair.
+universal bitwise identity. Independent external Windows FLUS
+verification is documented with its provenance limitation in
+Supplementary Table S3; its source rasters are not locally archived. The
+archived comparison report records the exact paths and environment
+fields for the arm64 pair.
 
 The planning compiler compares the three models within each of the three
 scenarios. At 2031, the FLUS-style control has union-built component
@@ -756,10 +755,10 @@ horizon, while GeoFM-LDN has the largest value after recursive two-step
 rollout. The dual-year confidence filter retains only 0.56\% and 0.66\%
 of observed changes in 2023 and 2024, respectively; the
 preceding-year-only variant retains 2.87\% and 1.10\%. These subsets are
-not skill tests, but their event-dependent selection shows why full-grid
-rankings cannot be interpreted as validated urban-change skill. We
-therefore treat the planning frontier as conditional on public proxy
-objectives and synthetic actions.
+not skill tests; full-grid rankings remain unvalidated because no
+independent change product is yet available. We therefore treat the
+planning frontier as conditional on public proxy objectives and
+synthetic actions.
 
 The evidence remains bounded. The six classes are remote-sensing land
 cover, not statutory residential, commercial or industrial land use.
@@ -821,20 +820,18 @@ repository. The main evidence files are:
   manifest gate. The locked macOS arm64 execution environment remains
   the reference for model outputs. An archived arm64 Linux rerun of the
   six historical Kernel rasters differed from the macOS reference by
-  498--1,147 valid cells (0.62\%--1.44\%), with strict-FoM deltas from
-  -0.0023 to +0.0010; these cross-stack differences are quantified
-  rather than treated as categorical identity. An author-controlled
-  GitHub Actions Ubuntu x86\_64 rerun of all six rasters under the
-  resolved lock had zero categorical differences; the audit is archived
-  as
-  \texttt{artifacts/cross\_platform/github\_actions\_ubuntu\_x86\_64\_kernel\_reference\_e06a997.json}
-  and the workflow is versioned under \texttt{.github/workflows/}.
-  Reviewer-provided Windows values remain separately labelled as
-  external verification only for FLUS because the corresponding Windows
-  rasters are not archived locally. No private database address,
-  credential or client-only service is included. Authoritative Abu Dhabi
-  land-use and independent change-validation data remain outside this
-  study.
+  498--1,147 cells (0.62\%--1.44\%), with strict-FoM deltas from -0.0023
+  to +0.0010; these cross-stack differences are quantified rather than
+  treated as categorical identity. An author-controlled GitHub Actions
+  Ubuntu x86\_64 rerun of all six rasters under the resolved lock had
+  zero categorical differences; the repository-stored CI audit is in
+  \texttt{artifacts/cross\_platform} at commit \texttt{e06a997}, and the
+  workflow is versioned under \texttt{.github/workflows/}. Independent
+  external Windows evidence remains separately labelled for FLUS because
+  the corresponding rasters are not archived locally. No private
+  database address, credential or client-only service is included.
+  Authoritative Abu Dhabi land-use and independent change-validation
+  data remain outside this study.
 \end{itemize}
 
 \subsection{Code availability}\label{code-availability}
@@ -887,18 +884,18 @@ Linux and Windows using the repository instructions.
 \texttt{FLUS\_RANDOM\_SEED} guarantees determinism only within a
 platform and build environment because ANN sampling and CA roulette
 draws use platform-defined C \texttt{rand()}/\texttt{srand()} streams.
-The reviewer-provided Windows rerun differed from macOS by approximately
-2--4\% of valid categorical cells for the seven-driver control, and all
-three Windows 25-feature runs collapsed to zero change. Windows
-execution requires the benchmark and working directories to use pure
-ASCII paths; saving configuration files as UTF-8 alone does not repair
-GDAL path decoding. A compatible local build is required to execute the
-FLUS track outside macOS arm64 and will produce a different random
-stream. The macOS binary SHA statement is an author self-check. As an
-upstream-only fallback, the public FLUS CA source can be paired with an
-open Python ANN implementation, but the unmodified upstream CA uses time
-seeding rather than \texttt{FLUS\_RANDOM\_SEED}. The
-corresponding-author e-mail is \texttt{zhouning@freedotech.com}; an
+Independent external Windows FLUS verification, including the
+seven-driver cross-platform difference and the 25-feature zero-change
+outcome, is documented with its provenance limitation in Supplementary
+Table S3. Windows execution requires the benchmark and working
+directories to use pure ASCII paths; saving configuration files as UTF-8
+alone does not repair GDAL path decoding. A compatible local build is
+required to execute the FLUS track outside macOS arm64 and will produce
+a different random stream. The macOS binary SHA statement is an author
+self-check. As an upstream-only fallback, the public FLUS CA source can
+be paired with an open Python ANN implementation, but the unmodified
+upstream CA uses time seeding rather than \texttt{FLUS\_RANDOM\_SEED}.
+The corresponding-author e-mail is \texttt{zhouning@freedotech.com}; an
 archival DOI should be added after a persistent public release is
 created.
 
@@ -914,7 +911,9 @@ The author declares no other competing financial or personal interests.
 methodology, software, data curation, formal analysis, visualization,
 writing---original draft, writing---review and editing.
 
-\textbf{Acknowledgements.} None.
+\textbf{Acknowledgements.} The author thanks the anonymous reviewers for
+independent technical verification and constructive methodological
+comments.
 
 \textbf{Ethics statement.} Not applicable; the study used geospatial
 raster, vector and derived public-data products and did not involve
