@@ -1,9 +1,26 @@
-# Response to the ninth- and tenth-round LUP reviews
+# Response to the ninth-, tenth- and eleventh-round LUP reviews
 
 This is an internal point-by-point response draft for the review dated 7
 September 2026. It records what the repository now supports and what remains
 outside the evidence boundary. The manuscript remains a public-data benchmark
 and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
+
+## Eleventh-round revisions
+
+| ID | Review concern | Revision made | Evidence / remaining boundary |
+|---|---|---|---|
+| R11.1 | The released commit failed its own reproducibility gate because the input/code manifest predated the final figure-rendering script | Regenerated `reproducibility/MANIFEST.json` and `SHA256SUMS` after all source and figure changes, then regenerated the stored gate report. The final report timestamp and commit are recorded below. | The gate verifies the declared public bundle and model assets; it does not imply that private authoritative Abu Dhabi data are present. |
+| R11.2 | The GitHub Actions workflow did not run the fail-closed manifest gate | Added a `Verify reproducibility manifest` step before the Kernel regression in `.github/workflows/kernel-x86_64-reference.yml`. | The workflow checks repository integrity before executing the x86_64 Kernel reference; host-specific FLUS execution remains separately bounded. |
+| R11.3 | Figure 2 bottom annotation overlapped the two-step x-axis label | Increased the bottom margin and moved the explanatory note below the axes; regenerated all publication formats and checked the embedded PDF page. | No numerical values changed. |
+| R11.4 | Figure 4B did not explain why no-state-writeback has no 2023 bar | The 2023 value is rendered as `n/a`; the figure note and manuscript caption now state that the control is undefined for the 2023 one-step target and is shown only for 2024. | This is a construction boundary of the control, not missing data. |
+| R11.5 | Supplementary Figures S2–S4 were listed but no corresponding files existed | Added English, publication-format files for `figS02_input_label_quality`, `figS03_historical_2024_maps_and_errors` and `figS04_driver_layers_and_experiment_design`; the manuscript outline now gives each filename and uses consistent `Fig. S1`–`Fig. S4` notation. | The figures are derived from the released public-data audit reports and rasters; they do not add new model runs or claims. |
+
+**Eleventh-round release evidence.** The final `reproducibility_check.json` was
+regenerated after the manifest update and reports `status: PASS` at the UTC
+timestamp `2026-09-07T14:28:39.082507+00:00`, with all 89 manifest records
+verified. The repository commit containing this release is identified below.
+`pytest` and the raster audit were also rerun; no scientific result or model
+input was changed.
 
 ## Tenth-round editorial revisions
 

@@ -232,6 +232,10 @@ def _hash_outputs() -> dict[str, object]:
         "fig03_planning_objectives",
         "fig04_mechanism_ablation",
         "fig05_planning_maps_2031",
+        "figS01_planning_atlas_2031",
+        "figS02_input_label_quality",
+        "figS03_historical_2024_maps_and_errors",
+        "figS04_driver_layers_and_experiment_design",
     ):
         for suffix in (".pdf", ".svg", ".png", ".tiff"):
             paths.append(REPO / "figures" / f"{stem}{suffix}")

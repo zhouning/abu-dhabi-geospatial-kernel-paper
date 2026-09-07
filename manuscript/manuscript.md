@@ -291,7 +291,7 @@ primary within-scenario Pareto frontier.
 
 ### Sensitivity shows a stable but not fully explained neighbourhood contribution
 
-The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference. Figure 4A shows focused proposal controls, and Fig. 4B reports the matched runtime controls.
+The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference. Fig. 4A shows focused proposal controls, and Fig. 4B reports the matched runtime controls.
 
 In the post-hoc neighbourhood-weight sensitivity, mean strict FoM ranged from
 0.19570 to 0.19609 in 2023 and from 0.25273 to 0.25304 in 2024; the complete
@@ -316,7 +316,7 @@ agreement with noisy labels while violating the planning contract. The
 controls therefore support an execution-level interpretation but do not prove
 that either component causes an urban outcome.
 
-![Mechanism controls. Panel A compares the full transition proposal with selected proposal controls. Panel B gives the strict destination-change FoM difference between matched runtime controls and the full Kernel. Bars show mean plus or minus population standard deviation across the three frozen seeds. These are execution diagnostics, not causal policy experiments.](figures/fig04_mechanism_ablation.png){width=100%}
+![Mechanism controls. Panel A compares the full transition proposal with selected proposal controls. Panel B gives the strict destination-change FoM difference between matched runtime controls and the full Kernel. Bars show mean plus or minus population standard deviation across the three frozen seeds. The no-state-writeback control is undefined for the 2023 one-step target and is therefore shown only for 2024. These are execution diagnostics, not causal policy experiments.](figures/fig04_mechanism_ablation.png){width=100%}
 
 \FloatBarrier
 
@@ -328,9 +328,9 @@ the corresponding GeoFM-LDN errors were 1,580, 1,524 and 1,148 pixels and the
 FLUS-style errors were 2,504, 2,888 and 2,568 pixels. Seed-level projections
 meet their feasible class totals, but majority voting can produce a different
 raster and therefore a non-zero ensemble error. All 276 historical and planning
-prediction records passed the raster audit. Figure 5 uses the high-outward
+prediction records passed the raster audit. Fig. 5 uses the high-outward
 scenario to make the spatial contrast legible; the complete nine-panel atlas is
-provided as Supplementary Fig. S1. These are raster-cell change footprints, not
+provided as Fig. S1. These are raster-cell change footprints, not
 parcel boundaries or statutory zoning maps.
 
 ![High-outward-growth spatial footprints. The observed 2024 state is compared with each model's 2031 majority-vote ensemble. Orange denotes cells newly built between 2024 and 2031; grey denotes cells already built in 2024. The map is a 100-m scenario stress-test product, not a cadastral or statutory land-use map.](figures/fig05_planning_maps_2031.png){width=100%}
@@ -474,9 +474,9 @@ Zanaga, D., et al. (2022). ESA WorldCover 10 m 2021 v200. Zenodo. https://doi.or
 - **Supplementary Table S2:** Neighbourhood-weight sensitivity at 0, 0.175, 0.35 and 0.7 (see `supplementary_table_S2_neighbourhood_weight_sensitivity.md`).
 - **Supplementary Table S3:** FLUS 13-, 19- and 25-feature diagnostics, platform boundary and demand-underfill evidence (see `supplementary_table_S3_flus_feature_diagnostics.md`).
 - **Supplementary Table S4:** Raster and vector delivery audit, hashes and layer counts.
-- **Supplementary Figure S1:** Full 3-scenarios × 3-model 2031 new-built footprint atlas (`figures/figS01_planning_atlas_2031.*`).
-- **Supplementary Figure S2:** Dynamic World confidence and high-confidence change sensitivity.
-- **Supplementary Figure S3:** Historical maps and change-error maps for 2024.
-- **Supplementary Figure S4:** Driver layers and experiment design in English.
+- **Fig. S1:** Full 3-scenarios × 3-model 2031 new-built footprint atlas (`figures/figS01_planning_atlas_2031.*`).
+- **Fig. S2:** Dynamic World confidence and high-confidence change sensitivity (`figures/figS02_input_label_quality.*`).
+- **Fig. S3:** Historical maps and change-error maps for 2024 (`figures/figS03_historical_2024_maps_and_errors.*`).
+- **Fig. S4:** Driver layers and experiment design in English (`figures/figS04_driver_layers_and_experiment_design.*`).
 
 ---

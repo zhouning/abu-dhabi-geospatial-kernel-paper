@@ -16,7 +16,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Highlights | Draft-ready | Four bullets are supplied; each is below 85 characters, including spaces. They describe the completed public-data benchmark and its evidence boundary. |
 | Keywords | Ready | Six searchable terms are supplied: Geospatial World Model, land-cover change, constrained allocation, cellular automata, Abu Dhabi and scenario planning. |
 | Graphical abstract | Confirm in portal | No separate graphical abstract is included. The journal's current article-type setting should determine whether it is required or optional. Figure 1 can be adapted if requested. |
-| Main sections | Structurally compliant | The Markdown source follows Introduction–Methods–Results–Discussion order. Main figures are embedded at their first evidentiary discussion; the full atlas is moved to Supplementary Fig. S1. Final copy-edit and portal checks remain. |
+| Main sections | Structurally compliant | The Markdown source follows Introduction–Methods–Results–Discussion order. Main figures are embedded at their first evidentiary discussion; Fig. S1–S4 are supplied as separate diagnostic supplements. Final copy-edit and portal checks remain. |
 
 ## Tables, figures and artwork
 
@@ -25,7 +25,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Editable tables | Ready | The historical score table is numbered and captioned in the manuscript source; it remains a Markdown/LaTeX text table rather than a raster image. |
 | Table width | Ready with residual copy-edit checks | Tables are editable LaTeX text and fit the A4 author-manuscript width. Long code-like paths were shortened in the reader-facing prose; the machine-readable paths remain in the repository. |
 | Table notes | Ready | Units, DTV, ecological-proxy semantics, compactness and Pareto interpretation are stated immediately before the relevant tables. |
-| Figure files | Ready for technical review | Figures 1–5 were regenerated from the current strict-metric and planning reports as editable SVG/PDF plus 600-dpi PNG/TIFF. The full 3 × 3 atlas is retained as Fig. S1. |
+| Figure files | Ready for technical review | Figures 1–5 and Fig. S1–S4 were regenerated from the current strict-metric, planning and audit reports as editable SVG/PDF plus 600-dpi PNG/TIFF. |
 | Figure captions | Ready for scientific review | Captions describe current public-data results and retain the conditional-proxy boundary; duplicate auto-captions were removed from the latest reading PDF. |
 | Arrow alignment | Ready for Figure 1 | Figure 1 was redrawn on one coordinate system; all arrows terminate on the intended boxes and were checked after PDF embedding. |
 | Separate upload | Submission step | Upload each figure as a separate file if Editorial Manager requests individual artwork; keep the combined PDF only as a reading copy. |
@@ -40,7 +40,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
 | Competing interests | Updated | Employment by the software company is disclosed; this should be checked against the portal's structured declaration field. |
-| Acknowledgements | Ready | Explicit `None` statement included. |
+| Acknowledgements | Ready | The manuscript acknowledges anonymous reviewers' independent technical verification and methodological comments; no funding or private data contribution is implied. |
 | Ethics statement | Ready | Not applicable statement included for geospatial public-data work. |
 | Author contributions / declarations placement | Confirm in portal | Keep these as separate submission fields if Editorial Manager asks for structured metadata in addition to the manuscript text. |
 
@@ -57,7 +57,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 - The 2025--2031 outputs are planner-supplied scenario stress tests with exogenous drivers frozen at 2024, not official forecasts.
 - OSM and ESA WorldCover layers are described as public proxy constraints, not statutory planning red lines.
 - Historical ranking is based on the regenerated strict multi-class FoM, spatial-block intervals and paired model contrasts; persistence is disclosed and no universal ranking is claimed.
-- Figures 1–5 were regenerated from versioned current reports; the renderer still fails closed on stale reports. Figure 1 uses one coordinate system for all arrows, and Figure 5 is intentionally a focused four-panel comparison rather than an unreadable 3 × 3 main-text montage.
+- Figures 1–5 and Fig. S1–S4 were regenerated from versioned current reports; the renderer still fails closed on stale reports. Figure 1 uses one coordinate system for all arrows, and Figure 5 is intentionally a focused four-panel comparison rather than an unreadable 3 × 3 main-text montage.
 - Change polygons are dissolved 100-m raster-cell footprints, not cadastral parcels.
 - No client database credentials or private service endpoints are present in the manuscript package.
 

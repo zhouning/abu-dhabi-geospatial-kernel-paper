@@ -27,6 +27,11 @@ jobs:
       - name: Install resolved dependencies
         run: python -m pip install -r benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt
 
+      - name: Verify reproducibility manifest
+        run: >-
+          python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
+          --output $RUNNER_TEMP/reproducibility_check.json
+
       - name: Rerun all Kernel seeds
         run: >-
           python benchmarks/abu_dhabi_land_use_v1/run_geospatial_kernel.py

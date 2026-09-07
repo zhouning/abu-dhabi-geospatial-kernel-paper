@@ -15,7 +15,9 @@ GeoFM-LDN.
 - `main.pdf`: compiled reading copy with the same inline figure placement as the submission copy.
 - `lup_submission.pdf`: LUP-oriented single-column author manuscript. Main-text
   figures are placed beside their first evidentiary discussion; the full 2031
-  scenario atlas is supplied separately as `figS01_planning_atlas_2031.*`.
+  scenario atlas and diagnostic supplements are supplied separately as
+  `figS01_planning_atlas_2031.*` through
+  `figS04_driver_layers_and_experiment_design.*`.
 - `figures/`: Python/Matplotlib publication figures in editable SVG/PDF and
   600-dpi PNG/TIFF formats.
 - `paper_self_audit.md`: evidence and claim-boundary audit.

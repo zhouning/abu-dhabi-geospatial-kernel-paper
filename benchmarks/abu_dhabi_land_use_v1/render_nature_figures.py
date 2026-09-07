@@ -17,9 +17,9 @@ mpl.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import rasterio
-from matplotlib.colors import BoundaryNorm, ListedColormap
-from matplotlib.lines import Line2D
+from matplotlib.colors import ListedColormap
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Patch
+from sklearn.decomposition import PCA
 
 
 ROOT = Path(__file__).resolve().parent
@@ -266,7 +266,7 @@ def render_figure_2() -> None:
         ("change_f1", "Change F1", "B"),
     ]
     fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.45), sharex=False)
-    fig.subplots_adjust(left=0.09, right=0.985, top=0.72, bottom=0.22, wspace=0.30)
+    fig.subplots_adjust(left=0.09, right=0.985, top=0.72, bottom=0.29, wspace=0.30)
     years = ["2023", "2024"]
     x = np.arange(len(years))
     plot_models = MODEL_ORDER + ["persistence", "random_allocation"]
@@ -315,7 +315,7 @@ def render_figure_2() -> None:
         loc="upper center", bbox_to_anchor=(0.53, 0.97), ncol=3, frameon=False,
         handlelength=1.1, columnspacing=1.35,
     )
-    fig.text(0.09, 0.08,
+    fig.text(0.09, 0.035,
              "Bars show mean +/- population SD across three frozen computational seeds. Strict FoM is the primary metric;\n"
              "persistence and random allocation are explicit zero-model controls. Other metrics are in the Supplement.",
              fontsize=7.5, color="#4A5560")
@@ -435,9 +435,15 @@ def render_figure_4() -> None:
         full_by_seed = {r["seed"]: _fom(r) for r in _historical_rows(report, proposal_variant="full", runtime_variant="shared_allocator", target_year=year)}
         for variant in runtime_variants:
             rows = _historical_rows(report, proposal_variant="full", runtime_variant=variant, target_year=year)
-            vals = np.asarray([_fom(r) - full_by_seed[r["seed"]] for r in rows])
-            deltas.append(vals.mean())
-            sds.append(vals.std(ddof=0))
+            # State writeback is undefined for the one-step 2023 target,
+            # because no previous simulated state is available to delete.
+            if variant == "state_writeback_deleted" and year == 2023:
+                deltas.append(np.nan)
+                sds.append(0.0)
+            else:
+                vals = np.asarray([_fom(r) - full_by_seed[r["seed"]] for r in rows])
+                deltas.append(vals.mean())
+                sds.append(vals.std(ddof=0))
         ax.bar(x + (j - 0.5) * width, deltas, width=width, yerr=sds, capsize=1.6, color=["#4C78A8", "#F58518"][j], edgecolor="white", linewidth=0.35, label=str(year), error_kw={"elinewidth": 0.55, "capthick": 0.55})
     ax.axhline(0, color="#343A40", linewidth=0.65)
     ax.set_xticks(x, [runtime_label[v] for v in runtime_variants])
@@ -447,13 +453,15 @@ def render_figure_4() -> None:
     ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
     ax.set_axisbelow(True)
     panel_label(ax, "B")
+    ax.text(x[-1], ax.get_ylim()[0] + 0.006, "n/a\n(2023)", ha="center", va="bottom", fontsize=6.4, color="#4A5560")
 
     fig.legend(handles=[Patch(facecolor="#4C78A8", edgecolor="none", label="2023"), Patch(facecolor="#F58518", edgecolor="none", label="2024")],
                loc="upper center", bbox_to_anchor=(0.53, 0.98), ncol=2, frameon=False,
                handlelength=1.1, columnspacing=1.2)
-    fig.text(0.09, 0.09,
+    fig.text(0.09, 0.08,
              "Bars show mean +/- population SD across three seeds. The controls test execution dependencies; they do not\n"
-             "identify causal planning effects. Removing hard constraints can raise label agreement while violating the contract.",
+             "identify causal planning effects. No-state-writeback is undefined for the 2023 one-step target (n/a). Removing\n"
+             "hard constraints can raise label agreement while violating the contract.",
              fontsize=7.5, color="#4A5560")
     save_publication_figure(fig, "fig04_mechanism_ablation")
 
@@ -562,6 +570,273 @@ def render_supplementary_figure_1() -> None:
     save_publication_figure(fig, "figS01_planning_atlas_2031")
 
 
+def render_supplementary_figure_2() -> None:
+    """Show label confidence, apparent turnover and filter sensitivity in English."""
+
+    audit = load_json("data_audit.json")
+    comparison = load_json("comparison_report_current.json")
+    quality_rows = audit["land_cover_quality_by_year"]
+    years = np.asarray([int(row["year"]) for row in quality_rows])
+    below = np.asarray([row["fraction_below_confidence_0_5"] * 100 for row in quality_rows])
+    mean_probability = np.asarray([row["mean_top_probability"]["mean"] for row in quality_rows])
+    transitions = audit["land_cover_transitions"]
+    transition_labels = [f"{row['start_year']}–{row['target_year']}" for row in transitions]
+    change_fraction = np.asarray([row["change_fraction"] * 100 for row in transitions])
+    reversions = audit["one_year_reversions"]
+    reversion_labels = [f"{row['years'][0]}–{row['years'][2]}" for row in reversions]
+    reversion_fraction = np.asarray([row["one_year_reversion_fraction"] * 100 for row in reversions])
+
+    fig, axes = plt.subplots(2, 3, figsize=(7.2, 4.45))
+    fig.subplots_adjust(left=0.075, right=0.99, top=0.84, bottom=0.22, wspace=0.38, hspace=0.62)
+
+    axes[0, 0].bar(years, below, color="#C95F78", width=0.68)
+    axes[0, 0].axhline(50, color="#343A40", linestyle="--", linewidth=0.65)
+    axes[0, 0].set_title("A  Low-confidence pixels", loc="left", fontweight="bold")
+    axes[0, 0].set_ylabel("Pixels below 0.5 (%)")
+    axes[0, 0].set_ylim(0, 70)
+    axes[0, 0].set_xticks(years, [str(year) for year in years], rotation=45, ha="right")
+    for year, value in zip(years, below, strict=True):
+        axes[0, 0].text(year, value + 1.2, f"{value:.1f}", ha="center", va="bottom", fontsize=6.4)
+
+    axes[0, 1].plot(years, mean_probability, marker="o", color="#3F76A9", linewidth=1.7, markersize=3.8)
+    axes[0, 1].axhline(0.5, color="#343A40", linestyle="--", linewidth=0.65)
+    axes[0, 1].set_title("B  Mean top-class probability", loc="left", fontweight="bold")
+    axes[0, 1].set_ylabel("Mean probability")
+    axes[0, 1].set_ylim(0.40, 0.53)
+    axes[0, 1].set_xticks(years, [str(year) for year in years], rotation=45, ha="right")
+    axes[0, 1].grid(axis="y", color="#D8DDE3", linewidth=0.45)
+
+    axes[0, 2].bar(np.arange(len(transition_labels)), change_fraction, color="#D9A629", width=0.68)
+    axes[0, 2].set_title("C  Adjacent-year label turnover", loc="left", fontweight="bold")
+    axes[0, 2].set_ylabel("Changed pixels (%)")
+    axes[0, 2].set_xticks(np.arange(len(transition_labels)), transition_labels, rotation=45, ha="right")
+    axes[0, 2].set_ylim(0, max(change_fraction) * 1.24)
+
+    axes[1, 0].bar(np.arange(len(reversion_labels)), reversion_fraction, color="#A5449B", width=0.68)
+    axes[1, 0].set_title("D  One-year label reversion", loc="left", fontweight="bold")
+    axes[1, 0].set_ylabel("Reversion of intermediate changes (%)")
+    axes[1, 0].set_xticks(np.arange(len(reversion_labels)), reversion_labels, rotation=45, ha="right")
+    axes[1, 0].set_ylim(0, max(reversion_fraction) * 1.24)
+
+    quality = comparison["label_quality_diagnostics"]["by_target_year"]
+    target_years = [2023, 2024]
+    x = np.arange(2)
+    width = 0.34
+    dual_counts = [quality[str(year)]["dual_year_confidence"]["observed_change_pixels"] for year in target_years]
+    preceding_counts = [quality[str(year)]["preceding_year_confidence_only"]["observed_change_pixels"] for year in target_years]
+    axes[1, 1].bar(x - width / 2, dual_counts, width, color="#4C78A8", label="Dual-year")
+    axes[1, 1].bar(x + width / 2, preceding_counts, width, color="#E17C05", label="Preceding-year only")
+    axes[1, 1].set_title("E  Observed changes retained", loc="left", fontweight="bold")
+    axes[1, 1].set_ylabel("Retained changed pixels")
+    axes[1, 1].set_xticks(x, [str(year) for year in target_years])
+    axes[1, 1].legend(frameon=False, fontsize=6.2, loc="upper left")
+    axes[1, 1].grid(axis="y", color="#D8DDE3", linewidth=0.45)
+
+    model_colors = [MODEL_COLOR[model] for model in MODEL_ORDER]
+    model_labels = ["FLUS-style", "Kernel", "GeoFM-LDN"]
+    positions = np.arange(3)
+    for offset, year in enumerate(target_years):
+        values = [
+            comparison["label_quality_diagnostics"]["by_target_year"][str(year)]["preceding_year_confidence_only"]["strict_fom_by_model"].get(model, {}).get("mean", 0.0)
+            for model in MODEL_ORDER
+        ]
+        axes[1, 2].bar(positions + (offset - 0.5) * 0.28, values, width=0.28, color=model_colors, alpha=0.72 if offset == 0 else 1.0, label=str(year))
+    axes[1, 2].set_title("F  Strict FoM after preceding-year filter", loc="left", fontweight="bold")
+    axes[1, 2].set_ylabel("Strict change FoM")
+    axes[1, 2].set_xticks(positions, model_labels, rotation=35, ha="right")
+    axes[1, 2].set_ylim(0, 0.022)
+    axes[1, 2].legend(frameon=False, fontsize=6.2, loc="upper left")
+    axes[1, 2].grid(axis="y", color="#D8DDE3", linewidth=0.45)
+
+    for axis in axes.flat:
+        axis.spines["top"].set_visible(False)
+        axis.spines["right"].set_visible(False)
+        axis.tick_params(axis="both", labelsize=6.8)
+    fig.suptitle("Fig. S2 | Label confidence and change-selection diagnostics",
+                 x=0.075, y=0.975, ha="left", fontsize=11.5, fontweight="bold")
+    fig.text(0.075, 0.055,
+             "The dual-year rule requires confidence ≥ 0.5 in both origin and target years; filtered scores are diagnostics, not independent validation.",
+             fontsize=6.9, color="#4A5560")
+    save_publication_figure(fig, "figS02_input_label_quality")
+
+
+def render_supplementary_figure_3() -> None:
+    """Combine the 2024 historical maps and destination-aware error maps."""
+
+    comparison = _require_current_report(
+        "comparison_report_current.json", metric_version="strict_multiclass_fom_v2"
+    )
+    valid = rasterio.open(ROOT / "artifacts/abu_dhabi_city_100m_mask.tif").read(1).astype(bool)
+    origin_path = ROOT / "artifacts/gee/land_cover/land_cover_2022_100m.tif"
+    target_path = ROOT / "artifacts/gee/land_cover/land_cover_2024_100m.tif"
+    with rasterio.open(origin_path) as src:
+        origin = src.read(1)
+    with rasterio.open(target_path) as src:
+        target = src.read(1)
+
+    def error_map(prediction: np.ndarray) -> np.ndarray:
+        observed_change = valid & (target != origin)
+        predicted_change = valid & (prediction != origin)
+        result = np.zeros(origin.shape, dtype=np.uint8)
+        result[valid & ~observed_change & ~predicted_change] = 1
+        result[observed_change & predicted_change & (prediction == target)] = 2
+        result[observed_change & predicted_change & (prediction != target)] = 3
+        result[observed_change & ~predicted_change] = 4
+        result[~observed_change & predicted_change] = 5
+        return result
+
+    fig = plt.figure(figsize=(7.2, 6.55))
+    outer = fig.add_gridspec(2, 1, left=0.035, right=0.995, top=0.91, bottom=0.16,
+                             hspace=0.34, height_ratios=[1.0, 1.0])
+    top_grid = outer[0].subgridspec(1, 4, wspace=0.05)
+    bottom_grid = outer[1].subgridspec(1, 3, wspace=0.07)
+    cmap = ListedColormap(CLASS_COLORS)
+    map_rows = [("Observed 2024", target)]
+    for model in MODEL_ORDER:
+        path = ROOT / "artifacts" / "predictions" / model / "ensemble" / "prediction_2024.tif"
+        with rasterio.open(path) as src:
+            map_rows.append((MODEL_LABEL[model].split("\n")[0], src.read(1)))
+    for index, (title, state) in enumerate(map_rows):
+        ax = fig.add_subplot(top_grid[0, index])
+        display = state.copy()
+        display[~valid] = 0
+        ax.imshow(display, cmap=cmap, vmin=0, vmax=6, interpolation="nearest", aspect="equal")
+        ax.set_title(title, fontsize=8.2, fontweight="bold", pad=4)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_linewidth(0.45)
+            spine.set_color("#AAB2BC")
+
+    colors = ("#FFFFFF", "#D9DDE0", "#228833", "#DDAA33", "#4477AA", "#CC3311")
+    error_labels = ["Stable and correct", "Change location and class correct", "Change location hit, class wrong", "Missed change", "False change"]
+    for index, model in enumerate(MODEL_ORDER):
+        path = ROOT / "artifacts" / "predictions" / model / "ensemble" / "prediction_2024.tif"
+        with rasterio.open(path) as src:
+            prediction = src.read(1)
+        error = error_map(prediction)
+        ax = fig.add_subplot(bottom_grid[0, index])
+        ax.imshow(error, cmap=ListedColormap(colors), vmin=0, vmax=5, interpolation="nearest", aspect="equal")
+        metric = comparison["ensembles"][model]["2024"]["evaluation"]["change_figure_of_merit"]
+        ax.set_title(f"{MODEL_LABEL[model].split(chr(10))[0]}\nstrict FoM = {metric:.3f}", fontsize=7.7, fontweight="bold", pad=4)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_linewidth(0.45)
+            spine.set_color("#AAB2BC")
+    handles = [Patch(facecolor=CLASS_COLORS[index], edgecolor="none", label=CLASS_LABEL[index]) for index in range(1, 7)]
+    fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.52, 0.075), ncol=6,
+               frameon=False, fontsize=6.8, handlelength=1.0, columnspacing=0.9)
+    error_handles = [Patch(facecolor=colors[index], edgecolor="none", label=label) for index, label in enumerate(error_labels, 1)]
+    fig.legend(handles=error_handles, loc="lower center", bbox_to_anchor=(0.52, 0.022), ncol=5,
+               frameon=False, fontsize=6.5, handlelength=1.0, columnspacing=0.8)
+    fig.suptitle("Fig. S3 | Historical 2024 maps and change-error decomposition",
+                 x=0.035, y=0.975, ha="left", fontsize=11.5, fontweight="bold")
+    fig.text(0.035, 0.125,
+             "Top row: observed 2024 labels and two-step open-loop ensemble predictions from 2022. Bottom row: destination-aware error categories relative to the 2022 origin.",
+             fontsize=6.9, color="#4A5560")
+    save_publication_figure(fig, "figS03_historical_2024_maps_and_errors")
+
+
+def _supplementary_driver_map(ax: plt.Axes, values: np.ndarray, valid: np.ndarray, *, title: str, cmap: str,
+                              colorbar_label: str, percentile: tuple[float, float] = (2, 98)) -> None:
+    finite = valid & np.isfinite(values)
+    vmin, vmax = np.percentile(values[finite], percentile)
+    image = ax.imshow(np.ma.masked_where(~valid, values), cmap=cmap, vmin=float(vmin), vmax=float(vmax),
+                      interpolation="nearest", aspect="equal")
+    ax.set_title(title, fontsize=7.8, fontweight="bold", pad=4)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for spine in ax.spines.values():
+        spine.set_visible(True)
+        spine.set_linewidth(0.45)
+        spine.set_color("#AAB2BC")
+    cb = ax.figure.colorbar(image, ax=ax, fraction=0.042, pad=0.02)
+    cb.set_label(colorbar_label, fontsize=6.0)
+    cb.ax.tick_params(labelsize=5.8)
+
+
+def render_supplementary_figure_4() -> None:
+    """Provide English driver-layer panels and a compact experiment schematic."""
+
+    valid = rasterio.open(ROOT / "artifacts/abu_dhabi_city_100m_mask.tif").read(1).astype(bool)
+    with rasterio.open(ROOT / "artifacts/gee/terrain/copernicus_dem_2024_1_slope_100m.tif") as src:
+        terrain = src.read()
+    with rasterio.open(ROOT / "artifacts/gee/viirs/viirs_2024_100m.tif") as src:
+        viirs = src.read(1)
+    with rasterio.open(ROOT / "artifacts/osm/road_accessibility_100m.tif") as src:
+        roads = src.read()
+    with rasterio.open(ROOT / "artifacts/gee/land_cover/land_cover_quality_2024_100m.tif") as src:
+        quality = src.read(1)
+    with rasterio.open(ROOT / "artifacts/gee/alphaearth/alphaearth_2024_100m.tif") as src:
+        embeddings = src.read().astype(np.float32)
+    matrix = embeddings[:, valid].T
+    pca = PCA(n_components=3, svd_solver="randomized", random_state=31)
+    components = pca.fit_transform(matrix)
+    rgb_values = np.zeros_like(components, dtype=np.float32)
+    for index in range(3):
+        low, high = np.percentile(components[:, index], (2, 98))
+        rgb_values[:, index] = np.clip((components[:, index] - low) / (high - low), 0, 1)
+    rgb = np.ones((*valid.shape, 3), dtype=np.float32)
+    rgb[valid] = rgb_values
+
+    fig = plt.figure(figsize=(7.2, 8.25))
+    grid = fig.add_gridspec(4, 3, left=0.045, right=0.99, top=0.91, bottom=0.06,
+                            hspace=0.40, wspace=0.24, height_ratios=[1.0, 1.0, 0.08, 0.93])
+    axes = [fig.add_subplot(grid[row, col]) for row in range(2) for col in range(3)]
+    _supplementary_driver_map(axes[0], terrain[0], valid, title="A  Elevation", cmap="terrain", colorbar_label="m")
+    _supplementary_driver_map(axes[1], terrain[1], valid, title="B  Slope", cmap="magma", colorbar_label="degrees", percentile=(0, 99))
+    _supplementary_driver_map(axes[2], np.log1p(np.clip(viirs, 0, None)), valid, title="C  VIIRS night-time lights", cmap="inferno", colorbar_label="log(1 + radiance)")
+    _supplementary_driver_map(axes[3], roads[1], valid, title="D  Distance to major roads", cmap="viridis_r", colorbar_label="m", percentile=(0, 98))
+    _supplementary_driver_map(axes[4], quality, valid, title="E  Dynamic World confidence", cmap="RdYlGn", colorbar_label="probability", percentile=(0, 100))
+    axes[5].imshow(rgb, interpolation="nearest", aspect="equal")
+    axes[5].set_title(f"F  AlphaEarth PCA–RGB\nfirst 3 PCs = {pca.explained_variance_ratio_.sum():.1%} variance", fontsize=7.8, fontweight="bold", pad=4)
+    axes[5].set_xticks([])
+    axes[5].set_yticks([])
+    for spine in axes[5].spines.values():
+        spine.set_visible(True)
+        spine.set_linewidth(0.45)
+        spine.set_color("#AAB2BC")
+
+    ax = fig.add_subplot(grid[3, :])
+    ax.set_axis_off()
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+
+    def box(x: float, y: float, w: float, h: float, text: str, face: str, edge: str = "#59636F", fontsize: float = 7.0) -> None:
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.008,rounding_size=0.012",
+                                    linewidth=0.75, edgecolor=edge, facecolor=face))
+        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fontsize, linespacing=1.16)
+
+    def arrow(start: tuple[float, float], end: tuple[float, float]) -> None:
+        ax.add_patch(FancyArrowPatch(start, end, arrowstyle="-|>", mutation_scale=9, linewidth=0.8,
+                                     color="#69737B", shrinkA=2, shrinkB=2))
+
+    box(0.02, 0.57, 0.19, 0.28, "Public annual labels\nand spatial drivers\n2017–2024", "#E8F1F8", edge="#377EB8")
+    box(0.27, 0.57, 0.20, 0.28, "Common contract\n100-m grid, valid mask\nactions and hard masks", "#F1F0EA")
+    box(0.53, 0.70, 0.18, 0.15, "FLUS-style\nANN–CA", "#E8F1F8", edge="#377EB8")
+    box(0.53, 0.50, 0.18, 0.15, "Geospatial\nKernel", "#EAF4E8", edge="#4DAF4A")
+    box(0.53, 0.30, 0.18, 0.15, "GeoFM-LDN\nlatent dynamics", "#F1EAF5", edge="#7B3294")
+    box(0.79, 0.57, 0.18, 0.28, "Historical allocation\n2022 → 2023 → 2024\nthree seeds", "#FFF1E5", edge="#D55E00")
+    box(0.79, 0.22, 0.18, 0.24, "Planning stress tests\n2024 → 2031\nthree actions", "#EDEAF5", edge="#7B3294")
+    arrow((0.21, 0.71), (0.27, 0.71))
+    arrow((0.47, 0.71), (0.53, 0.775))
+    arrow((0.47, 0.71), (0.53, 0.575))
+    arrow((0.47, 0.71), (0.53, 0.375))
+    arrow((0.71, 0.775), (0.79, 0.71))
+    arrow((0.71, 0.575), (0.79, 0.71))
+    arrow((0.71, 0.375), (0.79, 0.34))
+    ax.text(0.5, 0.08, "Models change spatial allocation; the grid, actions, constraints and evaluator remain fixed.",
+            ha="center", va="center", fontsize=7.2, fontweight="bold", color="#3F4A52")
+    fig.suptitle("Fig. S4 | Driver layers and unified experiment design",
+                 x=0.045, y=0.975, ha="left", fontsize=11.5, fontweight="bold")
+    fig.text(0.045, 0.025, "Continuous maps are clipped to the 2nd–98th valid-pixel percentiles unless stated otherwise; the schematic uses one coordinate system to keep arrows aligned.",
+             fontsize=6.8, color="#4A5560")
+    save_publication_figure(fig, "figS04_driver_layers_and_experiment_design")
+
+
 def main() -> None:
     check_render_inputs()
     render_figure_1()
@@ -570,6 +845,9 @@ def main() -> None:
     render_figure_4()
     render_figure_5()
     render_supplementary_figure_1()
+    render_supplementary_figure_2()
+    render_supplementary_figure_3()
+    render_supplementary_figure_4()
     print(f"Rendered figures to {OUT}")
 
 
