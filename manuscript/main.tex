@@ -1,38 +1,39 @@
-\documentclass[11pt]{article}
-\usepackage[letterpaper,margin=0.85in]{geometry}
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm,headheight=14pt]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs,longtable,array}
 \usepackage{calc}
 \usepackage{graphicx}
 \graphicspath{{../}{}}
-\usepackage{float}
-\usepackage{caption}
+\usepackage[font=small,labelfont=bf,labelsep=period]{caption}
 \usepackage{microtype}
 \microtypesetup{expansion=false}
 \usepackage[hidelinks]{hyperref}
 \usepackage{etoolbox}
+\usepackage{setspace}
+\setstretch{1.16}
 \setcounter{secnumdepth}{0}
 \newcounter{none}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{5pt plus 1pt minus 1pt}
-\setlength{\emergencystretch}{3em}
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
 \sloppy
-\setlength{\tabcolsep}{2.2pt}
-\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.18}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
-\AtBeginEnvironment{longtable}{\scriptsize\setlength{\tabcolsep}{0.9pt}\renewcommand{\arraystretch}{1.1}}
-\AtBeginEnvironment{figure}{\captionsetup{font=small,labelfont=bf}}
+\AtBeginEnvironment{longtable}{\small\setlength{\tabcolsep}{3.2pt}\renewcommand{\arraystretch}{1.14}}
+\AtBeginEnvironment{figure}{\centering\captionsetup{skip=7pt}}
 \newcommand{\pandocbounded}[1]{\resizebox{\linewidth}{!}{#1}}
-\floatplacement{figure}{htbp}
+\newcommand{\FloatBarrier}{}
+\makeatletter
+\renewcommand{\fps@figure}{htbp}
+\makeatother
 \title{Auditing constrained geospatial allocation under noisy annual land-cover labels}
-\author{Ning Zhou\\[2pt]\normalsize Beijing Freedo Technology Co., Ltd.\\[-1pt]\normalsize Corresponding author: Ning Zhou (\texttt{zhouning@freedotech.com})}
+\author{Ning Zhou\\[3pt]\normalsize Beijing Freedo Technology Co., Ltd.\\[-1pt]\normalsize Corresponding author: Ning Zhou (\texttt{zhouning@freedotech.com})}
 \date{}
 \begin{document}
 \maketitle
-\begin{center}
-\small\textit{Research paper prepared for submission to Landscape and Urban Planning.}
-\end{center}
 \input{manuscript_pandoc.tex}
 \end{document}

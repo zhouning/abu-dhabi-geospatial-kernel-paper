@@ -31,12 +31,14 @@ mpl.rcParams.update(
     {
         "font.family": "sans-serif",
         "font.sans-serif": ["Arial", "DejaVu Sans", "Liberation Sans"],
-        "font.size": 7.2,
-        "axes.titlesize": 8.2,
-        "axes.labelsize": 7.2,
-        "xtick.labelsize": 6.6,
-        "ytick.labelsize": 6.6,
-        "legend.fontsize": 6.5,
+        # Main-text figures are designed for a conventional single-column
+        # author manuscript.  Labels remain readable after PDF embedding.
+        "font.size": 8.6,
+        "axes.titlesize": 9.4,
+        "axes.labelsize": 8.6,
+        "xtick.labelsize": 7.8,
+        "ytick.labelsize": 7.8,
+        "legend.fontsize": 8.0,
         "svg.fonttype": "none",
         "pdf.fonttype": 42,
         "axes.spines.top": False,
@@ -150,12 +152,12 @@ def save_publication_figure(fig: plt.Figure, stem: str) -> None:
 
 def panel_label(ax, label: str) -> None:
     ax.text(
-        -0.12,
-        1.08,
+        -0.10,
+        1.09,
         label,
         transform=ax.transAxes,
         fontweight="bold",
-        fontsize=9,
+        fontsize=10,
         va="top",
         ha="left",
     )
@@ -180,94 +182,78 @@ def aggregate_seed_metrics(report: dict, model: str, scenario: str, year: int, k
 
 
 def render_figure_1() -> None:
-    """Schematic-led composite: common benchmark and Kernel contract."""
+    """Draw a compact mechanism schematic using one coordinate system.
 
-    fig = plt.figure(figsize=(7.2, 4.65), constrained_layout=False)
-    gs = fig.add_gridspec(12, 24, left=0.035, right=0.985, top=0.91, bottom=0.10, wspace=0.4, hspace=0.7)
-    ax_inputs = fig.add_subplot(gs[0:8, 0:7])
-    ax_kernel = fig.add_subplot(gs[0:8, 8:17])
-    ax_tracks = fig.add_subplot(gs[0:8, 18:24])
-    ax_footer = fig.add_subplot(gs[9:12, 0:24])
-    for ax in (ax_inputs, ax_kernel, ax_tracks, ax_footer):
-        ax.set_axis_off()
+    Keeping all boxes and arrows on a single axis prevents the cross-panel
+    endpoint drift that affected earlier artwork after PDF scaling.
+    """
 
-    fig.suptitle(
-        "A common state–action–constraint contract makes spatial allocation auditable",
-        x=0.035,
-        y=0.985,
-        ha="left",
-        fontsize=10.5,
-        fontweight="bold",
-    )
+    fig, ax = plt.subplots(figsize=(7.2, 4.2))
+    ax.set_axis_off()
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
 
-    def box(ax, xy, wh, text, face="#F7F8FA", edge="#5B6573", fontsize=7.1, weight="normal"):
-        x, y = xy
-        w, h = wh
-        patch = FancyBboxPatch(
-            (x, y),
-            w,
-            h,
-            boxstyle="round,pad=0.012,rounding_size=0.02",
-            transform=ax.transAxes,
-            linewidth=0.75,
-            edgecolor=edge,
-            facecolor=face,
-        )
-        ax.add_patch(patch)
-        ax.text(x + w / 2, y + h / 2, text, transform=ax.transAxes, ha="center", va="center", fontsize=fontsize, fontweight=weight, linespacing=1.15)
-        return patch
-
-    def arrow(ax, start, end, color="#59636F", lw=0.8, style="-|>"):
+    def box(x, y, w, h, text, *, face, edge, fontsize=8.0, weight="normal"):
         ax.add_patch(
-            FancyArrowPatch(
-                start,
-                end,
-                transform=ax.transAxes,
-                arrowstyle=style,
-                mutation_scale=8,
-                linewidth=lw,
-                color=color,
-                connectionstyle="arc3,rad=0",
+            FancyBboxPatch(
+                (x, y), w, h, boxstyle="round,pad=0.008,rounding_size=0.012",
+                linewidth=0.9, edgecolor=edge, facecolor=face,
             )
         )
+        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center",
+                fontsize=fontsize, fontweight=weight, linespacing=1.16)
 
-    ax_inputs.text(0.0, 0.96, "A  Common public-data benchmark", transform=ax_inputs.transAxes, fontweight="bold", fontsize=8.5, va="bottom")
-    box(ax_inputs, (0.02, 0.70), (0.45, 0.18), "Annual land-cover\n2017–2024", face="#E8F1F8", edge="#377EB8")
-    box(ax_inputs, (0.53, 0.70), (0.45, 0.18), "Embeddings +\nnight lights", face="#EEF6EC", edge="#4DAF4A")
-    box(ax_inputs, (0.02, 0.43), (0.45, 0.18), "Terrain +\nroad distance", face="#FFF2E7", edge="#D55E00")
-    box(ax_inputs, (0.53, 0.43), (0.45, 0.18), "Water / wetland /\nproxy exclusions", face="#F3ECF7", edge="#7B3294")
-    box(ax_inputs, (0.15, 0.09), (0.70, 0.22), "Aligned state $S_t$  |  action $A_t$\ncommon 100-m grid", face="#FFFFFF", edge="#343A40", fontsize=6.7, weight="bold")
-    for p in [((0.24, 0.70), (0.38, 0.32)), ((0.75, 0.70), (0.62, 0.32)), ((0.24, 0.43), (0.38, 0.32)), ((0.75, 0.43), (0.62, 0.32))]:
-        arrow(ax_inputs, *p)
-    ax_inputs.text(0.02, 0.01, "79,726 valid cells • six land-cover classes • 3 seeds", transform=ax_inputs.transAxes, fontsize=6.4, color="#4A5560")
+    def arrow(start, end, *, color="#4F5B66"):
+        ax.add_patch(FancyArrowPatch(
+            start, end, arrowstyle="-|>", mutation_scale=11, linewidth=0.95,
+            color=color, shrinkA=2, shrinkB=2,
+        ))
 
-    ax_kernel.text(0.0, 0.96, "B  Geospatial Kernel execution loop", transform=ax_kernel.transAxes, fontweight="bold", fontsize=8.5, va="bottom")
-    box(ax_kernel, (0.02, 0.47), (0.18, 0.23), "State\n$S_t$", face="#E8F1F8", edge="#377EB8", weight="bold")
-    box(ax_kernel, (0.02, 0.12), (0.18, 0.23), "Action\n$A_t$", face="#FFF2E7", edge="#D55E00", weight="bold")
-    box(ax_kernel, (0.28, 0.39), (0.30, 0.31), "Learned proposal\n$Q_t(i,c)$\nprobability cube", face="#EEF6EC", edge="#4DAF4A", fontsize=6.15, weight="bold")
-    box(ax_kernel, (0.64, 0.39), (0.31, 0.31), "Projection Π\nclass deficits +\nhard exclusions", face="#F3ECF7", edge="#7B3294", weight="bold")
-    box(ax_kernel, (0.64, 0.06), (0.31, 0.20), "Write back\n$S_{t+1}$", face="#FFFFFF", edge="#343A40", weight="bold")
-    arrow(ax_kernel, (0.20, 0.58), (0.28, 0.57))
-    # The current learner proposal does not consume the action.  The action is
-    # applied at the projection stage, where deficits and hard exclusions are
-    # enforced; drawing it to Q_t would misstate the implemented mechanism.
-    arrow(ax_kernel, (0.20, 0.23), (0.64, 0.47))
-    arrow(ax_kernel, (0.58, 0.55), (0.64, 0.55))
-    arrow(ax_kernel, (0.79, 0.39), (0.79, 0.27))
-    ax_kernel.annotate("audit trace", xy=(0.75, 0.06), xytext=(0.35, 0.04), xycoords="axes fraction", textcoords="axes fraction", arrowprops=dict(arrowstyle="-|>", color="#59636F", lw=0.65), fontsize=6.3, color="#59636F", ha="center")
-    ax_kernel.text(0.33, 0.83, "domain-specific learner", transform=ax_kernel.transAxes, fontsize=6.2, color="#4A5560", ha="center")
-    ax_kernel.text(0.80, 0.83, "domain-neutral runtime", transform=ax_kernel.transAxes, fontsize=6.2, color="#4A5560", ha="center")
+    fig.suptitle(
+        "Geospatial Kernel separates a transition proposal from constrained admission",
+        x=0.055, y=0.99, ha="left", fontsize=12, fontweight="bold",
+    )
+    ax.text(0.055, 0.89, "COMMON BENCHMARK INPUTS", fontsize=8.5,
+            fontweight="bold", color="#3C4853")
+    box(0.055, 0.70, 0.20, 0.13, "Annual land cover\n2017-2024",
+        face="#E8F1F8", edge="#377EB8", weight="bold")
+    box(0.285, 0.70, 0.20, 0.13, "Embeddings and\nnight lights",
+        face="#EAF4E8", edge="#4DAF4A", weight="bold")
+    box(0.515, 0.70, 0.20, 0.13, "Terrain and\nroad distance",
+        face="#FFF1E5", edge="#D55E00", weight="bold")
+    box(0.745, 0.70, 0.20, 0.13, "Water / wetland\nproxy exclusions",
+        face="#F1EAF5", edge="#7B3294", weight="bold")
+    arrow((0.155, 0.70), (0.29, 0.57))
+    arrow((0.385, 0.70), (0.43, 0.57))
+    arrow((0.615, 0.70), (0.57, 0.57))
+    arrow((0.845, 0.70), (0.71, 0.57))
+    box(0.30, 0.48, 0.40, 0.10,
+        "Aligned 100-m grid: state $S_t$, action $A_t$, and hard-mask evidence",
+        face="#FFFFFF", edge="#59636F", fontsize=8.1, weight="bold")
 
-    ax_tracks.text(0.0, 0.96, "C  Evaluation tracks", transform=ax_tracks.transAxes, fontweight="bold", fontsize=8.5, va="bottom")
-    box(ax_tracks, (0.08, 0.69), (0.84, 0.19), "Historical\n2023 one-step", face="#E8F1F8", edge="#377EB8", weight="bold")
-    box(ax_tracks, (0.08, 0.42), (0.84, 0.19), "Open-loop\n2024 two-step", face="#EEF6EC", edge="#4DAF4A", weight="bold")
-    box(ax_tracks, (0.08, 0.15), (0.84, 0.19), "Planning stress tests\n2025–2031 • 3 scenarios", face="#FFF2E7", edge="#D55E00", weight="bold")
-    ax_tracks.text(0.5, 0.05, "same evaluator", transform=ax_tracks.transAxes, ha="center", fontsize=6.5, color="#4A5560")
-
-    box(ax_footer, (0.01, 0.20), (0.31, 0.58), "What is shared\nState schema\nAction semantics\nConstraint audit\nOutput provenance", face="#F7F8FA", edge="#5B6573", fontsize=6.8)
-    box(ax_footer, (0.345, 0.20), (0.31, 0.58), "What is model-specific\nProposal learner\nFeature representation\nTransition dynamics\nAllocation score", face="#F7F8FA", edge="#5B6573", fontsize=6.8)
-    box(ax_footer, (0.68, 0.20), (0.31, 0.58), "Interpretation boundary\nPublic land cover ≠ legal land use\nProxy masks ≠ statutory red lines\nScenario maps ≠ official forecasts", face="#FFFDF5", edge="#A67C00", fontsize=6.65)
-    fig.text(0.035, 0.035, "Schematic uses public-data proxies; it does not imply statutory planning boundaries.", fontsize=6.4, color="#5A6470")
+    ax.text(0.055, 0.40, "KERNEL EXECUTION", fontsize=8.5,
+            fontweight="bold", color="#3C4853")
+    box(0.055, 0.17, 0.14, 0.14, "State\n$S_t$", face="#E8F1F8",
+        edge="#377EB8", weight="bold")
+    box(0.245, 0.17, 0.20, 0.14, "Learned proposal\n$Q_t(i,c)$", face="#EAF4E8",
+        edge="#4DAF4A", weight="bold")
+    box(0.500, 0.17, 0.22, 0.14, "Constraint projection\n$\Pi_{\mathcal{C},A_t}$", face="#F1EAF5",
+        edge="#7B3294", weight="bold")
+    box(0.775, 0.17, 0.17, 0.14, "Writeback\n$S_{t+1}$", face="#FFFFFF",
+        edge="#59636F", weight="bold")
+    box(0.510, 0.01, 0.20, 0.08, "Action $A_t$: feasible\nclass totals", face="#FFF1E5",
+        edge="#D55E00", fontsize=7.4, weight="bold")
+    arrow((0.195, 0.24), (0.245, 0.24))
+    arrow((0.445, 0.24), (0.500, 0.24))
+    arrow((0.720, 0.24), (0.775, 0.24))
+    arrow((0.610, 0.09), (0.610, 0.17), color="#D55E00")
+    ax.text(0.155, 0.09, "Proposal learner is domain-specific", fontsize=7.7,
+            ha="center", color="#4F5B66")
+    ax.text(0.860, 0.09, "Trace records\nproposal, projection, writeback",
+            fontsize=7.4, ha="center", color="#4F5B66")
+    fig.text(0.055, 0.015,
+             "Public land cover and proxy masks are not statutory land-use or planning boundaries.",
+             fontsize=7.5, color="#5A6470")
     save_publication_figure(fig, "fig01_benchmark_contract")
 
 
@@ -276,24 +262,25 @@ def render_figure_2() -> None:
         "comparison_report_current.json", metric_version="strict_multiclass_fom_v2"
     )
     metrics = [
-        ("change_figure_of_merit", "Strict transition FoM", "higher is better"),
-        ("change_f1", "Change F1", "higher is better"),
-        ("overall_accuracy", "Overall accuracy", "higher is better"),
-        ("macro_f1", "Macro-F1", "higher is better"),
+        ("change_figure_of_merit", "Strict destination-change FoM", "A"),
+        ("change_f1", "Change F1", "B"),
     ]
-    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.15), sharex=False)
-    # Reserve a dedicated upper band for the two-row legend.  This keeps the
-    # legend away from panel titles and leaves enough vertical separation for
-    # the two-line horizon labels in the bottom row.
-    fig.subplots_adjust(left=0.08, right=0.985, top=0.70, bottom=0.16, wspace=0.27, hspace=0.58)
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.45), sharex=False)
+    fig.subplots_adjust(left=0.09, right=0.985, top=0.72, bottom=0.22, wspace=0.30)
     years = ["2023", "2024"]
     x = np.arange(len(years))
     plot_models = MODEL_ORDER + ["persistence", "random_allocation"]
     plot_colors = {**MODEL_COLOR, "persistence": "#6A737D", "random_allocation": "#CC79A7"}
-    plot_labels = {**MODEL_LABEL, "persistence": "Persistence", "random_allocation": "Random minimum-change"}
-    width = 0.14
-    for idx, (key, title, direction) in enumerate(metrics):
-        ax = axes.flat[idx]
+    plot_labels = {
+        "geosos_flus": "FLUS-style ANN-CA",
+        "geospatial_kernel": "Geospatial Kernel",
+        "paper58": "GeoFM-LDN",
+        "persistence": "Persistence",
+        "random_allocation": "Random control",
+    }
+    width = 0.145
+    for key, title, label in metrics:
+        ax = axes[0] if label == "A" else axes[1]
         for j, model in enumerate(plot_models):
             means, sds = [], []
             for year in years:
@@ -313,18 +300,25 @@ def render_figure_2() -> None:
                     means.append(float(item))
                     sds.append(0.0)
             pos = x + (j - (len(plot_models) - 1) / 2) * width
-            ax.bar(pos, means, width=width, yerr=sds, capsize=1.4, color=plot_colors[model], edgecolor="white", linewidth=0.35, label=plot_labels[model], error_kw={"elinewidth": 0.5, "capthick": 0.5})
-        ax.set_xticks(x, ["2023\n1-step", "2024\n2-step open-loop"])
-        ax.set_title(f"{title}\n({direction})", loc="left", pad=5)
+            ax.bar(pos, means, width=width, yerr=sds, capsize=2.0,
+                   color=plot_colors[model], edgecolor="white", linewidth=0.45,
+                   label=plot_labels[model], error_kw={"elinewidth": 0.7, "capthick": 0.7})
+        ax.set_xticks(x, ["2023\none-step", "2024\ntwo-step open-loop"])
+        ax.set_title(title, loc="left", pad=7, fontweight="bold")
         ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
         ax.set_axisbelow(True)
         ax.set_ylim(bottom=max(0, ax.get_ylim()[0]))
-        panel_label(ax, "ABCD"[idx])
-        if idx in (0, 2):
-            ax.set_ylabel("Score")
-    fig.legend(handles=[Patch(facecolor=plot_colors[m], edgecolor="none", label=plot_labels[m]) for m in plot_models], loc="upper center", bbox_to_anchor=(0.5, 0.835), ncol=3, frameon=False, handlelength=1.0, columnspacing=1.0)
-    fig.suptitle("Historical allocation skill with explicit zero models", x=0.08, y=0.975, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.08, 0.055, "Model bars show mean ± population SD across n=3 seeds; persistence and random minimum-change are explicit zero-model controls. The 25-feature and 19-feature FLUS runs are diagnostic-only and are reported in the machine-readable supplement.", fontsize=6.2, color="#4A5560")
+        ax.set_ylabel("Score")
+        panel_label(ax, label)
+    fig.legend(
+        handles=[Patch(facecolor=plot_colors[m], edgecolor="none", label=plot_labels[m]) for m in plot_models],
+        loc="upper center", bbox_to_anchor=(0.53, 0.97), ncol=3, frameon=False,
+        handlelength=1.1, columnspacing=1.35,
+    )
+    fig.text(0.09, 0.08,
+             "Bars show mean +/- population SD across three frozen computational seeds. Strict FoM is the primary metric;\n"
+             "persistence and random allocation are explicit zero-model controls. Other metrics are in the Supplement.",
+             fontsize=7.5, color="#4A5560")
     save_publication_figure(fig, "fig02_historical_validation")
 
 
@@ -334,67 +328,45 @@ def render_figure_3() -> None:
         metric_version="planning_objectives_v6",
     )
     panels = [
-        ("new_built_mean_major_road_distance_m", "Distance to major road", "lower is better", 1.0, "m"),
-        ("new_built_mean_prior_built_distance_m", "Distance to prior built", "lower is better", 1.0, "m"),
-        ("combined_built_components_per_1000_pixels", "Existing + new built components / 1,000 valid", "lower is better", 1.0, ""),
-        ("ecological_conversion_rate", "Ecological conversion (diagnostic)", "descriptive", 100.0, "%"),
-        ("green_gain_pixels", "Vegetation gain (diagnostic)", "descriptive", 1.0, "cells"),
-        ("new_built_leapfrog_rate", "500-m leapfrog", "descriptive; lower is better", 100.0, "%"),
+        ("new_built_mean_major_road_distance_m", "Distance to major road", "m", "A"),
+        ("new_built_mean_prior_built_distance_m", "Distance to pre-existing built", "m", "B"),
+        ("combined_built_components_per_1000_pixels", "Combined built components", "per 1,000 cells", "C"),
     ]
-    fig, axes = plt.subplots(2, 3, figsize=(7.2, 5.35))
-    # The title and legend occupy a separate band so that long diagnostic
-    # titles cannot collide with either the legend or the upper-row axes.
-    fig.subplots_adjust(left=0.075, right=0.985, top=0.66, bottom=0.19, wspace=0.34, hspace=0.88)
+    fig, axes = plt.subplots(1, 3, figsize=(7.2, 3.55))
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.72, bottom=0.24, wspace=0.38)
     x = np.arange(len(SCENARIO_ORDER))
     width = 0.23
     pareto = set(report.get("pareto_frontier", []))
-    objective_keys = {
-        "new_built_mean_major_road_distance_m",
-        "new_built_mean_prior_built_distance_m",
-        "combined_built_components_per_1000_pixels",
-    }
-    for idx, (key, title, direction, scale, unit) in enumerate(panels):
-        ax = axes.flat[idx]
+    for idx, (key, title, unit, label) in enumerate(panels):
+        ax = axes[idx]
         for j, model in enumerate(MODEL_ORDER):
             means, sds = [], []
             for scenario in SCENARIO_ORDER:
                 mean, sd = aggregate_seed_metrics(report, model, scenario, 2031, key)
-                means.append(mean * scale)
-                sds.append(sd * scale)
+                means.append(mean)
+                sds.append(sd)
             pos = x + (j - 1) * width
-            edge = "#222222" if model == "geospatial_kernel" else "white"
-            ax.bar(pos, means, width=width, yerr=sds, capsize=1.8, color=MODEL_COLOR[model], edgecolor=edge, linewidth=0.65, error_kw={"elinewidth": 0.55, "capthick": 0.55})
-            for zero_pos, zero_value in zip(pos, means):
-                if abs(zero_value) < 1e-12:
-                    ax.plot(zero_pos, 0, marker="_", markersize=9, markeredgewidth=1.4, color=MODEL_COLOR[model], clip_on=False)
-            if key in objective_keys:
-                for scenario_index, scenario in enumerate(SCENARIO_ORDER):
-                    if f"{model}:{scenario}" in pareto:
-                        ax.plot(
-                            pos[scenario_index],
-                            means[scenario_index],
-                            marker="*",
-                            markersize=6,
-                            markerfacecolor="white",
-                            markeredgecolor="#111111",
-                            markeredgewidth=0.55,
-                            zorder=5,
-                        )
-        ax.set_xticks(x, ["Moderate", "Green-priority", "High outward"])
-        ax.set_title(f"{title}\n({direction})", loc="left", pad=5)
+            bars = ax.bar(pos, means, width=width, yerr=sds, capsize=2.0,
+                          color=MODEL_COLOR[model], edgecolor="white", linewidth=0.5,
+                          error_kw={"elinewidth": 0.7, "capthick": 0.7})
+            for scenario_index, bar in enumerate(bars):
+                if f"{model}:{SCENARIO_ORDER[scenario_index]}" in pareto:
+                    bar.set_edgecolor("#111111")
+                    bar.set_linewidth(1.2)
+        ax.set_xticks(x, ["Moderate", "Green\npriority", "High\noutward"])
+        ax.set_title(title, loc="left", pad=7, fontweight="bold")
         ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
         ax.set_axisbelow(True)
-        panel_label(ax, "ABCDEF"[idx])
-        if unit:
-            ax.set_ylabel(unit)
-        if key == "demand_total_variation":
-            ax.ticklabel_format(axis="y", style="sci", scilimits=(-3, -3))
-        if key in {"ecological_conversion_rate", "new_built_leapfrog_rate"}:
-            ax.set_ylim(bottom=0)
-    legend_handles = [Patch(facecolor=MODEL_COLOR[m], edgecolor="none", label=MODEL_LABEL[m]) for m in MODEL_ORDER]
-    fig.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.785), ncol=3, frameon=False, handlelength=1.2, columnspacing=1.0)
-    fig.suptitle("Conditional planning outcomes and independent morphology diagnostics", x=0.075, y=0.972, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.075, 0.055, "Bars show mean ± population SD across n=3 seeds; stars mark within-scenario candidates on the three-objective frontier. Ecological conversion and vegetation gain are diagnostics.", fontsize=6.25, color="#4A5560")
+        ax.set_ylabel(unit)
+        panel_label(ax, label)
+    legend_handles = [Patch(facecolor=MODEL_COLOR[m], edgecolor="none", label=MODEL_LABEL[m].replace("\n(author-modified build)", "")) for m in MODEL_ORDER]
+    legend_handles.append(Patch(facecolor="white", edgecolor="#111111", linewidth=1.2, label="Within-scenario frontier"))
+    fig.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.53, 0.98),
+               ncol=2, frameon=False, handlelength=1.2, columnspacing=1.25)
+    fig.text(0.08, 0.085,
+             "2031 scenario stress tests. Bars show mean +/- population SD across three seeds; black outlines denote\n"
+             "membership of the three-objective within-scenario frontier. Ecological conversion remains a diagnostic only.",
+             fontsize=7.5, color="#4A5560")
     save_publication_figure(fig, "fig03_planning_objectives")
 
 
@@ -416,29 +388,27 @@ def _fom(row):
 def render_figure_4() -> None:
     _require_file("artifacts/mechanism_ablations/report.json")
     report = load_json("artifacts/mechanism_ablations/report.json")
-    proposal_variants = ["full", "no_neighborhood_features", "no_spatial_drivers", "shuffle_spatial_drivers", "state_only", "markov", "random"]
+    proposal_variants = ["full", "no_neighborhood_features", "no_spatial_drivers", "markov", "random"]
     proposal_label = {
         "full": "Full",
-        "no_neighborhood_features": "No neighbourhood",
-        "no_spatial_drivers": "No spatial drivers",
-        "shuffle_spatial_drivers": "Shuffled drivers",
-        "state_only": "State only",
-        "markov": "Markov proposal",
-        "random": "Random proposal",
+        "no_neighborhood_features": "No proposal\nneighbourhood",
+        "no_spatial_drivers": "No spatial\ndrivers",
+        "markov": "Markov\nproposal",
+        "random": "Random\nproposal",
     }
     runtime_variants = ["action_deleted", "action_shuffled", "allocation_neighborhood_deleted", "constraint_deleted", "state_writeback_deleted"]
     runtime_label = {
-        "action_deleted": "Action deleted",
-        "action_shuffled": "Action shuffled",
-        "allocation_neighborhood_deleted": "No allocator\nneighbourhood",
-        "constraint_deleted": "Constraints deleted",
-        "state_writeback_deleted": "No state writeback",
+        "action_deleted": "No\naction",
+        "action_shuffled": "Shuffled\naction",
+        "allocation_neighborhood_deleted": "No allocator\ncontext",
+        "constraint_deleted": "No hard\nconstraints",
+        "state_writeback_deleted": "No state\nwriteback",
     }
-    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.15))
-    fig.subplots_adjust(left=0.08, right=0.985, top=0.78, bottom=0.20, wspace=0.34, hspace=0.72)
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.55))
+    fig.subplots_adjust(left=0.09, right=0.985, top=0.73, bottom=0.25, wspace=0.36)
 
     # A: proposal ablation absolute FoM.
-    ax = axes[0, 0]
+    ax = axes[0]
     x = np.arange(len(proposal_variants))
     width = 0.33
     for j, year in enumerate((2023, 2024)):
@@ -449,16 +419,16 @@ def render_figure_4() -> None:
             means.append(vals.mean())
             sds.append(vals.std(ddof=0))
         ax.bar(x + (j - 0.5) * width, means, width=width, yerr=sds, capsize=1.6, color=["#4C78A8", "#F58518"][j], edgecolor="white", linewidth=0.35, label=str(year), error_kw={"elinewidth": 0.55, "capthick": 0.55})
-    ax.set_xticks(x, [proposal_label[v] for v in proposal_variants], rotation=24, ha="right")
-    ax.tick_params(axis="x", labelsize=5.6)
+    ax.set_xticks(x, [proposal_label[v] for v in proposal_variants])
+    ax.tick_params(axis="x", labelsize=7.2)
     ax.set_ylabel("Change FoM")
-    ax.set_title("Proposal controls", loc="left", pad=5)
+    ax.set_title("Proposal controls", loc="left", pad=7, fontweight="bold")
     ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
     ax.set_axisbelow(True)
     panel_label(ax, "A")
 
     # B: runtime-control changes relative to the matched full run.
-    ax = axes[0, 1]
+    ax = axes[1]
     x = np.arange(len(runtime_variants))
     for j, year in enumerate((2023, 2024)):
         deltas, sds = [], []
@@ -470,110 +440,126 @@ def render_figure_4() -> None:
             sds.append(vals.std(ddof=0))
         ax.bar(x + (j - 0.5) * width, deltas, width=width, yerr=sds, capsize=1.6, color=["#4C78A8", "#F58518"][j], edgecolor="white", linewidth=0.35, label=str(year), error_kw={"elinewidth": 0.55, "capthick": 0.55})
     ax.axhline(0, color="#343A40", linewidth=0.65)
-    ax.set_xticks(x, [runtime_label[v] for v in runtime_variants], rotation=24, ha="right")
-    ax.tick_params(axis="x", labelsize=5.6)
+    ax.set_xticks(x, [runtime_label[v] for v in runtime_variants])
+    ax.tick_params(axis="x", labelsize=6.2, pad=4)
     ax.set_ylabel("Δ change FoM vs full")
-    ax.set_title("Runtime controls", loc="left", pad=5)
+    ax.set_title("Runtime controls (relative to full Kernel)", loc="left", pad=7, fontweight="bold")
     ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
     ax.set_axisbelow(True)
     panel_label(ax, "B")
 
-    # C: planning compactness under allocator-matched controls.
-    ax = axes[1, 0]
-    variants = [("full", "full", True, "Full"), ("markov", "markov_proposal", True, "Markov proposal"), ("full", "allocation_neighborhood_deleted", True, "No allocator neighbourhood"), ("full", "state_writeback_deleted", False, "No state writeback")]
-    x = np.arange(len(SCENARIO_ORDER))
-    width_c = 0.19
-    for j, (proposal, runtime, writeback, label) in enumerate(variants):
-        means, sds = [], []
-        for scenario in SCENARIO_ORDER:
-            rows = [r for r in report["planning_2031"] if r["scenario_id"] == scenario and r["proposal_variant"] == proposal and r["runtime_variant"] == runtime and bool(r["writeback"]) == writeback]
-            vals = np.asarray([r["metrics"]["new_built_neighbor_fraction"] for r in rows])
-            means.append(vals.mean())
-            sds.append(vals.std(ddof=0))
-        ax.bar(x + (j - 1.5) * width_c, means, width=width_c, yerr=sds, capsize=1.4, color=["#D55E00", "#6A3D9A", "#E69F00", "#999999"][j], edgecolor="white", linewidth=0.35, label=label, error_kw={"elinewidth": 0.5, "capthick": 0.5})
-    ax.set_xticks(x, ["Moderate", "Green-priority", "High outward"])
-    ax.set_ylim(0.62, 0.96)
-    ax.set_ylabel("New-built compactness")
-    ax.set_title("Planning morphology controls", loc="left", pad=5)
-    ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
-    ax.set_axisbelow(True)
-    panel_label(ax, "C")
-
-    # D: hard-constraint violations introduced by removing the mask.
-    ax = axes[1, 1]
-    x = np.arange(len(SCENARIO_ORDER))
-    width_d = 0.34
-    for j, runtime in enumerate(("full", "constraint_deleted")):
-        vals_mean, vals_sd = [], []
-        for scenario in SCENARIO_ORDER:
-            rows = [r for r in report["planning_2031"] if r["scenario_id"] == scenario and r["runtime_variant"] == runtime]
-            vals = np.asarray([r["metrics"]["constraint_violation_rate"] * 100.0 for r in rows])
-            vals_mean.append(vals.mean())
-            vals_sd.append(vals.std(ddof=0))
-        ax.bar(x + (j - 0.5) * width_d, vals_mean, width=width_d, yerr=vals_sd, capsize=1.6, color=["#D55E00", "#7B3294"][j], edgecolor="white", linewidth=0.35, label=("Full constraints" if runtime == "full" else "Constraints deleted"), error_kw={"elinewidth": 0.55, "capthick": 0.55})
-    ax.set_xticks(x, ["Moderate", "Green-priority", "High outward"])
-    ax.set_ylabel("Violation rate (%)")
-    ax.set_title("Hard-constraint control", loc="left", pad=5)
-    ax.grid(axis="y", color="#D8DDE3", linewidth=0.45, alpha=0.7)
-    ax.set_axisbelow(True)
-    ax.legend(frameon=False, loc="upper left", fontsize=6.1)
-    panel_label(ax, "D")
-    fig.legend(handles=[Patch(facecolor="#4C78A8", edgecolor="none", label="2023"), Patch(facecolor="#F58518", edgecolor="none", label="2024")], title="Target year", title_fontsize=6.2, loc="upper left", bbox_to_anchor=(0.08, 0.895), ncol=2, frameon=False, handlelength=1.1, columnspacing=0.8)
-    fig.legend(handles=[Patch(facecolor="#D55E00", edgecolor="none", label="Full"), Patch(facecolor="#6A3D9A", edgecolor="none", label="Markov proposal"), Patch(facecolor="#E69F00", edgecolor="none", label="No allocator neighbourhood"), Patch(facecolor="#999999", edgecolor="none", label="No state writeback")], loc="upper right", bbox_to_anchor=(0.985, 0.895), ncol=2, frameon=False, handlelength=1.1, columnspacing=0.8)
-    fig.suptitle("Mechanism controls separate proposal features from runtime projection", x=0.08, y=0.975, ha="left", fontsize=10.5, fontweight="bold")
-    fig.text(0.08, 0.055, "Public-data controls; bars show mean ± population SD across n=3 seeds. These comparisons support, but do not identify, causal mechanisms.", fontsize=6.35, color="#4A5560")
+    fig.legend(handles=[Patch(facecolor="#4C78A8", edgecolor="none", label="2023"), Patch(facecolor="#F58518", edgecolor="none", label="2024")],
+               loc="upper center", bbox_to_anchor=(0.53, 0.98), ncol=2, frameon=False,
+               handlelength=1.1, columnspacing=1.2)
+    fig.text(0.09, 0.09,
+             "Bars show mean +/- population SD across three seeds. The controls test execution dependencies; they do not\n"
+             "identify causal planning effects. Removing hard constraints can raise label agreement while violating the contract.",
+             fontsize=7.5, color="#4A5560")
     save_publication_figure(fig, "fig04_mechanism_ablation")
 
 
 def render_figure_5() -> None:
+    """Show a focused spatial comparison, retaining the full atlas as a supplement."""
     _require_file("artifacts/gee/land_cover/land_cover_2024_100m.tif")
     origin_path = ROOT / "artifacts/gee/land_cover/land_cover_2024_100m.tif"
     with rasterio.open(origin_path) as src:
         origin = src.read(1)
-    cmap = ListedColormap(CLASS_COLORS)
-    norm = BoundaryNorm(np.arange(-0.5, 7.5, 1), cmap.N)
-    fig, axes = plt.subplots(3, 3, figsize=(7.2, 7.1))
-    fig.subplots_adjust(left=0.105, right=0.985, top=0.88, bottom=0.16, wspace=0.08, hspace=0.28)
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 6.1))
+    fig.subplots_adjust(left=0.07, right=0.985, top=0.90, bottom=0.13, wspace=0.07, hspace=0.15)
+
+    def show_change(ax, final, title, label):
+        valid = origin != 0
+        existing_built = valid & (origin == 5)
+        water_or_wetland = valid & np.isin(origin, [1, 4])
+        new_built = valid & (origin != 5) & (final == 5)
+        image = np.full(origin.shape, np.nan)
+        image[valid] = 0
+        image[water_or_wetland] = 1
+        image[existing_built] = 2
+        image[new_built] = 3
+        cmap = ListedColormap(["#F1F2F1", "#5B9BD5", "#5D6268", "#E17C05"])
+        ax.imshow(image, cmap=cmap, vmin=0, vmax=3, interpolation="nearest", aspect="equal")
+        ax.set_title(title, loc="left", pad=6, fontweight="bold")
+        ax.set_xticks([])
+        ax.set_yticks([])
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_linewidth(0.55)
+            spine.set_color("#AAB2BC")
+        panel_label(ax, label)
+
+    show_change(axes[0, 0], origin, "Observed 2024 reference", "A")
+    for idx, model in enumerate(MODEL_ORDER, start=1):
+        path = ROOT / "artifacts" / "planning_public_2025_2031" / model / "outward_growth" / "ensemble" / "prediction_2031.tif"
+        with rasterio.open(path) as src:
+            final = src.read(1)
+        ax = axes.flat[idx]
+        show_change(ax, final, f"{MODEL_LABEL[model].split(chr(10))[0]} | 2031", "ABCD"[idx])
+    height, width_px = origin.shape
+    x0, y0 = int(width_px * 0.08), int(height * 0.90)
+    axes[1, 0].plot([x0, x0 + 20], [y0, y0], color="#202020", linewidth=2.8, solid_capstyle="butt")
+    axes[1, 0].text(x0 + 10, y0 - 7, "2 km", ha="center", va="bottom", fontsize=8.2,
+                    color="#202020", bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.90, "pad": 0.6})
+    fig.suptitle("High-outward-growth scenario: model-specific 2031 built-change footprints",
+                 x=0.07, y=0.985, ha="left", fontsize=12, fontweight="bold")
+    fig.legend(handles=[
+        Patch(facecolor="#F1F2F1", edgecolor="none", label="Other valid land cover"),
+        Patch(facecolor="#5B9BD5", edgecolor="none", label="Water or wetland"),
+        Patch(facecolor="#5D6268", edgecolor="none", label="Built in 2024"),
+        Patch(facecolor="#E17C05", edgecolor="none", label="New built, 2024-2031"),
+    ], loc="lower center", bbox_to_anchor=(0.53, 0.025), ncol=4, frameon=False,
+       handlelength=1.1, columnspacing=1.1)
+    fig.text(0.07, 0.065,
+             "Each map is a 100-m majority-vote ensemble. The full 3 scenarios x 3 models atlas is supplied as Fig. S1;\n"
+             "change footprints are raster-cell products and not cadastral parcels.",
+             fontsize=7.5, color="#4A5560")
+    save_publication_figure(fig, "fig05_planning_maps_2031")
+
+
+def render_supplementary_figure_1() -> None:
+    """Retain the complete 2031 scenario/model atlas outside the main narrative."""
+
+    origin_path = ROOT / "artifacts/gee/land_cover/land_cover_2024_100m.tif"
+    with rasterio.open(origin_path) as src:
+        origin = src.read(1)
+    fig, axes = plt.subplots(3, 3, figsize=(8.0, 7.8))
+    fig.subplots_adjust(left=0.12, right=0.985, top=0.89, bottom=0.12, wspace=0.08, hspace=0.18)
     for j, model in enumerate(MODEL_ORDER):
-        axes[0, j].set_title(MODEL_LABEL[model], fontsize=8.2, fontweight="bold", pad=7)
+        axes[0, j].set_title(MODEL_LABEL[model].replace("\n(author-modified build)", ""), fontsize=10, fontweight="bold", pad=8)
     for i, scenario in enumerate(SCENARIO_ORDER):
         for j, model in enumerate(MODEL_ORDER):
             ax = axes[i, j]
             path = ROOT / "artifacts" / "planning_public_2025_2031" / model / scenario / "ensemble" / "prediction_2031.tif"
             with rasterio.open(path) as src:
                 final = src.read(1)
-            ax.imshow(final, cmap=cmap, norm=norm, interpolation="nearest", aspect="equal")
-            new_built = (origin != 5) & (final == 5) & (origin != 0) & (final != 0)
-            new_green = (origin != 3) & (final == 3) & (origin != 0) & (final != 0)
-            retired = (origin == 5) & (final != 5) & (final != 0)
-            for mask, color, alpha in ((new_built, "#FDE725", 0.72), (new_green, "#1B9E77", 0.42), (retired, "#6A3D9A", 0.45)):
-                layer = np.where(mask, 1.0, np.nan)
-                ax.imshow(layer, cmap=ListedColormap([color]), interpolation="nearest", alpha=alpha, aspect="equal")
-            # Add a thin outline so transition overlays remain distinguishable
-            # from the categorical built class in print and grayscale export.
-            if np.any(new_built):
-                ax.contour(new_built.astype(float), levels=[0.5], colors="#7F2704", linewidths=0.28)
+            valid = origin != 0
+            image = np.full(origin.shape, np.nan)
+            image[valid] = 0
+            image[valid & np.isin(origin, [1, 4])] = 1
+            image[valid & (origin == 5)] = 2
+            image[valid & (origin != 5) & (final == 5)] = 3
+            ax.imshow(image, cmap=ListedColormap(["#F1F2F1", "#5B9BD5", "#5D6268", "#E17C05"]),
+                      vmin=0, vmax=3, interpolation="nearest", aspect="equal")
             ax.set_xticks([])
             ax.set_yticks([])
             for spine in ax.spines.values():
                 spine.set_visible(True)
-                spine.set_linewidth(0.35)
+                spine.set_linewidth(0.45)
                 spine.set_color("#AAB2BC")
             if j == 0:
-                ax.set_ylabel(SCENARIO_LABEL[scenario], fontsize=7.3, labelpad=6, rotation=90)
-            if i == 0:
-                ax.annotate("N", xy=(0.93, 0.24), xytext=(0.93, 0.08), xycoords="axes fraction", textcoords="axes fraction", ha="center", va="center", fontsize=7.0, fontweight="bold", arrowprops={"arrowstyle": "-|>", "lw": 0.8, "color": "#202020"})
-            if i == 2 and j == 0:
-                height, width_px = final.shape
-                x0, y0 = max(8, int(width_px * 0.05)), max(12, int(height * 0.90))
-                ax.plot([x0, x0 + 20], [y0, y0], color="#202020", linewidth=2.4, solid_capstyle="butt")
-                ax.text(x0 + 10, y0 - 6, "2 km", ha="center", va="bottom", fontsize=6.6, color="#202020", bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.88, "pad": 0.8})
-    fig.suptitle("Different models produce distinct 2031 transition footprints under identical scenario targets", x=0.085, y=0.965, ha="left", fontsize=10.5, fontweight="bold")
-    handles = [Patch(facecolor=CLASS_COLORS[k], edgecolor="none", label=CLASS_LABEL[k]) for k in range(1, 7)]
-    handles += [Patch(facecolor="#FDE725", alpha=0.72, edgecolor="#7F2704", label="New built (2024→2031)"), Patch(facecolor="#1B9E77", alpha=0.6, label="New low vegetation"), Patch(facecolor="#6A3D9A", alpha=0.6, label="Built retirement")]
-    fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.035), ncol=5, frameon=False, handlelength=1.0, columnspacing=0.95)
-    fig.text(0.085, 0.092, "Each panel is a 100-m ensemble raster; overlays show dissolved transition cells relative to the observed 2024 state. Cells are not cadastral parcels.", fontsize=6.35, color="#4A5560")
-    save_publication_figure(fig, "fig05_planning_maps_2031")
+                ax.set_ylabel(SCENARIO_LABEL[scenario], fontsize=9.3, fontweight="bold", labelpad=9)
+    fig.suptitle("Fig. S1. Full 2031 new-built footprint atlas", x=0.12, y=0.97,
+                 ha="left", fontsize=12, fontweight="bold")
+    fig.legend(handles=[
+        Patch(facecolor="#F1F2F1", edgecolor="none", label="Other valid land cover"),
+        Patch(facecolor="#5B9BD5", edgecolor="none", label="Water or wetland"),
+        Patch(facecolor="#5D6268", edgecolor="none", label="Built in 2024"),
+        Patch(facecolor="#E17C05", edgecolor="none", label="New built, 2024-2031"),
+    ], loc="lower center", bbox_to_anchor=(0.53, 0.025), ncol=4, frameon=False,
+       handlelength=1.1, columnspacing=1.1)
+    fig.text(0.12, 0.075, "All panels show 100-m majority-vote ensembles relative to the observed 2024 state.",
+             fontsize=8.0, color="#4A5560")
+    save_publication_figure(fig, "figS01_planning_atlas_2031")
 
 
 def main() -> None:
@@ -583,6 +569,7 @@ def main() -> None:
     render_figure_3()
     render_figure_4()
     render_figure_5()
+    render_supplementary_figure_1()
     print(f"Rendered figures to {OUT}")
 
 

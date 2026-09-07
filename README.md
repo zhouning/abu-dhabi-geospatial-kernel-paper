@@ -41,7 +41,7 @@ for the evidence boundary.
 ## Start here
 
 - Manuscript reading copy: [`manuscript/manuscript.pdf`](manuscript/manuscript.pdf)
-- Landscape and Urban Planning copy: [`manuscript/lup_submission.pdf`](manuscript/lup_submission.pdf)
+- Landscape and Urban Planning author manuscript: [`manuscript/lup_submission.pdf`](manuscript/lup_submission.pdf)
 - Manuscript source: [`manuscript/manuscript.md`](manuscript/manuscript.md)
 - Reproduction protocol: [`benchmarks/abu_dhabi_land_use_v1/protocol.json`](benchmarks/abu_dhabi_land_use_v1/protocol.json)
 - Benchmark instructions: [`benchmarks/abu_dhabi_land_use_v1/README.md`](benchmarks/abu_dhabi_land_use_v1/README.md)

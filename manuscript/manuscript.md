@@ -1,13 +1,3 @@
-# Auditing constrained geospatial allocation under noisy annual land-cover labels
-
-**A Geospatial Kernel benchmark in Abu Dhabi**
-
-**Author:** Ning Zhou  
-**Affiliation:** Beijing Freedo Technology Co., Ltd.  
-**Corresponding author:** Ning Zhou (`zhouning@freedotech.com`)
-
-This study is not an official Abu Dhabi planning forecast. Correspondence: Ning Zhou, Beijing Freedo Technology Co., Ltd.; zhouning@freedotech.com.
-
 ## Abstract
 
 Urban land-change models are often evaluated against annual labels whose reliability is not spatially uniform. We present an auditable protocol for testing constrained spatial allocation under that uncertainty, using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. The Abu Dhabi public-data benchmark uses annual 100-m land-cover products from 2017–2024, three computational seeds, destination-correct multi-class change Figure of Merit (FoM), spatial-block bootstrap contrasts and explicit state–action–constraint traces. In a clean run of the fully resolved environment, strict FoM was 0.1961 for Geospatial Kernel, 0.1256 for the GeoSOS-derived FLUS-style ANN–CA console (author-modified build) and 0.1619 for GeoFM-LDN in 2023; after recursive two-step rollout in 2024 the values were 0.2529, 0.1782 and 0.2708, respectively. A dual-year confidence threshold retained only 25 of 4,500 observed changes in 2023 and 56 of 8,464 in 2024; all three FoM values were 0.000 in 2023 and the 2024 maximum was 0.0188. These filtered scores are label-quality and selection-effect diagnostics, not model-skill tests. The planning track is therefore reported as scenario stress testing, not official forecasting. The released public bundle, source, checkpoints, rasters, vector footprints and audit manifests support locked-environment reproduction; cross-stack variation is quantified rather than assumed absent. The protocol's principal contribution is an inspectable proposal–projection–writeback boundary for separating model behaviour from action and constraint semantics.
@@ -129,6 +119,10 @@ The comparison shared the canonical grid, origin states, target actions, hard ma
 
 The execution trace makes the distinction between proposal and admission explicit. A Kernel step records the source state, action, probability-cube proposal, projected state, model identity, input evidence and next-state reference. The runtime checks that the action advances the source time and that the projected raster becomes the next state. This is the operational meaning of the Kernel in this study: not a claim that all GWM domains share the same learner, but a claim that they can share an auditable execution contract. The shared inputs and execution boundary are summarized in Fig. 1.
 
+![Benchmark and Geospatial Kernel execution contract. Public annual land-cover, embedding, night-light, terrain and road layers are aligned to a common 100-m Abu Dhabi grid. The Kernel exposes a learned proposal, a constraint projection and a state writeback. The schematic describes a public-data benchmark and does not imply statutory planning boundaries.](figures/fig01_benchmark_contract.png){width=100%}
+
+\FloatBarrier
+
 ### Historical and planning results
 
 The historical track uses observed target class totals to isolate spatial
@@ -173,19 +167,17 @@ GeoFM-LDN had the largest 2024 value after recursive two-step rollout; no
 single model dominated both horizons. These rankings are conditional on the
 different inputs, learners and shared evaluation projection.
 
-**Table 1 | Historical allocation scores.** Values are means across the three
-frozen computational seeds; the strict multi-class change FoM is the primary
-metric and the remaining columns are diagnostics. The 25-feature FLUS run is
-excluded from this table because it is not a comparable estimator. Across six
-platform–seed runs, five collapsed to zero-change outputs through current-class
-identity leakage, so the non-collapsed macOS seed-31 result is retained only in
-the diagnostic archive. Persistence and random minimum-change are explicit
-zero-model controls rather than learned models.
+**Table 1. Historical strict destination-change FoM.** Values are means across
+three frozen computational seeds. The 25-feature FLUS run is excluded because
+it is not a comparable estimator: five of six platform--seed runs collapsed to
+zero change. Persistence (0.0000 in both years) and random minimum-change
+allocation (0.0253 in 2023; 0.0605 in 2024) are explicit zero-model controls
+and are plotted in Fig. 2.
 
-| Target year | FLUS-style (7) | Kernel | GeoFM-LDN | Persistence | Random minimum-change |
-|---:|---:|---:|---:|---:|---:|
-| 2023 (1-step) | 0.1256 | **0.1961** | 0.1619 | 0.0000 | 0.0253 |
-| 2024 (2-step open-loop) | 0.1782 | 0.2529 | **0.2708** | 0.0000 | 0.0605 |
+| Target year | FLUS-style ANN-CA | Geospatial Kernel | GeoFM-LDN |
+|:---|---:|---:|---:|
+| 2023 (one-step) | 0.1256 | **0.1961** | 0.1619 |
+| 2024 (two-step open-loop) | 0.1782 | 0.2529 | **0.2708** |
 
 Spatial-block bootstrap model contrasts support these differences. For 2023,
 Kernel minus the FLUS-style control was 0.0703 [0.0558, 0.0866] and GeoFM-LDN
@@ -199,6 +191,10 @@ controls; main-model bars use three-seed population standard deviations,
 whereas the paired spatial-block intervals above are the uncertainty summaries
 used for model contrasts. The 25- and 19-feature FLUS diagnostics are reported
 in the machine-readable archive and Supplementary Table S3.
+
+![Historical allocation skill. Strict destination-change FoM is the primary metric; change F1 is shown as a secondary diagnostic. Bars show mean plus or minus population standard deviation across the three frozen seeds. Persistence and random allocation are explicit zero-model controls.](figures/fig02_historical_validation.png){width=100%}
+
+\FloatBarrier
 
 An additional FLUS input-dimension analysis was also completed. The
 25-feature run is not a valid point estimator: macOS seeds 47 and 73 and all
@@ -266,39 +262,36 @@ conditional on public proxy layers and synthetic actions, not model superiority
 claims.
 The corresponding objective profiles and diagnostic trade-offs are shown in
 Fig. 3.
-The 2031 majority-vote ensemble L1 demand errors were 8, 44 and 42 pixels for
-the Kernel's moderate, green-priority and high-outward scenarios, respectively;
-the corresponding GeoFM-LDN errors were 1,580, 1,524 and 1,148 pixels and the
-FLUS-style errors were 2,504, 2,888 and 2,568 pixels. Seed-level projections
-meet their feasible class totals, but majority voting can produce a different
-raster and therefore a non-zero ensemble error. All 276 historical and planning
-prediction records passed the raster audit. The resulting 2031 ensemble rasters
-and their dissolved cell-change footprints are shown in Fig. 5; they are
-scenario-conditioned land-cover maps, not parcel boundaries or statutory zoning
-maps.
 
-**Table 2 | 2031 within-scenario planning objectives.** Values are means across
-three seeds. Distances are metres, union-built component density is the number
-of connected components in the combined 2024-built and newly built footprint per 1,000
-valid cells, and ecological conversion is a descriptive fraction of new-built
-cells whose origin class was woody, low vegetation or wetland. A star denotes
-membership in the primary within-scenario Pareto frontier.
+![Conditional planning objectives. The 2031 outcomes compare the three models under moderate-growth, green-priority-growth and high-outward-growth actions. Panels show the three release objectives: distance to major roads, distance to pre-existing built cells, and connected components in the combined 2024-built and newly built footprint. Black outlines indicate membership of the within-scenario Pareto frontier.](figures/fig03_planning_objectives.png){width=100%}
 
-| Model | Scenario | Major-road distance | Prior-built distance | Union-built components/1,000 | Ecological conversion (diagnostic) | Frontier |
-|---|---|---:|---:|---:|---:|:---:|
-| FLUS-style ANN–CA | Moderate | 446.1 | 231.6 | 3.035 | 0.0168 | * |
-| Geospatial Kernel | Moderate | 334.7 | 116.7 | 3.943 | 0.0000 | * |
-| GeoFM-LDN | Moderate | 475.9 | 239.7 | 4.056 | 0.0000 |  |
-| FLUS-style ANN–CA | Green-priority | 443.7 | 212.7 | 3.265 | 0.0177 | * |
-| Geospatial Kernel | Green-priority | 323.1 | 111.0 | 4.277 | 0.0000 | * |
-| GeoFM-LDN | Green-priority | 452.1 | 222.3 | 4.348 | 0.0000 |  |
-| FLUS-style ANN–CA | High outward | 443.5 | 255.3 | 2.484 | 0.0131 | * |
-| Geospatial Kernel | High outward | 365.5 | 139.8 | 2.923 | 0.0000 | * |
-| GeoFM-LDN | High outward | 507.5 | 263.0 | 3.207 | 0.0000 |  |
+\FloatBarrier
+
+**Table 2. 2031 within-scenario planning objectives.** Values are means across
+three seeds. Road and pre-existing-built distances are in metres; components are
+the number in the combined 2024-built and newly built footprint per 1,000 valid
+cells. Ecological conversion is a descriptive fraction of new-built cells whose
+origin was woody vegetation, low vegetation or wetland. Asterisks indicate the
+primary within-scenario Pareto frontier.
+
+| Scenario / model | Road (m) | Prior built (m) | Components / 1,000 | Ecology* | Frontier |
+|:---|---:|---:|---:|---:|:---:|
+| **Moderate** |  |  |  |  |  |
+| FLUS-style ANN-CA | 446.1 | 231.6 | 3.035 | 0.0168 | * |
+| Geospatial Kernel | 334.7 | 116.7 | 3.943 | 0.0000 | * |
+| GeoFM-LDN | 475.9 | 239.7 | 4.056 | 0.0000 |  |
+| **Green priority** |  |  |  |  |  |
+| FLUS-style ANN-CA | 443.7 | 212.7 | 3.265 | 0.0177 | * |
+| Geospatial Kernel | 323.1 | 111.0 | 4.277 | 0.0000 | * |
+| GeoFM-LDN | 452.1 | 222.3 | 4.348 | 0.0000 |  |
+| **High outward** |  |  |  |  |  |
+| FLUS-style ANN-CA | 443.5 | 255.3 | 2.484 | 0.0131 | * |
+| Geospatial Kernel | 365.5 | 139.8 | 2.923 | 0.0000 | * |
+| GeoFM-LDN | 507.5 | 263.0 | 3.207 | 0.0000 |  |
 
 ### Sensitivity shows a stable but not fully explained neighbourhood contribution
 
-The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference. Figure 4A shows the proposal controls, while Fig. 4B–D reports runtime and planning controls.
+The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference. Figure 4A shows focused proposal controls, and Fig. 4B reports the matched runtime controls.
 
 In the post-hoc neighbourhood-weight sensitivity, mean strict FoM ranged from
 0.19570 to 0.19609 in 2023 and from 0.25273 to 0.25304 in 2024; the complete
@@ -322,6 +315,27 @@ an important warning: allowing changes inside the exclusion mask can improve
 agreement with noisy labels while violating the planning contract. The
 controls therefore support an execution-level interpretation but do not prove
 that either component causes an urban outcome.
+
+![Mechanism controls. Panel A compares the full transition proposal with selected proposal controls. Panel B gives the strict destination-change FoM difference between matched runtime controls and the full Kernel. Bars show mean plus or minus population standard deviation across the three frozen seeds. These are execution diagnostics, not causal policy experiments.](figures/fig04_mechanism_ablation.png){width=100%}
+
+\FloatBarrier
+
+### Spatial footprints are scenario-conditioned, not parcel predictions
+
+The 2031 majority-vote ensemble L1 demand errors were 8, 44 and 42 pixels for
+the Kernel's moderate, green-priority and high-outward scenarios, respectively;
+the corresponding GeoFM-LDN errors were 1,580, 1,524 and 1,148 pixels and the
+FLUS-style errors were 2,504, 2,888 and 2,568 pixels. Seed-level projections
+meet their feasible class totals, but majority voting can produce a different
+raster and therefore a non-zero ensemble error. All 276 historical and planning
+prediction records passed the raster audit. Figure 5 uses the high-outward
+scenario to make the spatial contrast legible; the complete nine-panel atlas is
+provided as Supplementary Fig. S1. These are raster-cell change footprints, not
+parcel boundaries or statutory zoning maps.
+
+![High-outward-growth spatial footprints. The observed 2024 state is compared with each model's 2031 majority-vote ensemble. Orange denotes cells newly built between 2024 and 2031; grey denotes cells already built in 2024. The map is a 100-m scenario stress-test product, not a cadastral or statutory land-use map.](figures/fig05_planning_maps_2031.png){width=100%}
+
+\FloatBarrier
 
 ## Discussion
 
@@ -354,7 +368,7 @@ The public-data benchmark manifests, protocols, reports and generated delivery a
 - `planning_scenario_report_public_2025_2031_current.json` for per-seed rollout traces;
 - `planning_public_2025_2031_delivery_manifest_current.json` for raster and vector delivery;
 - `output_audit.json` for the current raster audit; `output_audit_reproducible.json` is a compatibility copy produced by the same run;
-- `data_audit.json`, `protocol.json`, `gee_input_manifest.json` and `osm_input_manifest.json` for data provenance;
+- the data-audit, protocol and source-input manifests for data provenance;
 - The released bundle includes the aligned 2017–2024 public rasters, historical seed and ensemble prediction rasters, 2025–2031 planning seed and ensemble rasters, nine GeoPackages of dissolved change footprints, the mechanism-ablation report, model checkpoints, and the SHA-256 manifest. Text hashes use canonical LF line endings, and the byte-length check applies the same normalization on text records, so a Windows checkout with `core.autocrlf=true` can pass the manifest gate. The locked macOS arm64 execution environment remains the reference for model outputs. An archived arm64 Linux rerun of the six historical Kernel rasters differed from the macOS reference by 498–1,147 cells (0.62%–1.44%), with strict-FoM deltas from -0.0023 to +0.0010; these cross-stack differences are quantified rather than treated as categorical identity. An author-controlled GitHub Actions Ubuntu x86_64 rerun of all six rasters under the resolved lock had zero categorical differences; the repository-stored CI audit is in `artifacts/cross_platform` at commit `e06a997`, and the workflow is versioned under `.github/workflows/`. Independent external Windows evidence remains separately labelled for FLUS because the corresponding rasters are not archived locally. No private database address, credential or client-only service is included. Authoritative Abu Dhabi land-use and independent change-validation data remain outside this study.
 
 ## Code availability
@@ -362,13 +376,13 @@ The public-data benchmark manifests, protocols, reports and generated delivery a
 The analysis scripts, a vendored Geospatial Kernel runtime snapshot, benchmark protocol, model runners and figure-generation code are maintained in the accompanying repository. Principal entry points are listed separately to keep the manuscript readable:
 
 - `run_geospatial_kernel.py` for the Kernel historical run;
-- `data_agent/uwm/geospatial_kernel/runtime.py` for the vendored runtime snapshot;
+- the vendored `geospatial_kernel/runtime.py` snapshot;
 - `render_nature_figures.py` for publication artwork.
 - `reproducibility/reproduce.py` for the end-to-end rerun;
 - `reproducibility_check.py` and `audit_outputs.py` for fail-closed integrity checks.
 
-GeoFM-LDN source and the three fixed checkpoints are included under
-`benchmarks/abu_dhabi_land_use_v1/external/` and `artifacts/predictions/`.
+GeoFM-LDN source and the three fixed checkpoints are included in the benchmark
+external and prediction-artifact directories.
 Earlier internal reference outputs, produced before the dependency lock was
 completed, could not be regenerated under the resolved environment and were
 superseded by the locked-environment rerun reported here. Historical strict-FoM
@@ -379,8 +393,8 @@ not current evidence.
 The vendored FLUS executable is a macOS arm64 binary rebuilt from the GeoSOS
 public FLUS source base. The author-modified source, including `train-update`
 and `FLUS_RANDOM_SEED`, is archived at
-`https://github.com/zhouning/FLUS_console_crossplatform`, tag
-`paper-benchmark-flus-v1.1` at commit `47e65b3`
+the public FLUS source repository, tag `paper-benchmark-flus-v1.1` at commit
+`47e65b3`
 (the GeoSOS source release and Liu et al. (2017) are cited above). Rebuilding
 the preceding v1 commit (`deb0a54`) on macOS arm64 produced SHA-256
 `9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964`,
@@ -452,50 +466,6 @@ Verburg, P. H., et al. (2002). Modeling the spatial dynamics of regional land us
 
 Zanaga, D., et al. (2022). ESA WorldCover 10 m 2021 v200. Zenodo. https://doi.org/10.5281/zenodo.7254221
 
-## Figure legends
-
-![](figures/fig01_benchmark_contract.png)
-
-**Figure 1 | Benchmark and Geospatial Kernel execution contract.** Public annual land-cover, embedding, night-light, terrain and road layers are aligned to a common 100-m Abu Dhabi grid. Each model receives the same state, action and public proxy exclusions. The Geospatial Kernel exposes a learned proposal, constraint projection and state writeback. Historical, open-loop and planning tracks use one audit contract. The schematic does not imply statutory planning boundaries.
-
-![](figures/fig02_historical_validation.png)
-
-**Figure 2 | Historical allocation skill.** Bars show the revised strict
-multi-class FoM, change F1, overall accuracy and macro-F1 for the 2023 one-step
-and 2024 two-step open-loop tests, with persistence and random minimum-change
-controls. Error bars show population standard deviation across the three frozen
-seeds for the three main models. The 13-, 19- and 25-feature FLUS diagnostics
-are reported separately in Supplementary Table S3. Paired spatial-block
-intervals for the main models are reported in the machine-readable comparison
-report.
-
-![](figures/fig03_planning_objectives.png)
-
-**Figure 3 | Conditional planning objectives and morphology diagnostics.** The
-2031 outcomes compare the three models under moderate-growth, green-priority-
-growth and high-outward-growth actions. Panels A–C show the release objectives:
-distance to major roads, distance to prior built cells and components in the
-combined 2024-built and newly built footprint per 1,000 valid cells. Panel D shows
-ecological conversion as a descriptive diagnostic; panel E shows vegetation gain
-as a scenario-input diagnostic; panel F shows the 500-m leapfrog rate. Stars mark
-non-dominated candidates within each scenario; bars show means ± population SD
-across three seeds.
-
-![](figures/fig04_mechanism_ablation.png)
-
-**Figure 4 | Mechanism controls.** Proposal, allocator, action, constraint and
-writeback controls are compared under the same public-data protocol. Deleting
-the action lowers historical strict FoM, whereas deleting the hard constraint
-raises agreement with noisy labels while violating the planning contract.
-These are diagnostic ablations, not causal policy experiments.
-
-![](figures/fig05_planning_maps_2031.png)
-
-**Figure 5 | 2031 spatial footprints.** Each panel is a 100-m ensemble raster
-relative to the observed 2024 state. Overlays identify newly built, newly low-
-vegetated and retired-built cells; they are raster-cell change footprints, not
-cadastral parcels.
-
 ## Supplementary information outline
 
 - **Supplementary Note 1:** Complete data crosswalk, quality metrics and public/proxy status.
@@ -504,8 +474,9 @@ cadastral parcels.
 - **Supplementary Table S2:** Neighbourhood-weight sensitivity at 0, 0.175, 0.35 and 0.7 (see `supplementary_table_S2_neighbourhood_weight_sensitivity.md`).
 - **Supplementary Table S3:** FLUS 13-, 19- and 25-feature diagnostics, platform boundary and demand-underfill evidence (see `supplementary_table_S3_flus_feature_diagnostics.md`).
 - **Supplementary Table S4:** Raster and vector delivery audit, hashes and layer counts.
-- **Supplementary Figure S1:** Dynamic World confidence and high-confidence change sensitivity.
-- **Supplementary Figure S2:** Historical maps and change-error maps for 2024.
-- **Supplementary Figure S3:** Driver layers and experiment design in English.
+- **Supplementary Figure S1:** Full 3-scenarios × 3-model 2031 new-built footprint atlas (`figures/figS01_planning_atlas_2031.*`).
+- **Supplementary Figure S2:** Dynamic World confidence and high-confidence change sensitivity.
+- **Supplementary Figure S3:** Historical maps and change-error maps for 2024.
+- **Supplementary Figure S4:** Driver layers and experiment design in English.
 
 ---

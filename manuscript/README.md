@@ -11,11 +11,12 @@ GeoFM-LDN.
 - `manuscript.pdf`: clean reading copy generated from the manuscript Markdown.
 - `manuscript.docx`: editable Word copy.
 - `manuscript.md`: clean manuscript source without author-facing editorial notes.
-- `main.tex`: Nature-class LaTeX source generated from the clean manuscript.
-- `main.pdf`: compiled LaTeX reading copy with recovered-data numerical results,
-  regenerated Figures 1–5 and single-caption figure layout.
-- `lup_submission.pdf`: LUP-oriented submission reading copy with repaired tables.
-- `figures/`: Python/Matplotlib Nature-style figures in editable SVG/PDF and
+- `main.tex`: conventional article-class LaTeX source generated from the clean manuscript.
+- `main.pdf`: compiled reading copy with the same inline figure placement as the submission copy.
+- `lup_submission.pdf`: LUP-oriented single-column author manuscript. Main-text
+  figures are placed beside their first evidentiary discussion; the full 2031
+  scenario atlas is supplied separately as `figS01_planning_atlas_2031.*`.
+- `figures/`: Python/Matplotlib publication figures in editable SVG/PDF and
   600-dpi PNG/TIFF formats.
 - `paper_self_audit.md`: evidence and claim-boundary audit.
 - `neighbourhood_weight_sensitivity.csv`: post-hoc sensitivity source data.
@@ -27,8 +28,8 @@ GeoFM-LDN.
   positioning.
 - `submission_notes_zh.md`: Chinese hand-off notes and submission checklist.
 - `landscape_urban_planning_compliance.md`: journal-specific submission check;
-  the package is structurally aligned but scientifically blocked and is not
-  Article type Ready.
+  the package is a conventional initial-submission author manuscript, not an
+  official Elsevier template or a guarantee of portal acceptance.
 - `response_to_LUP_review.md`: point-by-point revision and blocker record.
 - `../benchmarks/abu_dhabi_land_use_v1/matched_input_review.md`: archived
   FLUS 13-, 19- and 25-feature input diagnostics and corrected command record.
