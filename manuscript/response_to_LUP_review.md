@@ -1,9 +1,20 @@
-# Response to the eighth-round LUP review
+# Response to the ninth-round LUP review
 
 This is an internal point-by-point response draft for the review dated 7
 September 2026. It records what the repository now supports and what remains
 outside the evidence boundary. The manuscript remains a public-data benchmark
 and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
+
+## Ninth-round revisions
+
+| ID | Review concern | Revision made | Evidence / remaining boundary |
+|---|---|---|---|
+| R9.1 | The locked-environment rerun replaced all former reference outputs, but this provenance event was absent from the manuscript | Added an explicit Code availability disclosure. It distinguishes the approximately 0.001 historical strict-FoM changes from the larger discrete majority-ensemble demand changes, and makes clear that prior rasters remain Git-history lineage rather than current evidence. The principal before/after values are Kernel 2023 FoM 0.1950 to 0.1961, Kernel 2024 FoM 0.2520 to 0.2529, GeoFM-LDN 2023 FoM 0.1616 to 0.1619, and Kernel 2031 ensemble L1 errors 60/68/86 to 8/44/42. | The reports, figures, manuscript and planning outputs now derive only from the fully resolved lock. No claim is made that the planning count changes are 0.001-scale. |
+| R9.2 | The dual-year high-confidence subset excludes almost all observed changes and cannot establish label-noise effects on full-grid skill | Reframed the Abstract, Highlights, Results, Discussion and protocol. The dual-year filter retains 25/4,500 changes (0.56%) in 2023 and 56/8,464 (0.66%) in 2024. Added a preceding-year-only diagnostic that retains 129/4,500 (2.87%) and 93/8,464 (1.10%) changes, respectively. The machine-readable report records both selection rates and the latter's seed-level FoM values. | Both filters are explicitly label-quality and selection-effect diagnostics, not independent validation sets or model-skill tests. Kernel's dual-year 2024 mean is corrected to 0.0055. |
+| R9.3 | Reviewer-provided x86_64 values should be replaced by an author-controlled repeat where feasible | Added a GitHub Actions Ubuntu x86_64 regression workflow. It installs the resolved Python 3.11 lock, re-runs the three Kernel seeds into a separate directory, compares all six rasters to the released reference cell by cell, and uploads the JSON audit. | The existing Windows FLUS values remain accurately labelled as reviewer-provided external verification because their rasters are not locally archived. The workflow is a persistent author-controlled check for the Kernel only. |
+| R9.4 | The GeoFM-LDN runtime boundary was under-described | Added a Methods statement that fixed checkpoints still depend on the locked Torch and scikit-learn decoding stack. No independent cross-stack GeoFM-LDN raster identity claim is made, and pre-lock/locked differences are not attributed to one library or CPU architecture. | Same-stack categorical reproduction is the declared GeoFM-LDN reference boundary. |
+| R9.5 | FLUS failure handling needs a versioned source tag and minor documentation corrections | Tagged commit `47e65b3` as `paper-benchmark-flus-v1.1`, updated the FLUS README to state `cl 19.5x (19.50–19.51)`, and updated the manuscript source reference. v1.1 changes invalid-input failure handling only; valid-input algorithmic paths and benchmark outputs are unchanged from v1. | Existing v1 normal-output provenance remains visible in report lineage. The v1.1 tag is the retained source release for reproducible failure handling. |
+| R9.6 | Old local manuscript drafts use obsolete supplementary-table numbering | Strengthened the archive notices in both draft files. The submitted manuscript and supplementary outline consistently identify S2 as neighbourhood sensitivity, S3 as FLUS diagnostics and S4 as raster/vector delivery audit. | Historical drafts are excluded from the submission package and are not current evidence. |
 
 ## Eighth-round revisions
 

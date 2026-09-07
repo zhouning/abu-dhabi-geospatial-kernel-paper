@@ -119,7 +119,7 @@
       "role": "traditional_ann_suitability_plus_ca_allocation",
       "comparability_note": "Original headline run used seven continuous drivers and frozen default console settings. Feature-expanded runs were subsequently executed with absolute paths. The 25-feature mode is diagnostic-only because five of six platform-seed runs collapsed to zero-change outputs through current-class identity leakage, including all three reviewer-provided Windows x86_64 runs. The 19-feature mode avoids zero-change but underfills observed demand in all three archived macOS seeds. Neither diagnostic is used as a headline estimator or paired model contrast.",
       "matched_input_status": "platform_sensitive_diagnostic_not_a_comparable_estimator",
-      "binary_boundary": "Vendored Mach-O arm64 console; provenance based on the public GeoSOS source with author modifications archived at FLUS_console_crossplatform commit deb0a54; not claimed bitwise equivalent to an unmodified Liu et al. (2017) release; Windows/Linux require a compatible external build.",
+      "binary_boundary": "Vendored Mach-O arm64 console; valid-input benchmark binary provenance is commit deb0a54, while the retained source tag paper-benchmark-flus-v1.1 at commit 47e65b3 adds fail-closed invalid-input handling without changing valid-input algorithmic paths. It is not claimed bitwise equivalent to an unmodified Liu et al. (2017) release; Windows/Linux require a compatible external build.",
       "frozen_parameters": {
         "ann_training_years": [2021],
         "ann_hidden_neurons": 8,
@@ -156,7 +156,12 @@
         "confidence_threshold": 0.5,
         "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5",
         "model_access": false,
-        "purpose": "quantify sensitivity to annual product-label volatility without hiding full-grid results"
+        "purpose": "quantify sensitivity to annual product-label volatility without hiding full-grid results",
+        "interpretation_boundary": "The dual-year filter and the preceding-year-only variant are label-quality and selection-effect diagnostics, not independent validation sets or model-skill tests.",
+        "preceding_year_only_variant": {
+          "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+          "purpose": "expose target-year confidence selection without filtering on the target label"
+        }
       }
     },
     "end_to_end_rollout": {

@@ -1,7 +1,7 @@
 {
   "schema": "gwm.abu_dhabi_reproducibility_check.v2",
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-07T08:44:10.040077+00:00",
+  "created_at": "2026-09-07T09:38:47.117854+00:00",
   "status": "PASS",
   "python": "3.11.15",
   "platform": {
@@ -25,6 +25,7 @@
       "benchmarks/abu_dhabi_land_use_v1/audit_outputs.py": true,
       "benchmarks/abu_dhabi_land_use_v1/shared.py": true,
       "benchmarks/abu_dhabi_land_use_v1/planning.py": true,
+      "benchmarks/abu_dhabi_land_use_v1/reproducibility/verify_kernel_reference.py": true,
       "data_agent/uwm/geospatial_kernel/runtime.py": true,
       "benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py": true
     },
@@ -35,6 +36,7 @@
       "benchmarks/abu_dhabi_land_use_v1/grid_profile.json": true,
       "benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt": true,
       "benchmarks/abu_dhabi_land_use_v1/reproducibility/environment.json": true,
+      ".github/workflows/kernel-x86_64-reference.yml": true,
       "benchmarks/abu_dhabi_land_use_v1/reproducibility/MANIFEST.json": true,
       "benchmarks/abu_dhabi_land_use_v1/reproducibility/SHA256SUMS": true
     },
@@ -77,6 +79,14 @@
     }
   },
   "hash_records": [
+    {
+      "path": ".github/workflows/kernel-x86_64-reference.yml",
+      "role": "configuration",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/__init__.py",
       "role": "code",
@@ -687,6 +697,14 @@
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt",
+      "role": "configuration",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/verify_kernel_reference.py",
       "role": "configuration",
       "hash_mode": "text_lf_normalized",
       "exists": true,

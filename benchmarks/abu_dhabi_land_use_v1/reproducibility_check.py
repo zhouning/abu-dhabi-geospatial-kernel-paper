@@ -99,6 +99,7 @@ def check() -> dict[str, object]:
         HERE / "audit_outputs.py",
         HERE / "shared.py",
         HERE / "planning.py",
+        HERE / "reproducibility/verify_kernel_reference.py",
         REPO / "data_agent/uwm/geospatial_kernel/runtime.py",
         HERE / "reproducibility/reproduce.py",
     ]
@@ -109,6 +110,7 @@ def check() -> dict[str, object]:
         HERE / "grid_profile.json",
         HERE / "reproducibility/requirements.lock.txt",
         HERE / "reproducibility/environment.json",
+        REPO / ".github/workflows/kernel-x86_64-reference.yml",
         MANIFEST,
         SUMS,
     ]

@@ -608,7 +608,7 @@
       }
     }
   },
-  "created_at": "2026-09-07T07:53:57.228188+00:00",
+  "created_at": "2026-09-07T09:11:57.485361+00:00",
   "ensembles": {
     "geosos_flus": {
       "2023": {
@@ -993,6 +993,107 @@
     "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
     "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects."
   ],
+  "label_quality_diagnostics": {
+    "by_target_year": {
+      "2023": {
+        "dual_year_confidence": {
+          "eligible_pixels": 30886,
+          "mask_path": "artifacts/bundle/reliability_2022_2023_100m.tif",
+          "observed_change_pixels": 25,
+          "observed_change_retention_fraction": 0.005555555555555556,
+          "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5"
+        },
+        "full_grid_observed_change_pixels": 4500,
+        "preceding_year_confidence_only": {
+          "eligible_pixels": 34519,
+          "observed_change_pixels": 129,
+          "observed_change_retention_fraction": 0.028666666666666667,
+          "origin_year": 2022,
+          "quality_path": "artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
+          "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+          "strict_fom_by_model": {
+            "geosos_flus": {
+              "mean": 0.0,
+              "population_std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "geospatial_kernel": {
+              "mean": 0.0,
+              "population_std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "paper58": {
+              "mean": 0.0,
+              "population_std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      },
+      "2024": {
+        "dual_year_confidence": {
+          "eligible_pixels": 29391,
+          "mask_path": "artifacts/bundle/reliability_2023_2024_100m.tif",
+          "observed_change_pixels": 56,
+          "observed_change_retention_fraction": 0.006616257088846881,
+          "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5"
+        },
+        "full_grid_observed_change_pixels": 8464,
+        "preceding_year_confidence_only": {
+          "eligible_pixels": 33421,
+          "observed_change_pixels": 93,
+          "observed_change_retention_fraction": 0.010987712665406428,
+          "origin_year": 2023,
+          "quality_path": "artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
+          "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+          "strict_fom_by_model": {
+            "geosos_flus": {
+              "mean": 0.003964504908115594,
+              "population_std": 0.0008774292172784269,
+              "values": [
+                0.003121748178980229,
+                0.00517464424320828,
+                0.0035971223021582736
+              ]
+            },
+            "geospatial_kernel": {
+              "mean": 0.004074649446806353,
+              "population_std": 7.392719799547444e-05,
+              "values": [
+                0.004,
+                0.0041753653444676405,
+                0.004048582995951417
+              ]
+            },
+            "paper58": {
+              "mean": 0.012049695073567752,
+              "population_std": 0.0005624537500308451,
+              "values": [
+                0.011834319526627219,
+                0.011494252873563218,
+                0.01282051282051282
+              ]
+            }
+          }
+        }
+      }
+    },
+    "confidence_threshold": 0.5,
+    "interpretation": "The dual-year rule may exclude an observed change because its target label is low confidence. The preceding-year-only variant is reported to expose that selection effect, not to rescue or validate model skill.",
+    "purpose": "Label-quality and selection-effect diagnostics only; neither filtered subset is an independent validation set or a model-skill test."
+  },
   "matched_input_diagnostic": {
     "archive_platform": "macOS arm64",
     "collapsed_seeds_on_archive_platform": [
@@ -2202,7 +2303,7 @@
   },
   "reproducibility_status": "complete_if_all_input_and_model_artifacts_are_present",
   "revision_status": "rerun_from_current_rasters",
-  "schema": "gwm.abu_dhabi_three_model_comparison.v3",
+  "schema": "gwm.abu_dhabi_three_model_comparison.v4",
   "seed_diagnostics": {
     "geosos_flus": {
       "2023": [

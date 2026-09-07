@@ -91,6 +91,12 @@ file. The fail-closed gate is:
 python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
 ```
 
+The repository also defines a GitHub Actions Ubuntu x86_64 regression at
+`.github/workflows/kernel-x86_64-reference.yml`. It reruns all three Kernel
+seeds in the resolved Python environment and fails if any of the six historical
+categorical rasters differs from the released reference; the comparison JSON is
+uploaded as a workflow artifact.
+
 After installing the lock file in Python 3.11, a complete rerun is:
 
 ```bash
@@ -120,6 +126,12 @@ belongs to a separate 2025–2030 run and is not an audit of the public
 The code needed for the revised analysis is present, including paired
 model-difference intervals and a score-independent minimum-change null. The
 resulting ranking and Pareto membership are conditional pipeline comparisons.
+Earlier reference outputs generated before the dependency lock was complete
+could not be regenerated under the resolved environment. They were superseded
+by the locked-environment rerun used by the current reports, figures and
+planning outputs; the earlier files remain Git-history lineage only. The
+historical strict-FoM changes are approximately 0.001, while discrete planning
+ensemble count changes can be larger.
 The original FLUS run used a different feature set and frozen console defaults.
 The earlier matched-input failure was traced to relative paths in the console
 configuration, not to a verified segmentation fault. Corrected absolute-path
@@ -146,6 +158,12 @@ archived environments and is not a guarantee of categorical identity on every
 platform. A present FLUS binary that is not executable on the current operating
 system is reported by `reproducibility_check.py` as a portability warning rather
 than an integrity-gate failure.
+
+The confidence-filter sensitivity retains only 25/4,500 observed changes in
+2023 and 56/8,464 in 2024 under the dual-year threshold, and 129/4,500 and
+93/8,464 under the preceding-year-only diagnostic. These are label-quality and
+selection-effect diagnostics, not independent validation sets or model-skill
+tests.
 
 All substantive findings remain conditional on Dynamic World labels, public
 OSM/WorldCover proxy constraints and planner-supplied scenario demand. They do

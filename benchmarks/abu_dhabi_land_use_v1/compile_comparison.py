@@ -34,6 +34,7 @@ NEIGHBOURHOOD_MODEL = "flus_baseline_plus_neighbourhood"
 YEARS = (2023, 2024)
 BOOTSTRAP_RESAMPLES = 1000
 BOOTSTRAP_BLOCK_SIZE_PIXELS = 8
+CONFIDENCE_THRESHOLD = 0.5
 MODEL_DISPLAY_NAMES = {
     "geosos_flus": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
     "geospatial_kernel": "Geospatial Kernel",
@@ -177,6 +178,108 @@ def _dynamic_interpretation(
         ]
     )
     return lines
+
+
+def _mask_observation_summary(
+    *, mask: np.ndarray, valid_mask: np.ndarray, origin_state: np.ndarray, observed_target: np.ndarray
+) -> dict[str, Any]:
+    """Describe how a label-confidence filter selects observed change events."""
+
+    eligible = np.asarray(valid_mask, dtype=bool) & np.asarray(mask, dtype=bool)
+    observed_change = np.asarray(valid_mask, dtype=bool) & (observed_target != origin_state)
+    full_grid_changes = int(np.count_nonzero(observed_change))
+    retained_changes = int(np.count_nonzero(observed_change & eligible))
+    return {
+        "eligible_pixels": int(np.count_nonzero(eligible)),
+        "observed_change_pixels": retained_changes,
+        "observed_change_retention_fraction": (
+            float(retained_changes / full_grid_changes) if full_grid_changes else 0.0
+        ),
+    }
+
+
+def _label_quality_diagnostics(
+    *,
+    action_by_year: dict[int, dict[str, Any]],
+    hard_mask: np.ndarray,
+    origin_state: np.ndarray,
+    observed: dict[int, np.ndarray],
+    prediction_cache: dict[str, dict[int, dict[int, np.ndarray]]],
+    valid_mask: np.ndarray,
+) -> dict[str, Any]:
+    """Compile confidence-filter diagnostics without treating them as validation."""
+
+    by_target_year: dict[str, Any] = {}
+    for year in YEARS:
+        action = action_by_year[year]
+        target_counts = {
+            int(key): int(value)
+            for key, value in action["feasible_target_counts"].items()
+        }
+        dual_year, _ = _read(HERE / action["reliability_mask"])
+        preceding_year = year - 1
+        preceding_path = (
+            INPUT_ROOT
+            / "land_cover"
+            / f"land_cover_quality_{preceding_year}_100m.tif"
+        )
+        preceding_quality, _ = _read(preceding_path)
+        preceding_mask = preceding_quality[0] >= CONFIDENCE_THRESHOLD
+        strict_fom_by_model: dict[str, dict[str, Any]] = {}
+        for model in MODELS:
+            rows = []
+            for seed in (31, 47, 73):
+                evaluation = evaluate_prediction(
+                    prediction_cache[model][seed][year],
+                    origin_state=origin_state,
+                    observed_target=observed[year],
+                    valid_mask=valid_mask,
+                    hard_exclusion_mask=hard_mask,
+                    requested_counts=target_counts,
+                    reliability_mask=preceding_mask,
+                )
+                rows.append(
+                    float(evaluation["reliability_sensitivity"]["change_figure_of_merit"])
+                )
+            strict_fom_by_model[model] = {
+                "mean": statistics.mean(rows),
+                "population_std": statistics.pstdev(rows),
+                "values": rows,
+            }
+        full_grid_changes = int(
+            np.count_nonzero(valid_mask & (observed[year] != origin_state))
+        )
+        by_target_year[str(year)] = {
+            "full_grid_observed_change_pixels": full_grid_changes,
+            "dual_year_confidence": {
+                "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5",
+                "mask_path": str(Path(action["reliability_mask"])),
+                **_mask_observation_summary(
+                    mask=dual_year[0].astype(bool),
+                    valid_mask=valid_mask,
+                    origin_state=origin_state,
+                    observed_target=observed[year],
+                ),
+            },
+            "preceding_year_confidence_only": {
+                "origin_year": preceding_year,
+                "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+                "quality_path": str(preceding_path.relative_to(HERE)),
+                **_mask_observation_summary(
+                    mask=preceding_mask,
+                    valid_mask=valid_mask,
+                    origin_state=origin_state,
+                    observed_target=observed[year],
+                ),
+                "strict_fom_by_model": strict_fom_by_model,
+            },
+        }
+    return {
+        "purpose": "Label-quality and selection-effect diagnostics only; neither filtered subset is an independent validation set or a model-skill test.",
+        "confidence_threshold": CONFIDENCE_THRESHOLD,
+        "interpretation": "The dual-year rule may exclude an observed change because its target label is low confidence. The preceding-year-only variant is reported to expose that selection effect, not to rescue or validate model skill.",
+        "by_target_year": by_target_year,
+    }
 
 
 def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
@@ -505,8 +608,16 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 summaries[left][key]["change_figure_of_merit"]["mean"]
                 - summaries[right][key]["change_figure_of_merit"]["mean"]
             )
+    label_quality_diagnostics = _label_quality_diagnostics(
+        action_by_year=action_by_year,
+        hard_mask=hard_mask,
+        origin_state=origin[0],
+        observed=observed,
+        prediction_cache=prediction_cache,
+        valid_mask=valid,
+    )
     report = {
-        "schema": "gwm.abu_dhabi_three_model_comparison.v3",
+        "schema": "gwm.abu_dhabi_three_model_comparison.v4",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "metric_version": "strict_multiclass_fom_v2",
         "revision_status": "rerun_from_current_rasters",
@@ -559,6 +670,7 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "random_baseline": random_baseline,
         "baseline_bootstrap_95ci": baseline_bootstrap,
         "mean_change_fom_deltas": deltas,
+        "label_quality_diagnostics": label_quality_diagnostics,
         "interpretation": _dynamic_interpretation(summaries, deltas),
     }
     output_path.write_text(
@@ -629,6 +741,29 @@ def render_markdown(report: dict[str, Any]) -> str:
             f"{summary['observed_change_pixels']:,} | "
             f"{summary['demand_total_variation_min']:.4f}–{summary['demand_total_variation_max']:.4f} |"
         )
+    quality = report["label_quality_diagnostics"]
+    lines.extend(
+        [
+            "",
+            "## Label-quality diagnostics",
+            "",
+            "The confidence filters below are diagnostics of annual-product quality and selection effects, not independent validation sets or model-skill tests.",
+            "",
+            "| Target year | Full-grid observed changes | Dual-year retained changes | Dual-year retention | Preceding-year-only retained changes | Preceding-year-only retention | Preceding-year-only FoM (FLUS / Kernel / GeoFM-LDN) |",
+            "|---:|---:|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for year in YEARS:
+        diagnostic = quality["by_target_year"][str(year)]
+        dual = diagnostic["dual_year_confidence"]
+        preceding = diagnostic["preceding_year_confidence_only"]
+        fom = preceding["strict_fom_by_model"]
+        lines.append(
+            f"| {year} | {diagnostic['full_grid_observed_change_pixels']:,} | "
+            f"{dual['observed_change_pixels']:,} | {dual['observed_change_retention_fraction']:.2%} | "
+            f"{preceding['observed_change_pixels']:,} | {preceding['observed_change_retention_fraction']:.2%} | "
+            f"{fom['geosos_flus']['mean']:.4f} / {fom['geospatial_kernel']['mean']:.4f} / {fom['paper58']['mean']:.4f} |"
+        )
     lines.extend(
         [
             "",
@@ -637,7 +772,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "- 2023 单步和 2024 两步开环均同时报告严格多类别 FoM 与旧二值 FoM。",
             "- 持久性与随机可行分配是预先声明的零模型，不得从主模型表中省略。",
             "- 模型比较应读取 JSON 中的 pairwise_bootstrap_95ci，而不是比较两个边际区间是否重叠。",
-            "- 高置信度标签子集上的 FoM 若较低，必须保留 Dynamic World 标签噪声警告。",
+            "- 置信度筛选会改变被评分的观测变化组成，因此仅作为标签质量与选择效应诊断。",
             "- 这是历史条件分配结果，不是未来政策预测，也不是因果效应证据。",
             "",
         ]

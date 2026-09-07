@@ -6,6 +6,13 @@
   "generated_files_are_not_inputs": true,
   "records": [
     {
+      "path": ".github/workflows/kernel-x86_64-reference.yml",
+      "role": "configuration",
+      "bytes": 1512,
+      "sha256": "049784cb6e0f28a2b0a25a7383fcbc05f3666c81dd294b11359e4cb3bc0f1d7f",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
       "path": "benchmarks/abu_dhabi_land_use_v1/__init__.py",
       "role": "code",
       "bytes": 72,
@@ -393,8 +400,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/compile_comparison.py",
       "role": "code",
-      "bytes": 29106,
-      "sha256": "8926c291e55015304c8ec02c50f757ac2e4525f1b4550c1057a195e732061071",
+      "bytes": 35383,
+      "sha256": "1391c56763ebc2676f6786072ad1a9eccd719aa0392410b0c0ed9baba1a4d501",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -491,8 +498,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/protocol.json",
       "role": "configuration",
-      "bytes": 11043,
-      "sha256": "24a523aa395646b007cb69694e6346ea4ca5c0b8bf125699174e5a6c056f9965",
+      "bytes": 11630,
+      "sha256": "3077bb8e9d4c412f71507b9ea9c6d82c6fc74b50bb3f01e72d99725dce814a22",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -519,8 +526,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/build_reproducibility_manifest.py",
       "role": "configuration",
-      "bytes": 4618,
-      "sha256": "6b2391878e5b41358772a639886f64f1f8a58bca06d0ec54743be07283617241",
+      "bytes": 4682,
+      "sha256": "b1af33aa850b79bbf2e53ea1da79402ccfd63f3cbcf82176d7fb9bdb5c5cee1d",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -533,8 +540,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py",
       "role": "configuration",
-      "bytes": 13668,
-      "sha256": "9b7102b2043980452f9b1dac00174f73043648404488815a91a62385e694bda0",
+      "bytes": 15831,
+      "sha256": "04fe9d3c5952c4aa38745831e4fb2a7fcba584021c822bf69762205f236c5a05",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -545,10 +552,17 @@
       "hash_mode": "text_lf_normalized"
     },
     {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/verify_kernel_reference.py",
+      "role": "configuration",
+      "bytes": 3178,
+      "sha256": "983958c8803de1aad4dfbcc51edc3a8f53ea5329ab329312d4dd6ffbe9192496",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
       "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py",
       "role": "code",
-      "bytes": 8091,
-      "sha256": "6295b66ed03f01f42a09060edfdbbab278f6b35826c423c64a46f2c6d9cfb5c2",
+      "bytes": 8216,
+      "sha256": "171135b7457f671cf09dfdc2cf7107c122270ea659a32e84c4b1bb83e98ca825",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -561,8 +575,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/run_geospatial_kernel.py",
       "role": "code",
-      "bytes": 19369,
-      "sha256": "a5493c481fcd2d2828fa947b19859436a7e5067082f9242af07412aeca9e93a8",
+      "bytes": 19612,
+      "sha256": "6ee08cf2b5a24379e2833bcd79f5a4a9f3bf7015397e5127b61ee56cdeff949b",
       "hash_mode": "text_lf_normalized"
     },
     {

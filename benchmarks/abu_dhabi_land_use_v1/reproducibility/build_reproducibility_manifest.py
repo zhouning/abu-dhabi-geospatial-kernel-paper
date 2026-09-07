@@ -71,6 +71,7 @@ def required_paths() -> dict[str, set[Path]]:
         HERE / "planning_scenarios_public_2025_2031.json",
         HERE / "reproducibility/requirements.lock.txt",
         HERE / "reproducibility/environment.json",
+        REPO / ".github/workflows/kernel-x86_64-reference.yml",
     }
     _add(config, (HERE / "reproducibility").glob("*.py"))
 

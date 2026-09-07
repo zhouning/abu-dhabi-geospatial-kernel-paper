@@ -49,6 +49,16 @@ DEFAULT_OUTPUT = HERE / "artifacts/predictions/geospatial_kernel"
 FIT_TRANSITIONS = ((2017, 2018), (2018, 2019), (2019, 2020), (2020, 2021))
 SEEDS = (31, 47, 73)
 
+
+def _display_output_path(path: Path) -> str:
+    """Keep report paths portable when callers use an external output root."""
+
+    try:
+        return path.relative_to(HERE).as_posix()
+    except ValueError:
+        return str(path.resolve())
+
+
 ABU_DHABI_LU_GK_RUNTIME_ADAPTER = KernelAdapterDescriptor(
     adapter_id="abu-dhabi-lu-gk-runtime-adapter",
     adapter_version="1.0.0",
@@ -462,7 +472,7 @@ def run_seed(
         year_reports.append(
             {
                 "target_year": target_year,
-                "prediction_path": str(path.relative_to(HERE)),
+                "prediction_path": _display_output_path(path),
                 "allocation": allocation,
                 "evaluation": evaluation,
                 "kernel_step": step.audit(),

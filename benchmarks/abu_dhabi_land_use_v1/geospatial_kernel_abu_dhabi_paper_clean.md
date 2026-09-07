@@ -1,9 +1,10 @@
 # Archived pre-review draft
 
 > **Archive notice:** This file is retained for historical provenance only. Its
-> legacy numbers, objective definitions and pre-review wording are not current
-> evidence. Use `manuscript/manuscript.md`, the versioned `_current` reports and
-> `manuscript/response_to_LUP_review.md` for the fifth-round revision.
+> legacy numbers, objective definitions, supplementary-table numbering and
+> pre-review wording are not current evidence. Use `manuscript/manuscript.md`,
+> the versioned `_current` reports and `manuscript/response_to_LUP_review.md` for
+> the current submission materials.
 
 This file is retained for provenance only and is not the revised manuscript or
 an inferential results record. Use `manuscript/manuscript.md` and

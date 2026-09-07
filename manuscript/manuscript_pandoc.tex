@@ -27,16 +27,18 @@ traces. In a clean run of the fully resolved environment, strict FoM was
 0.1961 for Geospatial Kernel, 0.1256 for the GeoSOS-derived FLUS-style
 ANN--CA console (author-modified build) and 0.1619 for GeoFM-LDN in
 2023; after recursive two-step rollout in 2024 the values were 0.2529,
-0.1782 and 0.2708, respectively. On the high-confidence label subset,
-all three models had FoM 0.000 in 2023 and the 2024 maximum was 0.0188,
-showing that full-grid agreement is strongly conditioned by label noise.
-The planning track is therefore reported as scenario stress testing, not
-official forecasting. The released public bundle, source, checkpoints,
-rasters, vector footprints and audit manifests support
-locked-environment reproduction; cross-stack variation is quantified
-rather than assumed absent. The protocol's principal contribution is an
-inspectable proposal--projection--writeback boundary for separating
-model behaviour from action and constraint semantics.
+0.1782 and 0.2708, respectively. A dual-year confidence threshold
+retained only 25 of 4,500 observed changes in 2023 and 56 of 8,464 in
+2024; all three FoM values were 0.000 in 2023 and the 2024 maximum was
+0.0188. These filtered scores are label-quality and selection-effect
+diagnostics, not model-skill tests. The planning track is therefore
+reported as scenario stress testing, not official forecasting. The
+released public bundle, source, checkpoints, rasters, vector footprints
+and audit manifests support locked-environment reproduction; cross-stack
+variation is quantified rather than assumed absent. The protocol's
+principal contribution is an inspectable proposal--projection--writeback
+boundary for separating model behaviour from action and constraint
+semantics.
 
 \subsection{Highlights}\label{highlights}
 
@@ -52,7 +54,8 @@ model behaviour from action and constraint semantics.
   Spatial-block uncertainty and paired model contrasts are reported
   explicitly.
 \item
-  High-confidence labels reveal near-zero measured change skill.
+  Confidence filters expose label selection effects; they are not
+  validation tests.
 \item
   Planning outputs are scenario stress tests, not statutory Abu Dhabi
   forecasts.
@@ -136,12 +139,12 @@ conclusions survive label and parameter sensitivity.
 The paper makes three bounded contributions. First, it gives a concrete
 state--action--constraint formulation for using a geospatial kernel as
 an algorithmic core rather than as an opaque end-to-end predictor.
-Second, it defines an evaluation protocol that treats high-confidence
-subset failure as a primary result under noisy annual labels, rather
-than as a minor diagnostic. Third, it turns future maps into explicit
-stress-test artefacts, including cumulative rasters and vectorized
-transition footprints, while preserving the distinction between
-public-data land cover and authoritative legal land use.
+Second, it defines an evaluation protocol that reports confidence-filter
+retention and selection effects rather than treating a high-confidence
+subset as a skill-validation set. Third, it turns future maps into
+explicit stress-test artefacts, including cumulative rasters and
+vectorized transition footprints, while preserving the distinction
+between public-data land cover and authoritative legal land use.
 
 \subsection{Methods}\label{methods}
 
@@ -277,7 +280,7 @@ land-cover-specific features, learner and constraint masks.
 evaluator}\label{baselines-and-common-evaluator}
 
 The baseline was run through a GeoSOS-derived FLUS-style ANN--CA console
-(author-modified build; \texttt{paper-benchmark-flus-v1}) using seven
+(author-modified build; \texttt{paper-benchmark-flus-v1.1}) using seven
 continuous drivers: normalized row and column coordinates, elevation,
 slope, VIIRS radiance, distance to roads and distance to major roads.
 Its ANN suitability surface was passed to a cellular-automata allocation
@@ -289,16 +292,18 @@ wetland but did not prohibit built-to-non-built transitions. The
 algorithmic base is traceable to the GeoSOS team's public FLUS source
 release (Liu et al., 2017; geosimulation.cn); the accompanying source
 repository \texttt{FLUS\_console\_crossplatform} at commit
-\texttt{deb0a54} contains the author modifications used for this paper.
+\texttt{47e65b3} contains the author modifications used for this paper.
 Those modifications add \texttt{train}/\texttt{train-update} entry
 points and \texttt{FLUS\_RANDOM\_SEED} deterministic seeding for both
 ANN sampling and CA roulette draws, so the build is not the unmodified
-upstream executable. A 25-feature Kernel-matched input was then executed
-with absolute paths for seeds 31, 47 and 73 and is reported only as a
-platform-sensitive diagnostic. It shares the Kernel feature family, but
-not the learning target or projection semantics: the FLUS ANN estimates
-same-year label suitability \(p(S_t\mid X_t)\), whereas the Kernel
-proposal is trained to estimate a next-state transition
+upstream executable. Version v1.1 changes only failure handling for
+invalid input reads; valid-input algorithmic paths and benchmark rasters
+are unchanged from v1. A 25-feature Kernel-matched input was then
+executed with absolute paths for seeds 31, 47 and 73 and is reported
+only as a platform-sensitive diagnostic. It shares the Kernel feature
+family, but not the learning target or projection semantics: the FLUS
+ANN estimates same-year label suitability \(p(S_t\mid X_t)\), whereas
+the Kernel proposal is trained to estimate a next-state transition
 \(p(S_{t+1}\mid S_t,X_t)\) before constrained projection. Matching
 features therefore does not match the training task. Two intermediate
 configurations were retained as mechanism diagnostics: 13 features
@@ -328,14 +333,19 @@ semantic cross-entropy, 0.1 demand-consistency loss and 0.2
 hard-constraint consistency loss. The released checkpoints correspond to
 seeds 31, 47 and 73 and were trained in August 2026. The default
 reproduction loads these fixed checkpoints rather than retraining; the
-runner exposes retraining separately. During allocation, GeoFM-LDN
-directly calls the Geospatial Kernel \texttt{allocate\_action} routine,
-so both methods share the same constrained projection and differ
-primarily in their proposal model. The comparison is therefore a
-proposal/pipeline comparison, not a comparison of two independent
-projection architectures. The name describes this benchmark
-implementation and does not attribute an external publication or
-performance claim.
+runner exposes retraining separately. Fixed checkpoints do not remove
+the decoding runtime boundary: categorical output still depends on the
+locked Torch and scikit-learn stack. Same-stack reproduction is the
+declared reference; no independent cross-stack GeoFM-LDN raster
+comparison is claimed, and changes between pre-lock and
+locked-environment outputs are not attributed to CPU architecture or to
+one library. During allocation, GeoFM-LDN directly calls the Geospatial
+Kernel \texttt{allocate\_action} routine, so both methods share the same
+constrained projection and differ primarily in their proposal model. The
+comparison is therefore a proposal/pipeline comparison, not a comparison
+of two independent projection architectures. The name describes this
+benchmark implementation and does not attribute an external publication
+or performance claim.
 
 The common evaluator computes actual class counts, normalized demand
 total variation, hard-mask violations, strict multi-class change FoM,
@@ -574,20 +584,28 @@ suitability \(p(S_t\mid X_t)\), while the Kernel learns next-state
 transitions and then projects them against action deficits and hard
 constraints.
 
-The reliability sensitivity is substantially less favourable. Requiring
-both the origin and target Dynamic World mean top probability to exceed
-0.5 leaves strict FoM at 0.000 for all three models in 2023; in 2024 the
-means are 0.004 for the FLUS-style console, 0.005 for Geospatial Kernel
-and 0.019 for GeoFM-LDN. This is a label-quality diagnostic, not an
-independent validation set. Dynamic World also reports built pixels
-increasing from 9,359 in 2022 to 15,598 in 2024 (67\%), while the median
-one-year reversion fraction is 0.3611 and the mean fraction of cells
-below confidence 0.5 is 0.5497. Test-year change counts are
-approximately twice the training-transition counts. Because the same
-grid cells recur across years and the Kernel includes coordinate
-features, a training--test memory effect cannot be excluded; the
-reported scores should therefore be interpreted as conditional agreement
-with the public product.
+The confidence sensitivity is a label-quality and selection-effect
+diagnostic, not an independent validation set or a model-skill test.
+Requiring both the origin and target Dynamic World mean top probability
+to exceed 0.5 retains only 25 of 4,500 observed changes (0.56\%) in 2023
+and 56 of 8,464 (0.66\%) in 2024. Strict FoM is 0.000 for all three
+models in 2023; in 2024 the means are 0.0040 for the FLUS-style console,
+0.0055 for Geospatial Kernel and 0.0188 for GeoFM-LDN. Screening only
+the confidence of the year immediately preceding the target avoids
+filtering on target-year confidence, but still retains only 129 (2.87\%)
+and 93 (1.10\%) observed changes in 2023 and 2024, respectively. Its
+2023 FoM values remain 0.000; its 2024 means are 0.0040, 0.0041 and
+0.0120 for the FLUS-style console, Kernel and GeoFM-LDN. The two filters
+therefore describe label selection rather than establishing or rescuing
+model skill. Dynamic World also reports built pixels increasing from
+9,359 in 2022 to 15,598 in 2024 (67\%), while the median one-year
+reversion fraction is 0.3611 and the mean fraction of cells below
+confidence 0.5 is 0.5497. Test-year change counts are approximately
+twice the training-transition counts. Because the same grid cells recur
+across years and the Kernel includes coordinate features, a
+training--test memory effect cannot be excluded; the reported scores
+should therefore be interpreted as conditional agreement with the public
+product.
 
 The reference reproduction environment is macOS arm64 with Python 3.11
 and scikit-learn 1.9.0. The archived Linux arm64 rerun uses Python 3.12
@@ -732,11 +750,13 @@ transition proposal and a planning admission rule can be represented and
 inspected separately. Under the unmatched public-data pipeline,
 Geospatial Kernel has the largest strict transition FoM at the one-step
 horizon, while GeoFM-LDN has the largest value after recursive two-step
-rollout. The high-confidence subset shows near-zero skill for all models
-in 2023 and at most 0.0188 FoM in 2024, so full-grid rankings should not
-be interpreted as validated urban-change skill. We therefore treat the
-planning frontier as conditional on public proxy objectives and
-synthetic actions.
+rollout. The dual-year confidence filter retains only 0.56\% and 0.66\%
+of observed changes in 2023 and 2024, respectively; the
+preceding-year-only variant retains 2.87\% and 1.10\%. These subsets are
+not skill tests, but their event-dependent selection shows why full-grid
+rankings cannot be interpreted as validated urban-change skill. We
+therefore treat the planning frontier as conditional on public proxy
+objectives and synthetic actions.
 
 The evidence remains bounded. The six classes are remote-sensing land
 cover, not statutory residential, commercial or industrial land use.
@@ -833,31 +853,42 @@ listed separately to keep the manuscript readable:
 
 GeoFM-LDN source and the three fixed checkpoints are included under
 \texttt{benchmarks/abu\_dhabi\_land\_use\_v1/external/} and
-\texttt{artifacts/predictions/}. The vendored FLUS executable is a macOS
-arm64 binary rebuilt from the GeoSOS public FLUS source base. The
-author-modified source, including \texttt{train-update} and
-\texttt{FLUS\_RANDOM\_SEED}, is archived at
+\texttt{artifacts/predictions/}. Earlier internal reference outputs,
+produced before the dependency lock was completed, could not be
+regenerated under the resolved environment and were superseded by the
+locked-environment rerun reported here. Historical strict-FoM
+differences were at approximately the 0.001 level; discrete multi-year
+planning ensemble demand errors changed more substantially and are
+reported here only from the locked-environment rerun. The prior outputs
+remain Git-history lineage, not current evidence. The vendored FLUS
+executable is a macOS arm64 binary rebuilt from the GeoSOS public FLUS
+source base. The author-modified source, including \texttt{train-update}
+and \texttt{FLUS\_RANDOM\_SEED}, is archived at
 \texttt{https://github.com/zhouning/FLUS\_console\_crossplatform}, tag
-\texttt{paper-benchmark-flus-v1} at commit \texttt{deb0a54} (the GeoSOS
-source release and Liu et al.~(2017) are cited above). Rebuilding that
-commit on macOS arm64 produced SHA-256
+\texttt{paper-benchmark-flus-v1.1} at commit \texttt{47e65b3} (the
+GeoSOS source release and Liu et al.~(2017) are cited above). Rebuilding
+the preceding v1 commit (\texttt{deb0a54}) on macOS arm64 produced
+SHA-256
 \texttt{9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964},
-identical to the vendored executable. The tagged author-modified source
-can also be built on Linux and Windows using the repository
-instructions. \texttt{FLUS\_RANDOM\_SEED} guarantees determinism only
-within a platform and build environment because ANN sampling and CA
-roulette draws use platform-defined C \texttt{rand()}/\texttt{srand()}
-streams. The reviewer-provided Windows rerun differed from macOS by
-approximately 2--4\% of valid categorical cells for the seven-driver
-control, and all three Windows 25-feature runs collapsed to zero change.
-Windows execution requires the benchmark and working directories to use
-pure ASCII paths; saving configuration files as UTF-8 alone does not
-repair GDAL path decoding. A compatible local build is required to
-execute the FLUS track outside macOS arm64 and will produce a different
-random stream. The macOS binary SHA statement is an author self-check.
-As an upstream-only fallback, the public FLUS CA source can be paired
-with an open Python ANN implementation, but the unmodified upstream CA
-uses time seeding rather than \texttt{FLUS\_RANDOM\_SEED}. The
+identical to the vendored executable. Version v1.1 changes only
+invalid-input failure handling and leaves valid-input algorithmic paths
+unchanged; the normal-output equivalence check is archived with the
+source release. The tagged author-modified source can also be built on
+Linux and Windows using the repository instructions.
+\texttt{FLUS\_RANDOM\_SEED} guarantees determinism only within a
+platform and build environment because ANN sampling and CA roulette
+draws use platform-defined C \texttt{rand()}/\texttt{srand()} streams.
+The reviewer-provided Windows rerun differed from macOS by approximately
+2--4\% of valid categorical cells for the seven-driver control, and all
+three Windows 25-feature runs collapsed to zero change. Windows
+execution requires the benchmark and working directories to use pure
+ASCII paths; saving configuration files as UTF-8 alone does not repair
+GDAL path decoding. A compatible local build is required to execute the
+FLUS track outside macOS arm64 and will produce a different random
+stream. The macOS binary SHA statement is an author self-check. As an
+upstream-only fallback, the public FLUS CA source can be paired with an
+open Python ANN implementation, but the unmodified upstream CA uses time
+seeding rather than \texttt{FLUS\_RANDOM\_SEED}. The
 corresponding-author e-mail is \texttt{zhouning@freedotech.com}; an
 archival DOI should be added after a persistent public release is
 created.

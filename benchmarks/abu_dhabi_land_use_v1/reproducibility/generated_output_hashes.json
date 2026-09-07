@@ -3,8 +3,8 @@
   "records": [
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/comparison_report_current.json",
-      "bytes": 87945,
-      "sha256": "1af72591e529b19f0fad41fefccecdc953f0f6592d16f370e262bd10840d6406",
+      "bytes": 91821,
+      "sha256": "beaa4af25614ad1617e48fa41dab2cbbfce572ca7e7394d6c837fd970c8e36f6",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -22,13 +22,13 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/output_audit_reproducible.json",
       "bytes": 155232,
-      "sha256": "9ded66d3abefc3bf54f6b8af317443854dd00b400aeb90edb3c16c47dacd9902",
+      "sha256": "358ea7fbe0688aa0795aa62bfafd2c6eb903b9ca172a6e5f424dfc0aaf7a1d5f",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/output_audit.json",
       "bytes": 155232,
-      "sha256": "9ded66d3abefc3bf54f6b8af317443854dd00b400aeb90edb3c16c47dacd9902",
+      "sha256": "358ea7fbe0688aa0795aa62bfafd2c6eb903b9ca172a6e5f424dfc0aaf7a1d5f",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -81,32 +81,32 @@
     },
     {
       "path": "manuscript/main.pdf",
-      "bytes": 3231475,
-      "sha256": "d2f606f439861fe036f51424179b0b25fc1ec539e8c5871ede839ba2dbd23555",
+      "bytes": 3232978,
+      "sha256": "efe6eba8e2fcdf71a3fa4f5e8d0590096d8fbb3cba9458331dd97eb864ad793a",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/lup_submission.pdf",
-      "bytes": 3231475,
-      "sha256": "af9ea2b001ff61f51dda1043aa0bcc7694d86cc89e0c22534ad7bb48377332bb",
+      "bytes": 3232978,
+      "sha256": "f84bc71fe7f9e16098afce6cbbb727f3a947531213f40ee123bf65e82a20525b",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.pdf",
-      "bytes": 3227976,
-      "sha256": "f253011e588e5d09846cbf65988957d5c81cd6d0acbe571a9df8960403971268",
+      "bytes": 3229855,
+      "sha256": "c86af4da396e149e512f6192051b3d2a9f4bf01126a92100202299b2223c5ce8",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.docx",
-      "bytes": 3302080,
-      "sha256": "98c90b0d0dbb6ddbd37fb6b9fd1c2ba9c672b359fc54c6c74bb12d619771206c",
+      "bytes": 3302857,
+      "sha256": "b2c985e266056bcc89d285dab734f6f881b92d9985123cf664c2de0ea7234704",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript_pandoc.tex",
-      "bytes": 56177,
-      "sha256": "cccc37af414fde07bf6535be4b2b5cd5e7c6bd0182134f9639baa14ab67c9dbf",
+      "bytes": 58220,
+      "sha256": "1c2466be5c4f32587814db513fec0bf045a645fb521e92aea56cf536e4db09ef",
       "hash_mode": "text_lf_normalized"
     },
     {

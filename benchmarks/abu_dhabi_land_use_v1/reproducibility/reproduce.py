@@ -99,6 +99,49 @@ def _verify_manuscript_report_consistency() -> None:
             if fragment not in manuscript_numeric:
                 raise RuntimeError(f"manuscript_neighbourhood_diagnostic_missing:{year}:{fragment}")
 
+    # Confidence-filtered values are label-quality and selection-effect
+    # diagnostics. Keep their retention counts and the manuscript disclaimer
+    # synchronized so they cannot be relabelled as skill validation.
+    quality = comparison.get("label_quality_diagnostics", {})
+    if quality.get("confidence_threshold") != 0.5:
+        raise RuntimeError("label_quality_confidence_threshold_missing")
+    expected_quality = {
+        "2023": (4500, 25, 0.005555555555555556, 129, 0.028666666666666667),
+        "2024": (8464, 56, 0.006616257088846881, 93, 0.010987712665406428),
+    }
+    for year, expected in expected_quality.items():
+        actual = quality.get("by_target_year", {}).get(year, {})
+        dual = actual.get("dual_year_confidence", {})
+        preceding = actual.get("preceding_year_confidence_only", {})
+        actual_selection = (
+            actual.get("full_grid_observed_change_pixels"),
+            dual.get("observed_change_pixels"),
+            round(float(dual.get("observed_change_retention_fraction", -1)), 12),
+            preceding.get("observed_change_pixels"),
+            round(float(preceding.get("observed_change_retention_fraction", -1)), 12),
+        )
+        expected_selection = (
+            expected[0],
+            expected[1],
+            round(expected[2], 12),
+            expected[3],
+            round(expected[4], 12),
+        )
+        if actual_selection != expected_selection:
+            raise RuntimeError(f"label_quality_selection_counts_missing:{year}")
+        required_fragments = (
+            f"{expected[1]:,} of {expected[0]:,}",
+            f"({expected[2]:.2%})",
+            f"{expected[3]:,}",
+            f"({expected[4]:.2%})",
+        )
+        if not all(fragment in manuscript for fragment in required_fragments):
+            raise RuntimeError(f"manuscript_label_quality_selection_missing:{year}")
+    if "not an independent validation set or a model-skill test" not in manuscript:
+        raise RuntimeError("manuscript_label_quality_boundary_missing")
+    if "0.0055 for Geospatial Kernel" not in manuscript:
+        raise RuntimeError("manuscript_label_quality_rounding_missing")
+
     # Main paired contrasts reported in Results.
     for year, pair_names in (
         ("2023", ("geospatial_kernel_minus_geosos_flus", "paper58_minus_geospatial_kernel")),

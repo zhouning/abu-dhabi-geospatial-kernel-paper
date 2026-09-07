@@ -1,7 +1,8 @@
 # Archived pre-review draft
 
 > **Archive notice:** Historical draft retained for provenance only. Do not use
-> its legacy metrics or objective definitions as current evidence.
+> its legacy metrics, objective definitions or supplementary-table numbering as
+> current evidence.
 
 This file is retained for provenance only and is not the revised manuscript or
 an inferential results record. Use `manuscript/manuscript.md` and

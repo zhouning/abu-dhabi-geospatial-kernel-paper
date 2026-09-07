@@ -1,0 +1,48 @@
+name: Kernel x86_64 Reference Regression
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  categorical-reference:
+    name: Ubuntu x86_64 categorical reference
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out public bundle
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Set up locked Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install resolved dependencies
+        run: python -m pip install -r benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt
+
+      - name: Rerun all Kernel seeds
+        run: >-
+          python benchmarks/abu_dhabi_land_use_v1/run_geospatial_kernel.py
+          --seeds 31,47,73
+          --output benchmarks/abu_dhabi_land_use_v1/artifacts/ci_x86_64_kernel
+
+      - name: Compare categorical rasters with reference
+        run: >-
+          python benchmarks/abu_dhabi_land_use_v1/reproducibility/verify_kernel_reference.py
+          --candidate benchmarks/abu_dhabi_land_use_v1/artifacts/ci_x86_64_kernel
+          --output benchmarks/abu_dhabi_land_use_v1/artifacts/ci_x86_64_kernel/reference_comparison.json
+
+      - name: Archive comparison record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-x86_64-reference-audit
+          path: benchmarks/abu_dhabi_land_use_v1/artifacts/ci_x86_64_kernel/reference_comparison.json
+          if-no-files-found: warn

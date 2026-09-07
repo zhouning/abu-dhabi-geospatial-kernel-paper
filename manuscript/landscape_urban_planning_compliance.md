@@ -73,7 +73,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 The package is a conditional Article-type draft. Before submission, add the
 public release URL/DOI and an independent 2023–2024 change-validation layer.
-The supplied FLUS build is GeoSOS-derived
-and its author modifications are archived at `FLUS_console_crossplatform`
-commit `deb0a54`. The 25-feature run is platform sensitive and cannot replace
+The supplied FLUS build is GeoSOS-derived. Its valid-input binary provenance is
+commit `deb0a54`; the retained fail-closed source release is
+`FLUS_console_crossplatform` tag `paper-benchmark-flus-v1.1` at commit
+`47e65b3`. The 25-feature run is platform sensitive and cannot replace
 the primary three-seed comparison.

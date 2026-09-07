@@ -30,4 +30,4 @@
 4. 如果要把结果用于客户决策，应替换为权威本地土地利用、规划红线、基础设施容量和审批需求数据，并完成语义交叉表和真实历史验证。
 5. 发布代码前完成公共仓库 URL、DOI、许可证和大文件存储策略的最终审核。
 6. 当前完整复现命令为 `reproducibility/reproduce.py --device cpu`；它加载固定 GeoFM-LDN 检查点，并在 macOS arm64 上调用随仓库提供的 FLUS 二进制。
-7. 投稿前仍需引入独立建成区产品或人工判读样本，验证 Dynamic World 2023–2024 的变化真实性；匹配输入 FLUS 已用绝对路径完成 13、19、25 特征的三种子诊断。25 特征在 macOS arm64 的 seeds 47、73 和评审提供的 Windows x86_64 三个种子均因同年类别身份泄漏退化为零变化，唯一未退化的 macOS seed 31 不再作为有效点估计或模型对比。19 特征三种子均发生需求欠填。`FLUS_RANDOM_SEED` 仅保证同平台确定性；Windows 基准和工作目录必须使用纯 ASCII 路径。FLUS 基础源码可追溯至 GeoSOS 公开版本，论文使用的确定性修改源码已发布在 `FLUS_console_crossplatform` 标签 `paper-benchmark-flus-v1`。
+7. 投稿前仍需引入独立建成区产品或人工判读样本，验证 Dynamic World 2023–2024 的变化真实性；匹配输入 FLUS 已用绝对路径完成 13、19、25 特征的三种子诊断。25 特征在 macOS arm64 的 seeds 47、73 和评审提供的 Windows x86_64 三个种子均因同年类别身份泄漏退化为零变化，唯一未退化的 macOS seed 31 不再作为有效点估计或模型对比。19 特征三种子均发生需求欠填。`FLUS_RANDOM_SEED` 仅保证同平台确定性；Windows 基准和工作目录必须使用纯 ASCII 路径。FLUS 基础源码可追溯至 GeoSOS 公开版本；`paper-benchmark-flus-v1.1`（`47e65b3`）补齐无效输入失败即停处理，正常输入输出与原 v1 基准一致。
