@@ -608,7 +608,56 @@
       }
     }
   },
-  "created_at": "2026-09-07T09:11:57.485361+00:00",
+  "created_at": "2026-09-07T09:50:04.677798+00:00",
+  "cross_platform_verification": {
+    "flus_windows_x86_64": {
+      "baseline_7_mean_strict_fom": {
+        "2023": 0.1335,
+        "2024": 0.18
+      },
+      "baseline_7_windows_vs_macos_difference_pixels": {
+        "31": {
+          "2023": 1910,
+          "2024": 3261
+        },
+        "47": {
+          "2023": 2137,
+          "2024": 3325
+        },
+        "73": {
+          "2023": 2018,
+          "2024": 3131
+        }
+      },
+      "evidence_status": "reviewer_provided_external_verification_no_local_rasters",
+      "interpretation": "Reported by the reviewer after rebuilding the tagged source on Windows x86_64. The Windows rasters are not present locally and are not claimed as author-run reproduction outputs.",
+      "matched_25_collapsed_seeds": [
+        31,
+        47,
+        73
+      ],
+      "same_platform_seed_31_repeat_difference_pixels": {
+        "2023": 0,
+        "2024": 0
+      }
+    },
+    "kernel_github_actions_ubuntu_x86_64": {
+      "categorical_difference_pixels_range": [
+        0,
+        0
+      ],
+      "commit": "e06a99763de71db396ac44e1339ff211b21e7519",
+      "comparison_path": "artifacts/cross_platform/github_actions_ubuntu_x86_64_kernel_reference_e06a997.json",
+      "evidence_status": "author_controlled_archived_ci_rerun",
+      "interpretation": "An author-controlled GitHub Actions Ubuntu x86_64 run reran all three seeds under the resolved lock and matched all six current macOS-reference categorical rasters exactly. This is a scoped locked-stack regression result, not a claim about every architecture or numerical stack.",
+      "run_url": "https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper/actions/runs/34107504198",
+      "runtime": {
+        "machine": "x86_64",
+        "python": "3.11.16",
+        "scikit_learn": "1.9.0"
+      }
+    }
+  },
   "ensembles": {
     "geosos_flus": {
       "2023": {
@@ -936,50 +985,6 @@
     }
   },
   "evidence_mode": "current_evaluator_on_current_reproduced_prediction_rasters",
-  "external_cross_platform_verification": {
-    "evidence_status": "reviewer_provided_external_verification_no_local_rasters",
-    "flus_windows_x86_64": {
-      "baseline_7_mean_strict_fom": {
-        "2023": 0.1335,
-        "2024": 0.18
-      },
-      "baseline_7_windows_vs_macos_difference_pixels": {
-        "31": {
-          "2023": 1910,
-          "2024": 3261
-        },
-        "47": {
-          "2023": 2137,
-          "2024": 3325
-        },
-        "73": {
-          "2023": 2018,
-          "2024": 3131
-        }
-      },
-      "interpretation": "Reported by the reviewer after rebuilding the tagged source on Windows x86_64. The Windows rasters are not present locally and are not claimed as author-run reproduction outputs.",
-      "matched_25_collapsed_seeds": [
-        31,
-        47,
-        73
-      ],
-      "same_platform_seed_31_repeat_difference_pixels": {
-        "2023": 0,
-        "2024": 0
-      }
-    },
-    "kernel_x86_64": {
-      "categorical_difference_pixels_range": [
-        500,
-        1150
-      ],
-      "interpretation": "Reviewer-provided external rerun values; no local x86_64 raster archive is available for replay.",
-      "strict_fom": {
-        "2023": 0.1961,
-        "2024": 0.2529
-      }
-    }
-  },
   "interpretation": [
     "Computed strict transition FoM ranking for 2023: Geospatial Kernel > GeoFM-LDN > GeoSOS-derived FLUS-style ANN–CA console (author-modified build).",
     "Geospatial Kernel is above GeoSOS-derived FLUS-style ANN–CA console (author-modified build) by 0.070508 strict FoM at 2023.",

@@ -240,14 +240,16 @@ scikit-learn 1.9.0. The archived Linux arm64 rerun uses Python 3.12 and
 scikit-learn 1.8.0, so it measures a cross-stack boundary rather than an
 architecture-only effect. Across six rasters (2023 and 2024 for each seed), it
 differs from the current reference by 498–1,147 cells (0.62–1.44% of valid
-cells), with strict-FoM deltas from -0.0023 to 0.0010. The reviewer-provided
-Windows FLUS rerun additionally showed 2–4% differing cells from the macOS
-seven-driver outputs, consistent with the platform-dependent C
-`rand()`/`srand()` stream. The repository does not contain the reviewer’s
-Windows raster files, so those values are explicitly external verification
-rather than a local replay. The archived comparison report records the exact
-paths and environment fields for the arm64 pair. This documents measured
-cross-stack sensitivity, not universal bitwise identity.
+cells), with strict-FoM deltas from -0.0023 to 0.0010. An author-controlled
+GitHub Actions Ubuntu x86_64 rerun under Python 3.11.16 and scikit-learn 1.9.0
+matched all six released categorical reference rasters exactly; its archived
+audit is linked in Code availability. This is a scoped locked-stack regression
+result, not universal bitwise identity. The reviewer-provided Windows FLUS
+rerun additionally showed 2–4% differing cells from the macOS seven-driver
+outputs, consistent with the platform-dependent C `rand()`/`srand()` stream.
+The repository does not contain the reviewer’s Windows FLUS raster files, so
+those values remain explicitly external verification. The archived comparison
+report records the exact paths and environment fields for the arm64 pair.
 
 The planning compiler compares the three models within each of the three
 scenarios. At 2031, the FLUS-style control has union-built component densities of
@@ -355,7 +357,7 @@ The public-data benchmark manifests, protocols, reports and generated delivery a
 - `planning_public_2025_2031_delivery_manifest_current.json` for raster and vector delivery;
 - `output_audit.json` for the current raster audit; `output_audit_reproducible.json` is a compatibility copy produced by the same run;
 - `data_audit.json`, `protocol.json`, `gee_input_manifest.json` and `osm_input_manifest.json` for data provenance;
-- The released bundle includes the aligned 2017–2024 public rasters, historical seed and ensemble prediction rasters, 2025–2031 planning seed and ensemble rasters, nine GeoPackages of dissolved change footprints, the mechanism-ablation report, model checkpoints, and the SHA-256 manifest. Text hashes use canonical LF line endings, and the byte-length check applies the same normalization on text records, so a Windows checkout with `core.autocrlf=true` can pass the manifest gate. The locked macOS arm64 execution environment remains the reference for model outputs. An archived arm64 Linux rerun of the six historical Kernel rasters differed from the macOS reference by 498–1,147 valid cells (0.62%–1.44%), with strict-FoM deltas from -0.0023 to +0.0010; these cross-stack differences are quantified rather than treated as categorical identity. Reviewer-provided Windows x86_64 values are separately labelled as external verification because the corresponding rasters are not archived locally. No private database address, credential or client-only service is included. Authoritative Abu Dhabi land-use and independent change-validation data remain outside this study.
+- The released bundle includes the aligned 2017–2024 public rasters, historical seed and ensemble prediction rasters, 2025–2031 planning seed and ensemble rasters, nine GeoPackages of dissolved change footprints, the mechanism-ablation report, model checkpoints, and the SHA-256 manifest. Text hashes use canonical LF line endings, and the byte-length check applies the same normalization on text records, so a Windows checkout with `core.autocrlf=true` can pass the manifest gate. The locked macOS arm64 execution environment remains the reference for model outputs. An archived arm64 Linux rerun of the six historical Kernel rasters differed from the macOS reference by 498–1,147 valid cells (0.62%–1.44%), with strict-FoM deltas from -0.0023 to +0.0010; these cross-stack differences are quantified rather than treated as categorical identity. An author-controlled GitHub Actions Ubuntu x86_64 rerun of all six rasters under the resolved lock had zero categorical differences; the audit is archived as `artifacts/cross_platform/github_actions_ubuntu_x86_64_kernel_reference_e06a997.json` and the workflow is versioned under `.github/workflows/`. Reviewer-provided Windows values remain separately labelled as external verification only for FLUS because the corresponding Windows rasters are not archived locally. No private database address, credential or client-only service is included. Authoritative Abu Dhabi land-use and independent change-validation data remain outside this study.
 
 ## Code availability
 

@@ -155,7 +155,10 @@ For the six seed/year rasters, the Linux and reference macOS categorical arrays
 differ by 498–1,147 valid cells (0.62%–1.44%); strict-FoM deltas range from
 -0.0023 to +0.0010. This quantifies numerical-stack sensitivity for the
 archived environments and is not a guarantee of categorical identity on every
-platform. A present FLUS binary that is not executable on the current operating
+platform. GitHub Actions run `34107504198` separately reran the resolved lock on
+Ubuntu x86_64 and matched all six current Kernel references with zero categorical
+differences; its JSON audit is archived beside the Linux comparison. A present
+FLUS binary that is not executable on the current operating
 system is reported by `reproducibility_check.py` as a portability warning rather
 than an integrity-gate failure.
 

@@ -631,9 +631,9 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
         "summaries": summaries,
         "matched_input_diagnostic": matched_input_diagnostic,
         "neighbourhood_input_diagnostic": neighbourhood_input_diagnostic,
-        "external_cross_platform_verification": {
-            "evidence_status": "reviewer_provided_external_verification_no_local_rasters",
+        "cross_platform_verification": {
             "flus_windows_x86_64": {
+                "evidence_status": "reviewer_provided_external_verification_no_local_rasters",
                 "same_platform_seed_31_repeat_difference_pixels": {"2023": 0, "2024": 0},
                 "baseline_7_mean_strict_fom": {"2023": 0.1335, "2024": 0.1800},
                 "baseline_7_windows_vs_macos_difference_pixels": {
@@ -644,10 +644,18 @@ def compile_report(*, output_path: Path, markdown_path: Path) -> dict[str, Any]:
                 "matched_25_collapsed_seeds": [31, 47, 73],
                 "interpretation": "Reported by the reviewer after rebuilding the tagged source on Windows x86_64. The Windows rasters are not present locally and are not claimed as author-run reproduction outputs.",
             },
-            "kernel_x86_64": {
-                "strict_fom": {"2023": 0.1961, "2024": 0.2529},
-                "categorical_difference_pixels_range": [500, 1150],
-                "interpretation": "Reviewer-provided external rerun values; no local x86_64 raster archive is available for replay.",
+            "kernel_github_actions_ubuntu_x86_64": {
+                "evidence_status": "author_controlled_archived_ci_rerun",
+                "commit": "e06a99763de71db396ac44e1339ff211b21e7519",
+                "run_url": "https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper/actions/runs/34107504198",
+                "comparison_path": "artifacts/cross_platform/github_actions_ubuntu_x86_64_kernel_reference_e06a997.json",
+                "runtime": {
+                    "python": "3.11.16",
+                    "machine": "x86_64",
+                    "scikit_learn": "1.9.0",
+                },
+                "categorical_difference_pixels_range": [0, 0],
+                "interpretation": "An author-controlled GitHub Actions Ubuntu x86_64 run reran all three seeds under the resolved lock and matched all six current macOS-reference categorical rasters exactly. This is a scoped locked-stack regression result, not a claim about every architecture or numerical stack.",
             },
         },
         "seed_diagnostics": seed_diagnostics,

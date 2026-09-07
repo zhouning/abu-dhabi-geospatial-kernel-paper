@@ -217,6 +217,7 @@ def _hash_outputs() -> dict[str, object]:
         HERE / "artifacts/flus_matched_input_review/evidence.json",
         HERE / "artifacts/predictions/flus_matched_inputs_abs/report.json",
         HERE / "artifacts/cross_platform/linux_vs_macos_kernel_comparison.json",
+        HERE / "artifacts/cross_platform/github_actions_ubuntu_x86_64_kernel_reference_e06a997.json",
         REPO / "manuscript/supplementary_table_S2_neighbourhood_weight_sensitivity.md",
         REPO / "manuscript/supplementary_table_S3_flus_feature_diagnostics.md",
         REPO / "manuscript/main.pdf",
