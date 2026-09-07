@@ -1,9 +1,26 @@
-# Response to the ninth-, tenth- and eleventh-round LUP reviews
+# Response to the ninth-, tenth-, eleventh- and twelfth-round LUP reviews
 
 This is an internal point-by-point response draft for the review dated 7
 September 2026. It records what the repository now supports and what remains
 outside the evidence boundary. The manuscript remains a public-data benchmark
 and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
+
+## Twelfth-round revisions and proof-stage corrections
+
+| ID | Review concern / author check | Revision made | Evidence / remaining boundary |
+|---|---|---|---|
+| R12.1 | Figure 1 contained a label whose first line extended beyond the rounded box | Rebalanced the central aligned-grid label into two centered lines, increased the box height and reduced the label size; regenerated the editable SVG/PDF and 600-dpi raster outputs. | The label is now fully contained within its box in the source artwork and embedded manuscript PDF. |
+| R12.2 | A table was left-aligned rather than centered in the article PDF | Changed `\\LTleft` and `\\LTright` from fixed zero lengths to stretchable fills in both `main.tex` and `lup_submission.tex`, centering all natural-width `longtable` objects while preserving the full-width layout of Table 2. | Table 1 is visibly centered; Table 2 remains centered at the text block width and stays within the page margins. |
+| R12.3 | Supplementary Fig. S3 FoM labels could be confused with Table 1 seed means | Added `(ensemble raster)` to every bottom-row FoM annotation and stated in the figure note that these values come from majority-vote ensemble rasters rather than seed means. | No numerical results changed. |
+| R12.4 | Supplementary Fig. S2 panel F made the all-zero 2023 bars visually invisible | Added the in-panel annotation `2023: 0.000 for all models`; the 2024 bars and year legend remain unchanged. | This clarifies a plotted zero rather than missing data. |
+| R12.5 | Figure 4 bottom note was close to the two-line x labels at proof scale | Increased the figure bottom margin and regenerated the figure so the note has additional separation after reduction. | No numerical values changed. |
+
+**Twelfth-round proof evidence.** The revised manuscript was recompiled as the
+18-page A4 `main.pdf`, `lup_submission.pdf` and `manuscript.pdf`. Figure 1 and
+Tables 1–2 were inspected from rendered PDF pages. The scientific outputs and
+model inputs are unchanged; only artwork, table layout and proof annotations
+were revised. The post-edit reproducibility gate reports `PASS` with all 91
+manifest records verified at UTC timestamp `2026-09-07T16:09:16.449322+00:00`.
 
 ## Eleventh-round revisions
 

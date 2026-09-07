@@ -72,6 +72,8 @@ def required_paths() -> dict[str, set[Path]]:
         HERE / "reproducibility/requirements.lock.txt",
         HERE / "reproducibility/environment.json",
         REPO / ".github/workflows/kernel-x86_64-reference.yml",
+        REPO / "manuscript/main.tex",
+        REPO / "manuscript/lup_submission.tex",
     }
     _add(config, (HERE / "reproducibility").glob("*.py"))
 

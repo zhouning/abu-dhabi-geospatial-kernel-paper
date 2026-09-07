@@ -227,9 +227,9 @@ def render_figure_1() -> None:
     arrow((0.385, 0.70), (0.43, 0.57))
     arrow((0.615, 0.70), (0.57, 0.57))
     arrow((0.845, 0.70), (0.71, 0.57))
-    box(0.30, 0.48, 0.40, 0.10,
-        "Aligned 100-m grid: state $S_t$, action $A_t$, and hard-mask evidence",
-        face="#FFFFFF", edge="#59636F", fontsize=8.1, weight="bold")
+    box(0.30, 0.475, 0.40, 0.115,
+        "Aligned 100-m grid:\nstate $S_t$, action $A_t$, and hard-mask evidence",
+        face="#FFFFFF", edge="#59636F", fontsize=7.4, weight="bold")
 
     ax.text(0.055, 0.40, "KERNEL EXECUTION", fontsize=8.5,
             fontweight="bold", color="#3C4853")
@@ -405,7 +405,9 @@ def render_figure_4() -> None:
         "state_writeback_deleted": "No state\nwriteback",
     }
     fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.55))
-    fig.subplots_adjust(left=0.09, right=0.985, top=0.73, bottom=0.25, wspace=0.36)
+    # Leave a little more room below the two-line x tick labels so the
+    # explanatory note remains separated after journal-scale reduction.
+    fig.subplots_adjust(left=0.09, right=0.985, top=0.73, bottom=0.29, wspace=0.36)
 
     # A: proposal ablation absolute FoM.
     ax = axes[0]
@@ -645,7 +647,9 @@ def render_supplementary_figure_2() -> None:
     axes[1, 2].set_ylabel("Strict change FoM")
     axes[1, 2].set_xticks(positions, model_labels, rotation=35, ha="right")
     axes[1, 2].set_ylim(0, 0.022)
-    axes[1, 2].legend(frameon=False, fontsize=6.2, loc="upper left")
+    axes[1, 2].legend(frameon=False, fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, 0.98))
+    axes[1, 2].text(0.02, 0.69, "2023: 0.000 for all models", transform=axes[1, 2].transAxes,
+                    fontsize=6.1, color="#4A5560", ha="left", va="top")
     axes[1, 2].grid(axis="y", color="#D8DDE3", linewidth=0.45)
 
     for axis in axes.flat:
@@ -719,7 +723,8 @@ def render_supplementary_figure_3() -> None:
         ax = fig.add_subplot(bottom_grid[0, index])
         ax.imshow(error, cmap=ListedColormap(colors), vmin=0, vmax=5, interpolation="nearest", aspect="equal")
         metric = comparison["ensembles"][model]["2024"]["evaluation"]["change_figure_of_merit"]
-        ax.set_title(f"{MODEL_LABEL[model].split(chr(10))[0]}\nstrict FoM = {metric:.3f}", fontsize=7.7, fontweight="bold", pad=4)
+        ax.set_title(f"{MODEL_LABEL[model].split(chr(10))[0]}\nstrict FoM = {metric:.3f} (ensemble raster)",
+                     fontsize=7.5, fontweight="bold", pad=4)
         ax.set_xticks([])
         ax.set_yticks([])
         for spine in ax.spines.values():
@@ -735,7 +740,7 @@ def render_supplementary_figure_3() -> None:
     fig.suptitle("Fig. S3 | Historical 2024 maps and change-error decomposition",
                  x=0.035, y=0.975, ha="left", fontsize=11.5, fontweight="bold")
     fig.text(0.035, 0.125,
-             "Top row: observed 2024 labels and two-step open-loop ensemble predictions from 2022. Bottom row: destination-aware error categories relative to the 2022 origin.",
+             "Top row: observed 2024 labels and two-step open-loop ensemble predictions from 2022. Bottom row: destination-aware error categories relative to the 2022 origin. Bottom-row FoM values are computed on majority-vote ensemble rasters, not seed means.",
              fontsize=6.9, color="#4A5560")
     save_publication_figure(fig, "figS03_historical_2024_maps_and_errors")
 

@@ -1,7 +1,7 @@
 {
   "schema": "gwm.abu_dhabi_reproducibility_check.v2",
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-07T14:28:39.082507+00:00",
+  "created_at": "2026-09-07T16:09:16.449322+00:00",
   "status": "PASS",
   "python": "3.11.15",
   "platform": {
@@ -787,6 +787,22 @@
       "path": "data_agent/uwm/geospatial_kernel/runtime.py",
       "role": "code",
       "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "manuscript/lup_submission.tex",
+      "role": "configuration",
+      "hash_mode": "raw",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "manuscript/main.tex",
+      "role": "configuration",
+      "hash_mode": "raw",
       "exists": true,
       "bytes_ok": true,
       "sha256_ok": true
