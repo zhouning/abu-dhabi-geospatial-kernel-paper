@@ -8,8 +8,8 @@
     {
       "path": ".github/workflows/kernel-x86_64-reference.yml",
       "role": "configuration",
-      "bytes": 1709,
-      "sha256": "5b19dbe7de3c31f69f2747a7d80ff5c96058ea3e2e1e3e21f2c89074bf68308f",
+      "bytes": 2474,
+      "sha256": "914c3d22eb07461b3c1ab68934fd44007500f5fdc840fd6ad2997d0cf16a05ff",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -526,8 +526,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/build_reproducibility_manifest.py",
       "role": "configuration",
-      "bytes": 4768,
-      "sha256": "6a2304f21cd08c881625fbd047c2f474192d83287ad09da05a2a078d697c48ef",
+      "bytes": 4776,
+      "sha256": "7c11829524d6783141ebf825ee3d2a7f9fb020f5ab7754a8b2339eabeed68907",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -633,14 +633,14 @@
       "role": "configuration",
       "bytes": 1418,
       "sha256": "e1dde92bb5ddb1bef3515efa6733a2448287a10a0bc5940a434e0ebad06f1fff",
-      "hash_mode": "raw"
+      "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/main.tex",
       "role": "configuration",
       "bytes": 1418,
       "sha256": "e1dde92bb5ddb1bef3515efa6733a2448287a10a0bc5940a434e0ebad06f1fff",
-      "hash_mode": "raw"
+      "hash_mode": "text_lf_normalized"
     }
   ]
 }

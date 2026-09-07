@@ -1,7 +1,7 @@
 {
   "schema": "gwm.abu_dhabi_reproducibility_check.v2",
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-07T16:09:16.449322+00:00",
+  "created_at": "2026-09-07T17:12:39.607432+00:00",
   "status": "PASS",
   "python": "3.11.15",
   "platform": {
@@ -794,7 +794,7 @@
     {
       "path": "manuscript/lup_submission.tex",
       "role": "configuration",
-      "hash_mode": "raw",
+      "hash_mode": "text_lf_normalized",
       "exists": true,
       "bytes_ok": true,
       "sha256_ok": true
@@ -802,7 +802,7 @@
     {
       "path": "manuscript/main.tex",
       "role": "configuration",
-      "hash_mode": "raw",
+      "hash_mode": "text_lf_normalized",
       "exists": true,
       "bytes_ok": true,
       "sha256_ok": true

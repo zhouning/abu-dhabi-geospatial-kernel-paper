@@ -1,9 +1,22 @@
-# Response to the ninth-, tenth-, eleventh- and twelfth-round LUP reviews
+# Response to the ninth-, tenth-, eleventh-, twelfth- and thirteenth-round LUP reviews
 
 This is an internal point-by-point response draft for the review dated 7
 September 2026. It records what the repository now supports and what remains
 outside the evidence boundary. The manuscript remains a public-data benchmark
 and scenario-stress-test study, not an official Abu Dhabi land-use forecast.
+
+## Thirteenth-round portability correction
+
+| ID | Review concern | Revision made | Evidence / remaining boundary |
+|---|---|---|---|
+| R13.1 | The two LaTeX wrappers added to the input/configuration manifest were hashed as raw bytes, so a Windows `core.autocrlf=true` checkout failed the gate | Added `.tex` to the manifest generator's text-suffix set. Both `manuscript/main.tex` and `manuscript/lup_submission.tex` are now recorded as `text_lf_normalized`, so their byte length and SHA-256 are evaluated after CRLF/CR-to-LF canonicalization. | The two canonical records remain 1,418 bytes with SHA-256 prefix `e1dde92b`; only their hash mode changed. |
+| R13.2 | The CI workflow did not exercise the Windows line-ending claim | Added a `windows-latest` manifest job. It configures `core.autocrlf=true`, forces a fresh CRLF working-tree checkout, and then runs `reproducibility_check.py` before any model execution. | The existing Ubuntu x86_64 categorical-raster regression remains unchanged. |
+
+**Thirteenth-round release evidence.** After the manifest and workflow changes,
+the stored gate reports `status: PASS` with all 91 records verified at UTC
+timestamp `2026-09-07T17:12:39.607432+00:00`. The release commit containing
+these changes is recorded in the follow-up documentation commit to avoid a
+self-referential commit identifier.
 
 ## Twelfth-round revisions and proof-stage corrections
 

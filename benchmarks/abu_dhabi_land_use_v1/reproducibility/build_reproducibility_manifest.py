@@ -21,7 +21,7 @@ OUT = HERE / "reproducibility"
 
 TEXT_SUFFIXES = {
     ".c", ".cc", ".cpp", ".h", ".hpp", ".ini", ".json", ".md", ".py",
-    ".rst", ".toml", ".txt", ".yaml", ".yml",
+    ".rst", ".tex", ".toml", ".txt", ".yaml", ".yml",
 }
 
 

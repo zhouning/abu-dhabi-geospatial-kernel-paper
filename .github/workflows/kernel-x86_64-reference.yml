@@ -10,6 +10,33 @@ permissions:
   contents: read
 
 jobs:
+  windows-crlf-manifest:
+    name: Windows CRLF reproducibility manifest
+    runs-on: windows-latest
+    steps:
+      - name: Check out public bundle
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Force a core.autocrlf=true checkout
+        shell: pwsh
+        run: |
+          git config core.autocrlf true
+          git rm --cached -r .
+          git reset --hard HEAD
+
+      - name: Set up locked Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify reproducibility manifest
+        shell: pwsh
+        run: >-
+          python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
+          --output "$env:RUNNER_TEMP/reproducibility_check_windows_crlf.json"
+
   categorical-reference:
     name: Ubuntu x86_64 categorical reference
     runs-on: ubuntu-24.04
