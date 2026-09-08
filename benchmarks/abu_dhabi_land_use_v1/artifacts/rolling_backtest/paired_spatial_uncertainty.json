@@ -2,7 +2,7 @@
   "benchmark_id": "abu-dhabi-land-use-v1",
   "block_size_metres": 800,
   "block_size_pixels": 8,
-  "created_at": "2026-09-08T12:37:40.212765+00:00",
+  "created_at": "2026-09-08T15:04:42.041293+00:00",
   "interpretation": "Conditional mapped-domain uncertainty under the public-product labels; not a population or authoritative-validation interval.",
   "method": "paired_spatial_block_bootstrap",
   "n_resamples": 1000,
@@ -825,6 +825,6 @@
     }
   ],
   "schema": "gwm.abu_dhabi_rolling_uncertainty.v1",
-  "source_report_sha256": "9c0f328a581fde875f6f194873fcd65badf70400d18c46de7299dedbe2296611",
+  "source_report_sha256": "a3e7b71117c36884a18da8e1e28dea328595992dcd8de6a196355c9b9a23ea00",
   "status": "complete"
 }

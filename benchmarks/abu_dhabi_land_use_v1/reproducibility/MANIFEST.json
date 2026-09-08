@@ -386,8 +386,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/audit_outputs.py",
       "role": "code",
-      "bytes": 14685,
-      "sha256": "d36919e8a726c96ef0bd45d5069cffeafb2891e9ff75cc6ebc0b495515510ca7",
+      "bytes": 15817,
+      "sha256": "1bd69e945483386416126765ee46021b99ca41f57ff1eaf49230d12e53534627",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -540,8 +540,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/render_nature_figures.py",
       "role": "code",
-      "bytes": 43099,
-      "sha256": "c513a6b882671e22020f69b47bcccd67650c2e5bfdda419a5a843dfe21cfd190",
+      "bytes": 43515,
+      "sha256": "23c961de2ecc19e2b4a39e6edf8b65c3956b5bd9c25353106b970ae4b7ac79de",
       "hash_mode": "text_lf_normalized"
     },
     {

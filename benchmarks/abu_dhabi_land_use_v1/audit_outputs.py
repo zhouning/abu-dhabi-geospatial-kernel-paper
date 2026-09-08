@@ -20,6 +20,14 @@ DEFAULT_OUTPUT = HERE / "output_audit.json"
 LEGACY_HISTORICAL_REPORT = HERE / "comparison_report.json"
 LEGACY_PLANNING_REPORT = HERE / "planning_comparison_report_public_2025_2031.json"
 LEGACY_PLANNING_SCENARIO_REPORT = HERE / "planning_scenario_report_public_2025_2031.json"
+ROLLING_REPORT = HERE / "artifacts/rolling_backtest/report.json"
+ROLLING_UNCERTAINTY_REPORT = HERE / "artifacts/rolling_backtest/paired_spatial_uncertainty.json"
+WORLDCOVER_ROOT = HERE / "artifacts/external_validation/worldcover"
+WORLDCOVER_DIAGNOSTIC = WORLDCOVER_ROOT / "diagnostic.json"
+WORLDCOVER_EVIDENCE = (
+    WORLDCOVER_ROOT / "worldcover_2020_built_fraction_100m.tif",
+    WORLDCOVER_ROOT / "worldcover_2021_built_fraction_100m.tif",
+)
 
 
 def _select_report(current_name: str, legacy_path: Path) -> Path:
@@ -143,10 +151,9 @@ def _planning_records() -> list[dict[str, Any]]:
 
 
 def _rolling_records() -> list[dict[str, Any]]:
-    report_path = HERE / "artifacts/rolling_backtest/report.json"
-    if not report_path.is_file():
+    if not ROLLING_REPORT.is_file():
         return []
-    report = json.loads(report_path.read_text(encoding="utf-8"))
+    report = json.loads(ROLLING_REPORT.read_text(encoding="utf-8"))
     records = []
     for row in report.get("rows", []):
         artifact = row.get("prediction_artifact")
@@ -174,6 +181,10 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         BUNDLE_ROOT / "hard_exclusion_2024_100m.tif",
         HISTORICAL_REPORT,
         PLANNING_SCENARIO_REPORT,
+        ROLLING_REPORT,
+        ROLLING_UNCERTAINTY_REPORT,
+        WORLDCOVER_DIAGNOSTIC,
+        *WORLDCOVER_EVIDENCE,
         PLANNING_REPORT,
     ]
     missing_inputs = [_report_path(path) for path in required_inputs if not path.is_file()]
@@ -243,6 +254,9 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         for year in (2022, 2024)
     }
     records = _historical_records() + _planning_records() + _rolling_records()
+    rolling_count = sum(row["track"] == "rolling_seed" for row in records)
+    if rolling_count != 36:
+        raise ValueError(f"incomplete_rolling_prediction_records:{rolling_count}:36")
     if len({_resolve(row["path"]).resolve() for row in records}) != len(records):
         raise ValueError("duplicate_prediction_paths")
 
@@ -320,9 +334,22 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         )
     evidence_artifacts = []
     evidence_failure_count = 0
-    for evidence_path in sorted(
-        (HERE / "artifacts/external_validation/worldcover").glob("worldcover_*_built_fraction_100m.tif")
-    ):
+    for evidence_path in WORLDCOVER_EVIDENCE:
+        if not evidence_path.is_file():
+            evidence_failure_count += 1
+            evidence_artifacts.append(
+                {
+                    "track": "external_product_input",
+                    "path": _report_path(evidence_path),
+                    "bytes": None,
+                    "sha256": None,
+                    "grid_aligned": False,
+                    "nonfinite_pixels": None,
+                    "missing": True,
+                    "valid": False,
+                }
+            )
+            continue
         values, profile = _read(evidence_path)
         aligned = (
             profile["width"] == reference["width"]

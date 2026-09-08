@@ -1,6 +1,6 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-08T12:37:31.400995+00:00",
+  "created_at": "2026-09-08T15:04:34.341569+00:00",
   "evaluation_mode": "one_step_expanding_window_oracle_allocation",
   "model_target_boundary": "For origin t, fit transitions end at t and predict t+1; observed target counts are used only for allocation-skill isolation.",
   "models": [
@@ -105,7 +105,7 @@
       "target_year": 2021,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 45.21272037504241,
+        "fit_seconds": 6.573633917141706,
         "fit_target_latest_year": 2020,
         "fit_transitions": [
           {
@@ -398,7 +398,7 @@
       "target_year": 2021,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 42.89866662491113,
+        "fit_seconds": 10.011754957959056,
         "fit_target_latest_year": 2020,
         "fit_transitions": [
           {
@@ -691,7 +691,7 @@
       "target_year": 2021,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 40.54495200002566,
+        "fit_seconds": 5.412470332812518,
         "fit_target_latest_year": 2020,
         "fit_transitions": [
           {
@@ -984,7 +984,7 @@
       "target_year": 2022,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 40.55737016675994,
+        "fit_seconds": 5.8786133332178,
         "fit_target_latest_year": 2021,
         "fit_transitions": [
           {
@@ -1283,7 +1283,7 @@
       "target_year": 2022,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 48.64862579200417,
+        "fit_seconds": 6.15473504178226,
         "fit_target_latest_year": 2021,
         "fit_transitions": [
           {
@@ -1582,7 +1582,7 @@
       "target_year": 2022,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 42.424028125125915,
+        "fit_seconds": 8.130142542067915,
         "fit_target_latest_year": 2021,
         "fit_transitions": [
           {
@@ -1881,7 +1881,7 @@
       "target_year": 2023,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 46.863568124827,
+        "fit_seconds": 12.127506666816771,
         "fit_target_latest_year": 2022,
         "fit_transitions": [
           {
@@ -2186,7 +2186,7 @@
       "target_year": 2023,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 55.9934971248731,
+        "fit_seconds": 10.795816166792065,
         "fit_target_latest_year": 2022,
         "fit_transitions": [
           {
@@ -2491,7 +2491,7 @@
       "target_year": 2023,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 66.96577483275905,
+        "fit_seconds": 6.2997152912430465,
         "fit_target_latest_year": 2022,
         "fit_transitions": [
           {
@@ -2796,7 +2796,7 @@
       "target_year": 2024,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 41.00137795880437,
+        "fit_seconds": 6.52502700034529,
         "fit_target_latest_year": 2023,
         "fit_transitions": [
           {
@@ -3107,7 +3107,7 @@
       "target_year": 2024,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 44.78515516594052,
+        "fit_seconds": 6.483273208141327,
         "fit_target_latest_year": 2023,
         "fit_transitions": [
           {
@@ -3418,7 +3418,7 @@
       "target_year": 2024,
       "training": {
         "feature_count": 23,
-        "fit_seconds": 45.641639333684,
+        "fit_seconds": 6.4706549579277635,
         "fit_target_latest_year": 2023,
         "fit_transitions": [
           {
@@ -4116,5 +4116,5 @@
     ],
     "training_state_and_driver_latest_year": "origin_year"
   },
-  "wall_seconds": 569.7188382917084
+  "wall_seconds": 94.86974541703239
 }

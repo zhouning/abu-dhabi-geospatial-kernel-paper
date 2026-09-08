@@ -1,6 +1,6 @@
 {
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-08T12:24:29.010298+00:00",
+  "created_at": "2026-09-08T15:01:23.095881+00:00",
   "display_name": "GeoSOS-derived FLUS-style ANN–CA console (author-modified build)",
   "external_binary": "vendor/flus_console",
   "feature_mode": "baseline_plus_onehot",
@@ -30,7 +30,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.5075274161063135,
+        "fit_seconds": 0.5155028747394681,
         "seed": 31,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -38,7 +38,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.6792609593831,
+          "ca_seconds": 4.69553754106164,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -103,7 +103,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.690279792062938,
+          "ca_seconds": 4.667670083232224,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -191,7 +191,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.4331650002859533,
+        "fit_seconds": 0.45301495771855116,
         "seed": 47,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -199,7 +199,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.65627474989742,
+          "ca_seconds": 4.695257582701743,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -264,7 +264,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.673427832778543,
+          "ca_seconds": 4.638848875183612,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -352,7 +352,7 @@
         "fit_label_years": [
           2021
         ],
-        "fit_seconds": 0.5529382089152932,
+        "fit_seconds": 0.5511128748767078,
         "seed": 73,
         "target_driver_year": 2022,
         "target_pixel_rows": 79726,
@@ -360,7 +360,7 @@
       },
       "years": [
         {
-          "ca_seconds": 4.729618708137423,
+          "ca_seconds": 4.6282593328505754,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -425,7 +425,7 @@
           "target_year": 2023
         },
         {
-          "ca_seconds": 4.900367666035891,
+          "ca_seconds": 4.590389334131032,
           "evaluation": {
             "actual_class_counts": {
               "1": 15438,
@@ -506,5 +506,5 @@
   "state_writeback": true,
   "status": "complete",
   "test_label_access_during_fit": false,
-  "wall_seconds": 30.544528500176966
+  "wall_seconds": 30.214779458008707
 }

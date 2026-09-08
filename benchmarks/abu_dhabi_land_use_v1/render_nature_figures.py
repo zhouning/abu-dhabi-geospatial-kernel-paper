@@ -143,7 +143,16 @@ def save_publication_figure(fig: plt.Figure, stem: str) -> None:
     """Write all required publication formats with editable text."""
 
     base = OUT / stem
-    fig.savefig(base.with_suffix(".svg"), bbox_inches="tight", pad_inches=0.04)
+    svg_path = base.with_suffix(".svg")
+    fig.savefig(svg_path, bbox_inches="tight", pad_inches=0.04)
+    # Matplotlib emits significant-looking trailing spaces in SVG path data.
+    # They are harmless to render but make reproducibility diffs noisy and
+    # cause the repository whitespace gate to fail after a clean rerun.
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines())
+        + "\n",
+        encoding="utf-8",
+    )
     fig.savefig(base.with_suffix(".pdf"), bbox_inches="tight", pad_inches=0.04)
     fig.savefig(base.with_suffix(".png"), dpi=600, bbox_inches="tight", pad_inches=0.04)
     fig.savefig(base.with_suffix(".tiff"), dpi=600, bbox_inches="tight", pad_inches=0.04)
