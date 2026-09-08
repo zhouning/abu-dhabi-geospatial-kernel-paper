@@ -160,9 +160,9 @@ def _write_source_data(rolling: dict, uncertainty: dict, worldcover: dict) -> No
                     "x": threshold,
                     "seed": "mean_n3",
                     "estimate": metric["mean"]["f1"],
-                    "lower": "",
-                    "upper": "",
-                    "metric": "binary_f1_against_worldcover_with_worldcover_gain_count_action",
+                    "lower": metric["mean"]["f1"] - metric.get("sample_standard_deviation", {}).get("f1", 0.0),
+                    "upper": metric["mean"]["f1"] + metric.get("sample_standard_deviation", {}).get("f1", 0.0),
+                    "metric": "binary_f1_against_worldcover_with_worldcover_gain_count_action_mean_plus_minus_sample_sd",
                 }
             )
     with path.open("w", encoding="utf-8", newline="") as handle:
@@ -308,15 +308,34 @@ def main() -> None:
             else:
                 item = row["worldcover_gain_count_action"][result_key]
             values.append(item["f1"] if "mean" not in item else item["mean"]["f1"])
-        ax.plot(
-            thresholds,
-            values,
-            marker="o",
-            linewidth=1.5,
-            markersize=4,
-            color=COLORS[label_key],
-            label=LABELS[label_key],
-        )
+        if label_key == "dynamic_world_observed":
+            ax.plot(
+                thresholds,
+                values,
+                marker="o",
+                linewidth=1.5,
+                markersize=4,
+                color=COLORS[label_key],
+                label=LABELS[label_key],
+            )
+        else:
+            errors = [
+                row["worldcover_gain_count_action"][result_key]
+                .get("sample_standard_deviation", {})
+                .get("f1", 0.0)
+                for row in worldcover["rows"]
+            ]
+            ax.errorbar(
+                thresholds,
+                values,
+                yerr=errors,
+                marker="o",
+                linewidth=1.5,
+                markersize=4,
+                capsize=2.0,
+                color=COLORS[label_key],
+                label=LABELS[label_key],
+            )
     ax.set_title("Built-gain agreement", loc="left", fontweight="bold")
     ax.set_xlabel("WorldCover built fraction threshold")
     ax.set_ylabel("F1")

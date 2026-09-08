@@ -18,9 +18,10 @@ analysis, excluding the later road snapshot, gave Kernel FoM values of
 window. In the only available WorldCover 2020--2021 window, Dynamic
 World built pixels decreased, so the oracle-demand built-gain test had
 zero power for every allocator. Dynamic World-to-WorldCover built-gain
-F1 was 0.0111--0.0192; a count-controlled allocation variant gave Kernel
-F1 values of 0.0157--0.0397 versus 0.0251--0.0277 for random allocation,
-with Kernel higher at the two larger thresholds. The planning track is
+F1 was 0.0111--0.0192. The count-controlled allocation variant was near
+opportunity-level overall: Kernel was below random at 0.05,
+indistinguishable from random at 0.10--0.20 given three-seed variation, and
+above random only at 0.30. The planning track is
 therefore reported as scenario stress testing, not official forecasting.
 The protocol's principal contribution is an inspectable
 proposal--projection--writeback boundary; the experiments support
@@ -671,9 +672,18 @@ F1 of 0 is therefore a structural-zero, zero-power result and cannot
 evaluate gain-location skill. The informative count-controlled variant
 used the WorldCover gain count as the action and ranked 2020-origin
 Kernel proposals against a random allocation from the same candidate
-population. Kernel F1 was 0.0157--0.0397 versus 0.0251--0.0277 for
-random allocation; Kernel was higher at thresholds 0.20 and 0.30, but
-lower at 0.05 and 0.10. For 2021 built stock, Kernel F1 was
+population. Kernel F1 was 0.0157--0.0397 versus 0.0251--0.0277 for random allocation.
+The mean $\pm$ sample-SD pairs (Kernel versus random) were 0.0157 $\pm$ 0.0008
+versus 0.0268 $\pm$ 0.0058 at 0.05, 0.0228 $\pm$ 0.0007 versus 0.0277 $\pm$
+0.0036 at 0.10, 0.0268 $\pm$ 0.0011 versus 0.0251 $\pm$ 0.0011 at 0.20,
+and 0.0397 $\pm$ 0.0007 versus 0.0251 $\pm$ 0.0075 at 0.30. Thus Kernel was
+below random at 0.05, the 0.10--0.20 differences were not distinguishable
+from three-seed variation, and only the 0.30 result was clearly above random.
+The low-threshold deficit is consistent with WorldCover cells that barely
+exceed 5\% built fraction, including sparse or road-edge structure that
+Dynamic World does not consistently label as built; the Kernel proposal learned
+from Dynamic World therefore ranks these product-specific gains later than
+random candidates. For 2021 built stock, Kernel F1 was
 0.3518--0.3971, while persistence was 0.3886--0.4387. The corresponding
 Dynamic World 2020 and 2021 observed-stock baselines were 0.3908--0.4334
 and 0.3501--0.3924, respectively, showing that the apparent persistence
@@ -898,8 +908,9 @@ models in all four one-step windows, but its score varies from 0.0724 to
 diagnostic does not provide a blanket external validation: the original
 Dynamic World-count gain comparison is structurally zero-powered because
 the observed built count declines. The count-controlled variant supplies
-an informative but mixed allocation comparison, with Kernel exceeding
-random allocation only at the two larger thresholds. Confidence
+an informative but near-opportunity-level allocation comparison: Kernel is
+below random at 0.05, indistinguishable from random at 0.10--0.20 given
+three-seed variation, and above random only at 0.30. Confidence
 filtering, rolling-window stability and external-product agreement are
 different tests, and none substitutes for authoritative local
 validation. We therefore treat the planning frontier as conditional on

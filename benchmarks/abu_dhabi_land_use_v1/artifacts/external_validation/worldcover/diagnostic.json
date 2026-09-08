@@ -4,7 +4,7 @@
     "origin_year": 2020,
     "target_year": 2021
   },
-  "created_at": "2026-09-08T15:05:00.998126+00:00",
+  "created_at": "2026-09-08T16:21:28.483215+00:00",
   "interpretation": "independent_public_product_agreement_not_ground_truth",
   "known_limitations": [
     "WorldCover 2020 v1.0 and 2021 v2.0 are different product versions.",
@@ -555,6 +555,12 @@
             "precision": 0.015723270440251572,
             "recall": 0.015723270440251572
           },
+          "sample_standard_deviation": {
+            "f1": 0.0008476832584084064,
+            "intersection_over_union": 0.00043064265587945466,
+            "precision": 0.0008476832584084064,
+            "recall": 0.0008476832584084064
+          },
           "seed_results": [
             {
               "f1": 0.016648168701442843,
@@ -606,6 +612,12 @@
             "intersection_over_union": 0.013599223170132424,
             "precision": 0.026822049574546803,
             "recall": 0.026822049574546803
+          },
+          "sample_standard_deviation": {
+            "f1": 0.005829060768253324,
+            "intersection_over_union": 0.0029947563450468916,
+            "precision": 0.005829060768253324,
+            "recall": 0.005829060768253324
           },
           "seed_results": [
             {
@@ -1195,6 +1207,12 @@
             "precision": 0.02277564921243082,
             "recall": 0.02277564921243082
           },
+          "sample_standard_deviation": {
+            "f1": 0.0007373566656317055,
+            "intersection_over_union": 0.000377302135236801,
+            "precision": 0.0007373566656317055,
+            "recall": 0.0007373566656317055
+          },
           "seed_results": [
             {
               "f1": 0.02362707535121328,
@@ -1246,6 +1264,12 @@
             "intersection_over_union": 0.014032075853686881,
             "precision": 0.02767134951042997,
             "recall": 0.02767134951042997
+          },
+          "sample_standard_deviation": {
+            "f1": 0.003631060474506594,
+            "intersection_over_union": 0.0018654562440111606,
+            "precision": 0.003631060474506594,
+            "recall": 0.003631060474506594
           },
           "seed_results": [
             {
@@ -1835,6 +1859,12 @@
             "precision": 0.026758938869665513,
             "recall": 0.026758938869665513
           },
+          "sample_standard_deviation": {
+            "f1": 0.0010571108869563647,
+            "intersection_over_union": 0.0005428975182950495,
+            "precision": 0.0010571108869563647,
+            "recall": 0.0010571108869563647
+          },
           "seed_results": [
             {
               "f1": 0.02768166089965398,
@@ -1886,6 +1916,12 @@
             "intersection_over_union": 0.012732350942763796,
             "precision": 0.0251441753171857,
             "recall": 0.0251441753171857
+          },
+          "sample_standard_deviation": {
+            "f1": 0.0010571108869563647,
+            "intersection_over_union": 0.0005421910625596497,
+            "precision": 0.0010571108869563647,
+            "recall": 0.0010571108869563647
           },
           "seed_results": [
             {
@@ -2475,6 +2511,12 @@
             "precision": 0.03970880211780278,
             "recall": 0.03970880211780278
           },
+          "sample_standard_deviation": {
+            "f1": 0.0006618133686300438,
+            "intersection_over_union": 0.00034444858847411305,
+            "precision": 0.0006618133686300438,
+            "recall": 0.0006618133686300438
+          },
           "seed_results": [
             {
               "f1": 0.04037061548643282,
@@ -2526,6 +2568,12 @@
             "intersection_over_union": 0.012744385709736026,
             "precision": 0.02514890800794176,
             "recall": 0.02514890800794176
+          },
+          "sample_standard_deviation": {
+            "f1": 0.007516754924950726,
+            "intersection_over_union": 0.0038625779733437006,
+            "precision": 0.007516754924950726,
+            "recall": 0.007516754924950726
           },
           "seed_results": [
             {

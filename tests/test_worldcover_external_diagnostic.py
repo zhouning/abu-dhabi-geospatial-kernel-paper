@@ -2,6 +2,7 @@ import numpy as np
 
 from benchmarks.abu_dhabi_land_use_v1.run_worldcover_external_diagnostic import (
     _binary_metrics,
+    _sample_sd_optional,
     _worldcover_count_allocation,
 )
 
@@ -52,3 +53,8 @@ def test_worldcover_count_action_respects_count_and_hard_mask():
     assert not kernel[1, 2]
     assert not random[1, 2]
     assert kernel[1, 0] and kernel[1, 1]  # highest eligible scores
+
+
+def test_sample_sd_reports_three_seed_dispersion():
+    rows = [{"f1": value} for value in (0.0166481687, 0.0149833518, 0.0155382908)]
+    assert round(_sample_sd_optional(rows, "f1"), 4) == 0.0008

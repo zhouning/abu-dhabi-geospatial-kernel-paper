@@ -21,13 +21,20 @@ comparison is structural-zero because Dynamic World built count decreases;
 the count-controlled rows use the WorldCover gain count as the action and are
 the informative allocation comparison. All comparisons remain external
 public-product agreement diagnostics, not authoritative ground-truth validation.
+For the two count-controlled action columns, `±` is the three-seed sample SD.
 
-| Built fraction threshold | WorldCover built gain cells | Dynamic World built-gain F1 | Dynamic World 2020 same-year stock F1 | Dynamic World 2021 same-year stock F1 | Kernel 2021 built-stock F1 | Persistence 2021 built-stock F1 | Kernel built-gain F1 (structural-zero) | Kernel F1 (WorldCover-count action) | Random F1 (WorldCover-count action) |
+| Built fraction threshold | WorldCover built gain cells | Dynamic World built-gain F1 | Dynamic World 2020 same-year stock F1 | Dynamic World 2021 same-year stock F1 | Kernel 2021 built-stock F1 | Persistence 2021 built-stock F1 | Kernel built-gain F1 (structural-zero) | Kernel F1 (WorldCover-count action, mean ± SD) | Random F1 (WorldCover-count action, mean ± SD) |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 0.05 | 1,802 | 0.0111 | 0.3908 | 0.3501 | 0.3518 | 0.3886 | 0.0000 | 0.0157 | 0.0268 |
-| 0.10 | 1,566 | 0.0135 | 0.3998 | 0.3603 | 0.3625 | 0.4003 | 0.0000 | 0.0228 | 0.0277 |
-| 0.20 | 1,445 | 0.0188 | 0.4186 | 0.3780 | 0.3814 | 0.4209 | 0.0000 | 0.0268 | 0.0251 |
-| 0.30 | 1,511 | 0.0192 | 0.4334 | 0.3924 | 0.3971 | 0.4387 | 0.0000 | 0.0397 | 0.0251 |
+| 0.05 | 1,802 | 0.0111 | 0.3908 | 0.3501 | 0.3518 | 0.3886 | 0.0000 | 0.0157 ± 0.0008 | 0.0268 ± 0.0058 |
+| 0.10 | 1,566 | 0.0135 | 0.3998 | 0.3603 | 0.3625 | 0.4003 | 0.0000 | 0.0228 ± 0.0007 | 0.0277 ± 0.0036 |
+| 0.20 | 1,445 | 0.0188 | 0.4186 | 0.3780 | 0.3814 | 0.4209 | 0.0000 | 0.0268 ± 0.0011 | 0.0251 ± 0.0011 |
+| 0.30 | 1,511 | 0.0192 | 0.4334 | 0.3924 | 0.3971 | 0.4387 | 0.0000 | 0.0397 ± 0.0007 | 0.0251 ± 0.0075 |
+
+Kernel was below random at 0.05, the 0.10–0.20 differences were not
+distinguishable from three-seed variation, and only the 0.30 result was clearly
+above random. The low-threshold deficit is consistent with WorldCover cells
+that barely exceed 5% built fraction, including sparse or road-edge structure
+that Dynamic World does not consistently label as built.
 
 The rolling 2023 row is a one-step forecast with 23 features and training
 through 2022, whereas the headline 2023 result uses 25 features and training

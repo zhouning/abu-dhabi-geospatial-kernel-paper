@@ -22,13 +22,13 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/output_audit_reproducible.json",
       "bytes": 175056,
-      "sha256": "21645fbcba4393e94f1d24bf354633f7b963f04f9847d55fc5fce77013309c6b",
+      "sha256": "dcec811ef7f0db7d8f385dc6f013674ff13e958a21feccebd82b9a43734bb12e",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/output_audit.json",
       "bytes": 175056,
-      "sha256": "21645fbcba4393e94f1d24bf354633f7b963f04f9847d55fc5fce77013309c6b",
+      "sha256": "1b97f9fa907b043c15420516d34d247abd4666474edf727d63bb6c9f9a62a553",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -93,8 +93,8 @@
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/external_validation/worldcover/diagnostic.json",
-      "bytes": 90398,
-      "sha256": "4e7affefea59e39f109e7bae6ac7bb8579d67fbab198c8092b294bd8e63b68c4",
+      "bytes": 92382,
+      "sha256": "171f43a8dd28dd8dc11d19c138f6661692f9d5b1eef738bc64a4076c4385d569",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -111,44 +111,44 @@
     },
     {
       "path": "manuscript/supplementary_table_S5_rolling_external_diagnostics.md",
-      "bytes": 2972,
-      "sha256": "f918ed19b4e4255cb8d0134b34d724df82a88dc7097c7c4edb7411b42a88b9f5",
+      "bytes": 3517,
+      "sha256": "5da7bcb1c9acf08f89e8d93cc5fcf7b583c9b7a7141563bd7102046d6fa7cb80",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/source_data_fig03_rolling_external_diagnostics.csv",
-      "bytes": 8753,
-      "sha256": "ddc0dcf6dea81f17288d3131c4cc0fde11f058a67aeda251afd77d2c0a0b90c0",
+      "bytes": 9276,
+      "sha256": "cef3e3c57c0c02b237543604eb4982a29ed164d6eeb9e8bf6015b3c827b1cdc3",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/main.pdf",
-      "bytes": 2287811,
-      "sha256": "021c6cf797f392d6e0add8c3fc2e45f4d0e01cd649a7b7fe3cd102102b1cd838",
+      "bytes": 2287732,
+      "sha256": "8c5b5fd88cb65842f946f3836fe0585024d905e66ff6c6b39eeaf93ed90e1fe3",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/lup_submission.pdf",
-      "bytes": 2287798,
-      "sha256": "1f111464d668c9ce1ae62032668d849db520d44ace08f6d26599be99af8a9b32",
+      "bytes": 2287727,
+      "sha256": "7ed9e26fdb2cba5bd54cc869aff4f5e7496ce659375d5b5820124f2c07f99058",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.pdf",
-      "bytes": 2287811,
-      "sha256": "021c6cf797f392d6e0add8c3fc2e45f4d0e01cd649a7b7fe3cd102102b1cd838",
+      "bytes": 2287732,
+      "sha256": "8c5b5fd88cb65842f946f3836fe0585024d905e66ff6c6b39eeaf93ed90e1fe3",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.docx",
-      "bytes": 1899032,
-      "sha256": "fb525a002b923d57bd10f93d1b6a87036a87831f3d89522f731cac0561d26089",
+      "bytes": 1898908,
+      "sha256": "85da190d471deb8c6fbb07d18085ef7d33d60d78606837380db230ef81c46c16",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript_pandoc.tex",
-      "bytes": 69764,
-      "sha256": "1f1070d6a3a1bbc7d3cc9b2da30c99d88be8b2f820f070b130f70235ee544357",
+      "bytes": 70581,
+      "sha256": "789c7d7b7f73dc142378bfbf736de65049f7efd34896462a09464f3e81c48905",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -429,26 +429,26 @@
     },
     {
       "path": "figures/fig03_rolling_external_diagnostics.pdf",
-      "bytes": 62035,
-      "sha256": "f37d1500bdd865e559af04b427b804eea46a3cbbd651e1354e1b5e0105f9db70",
+      "bytes": 62416,
+      "sha256": "a4c840f6a2b400fdf20ac4f1aa7ac158b3307da905491b92b97435f8b7d6f9a3",
       "hash_mode": "raw"
     },
     {
       "path": "figures/fig03_rolling_external_diagnostics.svg",
-      "bytes": 59386,
-      "sha256": "9943546ac24fa40e62a8670bf8b88ccfcb6e5704c53207456a5f3b0b6d6e8162",
+      "bytes": 63846,
+      "sha256": "4866df53afdc95eade5146e02e54465723826bc3c9a9a9f665d42a7a0b102b1a",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "figures/fig03_rolling_external_diagnostics.png",
-      "bytes": 613686,
-      "sha256": "24ca7c395264ecebb8001983064dfcfd947c6ca39ecdd1a140a083acd4ec83ec",
+      "bytes": 612865,
+      "sha256": "d015798faffe0cd576a4323e7bf26132829a3b733404a03832c025411bb56f82",
       "hash_mode": "raw"
     },
     {
       "path": "figures/fig03_rolling_external_diagnostics.tiff",
       "bytes": 66014414,
-      "sha256": "c42fc26c93b7facc69b3c20be3fde987a932af59f37e45a04f0dc172d504f00b",
+      "sha256": "ed0ef544c898910888e01889dcd937a38a7d71247fd61fc0f87023c1b6ed8547",
       "hash_mode": "raw"
     },
     {

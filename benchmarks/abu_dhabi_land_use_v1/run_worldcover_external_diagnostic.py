@@ -84,6 +84,11 @@ def _mean_optional(rows: list[dict[str, Any]], key: str) -> float | None:
     return float(np.mean(values)) if values else None
 
 
+def _sample_sd_optional(rows: list[dict[str, Any]], key: str) -> float | None:
+    values = [float(row[key]) for row in rows if row[key] is not None]
+    return float(np.std(values, ddof=1)) if len(values) >= 2 else None
+
+
 def _prediction_paths(report: dict[str, Any], *, model_id: str) -> list[tuple[int, Path]]:
     rows = [
         row
@@ -284,11 +289,19 @@ def run(
                             key: _mean_optional(action_kernel_per_seed, key)
                             for key in ("precision", "recall", "f1", "intersection_over_union")
                         },
+                        "sample_standard_deviation": {
+                            key: _sample_sd_optional(action_kernel_per_seed, key)
+                            for key in ("precision", "recall", "f1", "intersection_over_union")
+                        },
                     },
                     "random_allocation": {
                         "seed_results": action_random_per_seed,
                         "mean": {
                             key: _mean_optional(action_random_per_seed, key)
+                            for key in ("precision", "recall", "f1", "intersection_over_union")
+                        },
+                        "sample_standard_deviation": {
+                            key: _sample_sd_optional(action_random_per_seed, key)
                             for key in ("precision", "recall", "f1", "intersection_over_union")
                         },
                     },

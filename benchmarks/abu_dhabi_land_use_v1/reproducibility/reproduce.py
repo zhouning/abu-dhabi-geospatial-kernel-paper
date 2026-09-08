@@ -53,7 +53,7 @@ def _verify_manuscript_report_consistency() -> None:
         )
     )
     manuscript = (REPO / "manuscript/manuscript.md").read_text(encoding="utf-8")
-    manuscript_numeric = manuscript.replace("−", "-")
+    manuscript_numeric = " ".join(manuscript.replace("−", "-").split())
 
     # Table 1: all primary strict-FoM cells. Feature-expanded FLUS runs are
     # diagnostics and must not be treated as headline estimators.
@@ -206,10 +206,10 @@ def _verify_manuscript_report_consistency() -> None:
     if any(row["built_gain_agreement"]["geospatial_kernel"]["mean"]["f1"] != 0.0 for row in worldcover["rows"]):
         raise RuntimeError("worldcover_kernel_gain_not_zero")
     expected_action = {
-        0.05: (0.0157, 0.0268),
-        0.10: (0.0228, 0.0277),
-        0.20: (0.0268, 0.0251),
-        0.30: (0.0397, 0.0251),
+        0.05: (0.0157, 0.0008, 0.0268, 0.0058),
+        0.10: (0.0228, 0.0007, 0.0277, 0.0036),
+        0.20: (0.0268, 0.0011, 0.0251, 0.0011),
+        0.30: (0.0397, 0.0007, 0.0251, 0.0075),
     }
     expected_stock = {
         0.05: (0.3908, 0.3501),
@@ -220,11 +220,15 @@ def _verify_manuscript_report_consistency() -> None:
     for row in worldcover["rows"]:
         threshold = float(row["worldcover_built_fraction_threshold"])
         action = row["worldcover_gain_count_action"]
-        expected_kernel, expected_random = expected_action[threshold]
+        expected_kernel, expected_kernel_sd, expected_random, expected_random_sd = expected_action[threshold]
         if round(action["geospatial_kernel"]["mean"]["f1"], 4) != expected_kernel:
             raise RuntimeError(f"worldcover_action_kernel_f1_missing:{threshold}")
+        if round(action["geospatial_kernel"]["sample_standard_deviation"]["f1"], 4) != expected_kernel_sd:
+            raise RuntimeError(f"worldcover_action_kernel_sd_missing:{threshold}")
         if round(action["random_allocation"]["mean"]["f1"], 4) != expected_random:
             raise RuntimeError(f"worldcover_action_random_f1_missing:{threshold}")
+        if round(action["random_allocation"]["sample_standard_deviation"]["f1"], 4) != expected_random_sd:
+            raise RuntimeError(f"worldcover_action_random_sd_missing:{threshold}")
         expected_2020, expected_2021 = expected_stock[threshold]
         stock = row["built_stock_agreement"]
         if round(stock["dynamic_world_observed_2020"]["f1"], 4) != expected_2020:
@@ -234,7 +238,9 @@ def _verify_manuscript_report_consistency() -> None:
     for fragment in (
         "0.0111–0.0192",
         "Kernel F1 was 0.3518–0.3971",
-        "0.0157–0.0397 versus 0.0251–0.0277",
+        "0.0157 ± 0.0008 versus 0.0268 ± 0.0058",
+        "0.0397 ± 0.0007 versus 0.0251 ± 0.0075",
+        "below random at 0.05",
         "0.3908–0.4334 and 0.3501–0.3924",
         "structural-zero, zero-power result",
     ):
