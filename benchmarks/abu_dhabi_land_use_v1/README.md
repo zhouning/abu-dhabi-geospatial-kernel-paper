@@ -105,8 +105,9 @@ python benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py --device cp
 
 It regenerates the historical model rasters, the 2025--2031 three-model
 scenarios, strict comparison reports, mechanism controls, 45 ensemble rasters,
-9 multi-layer GeoPackages, the output audit and publication figures. The
-reference run completed with 276 audited predictions and zero failures. The
+9 multi-layer GeoPackages, the rolling-origin predictions, WorldCover evidence,
+the output audit and publication figures. The reference run completed with 312
+audited predictions plus two evidence rasters and zero failures. The
 vendored FLUS executable is macOS arm64; on another operating system provide
 an explicitly built compatible binary with `run_geosos_flus.py --binary`.
 

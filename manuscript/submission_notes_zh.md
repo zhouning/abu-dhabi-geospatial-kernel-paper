@@ -7,7 +7,7 @@
 - 严格多类别 change FoM 显示，在完全解析的锁定环境中，未匹配输入的公共数据 pipeline 下 Geospatial Kernel 的 2023 年单步均值为 0.1961，GeoFM-LDN 的 2024 年两步开环均值为 0.2708；这不是普适模型优越性结论。
 - 持久性和随机可行分配零模型已加入评价代码；持久性在静态 OA 与 macro-F1 上优于主模型的事实必须在重算表中保留。
 - 原始 Pareto frontier 结论已撤回。当前发布目标集为距主干路距离、距既有建成区距离，以及“2024 既有建成与新增建成”并集的连通分量密度，并在每个情景内比较三个模型；FLUS 式控制与 Kernel 在三个情景均为非支配，GeoFM-LDN 在移除结构性为零的生态转化率后均被支配。生态转化率仅作为描述性诊断，不参与 Pareto 目标。
-- 当前输出审计为 `PASS`（276 条记录、0 项失败）；`output_audit.json` 仅作为旧 lineage 文件保留，正式证据使用 `output_audit_reproducible.json`。
+- 当前输出审计为 `PASS`（312 条预测记录、2 个 WorldCover 证据栅格，0 项失败）；`output_audit.json` 仅作为旧 lineage 文件保留，正式证据使用 `output_audit_reproducible.json`。
 - 这些未来结果是 planner-supplied scenario stress tests，不是官方预测。
 
 ## 证据边界

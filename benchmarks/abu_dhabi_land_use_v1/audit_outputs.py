@@ -142,6 +142,29 @@ def _planning_records() -> list[dict[str, Any]]:
     return records
 
 
+def _rolling_records() -> list[dict[str, Any]]:
+    report_path = HERE / "artifacts/rolling_backtest/report.json"
+    if not report_path.is_file():
+        return []
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    records = []
+    for row in report.get("rows", []):
+        artifact = row.get("prediction_artifact")
+        if not artifact:
+            continue
+        records.append(
+            {
+                "track": "rolling_seed",
+                "model_id": row["model_id"],
+                "seed": int(row["seed"]),
+                "target_year": int(row["target_year"]),
+                "path": artifact["path"],
+                "origin_year": int(row["origin_year"]),
+            }
+        )
+    return records
+
+
 def audit(*, output_path: Path) -> dict[str, Any]:
     required_inputs = [
         BUNDLE_ROOT / "common_valid_mask_100m.tif",
@@ -206,6 +229,11 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         return report
     valid, reference = _read(BUNDLE_ROOT / "common_valid_mask_100m.tif")
     valid_mask = valid.astype(bool)
+    city_mask = _read(HERE / "artifacts/abu_dhabi_city_100m_mask.tif")[0].astype(bool)
+    all_states = {
+        year: _read(INPUT_ROOT / f"land_cover/land_cover_{year}_100m.tif")[0]
+        for year in range(2017, 2025)
+    }
     origins = {
         year: _read(INPUT_ROOT / f"land_cover/land_cover_{year}_100m.tif")[0]
         for year in (2022, 2024)
@@ -214,7 +242,7 @@ def audit(*, output_path: Path) -> dict[str, Any]:
         year: _read(BUNDLE_ROOT / f"hard_exclusion_{year}_100m.tif")[0].astype(bool)
         for year in (2022, 2024)
     }
-    records = _historical_records() + _planning_records()
+    records = _historical_records() + _planning_records() + _rolling_records()
     if len({_resolve(row["path"]).resolve() for row in records}) != len(records):
         raise ValueError("duplicate_prediction_paths")
 
@@ -241,6 +269,18 @@ def audit(*, output_path: Path) -> dict[str, Any]:
             continue
         values, profile = _read(path)
         origin_year = int(record["origin_year"])
+        record_valid_mask = valid_mask
+        record_origin = origins.get(origin_year)
+        record_hard = hard_masks.get(origin_year)
+        if record["track"] == "rolling_seed":
+            record_valid_mask = city_mask.copy()
+            for observed_year in range(2017, origin_year + 1):
+                record_valid_mask &= np.isin(all_states[observed_year], CLASSES)
+            record_valid_mask &= np.isin(all_states[int(record["target_year"])], CLASSES)
+            record_origin = all_states[origin_year]
+            record_hard = record_valid_mask & np.isin(record_origin, (1, 4))
+        if record_origin is None or record_hard is None:
+            raise KeyError(f"missing_audit_origin:{origin_year}")
         aligned = (
             profile["width"] == reference["width"]
             and profile["height"] == reference["height"]
@@ -248,14 +288,14 @@ def audit(*, output_path: Path) -> dict[str, Any]:
             and profile["transform"] == reference["transform"]
         )
         invalid_class_pixels = int(
-            np.count_nonzero(valid_mask & ~np.isin(values, CLASSES))
+            np.count_nonzero(record_valid_mask & ~np.isin(values, CLASSES))
         )
-        nonzero_outside = int(np.count_nonzero(values[~valid_mask]))
+        nonzero_outside = int(np.count_nonzero(values[~record_valid_mask]))
         constraint_violations = int(
             np.count_nonzero(
-                valid_mask
-                & hard_masks[origin_year]
-                & (values != origins[origin_year])
+                record_valid_mask
+                & record_hard
+                & (values != record_origin)
             )
         )
         valid_output = (
@@ -278,13 +318,41 @@ def audit(*, output_path: Path) -> dict[str, Any]:
                 "valid": valid_output,
             }
         )
+    evidence_artifacts = []
+    evidence_failure_count = 0
+    for evidence_path in sorted(
+        (HERE / "artifacts/external_validation/worldcover").glob("worldcover_*_built_fraction_100m.tif")
+    ):
+        values, profile = _read(evidence_path)
+        aligned = (
+            profile["width"] == reference["width"]
+            and profile["height"] == reference["height"]
+            and profile["crs"] == reference["crs"]
+            and profile["transform"] == reference["transform"]
+        )
+        invalid = int(np.count_nonzero(~np.isfinite(values)))
+        valid_evidence = aligned and invalid == 0
+        evidence_failure_count += int(not valid_evidence)
+        evidence_artifacts.append(
+            {
+                "track": "external_product_input",
+                "path": _report_path(evidence_path),
+                "bytes": evidence_path.stat().st_size,
+                "sha256": _sha256(evidence_path),
+                "grid_aligned": aligned,
+                "nonfinite_pixels": invalid,
+                "valid": valid_evidence,
+            }
+        )
     report = {
         "schema": "gwm.abu_dhabi_output_audit.v2",
         "benchmark_id": "abu-dhabi-land-use-v1",
         "created_at": datetime.now(UTC).isoformat(),
-        "status": "PASS" if failure_count == 0 else "FAIL",
+        "status": "PASS" if failure_count + evidence_failure_count == 0 else "FAIL",
         "prediction_count": len(artifacts),
-        "failure_count": failure_count,
+        "failure_count": failure_count + evidence_failure_count,
+        "evidence_artifact_count": len(evidence_artifacts),
+        "evidence_failure_count": evidence_failure_count,
         "track_counts": {
             track: sum(row["track"] == track for row in artifacts)
             for track in (
@@ -292,9 +360,11 @@ def audit(*, output_path: Path) -> dict[str, Any]:
                 "historical_ensemble",
                 "planning_seed",
                 "planning_ensemble",
+                "rolling_seed",
             )
         },
         "artifacts": artifacts,
+        "evidence_artifacts": evidence_artifacts,
     }
     output_path.write_text(
         json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",

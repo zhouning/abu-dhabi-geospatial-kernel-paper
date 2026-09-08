@@ -205,7 +205,39 @@ def _verify_manuscript_report_consistency() -> None:
         raise RuntimeError("worldcover_dynamic_gain_f1_upper_missing")
     if any(row["built_gain_agreement"]["geospatial_kernel"]["mean"]["f1"] != 0.0 for row in worldcover["rows"]):
         raise RuntimeError("worldcover_kernel_gain_not_zero")
-    for fragment in ("0.0111–0.0192", "Kernel F1 increased from 0.3518 to 0.3971"):
+    expected_action = {
+        0.05: (0.0157, 0.0268),
+        0.10: (0.0228, 0.0277),
+        0.20: (0.0268, 0.0251),
+        0.30: (0.0397, 0.0251),
+    }
+    expected_stock = {
+        0.05: (0.3908, 0.3501),
+        0.10: (0.3998, 0.3603),
+        0.20: (0.4186, 0.3780),
+        0.30: (0.4334, 0.3924),
+    }
+    for row in worldcover["rows"]:
+        threshold = float(row["worldcover_built_fraction_threshold"])
+        action = row["worldcover_gain_count_action"]
+        expected_kernel, expected_random = expected_action[threshold]
+        if round(action["geospatial_kernel"]["mean"]["f1"], 4) != expected_kernel:
+            raise RuntimeError(f"worldcover_action_kernel_f1_missing:{threshold}")
+        if round(action["random_allocation"]["mean"]["f1"], 4) != expected_random:
+            raise RuntimeError(f"worldcover_action_random_f1_missing:{threshold}")
+        expected_2020, expected_2021 = expected_stock[threshold]
+        stock = row["built_stock_agreement"]
+        if round(stock["dynamic_world_observed_2020"]["f1"], 4) != expected_2020:
+            raise RuntimeError(f"worldcover_dynamic_stock_2020_missing:{threshold}")
+        if round(stock["dynamic_world_observed_2021"]["f1"], 4) != expected_2021:
+            raise RuntimeError(f"worldcover_dynamic_stock_2021_missing:{threshold}")
+    for fragment in (
+        "0.0111–0.0192",
+        "Kernel F1 was 0.3518–0.3971",
+        "0.0157–0.0397 versus 0.0251–0.0277",
+        "0.3908–0.4334 and 0.3501–0.3924",
+        "structural-zero, zero-power result",
+    ):
         if fragment not in manuscript_numeric:
             raise RuntimeError(f"manuscript_worldcover_value_missing:{fragment}")
 
@@ -280,6 +312,20 @@ def _hash_outputs() -> dict[str, object]:
         REPO / "manuscript/manuscript.docx",
         REPO / "manuscript/manuscript_pandoc.tex",
     ]
+    paths.extend(
+        sorted(
+            (HERE / "artifacts/rolling_backtest/predictions").glob(
+                "origin_*_target_*/seed_*/*.tif"
+            )
+        )
+    )
+    paths.extend(
+        sorted(
+            (HERE / "artifacts/external_validation/worldcover").glob(
+                "worldcover_*_built_fraction_100m.tif"
+            )
+        )
+    )
     for stem in (
         "fig01_benchmark_contract",
         "fig02_historical_validation",
@@ -299,7 +345,7 @@ def _hash_outputs() -> dict[str, object]:
         if not path.is_file():
             continue
         raw = path.read_bytes()
-        if path.suffix.lower() in {".json", ".md", ".py", ".txt", ".csv", ".tex"}:
+        if path.suffix.lower() in {".json", ".md", ".py", ".txt", ".csv", ".tex", ".svg"}:
             raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
             hash_mode = "text_lf_normalized"
         else:

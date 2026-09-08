@@ -47,12 +47,20 @@ COLORS = {
     "random_allocation": "#CC79A7",
     "persistence": "#6A737D",
     "dynamic_world_observed": "#0072B2",
+    "dynamic_world_observed_2020": "#56B4E9",
+    "dynamic_world_observed_2021": "#0072B2",
+    "geospatial_kernel_worldcover_action": "#D55E00",
+    "random_worldcover_action": "#CC79A7",
 }
 LABELS = {
     "geospatial_kernel": "Geospatial Kernel",
     "random_allocation": "Random allocation",
     "persistence": "Persistence",
     "dynamic_world_observed": "Dynamic World observed",
+    "dynamic_world_observed_2020": "Dynamic World 2020",
+    "dynamic_world_observed_2021": "Dynamic World 2021",
+    "geospatial_kernel_worldcover_action": "Kernel (WorldCover count)",
+    "random_worldcover_action": "Random (WorldCover count)",
 }
 
 
@@ -81,7 +89,13 @@ def _save(fig: plt.Figure) -> None:
         ("png", {"dpi": 600, "bbox_inches": "tight", "pad_inches": 0.04}),
         ("tiff", {"dpi": 600, "bbox_inches": "tight", "pad_inches": 0.04}),
     ):
-        fig.savefig(OUT / f"fig03_rolling_external_diagnostics.{suffix}", **kwargs)
+        path = OUT / f"fig03_rolling_external_diagnostics.{suffix}"
+        fig.savefig(path, **kwargs)
+        if suffix == "svg":
+            normalized = "\n".join(
+                line.rstrip() for line in path.read_text(encoding="utf-8").splitlines()
+            )
+            path.write_text(normalized + "\n", encoding="utf-8")
     plt.close(fig)
 
 
@@ -121,6 +135,8 @@ def _write_source_data(rolling: dict, uncertainty: dict, worldcover: dict) -> No
         threshold = item["worldcover_built_fraction_threshold"]
         for panel, section in (("c", "built_stock_agreement"), ("d", "built_gain_agreement")):
             for series, metric in item[section].items():
+                if panel == "d" and series != "dynamic_world_observed":
+                    continue
                 value = metric["f1"] if "mean" not in metric else metric["mean"]["f1"]
                 records.append(
                     {
@@ -134,6 +150,21 @@ def _write_source_data(rolling: dict, uncertainty: dict, worldcover: dict) -> No
                         "metric": "binary_f1_against_worldcover",
                     }
                 )
+        for series, metric in item["worldcover_gain_count_action"].items():
+            if series == "gain_count":
+                continue
+            records.append(
+                {
+                    "panel": "d",
+                    "series": f"{series}_worldcover_count_action",
+                    "x": threshold,
+                    "seed": "mean_n3",
+                    "estimate": metric["mean"]["f1"],
+                    "lower": "",
+                    "upper": "",
+                    "metric": "binary_f1_against_worldcover_with_worldcover_gain_count_action",
+                }
+            )
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
@@ -180,7 +211,6 @@ def main() -> None:
     ax.set_xticks(target_years)
     ax.set_ylim(bottom=0)
     ax.grid(axis="y", color="#D8DDE3", linewidth=0.45)
-    ax.legend(frameon=False, loc="upper right", handlelength=1.5)
     _panel_label(ax, "a")
 
     # B: paired spatial-block differences.
@@ -216,14 +246,6 @@ def main() -> None:
     ax.set_title("Paired spatial-block contrasts", loc="left", fontweight="bold")
     ax.grid(axis="x", color="#D8DDE3", linewidth=0.45)
     ax.set_ylim(y_base[-1] + 1.1, -1.1)
-    ax.legend(
-        handles=[
-            Line2D([0], [0], marker="o", color=COLORS[b], label=LABELS[b], linestyle="none")
-            for b in baselines
-        ],
-        frameon=False,
-        loc="lower right",
-    )
     ax.text(
         0.02,
         -0.26,
@@ -238,8 +260,11 @@ def main() -> None:
 
     # C: built-stock agreement.
     ax = axes[1, 0]
-    for key in ("dynamic_world_observed_2021", "geospatial_kernel_2021", "persistence_2021"):
-        label_key = "dynamic_world_observed" if key.startswith("dynamic") else key.removesuffix("_2021")
+    for key in ("dynamic_world_observed_2020", "dynamic_world_observed_2021", "geospatial_kernel_2021", "persistence_2021"):
+        if key.startswith("dynamic"):
+            label_key = key
+        else:
+            label_key = key.removesuffix("_2021")
         values = [row["built_stock_agreement"][key]["f1"] if "mean" not in row["built_stock_agreement"][key] else row["built_stock_agreement"][key]["mean"]["f1"] for row in worldcover["rows"]]
         ax.plot(
             thresholds,
@@ -249,6 +274,7 @@ def main() -> None:
             markersize=4,
             color=COLORS[label_key],
             label=LABELS[label_key],
+            linestyle="--" if key == "dynamic_world_observed_2020" else "-",
         )
     ax.set_title("Built-stock agreement", loc="left", fontweight="bold")
     ax.set_xlabel("WorldCover built fraction threshold")
@@ -256,14 +282,31 @@ def main() -> None:
     ax.set_ylim(0, 0.5)
     ax.set_xticks(thresholds)
     ax.grid(axis="y", color="#D8DDE3", linewidth=0.45)
+    ax.legend(
+        frameon=False,
+        loc="lower left",
+        bbox_to_anchor=(0.0, 0.02),
+        ncol=2,
+        handlelength=1.3,
+        columnspacing=0.8,
+        fontsize=6.5,
+    )
     _panel_label(ax, "c")
 
     # D: built-gain agreement.
     ax = axes[1, 1]
-    for key in ("dynamic_world_observed", "geospatial_kernel", "persistence"):
+    action_keys = (
+        ("dynamic_world_observed", "dynamic_world_observed"),
+        ("geospatial_kernel_worldcover_action", "geospatial_kernel"),
+        ("random_worldcover_action", "random_allocation"),
+    )
+    for label_key, result_key in action_keys:
         values = []
         for row in worldcover["rows"]:
-            item = row["built_gain_agreement"][key]
+            if label_key == "dynamic_world_observed":
+                item = row["built_gain_agreement"][result_key]
+            else:
+                item = row["worldcover_gain_count_action"][result_key]
             values.append(item["f1"] if "mean" not in item else item["mean"]["f1"])
         ax.plot(
             thresholds,
@@ -271,30 +314,29 @@ def main() -> None:
             marker="o",
             linewidth=1.5,
             markersize=4,
-            color=COLORS[key],
-            label=LABELS[key],
+            color=COLORS[label_key],
+            label=LABELS[label_key],
         )
     ax.set_title("Built-gain agreement", loc="left", fontweight="bold")
     ax.set_xlabel("WorldCover built fraction threshold")
     ax.set_ylabel("F1")
-    ax.set_ylim(-0.002, 0.025)
+    ax.set_ylim(-0.002, 0.045)
     ax.set_xticks(thresholds)
     ax.grid(axis="y", color="#D8DDE3", linewidth=0.45)
-    ax.text(
-        0.03,
-        0.06,
-        "Kernel = 0 under the 2020→2021\n oracle-demand allocation window",
-        transform=ax.transAxes,
-        fontsize=7.0,
-        color=COLORS["geospatial_kernel"],
-        bbox={"boxstyle": "round,pad=0.25", "facecolor": "#FFF4EA", "edgecolor": "#D55E00", "linewidth": 0.6},
+    ax.legend(
+        frameon=False,
+        loc="lower right",
+        bbox_to_anchor=(0.98, 0.02),
+        ncol=1,
+        handlelength=1.3,
+        fontsize=6.5,
     )
     _panel_label(ax, "d")
 
     fig.legend(
         handles=[
             Line2D([0], [0], marker="o", color=COLORS[k], label=LABELS[k], linestyle="none")
-            for k in ("dynamic_world_observed", "geospatial_kernel", "persistence")
+            for k in ("geospatial_kernel", "random_allocation", "persistence")
         ],
         loc="upper center",
         bbox_to_anchor=(0.54, 0.985),

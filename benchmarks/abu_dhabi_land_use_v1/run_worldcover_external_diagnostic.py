@@ -20,10 +20,12 @@ import numpy as np
 import rasterio
 
 try:
-    from .run_geospatial_kernel import AbuDhabiInputs
+    from .run_geospatial_kernel import AbuDhabiInputs, probability_cube
+    from .run_rolling_backtest import _fit_window, valid_through_year
     from .shared import CLASSES
 except ImportError:
-    from run_geospatial_kernel import AbuDhabiInputs  # type: ignore
+    from run_geospatial_kernel import AbuDhabiInputs, probability_cube  # type: ignore
+    from run_rolling_backtest import _fit_window, valid_through_year  # type: ignore
     from shared import CLASSES  # type: ignore
 
 
@@ -97,6 +99,37 @@ def _prediction_paths(report: dict[str, Any], *, model_id: str) -> list[tuple[in
     ]
 
 
+def _worldcover_count_allocation(
+    *,
+    probability: np.ndarray,
+    origin: np.ndarray,
+    valid: np.ndarray,
+    hard: np.ndarray,
+    gain_count: int,
+    seed: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Allocate an externally supplied built-gain count from the Kernel proposal.
+
+    This deliberately changes only non-built mutable cells.  It tests spatial
+    ranking against WorldCover gain locations while keeping the external
+    product's gain count as the action.  The random control samples the same
+    candidate population and count.
+    """
+
+    candidates = valid & ~hard & (origin != 5)
+    candidate_indices = np.flatnonzero(candidates.ravel())
+    if gain_count < 0 or gain_count > len(candidate_indices):
+        raise ValueError(f"worldcover_gain_count_infeasible:{gain_count}:{len(candidate_indices)}")
+    built_score = probability[4].ravel()[candidate_indices]
+    order = np.argsort(-built_score, kind="stable")
+    kernel = np.zeros(origin.shape, dtype=bool)
+    kernel.ravel()[candidate_indices[order[:gain_count]]] = True
+    rng = np.random.default_rng(seed)
+    random = np.zeros(origin.shape, dtype=bool)
+    random.ravel()[rng.choice(candidate_indices, size=gain_count, replace=False)] = True
+    return kernel, random
+
+
 def run(
     *,
     rolling_report_path: Path,
@@ -133,6 +166,29 @@ def run(
             raise FileNotFoundError(f"missing_rolling_prediction_artifacts:{model_id}")
         predictions[model_id] = [(seed, _read(path) == 5) for seed, path in entries]
 
+    # Fit the same leakage-controlled origin-2020 Kernel used by the rolling
+    # experiment.  These proposals are ranked against WorldCover gain counts,
+    # not against the Dynamic World target count.
+    rolling_valid = valid_through_year(inputs, 2020)
+    rolling_hard = rolling_valid & np.isin(inputs.states[2020], (1, 4))
+    proposal_predictions: list[tuple[int, np.ndarray, np.ndarray]] = []
+    for seed in (31, 47, 73):
+        model, _ = _fit_window(
+            inputs,
+            origin_year=2020,
+            seed=seed,
+            training_valid=rolling_valid,
+        )
+        proposal = probability_cube(
+            model,
+            inputs,
+            inputs.states[2020],
+            driver_year=2020,
+            valid_mask=rolling_valid,
+            include_road_snapshot=False,
+        )
+        proposal_predictions.append((seed, proposal, rolling_valid))
+
     threshold_rows: list[dict[str, Any]] = []
     for threshold in thresholds:
         wc_gain = (wc2020 < threshold) & (wc2021 >= threshold)
@@ -153,6 +209,26 @@ def run(
                 dynamic_world_2021, wc_built_2021, valid
             ),
         }
+        worldcover_action_gain_count = int(np.count_nonzero(valid & wc_gain))
+        action_kernel_per_seed = []
+        action_random_per_seed = []
+        for seed, proposal, proposal_valid in proposal_predictions:
+            action_valid = valid & proposal_valid
+            action_hard = rolling_hard & action_valid
+            kernel_gain, random_gain = _worldcover_count_allocation(
+                probability=proposal,
+                origin=inputs.states[2020],
+                valid=action_valid,
+                hard=action_hard,
+                gain_count=worldcover_action_gain_count,
+                seed=seed + int(round(threshold * 1000)),
+            )
+            action_kernel_per_seed.append(
+                {"seed": seed, **_binary_metrics(kernel_gain, wc_gain, valid)}
+            )
+            action_random_per_seed.append(
+                {"seed": seed, **_binary_metrics(random_gain, wc_gain, valid)}
+            )
         for model_id, entries in predictions.items():
             gain_per_seed = []
             loss_per_seed = []
@@ -200,6 +276,23 @@ def run(
                 "built_stock_agreement": stock_metrics,
                 "built_gain_agreement": gain_metrics,
                 "built_loss_agreement": loss_metrics,
+                "worldcover_gain_count_action": {
+                    "gain_count": worldcover_action_gain_count,
+                    "geospatial_kernel": {
+                        "seed_results": action_kernel_per_seed,
+                        "mean": {
+                            key: _mean_optional(action_kernel_per_seed, key)
+                            for key in ("precision", "recall", "f1", "intersection_over_union")
+                        },
+                    },
+                    "random_allocation": {
+                        "seed_results": action_random_per_seed,
+                        "mean": {
+                            key: _mean_optional(action_random_per_seed, key)
+                            for key in ("precision", "recall", "f1", "intersection_over_union")
+                        },
+                    },
+                },
             }
         )
     output = {
@@ -220,6 +313,7 @@ def run(
             "WorldCover and Dynamic World share satellite-family inputs and are not fully independent.",
             "The diagnostic evaluates built-up gain only and does not validate all land-cover classes.",
             "No official Abu Dhabi planning or cadastral truth is available in this benchmark.",
+            "The Dynamic World oracle-demand built-gain comparison is structurally zero-powered when built counts decline; the WorldCover-count action variant is the informative allocation diagnostic.",
         ],
         "rows": threshold_rows,
     }

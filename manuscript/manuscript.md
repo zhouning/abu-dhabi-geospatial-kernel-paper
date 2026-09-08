@@ -1,13 +1,13 @@
 ## Abstract
 
-Urban land-change models are often evaluated against annual labels whose reliability is not spatially uniform. We present an auditable protocol for testing constrained spatial allocation under that uncertainty, using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. The Abu Dhabi public-data benchmark uses annual 100-m land-cover products from 2017–2024, three computational seeds, destination-correct multi-class change Figure of Merit (FoM), spatial-block bootstrap contrasts and explicit state–action–constraint traces. In the primary unmatched-pipeline test, strict FoM was 0.1961 for Geospatial Kernel, 0.1256 for a GeoSOS-derived FLUS-style ANN–CA console and 0.1619 for GeoFM-LDN in 2023; GeoFM-LDN led after recursive two-step rollout in 2024. A separate leakage-controlled expanding-window analysis, excluding the later road snapshot, gave Kernel FoM values of 0.2595, 0.0724, 0.2116 and 0.1816 for the four one-step targets from 2021 to 2024, exceeding a random minimum-change allocator in every window. However, an external-product diagnostic using ESA WorldCover 2020/2021 did not validate change location: Kernel built-gain F1 was 0 across four built-fraction thresholds, while Dynamic World-to-WorldCover built-gain F1 was only 0.0111–0.0192. The planning track is therefore reported as scenario stress testing, not official forecasting. The protocol's principal contribution is an inspectable proposal–projection–writeback boundary; the experiments support conditional allocation auditability, not verified prediction of Abu Dhabi's actual future.
+Urban land-change models are often evaluated against annual labels whose reliability is not spatially uniform. We present an auditable protocol for testing constrained spatial allocation under that uncertainty, using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. The Abu Dhabi public-data benchmark uses annual 100-m land-cover products from 2017–2024, three computational seeds, destination-correct multi-class change Figure of Merit (FoM), spatial-block bootstrap contrasts and explicit state–action–constraint traces. In the primary unmatched-pipeline test, strict FoM was 0.1961 for Geospatial Kernel, 0.1256 for a GeoSOS-derived FLUS-style ANN–CA console and 0.1619 for GeoFM-LDN in 2023; GeoFM-LDN led after recursive two-step rollout in 2024. A separate leakage-controlled expanding-window analysis, excluding the later road snapshot, gave Kernel FoM values of 0.2595, 0.0724, 0.2116 and 0.1816 for the four one-step targets from 2021 to 2024, exceeding a random minimum-change allocator in every window. In the only available WorldCover 2020–2021 window, Dynamic World built pixels decreased, so the oracle-demand built-gain test had zero power for every allocator. Dynamic World-to-WorldCover built-gain F1 was 0.0111–0.0192; a count-controlled allocation variant gave Kernel F1 values of 0.0157–0.0397 versus 0.0251–0.0277 for random allocation, with Kernel higher at the two larger thresholds. The planning track is therefore reported as scenario stress testing, not official forecasting. The protocol's principal contribution is an inspectable proposal–projection–writeback boundary; the experiments support conditional allocation auditability, not verified prediction of Abu Dhabi's actual future.
 
 ## Highlights
 
 - Geospatial Kernel separates transition proposals from constrained admission.
 - Typed state–action–constraint traces make recursive updates auditable.
 - Rolling-origin and spatial-block tests expose temporal variability.
-- WorldCover disagreement bounds claims of real built-change prediction.
+- External-product diagnostics separate label disagreement from allocation skill.
 - Planning outputs are scenario stress tests, not statutory Abu Dhabi forecasts.
 
 ## Keywords
@@ -61,7 +61,7 @@ The study boundary is the polygon returned for OpenStreetMap relation R4479763, 
 
 The observed sequence contains annual states for 2017–2024. Models were fit using the four transitions 2017→2018, 2018→2019, 2019→2020 and 2020→2021. A 2021→2022 transition was used for validation during model development. The historical test starts from 2022 and evaluates 2023 and 2024 in an open-loop rollout without observed-state writeback. The planning test starts from the observed 2024 state and recursively generates 2025–2031 under each scenario action.
 
-An additional Geospatial Kernel analysis used four expanding one-step windows with origins in 2020–2023. For origin year $t$, training included only transitions whose target year was at or before $t$; the held-out $t+1$ label was prohibited from feature construction and fitting. The held-out target supplied its observed class counts to the oracle-demand allocator and was then used for evaluation. This design isolates spatial allocation conditional on known demand and is not an end-to-end demand forecast. Early folds locked only origin-year water and wetland cells and omitted the two road-distance features, because applying the 2021 WorldCover proxy or the later OpenStreetMap snapshot to earlier folds would introduce future information. The resulting rolling proposal has 23 features. A machine-tested temporal firewall records the last training target, prediction target and permitted target-year uses for every run.
+An additional Geospatial Kernel analysis used four expanding one-step windows with origins in 2020–2023. For origin year $t$, training included only transitions whose target year was at or before $t$; the held-out $t+1$ label was prohibited from feature construction and fitting. The held-out target supplied its observed class counts to the oracle-demand allocator and was then used for evaluation. This design isolates spatial allocation conditional on known demand and is not an end-to-end demand forecast. Early folds locked only origin-year water and wetland cells and omitted the two road-distance features, because applying the 2021 WorldCover proxy or the later OpenStreetMap snapshot to earlier folds would introduce future information. The resulting rolling proposal has 23 features. A machine-tested temporal firewall records the last training target, prediction target and permitted target-year uses for every run. The headline 2023–2024 analysis is less strict: it uses the OSM road snapshot accessed on 31 July 2026, which may include roads built after the corresponding prediction years (including after 2022). This snapshot is supplied symmetrically to all three pipelines, so it does not change their ordering, but it can affect absolute scores; the rolling-origin results are the strict no-road-snapshot boundary.
 
 ### Public data and class semantics
 
@@ -69,7 +69,7 @@ Dynamic World V1 provides annual scene-argmax labels and mean top-class probabil
 
 Annual 64-dimensional AlphaEarth embeddings were spatially averaged to the canonical grid and locally L2-normalized. Monthly VIIRS night-time-light radiance was averaged by year. Copernicus DEM supplied elevation and a finite-difference slope derivative. OpenStreetMap road geometries were rasterized into distance-to-road and distance-to-major-road surfaces. ESA WorldCover 2021 supplied public water and wetland/mangrove constraint proxies (Zanaga et al., 2022). All dynamic and static layers were checked for exact CRS, transform, width and height agreement.
 
-For an external public-product diagnostic, the ESA WorldCover 2020 v1.0 and 2021 v2.0 built-up class (value 50) was converted to built fraction on each 100-m benchmark cell. Built presence was tested at fractions of 0.05, 0.10, 0.20 and 0.30. Built gain required a cell to cross from below to at or above the threshold; built loss used the reverse definition. Binary precision, recall, F1 and intersection over union were calculated for the Dynamic World transition and for the 2020-origin predictions. This is a product-agreement diagnostic, not ground-truth validation: the two WorldCover years use different product versions, WorldCover and Dynamic World both derive from Sentinel observations, and neither represents statutory Abu Dhabi land use.
+For an external public-product diagnostic, the ESA WorldCover 2020 v1.0 and 2021 v2.0 built-up class (value 50) was converted to built fraction on each 100-m benchmark cell. Built presence was tested at fractions of 0.05, 0.10, 0.20 and 0.30. Built gain required a cell to cross from below to at or above the threshold; built loss used the reverse definition. Binary precision, recall, F1 and intersection over union were calculated for the Dynamic World transition and for the 2020-origin predictions. The original oracle-demand comparison uses Dynamic World 2021 built counts; because the built count decreases in this window, it cannot allocate any built gains and is a structural-zero, zero-power test of gain location. We therefore also supplied the WorldCover built-gain count as the action, ranked candidate cells with the 2020-origin Kernel proposal, and compared it with random allocation from the same candidate population. This count-controlled variant is the informative allocation diagnostic, but it remains product agreement rather than ground-truth validation: the two WorldCover years use different product versions, WorldCover and Dynamic World both derive from Sentinel observations, and neither represents statutory Abu Dhabi land use.
 
 ### Geospatial Kernel state, action and transition proposal
 
@@ -111,7 +111,7 @@ The moderate-growth, green-priority-growth and high-outward-growth actions are s
 
 ### Change polygons and reproducibility
 
-For each model–scenario pair, annual and cumulative differences from the 2024 raster are extracted as changed 100-m cells and dissolved into GeoPackage layers. The public delivery manifest covers 45 ensemble rasters for 2027–2031 and nine vector packages. The audit script reports `INCOMPLETE_INPUTS` or `FAIL` when source rasters, reports or vectors are absent; with the released public bundle, the input audit passed all alignment gates (with a Dynamic World label-noise warning) and the output audit passed 276 historical and planning predictions with zero failures. The vector layers preserve raster-cell geometry and should not be interpreted as cadastral parcels.
+For each model–scenario pair, annual and cumulative differences from the 2024 raster are extracted as changed 100-m cells and dissolved into GeoPackage layers. The public delivery manifest covers 45 ensemble rasters for 2027–2031 and nine vector packages. The audit script reports `INCOMPLETE_INPUTS` or `FAIL` when source rasters, reports or vectors are absent; with the released public bundle, the input audit passed all alignment gates (with a Dynamic World label-noise warning) and the output audit passed 312 historical, rolling-origin and planning predictions plus two frozen WorldCover evidence rasters, with zero failures. The vector layers preserve raster-cell geometry and should not be interpreted as cadastral parcels.
 
 ## Results
 
@@ -243,26 +243,34 @@ one-step targets, respectively. The corresponding random minimum-change values
 were 0.0524, 0.0048, 0.0200 and 0.0323; persistence produced no predicted
 change and therefore zero strict FoM. Paired 8 × 8-cell spatial-block contrasts
 between Kernel and each zero model excluded zero in every target year and each
-of the three seeds. This result supports conditional spatial allocation under
-Dynamic World labels, but the weak 2022 score shows substantial temporal
-variation. Persistence also retained higher overall accuracy than Kernel in
-2022–2024, whereas Kernel had higher overall accuracy only in 2021. The
-change-specific and all-cell metrics therefore answer different questions.
+of the three seeds. The shared low 2022 values (Kernel 0.0724; random 0.0048)
+indicate a difficult 2021→2022 transition for all allocators, consistent with
+the elevated label-reversion rate in Fig. S2 and the contemporaneous fluctuation
+in Dynamic World built counts, rather than a Kernel-specific failure. Persistence
+also retained higher overall accuracy than Kernel in 2022–2024, whereas Kernel
+had higher overall accuracy only in 2021. The change-specific and all-cell
+metrics therefore answer different questions.
 
-The WorldCover comparison did not corroborate change location. Across built
+The WorldCover comparison has two distinct interpretations. Across built
 fractions from 0.05 to 0.30, WorldCover contained 1,445–1,802 built-gain cells
 and 1,408–1,506 built-loss cells. Dynamic World-to-WorldCover built-gain F1 was
-only 0.0111–0.0192. Under the 2020→2021 Dynamic World oracle-demand action,
-Kernel and the random allocator produced no built-gain cells, so their
-WorldCover built-gain F1 was 0 at all thresholds and precision was undefined.
-For 2021 built stock, Kernel F1 increased from 0.3518 to 0.3971 as the threshold
-rose, but persistence was higher at every threshold (0.3886–0.4387). These
-negative results indicate product-definition and temporal-label disagreement;
-they do not identify which public product is correct. Fig. 3 reports the
-rolling and external-product evidence together so that the zero-model advantage
-and the absence of external change agreement cannot be separated in the claim.
+only 0.0111–0.0192. Dynamic World built pixels decreased from 9,642 in 2020 to
+8,553 in 2021, so under the 2020→2021 Dynamic World oracle-demand action the
+Kernel, random and persistence allocators necessarily produced no built-gain
+cells. Their F1 of 0 is therefore a structural-zero, zero-power result and
+cannot evaluate gain-location skill. The informative count-controlled variant
+used the WorldCover gain count as the action and ranked 2020-origin Kernel
+proposals against a random allocation from the same candidate population. Kernel
+F1 was 0.0157–0.0397 versus 0.0251–0.0277 for random allocation; Kernel was
+higher at thresholds 0.20 and 0.30, but lower at 0.05 and 0.10. For 2021 built
+stock, Kernel F1 was 0.3518–0.3971, while persistence was 0.3886–0.4387. The
+corresponding Dynamic World 2020 and 2021 observed-stock baselines were
+0.3908–0.4334 and 0.3501–0.3924, respectively, showing that the apparent
+persistence advantage mirrors greater agreement of the 2020 label with
+WorldCover rather than a model advantage. Fig. 3 separates these stock and
+count-controlled gain comparisons; none is authoritative validation.
 
-![Rolling-origin robustness and external-product diagnostics. Panel a reports strict destination-change FoM for four leakage-controlled one-step targets; points show means and sample standard deviations across three computational seeds. Panel b reports Kernel-minus-baseline paired spatial-block contrasts; points are mean seed medians and whiskers span the minimum to maximum of seed-specific 95% intervals from 1,000 resamples of 8 × 8-cell blocks. Panels c and d compare 2021 built stock and 2020–2021 built gain with ESA WorldCover at four 100-m built-fraction thresholds. The WorldCover comparison is an external public-product diagnostic, not authoritative ground truth. Source data are provided in source_data_fig03_rolling_external_diagnostics.csv.](figures/fig03_rolling_external_diagnostics.png){width=100%}
+![Rolling-origin robustness and external-product diagnostics. Panel a reports strict destination-change FoM for four leakage-controlled one-step targets; points show means and sample standard deviations across three computational seeds. Panel b reports Kernel-minus-baseline paired spatial-block contrasts; points are mean seed medians and whiskers span the minimum to maximum of seed-specific 95% intervals from 1,000 resamples of 8 × 8-cell blocks. Panel c compares same-year Dynamic World 2020 and 2021 built stocks, plus 2021 Kernel and persistence predictions, with the corresponding WorldCover products at four 100-m built-fraction thresholds. Panel d compares Dynamic World built gain with the count-controlled Kernel and random allocations, where WorldCover gain count is supplied as the action. The original oracle-demand gain test is structural-zero and is not plotted as model evidence. The WorldCover comparison is an external public-product diagnostic, not authoritative ground truth. Source data are provided in source_data_fig03_rolling_external_diagnostics.csv.](figures/fig03_rolling_external_diagnostics.png){width=100%}
 
 \FloatBarrier
 
@@ -362,8 +370,9 @@ the Kernel's moderate, green-priority and high-outward scenarios, respectively;
 the corresponding GeoFM-LDN errors were 1,580, 1,524 and 1,148 pixels and the
 FLUS-style errors were 2,504, 2,888 and 2,568 pixels. Seed-level projections
 meet their feasible class totals, but majority voting can produce a different
-raster and therefore a non-zero ensemble error. All 276 historical and planning
-prediction records passed the raster audit. Fig. 6 uses the high-outward
+raster and therefore a non-zero ensemble error. All 312 historical,
+rolling-origin and planning prediction records passed the raster audit, and the
+two frozen WorldCover evidence rasters passed the evidence audit. Fig. 6 uses the high-outward
 scenario to make the spatial contrast legible; the complete nine-panel atlas is
 provided as Fig. S1. These are raster-cell change footprints, not
 parcel boundaries or statutory zoning maps.
@@ -374,16 +383,24 @@ parcel boundaries or statutory zoning maps.
 
 ## Discussion
 
-This study positions Geospatial Kernel as a candidate execution layer for constrained spatial reasoning and, more broadly, proposes an audit protocol for noisy annual labels. The defensible contribution is that a transition proposal and a planning admission rule can be represented and inspected separately. Under the unmatched public-data pipeline, Geospatial Kernel has the largest strict transition FoM at the one-step horizon, while GeoFM-LDN has the largest value after recursive two-step rollout. In the separate rolling analysis, Kernel exceeds both zero models in all four one-step windows, but its score varies from 0.0724 to 0.2595 after excluding the later road snapshot. The WorldCover diagnostic then shows that superiority relative to Dynamic World-based zero models does not transfer to externally defined built-gain locations. Confidence filtering, rolling-window stability and external-product agreement are different tests, and none substitutes for authoritative local validation. We therefore treat the planning frontier as conditional on public proxy objectives and synthetic actions.
+This study positions Geospatial Kernel as a candidate execution layer for constrained spatial reasoning and, more broadly, proposes an audit protocol for noisy annual labels. The defensible contribution is that a transition proposal and a planning admission rule can be represented and inspected separately. Under the unmatched public-data pipeline, Geospatial Kernel has the largest strict transition FoM at the one-step horizon, while GeoFM-LDN has the largest value after recursive two-step rollout. In the separate rolling analysis, Kernel exceeds both zero models in all four one-step windows, but its score varies from 0.0724 to 0.2595 after excluding the later road snapshot. The WorldCover diagnostic does not provide a blanket external validation: the original Dynamic World-count gain comparison is structurally zero-powered because the observed built count declines. The count-controlled variant supplies an informative but mixed allocation comparison, with Kernel exceeding random allocation only at the two larger thresholds. Confidence filtering, rolling-window stability and external-product agreement are different tests, and none substitutes for authoritative local validation. We therefore treat the planning frontier as conditional on public proxy objectives and synthetic actions.
 
 The evidence remains bounded. The six classes are remote-sensing land cover, not
 statutory residential, commercial or industrial land use. Dynamic World labels
 show substantial annual uncertainty and apparent turnover; the available
-2020–2021 WorldCover diagnostic conflicts with Dynamic World and is neither
-fully independent nor authoritative, while no external 2023–2024 change
-product or observed 2025–2031 labels was available. Public
-roads, wetland and protected-area layers are proxies, future drivers are held at
-2024, and the green-priority action has no water-budget constraint. The FLUS-style
+2020–2021 WorldCover diagnostic is neither fully independent nor authoritative,
+and no external 2023–2024 change product or observed 2025–2031 labels was
+available. The headline analysis also uses a 31 July 2026 OSM road snapshot,
+which may contain roads constructed after 2022. This information is shared by
+all three pipelines and therefore does not change their ordering, but it can
+affect absolute scores; the strict rolling-origin analysis removes those road
+features and should define the no-leakage boundary. As a descriptive bound,
+the road-free rolling 2023 one-step FoM is 0.2116, of the same order as the
+headline 2023 value of 0.1961; these values are not directly comparable because
+the rolling fit uses 23 features and training through 2022, whereas the headline
+fit uses 25 features and training through 2021. Public wetland and
+protected-area layers are proxies, future drivers are held at 2024, and the
+green-priority action has no water-budget constraint. The FLUS-style
 control is an Apple-Silicon binary rebuilt from the public GeoSOS source base
 with the author's `train`/`train-update` and deterministic-seeding patches; its
 headline comparison uses seven drivers. The 25-feature run is a

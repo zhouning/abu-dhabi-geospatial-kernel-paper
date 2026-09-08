@@ -16,15 +16,23 @@ are paired contrasts from 1,000 resamples of 8 × 8 cells (800 m × 800 m).
 
 WorldCover 2020 v1.0 and 2021 v2.0 built-fraction thresholds were 0.05,
 0.10, 0.20 and 0.30. The values below are F1 scores for built stock in 2021
-and built gain between 2020 and 2021. The comparison is an external public-
-product agreement diagnostic, not authoritative ground-truth validation.
+and built gain between 2020 and 2021. The original Dynamic World-count gain
+comparison is structural-zero because Dynamic World built count decreases;
+the count-controlled rows use the WorldCover gain count as the action and are
+the informative allocation comparison. All comparisons remain external
+public-product agreement diagnostics, not authoritative ground-truth validation.
 
-| Built fraction threshold | WorldCover built gain cells | Dynamic World built-gain F1 | Kernel built-stock F1 | Persistence built-stock F1 | Kernel built-gain F1 |
-|---:|---:|---:|---:|---:|---:|
-| 0.05 | 1,802 | 0.0111 | 0.3518 | 0.3886 | 0.0000 |
-| 0.10 | 1,566 | 0.0135 | 0.3625 | 0.4003 | 0.0000 |
-| 0.20 | 1,445 | 0.0188 | 0.3814 | 0.4209 | 0.0000 |
-| 0.30 | 1,511 | 0.0192 | 0.3971 | 0.4387 | 0.0000 |
+| Built fraction threshold | WorldCover built gain cells | Dynamic World built-gain F1 | Dynamic World 2020 same-year stock F1 | Dynamic World 2021 same-year stock F1 | Kernel 2021 built-stock F1 | Persistence 2021 built-stock F1 | Kernel built-gain F1 (structural-zero) | Kernel F1 (WorldCover-count action) | Random F1 (WorldCover-count action) |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.05 | 1,802 | 0.0111 | 0.3908 | 0.3501 | 0.3518 | 0.3886 | 0.0000 | 0.0157 | 0.0268 |
+| 0.10 | 1,566 | 0.0135 | 0.3998 | 0.3603 | 0.3625 | 0.4003 | 0.0000 | 0.0228 | 0.0277 |
+| 0.20 | 1,445 | 0.0188 | 0.4186 | 0.3780 | 0.3814 | 0.4209 | 0.0000 | 0.0268 | 0.0251 |
+| 0.30 | 1,511 | 0.0192 | 0.4334 | 0.3924 | 0.3971 | 0.4387 | 0.0000 | 0.0397 | 0.0251 |
+
+The rolling 2023 row is a one-step forecast with 23 features and training
+through 2022, whereas the headline 2023 result uses 25 features and training
+through 2021. Rolling 2024 is also one-step, while headline 2024 is a two-step
+open-loop rollout; these rows are not directly comparable point estimates.
 
 Source data and machine-readable details are provided in
 `artifacts/rolling_backtest/report.json`,

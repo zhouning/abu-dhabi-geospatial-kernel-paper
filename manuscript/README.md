@@ -77,6 +77,6 @@ not official Abu Dhabi forecasts.
    presenting the outputs as client-facing planning evidence.
 6. The manuscript intentionally contains no private database credentials.
 
-The local recovered-data output audit passes 276 historical and planning
-predictions with zero failures. A clean external checkout still needs the
+The local recovered-data output audit passes 312 historical, rolling-origin and
+planning predictions plus two WorldCover evidence rasters with zero failures. A clean external checkout still needs the
 large raster bundle and model runtimes to reproduce the numerical reports.
