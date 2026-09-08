@@ -415,7 +415,7 @@ while retaining the same execution contract.
 
 ## Data availability
 
-The public-data benchmark manifests, protocols, reports and generated delivery artefacts are organized under `benchmarks/abu_dhabi_land_use_v1/` in the accompanying repository. The main evidence files are:
+The public-data benchmark manifests, protocols, reports and generated delivery artefacts are organized under `benchmarks/abu_dhabi_land_use_v1/` in the accompanying repository. The versioned reproducibility release is archived at Zenodo v1.0.0 (https://doi.org/10.5281/zenodo.22663476), corresponding to GitHub tag `v1.0.0` at commit `2cbd2d3`. This archive DOI identifies the public-data benchmark and software/data package, not the eventual journal article DOI. Large rasters, GeoPackages and model checkpoints remain Git LFS objects in the GitHub repository; a full numerical rerun requires fetching those objects, whereas the automatically generated Zenodo GitHub ZIP may contain their pointer files. The main evidence files are:
 
 - `comparison_report_current.json` and `comparison_report_current.md` for historical metrics when a data-complete rerun is available;
 - `planning_comparison_report_public_2025_2031_current.json` and its Markdown rendering for 2031 planning objectives;
@@ -476,8 +476,10 @@ stream. The macOS binary SHA statement is an author self-check. As an
 upstream-only fallback, the public FLUS CA source can be paired with an open
 Python ANN implementation, but the unmodified upstream CA uses time seeding
 rather than `FLUS_RANDOM_SEED`. The corresponding-author e-mail is
-`zhouning@freedotech.com`; an archival DOI should be added after a persistent
-public release is created.
+`zhouning@freedotech.com`. The versioned public reproducibility release is
+archived at Zenodo v1.0.0: https://doi.org/10.5281/zenodo.22663476. It
+corresponds to GitHub tag `v1.0.0` at commit `2cbd2d3`; the DOI identifies the
+benchmark and software/data archive, not the eventual journal article DOI.
 
 ## Declarations
 

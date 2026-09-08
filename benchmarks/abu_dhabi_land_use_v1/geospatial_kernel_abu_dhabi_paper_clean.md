@@ -207,7 +207,7 @@ The public-data benchmark manifests, protocols, scripts, reports and generated d
 - `data_audit.json`, `protocol.json`, `gee_input_manifest.json` and `osm_input_manifest.json` for data provenance;
 - `run_geospatial_kernel.py` and `data_agent/uwm/geospatial_kernel/runtime.py` for the Kernel adapter and runtime contract.
 
-Large raster files are tracked through repository-relative paths and SHA-256 manifests rather than embedded in this manuscript. A public repository URL and archival DOI should be added after the authors complete release review. No private database address, credential or client-only service is required to reproduce the public-data benchmark.
+Large raster files are tracked through repository-relative paths and SHA-256 manifests rather than embedded in this manuscript. The public repository is https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper and the versioned archival DOI is https://doi.org/10.5281/zenodo.22663476 (Zenodo v1.0.0, GitHub commit 2cbd2d3). No private database address, credential or client-only service is required to reproduce the public-data benchmark.
 
 ## References
 

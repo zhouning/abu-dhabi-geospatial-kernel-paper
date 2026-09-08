@@ -222,6 +222,8 @@
     "required_external_model": "GeoFM-LDN source and checkpoint",
     "required_release_metadata": ["public_repository_url", "archival_doi", "corresponding_author_email"],
     "provided_release_metadata": {
+      "public_repository_url": "https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper",
+      "archival_doi": "https://doi.org/10.5281/zenodo.22663476",
       "corresponding_author_email": "zhouning@freedotech.com"
     }
   },

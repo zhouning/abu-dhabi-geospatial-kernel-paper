@@ -72,7 +72,20 @@ described by the current delivery manifest.
 
 ## Citation
 
-Until the manuscript is accepted and archived, cite the repository commit and manuscript author. A versioned DOI and final citation will be added after publication.
+For the reproducibility package, cite the versioned Zenodo archive:
+
+> Zhou, N. (2026). *Geospatial Kernel for Abu Dhabi Land-Cover Simulation and Planning* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22663476
+
+The archive corresponds to GitHub tag `v1.0.0` at commit `2cbd2d3`. This DOI
+identifies the public-data benchmark and code/data package, not the eventual
+journal article DOI. The concept DOI for future versions is
+`10.5281/zenodo.22663475`.
+
+Large rasters, GeoPackages and model checkpoints are tracked with Git LFS in
+the GitHub repository. The Zenodo DOI is the immutable version record; a full
+numerical rerun requires fetching the corresponding Git LFS objects. The
+automatically generated Zenodo GitHub ZIP may contain LFS pointer files for
+these large artifacts.
 
 ## License and data attribution
 

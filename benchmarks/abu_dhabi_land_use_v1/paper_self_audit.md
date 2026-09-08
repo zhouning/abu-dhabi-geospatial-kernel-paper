@@ -45,7 +45,10 @@ machine-readable checks are `reproducibility_check.json` and
 2. Run an allocator-matched comparison to separate the learned transition proposal from the projection implementation.
 3. Add a 30-m or multi-resolution sensitivity analysis if the target journal requires scale robustness.
 4. Replace public labels and proxy constraints with authoritative local data before presenting outputs as client-facing planning evidence.
-5. Add the final public repository URL, archival DOI, corresponding-author e-mail, author list and institutional affiliations.
+5. The final public repository URL and archival DOI are recorded in the
+   submission package: https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper
+   and https://doi.org/10.5281/zenodo.22663476. Corresponding-author e-mail,
+   author and affiliation metadata are also present.
 
 ## Reviewer-risk posture
 

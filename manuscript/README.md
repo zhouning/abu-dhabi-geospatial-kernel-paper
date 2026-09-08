@@ -70,7 +70,10 @@ not official Abu Dhabi forecasts.
    article-type limits, graphical-abstract status and artwork specifications.
 2. The corresponding-author e-mail is `zhouning@freedotech.com`; confirm the
    submission portal's full correspondence-address field before upload.
-3. Add the final public repository URL and archival DOI after release review.
+3. The public repository is `https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper`;
+   the versioned archival release is Zenodo v1.0.0,
+   `https://doi.org/10.5281/zenodo.22663476` (GitHub tag `v1.0.0`, commit
+   `2cbd2d3`).
 4. Preserve the local recovered bundle or an equivalent external artifact
    package if full numerical reproduction is required.
 5. Add independent built-area validation and authoritative local layers before

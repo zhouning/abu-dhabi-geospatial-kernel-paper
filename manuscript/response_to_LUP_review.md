@@ -66,7 +66,7 @@ no scientific result or model input was changed.
 | R10.2 | The confidence-subset logic did not itself explain why full-grid rankings lack validated-skill status | Replaced the causal transition in the Discussion. The manuscript now states that the filtered subsets are not skill tests and that full-grid rankings remain unvalidated because no independent change product is available. | This keeps the selection-effect diagnosis separate from the independent-validation limitation. |
 | R10.3 | GitHub Actions run links are not persistent archives | The manuscript cites the repository-stored JSON audit and commit `e06a997`; the transient Actions URL remains only a machine-readable report field. | The archived JSON is covered by the reproducibility output-hash manifest. |
 | R10.4 | Windows report paths used backslashes | Normalized `mask_path`, `quality_path`, and generated ensemble `prediction_path` fields with `Path.as_posix()` before serializing the comparison report. | The regenerated report uses POSIX separators on the current platform and the implementation now preserves that representation on Windows. |
-| R10.5 | DOI must be added before formal submission | No DOI has been fabricated. The manuscript retains the explicit requirement to add archival DOI(s) after persistent public releases are created. | Creating Zenodo or equivalent releases is an external publishing action and remains required before formal submission. |
+| R10.5 | DOI must be added before formal submission | A persistent Zenodo v1.0.0 release is now available at `https://doi.org/10.5281/zenodo.22663476`, corresponding to GitHub tag `v1.0.0` at commit `2cbd2d3`. The DOI is cited in the manuscript, README and submission notes. | This is the reproducibility-package DOI, not the future journal-article DOI. The Zenodo record must not be interpreted as an authoritative Abu Dhabi data release. |
 
 ## Ninth-round revisions
 
@@ -184,7 +184,9 @@ no scientific result or model input was changed.
 3. Authoritative planning, reclamation, infrastructure-capacity, irrigation and
    stakeholder data are unavailable. The 2025–2031 maps must remain scenario
    stress tests, not statutory land-use forecasts.
-4. Add an archival DOI and final public repository URL before formal submission.
+4. The archival DOI and final public repository URL are now available in the
+   manuscript package: `https://doi.org/10.5281/zenodo.22663476` and
+   `https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper`.
 
 ## Post-review experimental strengthening (8 September 2026)
 

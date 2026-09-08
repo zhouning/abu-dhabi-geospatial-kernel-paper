@@ -36,7 +36,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Requirement | Status | Check |
 |---|---|---|
 | Data availability | Conditional | The public bundle, generated rasters, vectors, rolling-origin experiment and frozen WorldCover diagnostic inputs are included or tracked with hashes; authoritative local validation data remain unavailable. The author-run Linux/macOS Kernel comparison and FLUS feature diagnostics are archived with commands and reports. Reviewer-provided Windows figures are provenance-labelled external verification because their rasters are not locally archived. |
-| Code availability | Conditional | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; a compatible, traceable FLUS build is required for an information-matched comparison, and a DOI is not yet provided. |
+| Code availability | Ready with scope boundary | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; the v1.0.0 public benchmark release is archived at https://doi.org/10.5281/zenodo.22663476. A compatible, traceable FLUS build is still required for an information-matched comparison. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
 | Competing interests | Updated | Employment by the software company is disclosed; this should be checked against the portal's structured declaration field. |
@@ -74,7 +74,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 The package is a conditional Article-type draft. The current PDF is not an
 official Elsevier production template; it is a readable, conventional initial-
 submission author manuscript. Before submission, add the
-public release URL/DOI and an independent 2023–2024 change-validation layer.
+the public release URL/DOI is now recorded in the manuscript and README; an
+independent 2023–2024 change-validation layer is still unavailable.
 The supplied FLUS build is GeoSOS-derived. Its valid-input binary provenance is
 commit `deb0a54`; the retained fail-closed source release is
 `FLUS_console_crossplatform` tag `paper-benchmark-flus-v1.1` at commit

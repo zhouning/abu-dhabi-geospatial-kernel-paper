@@ -37,7 +37,8 @@
 2. The corresponding-author e-mail is set to `zhouning@freedotech.com`; confirm any full correspondence-address field in the submission portal.
 3. Add a 30-m or multi-resolution sensitivity analysis if the target journal requires scale robustness.
 4. Replace public labels and proxy constraints with authoritative local data before presenting outputs as client-facing planning evidence.
-5. Add the final public repository URL and archival DOI after release review.
+5. The public repository URL and archival DOI are recorded: Zenodo
+   `10.5281/zenodo.22663476`, GitHub tag `v1.0.0`, commit `2cbd2d3`.
 6. Preserve or publish an external copy of the public raster bundle if full numerical reproduction is required, and add an independent change-validation product when available.
 
 ## Reviewer-risk posture
