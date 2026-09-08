@@ -185,3 +185,14 @@ no scientific result or model input was changed.
    stakeholder data are unavailable. The 2025–2031 maps must remain scenario
    stress tests, not statutory land-use forecasts.
 4. Add an archival DOI and final public repository URL before formal submission.
+
+## Post-review experimental strengthening (8 September 2026)
+
+| Item | Additional work completed | Result and interpretation |
+|---|---|---|
+| Strict temporal leakage control | Added a four-origin expanding-window one-step backtest (2020→2021 through 2023→2024), with target labels withheld from fitting and the later OSM road snapshot removed from all rolling folds. | The 23-feature Kernel strict FoM means are 0.2595, 0.0724, 0.2116 and 0.1816; the corresponding random-allocation means are 0.0524, 0.0048, 0.0200 and 0.0323. Persistence is a structural zero for change FoM. The score variation, especially the 2022 target, is reported rather than hidden. |
+| Spatial uncertainty | Added paired 8 × 8-cell block bootstrap contrasts with 1,000 resamples for all three seeds and both zero models. | Kernel-minus-baseline strict-FoM intervals exclude zero in every window and seed. These are mapped-domain conditional intervals, not authoritative-validation confidence intervals. |
+| External product diagnostic | Materialized and hashed ESA WorldCover 2020 v1.0 and 2021 v2.0 built-fraction rasters at the benchmark grid; compared built stock and built gain across thresholds 0.05–0.30. | Dynamic World-to-WorldCover built-gain F1 is only 0.0111–0.0192; Kernel built-gain F1 is 0 at every threshold, and persistence exceeds Kernel for built stock. The negative result is retained as a boundary on prediction claims. |
+| Reproducibility closure | Added tests, synchronized Supplementary Table S5 and Fig. 3, updated manuscript consistency assertions, regenerated all outputs and reran the complete reproduction entry point. | 13 tests pass; a clean Python 3.11 environment installs the lock with no broken requirements; 45 planning rasters, 9 vector packages and 276 audited predictions complete with zero failures; the SHA-256 gate reports PASS. |
+
+These additions strengthen the paper's audit and falsification posture, but they do not create authoritative Abu Dhabi validation data. The manuscript remains a public-data benchmark and conditional scenario-stress-test study until local reference layers become available.

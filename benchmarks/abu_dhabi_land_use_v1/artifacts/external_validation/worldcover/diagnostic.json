@@ -1,0 +1,2168 @@
+{
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "comparison_window": {
+    "origin_year": 2020,
+    "target_year": 2021
+  },
+  "created_at": "2026-09-08T12:37:41.140338+00:00",
+  "interpretation": "independent_public_product_agreement_not_ground_truth",
+  "known_limitations": [
+    "WorldCover 2020 v1.0 and 2021 v2.0 are different product versions.",
+    "WorldCover and Dynamic World share satellite-family inputs and are not fully independent.",
+    "The diagnostic evaluates built-up gain only and does not validate all land-cover classes.",
+    "No official Abu Dhabi planning or cadastral truth is available in this benchmark."
+  ],
+  "rows": [
+    {
+      "built_gain_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.011075219197046609,
+          "false_negative": 1790,
+          "false_positive": 353,
+          "intersection_over_union": 0.005568445475638051,
+          "observed_positive_pixels": 1802,
+          "pixel_count": 79746,
+          "precision": 0.03287671232876712,
+          "predicted_positive_pixels": 365,
+          "recall": 0.006659267480577136,
+          "true_negative": 77591,
+          "true_positive": 12
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 77944,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 77944,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 77944,
+              "true_positive": 0
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 77944,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 77944,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 77944,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 77944,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 77944,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1802,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1802,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 77944,
+              "true_positive": 0
+            }
+          ]
+        }
+      },
+      "built_loss_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.0020304568527918783,
+          "false_negative": 1498,
+          "false_positive": 1451,
+          "intersection_over_union": 0.0010162601626016261,
+          "observed_positive_pixels": 1501,
+          "pixel_count": 79746,
+          "precision": 0.0020632737276478678,
+          "predicted_positive_pixels": 1454,
+          "recall": 0.001998667554963358,
+          "true_negative": 76794,
+          "true_positive": 3
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.003855050115651503,
+            "intersection_over_union": 0.0019313472371619341,
+            "precision": 0.004574565416285453,
+            "recall": 0.0033311125916055963
+          },
+          "seed_results": [
+            {
+              "f1": 0.0030840400925212026,
+              "false_negative": 1497,
+              "false_positive": 1089,
+              "intersection_over_union": 0.0015444015444015444,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": 0.0036596523330283625,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.002664890073284477,
+              "seed": 31,
+              "true_negative": 77156,
+              "true_positive": 4
+            },
+            {
+              "f1": 0.004626060138781804,
+              "false_negative": 1495,
+              "false_positive": 1087,
+              "intersection_over_union": 0.00231839258114374,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": 0.0054894784995425435,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.003997335109926716,
+              "seed": 47,
+              "true_negative": 77158,
+              "true_positive": 6
+            },
+            {
+              "f1": 0.0038550501156515036,
+              "false_negative": 1496,
+              "false_positive": 1088,
+              "intersection_over_union": 0.0019312475859405175,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": 0.004574565416285453,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.0033311125916055963,
+              "seed": 73,
+              "true_negative": 77157,
+              "true_positive": 5
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1501,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78245,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1501,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78245,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1501,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78245,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.002827036751477769,
+            "intersection_over_union": 0.0014159505432658123,
+            "precision": 0.003354681305275999,
+            "recall": 0.0024428159005107706
+          },
+          "seed_results": [
+            {
+              "f1": 0.0015420200462606013,
+              "false_negative": 1499,
+              "false_positive": 1091,
+              "intersection_over_union": 0.0007716049382716049,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": 0.0018298261665141812,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.0013324450366422385,
+              "seed": 31,
+              "true_negative": 77154,
+              "true_positive": 2
+            },
+            {
+              "f1": 0.004626060138781804,
+              "false_negative": 1495,
+              "false_positive": 1087,
+              "intersection_over_union": 0.00231839258114374,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": 0.0054894784995425435,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.003997335109926716,
+              "seed": 47,
+              "true_negative": 77158,
+              "true_positive": 6
+            },
+            {
+              "f1": 0.002313030069390902,
+              "false_negative": 1498,
+              "false_positive": 1090,
+              "intersection_over_union": 0.0011578541103820917,
+              "observed_positive_pixels": 1501,
+              "pixel_count": 79746,
+              "precision": 0.0027447392497712718,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.001998667554963358,
+              "seed": 73,
+              "true_negative": 77155,
+              "true_positive": 3
+            }
+          ]
+        }
+      },
+      "built_stock_agreement": {
+        "dynamic_world_observed_2020": {
+          "f1": 0.3907642113188606,
+          "false_negative": 28830,
+          "false_positive": 300,
+          "intersection_over_union": 0.2428259513412352,
+          "observed_positive_pixels": 38172,
+          "pixel_count": 79746,
+          "precision": 0.9688861232109521,
+          "predicted_positive_pixels": 9642,
+          "recall": 0.2447343602640679,
+          "true_negative": 41274,
+          "true_positive": 9342
+        },
+        "dynamic_world_observed_2021": {
+          "f1": 0.3501041976778803,
+          "false_negative": 30241,
+          "false_positive": 321,
+          "intersection_over_union": 0.21219776254059905,
+          "observed_positive_pixels": 38473,
+          "pixel_count": 79746,
+          "precision": 0.9624693090143809,
+          "predicted_positive_pixels": 8553,
+          "recall": 0.21396823746523536,
+          "true_negative": 40952,
+          "true_positive": 8232
+        },
+        "geospatial_kernel_2021": {
+          "mean": {
+            "f1": 0.3518211333701955,
+            "intersection_over_union": 0.2134605295513706,
+            "precision": 0.9675595586228408,
+            "recall": 0.2149992635527946
+          },
+          "seed_results": [
+            {
+              "f1": 0.3517927778486666,
+              "false_negative": 30202,
+              "false_positive": 278,
+              "intersection_over_union": 0.21343965317024077,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9674815767926073,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.2149819353832558,
+              "seed": 31,
+              "true_negative": 40995,
+              "true_positive": 8271
+            },
+            {
+              "f1": 0.35183531113095995,
+              "false_negative": 30201,
+              "false_positive": 277,
+              "intersection_over_union": 0.2134709677419355,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9675985495379577,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.21500792763756402,
+              "seed": 47,
+              "true_negative": 40996,
+              "true_positive": 8272
+            },
+            {
+              "f1": 0.35183531113095995,
+              "false_negative": 30201,
+              "false_positive": 277,
+              "intersection_over_union": 0.2134709677419355,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9675985495379577,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.21500792763756402,
+              "seed": 73,
+              "true_negative": 40996,
+              "true_positive": 8272
+            }
+          ]
+        },
+        "persistence_2021": {
+          "mean": {
+            "f1": 0.3885690533097786,
+            "intersection_over_union": 0.2411329223308484,
+            "precision": 0.9695084007467331,
+            "recall": 0.2429755932732046
+          },
+          "seed_results": [
+            {
+              "f1": 0.38856905330977864,
+              "false_negative": 29125,
+              "false_positive": 294,
+              "intersection_over_union": 0.2411329223308484,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9695084007467331,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2429755932732046,
+              "seed": 31,
+              "true_negative": 40979,
+              "true_positive": 9348
+            },
+            {
+              "f1": 0.38856905330977864,
+              "false_negative": 29125,
+              "false_positive": 294,
+              "intersection_over_union": 0.2411329223308484,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9695084007467331,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2429755932732046,
+              "seed": 47,
+              "true_negative": 40979,
+              "true_positive": 9348
+            },
+            {
+              "f1": 0.38856905330977864,
+              "false_negative": 29125,
+              "false_positive": 294,
+              "intersection_over_union": 0.2411329223308484,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9695084007467331,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2429755932732046,
+              "seed": 73,
+              "true_negative": 40979,
+              "true_positive": 9348
+            }
+          ]
+        },
+        "random_allocation_2021": {
+          "mean": {
+            "f1": 0.35253002140841877,
+            "intersection_over_union": 0.21398266922198184,
+            "precision": 0.9695091043786798,
+            "recall": 0.21543246779126488
+          },
+          "seed_results": [
+            {
+              "f1": 0.3524733103653609,
+              "false_negative": 30186,
+              "false_positive": 262,
+              "intersection_over_union": 0.21394088034077707,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9693531407182127,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.21539781145218725,
+              "seed": 31,
+              "true_negative": 41011,
+              "true_positive": 8287
+            },
+            {
+              "f1": 0.3526009102122411,
+              "false_negative": 30183,
+              "false_positive": 259,
+              "intersection_over_union": 0.2140349065372302,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.9697040589542637,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.2154757882151119,
+              "seed": 47,
+              "true_negative": 41014,
+              "true_positive": 8290
+            },
+            {
+              "f1": 0.3525158436476543,
+              "false_negative": 30185,
+              "false_positive": 261,
+              "intersection_over_union": 0.21397222078793823,
+              "observed_positive_pixels": 38473,
+              "pixel_count": 79746,
+              "precision": 0.969470113463563,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.21542380370649547,
+              "seed": 73,
+              "true_negative": 41012,
+              "true_positive": 8288
+            }
+          ]
+        }
+      },
+      "worldcover_built_2020_pixels": 38172,
+      "worldcover_built_2021_pixels": 38473,
+      "worldcover_built_fraction_threshold": 0.05,
+      "worldcover_built_gain_pixels": 1802,
+      "worldcover_built_loss_pixels": 1501
+    },
+    {
+      "built_gain_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.013464526152252718,
+          "false_negative": 1553,
+          "false_positive": 352,
+          "intersection_over_union": 0.006777893639207508,
+          "observed_positive_pixels": 1566,
+          "pixel_count": 79746,
+          "precision": 0.03561643835616438,
+          "predicted_positive_pixels": 365,
+          "recall": 0.008301404853128991,
+          "true_negative": 77828,
+          "true_positive": 13
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78180,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78180,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78180,
+              "true_positive": 0
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78180,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78180,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78180,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78180,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78180,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1566,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1566,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78180,
+              "true_positive": 0
+            }
+          ]
+        }
+      },
+      "built_loss_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.0033783783783783786,
+          "false_negative": 1501,
+          "false_positive": 1449,
+          "intersection_over_union": 0.001692047377326565,
+          "observed_positive_pixels": 1506,
+          "pixel_count": 79746,
+          "precision": 0.0034387895460797797,
+          "predicted_positive_pixels": 1454,
+          "recall": 0.0033200531208499337,
+          "true_negative": 76791,
+          "true_positive": 5
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.004360651532640759,
+            "intersection_over_union": 0.0021852224665340403,
+            "precision": 0.00518450747179018,
+            "recall": 0.0037627268702965914
+          },
+          "seed_results": [
+            {
+              "f1": 0.003847633705271258,
+              "false_negative": 1501,
+              "false_positive": 1088,
+              "intersection_over_union": 0.0019275250578257518,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": 0.004574565416285453,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.0033200531208499337,
+              "seed": 31,
+              "true_negative": 77152,
+              "true_positive": 5
+            },
+            {
+              "f1": 0.003847633705271258,
+              "false_negative": 1501,
+              "false_positive": 1088,
+              "intersection_over_union": 0.0019275250578257518,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": 0.004574565416285453,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.0033200531208499337,
+              "seed": 47,
+              "true_negative": 77152,
+              "true_positive": 5
+            },
+            {
+              "f1": 0.005386687187379761,
+              "false_negative": 1499,
+              "false_positive": 1086,
+              "intersection_over_union": 0.002700617283950617,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": 0.006404391582799634,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.004648074369189907,
+              "seed": 73,
+              "true_negative": 77154,
+              "true_positive": 7
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1506,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78240,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1506,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78240,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1506,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78240,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.0035911247915865075,
+            "intersection_over_union": 0.0017992223799376842,
+            "precision": 0.00426959438853309,
+            "recall": 0.003098716246126605
+          },
+          "seed_results": [
+            {
+              "f1": 0.002308580223162755,
+              "false_negative": 1503,
+              "false_positive": 1090,
+              "intersection_over_union": 0.0011556240369799693,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": 0.0027447392497712718,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.00199203187250996,
+              "seed": 31,
+              "true_negative": 77150,
+              "true_positive": 3
+            },
+            {
+              "f1": 0.005386687187379761,
+              "false_negative": 1499,
+              "false_positive": 1086,
+              "intersection_over_union": 0.002700617283950617,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": 0.006404391582799634,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.004648074369189907,
+              "seed": 47,
+              "true_negative": 77154,
+              "true_positive": 7
+            },
+            {
+              "f1": 0.0030781069642170067,
+              "false_negative": 1502,
+              "false_positive": 1089,
+              "intersection_over_union": 0.0015414258188824663,
+              "observed_positive_pixels": 1506,
+              "pixel_count": 79746,
+              "precision": 0.0036596523330283625,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.0026560424966799467,
+              "seed": 73,
+              "true_negative": 77151,
+              "true_positive": 4
+            }
+          ]
+        }
+      },
+      "built_stock_agreement": {
+        "dynamic_world_observed_2020": {
+          "f1": 0.3998344010110254,
+          "false_negative": 27077,
+          "false_positive": 467,
+          "intersection_over_union": 0.24987063917862687,
+          "observed_positive_pixels": 36252,
+          "pixel_count": 79746,
+          "precision": 0.9515660651317154,
+          "predicted_positive_pixels": 9642,
+          "recall": 0.2530894847180845,
+          "true_negative": 43027,
+          "true_positive": 9175
+        },
+        "dynamic_world_observed_2021": {
+          "f1": 0.36032542070656415,
+          "false_negative": 28229,
+          "false_positive": 470,
+          "intersection_over_union": 0.21975422761133162,
+          "observed_positive_pixels": 36312,
+          "pixel_count": 79746,
+          "precision": 0.9450485209867883,
+          "predicted_positive_pixels": 8553,
+          "recall": 0.22259858999779686,
+          "true_negative": 42964,
+          "true_positive": 8083
+        },
+        "geospatial_kernel_2021": {
+          "mean": {
+            "f1": 0.36251235297177203,
+            "intersection_over_union": 0.22138326108036335,
+            "precision": 0.9511443833586775,
+            "recall": 0.2239296467650731
+          },
+          "seed_results": [
+            {
+              "f1": 0.36245291010008696,
+              "false_negative": 28182,
+              "false_positive": 419,
+              "intersection_over_union": 0.2213389235250878,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.9509884196982104,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.22389292795769994,
+              "seed": 31,
+              "true_negative": 43015,
+              "true_positive": 8130
+            },
+            {
+              "f1": 0.3624974922538508,
+              "false_negative": 28181,
+              "false_positive": 418,
+              "intersection_over_union": 0.22137217533351483,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.9511053924435606,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.2239204670632298,
+              "seed": 47,
+              "true_negative": 43016,
+              "true_positive": 8131
+            },
+            {
+              "f1": 0.3625866565613785,
+              "false_negative": 28179,
+              "false_positive": 416,
+              "intersection_over_union": 0.22143868438248748,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.9513393379342613,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.22397554527428948,
+              "seed": 73,
+              "true_negative": 43018,
+              "true_positive": 8133
+            }
+          ]
+        },
+        "persistence_2021": {
+          "mean": {
+            "f1": 0.4002698350524437,
+            "intersection_over_union": 0.2502108441929428,
+            "precision": 0.953847749429579,
+            "recall": 0.2532771535580524
+          },
+          "seed_results": [
+            {
+              "f1": 0.40026983505244373,
+              "false_negative": 27115,
+              "false_positive": 445,
+              "intersection_over_union": 0.2502108441929428,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.953847749429579,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2532771535580524,
+              "seed": 31,
+              "true_negative": 42989,
+              "true_positive": 9197
+            },
+            {
+              "f1": 0.40026983505244373,
+              "false_negative": 27115,
+              "false_positive": 445,
+              "intersection_over_union": 0.2502108441929428,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.953847749429579,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2532771535580524,
+              "seed": 47,
+              "true_negative": 42989,
+              "true_positive": 9197
+            },
+            {
+              "f1": 0.40026983505244373,
+              "false_negative": 27115,
+              "false_positive": 445,
+              "intersection_over_union": 0.2502108441929428,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.953847749429579,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2532771535580524,
+              "seed": 73,
+              "true_negative": 42989,
+              "true_positive": 9197
+            }
+          ]
+        },
+        "random_allocation_2021": {
+          "mean": {
+            "f1": 0.3635674639441832,
+            "intersection_over_union": 0.2221707665062083,
+            "precision": 0.9539127383319687,
+            "recall": 0.22458140559594622
+          },
+          "seed_results": [
+            {
+              "f1": 0.36365662825171086,
+              "false_negative": 28155,
+              "false_positive": 392,
+              "intersection_over_union": 0.222237358326068,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.9541466838226693,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.22463648380700596,
+              "seed": 31,
+              "true_negative": 43042,
+              "true_positive": 8157
+            },
+            {
+              "f1": 0.363612046097947,
+              "false_negative": 28156,
+              "false_positive": 393,
+              "intersection_over_union": 0.22220405939245336,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.9540297110773189,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.2246089447014761,
+              "seed": 47,
+              "true_negative": 43041,
+              "true_positive": 8156
+            },
+            {
+              "f1": 0.3634337174828916,
+              "false_negative": 28160,
+              "false_positive": 397,
+              "intersection_over_union": 0.2220708818001035,
+              "observed_positive_pixels": 36312,
+              "pixel_count": 79746,
+              "precision": 0.9535618200959176,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.22449878827935668,
+              "seed": 73,
+              "true_negative": 43037,
+              "true_positive": 8152
+            }
+          ]
+        }
+      },
+      "worldcover_built_2020_pixels": 36252,
+      "worldcover_built_2021_pixels": 36312,
+      "worldcover_built_fraction_threshold": 0.1,
+      "worldcover_built_gain_pixels": 1566,
+      "worldcover_built_loss_pixels": 1506
+    },
+    {
+      "built_gain_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.01878453038674033,
+          "false_negative": 1428,
+          "false_positive": 348,
+          "intersection_over_union": 0.009481316229782488,
+          "observed_positive_pixels": 1445,
+          "pixel_count": 79746,
+          "precision": 0.04657534246575343,
+          "predicted_positive_pixels": 365,
+          "recall": 0.011764705882352941,
+          "true_negative": 77953,
+          "true_positive": 17
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78301,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78301,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78301,
+              "true_positive": 0
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78301,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78301,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78301,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78301,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78301,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1445,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1445,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78301,
+              "true_positive": 0
+            }
+          ]
+        }
+      },
+      "built_loss_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.005485087418580734,
+          "false_negative": 1455,
+          "false_positive": 1446,
+          "intersection_over_union": 0.002750085940185631,
+          "observed_positive_pixels": 1463,
+          "pixel_count": 79746,
+          "precision": 0.005502063273727648,
+          "predicted_positive_pixels": 1454,
+          "recall": 0.005468215994531784,
+          "true_negative": 76837,
+          "true_positive": 8
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.005477308294209703,
+            "intersection_over_union": 0.0027462778574929986,
+            "precision": 0.006404391582799634,
+            "recall": 0.004784688995215312
+          },
+          "seed_results": [
+            {
+              "f1": 0.004694835680751174,
+              "false_negative": 1457,
+              "false_positive": 1087,
+              "intersection_over_union": 0.002352941176470588,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": 0.0054894784995425435,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.004101161995898838,
+              "seed": 31,
+              "true_negative": 77196,
+              "true_positive": 6
+            },
+            {
+              "f1": 0.005477308294209703,
+              "false_negative": 1456,
+              "false_positive": 1086,
+              "intersection_over_union": 0.002746174970576697,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": 0.006404391582799634,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.004784688995215311,
+              "seed": 47,
+              "true_negative": 77197,
+              "true_positive": 7
+            },
+            {
+              "f1": 0.006259780907668232,
+              "false_negative": 1455,
+              "false_positive": 1085,
+              "intersection_over_union": 0.0031397174254317113,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": 0.007319304666056725,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.005468215994531784,
+              "seed": 73,
+              "true_negative": 77198,
+              "true_positive": 8
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1463,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78283,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1463,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78283,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1463,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78283,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.006520605112154407,
+            "intersection_over_union": 0.0032712073894000273,
+            "precision": 0.007624275693809089,
+            "recall": 0.005696058327637275
+          },
+          "seed_results": [
+            {
+              "f1": 0.005477308294209703,
+              "false_negative": 1456,
+              "false_positive": 1086,
+              "intersection_over_union": 0.002746174970576697,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": 0.006404391582799634,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.004784688995215311,
+              "seed": 31,
+              "true_negative": 77197,
+              "true_positive": 7
+            },
+            {
+              "f1": 0.006259780907668232,
+              "false_negative": 1455,
+              "false_positive": 1085,
+              "intersection_over_union": 0.0031397174254317113,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": 0.007319304666056725,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.005468215994531784,
+              "seed": 47,
+              "true_negative": 77198,
+              "true_positive": 8
+            },
+            {
+              "f1": 0.00782472613458529,
+              "false_negative": 1453,
+              "false_positive": 1083,
+              "intersection_over_union": 0.003927729772191673,
+              "observed_positive_pixels": 1463,
+              "pixel_count": 79746,
+              "precision": 0.009149130832570906,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.00683526999316473,
+              "seed": 73,
+              "true_negative": 77200,
+              "true_positive": 10
+            }
+          ]
+        }
+      },
+      "built_stock_agreement": {
+        "dynamic_world_observed_2020": {
+          "f1": 0.41859803107579174,
+          "false_negative": 23690,
+          "false_positive": 819,
+          "intersection_over_union": 0.2647005880235209,
+          "observed_positive_pixels": 32513,
+          "pixel_count": 79746,
+          "precision": 0.9150591163658992,
+          "predicted_positive_pixels": 9642,
+          "recall": 0.2713683757266324,
+          "true_negative": 46414,
+          "true_positive": 8823
+        },
+        "dynamic_world_observed_2021": {
+          "f1": 0.377996491911908,
+          "false_negative": 24737,
+          "false_positive": 795,
+          "intersection_over_union": 0.23304295584259538,
+          "observed_positive_pixels": 32495,
+          "pixel_count": 79746,
+          "precision": 0.9070501578393546,
+          "predicted_positive_pixels": 8553,
+          "recall": 0.2387444222188029,
+          "true_negative": 46456,
+          "true_positive": 7758
+        },
+        "geospatial_kernel_2021": {
+          "mean": {
+            "f1": 0.38137933274859503,
+            "intersection_over_union": 0.23561996964487308,
+            "precision": 0.9155066869419425,
+            "recall": 0.24085756783094836
+          },
+          "seed_results": [
+            {
+              "f1": 0.38115193450930707,
+              "false_negative": 24673,
+              "false_positive": 727,
+              "intersection_over_union": 0.23544639094575884,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.9149608141303076,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.24071395599322973,
+              "seed": 31,
+              "true_negative": 46524,
+              "true_positive": 7822
+            },
+            {
+              "f1": 0.38149303186823896,
+              "false_negative": 24666,
+              "false_positive": 720,
+              "intersection_over_union": 0.23570675899443022,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.91577962334776,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.24092937374980766,
+              "seed": 47,
+              "true_negative": 46531,
+              "true_positive": 7829
+            },
+            {
+              "f1": 0.38149303186823896,
+              "false_negative": 24666,
+              "false_positive": 720,
+              "intersection_over_union": 0.23570675899443022,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.91577962334776,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.24092937374980766,
+              "seed": 73,
+              "true_negative": 46531,
+              "true_positive": 7829
+            }
+          ]
+        },
+        "persistence_2021": {
+          "mean": {
+            "f1": 0.4209127370244678,
+            "intersection_over_union": 0.2665544500886711,
+            "precision": 0.9197261978842564,
+            "recall": 0.2729035236190183
+          },
+          "seed_results": [
+            {
+              "f1": 0.4209127370244678,
+              "false_negative": 23627,
+              "false_positive": 774,
+              "intersection_over_union": 0.2665544500886711,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.9197261978842564,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2729035236190183,
+              "seed": 31,
+              "true_negative": 46477,
+              "true_positive": 8868
+            },
+            {
+              "f1": 0.4209127370244678,
+              "false_negative": 23627,
+              "false_positive": 774,
+              "intersection_over_union": 0.2665544500886711,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.9197261978842564,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2729035236190183,
+              "seed": 47,
+              "true_negative": 46477,
+              "true_positive": 8868
+            },
+            {
+              "f1": 0.4209127370244678,
+              "false_negative": 23627,
+              "false_positive": 774,
+              "intersection_over_union": 0.2665544500886711,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.9197261978842564,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2729035236190183,
+              "seed": 73,
+              "true_negative": 46477,
+              "true_positive": 8868
+            }
+          ]
+        },
+        "random_allocation_2021": {
+          "mean": {
+            "f1": 0.3830036058863659,
+            "intersection_over_union": 0.23686118507836118,
+            "precision": 0.9194057784536204,
+            "recall": 0.24188336667179566
+          },
+          "seed_results": [
+            {
+              "f1": 0.3828574213039665,
+              "false_negative": 24638,
+              "false_positive": 692,
+              "intersection_over_union": 0.23674932955675415,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.9190548602175693,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.2417910447761194,
+              "seed": 31,
+              "true_negative": 46559,
+              "true_positive": 7857
+            },
+            {
+              "f1": 0.383442159633564,
+              "false_negative": 24626,
+              "false_positive": 680,
+              "intersection_over_union": 0.2371966842501884,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.9204585331617733,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.24216033235882445,
+              "seed": 47,
+              "true_negative": 46571,
+              "true_positive": 7869
+            },
+            {
+              "f1": 0.3827112367215671,
+              "false_negative": 24641,
+              "false_positive": 695,
+              "intersection_over_union": 0.236637541428141,
+              "observed_positive_pixels": 32495,
+              "pixel_count": 79746,
+              "precision": 0.9187039419815183,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.24169872288044314,
+              "seed": 73,
+              "true_negative": 46556,
+              "true_positive": 7854
+            }
+          ]
+        }
+      },
+      "worldcover_built_2020_pixels": 32513,
+      "worldcover_built_2021_pixels": 32495,
+      "worldcover_built_fraction_threshold": 0.2,
+      "worldcover_built_gain_pixels": 1445,
+      "worldcover_built_loss_pixels": 1463
+    },
+    {
+      "built_gain_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.019189765458422176,
+          "false_negative": 1493,
+          "false_positive": 347,
+          "intersection_over_union": 0.00968783638320775,
+          "observed_positive_pixels": 1511,
+          "pixel_count": 79746,
+          "precision": 0.049315068493150684,
+          "predicted_positive_pixels": 365,
+          "recall": 0.011912640635340834,
+          "true_negative": 77888,
+          "true_positive": 18
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78235,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78235,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78235,
+              "true_positive": 0
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78235,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78235,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78235,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78235,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78235,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1511,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1511,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78235,
+              "true_positive": 0
+            }
+          ]
+        }
+      },
+      "built_loss_agreement": {
+        "dynamic_world_observed": {
+          "f1": 0.005590496156533892,
+          "false_negative": 1400,
+          "false_positive": 1446,
+          "intersection_over_union": 0.002803083391730904,
+          "observed_positive_pixels": 1408,
+          "pixel_count": 79746,
+          "precision": 0.005502063273727648,
+          "predicted_positive_pixels": 1454,
+          "recall": 0.005681818181818182,
+          "true_negative": 76892,
+          "true_positive": 8
+        },
+        "geospatial_kernel": {
+          "mean": {
+            "f1": 0.003198720511795282,
+            "intersection_over_union": 0.0016020294011960471,
+            "precision": 0.0036596523330283625,
+            "recall": 0.0028409090909090906
+          },
+          "seed_results": [
+            {
+              "f1": 0.003198720511795282,
+              "false_negative": 1404,
+              "false_positive": 1089,
+              "intersection_over_union": 0.0016019223067681217,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": 0.0036596523330283625,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.002840909090909091,
+              "seed": 31,
+              "true_negative": 77249,
+              "true_positive": 4
+            },
+            {
+              "f1": 0.0023990403838464614,
+              "false_negative": 1405,
+              "false_positive": 1090,
+              "intersection_over_union": 0.0012009607686148918,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": 0.0027447392497712718,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.002130681818181818,
+              "seed": 47,
+              "true_negative": 77248,
+              "true_positive": 3
+            },
+            {
+              "f1": 0.003998400639744102,
+              "false_negative": 1403,
+              "false_positive": 1088,
+              "intersection_over_union": 0.002003205128205128,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": 0.004574565416285453,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.0035511363636363635,
+              "seed": 73,
+              "true_negative": 77250,
+              "true_positive": 5
+            }
+          ]
+        },
+        "persistence": {
+          "mean": {
+            "f1": 0.0,
+            "intersection_over_union": 0.0,
+            "precision": null,
+            "recall": 0.0
+          },
+          "seed_results": [
+            {
+              "f1": 0.0,
+              "false_negative": 1408,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 31,
+              "true_negative": 78338,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1408,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 47,
+              "true_negative": 78338,
+              "true_positive": 0
+            },
+            {
+              "f1": 0.0,
+              "false_negative": 1408,
+              "false_positive": 0,
+              "intersection_over_union": 0.0,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": null,
+              "predicted_positive_pixels": 0,
+              "recall": 0.0,
+              "seed": 73,
+              "true_negative": 78338,
+              "true_positive": 0
+            }
+          ]
+        },
+        "random_allocation": {
+          "mean": {
+            "f1": 0.005597760895641744,
+            "intersection_over_union": 0.0028074889249139596,
+            "precision": 0.006404391582799635,
+            "recall": 0.004971590909090909
+          },
+          "seed_results": [
+            {
+              "f1": 0.004798080767692923,
+              "false_negative": 1402,
+              "false_positive": 1087,
+              "intersection_over_union": 0.002404809619238477,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": 0.0054894784995425435,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.004261363636363636,
+              "seed": 31,
+              "true_negative": 77251,
+              "true_positive": 6
+            },
+            {
+              "f1": 0.003998400639744102,
+              "false_negative": 1403,
+              "false_positive": 1088,
+              "intersection_over_union": 0.002003205128205128,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": 0.004574565416285453,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.0035511363636363635,
+              "seed": 47,
+              "true_negative": 77250,
+              "true_positive": 5
+            },
+            {
+              "f1": 0.007996801279488205,
+              "false_negative": 1398,
+              "false_positive": 1083,
+              "intersection_over_union": 0.004014452027298274,
+              "observed_positive_pixels": 1408,
+              "pixel_count": 79746,
+              "precision": 0.009149130832570906,
+              "predicted_positive_pixels": 1093,
+              "recall": 0.007102272727272727,
+              "seed": 73,
+              "true_negative": 77255,
+              "true_positive": 10
+            }
+          ]
+        }
+      },
+      "built_stock_agreement": {
+        "dynamic_world_observed_2020": {
+          "f1": 0.43343846935849645,
+          "false_negative": 20407,
+          "false_positive": 1328,
+          "intersection_over_union": 0.27668142034676696,
+          "observed_positive_pixels": 28721,
+          "pixel_count": 79746,
+          "precision": 0.8622692387471479,
+          "predicted_positive_pixels": 9642,
+          "recall": 0.2894746004665576,
+          "true_negative": 49697,
+          "true_positive": 8314
+        },
+        "dynamic_world_observed_2021": {
+          "f1": 0.39243384969366185,
+          "false_negative": 21490,
+          "false_positive": 1219,
+          "intersection_over_union": 0.24411676596877807,
+          "observed_positive_pixels": 28824,
+          "pixel_count": 79746,
+          "precision": 0.8574769086870104,
+          "predicted_positive_pixels": 8553,
+          "recall": 0.25444074382459064,
+          "true_negative": 49703,
+          "true_positive": 7334
+        },
+        "geospatial_kernel_2021": {
+          "mean": {
+            "f1": 0.3970781045139539,
+            "intersection_over_union": 0.2477214385849783,
+            "precision": 0.8679377704994736,
+            "recall": 0.25742436858173745
+          },
+          "seed_results": [
+            {
+              "f1": 0.39691756080592944,
+              "false_negative": 21407,
+              "false_positive": 1132,
+              "intersection_over_union": 0.2475964748297503,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.8675868522634226,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.2573202886483486,
+              "seed": 31,
+              "true_negative": 49790,
+              "true_positive": 7417
+            },
+            {
+              "f1": 0.3972386482219784,
+              "false_negative": 21401,
+              "false_positive": 1126,
+              "intersection_over_union": 0.24784641068447413,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.8682886887355247,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.2575284485151263,
+              "seed": 47,
+              "true_negative": 49796,
+              "true_positive": 7423
+            },
+            {
+              "f1": 0.3970781045139539,
+              "false_negative": 21404,
+              "false_positive": 1129,
+              "intersection_over_union": 0.24772143024071044,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.8679377704994736,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.25742436858173745,
+              "seed": 73,
+              "true_negative": 49793,
+              "true_positive": 7420
+            }
+          ]
+        },
+        "persistence_2021": {
+          "mean": {
+            "f1": 0.43872510788748503,
+            "intersection_over_union": 0.28100439589716264,
+            "precision": 0.8751296411532877,
+            "recall": 0.2927421593116847
+          },
+          "seed_results": [
+            {
+              "f1": 0.43872510788748503,
+              "false_negative": 20386,
+              "false_positive": 1204,
+              "intersection_over_union": 0.28100439589716264,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.8751296411532877,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2927421593116847,
+              "seed": 31,
+              "true_negative": 49718,
+              "true_positive": 8438
+            },
+            {
+              "f1": 0.43872510788748503,
+              "false_negative": 20386,
+              "false_positive": 1204,
+              "intersection_over_union": 0.28100439589716264,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.8751296411532877,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2927421593116847,
+              "seed": 47,
+              "true_negative": 49718,
+              "true_positive": 8438
+            },
+            {
+              "f1": 0.43872510788748503,
+              "false_negative": 20386,
+              "false_positive": 1204,
+              "intersection_over_union": 0.28100439589716264,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.8751296411532877,
+              "predicted_positive_pixels": 9642,
+              "recall": 0.2927421593116847,
+              "seed": 73,
+              "true_negative": 49718,
+              "true_positive": 8438
+            }
+          ]
+        },
+        "random_allocation_2021": {
+          "mean": {
+            "f1": 0.39995005306861464,
+            "intersection_over_union": 0.24996098794621543,
+            "precision": 0.8742153078332748,
+            "recall": 0.2592862429456934
+          },
+          "seed_results": [
+            {
+              "f1": 0.3998608621197121,
+              "false_negative": 21352,
+              "false_positive": 1077,
+              "intersection_over_union": 0.2498913079830106,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.874020353257691,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.25922842076047736,
+              "seed": 31,
+              "true_negative": 49845,
+              "true_positive": 7472
+            },
+            {
+              "f1": 0.4001284349664196,
+              "false_negative": 21347,
+              "false_positive": 1072,
+              "intersection_over_union": 0.2501003478726251,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.8746052169844426,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.25940188731612546,
+              "seed": 47,
+              "true_negative": 49850,
+              "true_positive": 7477
+            },
+            {
+              "f1": 0.3998608621197121,
+              "false_negative": 21352,
+              "false_positive": 1077,
+              "intersection_over_union": 0.2498913079830106,
+              "observed_positive_pixels": 28824,
+              "pixel_count": 79746,
+              "precision": 0.874020353257691,
+              "predicted_positive_pixels": 8549,
+              "recall": 0.25922842076047736,
+              "seed": 73,
+              "true_negative": 49845,
+              "true_positive": 7472
+            }
+          ]
+        }
+      },
+      "worldcover_built_2020_pixels": 28721,
+      "worldcover_built_2021_pixels": 28824,
+      "worldcover_built_fraction_threshold": 0.3,
+      "worldcover_built_gain_pixels": 1511,
+      "worldcover_built_loss_pixels": 1408
+    }
+  ],
+  "schema": "gwm.abu_dhabi_worldcover_external_diagnostic.v1",
+  "status": "complete",
+  "thresholds": [
+    0.05,
+    0.1,
+    0.2,
+    0.3
+  ],
+  "valid_pixel_count": 79746,
+  "worldcover_input_artifacts": {
+    "2020": {
+      "path": "/Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v1/artifacts/external_validation/worldcover/worldcover_2020_built_fraction_100m.tif",
+      "sha256": "5800dc1bc6c68945aceea1d001d4c9a61bcd18f5a28fe1b09332709726644bd3"
+    },
+    "2021": {
+      "path": "/Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v1/artifacts/external_validation/worldcover/worldcover_2021_built_fraction_100m.tif",
+      "sha256": "1b66f8917fd1c253600becdc3f8ef31f121919fc75dea6e4883a5277c7af129f"
+    }
+  }
+}

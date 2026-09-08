@@ -26,6 +26,8 @@ GeoFM-LDN.
   strict-FoM Supplementary Table S2.
 - `supplementary_table_S3_flus_feature_diagnostics.md`: full 13-, 19- and
   25-feature FLUS diagnostic table, including cross-platform boundary.
+- `supplementary_table_S5_rolling_external_diagnostics.md`: expanding-window
+  Kernel results, paired spatial-block intervals and WorldCover diagnostics.
 - `journal_recommendation.md`: target-journal recommendation and submission
   positioning.
 - `submission_notes_zh.md`: Chinese hand-off notes and submission checklist.

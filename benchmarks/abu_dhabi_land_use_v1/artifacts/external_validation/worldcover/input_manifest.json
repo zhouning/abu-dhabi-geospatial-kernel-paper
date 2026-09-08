@@ -1,0 +1,43 @@
+{
+  "artifacts": [
+    {
+      "path": "artifacts/external_validation/worldcover/worldcover_2020_built_fraction_100m.tif",
+      "role": "external_worldcover_built_fraction",
+      "sha256": "5800dc1bc6c68945aceea1d001d4c9a61bcd18f5a28fe1b09332709726644bd3",
+      "size_bytes": 157018,
+      "source_asset": "ESA/WorldCover/v100/2020",
+      "source_year": 2020
+    },
+    {
+      "path": "artifacts/external_validation/worldcover/worldcover_2021_built_fraction_100m.tif",
+      "role": "external_worldcover_built_fraction",
+      "sha256": "1b66f8917fd1c253600becdc3f8ef31f121919fc75dea6e4883a5277c7af129f",
+      "size_bytes": 162070,
+      "source_asset": "ESA/WorldCover/v200/2021",
+      "source_year": 2021
+    }
+  ],
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "boundary_sha256": "988cec36a274992ba443d5a1666de22a7cab4fb1961a1fae38b8ec9f604ac454",
+  "created_at": "2026-09-08T09:13:47.946657+00:00",
+  "derivation": "Per-cell indicator(Map == 50), aggregated to the frozen 100 m grid with Earth Engine reduceResolution(mean, maxPixels=1024).",
+  "earth_engine_project": "ee-zn19860115",
+  "grid_profile_sha256": "d2bb0b757db5e7996e1f0fa5fb7ec66f07fc4c98253f391ac1db2046536bb94d",
+  "interpretation": "independent_public_product_diagnostic_not_ground_truth",
+  "known_confounds": [
+    "WorldCover 2020 v1.0 and 2021 v2.0 are different product versions.",
+    "Both WorldCover and Dynamic World ultimately use Sentinel observations.",
+    "Neither product is authoritative Abu Dhabi land-use data."
+  ],
+  "schema": "gwm.abu_dhabi_worldcover_validation_inputs.v1",
+  "source_assets": {
+    "2020": "ESA/WorldCover/v100/2020",
+    "2021": "ESA/WorldCover/v200/2021"
+  },
+  "source_class": {
+    "name": "built-up",
+    "value": 50
+  },
+  "status": "complete",
+  "wall_seconds": 7.6558297500014305
+}

@@ -1,13 +1,13 @@
 ## Abstract
 
-Urban land-change models are often evaluated against annual labels whose reliability is not spatially uniform. We present an auditable protocol for testing constrained spatial allocation under that uncertainty, using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. The Abu Dhabi public-data benchmark uses annual 100-m land-cover products from 2017–2024, three computational seeds, destination-correct multi-class change Figure of Merit (FoM), spatial-block bootstrap contrasts and explicit state–action–constraint traces. In a clean run of the fully resolved environment, strict FoM was 0.1961 for Geospatial Kernel, 0.1256 for the GeoSOS-derived FLUS-style ANN–CA console (author-modified build) and 0.1619 for GeoFM-LDN in 2023; after recursive two-step rollout in 2024 the values were 0.2529, 0.1782 and 0.2708, respectively. A dual-year confidence threshold retained only 25 of 4,500 observed changes in 2023 and 56 of 8,464 in 2024; all three FoM values were 0.000 in 2023 and the 2024 maximum was 0.0188. These filtered scores are label-quality and selection-effect diagnostics, not model-skill tests. The planning track is therefore reported as scenario stress testing, not official forecasting. The released public bundle, source, checkpoints, rasters, vector footprints and audit manifests support locked-environment reproduction; cross-stack variation is quantified rather than assumed absent. The protocol's principal contribution is an inspectable proposal–projection–writeback boundary for separating model behaviour from action and constraint semantics.
+Urban land-change models are often evaluated against annual labels whose reliability is not spatially uniform. We present an auditable protocol for testing constrained spatial allocation under that uncertainty, using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. The Abu Dhabi public-data benchmark uses annual 100-m land-cover products from 2017–2024, three computational seeds, destination-correct multi-class change Figure of Merit (FoM), spatial-block bootstrap contrasts and explicit state–action–constraint traces. In the primary unmatched-pipeline test, strict FoM was 0.1961 for Geospatial Kernel, 0.1256 for a GeoSOS-derived FLUS-style ANN–CA console and 0.1619 for GeoFM-LDN in 2023; GeoFM-LDN led after recursive two-step rollout in 2024. A separate leakage-controlled expanding-window analysis, excluding the later road snapshot, gave Kernel FoM values of 0.2595, 0.0724, 0.2116 and 0.1816 for the four one-step targets from 2021 to 2024, exceeding a random minimum-change allocator in every window. However, an external-product diagnostic using ESA WorldCover 2020/2021 did not validate change location: Kernel built-gain F1 was 0 across four built-fraction thresholds, while Dynamic World-to-WorldCover built-gain F1 was only 0.0111–0.0192. The planning track is therefore reported as scenario stress testing, not official forecasting. The protocol's principal contribution is an inspectable proposal–projection–writeback boundary; the experiments support conditional allocation auditability, not verified prediction of Abu Dhabi's actual future.
 
 ## Highlights
 
 - Geospatial Kernel separates transition proposals from constrained admission.
 - Typed state–action–constraint traces make recursive updates auditable.
-- Spatial-block uncertainty and paired model contrasts are reported explicitly.
-- Confidence filters expose label selection effects; they are not validation tests.
+- Rolling-origin and spatial-block tests expose temporal variability.
+- WorldCover disagreement bounds claims of real built-change prediction.
 - Planning outputs are scenario stress tests, not statutory Abu Dhabi forecasts.
 
 ## Keywords
@@ -26,7 +26,7 @@ We address this systems problem by studying Geospatial Kernel, the core transiti
 
 We evaluate this design in a controlled public-data benchmark rather than treating the benchmark as an official data release. All candidates consume the same 100-m grid, common valid mask, annual class-count actions, hard exclusions and evaluator. The historical track uses observed target counts to isolate spatial allocation skill from demand error. The planning track starts from the observed 2024 state and applies three planner-supplied actions: moderate growth, green-priority growth and high outward growth. Abu Dhabi Plan 2030 provides an institutional planning context for discussing urban structure, but the numerical actions in this benchmark are not calibrated to that plan or to an official population forecast (Abu Dhabi Urban Planning Council, 2007). We ask four questions: whether the Kernel execution contract is auditable, whether its allocation skill is competitive, whether it produces feasible and spatially distinct allocations and which conclusions survive label and parameter sensitivity.
 
-The paper makes three bounded contributions. First, it gives a concrete state–action–constraint formulation for using a geospatial kernel as an algorithmic core rather than as an opaque end-to-end predictor. Second, it defines an evaluation protocol that reports confidence-filter retention and selection effects rather than treating a high-confidence subset as a skill-validation set. Third, it turns future maps into explicit stress-test artefacts, including cumulative rasters and vectorized transition footprints, while preserving the distinction between public-data land cover and authoritative legal land use.
+The paper makes three bounded contributions. First, it gives a concrete state–action–constraint formulation for using a geospatial kernel as an algorithmic core rather than as an opaque end-to-end predictor. Second, it defines an evaluation protocol that combines confidence-filter retention, expanding-window temporal tests, zero-model controls and external-product disagreement rather than relying on one favourable split. Third, it turns future maps into explicit stress-test artefacts, including cumulative rasters and vectorized transition footprints, while preserving the distinction between public-data land cover and authoritative legal land use.
 
 ## Methods
 
@@ -61,11 +61,15 @@ The study boundary is the polygon returned for OpenStreetMap relation R4479763, 
 
 The observed sequence contains annual states for 2017–2024. Models were fit using the four transitions 2017→2018, 2018→2019, 2019→2020 and 2020→2021. A 2021→2022 transition was used for validation during model development. The historical test starts from 2022 and evaluates 2023 and 2024 in an open-loop rollout without observed-state writeback. The planning test starts from the observed 2024 state and recursively generates 2025–2031 under each scenario action.
 
+An additional Geospatial Kernel analysis used four expanding one-step windows with origins in 2020–2023. For origin year $t$, training included only transitions whose target year was at or before $t$; the held-out $t+1$ label was prohibited from feature construction and fitting. The held-out target supplied its observed class counts to the oracle-demand allocator and was then used for evaluation. This design isolates spatial allocation conditional on known demand and is not an end-to-end demand forecast. Early folds locked only origin-year water and wetland cells and omitted the two road-distance features, because applying the 2021 WorldCover proxy or the later OpenStreetMap snapshot to earlier folds would introduce future information. The resulting rolling proposal has 23 features. A machine-tested temporal firewall records the last training target, prediction target and permitted target-year uses for every run.
+
 ### Public data and class semantics
 
 Dynamic World V1 provides annual scene-argmax labels and mean top-class probabilities (Brown et al., 2022). The nine Dynamic World labels were crosswalked to six canonical classes: water (source 0), woody vegetation (1), low vegetation (2, 4 and 5), wetland (3), built (6) and bare (7). Source class 8 was excluded. The resulting label is explicitly treated as land cover. No residential, commercial or industrial category is inferred from the raster labels.
 
 Annual 64-dimensional AlphaEarth embeddings were spatially averaged to the canonical grid and locally L2-normalized. Monthly VIIRS night-time-light radiance was averaged by year. Copernicus DEM supplied elevation and a finite-difference slope derivative. OpenStreetMap road geometries were rasterized into distance-to-road and distance-to-major-road surfaces. ESA WorldCover 2021 supplied public water and wetland/mangrove constraint proxies (Zanaga et al., 2022). All dynamic and static layers were checked for exact CRS, transform, width and height agreement.
+
+For an external public-product diagnostic, the ESA WorldCover 2020 v1.0 and 2021 v2.0 built-up class (value 50) was converted to built fraction on each 100-m benchmark cell. Built presence was tested at fractions of 0.05, 0.10, 0.20 and 0.30. Built gain required a cell to cross from below to at or above the threshold; built loss used the reverse definition. Binary precision, recall, F1 and intersection over union were calculated for the Dynamic World transition and for the 2020-origin predictions. This is a product-agreement diagnostic, not ground-truth validation: the two WorldCover years use different product versions, WorldCover and Dynamic World both derive from Sentinel observations, and neither represents statutory Abu Dhabi land use.
 
 ### Geospatial Kernel state, action and transition proposal
 
@@ -231,6 +235,37 @@ cells recur across years and the Kernel includes coordinate features, a
 training–test memory effect cannot be excluded; the reported scores should
 therefore be interpreted as conditional agreement with the public product.
 
+### Rolling-origin and external-product tests expose temporal and label dependence
+
+The leakage-controlled expanding-window test produced mean Kernel strict FoM
+values of 0.2595, 0.0724, 0.2116 and 0.1816 for the 2021, 2022, 2023 and 2024
+one-step targets, respectively. The corresponding random minimum-change values
+were 0.0524, 0.0048, 0.0200 and 0.0323; persistence produced no predicted
+change and therefore zero strict FoM. Paired 8 × 8-cell spatial-block contrasts
+between Kernel and each zero model excluded zero in every target year and each
+of the three seeds. This result supports conditional spatial allocation under
+Dynamic World labels, but the weak 2022 score shows substantial temporal
+variation. Persistence also retained higher overall accuracy than Kernel in
+2022–2024, whereas Kernel had higher overall accuracy only in 2021. The
+change-specific and all-cell metrics therefore answer different questions.
+
+The WorldCover comparison did not corroborate change location. Across built
+fractions from 0.05 to 0.30, WorldCover contained 1,445–1,802 built-gain cells
+and 1,408–1,506 built-loss cells. Dynamic World-to-WorldCover built-gain F1 was
+only 0.0111–0.0192. Under the 2020→2021 Dynamic World oracle-demand action,
+Kernel and the random allocator produced no built-gain cells, so their
+WorldCover built-gain F1 was 0 at all thresholds and precision was undefined.
+For 2021 built stock, Kernel F1 increased from 0.3518 to 0.3971 as the threshold
+rose, but persistence was higher at every threshold (0.3886–0.4387). These
+negative results indicate product-definition and temporal-label disagreement;
+they do not identify which public product is correct. Fig. 3 reports the
+rolling and external-product evidence together so that the zero-model advantage
+and the absence of external change agreement cannot be separated in the claim.
+
+![Rolling-origin robustness and external-product diagnostics. Panel a reports strict destination-change FoM for four leakage-controlled one-step targets; points show means and sample standard deviations across three computational seeds. Panel b reports Kernel-minus-baseline paired spatial-block contrasts; points are mean seed medians and whiskers span the minimum to maximum of seed-specific 95% intervals from 1,000 resamples of 8 × 8-cell blocks. Panels c and d compare 2021 built stock and 2020–2021 built gain with ESA WorldCover at four 100-m built-fraction thresholds. The WorldCover comparison is an external public-product diagnostic, not authoritative ground truth. Source data are provided in source_data_fig03_rolling_external_diagnostics.csv.](figures/fig03_rolling_external_diagnostics.png){width=100%}
+
+\FloatBarrier
+
 The reference reproduction environment is macOS arm64 with Python 3.11 and
 scikit-learn 1.9.0. The archived Linux arm64 rerun uses Python 3.12 and
 scikit-learn 1.8.0, so it measures a cross-stack boundary rather than an
@@ -261,9 +296,9 @@ retain the same FLUS-style/Kernel two-model frontier. These statements are
 conditional on public proxy layers and synthetic actions, not model superiority
 claims.
 The corresponding objective profiles and diagnostic trade-offs are shown in
-Fig. 3.
+Fig. 4.
 
-![Conditional planning objectives. The 2031 outcomes compare the three models under moderate-growth, green-priority-growth and high-outward-growth actions. Panels show the three release objectives: distance to major roads, distance to pre-existing built cells, and connected components in the combined 2024-built and newly built footprint. Black outlines indicate membership of the within-scenario Pareto frontier.](figures/fig03_planning_objectives.png){width=100%}
+![Conditional planning objectives. The 2031 outcomes compare the three models under moderate-growth, green-priority-growth and high-outward-growth actions. Panels show the three release objectives: distance to major roads, distance to pre-existing built cells, and connected components in the combined 2024-built and newly built footprint. Black outlines indicate membership of the within-scenario Pareto frontier.](figures/fig04_planning_objectives.png){width=100%}
 
 \FloatBarrier
 
@@ -277,21 +312,21 @@ primary within-scenario Pareto frontier.
 | Scenario / model | Road (m) | Prior built (m) | Components / 1,000 | Ecology* | Frontier |
 |:---|---:|---:|---:|---:|:---:|
 | **Moderate** |  |  |  |  |  |
-| FLUS-style ANN-CA | 446.1 | 231.6 | 3.035 | 0.0168 | * |
+| FLUS-style ANN–CA | 446.1 | 231.6 | 3.035 | 0.0168 | * |
 | Geospatial Kernel | 334.7 | 116.7 | 3.943 | 0.0000 | * |
 | GeoFM-LDN | 475.9 | 239.7 | 4.056 | 0.0000 |  |
 | **Green priority** |  |  |  |  |  |
-| FLUS-style ANN-CA | 443.7 | 212.7 | 3.265 | 0.0177 | * |
+| FLUS-style ANN–CA | 443.7 | 212.7 | 3.265 | 0.0177 | * |
 | Geospatial Kernel | 323.1 | 111.0 | 4.277 | 0.0000 | * |
 | GeoFM-LDN | 452.1 | 222.3 | 4.348 | 0.0000 |  |
 | **High outward** |  |  |  |  |  |
-| FLUS-style ANN-CA | 443.5 | 255.3 | 2.484 | 0.0131 | * |
+| FLUS-style ANN–CA | 443.5 | 255.3 | 2.484 | 0.0131 | * |
 | Geospatial Kernel | 365.5 | 139.8 | 2.923 | 0.0000 | * |
 | GeoFM-LDN | 507.5 | 263.0 | 3.207 | 0.0000 |  |
 
 ### Sensitivity shows a stable but not fully explained neighbourhood contribution
 
-The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference. Fig. 4A shows focused proposal controls, and Fig. 4B reports the matched runtime controls.
+The base Kernel allocation score adds a 7 × 7 target-class neighbourhood fraction with weight 0.35. The existing sensitivity and mechanism artefacts are retained as diagnostic controls; they do not identify a causal effect because the proposal features and allocator both contain spatial context. The neighbourhood term is therefore interpreted as evidence about the execution mechanism, not as an independently estimated planning preference. Fig. 5A shows focused proposal controls, and Fig. 5B reports the matched runtime controls.
 
 In the post-hoc neighbourhood-weight sensitivity, mean strict FoM ranged from
 0.19570 to 0.19609 in 2023 and from 0.25273 to 0.25304 in 2024; the complete
@@ -316,7 +351,7 @@ agreement with noisy labels while violating the planning contract. The
 controls therefore support an execution-level interpretation but do not prove
 that either component causes an urban outcome.
 
-![Mechanism controls. Panel A compares the full transition proposal with selected proposal controls. Panel B gives the strict destination-change FoM difference between matched runtime controls and the full Kernel. Bars show mean plus or minus population standard deviation across the three frozen seeds. The no-state-writeback control is undefined for the 2023 one-step target and is therefore shown only for 2024. These are execution diagnostics, not causal policy experiments.](figures/fig04_mechanism_ablation.png){width=100%}
+![Mechanism controls. Panel A compares the full transition proposal with selected proposal controls. Panel B gives the strict destination-change FoM difference between matched runtime controls and the full Kernel. Bars show mean plus or minus population standard deviation across the three frozen seeds. The no-state-writeback control is undefined for the 2023 one-step target and is therefore shown only for 2024. These are execution diagnostics, not causal policy experiments.](figures/fig05_mechanism_ablation.png){width=100%}
 
 \FloatBarrier
 
@@ -328,23 +363,25 @@ the corresponding GeoFM-LDN errors were 1,580, 1,524 and 1,148 pixels and the
 FLUS-style errors were 2,504, 2,888 and 2,568 pixels. Seed-level projections
 meet their feasible class totals, but majority voting can produce a different
 raster and therefore a non-zero ensemble error. All 276 historical and planning
-prediction records passed the raster audit. Fig. 5 uses the high-outward
+prediction records passed the raster audit. Fig. 6 uses the high-outward
 scenario to make the spatial contrast legible; the complete nine-panel atlas is
 provided as Fig. S1. These are raster-cell change footprints, not
 parcel boundaries or statutory zoning maps.
 
-![High-outward-growth spatial footprints. The observed 2024 state is compared with each model's 2031 majority-vote ensemble. Orange denotes cells newly built between 2024 and 2031; grey denotes cells already built in 2024. The map is a 100-m scenario stress-test product, not a cadastral or statutory land-use map.](figures/fig05_planning_maps_2031.png){width=100%}
+![High-outward-growth spatial footprints. The observed 2024 state is compared with each model's 2031 majority-vote ensemble. Orange denotes cells newly built between 2024 and 2031; grey denotes cells already built in 2024. The map is a 100-m scenario stress-test product, not a cadastral or statutory land-use map.](figures/fig06_planning_maps_2031.png){width=100%}
 
 \FloatBarrier
 
 ## Discussion
 
-This study positions Geospatial Kernel as a candidate execution layer for constrained spatial reasoning and, more broadly, proposes an audit protocol for noisy annual labels. The defensible contribution is that a transition proposal and a planning admission rule can be represented and inspected separately. Under the unmatched public-data pipeline, Geospatial Kernel has the largest strict transition FoM at the one-step horizon, while GeoFM-LDN has the largest value after recursive two-step rollout. The dual-year confidence filter retains only 0.56% and 0.66% of observed changes in 2023 and 2024, respectively; the preceding-year-only variant retains 2.87% and 1.10%. These subsets are not skill tests; full-grid rankings remain unvalidated because no independent change product is yet available. We therefore treat the planning frontier as conditional on public proxy objectives and synthetic actions.
+This study positions Geospatial Kernel as a candidate execution layer for constrained spatial reasoning and, more broadly, proposes an audit protocol for noisy annual labels. The defensible contribution is that a transition proposal and a planning admission rule can be represented and inspected separately. Under the unmatched public-data pipeline, Geospatial Kernel has the largest strict transition FoM at the one-step horizon, while GeoFM-LDN has the largest value after recursive two-step rollout. In the separate rolling analysis, Kernel exceeds both zero models in all four one-step windows, but its score varies from 0.0724 to 0.2595 after excluding the later road snapshot. The WorldCover diagnostic then shows that superiority relative to Dynamic World-based zero models does not transfer to externally defined built-gain locations. Confidence filtering, rolling-window stability and external-product agreement are different tests, and none substitutes for authoritative local validation. We therefore treat the planning frontier as conditional on public proxy objectives and synthetic actions.
 
 The evidence remains bounded. The six classes are remote-sensing land cover, not
 statutory residential, commercial or industrial land use. Dynamic World labels
-show substantial annual uncertainty and apparent turnover; no independent
-2023–2024 change product or observed 2025–2031 labels was available. Public
+show substantial annual uncertainty and apparent turnover; the available
+2020–2021 WorldCover diagnostic conflicts with Dynamic World and is neither
+fully independent nor authoritative, while no external 2023–2024 change
+product or observed 2025–2031 labels was available. Public
 roads, wetland and protected-area layers are proxies, future drivers are held at
 2024, and the green-priority action has no water-budget constraint. The FLUS-style
 control is an Apple-Silicon binary rebuilt from the public GeoSOS source base
@@ -368,16 +405,23 @@ The public-data benchmark manifests, protocols, reports and generated delivery a
 - `planning_scenario_report_public_2025_2031_current.json` for per-seed rollout traces;
 - `planning_public_2025_2031_delivery_manifest_current.json` for raster and vector delivery;
 - `output_audit.json` for the current raster audit; `output_audit_reproducible.json` is a compatibility copy produced by the same run;
+- `artifacts/rolling_backtest/report.json` and `paired_spatial_uncertainty.json` for the four leakage-controlled one-step windows;
+- `supplementary_table_S5_rolling_external_diagnostics.md` for the synchronized rolling and external-product table;
+- `artifacts/external_validation/worldcover/` for frozen WorldCover built-fraction inputs, hashes and the external-product diagnostic;
 - the data-audit, protocol and source-input manifests for data provenance;
-- The released bundle includes the aligned 2017–2024 public rasters, historical seed and ensemble prediction rasters, 2025–2031 planning seed and ensemble rasters, nine GeoPackages of dissolved change footprints, the mechanism-ablation report, model checkpoints, and the SHA-256 manifest. Text hashes use canonical LF line endings, and the byte-length check applies the same normalization on text records, so a Windows checkout with `core.autocrlf=true` can pass the manifest gate. The locked macOS arm64 execution environment remains the reference for model outputs. An archived arm64 Linux rerun of the six historical Kernel rasters differed from the macOS reference by 498–1,147 cells (0.62%–1.44%), with strict-FoM deltas from -0.0023 to +0.0010; these cross-stack differences are quantified rather than treated as categorical identity. An author-controlled GitHub Actions Ubuntu x86_64 rerun of all six rasters under the resolved lock had zero categorical differences; the repository-stored CI audit is in `artifacts/cross_platform` at commit `e06a997`, and the workflow is versioned under `.github/workflows/`. Independent external Windows evidence remains separately labelled for FLUS because the corresponding rasters are not archived locally. No private database address, credential or client-only service is included. Authoritative Abu Dhabi land-use and independent change-validation data remain outside this study.
+- The released bundle includes the aligned 2017–2024 public rasters, historical and rolling-origin prediction rasters, frozen WorldCover built-fraction rasters, 2025–2031 planning rasters, nine GeoPackages of dissolved change footprints, model checkpoints and the SHA-256 manifest. Text hashes use canonical LF line endings, and the byte-length check applies the same normalization on text records, so a Windows checkout with `core.autocrlf=true` can pass the manifest gate. The locked macOS arm64 execution environment remains the reference for model outputs. An archived arm64 Linux rerun of the six historical Kernel rasters differed from the macOS reference by 498–1,147 cells (0.62%–1.44%), with strict-FoM deltas from -0.0023 to +0.0010; these cross-stack differences are quantified rather than treated as categorical identity. An author-controlled GitHub Actions Ubuntu x86_64 rerun of all six rasters under the resolved lock had zero categorical differences; the repository-stored CI audit is in `artifacts/cross_platform` at commit `e06a997`, and the workflow is versioned under `.github/workflows/`. Independent external Windows evidence remains separately labelled for FLUS because the corresponding rasters are not archived locally. No private database address, credential or client-only service is included. Authoritative Abu Dhabi land-use and independent reference data remain outside this study.
 
 ## Code availability
 
 The analysis scripts, a vendored Geospatial Kernel runtime snapshot, benchmark protocol, model runners and figure-generation code are maintained in the accompanying repository. Principal entry points are listed separately to keep the manuscript readable:
 
 - `run_geospatial_kernel.py` for the Kernel historical run;
+- `run_rolling_backtest.py` and `run_rolling_uncertainty.py` for the expanding-window experiment and paired spatial-block intervals;
+- `materialize_worldcover_validation.py` for frozen WorldCover inputs;
+- `run_worldcover_external_diagnostic.py` for the agreement diagnostic;
 - the vendored `geospatial_kernel/runtime.py` snapshot;
-- `render_nature_figures.py` for publication artwork.
+- `render_nature_figures.py` and `render_rolling_validation_figure.py` for publication artwork;
+- `source_data_fig03_rolling_external_diagnostics.csv` for the quantitative source data behind Fig. 3.
 - `reproducibility/reproduce.py` for the end-to-end rerun;
 - `reproducibility_check.py` and `audit_outputs.py` for fail-closed integrity checks.
 
@@ -474,6 +518,7 @@ Zanaga, D., et al. (2022). ESA WorldCover 10 m 2021 v200. Zenodo. https://doi.or
 - **Supplementary Table S2:** Neighbourhood-weight sensitivity at 0, 0.175, 0.35 and 0.7 (see `supplementary_table_S2_neighbourhood_weight_sensitivity.md`).
 - **Supplementary Table S3:** FLUS 13-, 19- and 25-feature diagnostics, platform boundary and demand-underfill evidence (see `supplementary_table_S3_flus_feature_diagnostics.md`).
 - **Supplementary Table S4:** Raster and vector delivery audit, hashes and layer counts.
+- **Supplementary Table S5:** Rolling-origin and WorldCover external-product diagnostics (see `supplementary_table_S5_rolling_external_diagnostics.md`).
 - **Fig. S1:** Full 3-scenarios × 3-model 2031 new-built footprint atlas (`figures/figS01_planning_atlas_2031.*`).
 - **Fig. S2:** Dynamic World confidence and high-confidence change sensitivity (`figures/figS02_input_label_quality.*`).
 - **Fig. S3:** Historical maps and change-error maps for 2024 (`figures/figS03_historical_2024_maps_and_errors.*`).

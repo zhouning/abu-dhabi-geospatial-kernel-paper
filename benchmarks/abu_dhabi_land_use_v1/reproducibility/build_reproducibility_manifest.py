@@ -56,6 +56,8 @@ def required_paths() -> dict[str, set[Path]]:
     _add(data, [HERE / "artifacts/gee/terrain/copernicus_dem_2024_1_slope_100m.tif"])
     _add(data, (HERE / "artifacts/gee/constraints").glob("*.tif"))
     _add(data, [HERE / "artifacts/osm/road_accessibility_100m.tif"])
+    _add(data, (HERE / "artifacts/external_validation/worldcover").glob("*.tif"))
+    _add(data, [HERE / "artifacts/external_validation/worldcover/input_manifest.json"])
 
     models: set[Path] = {
         HERE / "vendor/flus_console",

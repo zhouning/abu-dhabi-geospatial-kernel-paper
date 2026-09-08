@@ -54,7 +54,7 @@ def _display_output_path(path: Path) -> str:
     """Keep report paths portable when callers use an external output root."""
 
     try:
-        return path.relative_to(HERE).as_posix()
+        return path.resolve().relative_to(HERE.resolve()).as_posix()
     except ValueError:
         return str(path.resolve())
 
@@ -161,20 +161,34 @@ class AbuDhabiInputs:
         self.x = columns.astype(np.float32) / max(1, self.valid.shape[1] - 1)
         self.y = rows.astype(np.float32) / max(1, self.valid.shape[0] - 1)
 
-    def features(self, state: np.ndarray, *, driver_year: int) -> np.ndarray:
+    def features(
+        self,
+        state: np.ndarray,
+        *,
+        driver_year: int,
+        valid_mask: np.ndarray | None = None,
+        include_road_snapshot: bool = True,
+    ) -> np.ndarray:
+        valid = self.valid if valid_mask is None else np.asarray(valid_mask, dtype=bool)
+        if valid.shape != state.shape:
+            raise ValueError("feature_valid_mask_shape_mismatch")
         one_hot = np.stack([(state == value).astype(np.float32) for value in CLASSES])
-        neighborhoods = _neighborhood_features(state, self.valid)
-        continuous = np.stack(
-            [
-                self.x,
-                self.y,
-                np.clip(self.elevation, -20, 200) / 200.0,
-                np.clip(self.slope, 0, 30) / 30.0,
-                np.log1p(np.clip(self.viirs[driver_year], 0, None)) / 8.0,
-                np.log1p(np.clip(self.road_distance, 0, None)) / 12.0,
-                np.log1p(np.clip(self.major_road_distance, 0, None)) / 12.0,
-            ]
-        )
+        neighborhoods = _neighborhood_features(state, valid)
+        continuous_layers = [
+            self.x,
+            self.y,
+            np.clip(self.elevation, -20, 200) / 200.0,
+            np.clip(self.slope, 0, 30) / 30.0,
+            np.log1p(np.clip(self.viirs[driver_year], 0, None)) / 8.0,
+        ]
+        if include_road_snapshot:
+            continuous_layers.extend(
+                [
+                    np.log1p(np.clip(self.road_distance, 0, None)) / 12.0,
+                    np.log1p(np.clip(self.major_road_distance, 0, None)) / 12.0,
+                ]
+            )
+        continuous = np.stack(continuous_layers)
         return np.concatenate([one_hot, neighborhoods, continuous], axis=0)
 
 
@@ -238,12 +252,22 @@ def probability_cube(
     state: np.ndarray,
     *,
     driver_year: int,
+    valid_mask: np.ndarray | None = None,
+    include_road_snapshot: bool = True,
 ) -> np.ndarray:
-    features = inputs.features(state, driver_year=driver_year)
-    probability = model.predict_proba(features[:, inputs.valid].T)
+    valid = inputs.valid if valid_mask is None else np.asarray(valid_mask, dtype=bool)
+    if valid.shape != state.shape:
+        raise ValueError("probability_valid_mask_shape_mismatch")
+    features = inputs.features(
+        state,
+        driver_year=driver_year,
+        valid_mask=valid,
+        include_road_snapshot=include_road_snapshot,
+    )
+    probability = model.predict_proba(features[:, valid].T)
     cube = np.full((len(CLASSES), *state.shape), 1e-9, dtype=np.float32)
     for column, value in enumerate(model.classes_):
-        cube[int(value) - 1][inputs.valid] = probability[:, column]
+        cube[int(value) - 1][valid] = probability[:, column]
     cube /= cube.sum(axis=0, keepdims=True)
     return cube
 

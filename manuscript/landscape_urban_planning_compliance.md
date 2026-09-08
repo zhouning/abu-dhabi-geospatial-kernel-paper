@@ -1,6 +1,6 @@
 # Landscape and Urban Planning submission check
 
-Checked: 7 September 2026
+Checked: 8 September 2026
 
 Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
@@ -12,11 +12,11 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
 | Corresponding author | Ready in manuscript; confirm portal address field | Ning Zhou; `zhouning@freedotech.com` is listed in the manuscript. Confirm any full correspondence-address field required by Editorial Manager before upload. |
-| Abstract | Draft-ready; portal confirmation required | 206 words by whitespace count. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
-| Highlights | Draft-ready | Four bullets are supplied; each is below 85 characters, including spaces. They describe the completed public-data benchmark and its evidence boundary. |
+| Abstract | Draft-ready; portal confirmation required | 204 words by whitespace count. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
+| Highlights | Draft-ready | Five bullets are supplied; each is below 85 characters, including spaces. They describe the completed public-data benchmark and its evidence boundary. |
 | Keywords | Ready | Six searchable terms are supplied: Geospatial World Model, land-cover change, constrained allocation, cellular automata, Abu Dhabi and scenario planning. |
 | Graphical abstract | Confirm in portal | No separate graphical abstract is included. The journal's current article-type setting should determine whether it is required or optional. Figure 1 can be adapted if requested. |
-| Main sections | Structurally compliant | The Markdown source follows Introduction–Methods–Results–Discussion order. Main figures are embedded at their first evidentiary discussion; Fig. S1–S4 are supplied as separate diagnostic supplements. Final copy-edit and portal checks remain. |
+| Main sections | Structurally compliant | The Markdown source follows Introduction–Methods–Results–Discussion order. Main figures 1–6 are embedded at their first evidentiary discussion; Fig. S1–S4 are supplied as separate diagnostic supplements. Final copy-edit and portal checks remain. |
 
 ## Tables, figures and artwork
 
@@ -35,7 +35,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Data availability | Conditional | The complete public bundle, generated rasters, vectors and mechanism controls are included or tracked with Git LFS and pass the input/output audits; authoritative local validation data are unavailable. The author-run Linux/macOS Kernel comparison and FLUS feature diagnostics are archived with commands and reports. Reviewer-provided Windows figures are provenance-labelled external verification because their rasters are not locally archived. |
+| Data availability | Conditional | The public bundle, generated rasters, vectors, rolling-origin experiment and frozen WorldCover diagnostic inputs are included or tracked with hashes; authoritative local validation data remain unavailable. The author-run Linux/macOS Kernel comparison and FLUS feature diagnostics are archived with commands and reports. Reviewer-provided Windows figures are provenance-labelled external verification because their rasters are not locally archived. |
 | Code availability | Conditional | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are included; a compatible, traceable FLUS build is required for an information-matched comparison, and a DOI is not yet provided. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |

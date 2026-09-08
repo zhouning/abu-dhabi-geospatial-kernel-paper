@@ -1,7 +1,7 @@
 {
   "schema": "gwm.abu_dhabi_reproducibility_check.v2",
   "benchmark_id": "abu-dhabi-land-use-v1",
-  "created_at": "2026-09-07T17:12:39.607432+00:00",
+  "created_at": "2026-09-08T13:14:43.824208+00:00",
   "status": "PASS",
   "python": "3.11.15",
   "platform": {
@@ -161,6 +161,30 @@
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/bundle/reliability_2023_2024_100m.tif",
+      "role": "data",
+      "hash_mode": "raw",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/external_validation/worldcover/input_manifest.json",
+      "role": "data",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/external_validation/worldcover/worldcover_2020_built_fraction_100m.tif",
+      "role": "data",
+      "hash_mode": "raw",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/external_validation/worldcover/worldcover_2021_built_fraction_100m.tif",
       "role": "data",
       "hash_mode": "raw",
       "exists": true,
@@ -616,6 +640,14 @@
       "sha256_ok": true
     },
     {
+      "path": "benchmarks/abu_dhabi_land_use_v1/materialize_worldcover_validation.py",
+      "role": "code",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
       "path": "benchmarks/abu_dhabi_land_use_v1/planning.py",
       "role": "code",
       "hash_mode": "text_lf_normalized",
@@ -665,6 +697,14 @@
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/render_planning_map.py",
+      "role": "code",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/render_rolling_validation_figure.py",
       "role": "code",
       "hash_mode": "text_lf_normalized",
       "exists": true,
@@ -753,6 +793,30 @@
     },
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/run_planning_scenarios.py",
+      "role": "code",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_rolling_backtest.py",
+      "role": "code",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_rolling_uncertainty.py",
+      "role": "code",
+      "hash_mode": "text_lf_normalized",
+      "exists": true,
+      "bytes_ok": true,
+      "sha256_ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/run_worldcover_external_diagnostic.py",
       "role": "code",
       "hash_mode": "text_lf_normalized",
       "exists": true,

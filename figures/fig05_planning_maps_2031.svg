@@ -21,19 +21,19 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 423.392 
-L 479.24422 423.392 
-L 479.24422 0 
-L 0 0 
+   <path d="M 0 423.392
+L 479.24422 423.392
+L 479.24422 0
+L 0 0
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 23.634186 197.506884 
-L 231.176047 197.506884 
-L 231.176047 40.212 
-L 23.634186 40.212 
+    <path d="M 23.634186 197.506884
+L 231.176047 197.506884
+L 231.176047 40.212
+L 23.634186 40.212
 z
 " style="fill: #ffffff"/>
    </g>
@@ -44,23 +44,23 @@ iVBORw0KGgoAAAANSUhEUgAAASAAAADaCAYAAAAG/Z9LAAAe40lEQVR4nO2dS6oly3WG6xRua09AM9AI
    <g id="matplotlib.axis_1"/>
    <g id="matplotlib.axis_2"/>
    <g id="patch_3">
-    <path d="M 23.634186 197.506884 
-L 23.634186 40.212 
+    <path d="M 23.634186 197.506884
+L 23.634186 40.212
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_4">
-    <path d="M 231.176047 197.506884 
-L 231.176047 40.212 
+    <path d="M 231.176047 197.506884
+L 231.176047 40.212
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_5">
-    <path d="M 23.634186 197.506884 
-L 231.176047 197.506884 
+    <path d="M 23.634186 197.506884
+L 231.176047 197.506884
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_6">
-    <path d="M 23.634186 40.212 
-L 231.176047 40.212 
+    <path d="M 23.634186 40.212
+L 231.176047 40.212
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_1">
@@ -72,10 +72,10 @@ L 231.176047 40.212
   </g>
   <g id="axes_2">
    <g id="patch_7">
-    <path d="M 268.82236 197.506884 
-L 476.36422 197.506884 
-L 476.36422 40.212 
-L 268.82236 40.212 
+    <path d="M 268.82236 197.506884
+L 476.36422 197.506884
+L 476.36422 40.212
+L 268.82236 40.212
 z
 " style="fill: #ffffff"/>
    </g>
@@ -86,23 +86,23 @@ iVBORw0KGgoAAAANSUhEUgAAASEAAADaCAYAAADpP/R1AAAm/0lEQVR4nO1dPYst2XXtHsapewJHRjA/
    <g id="matplotlib.axis_3"/>
    <g id="matplotlib.axis_4"/>
    <g id="patch_8">
-    <path d="M 268.82236 197.506884 
-L 268.82236 40.212 
+    <path d="M 268.82236 197.506884
+L 268.82236 40.212
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_9">
-    <path d="M 476.36422 197.506884 
-L 476.36422 40.212 
+    <path d="M 476.36422 197.506884
+L 476.36422 40.212
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_10">
-    <path d="M 268.82236 197.506884 
-L 476.36422 197.506884 
+    <path d="M 268.82236 197.506884
+L 476.36422 197.506884
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_11">
-    <path d="M 268.82236 40.212 
-L 476.36422 40.212 
+    <path d="M 268.82236 40.212
+L 476.36422 40.212
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_3">
@@ -114,10 +114,10 @@ L 476.36422 40.212
   </g>
   <g id="axes_3">
    <g id="patch_12">
-    <path d="M 23.634186 378.396 
-L 231.176047 378.396 
-L 231.176047 221.101116 
-L 23.634186 221.101116 
+    <path d="M 23.634186 378.396
+L 231.176047 378.396
+L 231.176047 221.101116
+L 23.634186 221.101116
 z
 " style="fill: #ffffff"/>
    </g>
@@ -128,28 +128,28 @@ iVBORw0KGgoAAAANSUhEUgAAASAAAADbCAYAAADNoUzuAAAkxElEQVR4nO1du4olV5bNLHrcSRljiYb6
    <g id="matplotlib.axis_5"/>
    <g id="matplotlib.axis_6"/>
    <g id="line2d_1">
-    <path d="M 40.456 362.884977 
-L 49.194605 362.884977 
+    <path d="M 40.456 362.884977
+L 49.194605 362.884977
 " clip-path="url(#p6110ad041e)" style="fill: none; stroke: #202020; stroke-width: 2.8"/>
    </g>
    <g id="patch_13">
-    <path d="M 23.634186 378.396 
-L 23.634186 221.101116 
+    <path d="M 23.634186 378.396
+L 23.634186 221.101116
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_14">
-    <path d="M 231.176047 378.396 
-L 231.176047 221.101116 
+    <path d="M 231.176047 378.396
+L 231.176047 221.101116
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_15">
-    <path d="M 23.634186 378.396 
-L 231.176047 378.396 
+    <path d="M 23.634186 378.396
+L 231.176047 378.396
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_16">
-    <path d="M 23.634186 221.101116 
-L 231.176047 221.101116 
+    <path d="M 23.634186 221.101116
+L 231.176047 221.101116
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_5">
@@ -157,10 +157,10 @@ L 231.176047 221.101116
    </g>
    <g id="text_6">
     <g id="patch_17">
-     <path d="M 35.367115 360.400465 
-L 54.28349 360.400465 
-L 54.28349 351.556957 
-L 35.367115 351.556957 
+     <path d="M 35.367115 360.400465
+L 54.28349 360.400465
+L 54.28349 351.556957
+L 35.367115 351.556957
 z
 " style="fill: #ffffff; opacity: 0.9"/>
     </g>
@@ -172,10 +172,10 @@ z
   </g>
   <g id="axes_4">
    <g id="patch_18">
-    <path d="M 268.82236 378.396 
-L 476.36422 378.396 
-L 476.36422 221.101116 
-L 268.82236 221.101116 
+    <path d="M 268.82236 378.396
+L 476.36422 378.396
+L 476.36422 221.101116
+L 268.82236 221.101116
 z
 " style="fill: #ffffff"/>
    </g>
@@ -186,23 +186,23 @@ iVBORw0KGgoAAAANSUhEUgAAASEAAADbCAYAAAAiYyfQAAAmoklEQVR4nO1du4psyZWtuvS4U9eQ1Qju
    <g id="matplotlib.axis_7"/>
    <g id="matplotlib.axis_8"/>
    <g id="patch_19">
-    <path d="M 268.82236 378.396 
-L 268.82236 221.101116 
+    <path d="M 268.82236 378.396
+L 268.82236 221.101116
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_20">
-    <path d="M 476.36422 378.396 
-L 476.36422 221.101116 
+    <path d="M 476.36422 378.396
+L 476.36422 221.101116
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_21">
-    <path d="M 268.82236 378.396 
-L 476.36422 378.396 
+    <path d="M 268.82236 378.396
+L 476.36422 378.396
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_22">
-    <path d="M 268.82236 221.101116 
-L 476.36422 221.101116 
+    <path d="M 268.82236 221.101116
+L 476.36422 221.101116
 " style="fill: none; stroke: #aab2bc; stroke-width: 0.55; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_8">
@@ -221,10 +221,10 @@ L 476.36422 221.101116
   </g>
   <g id="legend_1">
    <g id="patch_23">
-    <path d="M 78.890828 415.628406 
-L 87.690828 415.628406 
-L 87.690828 410.028406 
-L 78.890828 410.028406 
+    <path d="M 78.890828 415.628406
+L 87.690828 415.628406
+L 87.690828 410.028406
+L 78.890828 410.028406
 z
 " style="fill: #f1f2f1"/>
    </g>
@@ -232,10 +232,10 @@ z
     <text style="font-size: 8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start" x="94.090828" y="415.628406" transform="rotate(-0 94.090828 415.628406)">Other valid land cover</text>
    </g>
    <g id="patch_24">
-    <path d="M 180.702078 415.628406 
-L 189.502078 415.628406 
-L 189.502078 410.028406 
-L 180.702078 410.028406 
+    <path d="M 180.702078 415.628406
+L 189.502078 415.628406
+L 189.502078 410.028406
+L 180.702078 410.028406
 z
 " style="fill: #5b9bd5"/>
    </g>
@@ -243,10 +243,10 @@ z
     <text style="font-size: 8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start" x="195.902078" y="415.628406" transform="rotate(-0 195.902078 415.628406)">Water or wetland</text>
    </g>
    <g id="patch_25">
-    <path d="M 264.870828 415.628406 
-L 273.670828 415.628406 
-L 273.670828 410.028406 
-L 264.870828 410.028406 
+    <path d="M 264.870828 415.628406
+L 273.670828 415.628406
+L 273.670828 410.028406
+L 264.870828 410.028406
 z
 " style="fill: #5d6268"/>
    </g>
@@ -254,10 +254,10 @@ z
     <text style="font-size: 8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start" x="280.070828" y="415.628406" transform="rotate(-0 280.070828 415.628406)">Built in 2024</text>
    </g>
    <g id="patch_26">
-    <path d="M 332.899578 415.628406 
-L 341.699578 415.628406 
-L 341.699578 410.028406 
-L 332.899578 410.028406 
+    <path d="M 332.899578 415.628406
+L 341.699578 415.628406
+L 341.699578 410.028406
+L 332.899578 410.028406
 z
 " style="fill: #e17c05"/>
    </g>

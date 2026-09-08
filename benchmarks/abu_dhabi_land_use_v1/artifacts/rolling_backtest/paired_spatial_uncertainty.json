@@ -1,0 +1,830 @@
+{
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "block_size_metres": 800,
+  "block_size_pixels": 8,
+  "created_at": "2026-09-08T12:37:40.212765+00:00",
+  "interpretation": "Conditional mapped-domain uncertainty under the public-product labels; not a population or authoritative-validation interval.",
+  "method": "paired_spatial_block_bootstrap",
+  "n_resamples": 1000,
+  "rows": [
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.17041997556204044,
+          "median": 0.1991491515677799,
+          "upper": 0.22781498477246345
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.010674689676254798,
+          "median": 0.013373300446629155,
+          "upper": 0.016027434314424778
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.011559838352382168,
+          "median": 0.013274757703897855,
+          "upper": 0.015060307819170804
+        },
+        "pixel_count": 79741,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462031
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 31,
+      "origin_year": 2020,
+      "target_year": 2021
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.22584989176170353,
+          "median": 0.25749989773058146,
+          "upper": 0.28842300850989633
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.0008047085250343922,
+          "median": 0.0013174505467016817,
+          "upper": 0.0032701166398958507
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.002974629580124624,
+          "median": 0.00432696820475742,
+          "upper": 0.005644105479320777
+        },
+        "pixel_count": 79741,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462031
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 31,
+      "origin_year": 2020,
+      "target_year": 2021
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.17411427526524267,
+          "median": 0.20223002406278393,
+          "upper": 0.23071289982795348
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.01068111745550281,
+          "median": 0.01306549792746875,
+          "upper": 0.015748957536562594
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.011653083935130709,
+          "median": 0.013545247987035047,
+          "upper": 0.015494174430028415
+        },
+        "pixel_count": 79741,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462047
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 47,
+      "origin_year": 2020,
+      "target_year": 2021
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.22468911774576977,
+          "median": 0.2552393359302303,
+          "upper": 0.28514069855171803
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.0008904062724605699,
+          "median": 0.0012085998662755282,
+          "upper": 0.003169473457407703
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.0028891145351211955,
+          "median": 0.00409562281095166,
+          "upper": 0.005446576252154977
+        },
+        "pixel_count": 79741,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462047
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 47,
+      "origin_year": 2020,
+      "target_year": 2021
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.18956081309767867,
+          "median": 0.2191847758214827,
+          "upper": 0.2528932161826352
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.012359442716322602,
+          "median": 0.014714504870394052,
+          "upper": 0.017038893113363072
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.01269797911597309,
+          "median": 0.014718274298023248,
+          "upper": 0.016649398830094836
+        },
+        "pixel_count": 79741,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462073
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 73,
+      "origin_year": 2020,
+      "target_year": 2021
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.23190452976267856,
+          "median": 0.2636438997127152,
+          "upper": 0.30011180088188844
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.0002930374959576931,
+          "median": 0.0016832901167904701,
+          "upper": 0.0036573191415409435
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.0033257775679198464,
+          "median": 0.0046288173771961705,
+          "upper": 0.0060332149304519024
+        },
+        "pixel_count": 79741,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462073
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 73,
+      "origin_year": 2020,
+      "target_year": 2021
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.05474396525890318,
+          "median": 0.06692689297929551,
+          "upper": 0.07857393340014542
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.0012558944977144855,
+          "median": 0.005826175820287216,
+          "upper": 0.009275583733561965
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.004290728586288361,
+          "median": 0.005491883082848759,
+          "upper": 0.006706125690390274
+        },
+        "pixel_count": 79740,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462131
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 31,
+      "origin_year": 2021,
+      "target_year": 2022
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.059927066179325486,
+          "median": 0.0719822382582406,
+          "upper": 0.08400961010420108
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.011117269741863594,
+          "median": -0.007405735179417339,
+          "upper": -0.004507784401411441
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.00480831379288372,
+          "median": -0.003859195159043871,
+          "upper": -0.0029608811587940906
+        },
+        "pixel_count": 79740,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462131
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 31,
+      "origin_year": 2021,
+      "target_year": 2022
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.054614370304460765,
+          "median": 0.06763586831557164,
+          "upper": 0.08121763754222393
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.00010533775359031246,
+          "median": 0.004952573970005314,
+          "upper": 0.00912448709316265
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.004323811459368135,
+          "median": 0.0055244803799114894,
+          "upper": 0.006742017718200882
+        },
+        "pixel_count": 79740,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462147
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 47,
+      "origin_year": 2021,
+      "target_year": 2022
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.06101743534543985,
+          "median": 0.074068237793419,
+          "upper": 0.0872596212972456
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.011835188951878548,
+          "median": -0.0076627667634649455,
+          "upper": -0.004536649017168693
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.0046260088921425135,
+          "median": -0.0037064167352782174,
+          "upper": -0.0028119755907912328
+        },
+        "pixel_count": 79740,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462147
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 47,
+      "origin_year": 2021,
+      "target_year": 2022
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.05430198909869149,
+          "median": 0.06718767832415512,
+          "upper": 0.08085339091267849
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.0005628668058188402,
+          "median": 0.003591173575139661,
+          "upper": 0.007350205338382859
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.004175688038613836,
+          "median": 0.00546557770743028,
+          "upper": 0.006737739765273187
+        },
+        "pixel_count": 79740,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462173
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 73,
+      "origin_year": 2021,
+      "target_year": 2022
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.05724533364893218,
+          "median": 0.07039397450753186,
+          "upper": 0.08385149314055022
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.011824855290594235,
+          "median": -0.008195784467214084,
+          "upper": -0.005163953261474878
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.004993878968280624,
+          "median": -0.004039472208810679,
+          "upper": -0.0031052235075117868
+        },
+        "pixel_count": 79740,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462173
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 73,
+      "origin_year": 2021,
+      "target_year": 2022
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.16861247785033628,
+          "median": 0.1870086932023589,
+          "upper": 0.20369113967560817
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.025880420763422462,
+          "median": 0.03189523915405945,
+          "upper": 0.03818956739139485
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.025456397189082464,
+          "median": 0.02846634221301153,
+          "upper": 0.031182338484495458
+        },
+        "pixel_count": 79733,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462231
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 31,
+      "origin_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.18733079735517394,
+          "median": 0.2065374252770218,
+          "upper": 0.2236896490565464
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.011399568401272191,
+          "median": -0.007290850564625251,
+          "upper": -0.0034698774166497613
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.007914950116356474,
+          "median": -0.005771090057960004,
+          "upper": -0.0035954278566145558
+        },
+        "pixel_count": 79733,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462231
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 31,
+      "origin_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.1778971139427366,
+          "median": 0.1946402930708288,
+          "upper": 0.2125969553170026
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.02549927596767945,
+          "median": 0.03146668368604005,
+          "upper": 0.03776435956739145
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.026548906764468604,
+          "median": 0.029294184138238144,
+          "upper": 0.03192789572570129
+        },
+        "pixel_count": 79733,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462247
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 47,
+      "origin_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.1976165590694145,
+          "median": 0.2147316483981752,
+          "upper": 0.23339433671912446
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.01152814143808423,
+          "median": -0.006639467517115194,
+          "upper": -0.0020283508252265693
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.006887764130721202,
+          "median": -0.0046400928485370585,
+          "upper": -0.002240039942416836
+        },
+        "pixel_count": 79733,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462247
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 47,
+      "origin_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.17406017246058952,
+          "median": 0.1922085748714087,
+          "upper": 0.20952365965661535
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.02756205909883121,
+          "median": 0.03384501539710483,
+          "upper": 0.04104895501899109
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.026141765930262857,
+          "median": 0.02900493775723817,
+          "upper": 0.031710886820973616
+        },
+        "pixel_count": 79733,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462273
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 73,
+      "origin_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.19473311430376722,
+          "median": 0.21255132362503182,
+          "upper": 0.23045968230552408
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.010084868294701173,
+          "median": -0.005379583345996586,
+          "upper": -0.0009099124804150904
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.007142620779995459,
+          "median": -0.0049903725140303945,
+          "upper": -0.0026559986048560026
+        },
+        "pixel_count": 79733,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462273
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 73,
+      "origin_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.13165720303131848,
+          "median": 0.14766216079670325,
+          "upper": 0.16313250282399683
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.014173331821473123,
+          "median": 0.022337827349575345,
+          "upper": 0.03042913959114444
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.02260397767290105,
+          "median": 0.02592769712589793,
+          "upper": 0.02925255103799934
+        },
+        "pixel_count": 79726,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462331
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 31,
+      "origin_year": 2023,
+      "target_year": 2024
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.16235461581286625,
+          "median": 0.17859856231021876,
+          "upper": 0.19383453405047793
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.027673855262914764,
+          "median": -0.02060052342477492,
+          "upper": -0.014086056637242373
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.01573161627031213,
+          "median": -0.013096683232609818,
+          "upper": -0.010635468273451017
+        },
+        "pixel_count": 79726,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462331
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 31,
+      "origin_year": 2023,
+      "target_year": 2024
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.13265091111724622,
+          "median": 0.14963356773149425,
+          "upper": 0.16584662659511487
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.01564385652972094,
+          "median": 0.023316520960630416,
+          "upper": 0.031034953250231187
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.02304777360305009,
+          "median": 0.02623979737465959,
+          "upper": 0.02948126851545718
+        },
+        "pixel_count": 79726,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462347
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 47,
+      "origin_year": 2023,
+      "target_year": 2024
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.16613081904069976,
+          "median": 0.18242586819682133,
+          "upper": 0.19870400678113062
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.02605247796282999,
+          "median": -0.01964498411123622,
+          "upper": -0.014172474585419034
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.014953758104352266,
+          "median": -0.012604890089967402,
+          "upper": -0.010063419199850005
+        },
+        "pixel_count": 79726,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462347
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 47,
+      "origin_year": 2023,
+      "target_year": 2024
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.13384441260527477,
+          "median": 0.1496521937018315,
+          "upper": 0.16559943103786223
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": 0.012698376089123678,
+          "median": 0.020730296705327833,
+          "upper": 0.028682937976859352
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": 0.022710655821100094,
+          "median": 0.026079256241718363,
+          "upper": 0.029414152555810338
+        },
+        "pixel_count": 79726,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462373
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "random_allocation",
+      "model_seed": 73,
+      "origin_year": 2023,
+      "target_year": 2024
+    },
+    {
+      "interval": {
+        "alpha": 0.05,
+        "block_count": 1340,
+        "block_size_pixels": 8,
+        "change_figure_of_merit": {
+          "lower": 0.16732622713940648,
+          "median": 0.18287488710089583,
+          "upper": 0.19885069513172482
+        },
+        "change_fom_interval_excludes_zero": true,
+        "comparison": "prediction_a_minus_prediction_b",
+        "macro_f1": {
+          "lower": -0.02651350967612989,
+          "median": -0.020341620323764686,
+          "upper": -0.014470348299119596
+        },
+        "method": "paired_spatial_block_bootstrap_difference",
+        "n_resamples": 1000,
+        "overall_accuracy": {
+          "lower": -0.015160776113105706,
+          "median": -0.012524426887435047,
+          "upper": -0.010220859700942973
+        },
+        "pixel_count": 79726,
+        "sampling_unit": "shared_spatial_block_triplets",
+        "seed": 20462373
+      },
+      "model_a": "geospatial_kernel",
+      "model_b": "persistence",
+      "model_seed": 73,
+      "origin_year": 2023,
+      "target_year": 2024
+    }
+  ],
+  "schema": "gwm.abu_dhabi_rolling_uncertainty.v1",
+  "source_report_sha256": "9c0f328a581fde875f6f194873fcd65badf70400d18c46de7299dedbe2296611",
+  "status": "complete"
+}

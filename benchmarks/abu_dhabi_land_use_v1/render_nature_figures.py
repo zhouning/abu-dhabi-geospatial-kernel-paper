@@ -367,7 +367,7 @@ def render_figure_3() -> None:
              "2031 scenario stress tests. Bars show mean +/- population SD across three seeds; black outlines denote\n"
              "membership of the three-objective within-scenario frontier. Ecological conversion remains a diagnostic only.",
              fontsize=7.5, color="#4A5560")
-    save_publication_figure(fig, "fig03_planning_objectives")
+    save_publication_figure(fig, "fig04_planning_objectives")
 
 
 def _historical_rows(report, proposal_variant=None, runtime_variant=None, target_year=None):
@@ -465,7 +465,7 @@ def render_figure_4() -> None:
              "identify causal planning effects. No-state-writeback is undefined for the 2023 one-step target (n/a). Removing\n"
              "hard constraints can raise label agreement while violating the contract.",
              fontsize=7.5, color="#4A5560")
-    save_publication_figure(fig, "fig04_mechanism_ablation")
+    save_publication_figure(fig, "fig05_mechanism_ablation")
 
 
 def render_figure_5() -> None:
@@ -523,7 +523,7 @@ def render_figure_5() -> None:
              "Each map is a 100-m majority-vote ensemble. The full 3 scenarios x 3 models atlas is supplied as Fig. S1;\n"
              "change footprints are raster-cell products and not cadastral parcels.",
              fontsize=7.5, color="#4A5560")
-    save_publication_figure(fig, "fig05_planning_maps_2031")
+    save_publication_figure(fig, "fig06_planning_maps_2031")
 
 
 def render_supplementary_figure_1() -> None:

@@ -156,16 +156,64 @@ def _verify_manuscript_report_consistency() -> None:
                         f"manuscript_pairwise_value_missing:{year}:{pair_name}:{bound}:{fragment}"
                     )
 
+    # Rolling-origin and WorldCover diagnostic evidence. These checks prevent
+    # the manuscript from reverting to a single favourable split or silently
+    # relabelling external-product agreement as authoritative validation.
+    rolling = json.loads(
+        (HERE / "artifacts/rolling_backtest/report.json").read_text(encoding="utf-8")
+    )
+    if rolling.get("temporal_firewall", {}).get("prediction_target_used_in_fit") is not False:
+        raise RuntimeError("rolling_temporal_firewall_missing")
+    if rolling.get("temporal_firewall", {}).get("road_snapshot_features_used") is not False:
+        raise RuntimeError("rolling_road_snapshot_firewall_missing")
+    expected_rolling = {
+        2020: (0.2595, 0.0524),
+        2021: (0.0724, 0.0048),
+        2022: (0.2116, 0.0200),
+        2023: (0.1816, 0.0323),
+    }
+    for origin, (kernel_fom, random_fom) in expected_rolling.items():
+        kernel_summary = next(
+            row for row in rolling["summaries"]
+            if row["origin_year"] == origin and row["model_id"] == "geospatial_kernel"
+        )
+        random_summary = next(
+            row for row in rolling["summaries"]
+            if row["origin_year"] == origin and row["model_id"] == "random_allocation"
+        )
+        if round(kernel_summary["metrics"]["change_figure_of_merit"]["mean"], 4) != kernel_fom:
+            raise RuntimeError(f"rolling_kernel_fom_missing:{origin}")
+        if round(random_summary["metrics"]["change_figure_of_merit"]["mean"], 4) != random_fom:
+            raise RuntimeError(f"rolling_random_fom_missing:{origin}")
+    for fragment in ("0.2595, 0.0724, 0.2116 and 0.1816", "0.0524, 0.0048, 0.0200 and 0.0323"):
+        if fragment not in manuscript_numeric:
+            raise RuntimeError(f"manuscript_rolling_value_missing:{fragment}")
+
+    worldcover = json.loads(
+        (HERE / "artifacts/external_validation/worldcover/diagnostic.json")
+        .read_text(encoding="utf-8")
+    )
+    if worldcover.get("interpretation") != "independent_public_product_agreement_not_ground_truth":
+        raise RuntimeError("worldcover_claim_boundary_missing")
+    if worldcover.get("thresholds") != [0.05, 0.1, 0.2, 0.3]:
+        raise RuntimeError("worldcover_thresholds_missing")
+    first = worldcover["rows"][0]
+    last = worldcover["rows"][-1]
+    if round(first["built_gain_agreement"]["dynamic_world_observed"]["f1"], 4) != 0.0111:
+        raise RuntimeError("worldcover_dynamic_gain_f1_missing")
+    if round(last["built_gain_agreement"]["dynamic_world_observed"]["f1"], 4) != 0.0192:
+        raise RuntimeError("worldcover_dynamic_gain_f1_upper_missing")
+    if any(row["built_gain_agreement"]["geospatial_kernel"]["mean"]["f1"] != 0.0 for row in worldcover["rows"]):
+        raise RuntimeError("worldcover_kernel_gain_not_zero")
+    for fragment in ("0.0111–0.0192", "Kernel F1 increased from 0.3518 to 0.3971"):
+        if fragment not in manuscript_numeric:
+            raise RuntimeError(f"manuscript_worldcover_value_missing:{fragment}")
+
     # Table 2: assert each displayed 2031 candidate row and frontier marker.
     model_labels = {
         "geosos_flus": "FLUS-style ANN–CA",
         "geospatial_kernel": "Geospatial Kernel",
         "paper58": "GeoFM-LDN",
-    }
-    scenario_labels = {
-        "compact": "Moderate",
-        "ecological_priority": "Green-priority",
-        "outward_growth": "High outward",
     }
     frontier = {
         candidate_id
@@ -175,7 +223,7 @@ def _verify_manuscript_report_consistency() -> None:
     for candidate in planning["final_candidates"]:
         marker = "*" if candidate["candidate_id"] in frontier else ""
         fragment = (
-            f"| {model_labels[candidate['model_id']]} | {scenario_labels[candidate['scenario_id']]} | "
+            f"| {model_labels[candidate['model_id']]} | "
             f"{candidate['new_built_mean_major_road_distance_m']:.1f} | "
             f"{candidate['new_built_mean_prior_built_distance_m']:.1f} | "
             f"{candidate['combined_built_components_per_1000_pixels']:.3f} | "
@@ -218,8 +266,14 @@ def _hash_outputs() -> dict[str, object]:
         HERE / "artifacts/predictions/flus_matched_inputs_abs/report.json",
         HERE / "artifacts/cross_platform/linux_vs_macos_kernel_comparison.json",
         HERE / "artifacts/cross_platform/github_actions_ubuntu_x86_64_kernel_reference_e06a997.json",
+        HERE / "artifacts/rolling_backtest/report.json",
+        HERE / "artifacts/rolling_backtest/paired_spatial_uncertainty.json",
+        HERE / "artifacts/external_validation/worldcover/input_manifest.json",
+        HERE / "artifacts/external_validation/worldcover/diagnostic.json",
         REPO / "manuscript/supplementary_table_S2_neighbourhood_weight_sensitivity.md",
         REPO / "manuscript/supplementary_table_S3_flus_feature_diagnostics.md",
+        REPO / "manuscript/supplementary_table_S5_rolling_external_diagnostics.md",
+        REPO / "manuscript/source_data_fig03_rolling_external_diagnostics.csv",
         REPO / "manuscript/main.pdf",
         REPO / "manuscript/lup_submission.pdf",
         REPO / "manuscript/manuscript.pdf",
@@ -229,9 +283,10 @@ def _hash_outputs() -> dict[str, object]:
     for stem in (
         "fig01_benchmark_contract",
         "fig02_historical_validation",
-        "fig03_planning_objectives",
-        "fig04_mechanism_ablation",
-        "fig05_planning_maps_2031",
+        "fig03_rolling_external_diagnostics",
+        "fig04_planning_objectives",
+        "fig05_mechanism_ablation",
+        "fig06_planning_maps_2031",
         "figS01_planning_atlas_2031",
         "figS02_input_label_quality",
         "figS03_historical_2024_maps_and_errors",
@@ -305,6 +360,16 @@ def main() -> None:
         )
     _run("Archive FLUS input diagnostics", HERE / "collect_flus_diagnostic_evidence.py")
     _run("Geospatial Kernel historical predictions", HERE / "run_geospatial_kernel.py", "--seeds", SEEDS)
+    _run(
+        "Geospatial Kernel rolling-origin backtest",
+        HERE / "run_rolling_backtest.py",
+        "--origins",
+        "2020,2021,2022,2023",
+        "--seeds",
+        SEEDS,
+    )
+    _run("Rolling-origin paired spatial uncertainty", HERE / "run_rolling_uncertainty.py")
+    _run("WorldCover external-product diagnostic", HERE / "run_worldcover_external_diagnostic.py")
     _run("Cross-platform Kernel comparison", HERE / "audit_cross_platform.py")
     _run("Historical comparison", HERE / "compile_comparison.py")
     _run(
@@ -344,6 +409,7 @@ def main() -> None:
     _verify_manuscript_report_consistency()
     if not args.skip_figures:
         _run("Publication figures", HERE / "render_nature_figures.py")
+        _run("Rolling and external-product figure", HERE / "render_rolling_validation_figure.py")
     result = _hash_outputs()
     _run(
         "Final input manifest",

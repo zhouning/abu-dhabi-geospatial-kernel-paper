@@ -1,0 +1,4120 @@
+{
+  "benchmark_id": "abu-dhabi-land-use-v1",
+  "created_at": "2026-09-08T12:37:31.400995+00:00",
+  "evaluation_mode": "one_step_expanding_window_oracle_allocation",
+  "model_target_boundary": "For origin t, fit transitions end at t and predict t+1; observed target counts are used only for allocation-skill isolation.",
+  "models": [
+    "geospatial_kernel",
+    "persistence",
+    "random_allocation"
+  ],
+  "origins": [
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "rows": [
+    {
+      "allocation": {
+        "moved_pixels": 1115,
+        "target_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        },
+        "binary_change_figure_of_merit": 0.2603129445234708,
+        "change_f1": 0.41309255079006774,
+        "change_false_alarms": 383,
+        "change_figure_of_merit": 0.2585348506401138,
+        "change_hits": 727,
+        "change_misses": 1697,
+        "change_wrong_transitions": 5,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.9198326903159405,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9738528485973339,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 1115,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 1,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998518268565025,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.9997704974467841,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 1
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_31/geospatial_kernel.tif",
+        "sha256": "f966d807f5711784213986f2b5ce230287eb726149b9860f3655750b198736a1",
+        "size_bytes": 9591
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 31,
+      "target_year": 2021,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 45.21272037504241,
+        "fit_target_latest_year": 2020,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2888,
+            "selected_pixels": 18079,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 18145,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2426,
+            "selected_pixels": 17961,
+            "start_year": 2019,
+            "target_year": 2020
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2020,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2021,
+        "seed": 31,
+        "training_pixel_rows": 54185
+      },
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 542,
+          "3": 480,
+          "4": 1012,
+          "5": 9642,
+          "6": 52498
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 2429,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 2230,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.013982769215334647,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.9185097053156578,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9695388821308988,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.49989074670400074,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.999799185265936,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_31/persistence.tif",
+        "sha256": "d42014a55e553064d9d1385fe8e35fb8b2a6597175c4e7946c62fe42d7b1dae4",
+        "size_bytes": 10435
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 31,
+      "target_year": 2021,
+      "training": null,
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        },
+        "binary_change_figure_of_merit": 0.06076025142173002,
+        "change_f1": 0.11455981941309255,
+        "change_false_alarms": 912,
+        "change_figure_of_merit": 0.058964381921580364,
+        "change_hits": 197,
+        "change_misses": 2226,
+        "change_wrong_transitions": 6,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.9063629754178533,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9605723529928142,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 1115,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 255,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4894715223667127,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.9924837913821791,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 255
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_31/random_allocation.tif",
+        "sha256": "6aab5b590cd2661f4620b909ce30337526b6b66d302fd160f10ce81dfb295336",
+        "size_bytes": 11035
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 31,
+      "target_year": 2021,
+      "training": null,
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": {
+        "moved_pixels": 1115,
+        "target_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        },
+        "binary_change_figure_of_merit": 0.2571833983682157,
+        "change_f1": 0.40914221218961627,
+        "change_false_alarms": 390,
+        "change_figure_of_merit": 0.2554097197587797,
+        "change_hits": 720,
+        "change_misses": 1704,
+        "change_wrong_transitions": 5,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.919717340360886,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9736772801946301,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 1115,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 2,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998128925557351,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.9997418096276321,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 2
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_47/geospatial_kernel.tif",
+        "sha256": "5de83451f886f08b62c420a20c4a95e5b50888c0b7dfa064d48f5f8ef5247ae0",
+        "size_bytes": 9513
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 47,
+      "target_year": 2021,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 42.89866662491113,
+        "fit_target_latest_year": 2020,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2888,
+            "selected_pixels": 18101,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17965,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2426,
+            "selected_pixels": 17993,
+            "start_year": 2019,
+            "target_year": 2020
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2020,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2021,
+        "seed": 47,
+        "training_pixel_rows": 54059
+      },
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 542,
+          "3": 480,
+          "4": 1012,
+          "5": 9642,
+          "6": 52498
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 2429,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 2230,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.013982769215334647,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.9185097053156578,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9695388821308988,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.49989074670400074,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.999799185265936,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_47/persistence.tif",
+        "sha256": "d42014a55e553064d9d1385fe8e35fb8b2a6597175c4e7946c62fe42d7b1dae4",
+        "size_bytes": 10435
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 47,
+      "target_year": 2021,
+      "training": null,
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        },
+        "binary_change_figure_of_merit": 0.05539011316259678,
+        "change_f1": 0.10496613995485328,
+        "change_false_alarms": 929,
+        "change_figure_of_merit": 0.053007742703990474,
+        "change_hits": 178,
+        "change_misses": 2243,
+        "change_wrong_transitions": 8,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.9066030054162794,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9601208913858618,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 1115,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 268,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.48891213945831996,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.9921108497332033,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 268
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_47/random_allocation.tif",
+        "sha256": "9f1a7a749f65703e7396fbe88ead5e22957da04edddea012718c185d48c725ec",
+        "size_bytes": 11047
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 47,
+      "target_year": 2021,
+      "training": null,
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": {
+        "moved_pixels": 1115,
+        "target_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        },
+        "binary_change_figure_of_merit": 0.2666190135811294,
+        "change_f1": 0.42099322799097066,
+        "change_false_alarms": 369,
+        "change_figure_of_merit": 0.2644746247319514,
+        "change_hits": 740,
+        "change_misses": 1683,
+        "change_wrong_transitions": 6,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.9202316508443417,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9741914448025483,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 1115,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 2,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998128925557351,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.9997418096276321,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 2
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_73/geospatial_kernel.tif",
+        "sha256": "cd9178dfc06f6cf4e904a401a57f635056e0fbb875cb7dfcc11727df28b3f0b7",
+        "size_bytes": 9499
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 73,
+      "target_year": 2021,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 40.54495200002566,
+        "fit_target_latest_year": 2020,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2888,
+            "selected_pixels": 18255,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17936,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2426,
+            "selected_pixels": 17834,
+            "start_year": 2019,
+            "target_year": 2020
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2020,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2021,
+        "seed": 73,
+        "training_pixel_rows": 54025
+      },
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 542,
+          "3": 480,
+          "4": 1012,
+          "5": 9642,
+          "6": 52498
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 2429,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 2230,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.013982769215334647,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.9185097053156578,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9695388821308988,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.49989074670400074,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.999799185265936,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_73/persistence.tif",
+        "sha256": "d42014a55e553064d9d1385fe8e35fb8b2a6597175c4e7946c62fe42d7b1dae4",
+        "size_bytes": 10435
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 73,
+      "target_year": 2021,
+      "training": null,
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        },
+        "binary_change_figure_of_merit": 0.04728132387706856,
+        "change_f1": 0.09029345372460497,
+        "change_false_alarms": 955,
+        "change_figure_of_merit": 0.04521276595744681,
+        "change_hits": 153,
+        "change_misses": 2269,
+        "change_wrong_transitions": 7,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79741,
+        "macro_f1": 0.905473800249096,
+        "observed_change_pixels": 2429,
+        "overall_accuracy": 0.9594813207760123,
+        "pixel_count": 79741,
+        "predicted_change_pixels": 1115,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 273,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 7,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4886962187641357,
+          "observed_change_pixels": 7,
+          "overall_accuracy": 0.9919674106374433,
+          "pixel_count": 34858,
+          "predicted_change_pixels": 273
+        },
+        "requested_class_counts": {
+          "1": 15567,
+          "2": 532,
+          "3": 468,
+          "4": 1012,
+          "5": 8549,
+          "6": 53613
+        }
+      },
+      "hard_exclusion_pixel_count": 16579,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15534,
+        "2": 532,
+        "3": 468,
+        "4": 1016,
+        "5": 8553,
+        "6": 53638
+      },
+      "origin_year": 2020,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2020_target_2021/seed_73/random_allocation.tif",
+        "sha256": "3865d1dbeb7b97a1b2ec9d5ed41ce9af10f48c6f652c785eea1d6735f8379373",
+        "size_bytes": 11087
+      },
+      "requested_target_counts": {
+        "1": 15567,
+        "2": 532,
+        "3": 468,
+        "4": 1012,
+        "5": 8549,
+        "6": 53613
+      },
+      "seed": 73,
+      "target_year": 2021,
+      "training": null,
+      "training_valid_pixel_count": 79753,
+      "valid_pixel_count": 79741
+    },
+    {
+      "allocation": {
+        "moved_pixels": 793,
+        "target_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        },
+        "binary_change_figure_of_merit": 0.07463592233009708,
+        "change_f1": 0.13890457368718237,
+        "change_false_alarms": 547,
+        "change_figure_of_merit": 0.07220873786407767,
+        "change_hits": 238,
+        "change_misses": 2503,
+        "change_wrong_transitions": 8,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.8947518396930455,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9616503636819664,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 793,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998046444251772,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9996994740796393,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_31/geospatial_kernel.tif",
+        "sha256": "1416f3fb709814d085975e27a0b3fa958c220b72f424211725833e6d3f80b31c",
+        "size_bytes": 9557
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 31,
+      "target_year": 2022,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 40.55737016675994,
+        "fit_target_latest_year": 2021,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18076,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 18144,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17960,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 18025,
+            "start_year": 2020,
+            "target_year": 2021
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2021,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2022,
+        "seed": 31,
+        "training_pixel_rows": 72205
+      },
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 532,
+          "3": 468,
+          "4": 1016,
+          "5": 8553,
+          "6": 53638
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 2749,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 1586,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.009944820667168296,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.9021801001004804,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9655254577376473,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998046444251772,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9996994740796393,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_31/persistence.tif",
+        "sha256": "2584c41b67ee9606c5a30a5aa75dc9493e95fd2718c5e2eb31b79eba0aa0ffc6",
+        "size_bytes": 9911
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 31,
+      "target_year": 2022,
+      "training": null,
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        },
+        "binary_change_figure_of_merit": 0.008542141230068337,
+        "change_f1": 0.01693958215697346,
+        "change_false_alarms": 763,
+        "change_figure_of_merit": 0.005125284738041002,
+        "change_hits": 18,
+        "change_misses": 2719,
+        "change_wrong_transitions": 12,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.8891469746940815,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9561825934286431,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 793,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 275,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4873958080291095,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.991435011269722,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 275
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_31/random_allocation.tif",
+        "sha256": "9dcc602a988794f863d2df726bf7b2b318c0da5ad828297ae0c355795f9ec055",
+        "size_bytes": 11151
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 31,
+      "target_year": 2022,
+      "training": null,
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": {
+        "moved_pixels": 793,
+        "target_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        },
+        "binary_change_figure_of_merit": 0.07659574468085106,
+        "change_f1": 0.1422924901185771,
+        "change_false_alarms": 541,
+        "change_figure_of_merit": 0.07446808510638298,
+        "change_hits": 245,
+        "change_misses": 2497,
+        "change_wrong_transitions": 7,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.8945609166845294,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9618133935289691,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 793,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998046444251772,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9996994740796393,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_47/geospatial_kernel.tif",
+        "sha256": "47442900864cae3ebc750e6556026d05affb069fe2a8e3f6c5a1ddc221a5ca7c",
+        "size_bytes": 9553
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 47,
+      "target_year": 2022,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 48.64862579200417,
+        "fit_target_latest_year": 2021,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18098,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17965,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17992,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 17850,
+            "start_year": 2020,
+            "target_year": 2021
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2021,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2022,
+        "seed": 47,
+        "training_pixel_rows": 71905
+      },
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 532,
+          "3": 468,
+          "4": 1016,
+          "5": 8553,
+          "6": 53638
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 2749,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 1586,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.009944820667168296,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.9021801001004804,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9655254577376473,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998046444251772,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9996994740796393,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_47/persistence.tif",
+        "sha256": "2584c41b67ee9606c5a30a5aa75dc9493e95fd2718c5e2eb31b79eba0aa0ffc6",
+        "size_bytes": 9911
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 47,
+      "target_year": 2022,
+      "training": null,
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        },
+        "binary_change_figure_of_merit": 0.00998003992015968,
+        "change_f1": 0.019762845849802372,
+        "change_false_alarms": 758,
+        "change_figure_of_merit": 0.006273167949814656,
+        "change_hits": 22,
+        "change_misses": 2714,
+        "change_wrong_transitions": 13,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.889568584569468,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9562954602457988,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 793,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 281,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.48710182992566925,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9912546957175057,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 281
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_47/random_allocation.tif",
+        "sha256": "179a8c69278c45977f7b4e3b197d87bf1b530aa4672b2d28233ce5d0ef40319e",
+        "size_bytes": 11131
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 47,
+      "target_year": 2022,
+      "training": null,
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": {
+        "moved_pixels": 793,
+        "target_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        },
+        "binary_change_figure_of_merit": 0.07235846200423857,
+        "change_f1": 0.13495200451722192,
+        "change_false_alarms": 554,
+        "change_figure_of_merit": 0.07054193157735392,
+        "change_hits": 233,
+        "change_misses": 2510,
+        "change_wrong_transitions": 6,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.8939715345423279,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9614998745924254,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 793,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 1,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4997562720188609,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9996694214876033,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 1
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_73/geospatial_kernel.tif",
+        "sha256": "88f5d50b6c14b1bbc6d2ad9b26958bbf6c453f966dc415416aa0237ec9a9afe5",
+        "size_bytes": 9583
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 73,
+      "target_year": 2022,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 42.424028125125915,
+        "fit_target_latest_year": 2021,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18250,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17932,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17830,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 17941,
+            "start_year": 2020,
+            "target_year": 2021
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2021,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2022,
+        "seed": 73,
+        "training_pixel_rows": 71953
+      },
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 532,
+          "3": 468,
+          "4": 1016,
+          "5": 8553,
+          "6": 53638
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 2749,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 1586,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.009944820667168296,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.9021801001004804,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9655254577376473,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4998046444251772,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9996994740796393,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_73/persistence.tif",
+        "sha256": "2584c41b67ee9606c5a30a5aa75dc9493e95fd2718c5e2eb31b79eba0aa0ffc6",
+        "size_bytes": 9911
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 73,
+      "target_year": 2022,
+      "training": null,
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        },
+        "binary_change_figure_of_merit": 0.0071083309638896785,
+        "change_f1": 0.014116318464144552,
+        "change_false_alarms": 768,
+        "change_figure_of_merit": 0.0031276656241114587,
+        "change_hits": 11,
+        "change_misses": 2724,
+        "change_wrong_transitions": 14,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79740,
+        "macro_f1": 0.8903447707672828,
+        "observed_change_pixels": 2749,
+        "overall_accuracy": 0.9560321043391021,
+        "pixel_count": 79740,
+        "predicted_change_pixels": 793,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 270,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 10,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.48757082407409097,
+          "observed_change_pixels": 10,
+          "overall_accuracy": 0.9915852742299023,
+          "pixel_count": 33275,
+          "predicted_change_pixels": 270
+        },
+        "requested_class_counts": {
+          "1": 15533,
+          "2": 493,
+          "3": 470,
+          "4": 1016,
+          "5": 9344,
+          "6": 52884
+        }
+      },
+      "hard_exclusion_pixel_count": 16549,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15438,
+        "2": 494,
+        "3": 471,
+        "4": 1011,
+        "5": 9359,
+        "6": 52967
+      },
+      "origin_year": 2021,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2021_target_2022/seed_73/random_allocation.tif",
+        "sha256": "441702525bc447440c2b5c8a0062b44444127dc795e774105496039a7626ac11",
+        "size_bytes": 11143
+      },
+      "requested_target_counts": {
+        "1": 15533,
+        "2": 493,
+        "3": 470,
+        "4": 1016,
+        "5": 9344,
+        "6": 52884
+      },
+      "seed": 73,
+      "target_year": 2022,
+      "training": null,
+      "training_valid_pixel_count": 79741,
+      "valid_pixel_count": 79740
+    },
+    {
+      "allocation": {
+        "moved_pixels": 3080,
+        "target_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        },
+        "binary_change_figure_of_merit": 0.2124120281509917,
+        "change_f1": 0.3503957783641161,
+        "change_false_alarms": 1752,
+        "change_figure_of_merit": 0.20697376839411388,
+        "change_hits": 1294,
+        "change_misses": 3172,
+        "change_wrong_transitions": 34,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.861175393555535,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.937817465792081,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 3080,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 22,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4987009537944657,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9984782749465777,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 22
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_31/geospatial_kernel.tif",
+        "sha256": "29db915a9fe1fe7133836c7ae927033a573ea04a36e41eede2d6e7b49aebdda0",
+        "size_bytes": 10197
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 31,
+      "target_year": 2023,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 46.863568124827,
+        "fit_target_latest_year": 2022,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18076,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 18144,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17960,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 18025,
+            "start_year": 2020,
+            "target_year": 2021
+          },
+          {
+            "selected_changed_pixels": 2749,
+            "selected_pixels": 18177,
+            "start_year": 2021,
+            "target_year": 2022
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2022,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2023,
+        "seed": 31,
+        "training_pixel_rows": 90382
+      },
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 494,
+          "3": 471,
+          "4": 1011,
+          "5": 9359,
+          "6": 52960
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 4500,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 6160,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.038628924033963355,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.8684914329611568,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9435616369633653,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4996979573556162,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9991905717800945,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_31/persistence.tif",
+        "sha256": "3893d93d6c6a356f96267f6f7c0749c7d7a4452379c6b7133c46b1953bb2bb3d",
+        "size_bytes": 10293
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 31,
+      "target_year": 2023,
+      "training": null,
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        },
+        "binary_change_figure_of_merit": 0.028493894165535955,
+        "change_f1": 0.055408970976253295,
+        "change_false_alarms": 2870,
+        "change_figure_of_merit": 0.019402985074626865,
+        "change_hits": 143,
+        "change_misses": 4290,
+        "change_wrong_transitions": 67,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.829659162295167,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9093599889631646,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 3080,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0009699321047526673,
+          "change_f1": 0.001937984496124031,
+          "change_false_alarms": 1006,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 24,
+          "change_wrong_transitions": 1,
+          "macro_f1": 0.462395618160448,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9666191802110988,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 1007
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_31/random_allocation.tif",
+        "sha256": "1114c85c67f554bf34a2763bd465db02347461f99e2f18a2a2cb2b686f09e5bc",
+        "size_bytes": 13837
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 31,
+      "target_year": 2023,
+      "training": null,
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": {
+        "moved_pixels": 3080,
+        "target_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        },
+        "binary_change_figure_of_merit": 0.22100515463917525,
+        "change_f1": 0.36200527704485486,
+        "change_false_alarms": 1708,
+        "change_figure_of_merit": 0.21520618556701032,
+        "change_hits": 1336,
+        "change_misses": 3128,
+        "change_wrong_transitions": 36,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.8616686580896071,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9388960656190034,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 3080,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 20,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4987527370447606,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9985430292041702,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 20
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_47/geospatial_kernel.tif",
+        "sha256": "6b488eb94c3783702ca58c5b20dd22c66fae314efe621c1edc8675356b017734",
+        "size_bytes": 10219
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 47,
+      "target_year": 2023,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 55.9934971248731,
+        "fit_target_latest_year": 2022,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18098,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17964,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17991,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 17850,
+            "start_year": 2020,
+            "target_year": 2021
+          },
+          {
+            "selected_changed_pixels": 2749,
+            "selected_pixels": 18218,
+            "start_year": 2021,
+            "target_year": 2022
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2022,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2023,
+        "seed": 47,
+        "training_pixel_rows": 90121
+      },
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 494,
+          "3": 471,
+          "4": 1011,
+          "5": 9359,
+          "6": 52960
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 4500,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 6160,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.038628924033963355,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.8684914329611568,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9435616369633653,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4996979573556162,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9991905717800945,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_47/persistence.tif",
+        "sha256": "3893d93d6c6a356f96267f6f7c0749c7d7a4452379c6b7133c46b1953bb2bb3d",
+        "size_bytes": 10293
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 47,
+      "target_year": 2023,
+      "training": null,
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        },
+        "binary_change_figure_of_merit": 0.03073157465324993,
+        "change_f1": 0.05963060686015831,
+        "change_false_alarms": 2854,
+        "change_figure_of_merit": 0.020261082404133806,
+        "change_hits": 149,
+        "change_misses": 4274,
+        "change_wrong_transitions": 77,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.8303802961607233,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9096359098491215,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 3080,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 947,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4644003122725328,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9685294308100758,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 947
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_47/random_allocation.tif",
+        "sha256": "da6a35c2e6b27dd1de7e16ab0012df886294238e7e7e6630e15c2254cbf73202",
+        "size_bytes": 13815
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 47,
+      "target_year": 2023,
+      "training": null,
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": {
+        "moved_pixels": 3080,
+        "target_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        },
+        "binary_change_figure_of_merit": 0.21884547354880207,
+        "change_f1": 0.3591029023746702,
+        "change_false_alarms": 1719,
+        "change_figure_of_merit": 0.21273516642547033,
+        "change_hits": 1323,
+        "change_misses": 3139,
+        "change_wrong_transitions": 38,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.8629555695226041,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9385950610161413,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 3080,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 15,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.49903065677281094,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9987049148481513,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 15
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_73/geospatial_kernel.tif",
+        "sha256": "be5e27a462afc6bc22c48fd4eaf4e6b55a36d3a91e532f389a20f714aea540de",
+        "size_bytes": 10193
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 73,
+      "target_year": 2023,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 66.96577483275905,
+        "fit_target_latest_year": 2022,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18250,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17932,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17830,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 17941,
+            "start_year": 2020,
+            "target_year": 2021
+          },
+          {
+            "selected_changed_pixels": 2749,
+            "selected_pixels": 18133,
+            "start_year": 2021,
+            "target_year": 2022
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2022,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2023,
+        "seed": 73,
+        "training_pixel_rows": 90086
+      },
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 494,
+          "3": 471,
+          "4": 1011,
+          "5": 9359,
+          "6": 52960
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 4500,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 6160,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.038628924033963355,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.8684914329611568,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9435616369633653,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.4996979573556162,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9991905717800945,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_73/persistence.tif",
+        "sha256": "3893d93d6c6a356f96267f6f7c0749c7d7a4452379c6b7133c46b1953bb2bb3d",
+        "size_bytes": 10293
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 73,
+      "target_year": 2023,
+      "training": null,
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        },
+        "binary_change_figure_of_merit": 0.03031126817996466,
+        "change_f1": 0.05883905013192612,
+        "change_false_alarms": 2857,
+        "change_figure_of_merit": 0.020388745412532282,
+        "change_hits": 150,
+        "change_misses": 4277,
+        "change_wrong_transitions": 73,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79733,
+        "macro_f1": 0.8295694871381771,
+        "observed_change_pixels": 4500,
+        "overall_accuracy": 0.9096108261322162,
+        "pixel_count": 79733,
+        "predicted_change_pixels": 3080,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 1048,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 25,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.46080697430475287,
+          "observed_change_pixels": 25,
+          "overall_accuracy": 0.9652593408016578,
+          "pixel_count": 30886,
+          "predicted_change_pixels": 1048
+        },
+        "requested_class_counts": {
+          "1": 15438,
+          "2": 690,
+          "3": 466,
+          "4": 1011,
+          "5": 12243,
+          "6": 49885
+        }
+      },
+      "hard_exclusion_pixel_count": 16449,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 15985,
+        "2": 683,
+        "3": 461,
+        "4": 1096,
+        "5": 12121,
+        "6": 49387
+      },
+      "origin_year": 2022,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2022_target_2023/seed_73/random_allocation.tif",
+        "sha256": "782e9fd91faf3a3b8d20d96438ce04bafc33f7a1c1d3e399b6dca4a4548fcbcf",
+        "size_bytes": 13835
+      },
+      "requested_target_counts": {
+        "1": 15438,
+        "2": 690,
+        "3": 466,
+        "4": 1011,
+        "5": 12243,
+        "6": 49885
+      },
+      "seed": 73,
+      "target_year": 2023,
+      "training": null,
+      "training_valid_pixel_count": 79740,
+      "valid_pixel_count": 79733
+    },
+    {
+      "allocation": {
+        "moved_pixels": 3696,
+        "target_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        },
+        "binary_change_figure_of_merit": 0.18205372971498704,
+        "change_f1": 0.3080295339178588,
+        "change_false_alarms": 2361,
+        "change_figure_of_merit": 0.17905359334515206,
+        "change_hits": 1313,
+        "change_misses": 3637,
+        "change_wrong_transitions": 22,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8530150817964995,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.9244913829867295,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 3696,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 41,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.6653621539207443,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.9984348950358953,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 41
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_31/geospatial_kernel.tif",
+        "sha256": "bd16e25e8a31279689e08bf0c581622bc1e9ccc839d37b8caa6ce755f1bb1cda",
+        "size_bytes": 11051
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 31,
+      "target_year": 2024,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 41.00137795880437,
+        "fit_target_latest_year": 2023,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18075,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 18144,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17960,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 18025,
+            "start_year": 2020,
+            "target_year": 2021
+          },
+          {
+            "selected_changed_pixels": 2749,
+            "selected_pixels": 18175,
+            "start_year": 2021,
+            "target_year": 2022
+          },
+          {
+            "selected_changed_pixels": 4500,
+            "selected_pixels": 19487,
+            "start_year": 2022,
+            "target_year": 2023
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2023,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2024,
+        "seed": 31,
+        "training_pixel_rows": 109866
+      },
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 682,
+          "3": 461,
+          "4": 1096,
+          "5": 12121,
+          "6": 49381
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 4972,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 7392,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.046358778817449764,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8733528343310972,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.9376364046860497,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.6666016152464462,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.999829879895206,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_31/persistence.tif",
+        "sha256": "ef69b02591ea46411cad38ca1bb257f5197a79709988b8221a282a539ae23c5e",
+        "size_bytes": 11461
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 31,
+      "target_year": 2024,
+      "training": null,
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        },
+        "binary_change_figure_of_merit": 0.039203932382208366,
+        "change_f1": 0.07544993077988002,
+        "change_false_alarms": 3369,
+        "change_figure_of_merit": 0.030931542980457978,
+        "change_hits": 258,
+        "change_misses": 4645,
+        "change_wrong_transitions": 69,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8306756254297829,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.8986152572561021,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 3696,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 1081,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.47656170391414726,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.9630499132387466,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 1081
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_31/random_allocation.tif",
+        "sha256": "03de73e8f2a32e6d89d9196d37e6d1a6efc40fbf5dcef6cce32330e2151b2f18",
+        "size_bytes": 14905
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 31,
+      "target_year": 2024,
+      "training": null,
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": {
+        "moved_pixels": 3696,
+        "target_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        },
+        "binary_change_figure_of_merit": 0.18625975092377173,
+        "change_f1": 0.3140286109829257,
+        "change_false_alarms": 2335,
+        "change_figure_of_merit": 0.18270151909128232,
+        "change_hits": 1335,
+        "change_misses": 3611,
+        "change_wrong_transitions": 26,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8536914622020397,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.9250934450492938,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 3696,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 36,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.6655126935746555,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.9986050151406893,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 36
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_47/geospatial_kernel.tif",
+        "sha256": "54be3df4e697d4420aa8689e68115c7615c01bb900a75b4b4d8819f8481dde72",
+        "size_bytes": 11107
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 47,
+      "target_year": 2024,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 44.78515516594052,
+        "fit_target_latest_year": 2023,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18096,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17963,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17991,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 17850,
+            "start_year": 2020,
+            "target_year": 2021
+          },
+          {
+            "selected_changed_pixels": 2749,
+            "selected_pixels": 18217,
+            "start_year": 2021,
+            "target_year": 2022
+          },
+          {
+            "selected_changed_pixels": 4500,
+            "selected_pixels": 19552,
+            "start_year": 2022,
+            "target_year": 2023
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2023,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2024,
+        "seed": 47,
+        "training_pixel_rows": 109669
+      },
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 682,
+          "3": 461,
+          "4": 1096,
+          "5": 12121,
+          "6": 49381
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 4972,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 7392,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.046358778817449764,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8733528343310972,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.9376364046860497,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.6666016152464462,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.999829879895206,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_47/persistence.tif",
+        "sha256": "ef69b02591ea46411cad38ca1bb257f5197a79709988b8221a282a539ae23c5e",
+        "size_bytes": 11461
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 47,
+      "target_year": 2024,
+      "training": null,
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        },
+        "binary_change_figure_of_merit": 0.040201608064322575,
+        "change_f1": 0.07729580064605446,
+        "change_false_alarms": 3361,
+        "change_figure_of_merit": 0.03264130565222609,
+        "change_hits": 272,
+        "change_misses": 4637,
+        "change_wrong_transitions": 63,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.830681115734278,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.8988912023681108,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 3696,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 1065,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.47723191390293346,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.9635942975740873,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 1065
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_47/random_allocation.tif",
+        "sha256": "9b9af42c7cecdced3bda2107b22050b946bcbf45716d06458bd4b928d865057a",
+        "size_bytes": 14967
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 47,
+      "target_year": 2024,
+      "training": null,
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": {
+        "moved_pixels": 3696,
+        "target_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        },
+        "binary_change_figure_of_merit": 0.18593514844712,
+        "change_f1": 0.3135671435163821,
+        "change_false_alarms": 2337,
+        "change_figure_of_merit": 0.18292516076070597,
+        "change_hits": 1337,
+        "change_misses": 3613,
+        "change_wrong_transitions": 22,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8532423863244482,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.9250934450492938,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 3696,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 34,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.6655729569486453,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.998673063182607,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 34
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "geospatial_kernel",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_73/geospatial_kernel.tif",
+        "sha256": "c0172a82e2e637710a10dfac46e1f31da4e7def28fe4d2aa28ab4f3c3d094f85",
+        "size_bytes": 11099
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 73,
+      "target_year": 2024,
+      "training": {
+        "feature_count": 23,
+        "fit_seconds": 45.641639333684,
+        "fit_target_latest_year": 2023,
+        "fit_transitions": [
+          {
+            "selected_changed_pixels": 2887,
+            "selected_pixels": 18248,
+            "start_year": 2017,
+            "target_year": 2018
+          },
+          {
+            "selected_changed_pixels": 2641,
+            "selected_pixels": 17931,
+            "start_year": 2018,
+            "target_year": 2019
+          },
+          {
+            "selected_changed_pixels": 2425,
+            "selected_pixels": 17828,
+            "start_year": 2019,
+            "target_year": 2020
+          },
+          {
+            "selected_changed_pixels": 2429,
+            "selected_pixels": 17937,
+            "start_year": 2020,
+            "target_year": 2021
+          },
+          {
+            "selected_changed_pixels": 2749,
+            "selected_pixels": 18130,
+            "start_year": 2021,
+            "target_year": 2022
+          },
+          {
+            "selected_changed_pixels": 4500,
+            "selected_pixels": 19503,
+            "start_year": 2022,
+            "target_year": 2023
+          }
+        ],
+        "model_classes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "origin_year": 2023,
+        "prediction_target_used_in_fit": false,
+        "prediction_target_year": 2024,
+        "seed": 73,
+        "training_pixel_rows": 109577
+      },
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 682,
+          "3": 461,
+          "4": 1096,
+          "5": 12121,
+          "6": 49381
+        },
+        "binary_change_figure_of_merit": 0.0,
+        "change_f1": 0.0,
+        "change_false_alarms": 0,
+        "change_figure_of_merit": 0.0,
+        "change_hits": 0,
+        "change_misses": 4972,
+        "change_wrong_transitions": 0,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 7392,
+        "demand_target_exact": false,
+        "demand_total_variation": 0.046358778817449764,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8733528343310972,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.9376364046860497,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 0,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 0,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.6666016152464462,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.999829879895206,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 0
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "persistence",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_73/persistence.tif",
+        "sha256": "ef69b02591ea46411cad38ca1bb257f5197a79709988b8221a282a539ae23c5e",
+        "size_bytes": 11461
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 73,
+      "target_year": 2024,
+      "training": null,
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    },
+    {
+      "allocation": null,
+      "evaluation": {
+        "actual_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        },
+        "binary_change_figure_of_merit": 0.04095112285336856,
+        "change_f1": 0.07868020304568528,
+        "change_false_alarms": 3355,
+        "change_figure_of_merit": 0.03338537288339138,
+        "change_hits": 278,
+        "change_misses": 4631,
+        "change_wrong_transitions": 63,
+        "constraint_violation_pixels": 0,
+        "constraint_violation_rate": 0.0,
+        "demand_l1_error_pixels": 0,
+        "demand_target_exact": true,
+        "demand_total_variation": 0.0,
+        "evaluation_pixel_count": 79726,
+        "macro_f1": 0.8325597822843281,
+        "observed_change_pixels": 4972,
+        "overall_accuracy": 0.8990417178837519,
+        "pixel_count": 79726,
+        "predicted_change_pixels": 3696,
+        "reliability_sensitivity": {
+          "binary_change_figure_of_merit": 0.0,
+          "change_f1": 0.0,
+          "change_false_alarms": 1061,
+          "change_figure_of_merit": 0.0,
+          "change_hits": 0,
+          "change_misses": 5,
+          "change_wrong_transitions": 0,
+          "macro_f1": 0.47759278530296334,
+          "observed_change_pixels": 5,
+          "overall_accuracy": 0.9637303936579225,
+          "pixel_count": 29391,
+          "predicted_change_pixels": 1061
+        },
+        "requested_class_counts": {
+          "1": 15985,
+          "2": 906,
+          "3": 408,
+          "4": 1096,
+          "5": 15593,
+          "6": 45738
+        }
+      },
+      "hard_exclusion_pixel_count": 17081,
+      "model_id": "random_allocation",
+      "observed_target_counts": {
+        "1": 16060,
+        "2": 906,
+        "3": 408,
+        "4": 1000,
+        "5": 15598,
+        "6": 45754
+      },
+      "origin_year": 2023,
+      "prediction_artifact": {
+        "path": "artifacts/rolling_backtest/predictions/origin_2023_target_2024/seed_73/random_allocation.tif",
+        "sha256": "cd4a280ecbff14f4572f25577740a9a42d47926bb3f5483375189e1308f87347",
+        "size_bytes": 14859
+      },
+      "requested_target_counts": {
+        "1": 15985,
+        "2": 906,
+        "3": 408,
+        "4": 1096,
+        "5": 15593,
+        "6": 45738
+      },
+      "seed": 73,
+      "target_year": 2024,
+      "training": null,
+      "training_valid_pixel_count": 79733,
+      "valid_pixel_count": 79726
+    }
+  ],
+  "schema": "gwm.abu_dhabi_rolling_backtest.v1",
+  "seeds": [
+    31,
+    47,
+    73
+  ],
+  "status": "complete",
+  "summaries": [
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.2666190135811294,
+          "mean": 0.26137178549093865,
+          "minimum": 0.2571833983682157,
+          "sample_standard_deviation": 0.004806096831872327
+        },
+        "change_f1": {
+          "maximum": 0.42099322799097066,
+          "mean": 0.4144093303235516,
+          "minimum": 0.40914221218961627,
+          "sample_standard_deviation": 0.006034241885758249
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.2644746247319514,
+          "mean": 0.25947306504361495,
+          "minimum": 0.2554097197587797,
+          "sample_standard_deviation": 0.004604705228715626
+        },
+        "macro_f1": {
+          "maximum": 0.9202316508443417,
+          "mean": 0.9199272271737228,
+          "minimum": 0.919717340360886,
+          "sample_standard_deviation": 0.00026987354716161686
+        },
+        "overall_accuracy": {
+          "maximum": 0.9741914448025483,
+          "mean": 0.9739071911981707,
+          "minimum": 0.9736772801946301,
+          "sample_standard_deviation": 0.00026135445224484616
+        }
+      },
+      "model_id": "geospatial_kernel",
+      "origin_year": 2020,
+      "seed_count": 3,
+      "target_year": 2021
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_f1": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "macro_f1": {
+          "maximum": 0.9185097053156578,
+          "mean": 0.9185097053156578,
+          "minimum": 0.9185097053156578,
+          "sample_standard_deviation": 0.0
+        },
+        "overall_accuracy": {
+          "maximum": 0.9695388821308988,
+          "mean": 0.9695388821308987,
+          "minimum": 0.9695388821308988,
+          "sample_standard_deviation": 1.3597399555105182e-16
+        }
+      },
+      "model_id": "persistence",
+      "origin_year": 2020,
+      "seed_count": 3,
+      "target_year": 2021
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.06076025142173002,
+          "mean": 0.05447722948713179,
+          "minimum": 0.04728132387706856,
+          "sample_standard_deviation": 0.006785675308490396
+        },
+        "change_f1": {
+          "maximum": 0.11455981941309255,
+          "mean": 0.10327313769751693,
+          "minimum": 0.09029345372460497,
+          "sample_standard_deviation": 0.012221449112701871
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.058964381921580364,
+          "mean": 0.052394963527672554,
+          "minimum": 0.04521276595744681,
+          "sample_standard_deviation": 0.006896256893812023
+        },
+        "macro_f1": {
+          "maximum": 0.9066030054162794,
+          "mean": 0.9061465936944096,
+          "minimum": 0.905473800249096,
+          "sample_standard_deviation": 0.0005948881113947262
+        },
+        "overall_accuracy": {
+          "maximum": 0.9605723529928142,
+          "mean": 0.9600581883848961,
+          "minimum": 0.9594813207760123,
+          "sample_standard_deviation": 0.0005482121617334507
+        }
+      },
+      "model_id": "random_allocation",
+      "origin_year": 2020,
+      "seed_count": 3,
+      "target_year": 2021
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.07659574468085106,
+          "mean": 0.07453004300506223,
+          "minimum": 0.07235846200423857,
+          "sample_standard_deviation": 0.0021206246589112526
+        },
+        "change_f1": {
+          "maximum": 0.1422924901185771,
+          "mean": 0.13871635610766045,
+          "minimum": 0.13495200451722192,
+          "sample_standard_deviation": 0.0036738605864752747
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.07446808510638298,
+          "mean": 0.07240625151593819,
+          "minimum": 0.07054193157735392,
+          "sample_standard_deviation": 0.0019705149366042096
+        },
+        "macro_f1": {
+          "maximum": 0.8947518396930455,
+          "mean": 0.894428096973301,
+          "minimum": 0.8939715345423279,
+          "sample_standard_deviation": 0.0004067552566681955
+        },
+        "overall_accuracy": {
+          "maximum": 0.9618133935289691,
+          "mean": 0.9616545439344537,
+          "minimum": 0.9614998745924254,
+          "sample_standard_deviation": 0.00015680126522455936
+        }
+      },
+      "model_id": "geospatial_kernel",
+      "origin_year": 2021,
+      "seed_count": 3,
+      "target_year": 2022
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_f1": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "macro_f1": {
+          "maximum": 0.9021801001004804,
+          "mean": 0.9021801001004804,
+          "minimum": 0.9021801001004804,
+          "sample_standard_deviation": 0.0
+        },
+        "overall_accuracy": {
+          "maximum": 0.9655254577376473,
+          "mean": 0.9655254577376473,
+          "minimum": 0.9655254577376473,
+          "sample_standard_deviation": 0.0
+        }
+      },
+      "model_id": "persistence",
+      "origin_year": 2021,
+      "seed_count": 3,
+      "target_year": 2022
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.00998003992015968,
+          "mean": 0.008543504038039232,
+          "minimum": 0.0071083309638896785,
+          "sample_standard_deviation": 0.001435854963189009
+        },
+        "change_f1": {
+          "maximum": 0.019762845849802372,
+          "mean": 0.01693958215697346,
+          "minimum": 0.014116318464144552,
+          "sample_standard_deviation": 0.00282326369282891
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.006273167949814656,
+          "mean": 0.004842039437322372,
+          "minimum": 0.0031276656241114587,
+          "sample_standard_deviation": 0.0015917654178726984
+        },
+        "macro_f1": {
+          "maximum": 0.8903447707672828,
+          "mean": 0.8896867766769442,
+          "minimum": 0.8891469746940815,
+          "sample_standard_deviation": 0.0006075820018288252
+        },
+        "overall_accuracy": {
+          "maximum": 0.9562954602457988,
+          "mean": 0.9561700526711814,
+          "minimum": 0.9560321043391021,
+          "sample_standard_deviation": 0.0001321250784154687
+        }
+      },
+      "model_id": "random_allocation",
+      "origin_year": 2021,
+      "seed_count": 3,
+      "target_year": 2022
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.22100515463917525,
+          "mean": 0.21742088544632301,
+          "minimum": 0.2124120281509917,
+          "sample_standard_deviation": 0.004470183906370536
+        },
+        "change_f1": {
+          "maximum": 0.36200527704485486,
+          "mean": 0.3571679859278804,
+          "minimum": 0.3503957783641161,
+          "sample_standard_deviation": 0.006041774668635191
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.21520618556701032,
+          "mean": 0.21163837346219816,
+          "minimum": 0.20697376839411388,
+          "sample_standard_deviation": 0.004224380336849717
+        },
+        "macro_f1": {
+          "maximum": 0.8629555695226041,
+          "mean": 0.8619332070559155,
+          "minimum": 0.861175393555535,
+          "sample_standard_deviation": 0.0009191007752764212
+        },
+        "overall_accuracy": {
+          "maximum": 0.9388960656190034,
+          "mean": 0.9384361974757419,
+          "minimum": 0.937817465792081,
+          "sample_standard_deviation": 0.0005565722010758529
+        }
+      },
+      "model_id": "geospatial_kernel",
+      "origin_year": 2022,
+      "seed_count": 3,
+      "target_year": 2023
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_f1": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "macro_f1": {
+          "maximum": 0.8684914329611568,
+          "mean": 0.8684914329611568,
+          "minimum": 0.8684914329611568,
+          "sample_standard_deviation": 0.0
+        },
+        "overall_accuracy": {
+          "maximum": 0.9435616369633653,
+          "mean": 0.9435616369633651,
+          "minimum": 0.9435616369633653,
+          "sample_standard_deviation": 1.3597399555105182e-16
+        }
+      },
+      "model_id": "persistence",
+      "origin_year": 2022,
+      "seed_count": 3,
+      "target_year": 2023
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.03073157465324993,
+          "mean": 0.029845578999583514,
+          "minimum": 0.028493894165535955,
+          "sample_standard_deviation": 0.0011893079083303074
+        },
+        "change_f1": {
+          "maximum": 0.05963060686015831,
+          "mean": 0.05795954265611258,
+          "minimum": 0.055408970976253295,
+          "sample_standard_deviation": 0.0022440370839354575
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.020388745412532282,
+          "mean": 0.02001760429709765,
+          "minimum": 0.019402985074626865,
+          "sample_standard_deviation": 0.0005360895936327088
+        },
+        "macro_f1": {
+          "maximum": 0.8303802961607233,
+          "mean": 0.8298696485313558,
+          "minimum": 0.8295694871381771,
+          "sample_standard_deviation": 0.00044450102303510895
+        },
+        "overall_accuracy": {
+          "maximum": 0.9096359098491215,
+          "mean": 0.9095355749815007,
+          "minimum": 0.9093599889631646,
+          "sample_standard_deviation": 0.00015257829331134678
+        }
+      },
+      "model_id": "random_allocation",
+      "origin_year": 2022,
+      "seed_count": 3,
+      "target_year": 2023
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.18625975092377173,
+          "mean": 0.18474954302862626,
+          "minimum": 0.18205372971498704,
+          "sample_standard_deviation": 0.0023402774960371584
+        },
+        "change_f1": {
+          "maximum": 0.3140286109829257,
+          "mean": 0.3118750961390555,
+          "minimum": 0.3080295339178588,
+          "sample_standard_deviation": 0.0033383378579004276
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.18292516076070597,
+          "mean": 0.18156009106571344,
+          "minimum": 0.17905359334515206,
+          "sample_standard_deviation": 0.0021735689582942264
+        },
+        "macro_f1": {
+          "maximum": 0.8536914622020397,
+          "mean": 0.8533163101076625,
+          "minimum": 0.8530150817964995,
+          "sample_standard_deviation": 0.00034419639385562434
+        },
+        "overall_accuracy": {
+          "maximum": 0.9250934450492938,
+          "mean": 0.9248927576951057,
+          "minimum": 0.9244913829867295,
+          "sample_standard_deviation": 0.0003476006938903607
+        }
+      },
+      "model_id": "geospatial_kernel",
+      "origin_year": 2023,
+      "seed_count": 3,
+      "target_year": 2024
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_f1": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "sample_standard_deviation": 0.0
+        },
+        "macro_f1": {
+          "maximum": 0.8733528343310972,
+          "mean": 0.8733528343310972,
+          "minimum": 0.8733528343310972,
+          "sample_standard_deviation": 0.0
+        },
+        "overall_accuracy": {
+          "maximum": 0.9376364046860497,
+          "mean": 0.9376364046860498,
+          "minimum": 0.9376364046860497,
+          "sample_standard_deviation": 1.3597399555105182e-16
+        }
+      },
+      "model_id": "persistence",
+      "origin_year": 2023,
+      "seed_count": 3,
+      "target_year": 2024
+    },
+    {
+      "metrics": {
+        "binary_change_figure_of_merit": {
+          "maximum": 0.04095112285336856,
+          "mean": 0.04011888776663317,
+          "minimum": 0.039203932382208366,
+          "sample_standard_deviation": 0.0008765275930429205
+        },
+        "change_f1": {
+          "maximum": 0.07868020304568528,
+          "mean": 0.07714197815720658,
+          "minimum": 0.07544993077988002,
+          "sample_standard_deviation": 0.0016206204819032048
+        },
+        "change_figure_of_merit": {
+          "maximum": 0.03338537288339138,
+          "mean": 0.032319407172025146,
+          "minimum": 0.030931542980457978,
+          "sample_standard_deviation": 0.0012581868985962659
+        },
+        "macro_f1": {
+          "maximum": 0.8325597822843281,
+          "mean": 0.8313055078161297,
+          "minimum": 0.8306756254297829,
+          "sample_standard_deviation": 0.0010862370215757365
+        },
+        "overall_accuracy": {
+          "maximum": 0.8990417178837519,
+          "mean": 0.8988493925026549,
+          "minimum": 0.8986152572561021,
+          "sample_standard_deviation": 0.00021628272092547935
+        }
+      },
+      "model_id": "random_allocation",
+      "origin_year": 2023,
+      "seed_count": 3,
+      "target_year": 2024
+    }
+  ],
+  "temporal_firewall": {
+    "early_fold_constraint_policy": "Lock origin-year water and wetland only; exclude WorldCover 2021 and the later OSM snapshot from rolling folds.",
+    "prediction_target_used_in_fit": false,
+    "road_snapshot_features_used": false,
+    "target_observation_uses": [
+      "evaluation",
+      "oracle_target_class_counts",
+      "evaluation_coverage_mask"
+    ],
+    "training_state_and_driver_latest_year": "origin_year"
+  },
+  "wall_seconds": 569.7188382917084
+}
