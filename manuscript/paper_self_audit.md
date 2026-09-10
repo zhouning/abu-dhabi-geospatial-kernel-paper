@@ -43,11 +43,13 @@
 2. The corresponding-author e-mail is set to `zhouning@freedotech.com`; confirm any full correspondence-address field in the submission portal.
 3. Add a 30-m or multi-resolution sensitivity analysis if the target journal requires scale robustness.
 4. Replace public labels and proxy constraints with authoritative local data before presenting outputs as client-facing planning evidence.
-5. The public repository URL and archival DOI are recorded: Zenodo
-   `10.5281/zenodo.22663476`, GitHub tag `v1.0.0`, commit `2cbd2d3`.
-6. Preserve or publish an external copy of the public raster bundle if full numerical reproduction is required, and add an independent change-validation product when available.
-7. Create and publish a new Zenodo version containing the ArcGIS-served v2 inputs, cross-product reports, Figure 4 source data, Supplementary Table S6 and both v2 integrity manifests. The current v1.0.0 DOI predates this refresh and must not be presented as its archival record.
+5. The public repository URL and v2 source-release DOI are recorded: Zenodo
+   `10.5281/zenodo.22689057`, GitHub tag `v2.0.0`, commit `77e2c59`.
+6. The Zenodo-generated ZIP has been inspected and contains Git LFS pointers.
+   Fetch and verify the hydrated tag objects, or publish a subsequent
+   self-contained archive version, if DOI-only numerical reproduction is
+   required. Add an independent change-validation product when available.
 
 ## Reviewer-risk posture
 
-The strongest defensible version is an algorithmic benchmark and conditional planning study with a cross-public-product robustness result. The manuscript should not be submitted as a validated forecast of Abu Dhabi's legal land-use change until the missing authoritative inputs and independent validation are addressed. It also should not be submitted as a fully archived reproducible refresh until the v2 Zenodo record is published.
+The strongest defensible version is an algorithmic benchmark and conditional planning study with a cross-public-product robustness result. The manuscript should not be submitted as a validated forecast of Abu Dhabi's legal land-use change until the missing authoritative inputs and independent validation are addressed. The v2 source release is persistent, but DOI-only full numerical reproduction remains limited because the deposited GitHub ZIP contains LFS pointers.

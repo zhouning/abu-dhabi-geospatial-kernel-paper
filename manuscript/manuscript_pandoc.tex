@@ -1078,20 +1078,22 @@ The public-data benchmark manifests, protocols, reports and generated
 delivery artefacts are organized under
 \texttt{benchmarks/abu\_dhabi\_land\_use\_v1/} and
 \texttt{benchmarks/abu\_dhabi\_land\_use\_v2/} in the accompanying
-repository. The versioned v1 reproducibility release is archived at
-Zenodo v1.0.0 (https://doi.org/10.5281/zenodo.22663476), corresponding
-to GitHub tag \texttt{v1.0.0} at commit \texttt{2cbd2d3}. The new
-cross-product evidence must receive a superseding versioned archive
-before submission; the existing DOI does not yet identify the
-unsubmitted v2 refresh. The v2 archive is defined by
+repository. The ArcGIS-served cross-product source release is archived
+at Zenodo v2.0.0 (https://doi.org/10.5281/zenodo.22689057),
+corresponding to GitHub tag \texttt{v2.0.0} at commit \texttt{77e2c59};
+the version-independent concept DOI is
+https://doi.org/10.5281/zenodo.22663475. The v2 release is defined by
 \texttt{reproducibility/MANIFEST.json} (immutable inputs, assets and
 code) and \texttt{reproducibility/PUBLICATION\_OUTPUTS.json} (reports,
 source data, figures and delivered rasters/vectors);
-\texttt{reproducibility\_check.py} verifies both sets. Large rasters,
-GeoPackages and model checkpoints remain Git LFS objects in the GitHub
-repository; a full numerical rerun requires fetching those objects,
-whereas an automatically generated GitHub source ZIP may contain only
-LFS pointer files. The main evidence files are:
+\texttt{reproducibility\_check.py} verifies both sets. The Zenodo record
+contains GitHub's automatically generated source ZIP, which was
+inspected after publication and contains Git LFS pointers rather than
+hydrated large rasters, GeoPackages and model checkpoints. A full
+numerical rerun therefore requires checking out the tagged GitHub
+repository, retrieving its LFS objects and passing both v2 manifest
+checks; the DOI record alone is not a self-contained binary-data
+archive. The main evidence files are:
 
 \begin{itemize}
 \tightlist
@@ -1250,11 +1252,12 @@ self-check. As an upstream-only fallback, the public FLUS CA source can
 be paired with an open Python ANN implementation, but the unmodified
 upstream CA uses time seeding rather than \texttt{FLUS\_RANDOM\_SEED}.
 The corresponding-author e-mail is \texttt{zhouning@freedotech.com}. The
-versioned public reproducibility release is archived at Zenodo v1.0.0:
-https://doi.org/10.5281/zenodo.22663476. It corresponds to GitHub tag
-\texttt{v1.0.0} at commit \texttt{2cbd2d3}; the DOI identifies the
-benchmark and software/data archive, not the eventual journal article
-DOI.
+versioned v2 source release is archived at
+https://doi.org/10.5281/zenodo.22689057 and corresponds to GitHub tag
+\texttt{v2.0.0} at commit \texttt{77e2c59}; the DOI identifies the
+public benchmark source release, not the eventual journal article DOI.
+Hydrated Git LFS objects must be fetched from the tagged repository for
+a full numerical rerun.
 
 \subsection{Declarations}\label{declarations}
 

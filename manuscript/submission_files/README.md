@@ -17,12 +17,12 @@ are supplied through the separate title page and Editorial Manager metadata.
 Do not upload `manuscript.md`, `manuscript_pandoc.tex`, the review-response
 file or internal database information as submission files.
 
-Before uploading this refreshed package, publish the new v2 Zenodo version
-containing the fully hydrated Git LFS artefacts and both v2 integrity manifests.
-The existing v1 Zenodo DOI predates the ArcGIS-served cross-product experiment.
-After Zenodo assigns the version DOI, update the author-facing data/code
-availability text and title page, rebuild this package, and retain the blinded
-manuscript without repository or DOI identifiers.
+The author-facing title page cites the published v2 Zenodo source release,
+https://doi.org/10.5281/zenodo.22689057. The anonymous manuscript continues to
+withhold repository and DOI identifiers for double-anonymized review. The
+Zenodo-generated ZIP contains Git LFS pointers, so a full numerical rerun also
+requires the hydrated LFS objects from GitHub tag `v2.0.0` and successful v2
+manifest checks.
 
 Main figures, if requested as separate artwork, are in the parent `figures/`
 directory. Supplementary figures are also in that directory and should be

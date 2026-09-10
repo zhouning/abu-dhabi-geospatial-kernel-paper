@@ -89,22 +89,22 @@ two product-track reports and retain their hashes.
 
 ## Citation
 
-For the reproducibility package, cite the versioned Zenodo archive:
+For the ArcGIS-served refresh, cite the current version:
 
-> Zhou, N. (2026). *Geospatial Kernel for Abu Dhabi Land-Cover Simulation and Planning* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22663476
+> Zhou, N. (2026). *Geospatial Kernel for Abu Dhabi Land-Cover Simulation and Planning* (v2.0.0). Zenodo. https://doi.org/10.5281/zenodo.22689057
 
-The archive corresponds to GitHub tag `v1.0.0` at commit `2cbd2d3`. This DOI
-identifies the public-data benchmark and code/data package, not the eventual
-journal article DOI, and it predates the ArcGIS-served v2 experiment. A new
-version under the concept DOI is required before submitting the refreshed
-manuscript. The concept DOI for future versions is
-`10.5281/zenodo.22663475`.
+The v2 DOI corresponds to GitHub tag `v2.0.0` at commit `77e2c59`. It identifies
+the public-data benchmark source release, not the eventual journal article DOI
+and not an authoritative Abu Dhabi land-use data release. The concept DOI for
+all versions is `10.5281/zenodo.22663475`.
 
 Large rasters, GeoPackages and model checkpoints are tracked with Git LFS in
-the GitHub repository. The Zenodo DOI is the immutable version record; a full
-numerical rerun requires fetching the corresponding Git LFS objects. The
-automatically generated Zenodo GitHub ZIP may contain LFS pointer files for
-these large artifacts.
+the GitHub repository. The Zenodo v2 record currently contains GitHub's
+automatically generated source ZIP; direct inspection confirmed that this ZIP
+contains LFS pointer files rather than the hydrated large artifacts. A full
+numerical rerun therefore requires checking out tag `v2.0.0`, running
+`git lfs pull`, and passing both v2 manifest checks. See
+[`docs/zenodo_v2_archival_audit.md`](docs/zenodo_v2_archival_audit.md).
 
 ## License and data attribution
 

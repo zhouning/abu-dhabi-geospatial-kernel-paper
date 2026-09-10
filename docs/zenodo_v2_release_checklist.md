@@ -65,9 +65,15 @@ verify that Zenodo's deposited checksums match `SHA256SUMS`.
 
 ## After publishing
 
-Zenodo will issue a new **version DOI**. Keep the concept DOI
-`10.5281/zenodo.22663475` for the evolving record, but cite the newly issued
-version DOI for this v2 experiment. Update the author-facing README, manuscript
-data/code availability statement and title page with that exact DOI, rebuild
-the PDF/DOCX package, then upload the blinded manuscript without the identifier
-for double-anonymized review.
+Zenodo issued version DOI `10.5281/zenodo.22689057` on 2026-09-10. The concept
+DOI remains `10.5281/zenodo.22663475`. This version corresponds to GitHub tag
+`v2.0.0` at commit `77e2c59`.
+
+Post-publication inspection found that the sole deposited GitHub-generated ZIP
+contains 129-byte Git LFS pointer files instead of hydrated raster and model
+objects. Consequently, this record is a persistent source release but is not a
+self-contained binary-data archive. Full numerical reproduction requires a
+tagged Git checkout plus `git lfs pull` and both v2 manifest checks. If DOI-only
+self-containment is required, create a subsequent Zenodo version from a fully
+hydrated checkout and upload the release bundle directly rather than relying on
+the GitHub-generated ZIP.

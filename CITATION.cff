@@ -9,7 +9,7 @@ authors:
 repository-code: "https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper"
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.22663476"
-    description: "Versioned Zenodo reproducibility archive v1.0.0"
+    value: "10.5281/zenodo.22689057"
+    description: "Versioned Zenodo source release v2.0.0"
 license: MIT
-date-released: 2026-09-04
+date-released: 2026-09-10

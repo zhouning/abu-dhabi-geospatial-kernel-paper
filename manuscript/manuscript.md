@@ -489,7 +489,7 @@ constraints, demand assumptions and an independent change-validation design.
 
 ## Data availability
 
-The public-data benchmark manifests, protocols, reports and generated delivery artefacts are organized under `benchmarks/abu_dhabi_land_use_v1/` and `benchmarks/abu_dhabi_land_use_v2/` in the accompanying repository. The versioned v1 reproducibility release is archived at Zenodo v1.0.0 (https://doi.org/10.5281/zenodo.22663476), corresponding to GitHub tag `v1.0.0` at commit `2cbd2d3`. The new cross-product evidence must receive a superseding versioned archive before submission; the existing DOI does not yet identify the unsubmitted v2 refresh. The v2 archive is defined by `reproducibility/MANIFEST.json` (immutable inputs, assets and code) and `reproducibility/PUBLICATION_OUTPUTS.json` (reports, source data, figures and delivered rasters/vectors); `reproducibility_check.py` verifies both sets. Large rasters, GeoPackages and model checkpoints remain Git LFS objects in the GitHub repository; a full numerical rerun requires fetching those objects, whereas an automatically generated GitHub source ZIP may contain only LFS pointer files. The main evidence files are:
+The public-data benchmark manifests, protocols, reports and generated delivery artefacts are organized under `benchmarks/abu_dhabi_land_use_v1/` and `benchmarks/abu_dhabi_land_use_v2/` in the accompanying repository. The ArcGIS-served cross-product source release is archived at Zenodo v2.0.0 (https://doi.org/10.5281/zenodo.22689057), corresponding to GitHub tag `v2.0.0` at commit `77e2c59`; the version-independent concept DOI is https://doi.org/10.5281/zenodo.22663475. The v2 release is defined by `reproducibility/MANIFEST.json` (immutable inputs, assets and code) and `reproducibility/PUBLICATION_OUTPUTS.json` (reports, source data, figures and delivered rasters/vectors); `reproducibility_check.py` verifies both sets. The Zenodo record contains GitHub's automatically generated source ZIP, which was inspected after publication and contains Git LFS pointers rather than hydrated large rasters, GeoPackages and model checkpoints. A full numerical rerun therefore requires checking out the tagged GitHub repository, retrieving its LFS objects and passing both v2 manifest checks; the DOI record alone is not a self-contained binary-data archive. The main evidence files are:
 
 - `comparison_report_current.json` and `comparison_report_current.md` for historical metrics when a data-complete rerun is available;
 - `planning_comparison_report_public_2025_2031_current.json` and its Markdown rendering for 2031 planning objectives;
@@ -556,10 +556,11 @@ stream. The macOS binary SHA statement is an author self-check. As an
 upstream-only fallback, the public FLUS CA source can be paired with an open
 Python ANN implementation, but the unmodified upstream CA uses time seeding
 rather than `FLUS_RANDOM_SEED`. The corresponding-author e-mail is
-`zhouning@freedotech.com`. The versioned public reproducibility release is
-archived at Zenodo v1.0.0: https://doi.org/10.5281/zenodo.22663476. It
-corresponds to GitHub tag `v1.0.0` at commit `2cbd2d3`; the DOI identifies the
-benchmark and software/data archive, not the eventual journal article DOI.
+`zhouning@freedotech.com`. The versioned v2 source release is archived at
+https://doi.org/10.5281/zenodo.22689057 and corresponds to GitHub tag `v2.0.0`
+at commit `77e2c59`; the DOI identifies the public benchmark source release,
+not the eventual journal article DOI. Hydrated Git LFS objects must be fetched
+from the tagged repository for a full numerical rerun.
 
 ## Declarations
 

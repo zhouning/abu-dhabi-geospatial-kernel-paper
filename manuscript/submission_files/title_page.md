@@ -30,4 +30,4 @@ Email: zhouning@freedotech.com
 
 **Ethics statement.** Not applicable; the study used geospatial raster, vector and derived public-data products and did not involve human or animal participants.
 
-**Data and code.** The refreshed public reproducibility package will be versioned and archived before submission. The existing v1 archive is https://doi.org/10.5281/zenodo.22663476 and does not yet contain the ArcGIS-served v2 experiment.
+**Data and code.** The ArcGIS-served public benchmark source release is archived at https://doi.org/10.5281/zenodo.22689057 (v2.0.0; GitHub tag `v2.0.0`, commit `77e2c59`; concept DOI https://doi.org/10.5281/zenodo.22663475). The Zenodo-generated ZIP preserves Git LFS pointer identities; hydrated large artifacts required for a full numerical rerun are retrieved from the tagged repository and verified against the included manifests.
