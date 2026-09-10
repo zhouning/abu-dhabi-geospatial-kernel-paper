@@ -3,6 +3,8 @@ __pycache__/
 .DS_Store
 .venv/
 venv/
+# Local document-build tools and visual review intermediates.
+/tmp/
 *.aux
 *.fls
 *.fdb_latexmk

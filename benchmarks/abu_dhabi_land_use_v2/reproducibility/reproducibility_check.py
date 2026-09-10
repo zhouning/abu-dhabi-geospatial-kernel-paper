@@ -58,8 +58,8 @@ def verify_manifest(path: Path) -> dict[str, Any]:
     }
 
 
-def check() -> dict[str, Any]:
-    manifests = [verify_manifest(path) for path in MANIFESTS]
+def check(manifest_paths: tuple[Path, ...] = MANIFESTS) -> dict[str, Any]:
+    manifests = [verify_manifest(path) for path in manifest_paths]
     report_paths = {
         "arcgis_backtest": HERE / "artifacts" / "arcgis_v2_historical_backtest" / "report.json",
         "dynamic_world_matched_backtest": HERE / "artifacts" / "dynamic_world_matched_backtest" / "report.json",
@@ -90,8 +90,11 @@ def check() -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--working", action="store_true", help="Check working revision manifests, not the published release")
     args = parser.parse_args()
-    report = check()
+    paths = tuple(HERE / "reproducibility" / "working" / p.name for p in MANIFESTS) if args.working else MANIFESTS
+    report = check(paths)
+    report["revision_scope"] = "working_revision" if args.working else "published_release"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

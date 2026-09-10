@@ -1,0 +1,69 @@
+"""Checks for mathematical evidence bounds and portable integrity semantics."""
+import hashlib
+import importlib.util
+import itertools
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load(name, relative):
+    spec = importlib.util.spec_from_file_location(name, ROOT / relative)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+limits = load("limits", "benchmarks/abu_dhabi_land_use_v2/analyze_allocation_limits.py")
+builder = load("manifest_builder", "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py")
+checker = load("manifest_checker", "benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py")
+
+
+class RevisionEvidenceTests(unittest.TestCase):
+    def test_bound_covers_all_three_class_three_cell_maps(self):
+        maps = list(itertools.product(range(3), repeat=3))
+        for origin, target, prediction in itertools.product(maps, repeat=3):
+            actual = {i for i in range(3) if target[i] != origin[i]}
+            predicted = {i for i in range(3) if prediction[i] != origin[i]}
+            union = actual | predicted
+            if union:
+                hits = sum(target[i] == prediction[i] for i in actual & predicted)
+                self.assertLessEqual(hits / len(union), limits.count_bound(len(predicted), len(actual)))
+        self.assertIsNone(limits.count_bound(0, 0))
+        with self.assertRaises(ValueError):
+            limits.count_bound(-1, 1)
+
+    def test_portable_text_hashes_and_fail_closed_content_checks(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            previous = checker.REPO
+            checker.REPO = root
+            try:
+                for suffix in (".csv", ".tsv", ".geojson", ".svg"):
+                    path = root / ("sample" + suffix)
+                    path.write_bytes(b"first\nsecond\n")
+                    sha, mode, size = builder.hash_file(path)
+                    path.write_bytes(b"first\r\nsecond\r\n")
+                    self.assertEqual(builder.hash_file(path), (sha, mode, size))
+                    record = {"path": path.name, "role": "test", "bytes": size, "sha256": sha, "hash_mode": mode}
+                    manifest = root / "manifest.json"
+                    manifest.write_text(json.dumps({"records": [record]}))
+                    self.assertTrue(checker.verify_manifest(manifest)["ok"])
+                    path.write_bytes(b"edited\r\nsecond\r\n")
+                    self.assertFalse(checker.verify_manifest(manifest)["ok"])
+                    path.unlink()
+                    self.assertFalse(checker.verify_manifest(manifest)["ok"])
+                binary = root / "sample.tif"
+                binary.write_bytes(b"a\r\nb")
+                sha, mode, size = builder.hash_file(binary)
+                self.assertEqual(mode, "raw")
+                self.assertEqual((sha, size), (hashlib.sha256(b"a\r\nb").hexdigest(), 4))
+            finally:
+                checker.REPO = previous
+
+
+if __name__ == "__main__":
+    unittest.main()

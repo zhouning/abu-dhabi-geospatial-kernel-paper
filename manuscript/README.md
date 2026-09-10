@@ -1,5 +1,12 @@
 # Geospatial Kernel in Abu Dhabi: manuscript package
 
+The current working revision adds Supplementary Table S7 (nine net-change
+FoM bounds and 54 seed-specific paired intervals), distinguishes numerical
+rankings from interval-supported differences, and limits exact-count claims
+to the appropriate seed-level outputs. See `revision_2026_09_10_zh.md` for
+completed changes and unresolved experiments. The original v2.0.0 archive
+is unchanged; working-revision verification uses `--working`.
+
 This package contains a revised LUP-oriented research-article draft based on
 the public-data Abu Dhabi Land-Use Benchmark V1. The manuscript evaluates
 Geospatial Kernel as the state–action–constraint core of a Geospatial World

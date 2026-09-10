@@ -11,6 +11,7 @@ while still making the archived result set independently auditable.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 from collections.abc import Iterable
@@ -24,7 +25,7 @@ V1 = HERE.parent / "abu_dhabi_land_use_v1"
 
 TEXT_SUFFIXES = {
     ".c", ".cc", ".cpp", ".h", ".hpp", ".ini", ".json", ".md", ".py",
-    ".rst", ".tex", ".toml", ".txt", ".yaml", ".yml",
+    ".rst", ".tex", ".toml", ".txt", ".yaml", ".yml", ".csv", ".tsv", ".geojson", ".svg",
 }
 
 
@@ -80,6 +81,7 @@ def rerun_inputs() -> dict[str, set[Path]]:
         REPO / "manuscript" / "build_submission_package.py",
         REPO / "manuscript" / "main.tex",
         REPO / "manuscript" / "lup_submission.tex",
+        REPO / "manuscript" / "submission_header.tex",
     }
     code: set[Path] = set()
     add_files(code, HERE.glob("*.py"))
@@ -87,9 +89,9 @@ def rerun_inputs() -> dict[str, set[Path]]:
     add_files(
         code,
         [
-            OUT / "build_reproducibility_manifest.py",
-            OUT / "reproduce.py",
-            OUT / "reproducibility_check.py",
+            HERE / "reproducibility" / "build_reproducibility_manifest.py",
+            HERE / "reproducibility" / "reproduce.py",
+            HERE / "reproducibility" / "reproducibility_check.py",
         ],
     )
     return {
@@ -111,6 +113,7 @@ def publication_outputs() -> dict[str, set[Path]]:
         HERE / "results_arcgis_v2" / "source_comparison.json",
     }
     add_tree(reports, HERE / "results_arcgis_v2" / "paper_refresh")
+    add_tree(reports, HERE / "results_arcgis_v2" / "allocation_limits")
     evidence: set[Path] = {
         REPO / "figures" / "fig04_product_robustness.png",
         REPO / "figures" / "fig04_product_robustness.pdf",
@@ -118,7 +121,15 @@ def publication_outputs() -> dict[str, set[Path]]:
         REPO / "manuscript" / "source_data_fig04_product_robustness.csv",
         REPO / "manuscript" / "supplementary_table_S6_product_robustness.md",
         REPO / "manuscript" / "manuscript.md",
+        REPO / "manuscript" / "supplementary_table_S7_allocation_limits.md",
     }
+    if OUT.name == "working":
+        # A working submission freeze covers its rendered artifacts as well as
+        # the scientific source. These are not attributed to the old DOI.
+        add_files(evidence, (REPO / "manuscript").glob("*.pdf"))
+        add_files(evidence, (REPO / "manuscript").glob("*.docx"))
+        add_tree(evidence, REPO / "manuscript" / "submission_files", ("*.pdf", "*.docx", "*.md"))
+        add_files(evidence, [HERE / "reproducibility" / "WORKING_REVISION.md"])
     delivery: set[Path] = set()
     add_tree(delivery, HERE / "results_arcgis_v2" / "ensembles")
     add_tree(delivery, HERE / "results_arcgis_v2" / "vectors")
@@ -188,5 +199,10 @@ def build() -> tuple[int, int]:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--working", action="store_true", help="Write a separate working revision; preserve published manifests")
+    args = parser.parse_args()
+    if args.working:
+        OUT = HERE / "reproducibility" / "working"
     input_count, output_count = build()
     print(json.dumps({"status": "complete", "input_records": input_count, "output_records": output_count}))

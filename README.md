@@ -45,6 +45,14 @@ for the evidence boundary.
 
 ## Start here
 
+The current working manuscript includes a post-v2.0.0 allocation-limit analysis
+and revised paired-uncertainty interpretation. The published DOI still identifies
+the original tag. See
+[`WORKING_REVISION.md`](benchmarks/abu_dhabi_land_use_v2/reproducibility/WORKING_REVISION.md)
+for separate working-revision verification and
+[`Supplementary Table S7`](manuscript/supplementary_table_S7_allocation_limits.md)
+for all nine count-only FoM bounds and 54 seed-specific intervals.
+
 - Manuscript reading copy: [`manuscript/manuscript.pdf`](manuscript/manuscript.pdf)
 - Landscape and Urban Planning author manuscript: [`manuscript/lup_submission.pdf`](manuscript/lup_submission.pdf)
 - Manuscript source: [`manuscript/manuscript.md`](manuscript/manuscript.md)

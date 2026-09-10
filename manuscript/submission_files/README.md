@@ -1,5 +1,11 @@
 # Editorial Manager upload package
 
+The working revision includes the allocation-limit analysis and conditional
+paired-interval interpretation described in `../revision_2026_09_10_zh.md`.
+Supplementary Table S7 must accompany this revision. This working manuscript
+is newer than the published v2.0.0 DOI; verify the separate working manifests
+before using it as a submission package.
+
 Use the files below for the five required upload categories shown by the
 Landscape and Urban Planning submission system.
 

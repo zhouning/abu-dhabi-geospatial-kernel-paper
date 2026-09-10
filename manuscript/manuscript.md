@@ -1,13 +1,13 @@
 ## Abstract
 
-Public land-cover products are increasingly used where authoritative local time series are unavailable, but product choice can alter both apparent urban change and model rankings. We present an auditable protocol for constrained spatial allocation using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. Two annual 10-m products for Abu Dhabi city, Google Dynamic World (2017–2024) and an ArcGIS-served Impact Observatory/Microsoft/Esri series (2017–2025), were harmonized to the same 100-m, six-class modelling contract. Leakage-controlled expanding-window tests compared a FLUS-style ANN–CA, Geospatial Kernel, GeoFM-LDN, persistence and random minimum-change allocation using three seeds and 1,000 spatial-block bootstrap resamples. The target year supplied oracle class totals and evaluation labels only. In 2024, the ArcGIS-served series mapped 335.57 km² as built versus 155.98 km² in Dynamic World; built-class intersection over union was 0.449. Kernel ranked first in all four Dynamic World targets from 2021 to 2024, but in only two of four matched ArcGIS-served targets; FLUS-style led in 2021 and GeoFM-LDN in 2022. Kernel's ArcGIS-minus-Dynamic World strict change Figure of Merit ranged from -0.244 to +0.205. Yet the product-specific 2031 planning frontiers retained FLUS-style and Kernel candidates in all three scenarios. The results support an inspectable proposal–projection–writeback boundary while showing that comparative skill is label-product dependent. Neither product is authoritative local land-use truth, model outputs remain 100 m, and the 2026–2031 maps are conditional stress tests rather than official forecasts.
+Public land-cover products are increasingly used where authoritative local time series are unavailable, but product choice can alter both apparent urban change and model rankings. We present an auditable protocol for constrained spatial allocation using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. Two annual 10-m products for Abu Dhabi city, Google Dynamic World (2017–2024) and an ArcGIS-served Impact Observatory/Microsoft/Esri series (2017–2025), were harmonized to the same 100-m, six-class modelling contract. Leakage-controlled expanding-window tests compared a FLUS-style ANN–CA, Geospatial Kernel, GeoFM-LDN, persistence and random minimum-change allocation using three seeds and 1,000 spatial-block bootstrap resamples. The target year supplied oracle class totals and evaluation labels only. In 2024, the ArcGIS-served series mapped 335.57 km² as built versus 155.98 km² in Dynamic World; built-class intersection over union was 0.449. Kernel had the highest mean FoM in four Dynamic World targets and two matched ArcGIS-served targets; these numerical ranks did not uniformly imply paired-interval separation. Net-change allocation imposed product-specific count-only FoM upper bounds of 0.086–0.813 in the ArcGIS folds. Kernel's ArcGIS-minus-Dynamic World strict change Figure of Merit ranged from -0.244 to +0.205. Yet the product-specific 2031 planning frontiers retained FLUS-style and Kernel candidates in all three scenarios. The results support an inspectable proposal–projection–writeback boundary while showing that comparative skill is label-product dependent. Neither product is authoritative local land-use truth, model outputs remain 100 m, and the 2026–2031 maps are conditional stress tests rather than official forecasts.
 
 ## Highlights
 
 - Cross-product backtests expose label dependence in model rankings.
-- Kernel leads four Dynamic World and two of four matched ArcGIS folds.
+- Numerical rankings depend on product and conditional paired uncertainty.
 - Proposal–projection–writeback traces preserve allocation auditability.
-- ArcGIS-served labels extend the scenario origin state to 2025.
+- Net-change allocation restricts the attainable change-detection score.
 - The 2026–2031 maps remain 100-m stress tests, not statutory forecasts.
 
 ## Keywords
@@ -97,6 +97,8 @@ $$
 
 where $\rho^{(7)}_{i,c}$ is the 7 × 7 fraction of neighbouring cells currently in class $c$, and $\lambda=0.35$. The algorithm computes class deficits and excesses from the action's feasible target counts, ranks all admissible source–target candidates by $q$, and changes cells in descending order until all deficits and excesses are zero. Permanent water and the protected wetland/ecological mask are held fixed. If the counts cannot be satisfied without changing a hard-exclusion cell, the step fails closed rather than silently violating the action.
 
+This projection is a minimum-change allocator. Let $n_c$ and $a_c$ be origin and feasible target counts. The number of changed cells is exactly $M=\frac12\sum_c|a_c-n_c|$. A class can supply cells or receive cells in one step, but cannot do both; unchanged class totals therefore suppress within-class gross gain/loss exchanges. This is a substantive restriction on land-cover dynamics, shared by GeoFM-LDN through its use of the same allocator, rather than a consequence of exact-count constraints in general. With $O$ observed changed cells, strict FoM is bounded above by $\min(M,O)/\max(M,O)$ when the denominator is nonzero. This is a loose count-only bound, not an attainable optimum: destination classes, hard masks and spatial restrictions can further reduce attainable hits. Supplementary Table S7 derives the bound from the frozen fold reports and checks predicted moves against origin and feasible target counts. We do not divide observed FoM by this bound or interpret such a ratio as independently validated skill.
+
 The projected raster is written as the next `KernelState`. Every step records a state reference, action evidence, model version, parameter reference, projection status and diagnostic counts. The runtime checks domain identity, source-time consistency and action time advancement. This execution contract is the Geospatial Kernel's algorithmic contribution; the Abu Dhabi adapter supplies the land-cover-specific features, learner and constraint masks.
 
 ### Baselines and common evaluator
@@ -111,7 +113,7 @@ The common evaluator computes actual class counts, normalized demand total varia
 
 ### Scenario actions and uncertainty
 
-The moderate-growth, green-priority-growth and high-outward-growth actions are stored in the tracked product-specific scenario manifests; the legacy `compact` path identifier is retained only for artifact compatibility. It is not an endorsement of compact-city outcomes, which can have distributional trade-offs (Burton, 2000). Dynamic World-origin actions cover 2025–2031 and ArcGIS-origin actions cover 2026–2031. Their totals are explicit extensions of the preceding annual difference and are not derived from an official population, housing or infrastructure forecast. Future exogenous rasters are held at their respective final observed-year values. The green-priority action is not a water-budget model. Each candidate is run at seeds 31, 47 and 73, and planning tables report arithmetic means and population standard deviations. No p-values are reported because the three seeds describe computational variability, not independent field samples. The primary Pareto comparison is within each scenario, contrasting the three models under the same product-specific action; cross-product frontier membership is a sensitivity test, not a forecast-accuracy comparison. The current release objective set is road access, prior-built distance and union-built component density. Ecological conversion is reported as a diagnostic rather than a Pareto objective because it is structurally zero for the exact-count Kernel and GeoFM-LDN allocations. We treat this as a release objective set rather than a prespecified planning preference, and treat its variants as robustness diagnostics.
+The moderate-growth, green-priority-growth and high-outward-growth actions are stored in the tracked product-specific scenario manifests; the legacy `compact` path identifier is retained only for artifact compatibility. It is not an endorsement of compact-city outcomes, which can have distributional trade-offs (Burton, 2000). Dynamic World-origin actions cover 2025–2031 and ArcGIS-origin actions cover 2026–2031. Their totals are explicit extensions of the preceding annual difference and are not derived from an official population, housing or infrastructure forecast. Future exogenous rasters are held at their respective final observed-year values. The green-priority action is not a water-budget model. Each candidate is run at seeds 31, 47 and 73, and planning tables report arithmetic means and population standard deviations. No p-values are reported because the three seeds describe computational variability, not independent field samples. The green-priority label denotes a vegetation-quantity sensitivity action, not demonstrated ecological sustainability. The primary Pareto comparison is within each scenario, contrasting the three models under the same product-specific action; cross-product frontier membership is a sensitivity test, not a forecast-accuracy comparison. The current release objective set is road access, prior-built distance and union-built component density. Ecological conversion is reported as a diagnostic rather than a Pareto objective because it is structurally zero for the exact-count Kernel and GeoFM-LDN allocations. We treat this as a release objective set rather than a prespecified planning preference, and treat its variants as robustness diagnostics.
 
 ### Change polygons and reproducibility
 
@@ -131,7 +133,7 @@ The execution trace makes the distinction between proposal and admission explici
 
 \FloatBarrier
 
-### Historical and planning results
+### Secondary historical benchmark and planning objective definitions
 
 The historical track uses observed target class totals to isolate spatial
 allocation from demand estimation. The primary metric is strict multi-class
@@ -322,18 +324,43 @@ excluded zero in every ArcGIS-served year and seed, including the additional
 2025 target, but its ArcGIS-minus-Dynamic World mean FoM difference was -0.244,
 +0.205, -0.050 and -0.014 across the four matched years. Thus the learned
 allocator contains repeatable spatial signal relative to its zero model, while
-its absolute score and rank remain dependent on the product pipeline. The
+its absolute score and rank remain dependent on the product pipeline. Supplementary
+Table S7 reports all seed-specific paired intervals for Kernel versus FLUS-style
+and GeoFM-LDN versus Kernel. In the ArcGIS 2023 target, all three GeoFM-LDN-minus-
+Kernel intervals include zero despite Kernel's higher mean; in 2024, two exclude
+zero in Kernel's favour and one includes zero. These are conditional intervals,
+not a pooled ranking test. The additional ArcGIS 2025 target gives mean FoM of
+0.0731 for FLUS-style, 0.0654 for GeoFM-LDN and 0.0579 for Kernel; Kernel is
+therefore not the numerical leader in the latest year. Block-size sensitivity
+has not been established, and repeated seeds do not constitute independent
+spatial or temporal replication. The
 finite-iteration FLUS-style CA retained demand total variation up to 0.00153 in
 the ArcGIS-served track and 0.00415 in Dynamic World; the exact-count Kernel,
 GeoFM-LDN and random allocators had zero demand error by construction.
 Supplementary Table S6 reports all target years and product-agreement values.
 
-The planning conclusion was more stable than the historical ranking. Recomputing
+The count-only analysis exposes an additional source of score dependence. In
+the ArcGIS 2021 fold, the minimum-change action permits 278 moves against 3,241
+observed changes, bounding strict FoM at 0.0858 even before destination or
+hard-mask restrictions. In 2022, 6,864 permitted moves against 8,446 observed
+changes give a much higher bound of 0.8127. The corresponding Dynamic World
+bounds are 0.4590 and 0.2885. All nine fold bounds and observed scores are
+reported in Supplementary Table S7. The reversal in these bounds means that
+cross-product FoM differences combine allocation skill with the relationship
+between net and gross product change. It does not identify which product is
+more accurate or establish the performance of an allocator allowing simultaneous
+gain and loss of each class.
+
+Frontier membership was more stable than the historical numerical ranking. Recomputing
 the same three-objective Pareto rule on each product-specific 2031 scenario
 bundle retained FLUS-style and Kernel candidates, and excluded GeoFM-LDN, in
 all three scenarios. This does not validate either future bundle; it shows only
 that frontier membership was insensitive to this particular public-product
-replacement under the released proxy objectives. Fig. 4 separates changes in
+replacement under the released proxy objectives. Identical membership among
+three candidates does not establish spatial agreement of their allocations or
+stability of planning benefits. Product-specific origins, horizons and actions
+also differ; this is not a controlled experiment holding demand and initial
+conditions fixed. Fig. 4 separates changes in
 mapped stock, same-year product agreement, ArcGIS-served historical skill and
 the matched product difference.
 
@@ -421,9 +448,15 @@ that either component causes an urban outcome.
 The 2031 majority-vote ensemble L1 demand errors were 8, 44 and 42 pixels for
 the Kernel's moderate, green-priority and high-outward scenarios, respectively;
 the corresponding GeoFM-LDN errors were 1,580, 1,524 and 1,148 pixels and the
-FLUS-style errors were 2,504, 2,888 and 2,568 pixels. Seed-level projections
-meet their feasible class totals, but majority voting can produce a different
-raster and therefore a non-zero ensemble error. All 312 historical,
+FLUS-style errors were 2,504, 2,888 and 2,568 pixels. Kernel and GeoFM-LDN seed-level projections
+meet their feasible class totals, whereas the finite-iteration FLUS control can
+retain demand error. Majority voting can produce a different raster and therefore
+a non-zero ensemble error even for an exact-count allocator. The constraint-
+preserving claim applies to individual projected members, not to count preservation
+in the majority-vote delivery. Those ensembles are descriptive consensus maps.
+Any use requiring exact totals must select and audit a feasible seed-level member
+or reproject the consensus, with objective values recomputed on that final map.
+No such reprojected ensemble is evaluated here. All 312 historical,
 rolling-origin and planning prediction records passed the raster audit, and the
 two frozen WorldCover evidence rasters passed the evidence audit. Fig. 7 uses the high-outward
 scenario to make the spatial contrast legible; the complete nine-panel atlas is
@@ -449,15 +482,15 @@ measures complete pipeline dependence rather than a causal effect of replacing
 labels alone. The available 2020–2021 WorldCover diagnostic is neither fully
 independent nor authoritative, and no local reference change sample or observed
 2026–2031 label exists. The original headline analysis also uses a 31 July 2026 OSM road snapshot,
-which may contain roads constructed after 2022. This information is shared by
-all three pipelines and therefore does not change their ordering, but it can
-affect absolute scores; the strict rolling-origin analysis removes those road
+which may contain roads constructed after 2022. Sharing this information does not guarantee an unchanged model ordering,
+because learners can exploit it differently; the strict rolling-origin analysis removes those road
 features and should define the no-leakage boundary. As a descriptive bound,
 the road-free rolling 2023 one-step FoM is 0.2116, of the same order as the
 headline 2023 value of 0.1961; these values are not directly comparable because
 the rolling fit uses 23 features and training through 2022, whereas the headline
 fit uses 25 features and training through 2021. Public wetland and
-protected-area layers are proxies, future drivers are held at 2024, and the
+protected-area layers are proxies, future drivers are held at the respective
+2024 or 2025 origin-year values, and the
 green-priority action has no water-budget constraint. The FLUS-style
 control is an Apple-Silicon binary rebuilt from the public GeoSOS source base
 with the author's `train`/`train-update` and deterministic-seeding patches; its
@@ -471,6 +504,29 @@ authoritative deployment would replace public labels and masks with locally
 approved land-use, infrastructure, ecological and development-demand records
 while retaining the same execution contract.
 
+### Implications for planning use and validation
+
+The practical role of this protocol is to expose where a public-data scenario
+depends on observational definitions and allocation restrictions before a
+planner treats its map as evidence. Stable frontier membership is insufficient
+for selecting a site or infrastructure corridor: a decision also requires the
+spatial overlap and disagreement of new-built locations, feasible water and
+infrastructure demands, and the magnitude of the objective differences. These
+decision-level tests have not been completed here. The existing frontier is a
+conditional comparison of three implementations, not a search over all feasible
+plans or a recommendation that either retained model should determine land use.
+
+The next validation step should use a spatially stratified reference sample of
+product-agreement changes, product-disagreement changes and stable cells, assessed
+from contemporaneous independent imagery or locally approved records. Reference
+interpretation should be blinded to model identity, record ambiguous cases and
+report sampling weights and class-specific gain/loss accuracy. In parallel, a
+transition-budget allocator permitting simultaneous gain and loss should be
+compared with the minimum-change projection under the same proposal and masks.
+Neither independent reference validation nor this gross-transition experiment
+has been performed. They are requirements for extending the present conditional
+allocation findings to operational planning claims.
+
 ## Conclusions
 
 Replacing Dynamic World with a newer ArcGIS-served 10-m annual product did not
@@ -479,7 +535,9 @@ prevalence and the leading model by year. Geospatial Kernel remained consistentl
 better than random minimum-change allocation, but it was not universally the
 best learned model. Its strongest transferable property in this experiment is
 therefore the auditable separation of learned proposal, constrained projection
-and state writeback, not a product-independent accuracy claim.
+and state writeback, not a product-independent accuracy claim. The count-only bounds further show
+that net-change allocation can suppress much of the gross change represented by
+a product; future work must separate that restriction from proposal-model skill.
 
 The refreshed series adds a 2025 public origin state, native-10-m audit rasters
 and complete 2026–2031 raster and vector scenario deliveries. Model execution
@@ -505,6 +563,14 @@ The public-data benchmark manifests, protocols, reports and generated delivery a
 - the v2 `results_arcgis_v2/ensembles/` and `vectors/` directories for the 2026–2031 raster and change-footprint deliveries;
 - the data-audit, protocol and source-input manifests for data provenance;
 - The released bundle includes the aligned 2017–2024 public rasters, historical and rolling-origin prediction rasters, frozen WorldCover built-fraction rasters, 2025–2031 planning rasters, nine GeoPackages of dissolved change footprints, model checkpoints and the SHA-256 manifest. Text hashes use canonical LF line endings, and the byte-length check applies the same normalization on text records, so a Windows checkout with `core.autocrlf=true` can pass the manifest gate. The locked macOS arm64 execution environment remains the reference for model outputs. An archived arm64 Linux rerun of the six historical Kernel rasters differed from the macOS reference by 498–1,147 cells (0.62%–1.44%), with strict-FoM deltas from -0.0023 to +0.0010; these cross-stack differences are quantified rather than treated as categorical identity. An author-controlled GitHub Actions Ubuntu x86_64 rerun of all six rasters under the resolved lock had zero categorical differences; the repository-stored CI audit is in `artifacts/cross_platform` at commit `e06a997`, and the workflow is versioned under `.github/workflows/`. Independent external Windows evidence remains separately labelled for FLUS because the corresponding rasters are not archived locally. No private database address, credential or client-only service is included. Authoritative Abu Dhabi land-use and independent reference data remain outside this study.
+
+The current working revision and the published v2.0.0 archive are distinct
+versions. The published DOI continues to identify its original tagged inputs,
+outputs and manuscript. The working revision adds a report-derived allocation-
+limit analysis and revised interpretation without retraining models or replacing
+the archived prediction rasters. Its separate working manifests and source hashes
+are described in `benchmarks/abu_dhabi_land_use_v2/reproducibility/WORKING_REVISION.md`;
+passing them verifies the declared revision, not a new DOI release.
 
 ## Code availability
 
@@ -634,6 +700,7 @@ Zanaga, D., Van De Kerchove, R., Daems, D., De Keersmaecker, W., Brockmann, C., 
 - **Supplementary Table S4:** Raster and vector delivery audit, hashes and layer counts.
 - **Supplementary Table S5:** Rolling-origin and WorldCover external-product diagnostics (see `supplementary_table_S5_rolling_external_diagnostics.md`).
 - **Supplementary Table S6:** Matched Dynamic World and ArcGIS-served whole-product-pipeline backtests (see `supplementary_table_S6_product_robustness.md`).
+- **Supplementary Table S7:** Net-change FoM upper bounds and 54 seed-specific paired model intervals (see `supplementary_table_S7_allocation_limits.md`).
 - **Fig. S1:** Full 3-scenarios × 3-model 2031 new-built footprint atlas (`figures/figS01_planning_atlas_2031.*`).
 - **Fig. S2:** Dynamic World confidence and high-confidence change sensitivity (`figures/figS02_input_label_quality.*`).
 - **Fig. S3:** Historical maps and change-error maps for 2024 (`figures/figS03_historical_2024_maps_and_errors.*`).

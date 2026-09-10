@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import shutil
 import subprocess
+import os
 from pathlib import Path
 
 
@@ -16,6 +17,15 @@ MARKDOWN_FORMAT = (
     "pipe_tables+link_attributes"
 )
 TITLE = "Auditing constrained geospatial allocation under annual land-cover product uncertainty"
+
+
+def compile_tex(source: str, cwd: Path = HERE) -> None:
+    engine = os.environ.get("MANUSCRIPT_TEX_ENGINE", "xelatex")
+    if engine == "tectonic":
+        run(engine, "--keep-logs", source, cwd=cwd)
+    else:
+        for _ in range(2):
+            run(engine, "-interaction=nonstopmode", "-halt-on-error", source, cwd=cwd)
 
 
 def run(*args: str, cwd: Path = HERE) -> None:
@@ -39,6 +49,8 @@ def markdown_to_latex(source: Path, target: Path) -> None:
 
 
 def markdown_to_docx(source: Path, target: Path) -> None:
+    raw_target = target.with_name(f".{target.stem}.pandoc.docx")
+    ready_target = target.with_name(f".{target.stem}.ready.docx")
     run(
         "pandoc",
         str(source),
@@ -46,8 +58,43 @@ def markdown_to_docx(source: Path, target: Path) -> None:
         "--standalone",
         f"--resource-path={ROOT}",
         "--output",
-        str(target),
+        str(raw_target),
     )
+    from docx import Document
+    from docx.shared import Mm, Pt, RGBColor
+    document = Document(raw_target)
+    if source.resolve() == (HERE / "manuscript.md").resolve():
+        first = document.paragraphs[0]
+        first.insert_paragraph_before(TITLE, style="Title")
+        first.insert_paragraph_before("Ning Zhou\nBeijing Freedo Technology Co., Ltd.\nCorresponding author: zhouning@freedotech.com", style="Subtitle")
+    for section in document.sections:
+        section.page_width, section.page_height = Mm(210), Mm(297)
+        section.left_margin = section.right_margin = Mm(25)
+        section.top_margin = section.bottom_margin = Mm(25)
+    for name in ("Normal", "Body Text", "Title", "Subtitle", "Heading 1", "Heading 2", "Heading 3"):
+        if name in document.styles:
+            document.styles[name].font.name = "Times New Roman"
+            document.styles[name].font.color.rgb = RGBColor(0, 0, 0)
+    document.styles["Normal"].font.size = Pt(11)
+    figure_index = 0
+    for paragraph in document.paragraphs:
+        if paragraph.style.name == "Captioned Figure":
+            paragraph.paragraph_format.keep_with_next = True
+        elif paragraph.style.name == "Image Caption":
+            paragraph.paragraph_format.keep_together = True
+            figure_index += 1
+            if paragraph.runs:
+                paragraph.runs[0].text = f"Figure {figure_index}. " + paragraph.runs[0].text
+            else:
+                paragraph.add_run(f"Figure {figure_index}. ")
+    for shape in document.inline_shapes:
+        if shape.width > Mm(160):
+            scale = Mm(160) / shape.width
+            shape.width = Mm(160)
+            shape.height = int(shape.height * scale)
+    document.save(ready_target)
+    os.replace(ready_target, target)
+    raw_target.unlink()
 
 
 def markdown_to_pdf(source: Path, target: Path) -> None:
@@ -56,9 +103,10 @@ def markdown_to_pdf(source: Path, target: Path) -> None:
         str(source),
         f"--from={MARKDOWN_FORMAT}",
         "--standalone",
-        "--pdf-engine=xelatex",
+        f"--pdf-engine={os.environ.get('MANUSCRIPT_TEX_ENGINE', 'xelatex')}",
         f"--resource-path={ROOT}",
-        "--variable=mainfont:Arial Unicode MS",
+        f"--variable=mainfont:{os.environ.get('MANUSCRIPT_FONT', 'Arial Unicode MS')}",
+        f"--include-in-header={HERE / 'submission_header.tex'}",
         "--variable=papersize:a4",
         "--variable=fontsize:10pt",
         "--variable=geometry:top=22mm,bottom=20mm,left=20mm,right=20mm",
@@ -176,18 +224,15 @@ def build() -> None:
     SUBMISSION.mkdir(exist_ok=True)
 
     markdown_to_latex(main_markdown, HERE / "manuscript_pandoc.tex")
-    run("xelatex", "-interaction=nonstopmode", "-halt-on-error", "main.tex")
-    run("xelatex", "-interaction=nonstopmode", "-halt-on-error", "main.tex")
-    run("xelatex", "-interaction=nonstopmode", "-halt-on-error", "lup_submission.tex")
-    run("xelatex", "-interaction=nonstopmode", "-halt-on-error", "lup_submission.tex")
+    compile_tex("main.tex")
+    compile_tex("lup_submission.tex")
     shutil.copy2(HERE / "main.pdf", HERE / "manuscript.pdf")
     markdown_to_docx(main_markdown, HERE / "manuscript.docx")
 
     anonymous_markdown = SUBMISSION / "manuscript_anonymous.md"
     anonymous_markdown.write_text(anonymize(main), encoding="utf-8")
     markdown_to_latex(anonymous_markdown, SUBMISSION / "manuscript_anonymous_pandoc.tex")
-    run("xelatex", "-interaction=nonstopmode", "-halt-on-error", "manuscript_anonymous.tex", cwd=SUBMISSION)
-    run("xelatex", "-interaction=nonstopmode", "-halt-on-error", "manuscript_anonymous.tex", cwd=SUBMISSION)
+    compile_tex("manuscript_anonymous.tex", cwd=SUBMISSION)
     markdown_to_docx(anonymous_markdown, SUBMISSION / "manuscript_anonymous.docx")
 
     for markdown_name, content in submission_texts(main).items():

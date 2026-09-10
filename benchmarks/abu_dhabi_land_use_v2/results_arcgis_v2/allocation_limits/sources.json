@@ -1,0 +1,12 @@
+[
+  {
+    "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/dynamic_world_matched_backtest/report.json",
+    "sha256": "3da593405dd31eaa9221774bd21bb8f5973e1a1509d9cfd1ed35dc9653de04d5",
+    "hash_mode": "text_lf_normalized"
+  },
+  {
+    "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_v2_historical_backtest/report.json",
+    "sha256": "d80d2e8ca640686a27cec24cba2ec178dd40ec654ec5f3fd3a63a12c0eb2bcbd",
+    "hash_mode": "text_lf_normalized"
+  }
+]
