@@ -231,14 +231,14 @@ the tasks equivalent: FLUS learns static suitability $p(S_t\mid X_t)$, while
 the Kernel learns next-state transitions and then projects them against action
 deficits and hard constraints.
 
-The confidence sensitivity is a label-quality and selection-effect diagnostic,
+The Dynamic World quality-proxy sensitivity is a label-quality and selection-effect diagnostic,
 not an independent validation set or a model-skill test. Requiring both the
 origin and target Dynamic World maximum temporal-mean probability to exceed 0.5 retains only
 25 of 4,500 observed changes (0.56%) in 2023 and 56 of 8,464 (0.66%) in 2024.
 Strict FoM is 0.000 for all three models in 2023; in 2024 the means are 0.0040
 for the FLUS-style console, 0.0055 for Geospatial Kernel and 0.0188 for
-GeoFM-LDN. Screening only the confidence of the year immediately preceding the
-target avoids filtering on target-year confidence, but still retains only 129
+GeoFM-LDN. Screening only the quality-proxy value of the year immediately preceding the
+target avoids filtering on the target-year quality proxy, but still retains only 129
 (2.87%) and 93 (1.10%) observed changes in 2023 and 2024, respectively. Its
 2023 FoM values remain 0.000; its 2024 means are 0.0040, 0.0041 and 0.0120 for
 the FLUS-style console, Kernel and GeoFM-LDN. The two filters therefore
@@ -633,7 +633,7 @@ Zanaga, D., Van De Kerchove, R., Daems, D., De Keersmaecker, W., Brockmann, C., 
 - **Supplementary Table S6:** Matched Dynamic World and ArcGIS-served whole-product-pipeline backtests (see `supplementary_table_S6_product_robustness.md`).
 - **Supplementary Table S7:** Net-change FoM upper bounds and 54 seed-specific paired model intervals (see `supplementary_table_S7_allocation_limits.md`).
 - **Fig. S1:** Full 3-scenarios × 3-model 2031 new-built footprint atlas (`figures/figS01_planning_atlas_2031.*`).
-- **Fig. S2:** Dynamic World confidence and high-confidence change sensitivity (`figures/figS02_input_label_quality.*`).
+- **Fig. S2:** Dynamic World quality proxy and quality-filtered change sensitivity (`figures/figS02_input_label_quality.*`).
 - **Fig. S3:** Historical maps and change-error maps for 2024 (`figures/figS03_historical_2024_maps_and_errors.*`).
 - **Fig. S4:** Driver layers and experiment design in English (`figures/figS04_driver_layers_and_experiment_design.*`).
 

@@ -582,7 +582,7 @@ def render_supplementary_figure_1() -> None:
 
 
 def render_supplementary_figure_2() -> None:
-    """Show label confidence, apparent turnover and filter sensitivity in English."""
+    """Show the Dynamic World quality proxy, turnover and filter sensitivity."""
 
     audit = load_json("data_audit.json")
     comparison = load_json("comparison_report_current.json")
@@ -602,8 +602,8 @@ def render_supplementary_figure_2() -> None:
 
     axes[0, 0].bar(years, below, color="#C95F78", width=0.68)
     axes[0, 0].axhline(50, color="#343A40", linestyle="--", linewidth=0.65)
-    axes[0, 0].set_title("A  Low-confidence pixels", loc="left", fontweight="bold")
-    axes[0, 0].set_ylabel("Pixels below 0.5 (%)")
+    axes[0, 0].set_title("A  Low-quality-proxy pixels", loc="left", fontweight="bold", fontsize=8.0)
+    axes[0, 0].set_ylabel("Pixels with r_y < 0.5 (%)")
     axes[0, 0].set_ylim(0, 70)
     axes[0, 0].set_xticks(years, [str(year) for year in years], rotation=45, ha="right")
     for year, value in zip(years, below, strict=True):
@@ -611,8 +611,8 @@ def render_supplementary_figure_2() -> None:
 
     axes[0, 1].plot(years, mean_probability, marker="o", color="#3F76A9", linewidth=1.7, markersize=3.8)
     axes[0, 1].axhline(0.5, color="#343A40", linestyle="--", linewidth=0.65)
-    axes[0, 1].set_title("B  Mean top-class probability", loc="left", fontweight="bold")
-    axes[0, 1].set_ylabel("Mean probability")
+    axes[0, 1].set_title("B  Max. temporal-mean probability", loc="left", fontweight="bold", fontsize=8.0)
+    axes[0, 1].set_ylabel("Spatial mean of r_y")
     axes[0, 1].set_ylim(0.40, 0.53)
     axes[0, 1].set_xticks(years, [str(year) for year in years], rotation=45, ha="right")
     axes[0, 1].grid(axis="y", color="#D8DDE3", linewidth=0.45)
@@ -665,10 +665,10 @@ def render_supplementary_figure_2() -> None:
         axis.spines["top"].set_visible(False)
         axis.spines["right"].set_visible(False)
         axis.tick_params(axis="both", labelsize=6.8)
-    fig.suptitle("Fig. S2 | Label confidence and change-selection diagnostics",
+    fig.suptitle("Fig. S2 | Dynamic World quality proxy and change-selection diagnostics",
                  x=0.075, y=0.975, ha="left", fontsize=11.5, fontweight="bold")
     fig.text(0.075, 0.055,
-             "The dual-year rule requires confidence ≥ 0.5 in both origin and target years; filtered scores are diagnostics, not independent validation.",
+             "r_y is the maximum across classes of annual mean scene probability; the dual-year r_y >= 0.5 filter is diagnostic, not independent validation.",
              fontsize=6.9, color="#4A5560")
     save_publication_figure(fig, "figS02_input_label_quality")
 
@@ -804,7 +804,7 @@ def render_supplementary_figure_4() -> None:
     _supplementary_driver_map(axes[1], terrain[1], valid, title="B  Slope", cmap="magma", colorbar_label="degrees", percentile=(0, 99))
     _supplementary_driver_map(axes[2], np.log1p(np.clip(viirs, 0, None)), valid, title="C  VIIRS night-time lights", cmap="inferno", colorbar_label="log(1 + radiance)")
     _supplementary_driver_map(axes[3], roads[1], valid, title="D  Distance to major roads", cmap="viridis_r", colorbar_label="m", percentile=(0, 98))
-    _supplementary_driver_map(axes[4], quality, valid, title="E  Dynamic World confidence", cmap="RdYlGn", colorbar_label="probability", percentile=(0, 100))
+    _supplementary_driver_map(axes[4], quality, valid, title="E  Dynamic World quality proxy", cmap="RdYlGn", colorbar_label="r_y", percentile=(0, 100))
     axes[5].imshow(rgb, interpolation="nearest", aspect="equal")
     axes[5].set_title(f"F  AlphaEarth PCA–RGB\nfirst 3 PCs = {pca.explained_variance_ratio_.sum():.1%} variance", fontsize=7.8, fontweight="bold", pad=4)
     axes[5].set_xticks([])

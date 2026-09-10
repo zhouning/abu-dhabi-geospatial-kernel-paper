@@ -173,7 +173,7 @@ def _dynamic_interpretation(
     lines.extend(
         [
             "Persistence and random-minimum-change controls are reported as explicit zero-model controls.",
-            "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
+            "Dynamic World quality-proxy sensitivity is a label-quality diagnostic; it is not a separate validation set.",
             "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects.",
         ]
     )
@@ -183,7 +183,7 @@ def _dynamic_interpretation(
 def _mask_observation_summary(
     *, mask: np.ndarray, valid_mask: np.ndarray, origin_state: np.ndarray, observed_target: np.ndarray
 ) -> dict[str, Any]:
-    """Describe how a label-confidence filter selects observed change events."""
+    """Describe how a Dynamic World quality-proxy filter selects change events."""
 
     eligible = np.asarray(valid_mask, dtype=bool) & np.asarray(mask, dtype=bool)
     observed_change = np.asarray(valid_mask, dtype=bool) & (observed_target != origin_state)
@@ -207,7 +207,7 @@ def _label_quality_diagnostics(
     prediction_cache: dict[str, dict[int, dict[int, np.ndarray]]],
     valid_mask: np.ndarray,
 ) -> dict[str, Any]:
-    """Compile confidence-filter diagnostics without treating them as validation."""
+    """Compile quality-proxy diagnostics without treating them as validation."""
 
     by_target_year: dict[str, Any] = {}
     for year in YEARS:
@@ -252,7 +252,10 @@ def _label_quality_diagnostics(
         by_target_year[str(year)] = {
             "full_grid_observed_change_pixels": full_grid_changes,
             "dual_year_confidence": {
-                "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5",
+                "rule": (
+                    "origin and target Dynamic World maximum temporal-mean "
+                    "probability must both be at least 0.5"
+                ),
                 "mask_path": Path(action["reliability_mask"]).as_posix(),
                 **_mask_observation_summary(
                     mask=dual_year[0].astype(bool),
@@ -263,7 +266,10 @@ def _label_quality_diagnostics(
             },
             "preceding_year_confidence_only": {
                 "origin_year": preceding_year,
-                "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+                "rule": (
+                    "only the Dynamic World maximum temporal-mean probability "
+                    "for the year immediately preceding the target must be at least 0.5"
+                ),
                 "quality_path": preceding_path.relative_to(HERE).as_posix(),
                 **_mask_observation_summary(
                     mask=preceding_mask,
@@ -277,7 +283,7 @@ def _label_quality_diagnostics(
     return {
         "purpose": "Label-quality and selection-effect diagnostics only; neither filtered subset is an independent validation set or a model-skill test.",
         "confidence_threshold": CONFIDENCE_THRESHOLD,
-        "interpretation": "The dual-year rule may exclude an observed change because its target label is low confidence. The preceding-year-only variant is reported to expose that selection effect, not to rescue or validate model skill.",
+        "interpretation": "The dual-year rule may exclude an observed change because its target label has a low Dynamic World quality-proxy value. The preceding-year-only variant is reported to expose that selection effect, not to rescue or validate model skill.",
         "by_target_year": by_target_year,
     }
 
@@ -755,7 +761,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Label-quality diagnostics",
             "",
-            "The confidence filters below are diagnostics of annual-product quality and selection effects, not independent validation sets or model-skill tests.",
+            "The Dynamic World quality-proxy filters below are diagnostics of annual-product quality and selection effects, not independent validation sets or model-skill tests.",
             "",
             "| Target year | Full-grid observed changes | Dual-year retained changes | Dual-year retention | Preceding-year-only retained changes | Preceding-year-only retention | Preceding-year-only FoM (FLUS / Kernel / GeoFM-LDN) |",
             "|---:|---:|---:|---:|---:|---:|---:|",
@@ -780,7 +786,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "- 2023 单步和 2024 两步开环均同时报告严格多类别 FoM 与旧二值 FoM。",
             "- 持久性与随机可行分配是预先声明的零模型，不得从主模型表中省略。",
             "- 模型比较应读取 JSON 中的 pairwise_bootstrap_95ci，而不是比较两个边际区间是否重叠。",
-            "- 置信度筛选会改变被评分的观测变化组成，因此仅作为标签质量与选择效应诊断。",
+            "- Dynamic World质量代理筛选会改变被评分的观测变化组成，因此仅作为标签质量与选择效应诊断。",
             "- 这是历史条件分配结果，不是未来政策预测，也不是因果效应证据。",
             "",
         ]

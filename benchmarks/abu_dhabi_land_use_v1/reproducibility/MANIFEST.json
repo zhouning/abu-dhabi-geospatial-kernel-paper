@@ -421,8 +421,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/compile_comparison.py",
       "role": "code",
-      "bytes": 36095,
-      "sha256": "6a59a5320db2504c646c1b18eff1e98a83f05f8a626963a2c246095d5142700c",
+      "bytes": 36316,
+      "sha256": "f9bf5244d3e2864297c44c920a6b78276081a1793263e4b9de4f1746207eda9a",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -526,8 +526,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/protocol.json",
       "role": "configuration",
-      "bytes": 11791,
-      "sha256": "0a22646092fc5e87d4be9e29c1c7fa25b92ca9afc12b27fc1e8e760e4fabe8eb",
+      "bytes": 11817,
+      "sha256": "579dd6ccc272eccacfbf0597cb9bb69a8322a3fb1aa477a1ab280070a4e2d606",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -540,8 +540,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/render_nature_figures.py",
       "role": "code",
-      "bytes": 43515,
-      "sha256": "23c961de2ecc19e2b4a39e6edf8b65c3956b5bd9c25353106b970ae4b7ac79de",
+      "bytes": 43561,
+      "sha256": "6202cbd632d2b8af506f22276e46485b1627fbdec7dd44f1947e02dfa71b1bb6",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -687,15 +687,15 @@
     {
       "path": "manuscript/lup_submission.tex",
       "role": "configuration",
-      "bytes": 1418,
-      "sha256": "e1dde92bb5ddb1bef3515efa6733a2448287a10a0bc5940a434e0ebad06f1fff",
+      "bytes": 1435,
+      "sha256": "5b68ea7c5c43f1c5ce6f6cc9099052f7cf027c13343b0931717c9942a5a9e77e",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/main.tex",
       "role": "configuration",
-      "bytes": 1418,
-      "sha256": "e1dde92bb5ddb1bef3515efa6733a2448287a10a0bc5940a434e0ebad06f1fff",
+      "bytes": 1435,
+      "sha256": "5b68ea7c5c43f1c5ce6f6cc9099052f7cf027c13343b0931717c9942a5a9e77e",
       "hash_mode": "text_lf_normalized"
     }
   ]

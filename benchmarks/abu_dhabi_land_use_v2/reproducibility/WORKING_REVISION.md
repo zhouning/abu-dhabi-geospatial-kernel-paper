@@ -14,6 +14,10 @@ corrections, not new validation results or changes to the numerical pipeline.
 See `manuscript/reference_revision_2026_09_10_zh.md` for the citation audit scope
 and unresolved source checks.
 
+The accompanying consistency repair also updates generated report metadata and
+supplementary quality-proxy labels to the same Dynamic World definition. It does
+not alter rasters, model fitting, predictions, or reported metric values.
+
 From the repository root, generate the supplementary analysis:
 
 ```sh

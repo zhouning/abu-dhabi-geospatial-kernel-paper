@@ -9951,7 +9951,7 @@
     "display_name": "Google Dynamic World V1",
     "id": "google_dynamic_world_v1",
     "native_resolution_m": 10,
-    "quality_semantics": "annual mean top-class probability"
+    "quality_semantics": "maximum temporal-mean probability: maximum across Dynamic World classes after annual mean scene probabilities"
   },
   "source_track": "dynamic_world",
   "spatial_scope": "Frozen Abu Dhabi city research boundary (OSM relation R4479763), not Abu Dhabi emirate-wide",

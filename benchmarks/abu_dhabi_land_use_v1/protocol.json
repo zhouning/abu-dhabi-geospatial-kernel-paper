@@ -154,12 +154,12 @@
       "degenerate_output_rule": "For every model/year/seed, record predicted_change_pixels and zero_change_output; zero-change outputs are diagnostics reviewed alongside structural-zero metrics and are not evidence of superiority or real stability. For the 25-feature FLUS diagnostic, the macOS arm64 seed-31 non-collapse is not a valid point estimate because macOS seeds 47 and 73 and reviewer-provided Windows x86_64 seeds 31, 47 and 73 all include zero-change outputs.",
       "prespecified_label_reliability_sensitivity": {
         "confidence_threshold": 0.5,
-        "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5",
+        "rule": "origin and target Dynamic World maximum temporal-mean probability must both be at least 0.5",
         "model_access": false,
         "purpose": "quantify sensitivity to annual product-label volatility without hiding full-grid results",
         "interpretation_boundary": "The dual-year filter and the preceding-year-only variant are label-quality and selection-effect diagnostics, not independent validation sets or model-skill tests.",
         "preceding_year_only_variant": {
-          "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+          "rule": "only the Dynamic World maximum temporal-mean probability for the year immediately preceding the target must be at least 0.5",
           "purpose": "expose target-year confidence selection without filtering on the target label"
         }
       }

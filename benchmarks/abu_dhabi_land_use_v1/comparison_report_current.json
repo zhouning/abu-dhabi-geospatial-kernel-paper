@@ -608,7 +608,7 @@
       }
     }
   },
-  "created_at": "2026-09-08T15:05:12.701286+00:00",
+  "created_at": "2026-09-10T13:17:59.698101+00:00",
   "cross_platform_verification": {
     "flus_windows_x86_64": {
       "baseline_7_mean_strict_fom": {
@@ -995,7 +995,7 @@
     "GeoFM-LDN is above GeoSOS-derived FLUS-style ANN–CA console (author-modified build) by 0.092591 strict FoM at 2024.",
     "GeoFM-LDN is above Geospatial Kernel by 0.017880 strict FoM at 2024.",
     "Persistence and random-minimum-change controls are reported as explicit zero-model controls.",
-    "High-confidence sensitivity is a label-quality diagnostic; it is not a separate validation set.",
+    "Dynamic World quality-proxy sensitivity is a label-quality diagnostic; it is not a separate validation set.",
     "These results establish historical conditional allocation skill, not future policy prediction or causal planning effects."
   ],
   "label_quality_diagnostics": {
@@ -1006,7 +1006,7 @@
           "mask_path": "artifacts/bundle/reliability_2022_2023_100m.tif",
           "observed_change_pixels": 25,
           "observed_change_retention_fraction": 0.005555555555555556,
-          "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5"
+          "rule": "origin and target Dynamic World maximum temporal-mean probability must both be at least 0.5"
         },
         "full_grid_observed_change_pixels": 4500,
         "preceding_year_confidence_only": {
@@ -1015,7 +1015,7 @@
           "observed_change_retention_fraction": 0.028666666666666667,
           "origin_year": 2022,
           "quality_path": "artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
-          "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+          "rule": "only the Dynamic World maximum temporal-mean probability for the year immediately preceding the target must be at least 0.5",
           "strict_fom_by_model": {
             "geosos_flus": {
               "mean": 0.0,
@@ -1053,7 +1053,7 @@
           "mask_path": "artifacts/bundle/reliability_2023_2024_100m.tif",
           "observed_change_pixels": 56,
           "observed_change_retention_fraction": 0.006616257088846881,
-          "rule": "origin and target Dynamic World mean-top-probability must both be at least 0.5"
+          "rule": "origin and target Dynamic World maximum temporal-mean probability must both be at least 0.5"
         },
         "full_grid_observed_change_pixels": 8464,
         "preceding_year_confidence_only": {
@@ -1062,7 +1062,7 @@
           "observed_change_retention_fraction": 0.010987712665406428,
           "origin_year": 2023,
           "quality_path": "artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
-          "rule": "only the Dynamic World mean-top-probability for the year immediately preceding the target must be at least 0.5",
+          "rule": "only the Dynamic World maximum temporal-mean probability for the year immediately preceding the target must be at least 0.5",
           "strict_fom_by_model": {
             "geosos_flus": {
               "mean": 0.003964504908115594,
@@ -1096,7 +1096,7 @@
       }
     },
     "confidence_threshold": 0.5,
-    "interpretation": "The dual-year rule may exclude an observed change because its target label is low confidence. The preceding-year-only variant is reported to expose that selection effect, not to rescue or validate model skill.",
+    "interpretation": "The dual-year rule may exclude an observed change because its target label has a low Dynamic World quality-proxy value. The preceding-year-only variant is reported to expose that selection effect, not to rescue or validate model skill.",
     "purpose": "Label-quality and selection-effect diagnostics only; neither filtered subset is an independent validation set or a model-skill test."
   },
   "matched_input_diagnostic": {

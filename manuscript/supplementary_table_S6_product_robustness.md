@@ -29,4 +29,4 @@ Same-year agreement between the two harmonized products is reported below. A 100
 
 ArcGIS report SHA-256: `d80d2e8ca640686a27cec24cba2ec178dd40ec654ec5f3fd3a63a12c0eb2bcbd`.
 
-Dynamic World report SHA-256: `3da593405dd31eaa9221774bd21bb8f5973e1a1509d9cfd1ed35dc9653de04d5`.
+Dynamic World report SHA-256: `bce1043f8478288aff2b5808f3b5521c139c47e265d12a465f928379ff2f7fe8`.

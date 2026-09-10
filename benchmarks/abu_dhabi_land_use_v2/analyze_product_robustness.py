@@ -291,7 +291,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         raise ValueError(f"empty_csv:{path}")
     columns = list(rows[0])
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -574,7 +574,7 @@ def render_markdown(summary: dict[str, Any]) -> str:
         "## Interpretation boundary",
         "",
         "- Native source pixels are 10 m, but all model comparisons use the frozen 100 m contract.",
-        "- Product-native quality terms are retained: Dynamic World mean top-class probability and ArcGIS 100 m majority fraction. The comparison therefore tests complete public-product pipelines rather than an isolated label effect.",
+        "- Product-native quality terms are retained: Dynamic World maximum temporal-mean probability (a quality proxy) and ArcGIS 100 m majority fraction. The comparison therefore tests complete public-product pipelines rather than an isolated label effect.",
         "- Origin states, oracle actions and origin-year water/wetland masks are product specific; all other protocol settings are matched.",
         "- Oracle target class counts isolate spatial allocation; they are not a deployable demand forecast.",
         "- Differences between product tracks quantify label-product dependence, not which product is correct.",

@@ -718,28 +718,28 @@ suitability \(p(S_t\mid X_t)\), while the Kernel learns next-state
 transitions and then projects them against action deficits and hard
 constraints.
 
-The confidence sensitivity is a label-quality and selection-effect
-diagnostic, not an independent validation set or a model-skill test.
-Requiring both the origin and target Dynamic World maximum temporal-mean
-probability to exceed 0.5 retains only 25 of 4,500 observed changes
-(0.56\%) in 2023 and 56 of 8,464 (0.66\%) in 2024. Strict FoM is 0.000
-for all three models in 2023; in 2024 the means are 0.0040 for the
-FLUS-style console, 0.0055 for Geospatial Kernel and 0.0188 for
-GeoFM-LDN. Screening only the confidence of the year immediately
-preceding the target avoids filtering on target-year confidence, but
-still retains only 129 (2.87\%) and 93 (1.10\%) observed changes in 2023
-and 2024, respectively. Its 2023 FoM values remain 0.000; its 2024 means
-are 0.0040, 0.0041 and 0.0120 for the FLUS-style console, Kernel and
-GeoFM-LDN. The two filters therefore describe label selection rather
-than establishing or rescuing model skill. Dynamic World also reports
-built pixels increasing from 9,359 in 2022 to 15,598 in 2024 (67\%),
-while the median one-year reversion fraction is 0.3611 and the mean
-fraction of cells below confidence 0.5 is 0.5497. Test-year change
-counts are approximately twice the training-transition counts. Because
-the same grid cells recur across years and the Kernel includes
-coordinate features, a training--test memory effect cannot be excluded;
-the reported scores should therefore be interpreted as conditional
-agreement with the public product.
+The Dynamic World quality-proxy sensitivity is a label-quality and
+selection-effect diagnostic, not an independent validation set or a
+model-skill test. Requiring both the origin and target Dynamic World
+maximum temporal-mean probability to exceed 0.5 retains only 25 of 4,500
+observed changes (0.56\%) in 2023 and 56 of 8,464 (0.66\%) in 2024.
+Strict FoM is 0.000 for all three models in 2023; in 2024 the means are
+0.0040 for the FLUS-style console, 0.0055 for Geospatial Kernel and
+0.0188 for GeoFM-LDN. Screening only the quality-proxy value of the year
+immediately preceding the target avoids filtering on the target-year
+quality proxy, but still retains only 129 (2.87\%) and 93 (1.10\%)
+observed changes in 2023 and 2024, respectively. Its 2023 FoM values
+remain 0.000; its 2024 means are 0.0040, 0.0041 and 0.0120 for the
+FLUS-style console, Kernel and GeoFM-LDN. The two filters therefore
+describe label selection rather than establishing or rescuing model
+skill. Dynamic World also reports built pixels increasing from 9,359 in
+2022 to 15,598 in 2024 (67\%), while the median one-year reversion
+fraction is 0.3611 and the mean fraction of cells below confidence 0.5
+is 0.5497. Test-year change counts are approximately twice the
+training-transition counts. Because the same grid cells recur across
+years and the Kernel includes coordinate features, a training--test
+memory effect cannot be excluded; the reported scores should therefore
+be interpreted as conditional agreement with the public product.
 
 \subsubsection{Rolling-origin and external-product tests expose temporal
 and label
@@ -1422,8 +1422,8 @@ outline}\label{supplementary-information-outline}
   \textbf{Fig. S1:} Full 3-scenarios × 3-model 2031 new-built footprint
   atlas (\texttt{figures/figS01\_planning\_atlas\_2031.*}).
 \item
-  \textbf{Fig. S2:} Dynamic World confidence and high-confidence change
-  sensitivity (\texttt{figures/figS02\_input\_label\_quality.*}).
+  \textbf{Fig. S2:} Dynamic World quality proxy and quality-filtered
+  change sensitivity (\texttt{figures/figS02\_input\_label\_quality.*}).
 \item
   \textbf{Fig. S3:} Historical maps and change-error maps for 2024
   (\texttt{figures/figS03\_historical\_2024\_maps\_and\_errors.*}).

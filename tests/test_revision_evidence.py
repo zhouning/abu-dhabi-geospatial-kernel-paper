@@ -79,6 +79,26 @@ class RevisionEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "inconsistent_report"):
             limits.require(False, "inconsistent_report")
 
+    def test_dynamic_world_quality_semantics_remain_consistent(self):
+        expected = "maximum temporal-mean probability"
+        paths = [
+            ROOT / "benchmarks/abu_dhabi_land_use_v2/run_arcgis_historical_backtest.py",
+            ROOT / "benchmarks/abu_dhabi_land_use_v2/compile_comparison.py",
+            ROOT / "benchmarks/abu_dhabi_land_use_v2/analyze_product_robustness.py",
+            ROOT / "benchmarks/abu_dhabi_land_use_v2/artifacts/dynamic_world_matched_backtest/report.json",
+            ROOT / "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/product_robustness_summary.md",
+        ]
+        for path in paths:
+            content = path.read_text(encoding="utf-8")
+            self.assertIn(expected, content, path)
+            self.assertNotIn("mean top-class probability", content, path)
+        for name in (
+            "figS02_input_label_quality.svg",
+            "figS04_driver_layers_and_experiment_design.svg",
+        ):
+            content = (ROOT / "figures" / name).read_text(encoding="utf-8")
+            self.assertIn("quality proxy", content, name)
+
 
 if __name__ == "__main__":
     unittest.main()

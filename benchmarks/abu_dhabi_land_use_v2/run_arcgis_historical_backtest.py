@@ -148,7 +148,10 @@ def _configure_source_track(
         "id": "google_dynamic_world_v1",
         "display_name": "Google Dynamic World V1",
         "available_years": list(years),
-        "quality_semantics": "annual mean top-class probability",
+        "quality_semantics": (
+            "maximum temporal-mean probability: maximum across Dynamic World "
+            "classes after annual mean scene probabilities"
+        ),
         "native_resolution_m": 10,
     }
 

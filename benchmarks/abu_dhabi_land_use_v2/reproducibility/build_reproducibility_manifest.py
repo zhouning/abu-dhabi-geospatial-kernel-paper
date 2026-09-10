@@ -129,6 +129,16 @@ def publication_outputs() -> dict[str, set[Path]]:
         add_files(evidence, (REPO / "manuscript").glob("*.pdf"))
         add_files(evidence, (REPO / "manuscript").glob("*.docx"))
         add_tree(evidence, REPO / "manuscript" / "submission_files", ("*.pdf", "*.docx", "*.md"))
+        # These supplementary figures are cited by the working manuscript and
+        # carry the revised Dynamic World quality-proxy terminology.
+        for stem in (
+            "figS02_input_label_quality",
+            "figS04_driver_layers_and_experiment_design",
+        ):
+            add_files(
+                evidence,
+                (REPO / "figures" / f"{stem}{suffix}" for suffix in (".pdf", ".png", ".svg")),
+            )
         add_files(evidence, [HERE / "reproducibility" / "WORKING_REVISION.md"])
         add_files(evidence, [REPO / "manuscript" / "reference_revision_2026_09_10_zh.md"])
     delivery: set[Path] = set()

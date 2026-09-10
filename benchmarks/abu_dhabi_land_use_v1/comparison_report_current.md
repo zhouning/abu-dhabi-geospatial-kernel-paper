@@ -1,6 +1,6 @@
 # Abu Dhabi 三模型土地覆盖历史模拟比较
 
-生成时间：2026-09-08T15:05:12.701286+00:00
+生成时间：2026-09-10T13:17:59.698101+00:00
 
 同一 100 m 网格、需求动作、硬约束和评价器下的三随机种子均值；严格 FoM 与两个零模型均已列出。区间采用 8×8 像元空间块 bootstrap，并提供同一空间块上的模型差值区间。
 
@@ -28,7 +28,7 @@ The 25-feature run shares the Kernel feature family but not its next-state targe
 
 ## Label-quality diagnostics
 
-The confidence filters below are diagnostics of annual-product quality and selection effects, not independent validation sets or model-skill tests.
+The Dynamic World quality-proxy filters below are diagnostics of annual-product quality and selection effects, not independent validation sets or model-skill tests.
 
 | Target year | Full-grid observed changes | Dual-year retained changes | Dual-year retention | Preceding-year-only retained changes | Preceding-year-only retention | Preceding-year-only FoM (FLUS / Kernel / GeoFM-LDN) |
 |---:|---:|---:|---:|---:|---:|---:|
@@ -40,5 +40,5 @@ The confidence filters below are diagnostics of annual-product quality and selec
 - 2023 单步和 2024 两步开环均同时报告严格多类别 FoM 与旧二值 FoM。
 - 持久性与随机可行分配是预先声明的零模型，不得从主模型表中省略。
 - 模型比较应读取 JSON 中的 pairwise_bootstrap_95ci，而不是比较两个边际区间是否重叠。
-- 置信度筛选会改变被评分的观测变化组成，因此仅作为标签质量与选择效应诊断。
+- Dynamic World质量代理筛选会改变被评分的观测变化组成，因此仅作为标签质量与选择效应诊断。
 - 这是历史条件分配结果，不是未来政策预测，也不是因果效应证据。
