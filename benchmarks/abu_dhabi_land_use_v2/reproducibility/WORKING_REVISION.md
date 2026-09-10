@@ -18,6 +18,12 @@ Check the declared working revision (verification never updates hashes):
 python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py --working
 ```
 
+The generator is deterministic: it emits LF-delimited CSV files and fixed
+12-decimal derived floats. After a normal regeneration of an already frozen
+working revision, the three CSV/JSON outputs and Supplementary Table S7 must
+remain unchanged in Git. Run `git diff --check` and inspect the four generated
+paths before rebuilding a manifest.
+
 Maintainers may deliberately freeze a new working revision after reviewing changes:
 
 ```sh

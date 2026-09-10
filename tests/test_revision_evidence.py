@@ -64,6 +64,21 @@ class RevisionEvidenceTests(unittest.TestCase):
             finally:
                 checker.REPO = previous
 
+    def test_frozen_report_analysis_regenerates_committed_outputs(self):
+        source_dir = ROOT / "benchmarks" / "abu_dhabi_land_use_v2" / "results_arcgis_v2" / "allocation_limits"
+        source_table = ROOT / "manuscript" / "supplementary_table_S7_allocation_limits.md"
+        with tempfile.TemporaryDirectory() as folder:
+            generated_dir = Path(folder) / "allocation_limits"
+            generated_table = Path(folder) / "supplementary_table_S7_allocation_limits.md"
+            self.assertEqual(limits.analyze(generated_dir, generated_table)["status"], "PASS")
+            for name in ("count_limits.csv", "paired_intervals.csv", "sources.json"):
+                self.assertEqual((generated_dir / name).read_bytes(), (source_dir / name).read_bytes(), name)
+            self.assertEqual(generated_table.read_bytes(), source_table.read_bytes())
+
+    def test_analysis_invariants_are_explicit_exceptions(self):
+        with self.assertRaisesRegex(ValueError, "inconsistent_report"):
+            limits.require(False, "inconsistent_report")
+
 
 if __name__ == "__main__":
     unittest.main()
