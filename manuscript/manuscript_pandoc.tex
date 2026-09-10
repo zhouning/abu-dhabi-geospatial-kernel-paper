@@ -1,50 +1,46 @@
 \subsection{Abstract}\label{abstract}
 
-Urban land-change models are often evaluated against annual labels whose
-reliability is not spatially uniform. We present an auditable protocol
-for testing constrained spatial allocation under that uncertainty, using
-Geospatial Kernel, the algorithmic core of a Geospatial World Model, as
-the focal execution layer. The Abu Dhabi public-data benchmark uses
-annual 100-m land-cover products from 2017--2024, three computational
-seeds, destination-correct multi-class change Figure of Merit (FoM),
-spatial-block bootstrap contrasts and explicit state--action--constraint
-traces. In the primary unmatched-pipeline test, strict FoM was 0.1961
-for Geospatial Kernel, 0.1256 for a GeoSOS-derived FLUS-style ANN--CA
-console and 0.1619 for GeoFM-LDN in 2023; GeoFM-LDN led after recursive
-two-step rollout in 2024. A separate leakage-controlled expanding-window
-analysis, excluding the later road snapshot, gave Kernel FoM values of
-0.2595, 0.0724, 0.2116 and 0.1816 for the four one-step targets from
-2021 to 2024, exceeding a random minimum-change allocator in every
-window. In the only available WorldCover 2020--2021 window, Dynamic
-World built pixels decreased, so the oracle-demand built-gain test had
-zero power for every allocator. Dynamic World-to-WorldCover built-gain
-F1 was 0.0111--0.0192. The count-controlled allocation variant was near
-opportunity-level overall: Kernel was below random at 0.05,
-indistinguishable from random at 0.10--0.20 given three-seed variation, and
-above random only at 0.30. The planning track is
-therefore reported as scenario stress testing, not official forecasting.
-The protocol's principal contribution is an inspectable
-proposal--projection--writeback boundary; the experiments support
-conditional allocation auditability, not verified prediction of Abu
-Dhabi's actual future.
+Public land-cover products are increasingly used where authoritative
+local time series are unavailable, but product choice can alter both
+apparent urban change and model rankings. We present an auditable
+protocol for constrained spatial allocation using Geospatial Kernel, the
+algorithmic core of a Geospatial World Model, as the focal execution
+layer. Two annual 10-m products for Abu Dhabi city, Google Dynamic World
+(2017--2024) and an ArcGIS-served Impact Observatory/Microsoft/Esri
+series (2017--2025), were harmonized to the same 100-m, six-class
+modelling contract. Leakage-controlled expanding-window tests compared a
+FLUS-style ANN--CA, Geospatial Kernel, GeoFM-LDN, persistence and random
+minimum-change allocation using three seeds and 1,000 spatial-block
+bootstrap resamples. The target year supplied oracle class totals and
+evaluation labels only. In 2024, the ArcGIS-served series mapped 335.57
+km² as built versus 155.98 km² in Dynamic World; built-class
+intersection over union was 0.449. Kernel ranked first in all four
+Dynamic World targets from 2021 to 2024, but in only two of four matched
+ArcGIS-served targets; FLUS-style led in 2021 and GeoFM-LDN in 2022.
+Kernel's ArcGIS-minus-Dynamic World strict change Figure of Merit ranged
+from -0.244 to +0.205. Yet the product-specific 2031 planning frontiers
+retained FLUS-style and Kernel candidates in all three scenarios. The
+results support an inspectable proposal--projection--writeback boundary
+while showing that comparative skill is label-product dependent. Neither
+product is authoritative local land-use truth, model outputs remain 100
+m, and the 2026--2031 maps are conditional stress tests rather than
+official forecasts.
 
 \subsection{Highlights}\label{highlights}
 
 \begin{itemize}
 \tightlist
 \item
-  Geospatial Kernel separates transition proposals from constrained
-  admission.
+  Cross-product backtests expose label dependence in model rankings.
 \item
-  Typed state--action--constraint traces make recursive updates
-  auditable.
+  Kernel leads four Dynamic World and two of four matched ArcGIS folds.
 \item
-  Rolling-origin and spatial-block tests expose temporal variability.
+  Proposal--projection--writeback traces preserve allocation
+  auditability.
 \item
-  External-product diagnostics separate label disagreement from
-  allocation skill.
+  ArcGIS-served labels extend the scenario origin state to 2025.
 \item
-  Planning outputs are scenario stress tests, not statutory Abu Dhabi
+  The 2026--2031 maps remain 100-m stress tests, not statutory
   forecasts.
 \end{itemize}
 
@@ -109,30 +105,34 @@ constraints admitted.
 
 We evaluate this design in a controlled public-data benchmark rather
 than treating the benchmark as an official data release. All candidates
-consume the same 100-m grid, common valid mask, annual class-count
-actions, hard exclusions and evaluator. The historical track uses
-observed target counts to isolate spatial allocation skill from demand
-error. The planning track starts from the observed 2024 state and
-applies three planner-supplied actions: moderate growth, green-priority
-growth and high outward growth. Abu Dhabi Plan 2030 provides an
-institutional planning context for discussing urban structure, but the
-numerical actions in this benchmark are not calibrated to that plan or
+consume the same 100-m grid, annual class-count actions, hard exclusions
+and evaluator. The historical track uses observed target counts to
+isolate spatial allocation skill from demand error. A matched protocol
+is run separately on Dynamic World and on an ArcGIS-served annual
+product so that dependence on the complete label-product pipeline is
+visible. The original planning track starts from the 2024 Dynamic World
+state; the refreshed track starts from the 2025 ArcGIS-served state.
+Both apply three planner-supplied actions: moderate growth,
+green-priority growth and high outward growth. Abu Dhabi Plan 2030
+provides an institutional planning context for discussing urban
+structure, but the numerical actions are not calibrated to that plan or
 to an official population forecast (Abu Dhabi Urban Planning Council,
 2007). We ask four questions: whether the Kernel execution contract is
-auditable, whether its allocation skill is competitive, whether it
-produces feasible and spatially distinct allocations and which
-conclusions survive label and parameter sensitivity.
+auditable, whether its allocation skill is competitive, whether
+comparative conclusions survive a change of land-cover product and
+whether the candidates produce feasible, spatially distinct scenario
+allocations.
 
 The paper makes three bounded contributions. First, it gives a concrete
 state--action--constraint formulation for using a geospatial kernel as
 an algorithmic core rather than as an opaque end-to-end predictor.
-Second, it defines an evaluation protocol that combines
-confidence-filter retention, expanding-window temporal tests, zero-model
-controls and external-product disagreement rather than relying on one
-favourable split. Third, it turns future maps into explicit stress-test
-artefacts, including cumulative rasters and vectorized transition
-footprints, while preserving the distinction between public-data land
-cover and authoritative legal land use.
+Second, it defines an evaluation protocol that combines expanding-window
+temporal tests, zero-model controls, spatial bootstrap contrasts and a
+whole-product-pipeline replication rather than relying on one favourable
+split. Third, it turns future maps into explicit stress-test artefacts,
+including cumulative rasters and vectorized transition footprints, while
+preserving the distinction between public-data land cover and
+authoritative legal land use.
 
 \subsection{Methods}\label{methods}
 
@@ -168,41 +168,47 @@ from Pareto selection.
 protocol}\label{abu-dhabi-implementation-boundary-grid-and-temporal-protocol}
 
 The study boundary is the polygon returned for OpenStreetMap relation
-R4479763, representing Abu Dhabi city. All rasters were aligned to a
-canonical 100-m grid in EPSG:32640 with 475 columns and 360 rows. A cell
-was included when its centre fell within the city polygon and when the
-common public-data mask indicated valid coverage. The benchmark profile
-records the source geometry, raster transform, dimensions and SHA-256
-hashes. The effective evaluation mask contains 79,726 cells.
+R4479763, representing Abu Dhabi city (OpenStreetMap contributors,
+2026). All rasters were aligned to a canonical 100-m grid in EPSG:32640
+with 475 columns and 360 rows. A cell was included when its centre fell
+within the city polygon and when the common public-data mask indicated
+valid coverage. The benchmark profile records the source geometry,
+raster transform, dimensions and SHA-256 hashes. The effective
+evaluation mask contains 79,726 cells.
 
-The observed sequence contains annual states for 2017--2024. Models were
-fit using the four transitions 2017→2018, 2018→2019, 2019→2020 and
-2020→2021. A 2021→2022 transition was used for validation during model
-development. The historical test starts from 2022 and evaluates 2023 and
-2024 in an open-loop rollout without observed-state writeback. The
-planning test starts from the observed 2024 state and recursively
-generates 2025--2031 under each scenario action.
+The original Dynamic World sequence contains annual states for
+2017--2024. Models were fit using the four transitions 2017→2018,
+2018→2019, 2019→2020 and 2020→2021. A 2021→2022 transition was used for
+validation during model development. The original historical test starts
+from 2022 and evaluates 2023 and 2024 in an open-loop rollout without
+observed-state writeback. Its planning test starts from the observed
+2024 state and recursively generates 2025--2031. The refreshed product
+track adds a separate annual sequence for 2017--2025, starts planning
+from its observed 2025 state and generates 2026--2031.
 
-An additional Geospatial Kernel analysis used four expanding one-step
-windows with origins in 2020--2023. For origin year \(t\), training
-included only transitions whose target year was at or before \(t\); the
-held-out \(t+1\) label was prohibited from feature construction and
-fitting. The held-out target supplied its observed class counts to the
-oracle-demand allocator and was then used for evaluation. This design
-isolates spatial allocation conditional on known demand and is not an
-end-to-end demand forecast. Early folds locked only origin-year water
-and wetland cells and omitted the two road-distance features, because
-applying the 2021 WorldCover proxy or the later OpenStreetMap snapshot
-to earlier folds would introduce future information. The resulting
-rolling proposal has 23 features. A machine-tested temporal firewall
-records the last training target, prediction target and permitted
-target-year uses for every run. The headline 2023--2024 analysis is less
-strict: it uses the OSM road snapshot accessed on 31 July 2026, which
-may include roads built after the corresponding prediction years
-(including after 2022). This snapshot is supplied symmetrically to all
-three pipelines, so it does not change their ordering, but it can affect
-absolute scores; the rolling-origin results are the strict
-no-road-snapshot boundary.
+The leakage-controlled analysis used expanding one-step windows with
+origins in 2020--2023 for both products and an additional 2024 origin
+for the ArcGIS-served series. For origin year \(t\), training included
+only observations available at or before \(t\); the held-out \(t+1\)
+label was prohibited from feature construction, model fitting and
+GeoFM-LDN epoch selection. The target supplied only observed class
+totals for oracle allocation, evaluation labels and the common-coverage
+mask. This design isolates spatial allocation conditional on known
+demand and is not an end-to-end demand forecast. Each fold locked
+origin-year water and wetland cells and omitted the two road-distance
+features, because the available OpenStreetMap snapshot was accessed in
+2026. Kernel consequently used 23 features and the FLUS-style track used
+the remaining five continuous drivers. A machine-tested temporal
+firewall records permitted target-year uses for every model, seed and
+fold. The two product tracks match the boundary, 100-m grid, model
+implementations, seeds, target-year protocol, oracle-action rule,
+evaluator and 1,000-resample 8 × 8-cell spatial bootstrap. Annual
+labels, origin states, oracle totals, origin water/wetland masks and
+quality semantics remain product specific; the experiment therefore
+tests the complete public-product pipelines rather than an isolated
+label substitution. The original 2023--2024 headline comparison is less
+strict because it uses the later road snapshot and remains a secondary
+unmatched-pipeline result.
 
 \subsubsection{Public data and class
 semantics}\label{public-data-and-class-semantics}
@@ -211,37 +217,52 @@ Dynamic World V1 provides annual scene-argmax labels and mean top-class
 probabilities (Brown et al., 2022). The nine Dynamic World labels were
 crosswalked to six canonical classes: water (source 0), woody vegetation
 (1), low vegetation (2, 4 and 5), wetland (3), built (6) and bare (7).
-Source class 8 was excluded. The resulting label is explicitly treated
-as land cover. No residential, commercial or industrial category is
-inferred from the raster labels.
+Source class 8 was excluded.
+
+The second sequence was materialized from the public ArcGIS ImageServer
+\texttt{Sentinel2\_10m\_LandCover}, whose metadata attributes the global
+annual series to Impact Observatory, Microsoft and Esri (Impact
+Observatory et al., 2026). Its Sentinel-2 classification lineage follows
+the deep-learning mapping approach described by Karra et al.~(2021).
+Source values were mapped to water (1), woody vegetation (2), wetland
+(4), low vegetation (5 and 11), built (7) and bare (8); snow/ice (9) and
+cloud (10) were excluded. Native 10-m labels were retained for audit,
+then aggregated after crosswalking by majority among usable cells in
+each 10 × 10 block. The resulting majority fraction served as the
+ArcGIS-track aggregation-quality term; it is not equivalent to Dynamic
+World's top-class probability. Both sequences are explicitly treated as
+public land cover. Neither provides residential, commercial or
+industrial land use, zoning, cadastral status or development approvals.
 
 Annual 64-dimensional AlphaEarth embeddings were spatially averaged to
-the canonical grid and locally L2-normalized. Monthly VIIRS
-night-time-light radiance was averaged by year. Copernicus DEM supplied
-elevation and a finite-difference slope derivative. OpenStreetMap road
-geometries were rasterized into distance-to-road and
-distance-to-major-road surfaces. ESA WorldCover 2021 supplied public
-water and wetland/mangrove constraint proxies (Zanaga et al., 2022). All
-dynamic and static layers were checked for exact CRS, transform, width
-and height agreement.
+the canonical grid and locally L2-normalized (Brown et al., 2025).
+Monthly \texttt{NOAA/VIIRS/DNB/MONTHLY\_V1/VCMSLCFG} night-time-light
+radiance was averaged by year (Elvidge et al., 2021). The Copernicus DEM
+GLO-30 \texttt{COPERNICUS/DEM/GLO30\_2024\_1} collection supplied
+elevation and a finite-difference slope derivative (European Space
+Agency, 2024). OpenStreetMap road geometries were rasterized into
+distance-to-road and distance-to-major-road surfaces. ESA WorldCover
+2021 supplied public water and wetland/mangrove constraint proxies
+(Zanaga et al., 2022). All dynamic and static layers were checked for
+exact CRS, transform, width and height agreement.
 
 For an external public-product diagnostic, the ESA WorldCover 2020 v1.0
 and 2021 v2.0 built-up class (value 50) was converted to built fraction
-on each 100-m benchmark cell. Built presence was tested at fractions of
-0.05, 0.10, 0.20 and 0.30. Built gain required a cell to cross from
-below to at or above the threshold; built loss used the reverse
-definition. Binary precision, recall, F1 and intersection over union
-were calculated for the Dynamic World transition and for the 2020-origin
-predictions. The original oracle-demand comparison uses Dynamic World
-2021 built counts; because the built count decreases in this window, it
-cannot allocate any built gains and is a structural-zero, zero-power
-test of gain location. We therefore also supplied the WorldCover
-built-gain count as the action, ranked candidate cells with the
-2020-origin Kernel proposal, and compared it with random allocation from
-the same candidate population. This count-controlled variant is the
-informative allocation diagnostic, but it remains product agreement
-rather than ground-truth validation: the two WorldCover years use
-different product versions, WorldCover and Dynamic World both derive
+on each 100-m benchmark cell (Zanaga et al., 2021, 2022). Built presence
+was tested at fractions of 0.05, 0.10, 0.20 and 0.30. Built gain
+required a cell to cross from below to at or above the threshold; built
+loss used the reverse definition. Binary precision, recall, F1 and
+intersection over union were calculated for the Dynamic World transition
+and for the 2020-origin predictions. The original oracle-demand
+comparison uses Dynamic World 2021 built counts; because the built count
+decreases in this window, it cannot allocate any built gains and is a
+structural-zero, zero-power test of gain location. We therefore also
+supplied the WorldCover built-gain count as the action, ranked candidate
+cells with the 2020-origin Kernel proposal, and compared it with random
+allocation from the same candidate population. This count-controlled
+variant is the informative allocation diagnostic, but it remains product
+agreement rather than ground-truth validation: the two WorldCover years
+use different product versions, WorldCover and Dynamic World both derive
 from Sentinel observations, and neither represents statutory Abu Dhabi
 land use.
 
@@ -264,18 +285,20 @@ indicators; twelve neighbourhood proportions, comprising 3 × 3 and 7 × 7
 windows for each of the six classes; and seven continuous variables,
 namely normalized row and column coordinates, clipped elevation, clipped
 slope, log-transformed VIIRS radiance, log distance to roads and log
-distance to major roads. A histogram gradient-boosting classifier
-estimates the six-class probability vector. It uses learning rate 0.08,
-120 iterations, at most 31 leaf nodes, minimum leaf size 40 and L2
-regularization 1.0.
+distance to major roads. A scikit-learn histogram gradient-boosting
+classifier estimates the six-class probability vector (Pedregosa et al.,
+2011). It uses learning rate 0.08, 120 iterations, at most 31 leaf
+nodes, minimum leaf size 40 and L2 regularization 1.0.
 
 Training samples combine all changed valid cells and a 20\% random
 sample of stable valid cells in each fit transition. The sample weight
 is the product of a change emphasis, \(1+5\mathbf{1}(S_t\ne S_{t+1})\),
-and a confidence factor, \(0.5+\min(r_t,r_{t+1})\), where \(r\) is the
-Dynamic World mean top probability. The target years 2023 and 2024 are
-not used during fitting or model selection. Across the three seeds, each
-fitted model used 71,892--72,202 pixel rows and all six classes.
+and a quality factor, \(0.5+\min(r_t,r_{t+1})\). Here \(r\) is Dynamic
+World mean top probability in the original track and the within-block
+majority fraction in the ArcGIS-served track. These terms have different
+semantics and are retained as parts of their respective product
+pipelines. A held-out target is never used during fitting or model
+selection.
 
 \subsubsection{Constraint projection and state
 writeback}\label{constraint-projection-and-state-writeback}
@@ -319,7 +342,7 @@ neighbourhood, neighbourhood strength 1.0, acceleration factor 0.1 and
 1,000 iterations. Its frozen transition matrix protected water and
 wetland but did not prohibit built-to-non-built transitions. The
 algorithmic base is traceable to the GeoSOS team's public FLUS source
-release (Liu et al., 2017; geosimulation.cn); the accompanying source
+release (Liu et al., 2017; GeoSOS team, n.d.); the accompanying source
 repository \texttt{FLUS\_console\_crossplatform} at commit
 \texttt{47e65b3} contains the author modifications used for this paper.
 Those modifications add \texttt{train}/\texttt{train-update} entry
@@ -377,6 +400,19 @@ of two independent projection architectures. The name describes this
 benchmark implementation and does not attribute an external publication
 or performance claim.
 
+For the cross-product backtest, the FLUS-style suitability fit expanded
+from 2017 through the origin year, the Kernel transition fit ended at
+the origin, and GeoFM-LDN used only pre-origin label years for its
+decoder, pre-selection transitions for network fitting and the
+transition ending at the origin for epoch selection. All GeoFM-LDN folds
+were retrained for eight epochs at each seed rather than loading the
+original fixed checkpoints. The three learned candidates were evaluated
+alongside persistence and an exact-count random minimum-change
+allocator. Kernel, GeoFM-LDN and random allocation met feasible oracle
+class totals exactly; the finite-iteration FLUS-style CA retained any
+unmet demand as normalized demand total variation rather than receiving
+a post-hoc raster correction.
+
 The common evaluator computes actual class counts, normalized demand
 total variation, hard-mask violations, strict multi-class change FoM,
 binary change FoM, change F1, overall accuracy and macro-F1 for
@@ -402,47 +438,44 @@ remains descriptive, not an objective.
 uncertainty}\label{scenario-actions-and-uncertainty}
 
 The moderate-growth, green-priority-growth and high-outward-growth
-actions are stored in the tracked
-\texttt{planning\_scenarios\_public\_2025\_2031.json} manifest; the
-legacy \texttt{compact} path identifier is retained only for artifact
-compatibility. Each action supplies feasible class totals for
-2025--2031. The 2031 totals are an explicit extension of the previous
+actions are stored in the tracked product-specific scenario manifests;
+the legacy \texttt{compact} path identifier is retained only for
+artifact compatibility. It is not an endorsement of compact-city
+outcomes, which can have distributional trade-offs (Burton, 2000).
+Dynamic World-origin actions cover 2025--2031 and ArcGIS-origin actions
+cover 2026--2031. Their totals are explicit extensions of the preceding
 annual difference and are not derived from an official population,
 housing or infrastructure forecast. Future exogenous rasters are held at
-their 2024 values. The green-priority action is not a water-budget
-model. Each candidate is run at seeds 31, 47 and 73, and planning tables
-report arithmetic means and population standard deviations. No p-values
-are reported because the three seeds describe computational variability,
-not independent field samples. The primary Pareto comparison is within
-each scenario, contrasting the three models under the same action; a
-global nine-candidate frontier is retained only as lineage. Sensitivity
-variants remove or add objective dimensions on the same released
-rasters. The objective set evolved through four review-driven revisions
-and was not preregistered: v1 mixed feasibility, action and outcome
-terms; v2 was not released; v3 used structurally problematic outcomes;
-and v4 still included scenario-supplied vegetation gain and all-built
-fragmentation. The current release is v6: road access, prior-built
-distance and union-built component density. Ecological conversion is
-reported as a diagnostic rather than a Pareto objective because it is
-structurally zero for the exact-count Kernel and GeoFM-LDN allocations.
-We treat v6 as a release objective set rather than a prespecified
-planning preference, and treat its sensitivity results as robustness
-diagnostics.
+their respective final observed-year values. The green-priority action
+is not a water-budget model. Each candidate is run at seeds 31, 47 and
+73, and planning tables report arithmetic means and population standard
+deviations. No p-values are reported because the three seeds describe
+computational variability, not independent field samples. The primary
+Pareto comparison is within each scenario, contrasting the three models
+under the same product-specific action; cross-product frontier
+membership is a sensitivity test, not a forecast-accuracy comparison.
+The current release objective set is road access, prior-built distance
+and union-built component density. Ecological conversion is reported as
+a diagnostic rather than a Pareto objective because it is structurally
+zero for the exact-count Kernel and GeoFM-LDN allocations. We treat this
+as a release objective set rather than a prespecified planning
+preference, and treat its variants as robustness diagnostics.
 
 \subsubsection{Change polygons and
 reproducibility}\label{change-polygons-and-reproducibility}
 
 For each model--scenario pair, annual and cumulative differences from
-the 2024 raster are extracted as changed 100-m cells and dissolved into
-GeoPackage layers. The public delivery manifest covers 45 ensemble
-rasters for 2027--2031 and nine vector packages. The audit script
-reports \texttt{INCOMPLETE\_INPUTS} or \texttt{FAIL} when source
-rasters, reports or vectors are absent; with the released public bundle,
-the input audit passed all alignment gates (with a Dynamic World
-label-noise warning) and the output audit passed 312 historical,
-rolling-origin and planning predictions plus two frozen WorldCover
-evidence rasters, with zero failures. The vector layers preserve
-raster-cell geometry and should not be interpreted as cadastral parcels.
+the origin raster are extracted as changed 100-m cells and dissolved
+into GeoPackage layers. The Dynamic World-origin delivery manifest
+covers 45 ensemble rasters for 2027--2031 and nine vector packages. The
+ArcGIS-origin delivery contains 54 ensemble rasters for 2026--2031, nine
+multilayer GeoPackages and matching Shapefiles; a separate native-10-m
+GeoPackage records observed 2024→2025 product change. The audit scripts
+fail on missing source rasters, reports or vectors. Historical
+predictions and bootstrap reports for both product tracks retain
+per-file hashes and temporal-firewall declarations. The vector layers
+preserve raster-cell geometry and should not be interpreted as cadastral
+parcels.
 
 \subsection{Results}\label{results}
 
@@ -451,15 +484,15 @@ assumptions}\label{a-common-benchmark-separates-allocation-skill-from-demand-ass
 
 The benchmark covers the Abu Dhabi city polygon represented by
 OpenStreetMap relation R4479763. The canonical grid is a 475 × 360
-lattice in EPSG:32640 at 100-m resolution. After the common coverage and
-alignment checks, 79,726 cells were used for scoring. Each cell
-represents 1 ha. Annual Dynamic World observations from 2017 to 2024
-were harmonized to six land-cover classes: water, woody vegetation, low
-vegetation, wetland, built and bare. AlphaEarth annual embeddings, VIIRS
-night-time lights, Copernicus DEM derivatives and OpenStreetMap road
-distances supplied transition drivers. ESA WorldCover and public
-OpenStreetMap geometries supplied water, wetland and infrastructure
-exclusion proxies.
+lattice in EPSG:32640 at 100-m resolution. The original Dynamic World
+evaluation mask contains 79,726 cells and the ArcGIS-served track
+contains 79,775 cells before target-specific common-coverage checks.
+Each cell represents 1 ha. Both annual sequences were harmonized to six
+land-cover classes: water, woody vegetation, low vegetation, wetland,
+built and bare. AlphaEarth annual embeddings, VIIRS night-time lights,
+Copernicus DEM derivatives and OpenStreetMap road distances supplied
+transition drivers. ESA WorldCover and public OpenStreetMap geometries
+supplied water, wetland and infrastructure exclusion proxies.
 
 The comparison shared the canonical grid, origin states, target actions,
 hard masks and evaluator, but the public-data run was not
@@ -519,27 +552,27 @@ and model contrasts are computed from the same resampled blocks for each
 frozen seed. Persistence and random minimum-change allocation are
 explicit zero-model controls.
 
-The planning track starts from the observed 2024 state and applies three
-synthetic class-count actions through 2031. The release objective set is
-version 6. It uses mean distance of new built cells to major roads, mean
-distance to pre-existing built cells and connected components in the
-union of 2024 built and newly built cells per 1,000 valid cells. These
-are public-data proxies. Ecological conversion is retained as a
-descriptive diagnostic, not an objective, because it is structurally
-zero for the two exact-count allocators. Vegetation gain is excluded
-because it is supplied directly by the scenario action, and all-final-
-built component density is reported only as a diagnostic because it can
-be changed by built-cell retirement. No weighted composite score is
-used. Because the objective set changed across the review rounds, we
-disclose the lineage: v1 included seven access, ecological,
-neighbourhood and gain terms; v2 proposed roads, prior-built distance,
-fragmentation and leapfrog rate but was not run; v3 used ecological
-conversion, roads, leapfrog rate and built retirement; and v4 combined
-roads, prior-built distance, all-built fragmentation and vegetation
-gain. The current v6 release replaces v5 after the review identified the
-structural-zero ecological objective and the semantic inversion of
-new-only fragmentation. Sensitivity sets are recomputed on the same
-rasters and reported as robustness analyses, not as additional
+The original planning track starts from the observed 2024 state and
+applies three synthetic class-count actions through 2031. The release
+objective set is version 6. It uses mean distance of new built cells to
+major roads, mean distance to pre-existing built cells and connected
+components in the union of 2024 built and newly built cells per 1,000
+valid cells. These are public-data proxies. Ecological conversion is
+retained as a descriptive diagnostic, not an objective, because it is
+structurally zero for the two exact-count allocators. Vegetation gain is
+excluded because it is supplied directly by the scenario action, and
+all-final- built component density is reported only as a diagnostic
+because it can be changed by built-cell retirement. No weighted
+composite score is used. Because the objective set changed across the
+review rounds, we disclose the lineage: v1 included seven access,
+ecological, neighbourhood and gain terms; v2 proposed roads, prior-built
+distance, fragmentation and leapfrog rate but was not run; v3 used
+ecological conversion, roads, leapfrog rate and built retirement; and v4
+combined roads, prior-built distance, all-built fragmentation and
+vegetation gain. The current v6 release replaces v5 after the review
+identified the structural-zero ecological objective and the semantic
+inversion of new-only fragmentation. Sensitivity sets are recomputed on
+the same rasters and reported as robustness analyses, not as additional
 preregistered claims. These are measurable public-data proxies rather
 than claims about welfare, equity or statutory zoning.
 
@@ -672,24 +705,25 @@ F1 of 0 is therefore a structural-zero, zero-power result and cannot
 evaluate gain-location skill. The informative count-controlled variant
 used the WorldCover gain count as the action and ranked 2020-origin
 Kernel proposals against a random allocation from the same candidate
-population. Kernel F1 was 0.0157--0.0397 versus 0.0251--0.0277 for random allocation.
-The mean $\pm$ sample-SD pairs (Kernel versus random) were 0.0157 $\pm$ 0.0008
-versus 0.0268 $\pm$ 0.0058 at 0.05, 0.0228 $\pm$ 0.0007 versus 0.0277 $\pm$
-0.0036 at 0.10, 0.0268 $\pm$ 0.0011 versus 0.0251 $\pm$ 0.0011 at 0.20,
-and 0.0397 $\pm$ 0.0007 versus 0.0251 $\pm$ 0.0075 at 0.30. Thus Kernel was
-below random at 0.05, the 0.10--0.20 differences were not distinguishable
-from three-seed variation, and only the 0.30 result was clearly above random.
-The low-threshold deficit is consistent with WorldCover cells that barely
-exceed 5\% built fraction, including sparse or road-edge structure that
-Dynamic World does not consistently label as built; the Kernel proposal learned
-from Dynamic World therefore ranks these product-specific gains later than
-random candidates. For 2021 built stock, Kernel F1 was
-0.3518--0.3971, while persistence was 0.3886--0.4387. The corresponding
-Dynamic World 2020 and 2021 observed-stock baselines were 0.3908--0.4334
-and 0.3501--0.3924, respectively, showing that the apparent persistence
-advantage mirrors greater agreement of the 2020 label with WorldCover
-rather than a model advantage. Fig. 3 separates these stock and
-count-controlled gain comparisons; none is authoritative validation.
+population. Kernel F1 was 0.0157--0.0397 versus 0.0251--0.0277 for
+random allocation. The mean ± sample-SD pairs (Kernel versus random)
+were 0.0157 ± 0.0008 versus 0.0268 ± 0.0058 at 0.05, 0.0228 ± 0.0007
+versus 0.0277 ± 0.0036 at 0.10, 0.0268 ± 0.0011 versus 0.0251 ± 0.0011
+at 0.20, and 0.0397 ± 0.0007 versus 0.0251 ± 0.0075 at 0.30. Thus Kernel
+was below random at 0.05, the 0.10--0.20 differences were not
+distinguishable from three-seed variation, and only the 0.30 result was
+clearly above random. The low-threshold deficit is consistent with
+WorldCover cells that barely exceed 5\% built fraction, including sparse
+or road-edge structure that Dynamic World does not consistently label as
+built; the Kernel proposal learned from Dynamic World therefore ranks
+these product- specific gains later than random candidates. For 2021
+built stock, Kernel F1 was 0.3518--0.3971, while persistence was
+0.3886--0.4387. The corresponding Dynamic World 2020 and 2021
+observed-stock baselines were 0.3908--0.4334 and 0.3501--0.3924,
+respectively, showing that the apparent persistence advantage mirrors
+greater agreement of the 2020 label with WorldCover rather than a model
+advantage. Fig. 3 separates these stock and count-controlled gain
+comparisons; none is authoritative validation.
 
 \begin{figure}
 \centering
@@ -731,6 +765,68 @@ Supplementary Table S3; its source rasters are not locally archived. The
 archived comparison report records the exact paths and environment
 fields for the arm64 pair.
 
+\subsubsection{Cross-product replication changes measured model
+skill}\label{cross-product-replication-changes-measured-model-skill}
+
+The harmonized products disagree materially even before a model is
+fitted. Across 2017--2024, same-year all-class agreement ranged from
+0.651 to 0.745 and built-class intersection over union from 0.320 to
+0.449. In 2024, Dynamic World mapped 155.98 km² of built land on the
+common grid, whereas the ArcGIS-served Impact Observatory/Microsoft/Esri
+series mapped 335.57 km². The latter declined to 327.31 km² in 2025. The
+added year improves the currency of the public origin state, but neither
+the larger built stock nor the native 10-m pixel size establishes
+greater local accuracy.
+
+Under the leakage-controlled matched protocol, Geospatial Kernel had the
+largest mean strict FoM in all four Dynamic World targets (0.2595,
+0.0724, 0.2116 and 0.1816 for 2021--2024), but in only two of the four
+matched ArcGIS-served targets. FLUS-style ANN--CA led the ArcGIS-served
+2021 target (0.0625 versus Kernel 0.0154 and GeoFM-LDN 0.0314),
+GeoFM-LDN led in 2022 (0.4488 versus 0.2775 and 0.2227), and Kernel
+numerically led in 2023 and 2024 (0.1619 and 0.1674). The
+Kernel-minus-random paired spatial-block interval excluded zero in every
+ArcGIS-served year and seed, including the additional 2025 target, but
+its ArcGIS-minus-Dynamic World mean FoM difference was -0.244, +0.205,
+-0.050 and -0.014 across the four matched years. Thus the learned
+allocator contains repeatable spatial signal relative to its zero model,
+while its absolute score and rank remain dependent on the product
+pipeline. The finite-iteration FLUS-style CA retained demand total
+variation up to 0.00153 in the ArcGIS-served track and 0.00415 in
+Dynamic World; the exact-count Kernel, GeoFM-LDN and random allocators
+had zero demand error by construction. Supplementary Table S6 reports
+all target years and product-agreement values.
+
+The planning conclusion was more stable than the historical ranking.
+Recomputing the same three-objective Pareto rule on each
+product-specific 2031 scenario bundle retained FLUS-style and Kernel
+candidates, and excluded GeoFM-LDN, in all three scenarios. This does
+not validate either future bundle; it shows only that frontier
+membership was insensitive to this particular public-product replacement
+under the released proxy objectives. Fig. 4 separates changes in mapped
+stock, same-year product agreement, ArcGIS-served historical skill and
+the matched product difference.
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio,alt={Land-cover product robustness. Panel a compares annual mapped built area; only the ArcGIS-served Impact Observatory/Microsoft/Esri series extends to 2025. Panel b reports same-year all-class agreement and built-class intersection over union after six-class harmonization at 100 m. Panel c reports strict destination-change FoM for the ArcGIS-served expanding-window backtest; points are three-seed means and whiskers are population standard deviations. Panel d gives the ArcGIS-served-minus-Dynamic World mean FoM for the four matched one-step targets. All models omit the later road snapshot. Product-specific labels, origin states, oracle totals, origin water/wetland masks and quality semantics are retained, so this is a whole-product-pipeline test rather than authoritative validation. Source data are provided in source\_data\_fig04\_product\_robustness.csv.}]{figures/fig04_product_robustness.png}
+\caption{Land-cover product robustness. Panel a compares annual mapped
+built area; only the ArcGIS-served Impact Observatory/Microsoft/Esri
+series extends to 2025. Panel b reports same-year all-class agreement
+and built-class intersection over union after six-class harmonization at
+100 m. Panel c reports strict destination-change FoM for the
+ArcGIS-served expanding-window backtest; points are three-seed means and
+whiskers are population standard deviations. Panel d gives the
+ArcGIS-served-minus-Dynamic World mean FoM for the four matched one-step
+targets. All models omit the later road snapshot. Product-specific
+labels, origin states, oracle totals, origin water/wetland masks and
+quality semantics are retained, so this is a whole-product-pipeline test
+rather than authoritative validation. Source data are provided in
+source\_data\_fig04\_product\_robustness.csv.}
+\end{figure}
+
+\FloatBarrier
+
 The planning compiler compares the three models within each of the three
 scenarios. At 2031, the FLUS-style control has union-built component
 densities of 2.48--3.27 per 1,000 valid cells, the Kernel 2.92--4.28 and
@@ -747,7 +843,7 @@ conversion is therefore retained only as a diagnostic in v6. All
 sensitivity variants retain the same FLUS-style/Kernel two-model
 frontier. These statements are conditional on public proxy layers and
 synthetic actions, not model superiority claims. The corresponding
-objective profiles and diagnostic trade-offs are shown in Fig. 4.
+objective profiles and diagnostic trade-offs are shown in Fig. 5.
 
 \begin{figure}
 \centering
@@ -822,8 +918,8 @@ artefacts are retained as diagnostic controls; they do not identify a
 causal effect because the proposal features and allocator both contain
 spatial context. The neighbourhood term is therefore interpreted as
 evidence about the execution mechanism, not as an independently
-estimated planning preference. Fig. 5A shows focused proposal controls,
-and Fig. 5B reports the matched runtime controls.
+estimated planning preference. Fig. 6A shows focused proposal controls,
+and Fig. 6B reports the matched runtime controls.
 
 In the post-hoc neighbourhood-weight sensitivity, mean strict FoM ranged
 from 0.19570 to 0.19609 in 2023 and from 0.25273 to 0.25304 in 2024; the
@@ -876,7 +972,7 @@ scenarios, respectively; the corresponding GeoFM-LDN errors were 1,580,
 but majority voting can produce a different raster and therefore a
 non-zero ensemble error. All 312 historical, rolling-origin and planning
 prediction records passed the raster audit, and the two frozen
-WorldCover evidence rasters passed the evidence audit. Fig. 6 uses the
+WorldCover evidence rasters passed the evidence audit. Fig. 7 uses the
 high-outward scenario to make the spatial contrast legible; the complete
 nine-panel atlas is provided as Fig. S1. These are raster-cell change
 footprints, not parcel boundaries or statutory zoning maps.
@@ -897,33 +993,45 @@ not a cadastral or statutory land-use map.}
 
 This study positions Geospatial Kernel as a candidate execution layer
 for constrained spatial reasoning and, more broadly, proposes an audit
-protocol for noisy annual labels. The defensible contribution is that a
-transition proposal and a planning admission rule can be represented and
-inspected separately. Under the unmatched public-data pipeline,
-Geospatial Kernel has the largest strict transition FoM at the one-step
-horizon, while GeoFM-LDN has the largest value after recursive two-step
-rollout. In the separate rolling analysis, Kernel exceeds both zero
-models in all four one-step windows, but its score varies from 0.0724 to
-0.2595 after excluding the later road snapshot. The WorldCover
-diagnostic does not provide a blanket external validation: the original
-Dynamic World-count gain comparison is structurally zero-powered because
-the observed built count declines. The count-controlled variant supplies
-an informative but near-opportunity-level allocation comparison: Kernel is
-below random at 0.05, indistinguishable from random at 0.10--0.20 given
-three-seed variation, and above random only at 0.30. Confidence
-filtering, rolling-window stability and external-product agreement are
-different tests, and none substitutes for authoritative local
-validation. We therefore treat the planning frontier as conditional on
-public proxy objectives and synthetic actions.
+protocol for annual label-product uncertainty. The defensible
+contribution is that a transition proposal and a planning admission rule
+can be represented and inspected separately even when the observational
+product changes. Kernel exceeded the random minimum-change control in
+every Dynamic World and ArcGIS-served expanding-window fold, but product
+replacement changed its absolute FoM by as much as 0.244 downward and
+0.205 upward and changed which learned model ranked first. The original
+unmatched 2023--2024 result is therefore supporting evidence, not a
+universal ordering. By contrast, the released three-objective planning
+frontiers retained FLUS-style and Kernel candidates across both
+product-specific scenario bundles. Historical allocation skill and
+conditional planning-objective membership are different robustness
+questions; neither is a test of statutory forecast accuracy.
+
+The WorldCover diagnostic also does not provide blanket external
+validation: the original Dynamic World-count gain comparison is
+structurally zero-powered because the observed built count declines. Its
+count-controlled variant remains near opportunity-level agreement
+overall: Kernel is below random at 0.05, indistinguishable from random
+at 0.10--0.20 given three-seed variation, and above random only at 0.30.
+The low-threshold deficit is consistent with WorldCover's sparse or
+road-edge cells just above the 5\% built-fraction threshold being
+inconsistently represented by Dynamic World. Confidence filtering,
+rolling-window stability, WorldCover agreement and the new
+complete-product replication test different failure modes. None
+substitutes for authoritative local validation.
 
 The evidence remains bounded. The six classes are remote-sensing land
 cover, not statutory residential, commercial or industrial land use.
-Dynamic World labels show substantial annual uncertainty and apparent
-turnover; the available 2020--2021 WorldCover diagnostic is neither
-fully independent nor authoritative, and no external 2023--2024 change
-product or observed 2025--2031 labels was available. The headline
-analysis also uses a 31 July 2026 OSM road snapshot, which may contain
-roads constructed after 2022. This information is shared by all three
+Dynamic World and the ArcGIS-served series are both global products
+derived from Sentinel observations; their disagreement does not identify
+which label is correct. Product-native quality terms and origin-year
+water/wetland masks also differ, so the replication measures complete
+pipeline dependence rather than a causal effect of replacing labels
+alone. The available 2020--2021 WorldCover diagnostic is neither fully
+independent nor authoritative, and no local reference change sample or
+observed 2026--2031 label exists. The original headline analysis also
+uses a 31 July 2026 OSM road snapshot, which may contain roads
+constructed after 2022. This information is shared by all three
 pipelines and therefore does not change their ordering, but it can
 affect absolute scores; the strict rolling-origin analysis removes those
 road features and should define the no-leakage boundary. As a
@@ -946,19 +1054,44 @@ public labels and masks with locally approved land-use, infrastructure,
 ecological and development-demand records while retaining the same
 execution contract.
 
+\subsection{Conclusions}\label{conclusions}
+
+Replacing Dynamic World with a newer ArcGIS-served 10-m annual product
+did not simply raise or lower every score. It changed mapped built
+stock, transition prevalence and the leading model by year. Geospatial
+Kernel remained consistently better than random minimum-change
+allocation, but it was not universally the best learned model. Its
+strongest transferable property in this experiment is therefore the
+auditable separation of learned proposal, constrained projection and
+state writeback, not a product-independent accuracy claim.
+
+The refreshed series adds a 2025 public origin state, native-10-m audit
+rasters and complete 2026--2031 raster and vector scenario deliveries.
+Model execution remains at 100 m, and both future bundles are
+conditional stress tests. A valid operational forecast still requires
+locally approved land-use history, planning constraints, demand
+assumptions and an independent change-validation design.
+
 \subsection{Data availability}\label{data-availability}
 
 The public-data benchmark manifests, protocols, reports and generated
 delivery artefacts are organized under
-\texttt{benchmarks/abu\_dhabi\_land\_use\_v1/} in the accompanying
-repository. The versioned reproducibility release is archived at Zenodo v1.0.0
-(\url{https://doi.org/10.5281/zenodo.22663476}), corresponding to GitHub tag
-\texttt{v1.0.0} at commit \texttt{2cbd2d3}. This archive DOI identifies the
-public-data benchmark and software/data package, not the eventual journal
-article DOI. Large rasters, GeoPackages and model checkpoints remain Git LFS
-objects in the GitHub repository; a full numerical rerun requires fetching
-those objects, whereas the automatically generated Zenodo GitHub ZIP may
-contain their pointer files. The main evidence files are:
+\texttt{benchmarks/abu\_dhabi\_land\_use\_v1/} and
+\texttt{benchmarks/abu\_dhabi\_land\_use\_v2/} in the accompanying
+repository. The versioned v1 reproducibility release is archived at
+Zenodo v1.0.0 (https://doi.org/10.5281/zenodo.22663476), corresponding
+to GitHub tag \texttt{v1.0.0} at commit \texttt{2cbd2d3}. The new
+cross-product evidence must receive a superseding versioned archive
+before submission; the existing DOI does not yet identify the
+unsubmitted v2 refresh. The v2 archive is defined by
+\texttt{reproducibility/MANIFEST.json} (immutable inputs, assets and
+code) and \texttt{reproducibility/PUBLICATION\_OUTPUTS.json} (reports,
+source data, figures and delivered rasters/vectors);
+\texttt{reproducibility\_check.py} verifies both sets. Large rasters,
+GeoPackages and model checkpoints remain Git LFS objects in the GitHub
+repository; a full numerical rerun requires fetching those objects,
+whereas an automatically generated GitHub source ZIP may contain only
+LFS pointer files. The main evidence files are:
 
 \begin{itemize}
 \tightlist
@@ -990,6 +1123,22 @@ contain their pointer files. The main evidence files are:
   \texttt{artifacts/external\_validation/worldcover/} for frozen
   WorldCover built-fraction inputs, hashes and the external-product
   diagnostic;
+\item
+  the v2 source manifest under
+  \texttt{artifacts/arcgis\_sentinel2\_landcover/} for service metadata,
+  catalog records and downloaded-raster hashes;
+\item
+  the v2 paired reports under
+  \texttt{artifacts/arcgis\_v2\_historical\_backtest/} and
+  \texttt{artifacts/dynamic\_world\_matched\_backtest/} for the two
+  complete three-model expanding-window tracks;
+\item
+  the v2 cross-product summary under
+  \texttt{results\_arcgis\_v2/paper\_refresh/} and Supplementary Table
+  S6 for the synchronized result;
+\item
+  the v2 \texttt{results\_arcgis\_v2/ensembles/} and \texttt{vectors/}
+  directories for the 2026--2031 raster and change-footprint deliveries;
 \item
   the data-audit, protocol and source-input manifests for data
   provenance;
@@ -1049,6 +1198,14 @@ listed separately to keep the manuscript readable:
   \texttt{source\_data\_fig03\_rolling\_external\_diagnostics.csv} for
   the quantitative source data behind Fig. 3.
 \item
+  \texttt{run\_arcgis\_historical\_backtest.py} for both
+  leakage-controlled product tracks;
+\item
+  \texttt{analyze\_product\_robustness.py},
+  \texttt{source\_data\_fig04\_product\_robustness.csv} and
+  \texttt{supplementary\_table\_S6\_product\_robustness.md} for the
+  cross-product analysis;
+\item
   \texttt{reproducibility/reproduce.py} for the end-to-end rerun;
 \item
   \texttt{reproducibility\_check.py} and \texttt{audit\_outputs.py} for
@@ -1094,9 +1251,10 @@ be paired with an open Python ANN implementation, but the unmodified
 upstream CA uses time seeding rather than \texttt{FLUS\_RANDOM\_SEED}.
 The corresponding-author e-mail is \texttt{zhouning@freedotech.com}. The
 versioned public reproducibility release is archived at Zenodo v1.0.0:
-\url{https://doi.org/10.5281/zenodo.22663476}. It corresponds to GitHub tag
-\texttt{v1.0.0} at commit \texttt{2cbd2d3}; the DOI identifies the benchmark
-and software/data archive, not the eventual journal article DOI.
+https://doi.org/10.5281/zenodo.22663476. It corresponds to GitHub tag
+\texttt{v1.0.0} at commit \texttt{2cbd2d3}; the DOI identifies the
+benchmark and software/data archive, not the eventual journal article
+DOI.
 
 \subsection{Declarations}\label{declarations}
 
@@ -1123,55 +1281,100 @@ human or animal participants.
 Abu Dhabi Urban Planning Council. (2007). Plan Abu Dhabi 2030: urban
 structure framework plan. Abu Dhabi, United Arab Emirates.
 
-Brown, C. F., et al.~(2022). Dynamic World, near real-time global 10 m
-land use land cover mapping. \emph{Scientific Data}, 9, 251.
-https://doi.org/10.1038/s41597-022-01307-4
+Brown, C. F., Brumby, S. P., Guzder-Williams, B., Birch, T., Hyde, S.
+B., Mazzariello, J., Czerwinski, W., Pasquarella, V. J., Haertel, R.,
+Ilyushchenko, S., Schwehr, K., Weisse, M., Stolle, F., Hanson, C.,
+Guinan, O., Moore, R., \& Tait, A. M. (2022). Dynamic World, near
+real-time global 10 m land use land cover mapping. \emph{Scientific
+Data}, 9, 251. https://doi.org/10.1038/s41597-022-01307-4
+
+Brown, C. F., Kazmierski, M. R., Pasquarella, V. J., Rucklidge, W. J.,
+Samsikova, M., Zhang, C., Shelhamer, E., Lahera, E., Wiles, O.,
+Ilyushchenko, S., Gorelick, N., Zhang, L. L., Alj, S., Schechter, E.,
+Askay, S., Guinan, O., Moore, R., Boukouvalas, A., \& Kohli, P. (2025).
+AlphaEarth Foundations: An embedding field model for accurate and
+efficient global mapping from sparse label data. \emph{arXiv}.
+https://doi.org/10.48550/arXiv.2507.22291
 
 Burton, E. (2000). The compact city: just or just compact? A preliminary
 analysis. \emph{Urban Studies}, 37, 1969--2006.
 https://doi.org/10.1080/00420980050162184
 
-Gorelick, N., et al.~(2017). Google Earth Engine: planetary-scale
-geospatial analysis for everyone. \emph{Remote Sensing of Environment},
-202, 18--27. https://doi.org/10.1016/j.rse.2017.06.031
+Elvidge, C. D., Zhizhin, M., Ghosh, T., Hsu, F.-C., \& Taneja, J.
+(2021). Annual time series of global VIIRS nighttime lights derived from
+monthly averages: 2012 to 2019. \emph{Remote Sensing}, 13, 922.
+https://doi.org/10.3390/rs13050922
 
-Lau, K. H., \& Kam, B. H. (2005). A cellular automata model for urban
-land-use simulation. \emph{Environment and Planning B: Planning and
-Design}, 32, 247--263. https://doi.org/10.1068/b31110
-
-Liang, X., et al.~(2021). A patch-generating land use simulation model
-integrating multisource data for urban growth simulation.
-\emph{Landscape and Urban Planning}, 214, 104157.
-https://doi.org/10.1016/j.landurbplan.2021.104157
-
-Liu, X., et al.~(2017). A future land use simulation model (FLUS) for
-simulating multiple land use scenarios by coupling human and natural
-effects. \emph{Landscape and Urban Planning}, 168, 94--116.
-https://doi.org/10.1016/j.landurbplan.2017.09.019
+European Space Agency. (2024). Copernicus DEM GLO-30: global 30 m
+digital elevation model {[}Data set{]}. Google Earth Engine Data
+Catalog.
+https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS\_DEM\_GLO30\_2024\_1
 
 GeoSOS team, Sun Yat-sen University. (n.d.). FLUS source code for
 non-commercial academic research.
 http://www.geosimulation.cn/FLUS-source-code.html (accessed 6 September
 2026).
 
+Gorelick, N., Hancher, M., Dixon, M., Ilyushchenko, S., Thau, D., \&
+Moore, R. (2017). Google Earth Engine: planetary-scale geospatial
+analysis for everyone. \emph{Remote Sensing of Environment}, 202,
+18--27. https://doi.org/10.1016/j.rse.2017.06.031
+
+Impact Observatory, Microsoft, \& Esri. (2026). Sentinel-2 10m land
+cover time series of the world {[}Data set{]}. ArcGIS ImageServer.
+https://ic.imagery1.arcgis.com/arcgis/rest/services/Sentinel2\_10m\_LandCover/ImageServer
+(accessed 8 September 2026).
+
+Karra, K., Kontgis, C., Statman-Weil, Z., Mazzariello, J. C., Mathis,
+M., \& Brumby, S. P. (2021). Global land use/land cover with Sentinel 2
+and deep learning. \emph{2021 IEEE International Geoscience and Remote
+Sensing Symposium IGARSS}, 4704--4707.
+https://doi.org/10.1109/IGARSS47720.2021.9553499
+
+Lau, K. H., \& Kam, B. H. (2005). A cellular automata model for urban
+land-use simulation. \emph{Environment and Planning B: Planning and
+Design}, 32, 247--263. https://doi.org/10.1068/b31110
+
+Liang, X., Guan, Q., Clarke, K. C., Liu, S., Wang, B., \& Yao, Y.
+(2021). Understanding the drivers of sustainable land expansion using a
+patch-generating land use simulation (PLUS) model: A case study in
+Wuhan, China. \emph{Computers, Environment and Urban Systems}, 85,
+101569. https://doi.org/10.1016/j.compenvurbsys.2020.101569
+
+Liu, X., Liang, X., Li, X., Xu, X., Ou, J., Chen, Y., Li, S., Wang, S.,
+\& Pei, F. (2017). A future land use simulation model (FLUS) for
+simulating multiple land use scenarios by coupling human and natural
+effects. \emph{Landscape and Urban Planning}, 168, 94--116.
+https://doi.org/10.1016/j.landurbplan.2017.09.019
+
 OpenStreetMap contributors. (2026). OpenStreetMap data, Abu Dhabi
 relation R4479763 and Geofabrik GCC extract, accessed 31 July 2026.
 https://www.openstreetmap.org
 
-Pontius, R. G., Jr., Boersma, W., Castella, J.-C., et al.~(2008).
-Comparing the input, output, and validation maps for several models of
-land change. \emph{The Annals of Regional Science}, 42, 11--37. DOI:
-10.1007/s00168-007-0138-2
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B.,
+Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V.,
+Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., \&
+Duchesnay, E. (2011). Scikit-learn: Machine learning in Python.
+\emph{Journal of Machine Learning Research}, 12, 2825--2830.
+https://jmlr.org/papers/v12/pedregosa11a.html
+
+Pontius, R. G., Jr., Boersma, W., Castella, J.-C., Clarke, K., de Nijs,
+T., Dietzel, C., Duan, Z., Fotsing, E., Goldstein, N., Kok, K., Koomen,
+E., Lippitt, C. D., McConnell, W., Mohd Sood, A., Pijanowski, B.,
+Pithadia, S., Sweeney, S., Trung, T. N., Veldkamp, A. T., \& Verburg, P.
+H. (2008). Comparing the input, output, and validation maps for several
+models of land change. \emph{The Annals of Regional Science}, 42,
+11--37. https://doi.org/10.1007/s00168-007-0138-2
 
 Pontius, R. G., Jr., \& Millones, M. (2011). Death to Kappa: birth of
 quantity disagreement and allocation disagreement for accuracy
 assessment. \emph{International Journal of Remote Sensing}, 32,
-4407--4429. DOI: 10.1080/01431161.2011.552923
+4407--4429. https://doi.org/10.1080/01431161.2011.552923
 
 Silva, E. A., \& Clarke, K. C. (2002). Calibration of the SLEUTH urban
 growth model for Lisbon and Porto, Portugal. \emph{Computers,
 Environment and Urban Systems}, 26, 525--552.
-https://doi.org/10.1016/S0198-9715(01)00017-8
+https://doi.org/10.1016/S0198-9715(01)00014-X
 
 Soares-Filho, B. S., Cerqueira, G. C., \& Pennachin, C. L. (2002).
 DINAMICA---a stochastic cellular automata model designed to simulate the
@@ -1179,21 +1382,32 @@ landscape dynamics in an Amazonian colonization frontier.
 \emph{Ecological Modelling}, 154, 217--235.
 https://doi.org/10.1016/S0304-3800(02)00059-5
 
-van Vliet, J., Bregt, A. K., Rietveld, P., \& Verburg, P. H. (2011).
-Modeling land-use change with cellular automata: Issues and
-recommendations. \emph{Journal of Land Use Science}, 6, 247--265.
-https://doi.org/10.1080/1747423X.2011.562018
+van Vliet, J., Bregt, A. K., \& Hagen-Zanker, A. (2011). Revisiting
+Kappa to account for change in the accuracy assessment of land-use
+change models. \emph{Ecological Modelling}, 222, 1367--1375.
+https://doi.org/10.1016/j.ecolmodel.2011.01.017
 
 van Vliet, J., Bregt, A. K., Brown, D. G., van Delden, H., Heckbert, S.,
 \& Verburg, P. H. (2016). A review of current calibration and validation
 practices in land-change modeling. \emph{Environmental Modelling \&
 Software}, 82, 174--182. https://doi.org/10.1016/j.envsoft.2016.04.017
 
-Verburg, P. H., et al.~(2002). Modeling the spatial dynamics of regional
+Verburg, P. H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon, V.,
+\& Mastura, S. S. A. (2002). Modeling the spatial dynamics of regional
 land use: the CLUE-S model. \emph{Environmental Management}, 30,
-391--405. https://doi.org/10.1007/s00267-002-2631-x
+391--405. https://doi.org/10.1007/s00267-002-2630-x
 
-Zanaga, D., et al.~(2022). ESA WorldCover 10 m 2021 v200. Zenodo.
+Zanaga, D., Van De Kerchove, R., De Keersmaecker, W., Souverijns, N.,
+Brockmann, C., Quast, R., Wevers, J., Grosu, A., Paccini, A., Vergnaud,
+S., Cartus, O., Santoro, M., Fritz, S., Georgieva, I., Lesiv, M.,
+Carter, S., Herold, M., Li, L., Tsendbazar, N.-E., Ramoino, F., \&
+Arino, O. (2021). ESA WorldCover 10 m 2020 v100 {[}Data set{]}. Zenodo.
+https://doi.org/10.5281/zenodo.5571936
+
+Zanaga, D., Van De Kerchove, R., Daems, D., De Keersmaecker, W.,
+Brockmann, C., Kirches, G., Wevers, J., Cartus, O., Santoro, M., Fritz,
+S., Lesiv, M., Herold, M., Tsendbazar, N.-E., Xu, P., Ramoino, F., \&
+Arino, O. (2022). ESA WorldCover 10 m 2021 v200 {[}Data set{]}. Zenodo.
 https://doi.org/10.5281/zenodo.7254221
 
 \subsection{Supplementary information
@@ -1225,6 +1439,10 @@ outline}\label{supplementary-information-outline}
   \textbf{Supplementary Table S5:} Rolling-origin and WorldCover
   external-product diagnostics (see
   \texttt{supplementary\_table\_S5\_rolling\_external\_diagnostics.md}).
+\item
+  \textbf{Supplementary Table S6:} Matched Dynamic World and
+  ArcGIS-served whole-product-pipeline backtests (see
+  \texttt{supplementary\_table\_S6\_product\_robustness.md}).
 \item
   \textbf{Fig. S1:} Full 3-scenarios × 3-model 2031 new-built footprint
   atlas (\texttt{figures/figS01\_planning\_atlas\_2031.*}).

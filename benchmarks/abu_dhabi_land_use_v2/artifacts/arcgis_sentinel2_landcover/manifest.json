@@ -1,0 +1,401 @@
+{
+  "artifacts": [
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2017_100m.tif",
+          "sha256": "a035a46266fba7e3e189bc21ebc1f5f7186461af37931f5481c9c6460f4e9481",
+          "year": 2017
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2017_100m.tif",
+          "sha256": "dc2d56ac8bb4a2636f7a595e32d99c600b07626a36f712e075a8febc24f44b07",
+          "year": 2017
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2017_100m.tif",
+          "sha256": "d3ded4fa3e9bcca11cfd08e6a5ea0c7ea4bf4157f065039ba92dd27d1fa3a841",
+          "year": 2017
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2017_10m.tif",
+        "sha256": "cf70835c32d60c5f17745f39904f5a81f55b0ac32b3fd7971cea8c88d370760f",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2017
+      },
+      "year": 2017
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2018_100m.tif",
+          "sha256": "676ecc963068bcacf0a9c71620d6970f7e79a7adbf9673d407fd0066c1eecc2f",
+          "year": 2018
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2018_100m.tif",
+          "sha256": "5c7dc2c0517892ad8a8948069d31ecb760189c0ab57b4ee73d5e1dcfa9cc91b5",
+          "year": 2018
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2018_100m.tif",
+          "sha256": "c3dec1d25bed6d9ee481747bb84a24077e0e92e598c5ea304624f59f95dfb4fb",
+          "year": 2018
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2018_10m.tif",
+        "sha256": "7f717eb4be655a7d4f9908c32a94b56e6934aeb65f8a82ae113d51ba4d14d0ed",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2018
+      },
+      "year": 2018
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2019_100m.tif",
+          "sha256": "9d07e5bba494140c0d4524fad8c34909fc8f4342b65eeb9655350dfd78dee25a",
+          "year": 2019
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2019_100m.tif",
+          "sha256": "9c4586227cffe627580fc68ec40f87843d35a7f4a3e68d49b0f32f8169b77784",
+          "year": 2019
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2019_100m.tif",
+          "sha256": "eec2a323419100db586644288436e2b5983411535b373764142edd26c044dc70",
+          "year": 2019
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2019_10m.tif",
+        "sha256": "9a07b641e2289366863068b1a75aa92df9adec406c357d825175ba233abfd6c6",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2019
+      },
+      "year": 2019
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2020_100m.tif",
+          "sha256": "ee9f4b5ab748a5e690b55ab3b010e5f6141e35791f8b3a55eda85f3716a3665b",
+          "year": 2020
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2020_100m.tif",
+          "sha256": "ef71509c3bfa24ef736df08a522f3dac578bdbb50bc11a2f4908b7ed3d972f1f",
+          "year": 2020
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2020_100m.tif",
+          "sha256": "3f7cd23f43c3c535b4d9cdf018debb12bf286749b53199a6b4d7eef6964c18d6",
+          "year": 2020
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2020_10m.tif",
+        "sha256": "00c51f3fd0d806f05a91da60a8e914e13ff51c18a4108d299cef3db71e2711f5",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2020
+      },
+      "year": 2020
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2021_100m.tif",
+          "sha256": "149c71c8cff44aae1155f5cf132d8b881a41b39f383c4c6c62a3582c3f82a989",
+          "year": 2021
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2021_100m.tif",
+          "sha256": "7e242086b0d98c09fa527984d21898691798255f9b2ac395ff6e9161b1644944",
+          "year": 2021
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2021_100m.tif",
+          "sha256": "097ea0282e1775c28b7350efd4ba190cc3ab6af8df6529d2551e1243d59d6e3e",
+          "year": 2021
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2021_10m.tif",
+        "sha256": "0a0103949c1530016307d32bdb9c5c2e25a83156dc38183cb1a979e7d3e54725",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2021
+      },
+      "year": 2021
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2022_100m.tif",
+          "sha256": "4d1a1b37b77bc079570e965b9f962cbdeabe3414234f1f803144a375471986e1",
+          "year": 2022
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2022_100m.tif",
+          "sha256": "9fbc433247eb978749f4bff34541e7f3cd682b03fdcefef07f3fce393f210899",
+          "year": 2022
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2022_100m.tif",
+          "sha256": "d793392fe0508590b38e53fdf58994d3e2247f94d4fea0396da20739e257ff37",
+          "year": 2022
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2022_10m.tif",
+        "sha256": "03808d74847255cbe4e42664fbbc6c46817202b2e466faa5434c093df6e421b8",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2022
+      },
+      "year": 2022
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2023_100m.tif",
+          "sha256": "06e698eff2b67fdfacbc8b817973f9a659bba9a510b1fc0486f53a964ad94f21",
+          "year": 2023
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2023_100m.tif",
+          "sha256": "c1446d1e943183bc6093ae12b0f33be589b94daf9079dcf4d031ef0eaf1ce9ab",
+          "year": 2023
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2023_100m.tif",
+          "sha256": "015785094dd385bcb38d55c47157a706a66a1897233f10e3c10267729961b87c",
+          "year": 2023
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2023_10m.tif",
+        "sha256": "bad244f2a7db2701c2139b63608c011cf27126fb780b161a8d5b77a0f4aa341e",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2023
+      },
+      "year": 2023
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2024_100m.tif",
+          "sha256": "bfabf1188f547f6b9a9165a32c847e8ce1f473aefdb43f3dd1b50447902f2ae0",
+          "year": 2024
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2024_100m.tif",
+          "sha256": "027d58b8f449aba1ccfadcf6d86542305967e4be66170c319c2e29f777f3a3a3",
+          "year": 2024
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2024_100m.tif",
+          "sha256": "16ff1eda3e153dcde6c02741da5a8bfe4d4f0b6e029269e9873d5054f5108737",
+          "year": 2024
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2024_10m.tif",
+        "sha256": "32443725d2a26ff598c130a6b8bae41eeaf8cd7aa46727e436bb76784ced70c3",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2024
+      },
+      "year": 2024
+    },
+    {
+      "model_grid": [
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2025_100m.tif",
+          "sha256": "1d8d67ac962790a25f2b4e7422f5195dad44c28de71d773942c31e390710770f",
+          "year": 2025
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2025_100m.tif",
+          "sha256": "a3acefdb352271fcda84c39e9e37db85e6bdaf8f4c6772c33ee9cb9fec032339",
+          "year": 2025
+        },
+        {
+          "path": "artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2025_100m.tif",
+          "sha256": "9da6d93797d8a2f1baacf835d41e44b758f280fd7e2d86896d21a2046f4db48e",
+          "year": 2025
+        }
+      ],
+      "native": {
+        "path": "artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2025_10m.tif",
+        "sha256": "e7a1323c8cc969b8fb3c4bfff7c39c8b7a62de382c6fe50ee961bcd2843b49ce",
+        "shape": [
+          3600,
+          4750
+        ],
+        "year": 2025
+      },
+      "year": 2025
+    }
+  ],
+  "canonical_grid": {
+    "crs": "EPSG:32640",
+    "height": 360,
+    "resolution_m": 100,
+    "width": 475
+  },
+  "catalog": [
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2017",
+      "OBJECTID": 1,
+      "Year": 2017
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2018",
+      "OBJECTID": 2,
+      "Year": 2018
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2019",
+      "OBJECTID": 3,
+      "Year": 2019
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2020",
+      "OBJECTID": 4,
+      "Year": 2020
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2021",
+      "OBJECTID": 5,
+      "Year": 2021
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2022",
+      "OBJECTID": 6,
+      "Year": 2022
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2023",
+      "OBJECTID": 7,
+      "Year": 2023
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2024",
+      "OBJECTID": 8,
+      "Year": 2024
+    },
+    {
+      "MaxPS": 3072000,
+      "MinPS": 0,
+      "Name": "Sentinel_2_10m_LandCover_2025",
+      "OBJECTID": 9,
+      "Year": 2025
+    }
+  ],
+  "copyright_text": "Impact Observatory, Microsoft, and Esri.",
+  "created_at": "2026-09-09T13:46:56.494578+00:00",
+  "license_info": null,
+  "native_grid": {
+    "aggregation_to_100m": "map source classes to the six-class benchmark system, then 10x10 majority vote among usable pixels; ties choose the smallest canonical code",
+    "bounds": [
+      226000.0,
+      2687300.0,
+      273500.0,
+      2723300.0
+    ],
+    "crs": "EPSG:32640",
+    "height": 3600,
+    "resolution_m": 10,
+    "width": 4750
+  },
+  "schema": "gwm.arcgis_sentinel2_landcover_materialization.v1",
+  "service_description": "Sentinel-2 10m land cover time series of the world. Produced by Impact Observatory, Microsoft, and Esri.",
+  "service_metadata": {
+    "allow_analysis": true,
+    "allow_copy": true,
+    "band_count": 1,
+    "max_image_height": 4000,
+    "max_image_width": 4000,
+    "pixel_size_x": 9.999998729879174,
+    "pixel_size_y": 9.999999999999979,
+    "pixel_type": "U8",
+    "spatial_reference": {
+      "latestWkid": 3857,
+      "wkid": 102100
+    },
+    "time_info": {
+      "endTimeField": "EndDate",
+      "startTimeField": "StartDate",
+      "timeExtent": [
+        1483228800000,
+        1767225599000
+      ],
+      "timeReference": null
+    }
+  },
+  "service_name": "Sentinel2_10m_LandCover",
+  "service_url": "https://ic.imagery1.arcgis.com/arcgis/rest/services/Sentinel2_10m_LandCover/ImageServer",
+  "source_classes": {
+    "1": 1,
+    "10": 0,
+    "11": 3,
+    "2": 2,
+    "4": 4,
+    "5": 3,
+    "7": 5,
+    "8": 6,
+    "9": 0
+  },
+  "years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ]
+}

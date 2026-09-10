@@ -1,4 +1,4 @@
-# Response to the ninth- through fifteenth-round LUP reviews
+# Response to the ninth- through sixteenth-round LUP reviews
 
 This is an internal point-by-point response draft for the review dated 7
 September 2026. It records what the repository now supports and what remains
@@ -225,3 +225,16 @@ the already completed WorldCover diagnostic rerun. The final release was rebuilt
 from those reports, the manuscript consistency checks passed, and the audit/hash
 coverage remains 312 prediction rasters plus two evidence rasters with zero
 failures.
+
+## Sixteenth-round reference-integrity correction (9 September 2026)
+
+| Audit finding | Revision | Evidence boundary |
+|---|---|---|
+| Two cited records did not resolve to the stated publication | Replaced the non-existent Liang et al. (2021) *Landscape and Urban Planning* record with the original PLUS article in *Computers, Environment and Urban Systems* (10.1016/j.compenvurbsys.2020.101569). Replaced the non-existent van Vliet et al. (2011) *Journal of Land Use Science* record with the change-accuracy article in *Ecological Modelling* (10.1016/j.ecolmodel.2011.01.017). | These references motivate model families and change-focused assessment; they do not supply any benchmark result. |
+| Two legacy DOI strings were incorrect | Corrected Silva and Clarke (2002) to 10.1016/S0198-9715(01)00014-X and Verburg et al. (2002) to 10.1007/s00267-002-2630-x. All DOI-bearing journal and Zenodo entries now use the same `https://doi.org/...` form. | A DOI resolves scholarly or data provenance; it does not turn the cited public products into authoritative Abu Dhabi reference data. |
+| Five actually used data/software sources were absent | Added citations at first use for AlphaEarth Foundations, the monthly VIIRS radiance series, Copernicus DEM GLO-30, WorldCover 2020 v100 and scikit-learn. The text now names the actual Earth Engine collection identifiers for VIIRS and Copernicus DEM. | AlphaEarth is cited as an arXiv record and the DEM as a versioned data-catalog record; these references document inputs, not independent validation. |
+| Reference formatting and unused Burton entry required repair | Cited Burton where the legacy `compact` scenario identifier is bounded, expanded every multi-author reference-list entry to its full author list, and standardized DOI presentation. In-text citations retain conventional abbreviated forms. | The compact identifier remains an artifact-compatibility label, not a normative planning claim. |
+
+The sixteenth-round correction changes manuscript provenance and formatting only.
+No data inputs, model code, checkpoints, prediction rasters, figures or reported
+metrics were changed.

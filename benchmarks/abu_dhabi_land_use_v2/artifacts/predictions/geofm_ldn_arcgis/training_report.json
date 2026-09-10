@@ -1,0 +1,164 @@
+{
+  "schema": "gwm.abu_dhabi_geofm_ldn_arcgis_training.v1",
+  "status": "complete",
+  "device": "cpu",
+  "epochs": 8,
+  "seeds": [
+    {
+      "seed": 47,
+      "decoder": {
+        "training_samples": 69430,
+        "training_accuracy": 0.8644534063085122,
+        "validation_2022_accuracy": 0.8759385772485114,
+        "fit_seconds": 0.5848238752223551,
+        "label_years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ]
+      },
+      "training": {
+        "training_patch_count": 224,
+        "epochs": 8,
+        "batch_size": 2,
+        "best_selection_score": 1.0202710080889466,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.6405968765861222,
+            "mean_cosine": 0.956414520740509,
+            "semantic_accuracy": 0.8792604199310561
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.4334018247734223,
+            "mean_cosine": 0.9576088786125183,
+            "semantic_accuracy": 0.8602319022250078
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.43276452738791704,
+            "mean_cosine": 0.9590343832969666,
+            "semantic_accuracy": 0.8826073331244124
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.3904873180602278,
+            "mean_cosine": 0.9558941125869751,
+            "semantic_accuracy": 0.7897963020996552
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.3742748763678329,
+            "mean_cosine": 0.9700670838356018,
+            "semantic_accuracy": 0.8870698840488875
+          },
+          {
+            "epoch": 6,
+            "train_loss": 0.3291929590382746,
+            "mean_cosine": 0.9670665264129639,
+            "semantic_accuracy": 0.8713130680037606
+          },
+          {
+            "epoch": 7,
+            "train_loss": 0.32968186573790653,
+            "mean_cosine": 0.975123405456543,
+            "semantic_accuracy": 0.9029520526480727
+          },
+          {
+            "epoch": 8,
+            "train_loss": 0.32185371220111847,
+            "mean_cosine": 0.9723631143569946,
+            "semantic_accuracy": 0.8966593544343466
+          }
+        ],
+        "fit_seconds": 72.62461554212496
+      },
+      "checkpoint": "/Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v2/artifacts/predictions/geofm_ldn_arcgis/seed_47/geofm_ldn_arcgis.pt",
+      "checkpoint_sha256": "d760da4ceb1cce47f3b80484224a7fab2cf16d076dffb24309dfe70efeba3e18"
+    },
+    {
+      "seed": 73,
+      "decoder": {
+        "training_samples": 69430,
+        "training_accuracy": 0.8644534063085122,
+        "validation_2022_accuracy": 0.8750861798809151,
+        "fit_seconds": 0.4923917092382908,
+        "label_years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ]
+      },
+      "training": {
+        "training_patch_count": 224,
+        "epochs": 8,
+        "batch_size": 2,
+        "best_selection_score": 1.015817052235091,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.5907004886705961,
+            "mean_cosine": 0.9630709290504456,
+            "semantic_accuracy": 0.8583390786587277
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.46064114211393253,
+            "mean_cosine": 0.9618788957595825,
+            "semantic_accuracy": 0.8894390473205892
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.39827229122498203,
+            "mean_cosine": 0.9657021760940552,
+            "semantic_accuracy": 0.8721403948605453
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.3659004039530243,
+            "mean_cosine": 0.9677826166152954,
+            "semantic_accuracy": 0.8954183641491695
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.3445787501654455,
+            "mean_cosine": 0.9711182117462158,
+            "semantic_accuracy": 0.8939768097774993
+          },
+          {
+            "epoch": 6,
+            "train_loss": 0.33544053935578894,
+            "mean_cosine": 0.9702961444854736,
+            "semantic_accuracy": 0.8771168912566594
+          },
+          {
+            "epoch": 7,
+            "train_loss": 0.34585727312202963,
+            "mean_cosine": 0.9690380096435547,
+            "semantic_accuracy": 0.8766906925728611
+          },
+          {
+            "epoch": 8,
+            "train_loss": 0.32758911532749024,
+            "mean_cosine": 0.9666503667831421,
+            "semantic_accuracy": 0.8627013475399561
+          }
+        ],
+        "fit_seconds": 72.08807195816189
+      },
+      "checkpoint": "/Users/zhouning/abu-dhabi-geospatial-kernel-paper/benchmarks/abu_dhabi_land_use_v2/artifacts/predictions/geofm_ldn_arcgis/seed_73/geofm_ldn_arcgis.pt",
+      "checkpoint_sha256": "057d8f4e89c270004230fb7985d1e751f3ada5ac46de5448bc2ac1e11d2a809c"
+    }
+  ]
+}

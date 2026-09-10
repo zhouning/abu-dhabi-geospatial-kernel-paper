@@ -1,0 +1,57 @@
+{
+  "schema": "gwm.land_use_actions.v2",
+  "actions": [
+    {
+      "schema": "gwm.land_use_demand_action.v2",
+      "action_id": "oracle_allocation_arcgis_2023_2024",
+      "source": "observed_arcgis_allocation",
+      "start_year": 2023,
+      "target_year": 2024,
+      "desired_observed_counts": {
+        "1": 21193,
+        "2": 16,
+        "3": 2581,
+        "4": 20,
+        "5": 33557,
+        "6": 22408
+      },
+      "feasible_target_counts": {
+        "1": 21168,
+        "2": 16,
+        "3": 2582,
+        "4": 24,
+        "5": 33570,
+        "6": 22415
+      },
+      "hard_exclusion_origin_year": 2023,
+      "reliability_mask": "artifacts/bundle/reliability_2023_2024_100m.tif",
+      "model_may_read_reliability_mask": false
+    },
+    {
+      "schema": "gwm.land_use_demand_action.v2",
+      "action_id": "oracle_allocation_arcgis_2024_2025",
+      "source": "observed_arcgis_allocation",
+      "start_year": 2024,
+      "target_year": 2025,
+      "desired_observed_counts": {
+        "1": 21180,
+        "2": 2,
+        "3": 2694,
+        "4": 17,
+        "5": 32731,
+        "6": 23151
+      },
+      "feasible_target_counts": {
+        "1": 21168,
+        "2": 3,
+        "3": 2694,
+        "4": 24,
+        "5": 32733,
+        "6": 23153
+      },
+      "hard_exclusion_origin_year": 2023,
+      "reliability_mask": "artifacts/bundle/reliability_2024_2025_100m.tif",
+      "model_may_read_reliability_mask": false
+    }
+  ]
+}

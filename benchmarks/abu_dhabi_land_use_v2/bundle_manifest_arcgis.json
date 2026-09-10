@@ -1,0 +1,35 @@
+{
+  "schema": "gwm.abu_dhabi_land_use_v2_bundle.v1",
+  "created_at": "2026-09-09T13:47:33.430643+00:00",
+  "input_source": "ArcGIS Sentinel2_10m_LandCover",
+  "observed_years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "canonical_resolution_m": 100,
+  "common_valid_pixel_count": 79775,
+  "hard_exclusion_pixel_counts": {
+    "2022": 28477,
+    "2023": 28601,
+    "2024": 28618,
+    "2025": 28618
+  },
+  "static_exclusion_recovered_from": "v1 hard masks minus v1 Dynamic World water/wetland labels",
+  "artifacts": {
+    "artifacts/bundle/common_valid_mask_100m.tif": "041f093c631a30453ab684371f5cef6091fded4646d41d61496ea4289830ea5b",
+    "artifacts/bundle/hard_exclusion_2022_100m.tif": "7c93f94c918d48ab4ce16e5bbf2c90f537bbfa1118af4586d4cefa4e496e6748",
+    "artifacts/bundle/hard_exclusion_2023_100m.tif": "c2a2b9bd597ff84dc70c357eb68cdbcfb76b0461af880387adda7af62e274580",
+    "artifacts/bundle/hard_exclusion_2024_100m.tif": "75b955c0dad6b1501ee184bf88af1e0fa66c3de55716f4be58e41fd3e577e0c1",
+    "artifacts/bundle/hard_exclusion_2025_100m.tif": "1c2d2901e08cea761f2ddac7ef2b9848e9c772b0ffb162dbb80f097409beca9a",
+    "artifacts/bundle/reliability_2022_2023_100m.tif": "ac6e8616f5109a3dfc488ebe21f47af5359c77b5ef5673a626e24453c7a3eba3",
+    "artifacts/bundle/reliability_2023_2024_100m.tif": "847969ce78b6534ccfa8b948b0428fb7341c17a5ab5d76e7538cd1eb193e2d23",
+    "artifacts/bundle/reliability_2024_2025_100m.tif": "c75960ef0525c05cb2ace2cc33e614601024728ac0155d08f043c6f96e8edbe4"
+  }
+}

@@ -1,0 +1,43 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,longtable,array}
+\usepackage{calc}
+\usepackage{graphicx}
+\graphicspath{{../../}{../}{}}
+\usepackage[font=small,labelfont=bf,labelsep=period]{caption}
+\usepackage{microtype}
+\microtypesetup{expansion=false}
+\usepackage[hidelinks]{hyperref}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\setstretch{1.16}
+\setcounter{secnumdepth}{0}
+\newcounter{none}
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\sloppy
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.18}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\LTleft}{\fill}
+\setlength{\LTright}{\fill}
+\AtBeginEnvironment{longtable}{\small\setlength{\tabcolsep}{3.2pt}\renewcommand{\arraystretch}{1.14}}
+\AtBeginEnvironment{figure}{\centering\captionsetup{skip=7pt}}
+\newcommand{\pandocbounded}[1]{\resizebox{\linewidth}{!}{#1}}
+\newcommand{\FloatBarrier}{\clearpage}
+\makeatletter
+\renewcommand{\fps@figure}{htbp}
+\makeatother
+\hypersetup{
+  pdftitle={Auditing constrained geospatial allocation under annual land-cover product uncertainty},
+  pdfauthor={}
+}
+\title{Auditing constrained geospatial allocation under annual land-cover product uncertainty}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\input{manuscript_anonymous_pandoc.tex}
+\end{document}

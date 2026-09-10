@@ -1,0 +1,2502 @@
+{
+  "schema": "gwm.abu_dhabi_v2.reproducibility_check.v1",
+  "benchmark_id": "abu-dhabi-land-use-v2",
+  "created_at": "2026-09-10T10:46:06.055709+00:00",
+  "status": "PASS",
+  "python": "3.11.15",
+  "manifests": [
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/MANIFEST.json",
+      "exists": true,
+      "schema": "gwm.abu_dhabi_v2.reproducibility_inputs.v1",
+      "record_count": 170,
+      "records": [
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/environment.json",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/README.md",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/__init__.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/analyze_arcgis_v2.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/analyze_product_robustness.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/abu_dhabi_city_100m_mask.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/manifest.json",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2017_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2018_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2019_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2020_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2021_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2022_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2023_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2024_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2025_10m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2017/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2017/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2018/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2018/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2019/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2019/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2020/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2020/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2021/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2021/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2022/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2022/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2023/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2023/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2024/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2024/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2025/tile_1.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2025/tile_2.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/allocation_actions.json",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/common_valid_mask_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/reliability_2022_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/reliability_2023_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/reliability_2024_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_00_07_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_08_15_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_16_23_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_24_31_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_32_39_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_40_47_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_48_55_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_56_63_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/constraints/esa_worldcover_2021_water_ecological_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/terrain/copernicus_dem_2024_1_slope_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2017_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2018_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2019_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2020_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2021_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2022_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2023_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2024_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2025_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/osm/road_accessibility_100m.tif",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/build_arcgis_bundle.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/build_bundle.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/bundle_manifest_arcgis.json",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/compile_comparison.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/compile_planning.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/contract.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/export_native_10m_observed_change.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/export_planning_change_polygons.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/export_shapefiles_arcgis_v2.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/grid_profile.json",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/materialize_arcgis_sentinel2_landcover.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/materialize_gee_2025_drivers.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/paper58_runtime.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/planning.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/planning_scenario_report_arcgis_2026_2031.json",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/planning_scenarios_arcgis_2025_2031.json",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/render_planning_map.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/reproduce.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/run_arcgis_historical_backtest.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/run_geosos_flus.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/run_geospatial_kernel.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/run_mechanism_ablations.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/run_paper58_abu_dhabi.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/run_planning_scenarios.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/run_rolling_backtest.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/shared.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/source/abu_dhabi_city_osm_r4479763.geojson",
+          "role": "public_input",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/train_arcgis_geofm_ldn.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/vendor/flus_console",
+          "role": "model_asset",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "data_agent/uwm/geospatial_kernel/__init__.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "data_agent/uwm/geospatial_kernel/runtime.py",
+          "role": "code",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "manuscript/build_submission_package.py",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "manuscript/lup_submission.tex",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "manuscript/main.tex",
+          "role": "configuration",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        }
+      ],
+      "ok": true
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/PUBLICATION_OUTPUTS.json",
+      "exists": true,
+      "schema": "gwm.abu_dhabi_v2.publication_outputs.v1",
+      "record_count": 181,
+      "records": [
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_v2_historical_backtest/report.json",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/dynamic_world_matched_backtest/report.json",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/planning_scenario_report_arcgis_2026_2031.json",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2026.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2027.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2028.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2029.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2030.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2031.tif",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/historical_backtest_metrics.csv",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/historical_backtest_rankings.csv",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/product_robustness_summary.json",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/product_robustness_summary.md",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/source_agreement.csv",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/temporal_product_diagnostics.csv",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/results_summary.json",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/source_comparison.json",
+          "role": "report",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/manifest.json",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2026_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2027_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2028_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2029_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2030_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2031_changes.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/arcgis_observed_2024_2025_native10m.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geosos_flus_compact_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geosos_flus_ecological_priority_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geosos_flus_outward_growth_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geospatial_kernel_compact_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geospatial_kernel_ecological_priority_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geospatial_kernel_outward_growth_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/paper58_compact_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/paper58_ecological_priority_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/paper58_outward_growth_changes_2025_2031.gpkg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.cpg",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.dbf",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.prj",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.shp",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.shx",
+          "role": "delivery",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "figures/fig04_product_robustness.pdf",
+          "role": "manuscript_evidence",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "figures/fig04_product_robustness.png",
+          "role": "manuscript_evidence",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "figures/fig04_product_robustness.svg",
+          "role": "manuscript_evidence",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "manuscript/manuscript.md",
+          "role": "manuscript_evidence",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "manuscript/source_data_fig04_product_robustness.csv",
+          "role": "manuscript_evidence",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        },
+        {
+          "path": "manuscript/supplementary_table_S6_product_robustness.md",
+          "role": "manuscript_evidence",
+          "exists": true,
+          "bytes_ok": true,
+          "sha256_ok": true
+        }
+      ],
+      "ok": true
+    }
+  ],
+  "core_reports": {
+    "arcgis_backtest": {
+      "exists": true,
+      "status": "complete",
+      "complete": true
+    },
+    "dynamic_world_matched_backtest": {
+      "exists": true,
+      "status": "complete",
+      "complete": true
+    },
+    "cross_product_summary": {
+      "exists": true,
+      "status": "complete",
+      "complete": true
+    }
+  },
+  "claim_boundary": "PASS verifies the declared public-data v2 archive and frozen outputs. It does not assert that either public land-cover product is authoritative Abu Dhabi land-use truth."
+}

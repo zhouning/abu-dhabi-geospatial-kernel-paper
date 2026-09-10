@@ -1,0 +1,1199 @@
+{
+  "schema": "gwm.abu_dhabi_v2.reproducibility_inputs.v1",
+  "benchmark_id": "abu-dhabi-land-use-v2",
+  "repository_root": ".",
+  "scope": "Immutable public inputs, model assets, configurations and code required for rerun.",
+  "generated_by": "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py",
+  "records": [
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 9905,
+      "sha256": "42289e965921aea64a547659ad80f2f867f34741e4d3455e6249ec931aa50298",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 9223,
+      "sha256": "51d5cb5bf6ffa1af6b6e66f8432984e29c3335338991f286ae605d7e87ecdf9c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 9773,
+      "sha256": "e80027491200b14a652b646e3485dadecd233330fb828bbce35277b679e561f8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 10195,
+      "sha256": "fd33fd7970ade44ee63b9ac9262fc7d0ae7c879a6a6d84ff1210c3a4f175c1cc",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 9567,
+      "sha256": "4368e74c8bf4b2a508bb651bac88937433b2c6f379fc2b78bc097b46766671d5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 9971,
+      "sha256": "9053048177fa8c4633a5215f9480b9c8141ce7bedf63a26e7cea61d386b93589",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 11107,
+      "sha256": "b1e95f035b010b07990557e4f9543e7d630107148e7fb70a99c5ef0c0820d997",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 12093,
+      "sha256": "4249304d306648d50d77b1d2bf9b90b9604aa26b494e4df5188835536aff77ba",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 360559,
+      "sha256": "0efe96fdd2a3a384bdc48116b29e82a52319d4962b9a49268c82b063bc690c75",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 373703,
+      "sha256": "ea4ae49e1517aecd1e9fcebd34132fa26c317da85a144e4f0705169aff2bf46b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 370761,
+      "sha256": "0e3653d2f39e79cad3aa840a43feeb7ef61cde97ac0e4c38b87786ad3de36264",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 378215,
+      "sha256": "fd83341796bb1b881f66555cfacf6f6ebc3543d8243b2ac8a8a221067dffaeb3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 371855,
+      "sha256": "25c92566ecb3f5aa68b30753aaf666768c73c2017f46f236461aba6d48663806",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 371575,
+      "sha256": "021432ae6f5faca33db37506dc63d00a110a94027cf2f18e3db66b42bb9c7533",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 373983,
+      "sha256": "4c201f87750dc1e939d42ab952bd52eb53f8e2b63a663014253cb29ba5ba5203",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/artifacts/gee/land_cover/land_cover_quality_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 375751,
+      "sha256": "89d874df784401b28ce6ff29161d751512162e782fea72aa92b24c52378956a7",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/environment.json",
+      "role": "configuration",
+      "bytes": 1094,
+      "sha256": "4ade59f39de447974f6f5ac67bd550d182d5d77804818014da4e808218f0ff26",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt",
+      "role": "configuration",
+      "bytes": 1725,
+      "sha256": "f77331cb034bf2cf8403bb1269b347a8ddc584e6a0c59236c8d3df89db4a4505",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/README.md",
+      "role": "configuration",
+      "bytes": 6742,
+      "sha256": "d66fd5184db7a3a931d4812f48d6e19f286e8676e41609ecba03cd05f4e0c4c8",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/__init__.py",
+      "role": "code",
+      "bytes": 72,
+      "sha256": "5809bb625ce43cfa1d41099f21679f00f3644a99c5a44a74fa1fb8dc9c668213",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/analyze_arcgis_v2.py",
+      "role": "code",
+      "bytes": 8792,
+      "sha256": "61e96d2d8edd39493752b5e11c8e124cb3f205e0d453af2ce74ef68bf4aa229b",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/analyze_product_robustness.py",
+      "role": "code",
+      "bytes": 29305,
+      "sha256": "cf2964ffafb45e60205d415abdb251d98d583624f09e568bd4dd8e4c20b7957c",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/abu_dhabi_city_100m_mask.tif",
+      "role": "public_input",
+      "bytes": 2800,
+      "sha256": "8dd5a6c6d99658df021ea438ae2b61ac9b579ab040ea3d465d407daf40c94582",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 12428,
+      "sha256": "a035a46266fba7e3e189bc21ebc1f5f7186461af37931f5481c9c6460f4e9481",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 12344,
+      "sha256": "676ecc963068bcacf0a9c71620d6970f7e79a7adbf9673d407fd0066c1eecc2f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 12590,
+      "sha256": "9d07e5bba494140c0d4524fad8c34909fc8f4342b65eeb9655350dfd78dee25a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 12436,
+      "sha256": "ee9f4b5ab748a5e690b55ab3b010e5f6141e35791f8b3a55eda85f3716a3665b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 12312,
+      "sha256": "149c71c8cff44aae1155f5cf132d8b881a41b39f383c4c6c62a3582c3f82a989",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 12682,
+      "sha256": "4d1a1b37b77bc079570e965b9f962cbdeabe3414234f1f803144a375471986e1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 12736,
+      "sha256": "06e698eff2b67fdfacbc8b817973f9a659bba9a510b1fc0486f53a964ad94f21",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 12530,
+      "sha256": "bfabf1188f547f6b9a9165a32c847e8ce1f473aefdb43f3dd1b50447902f2ae0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 12702,
+      "sha256": "1d8d67ac962790a25f2b4e7422f5195dad44c28de71d773942c31e390710770f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 66709,
+      "sha256": "d3ded4fa3e9bcca11cfd08e6a5ea0c7ea4bf4157f065039ba92dd27d1fa3a841",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 66433,
+      "sha256": "c3dec1d25bed6d9ee481747bb84a24077e0e92e598c5ea304624f59f95dfb4fb",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 66849,
+      "sha256": "eec2a323419100db586644288436e2b5983411535b373764142edd26c044dc70",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 67893,
+      "sha256": "3f7cd23f43c3c535b4d9cdf018debb12bf286749b53199a6b4d7eef6964c18d6",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 66193,
+      "sha256": "097ea0282e1775c28b7350efd4ba190cc3ab6af8df6529d2551e1243d59d6e3e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 66483,
+      "sha256": "d793392fe0508590b38e53fdf58994d3e2247f94d4fea0396da20739e257ff37",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 66095,
+      "sha256": "015785094dd385bcb38d55c47157a706a66a1897233f10e3c10267729961b87c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 65775,
+      "sha256": "16ff1eda3e153dcde6c02741da5a8bfe4d4f0b6e029269e9873d5054f5108737",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover/land_cover_quality_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 66749,
+      "sha256": "9da6d93797d8a2f1baacf835d41e44b758f280fd7e2d86896d21a2046f4db48e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 12480,
+      "sha256": "dc2d56ac8bb4a2636f7a595e32d99c600b07626a36f712e075a8febc24f44b07",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 12398,
+      "sha256": "5c7dc2c0517892ad8a8948069d31ecb760189c0ab57b4ee73d5e1dcfa9cc91b5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 12638,
+      "sha256": "9c4586227cffe627580fc68ec40f87843d35a7f4a3e68d49b0f32f8169b77784",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 12458,
+      "sha256": "ef71509c3bfa24ef736df08a522f3dac578bdbb50bc11a2f4908b7ed3d972f1f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 12358,
+      "sha256": "7e242086b0d98c09fa527984d21898691798255f9b2ac395ff6e9161b1644944",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 12742,
+      "sha256": "9fbc433247eb978749f4bff34541e7f3cd682b03fdcefef07f3fce393f210899",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 12806,
+      "sha256": "c1446d1e943183bc6093ae12b0f33be589b94daf9079dcf4d031ef0eaf1ce9ab",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 12586,
+      "sha256": "027d58b8f449aba1ccfadcf6d86542305967e4be66170c319c2e29f777f3a3a3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/land_cover_raw/land_cover_raw_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 12754,
+      "sha256": "a3acefdb352271fcda84c39e9e37db85e6bdaf8f4c6772c33ee9cb9fec032339",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/manifest.json",
+      "role": "public_input",
+      "bytes": 12566,
+      "sha256": "0c51c2adb6e0f3b00af05a9b6a18c35d40fd4512250c18271f009248cf3921d4",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2017_10m.tif",
+      "role": "public_input",
+      "bytes": 268049,
+      "sha256": "cf70835c32d60c5f17745f39904f5a81f55b0ac32b3fd7971cea8c88d370760f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2018_10m.tif",
+      "role": "public_input",
+      "bytes": 268825,
+      "sha256": "7f717eb4be655a7d4f9908c32a94b56e6934aeb65f8a82ae113d51ba4d14d0ed",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2019_10m.tif",
+      "role": "public_input",
+      "bytes": 272173,
+      "sha256": "9a07b641e2289366863068b1a75aa92df9adec406c357d825175ba233abfd6c6",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2020_10m.tif",
+      "role": "public_input",
+      "bytes": 280291,
+      "sha256": "00c51f3fd0d806f05a91da60a8e914e13ff51c18a4108d299cef3db71e2711f5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2021_10m.tif",
+      "role": "public_input",
+      "bytes": 272947,
+      "sha256": "0a0103949c1530016307d32bdb9c5c2e25a83156dc38183cb1a979e7d3e54725",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2022_10m.tif",
+      "role": "public_input",
+      "bytes": 267271,
+      "sha256": "03808d74847255cbe4e42664fbbc6c46817202b2e466faa5434c093df6e421b8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2023_10m.tif",
+      "role": "public_input",
+      "bytes": 265733,
+      "sha256": "bad244f2a7db2701c2139b63608c011cf27126fb780b161a8d5b77a0f4aa341e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2024_10m.tif",
+      "role": "public_input",
+      "bytes": 264301,
+      "sha256": "32443725d2a26ff598c130a6b8bae41eeaf8cd7aa46727e436bb76784ced70c3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/native/arcgis_sentinel2_landcover_2025_10m.tif",
+      "role": "public_input",
+      "bytes": 272683,
+      "sha256": "e7a1323c8cc969b8fb3c4bfff7c39c8b7a62de382c6fe50ee961bcd2843b49ce",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2017/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "833de3435eb2e817f3e36549cb8f28d7e48f9ad60de48d8979d278ddc8615126",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2017/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "750e08949a53f90f36d9ea5e26fde834398810111bc66c009902c67f597e901f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2018/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "84d1742455336e0312ed3c776b723f29c9602c27cbf7a20f2b3c3e3de721a5c1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2018/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "7754cbb40b77d5fd26f6d836bb552f8dbae0b35570ced92e16ca4f2716c9d2a0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2019/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "b8196598e3ea2bf7e42dd5ef61420023ac3d3a63c2e090144594819ea59b3a01",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2019/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "7ea04b43da7c48118aca3882959e37184cb4f6ee9b2d36d4dfda5c5cfdbc6fda",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2020/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "50bba829f8c29599090fcbfc8d04e67a03676ee1382e24da74d203bfbb2f2422",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2020/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "d94146e6d5c03eb66718a67116b32b664ce9e2dc408da7e2fd5cdb4729a904ef",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2021/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "6ec52700391090f9989cd45770fe541eeb62bfeb8e0fc8b3c2dbcdd844d29fae",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2021/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "6f8f3b3b6a4f3e4d26df7962f20e645a90c0d10541f149771c68b57e78930f41",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2022/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "f9dc37469f28aae7a85d58ec7583f5295b5baf0060849a85d1ea5b4b77087e13",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2022/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "d6578aa8ccfb0e3ea7124682bf005939d463e798b16bd47125291653e85d5c13",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2023/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "eeff66293c075ea6a42702b150c93bb1e92b9db2934194907e9bacc7906fbec1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2023/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "41741c65a2f421eb288ed804bbbb5fff66b4ad8089752d05beee04415058758c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2024/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "95a41cd7a5011a3c32b43a4499a9838e7b0034e684711aab837b2b22668ff232",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2024/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "576a76ea51e1f49748cad72010239e4a45fa3b94de9161c027f65d823a68c4bb",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2025/tile_1.tif",
+      "role": "public_input",
+      "bytes": 15211049,
+      "sha256": "113598fa2afceac40ae712a13a46be4281161198a9bb35fc11e8b20f4bfe48fb",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_sentinel2_landcover/tiles/2025/tile_2.tif",
+      "role": "public_input",
+      "bytes": 2852989,
+      "sha256": "d95b1f0de22fb399ae558aa88f41f2941375eeec99906dbaa782c19dce7eb7c5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/allocation_actions.json",
+      "role": "public_input",
+      "bytes": 1449,
+      "sha256": "e530bc900d009feeef850c4460f7015173abbc8e501bb5bddd0a0790d8747778",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/common_valid_mask_100m.tif",
+      "role": "public_input",
+      "bytes": 3140,
+      "sha256": "041f093c631a30453ab684371f5cef6091fded4646d41d61496ea4289830ea5b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 6029,
+      "sha256": "7c93f94c918d48ab4ce16e5bbf2c90f537bbfa1118af4586d4cefa4e496e6748",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 6051,
+      "sha256": "c2a2b9bd597ff84dc70c357eb68cdbcfb76b0461af880387adda7af62e274580",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 6049,
+      "sha256": "75b955c0dad6b1501ee184bf88af1e0fa66c3de55716f4be58e41fd3e577e0c1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/hard_exclusion_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 6057,
+      "sha256": "1c2d2901e08cea761f2ddac7ef2b9848e9c772b0ffb162dbb80f097409beca9a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/reliability_2022_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 4379,
+      "sha256": "ac6e8616f5109a3dfc488ebe21f47af5359c77b5ef5673a626e24453c7a3eba3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/reliability_2023_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 4411,
+      "sha256": "847969ce78b6534ccfa8b948b0428fb7341c17a5ab5d76e7538cd1eb193e2d23",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/bundle/reliability_2024_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 4393,
+      "sha256": "c75960ef0525c05cb2ace2cc33e614601024728ac0155d08f043c6f96e8edbe4",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 19100454,
+      "sha256": "faea516c30b213631c1002ba91232e05eeebb052747a79a4a50e128873894073",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 19087858,
+      "sha256": "a333223e29e405d5800885ca5365b05e23140d5387fe08de40d1a913cd0f1014",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 19097688,
+      "sha256": "7c81312127ecaaee3e1ecad54067f8c35655bf22207462e4ff910c1dcaa27f3c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 19086578,
+      "sha256": "89169645eef65090e99298bae1b38e2b3a33238684433c6f8574a6d8253bae9b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 19098660,
+      "sha256": "059c42c21e0f2de7ad759ca2d31a5745118b6d44cbe7353944742200b0d107d8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 19095504,
+      "sha256": "1affc98c5f2902407c6643f6499c374f21a2da1b70c16988ab21fb80fd640970",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 19094928,
+      "sha256": "4699a65a1102bcc24ae551f947efae4b677bfa955fb2fb1cb95d58d99a9a0101",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 19092716,
+      "sha256": "2ec5050a0140e4b83ff90cde05a081a75265bc74404e84567eca2b52475625d8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/alphaearth_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 19088670,
+      "sha256": "37e81113c36c33524646aa2ca00572637e805dea6e2a0a09da9fcc0f950e9b72",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_00_07_100m.tif",
+      "role": "public_input",
+      "bytes": 2374730,
+      "sha256": "a85339957fab29ceaa97810ee4f42c9bc9eb9beb4c410a9082bf55f9651ebb48",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_08_15_100m.tif",
+      "role": "public_input",
+      "bytes": 2378958,
+      "sha256": "8e67fef2da3c21b199299c78b04b7d328ef9bdc2e33260ab1e3907cc86d39f31",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_16_23_100m.tif",
+      "role": "public_input",
+      "bytes": 2383178,
+      "sha256": "b6183e90f2bba984d91ee9ca233f75ddf14126238649a43dbb8dc8b9d04978de",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_24_31_100m.tif",
+      "role": "public_input",
+      "bytes": 2383744,
+      "sha256": "7951d1c8628a71e8c5353c272c4baeedfc1a59facf686f0b5b58456001bd7ad3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_32_39_100m.tif",
+      "role": "public_input",
+      "bytes": 2378994,
+      "sha256": "8b8425fe684e473820bd3061d70650a7ab3e0ae5f2f606f74b8660cae8acdb11",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_40_47_100m.tif",
+      "role": "public_input",
+      "bytes": 2389444,
+      "sha256": "11fef43e3e624270f90e603dc832118db8ba0df71a446704a871660b31fd7719",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_48_55_100m.tif",
+      "role": "public_input",
+      "bytes": 2385334,
+      "sha256": "15e178cc99289e9de51cd5eb2b0bb994a9db754f08d98e735ab7dddec71f78da",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/alphaearth/chunks/alphaearth_2025_56_63_100m.tif",
+      "role": "public_input",
+      "bytes": 2382568,
+      "sha256": "903704b09d2e9621dfbcfa261dab1462b4bd1954b13c8f19de6796aad884110e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/constraints/esa_worldcover_2021_water_ecological_100m.tif",
+      "role": "public_input",
+      "bytes": 8420,
+      "sha256": "24c5939f95a0abb07b5e98f3c31c5adaa5a1a10b15442d8bb4d398b0b732c3a0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 12428,
+      "sha256": "a035a46266fba7e3e189bc21ebc1f5f7186461af37931f5481c9c6460f4e9481",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 12344,
+      "sha256": "676ecc963068bcacf0a9c71620d6970f7e79a7adbf9673d407fd0066c1eecc2f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 12590,
+      "sha256": "9d07e5bba494140c0d4524fad8c34909fc8f4342b65eeb9655350dfd78dee25a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 12436,
+      "sha256": "ee9f4b5ab748a5e690b55ab3b010e5f6141e35791f8b3a55eda85f3716a3665b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 12312,
+      "sha256": "149c71c8cff44aae1155f5cf132d8b881a41b39f383c4c6c62a3582c3f82a989",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 12682,
+      "sha256": "4d1a1b37b77bc079570e965b9f962cbdeabe3414234f1f803144a375471986e1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 12736,
+      "sha256": "06e698eff2b67fdfacbc8b817973f9a659bba9a510b1fc0486f53a964ad94f21",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 12530,
+      "sha256": "bfabf1188f547f6b9a9165a32c847e8ce1f473aefdb43f3dd1b50447902f2ae0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 12702,
+      "sha256": "1d8d67ac962790a25f2b4e7422f5195dad44c28de71d773942c31e390710770f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 66709,
+      "sha256": "d3ded4fa3e9bcca11cfd08e6a5ea0c7ea4bf4157f065039ba92dd27d1fa3a841",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 66433,
+      "sha256": "c3dec1d25bed6d9ee481747bb84a24077e0e92e598c5ea304624f59f95dfb4fb",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 66849,
+      "sha256": "eec2a323419100db586644288436e2b5983411535b373764142edd26c044dc70",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 67893,
+      "sha256": "3f7cd23f43c3c535b4d9cdf018debb12bf286749b53199a6b4d7eef6964c18d6",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 66193,
+      "sha256": "097ea0282e1775c28b7350efd4ba190cc3ab6af8df6529d2551e1243d59d6e3e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 66483,
+      "sha256": "d793392fe0508590b38e53fdf58994d3e2247f94d4fea0396da20739e257ff37",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 66095,
+      "sha256": "015785094dd385bcb38d55c47157a706a66a1897233f10e3c10267729961b87c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 65775,
+      "sha256": "16ff1eda3e153dcde6c02741da5a8bfe4d4f0b6e029269e9873d5054f5108737",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/land_cover/land_cover_quality_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 66749,
+      "sha256": "9da6d93797d8a2f1baacf835d41e44b758f280fd7e2d86896d21a2046f4db48e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/terrain/copernicus_dem_2024_1_slope_100m.tif",
+      "role": "public_input",
+      "bytes": 514392,
+      "sha256": "fecc3c2bfef7ce076aa56cbb902ce4e1caa9c5c33ed3719e9c49bb99fbd5b903",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2017_100m.tif",
+      "role": "public_input",
+      "bytes": 26683,
+      "sha256": "39bf4ac9dfdc581c6df7031c720543ff94cc354696c6e9bdf430ff034f9512f0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2018_100m.tif",
+      "role": "public_input",
+      "bytes": 26313,
+      "sha256": "219750d3a62a4f830d7879d4f44581f116e36043c7c4b19bae358233a7f2dcd5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2019_100m.tif",
+      "role": "public_input",
+      "bytes": 26419,
+      "sha256": "718fa3a6d323bf82e1f0886c2da2f30b9be371504b3e812f41bc6c4209a09942",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2020_100m.tif",
+      "role": "public_input",
+      "bytes": 26353,
+      "sha256": "e77969fe443fcf0fe316439cc82f5871d51622fa5ccb62c6438c715ed7a3e22a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2021_100m.tif",
+      "role": "public_input",
+      "bytes": 26309,
+      "sha256": "8bd896d9f522348518dac188e462ca6ffe9b9b6af1b849bf4838688af9956e0a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2022_100m.tif",
+      "role": "public_input",
+      "bytes": 26301,
+      "sha256": "f39cba97ab908fc715e1ad36bd083ffb5f1737ef856623ed959f480855d6db70",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2023_100m.tif",
+      "role": "public_input",
+      "bytes": 26333,
+      "sha256": "25b8a33e667d14b9a9401591d6dee83b636e76572291a460a4fb9baaa6a3f5fa",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2024_100m.tif",
+      "role": "public_input",
+      "bytes": 26333,
+      "sha256": "a341bc2bc22febbe5bf58f9081fdeeddd0dd3b968a49f3a03d9f25e2c18d1586",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/gee/viirs/viirs_2025_100m.tif",
+      "role": "public_input",
+      "bytes": 26615,
+      "sha256": "5bcb4c8c5d5000e4efa44a39a30ca53a02a0d35c3d0b6c58d0cd132e9c591196",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/osm/road_accessibility_100m.tif",
+      "role": "public_input",
+      "bytes": 128596,
+      "sha256": "f4360003cfaf04ee8e309e5e2892a6fea11c7b61b90a3ba323a7597ffa673a06",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/build_arcgis_bundle.py",
+      "role": "code",
+      "bytes": 7116,
+      "sha256": "55e83bda6300abe1702835dfa5d32a30cea7fa9172f7cf237c912968afcb0f9d",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/build_bundle.py",
+      "role": "code",
+      "bytes": 9610,
+      "sha256": "426c531311a2a2e56486f2668715a46b7d153b83c7ca6b79ea9495c616ad682f",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/bundle_manifest_arcgis.json",
+      "role": "configuration",
+      "bytes": 1550,
+      "sha256": "fc32f3939cf519724803f02d1310b9e850350b1ea72bd0aa38d3dc0fada8d0f7",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/compile_comparison.py",
+      "role": "code",
+      "bytes": 36095,
+      "sha256": "6a59a5320db2504c646c1b18eff1e98a83f05f8a626963a2c246095d5142700c",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/compile_planning.py",
+      "role": "code",
+      "bytes": 16974,
+      "sha256": "9052dbd4f14179e07cb4acaa4dd3e136a5e52325a74986c80455b9d762e54913",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/contract.py",
+      "role": "code",
+      "bytes": 5674,
+      "sha256": "4caaa3d5b4b088af9e424f6c39c82e8995f12a4b2d2137f454fceb4eb08fb865",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/export_native_10m_observed_change.py",
+      "role": "code",
+      "bytes": 1549,
+      "sha256": "dacbeffa363115bbcf44e5b073d797f3d93fcc773ef2a35c48a524524795c81c",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/export_planning_change_polygons.py",
+      "role": "code",
+      "bytes": 20126,
+      "sha256": "1af0e322f9ec825b460bc50d01f417c6e66f4163e9995d803e6b59f08bc20437",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/export_shapefiles_arcgis_v2.py",
+      "role": "code",
+      "bytes": 1254,
+      "sha256": "54a382b041b1d6a02f69a9887254626d08475b736442d95a8454e379af522451",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/grid_profile.json",
+      "role": "configuration",
+      "bytes": 885,
+      "sha256": "d2bb0b757db5e7996e1f0fa5fb7ec66f07fc4c98253f391ac1db2046536bb94d",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/materialize_arcgis_sentinel2_landcover.py",
+      "role": "code",
+      "bytes": 16922,
+      "sha256": "43482da3d03a08e807dcc2cc82023aab9ed8f6097e70c895e57868c5777718a8",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/materialize_gee_2025_drivers.py",
+      "role": "code",
+      "bytes": 2040,
+      "sha256": "25e90315c1ecd3aa18191a7ec21958007dd207c2d8281671c2e2f6071928aa89",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/paper58_runtime.py",
+      "role": "code",
+      "bytes": 3322,
+      "sha256": "68b64d094d349d334e63a6597f3229c40d1099ed315664ee38098ee5c3a2bbf5",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/planning.py",
+      "role": "code",
+      "bytes": 10158,
+      "sha256": "e95d5342bded3b7dc6f1e11236a13cb534028c261ade606763369e6788c0560a",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/planning_scenario_report_arcgis_2026_2031.json",
+      "role": "configuration",
+      "bytes": 420212,
+      "sha256": "b2ef55c8bd02f234afaa9dd280569766b07304c5f89eadf8cd25b2835c206b5e",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/planning_scenarios_arcgis_2025_2031.json",
+      "role": "configuration",
+      "bytes": 3372,
+      "sha256": "feccdeb2fd6e9223b671b41a0961db1bd3736f9ea0e33fc50cf250036c9ce348",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/render_planning_map.py",
+      "role": "code",
+      "bytes": 5329,
+      "sha256": "92ec6dd9f7406c3521ebc71ed577675d44db406c1259b2bdc4936354be9147ba",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py",
+      "role": "code",
+      "bytes": 7427,
+      "sha256": "14d922c6033e7d02cb0a5681102b068c4abee86772dc3f8f2be1aacadac7d10f",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/reproduce.py",
+      "role": "code",
+      "bytes": 3259,
+      "sha256": "462fc919bbbb1c05f033c78d15a244ad443c4bbb6ae4390caca5835dd6669947",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py",
+      "role": "code",
+      "bytes": 3956,
+      "sha256": "c390dd1abaab9cb295a7f8a78fbc629031b7fa9188653db75955c3b725da0e33",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/run_arcgis_historical_backtest.py",
+      "role": "code",
+      "bytes": 24713,
+      "sha256": "5a03abaffd2ad973e3004c2f95c3b8685ea214b6467ee53cebda9aee009c4b7a",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/run_geosos_flus.py",
+      "role": "code",
+      "bytes": 24660,
+      "sha256": "21947bf633099208067ce0d35dddc6a88c7d823b9f64db5234c16dbe0c7ad892",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/run_geospatial_kernel.py",
+      "role": "code",
+      "bytes": 20523,
+      "sha256": "0c762d439b2258600fc5ec9151e6938f69ade2f0e1b795a78eb6bf06a88f5bc6",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/run_mechanism_ablations.py",
+      "role": "code",
+      "bytes": 21419,
+      "sha256": "21c8fd8ae79465b5ed4a24f70dbe74352493cad643540c22810129d32b639fa2",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/run_paper58_abu_dhabi.py",
+      "role": "code",
+      "bytes": 24535,
+      "sha256": "84fbb06dcf0917f9d95ae41dd73b71cb2b2a1d09cd517b7a8eccf36bcbb3de7a",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/run_planning_scenarios.py",
+      "role": "code",
+      "bytes": 21360,
+      "sha256": "c7fdd81357007b53cf76d7bebc1ea07ee4f2a695309bda355a00a90956399cd0",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/run_rolling_backtest.py",
+      "role": "code",
+      "bytes": 14895,
+      "sha256": "ba052bd42ec998e19152dcdb1ed6e181f08c4c9c7677ddbb3d35e744f992d58f",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/shared.py",
+      "role": "code",
+      "bytes": 23804,
+      "sha256": "53b15653bfeca06401685395628d086d4f8d69d3bfb8e7806f5509c7ef75d6cd",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/source/abu_dhabi_city_osm_r4479763.geojson",
+      "role": "public_input",
+      "bytes": 33139,
+      "sha256": "988cec36a274992ba443d5a1666de22a7cab4fb1961a1fae38b8ec9f604ac454",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/train_arcgis_geofm_ldn.py",
+      "role": "code",
+      "bytes": 2407,
+      "sha256": "97230a94973c9547c61776937fa1d19b581b5dcd424d19bb69bbc842523353ea",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/vendor/flus_console",
+      "role": "model_asset",
+      "bytes": 2558784,
+      "sha256": "9839ce50950442d4ef49e4d2129a1ba27735e1955c2d4975ae51067c1c3c9964",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "data_agent/uwm/geospatial_kernel/__init__.py",
+      "role": "code",
+      "bytes": 510,
+      "sha256": "770867db0bf170fbbd3b125af3bd6f9b48b591bb5f890c2257d55ad9f6cf639f",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "data_agent/uwm/geospatial_kernel/runtime.py",
+      "role": "code",
+      "bytes": 14683,
+      "sha256": "3deaaf8c2c1a64826e3e2a2c9aa6c1932e9fe345e24ce7299529b474cda5b272",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "manuscript/build_submission_package.py",
+      "role": "configuration",
+      "bytes": 8324,
+      "sha256": "b0126507b5c81c9b11b1a509fe9f0a3ca8c0507bcbdd674fb6d538eb4bde31cc",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "manuscript/lup_submission.tex",
+      "role": "configuration",
+      "bytes": 1435,
+      "sha256": "5b68ea7c5c43f1c5ce6f6cc9099052f7cf027c13343b0931717c9942a5a9e77e",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "manuscript/main.tex",
+      "role": "configuration",
+      "bytes": 1435,
+      "sha256": "5b68ea7c5c43f1c5ce6f6cc9099052f7cf027c13343b0931717c9942a5a9e77e",
+      "hash_mode": "text_lf_normalized"
+    }
+  ]
+}

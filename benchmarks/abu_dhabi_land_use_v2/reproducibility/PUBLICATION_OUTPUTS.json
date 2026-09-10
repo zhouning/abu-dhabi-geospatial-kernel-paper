@@ -1,0 +1,1276 @@
+{
+  "schema": "gwm.abu_dhabi_v2.publication_outputs.v1",
+  "benchmark_id": "abu-dhabi-land-use-v2",
+  "repository_root": ".",
+  "scope": "Reports, source data, figures and delivered v2 raster/vector products cited by the refreshed paper.",
+  "generated_by": "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py",
+  "records": [
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_v2_historical_backtest/report.json",
+      "role": "report",
+      "bytes": 411990,
+      "sha256": "d80d2e8ca640686a27cec24cba2ec178dd40ec654ec5f3fd3a63a12c0eb2bcbd",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/dynamic_world_matched_backtest/report.json",
+      "role": "report",
+      "bytes": 328554,
+      "sha256": "3da593405dd31eaa9221774bd21bb8f5973e1a1509d9cfd1ed35dc9653de04d5",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/planning_scenario_report_arcgis_2026_2031.json",
+      "role": "report",
+      "bytes": 420212,
+      "sha256": "b2ef55c8bd02f234afaa9dd280569766b07304c5f89eadf8cd25b2835c206b5e",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 10650,
+      "sha256": "8c32ecd8dc8628d20f27a32f649e3b1f70d22bd505c8a30cfcd8d0147f088c43",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 10550,
+      "sha256": "31af1b7ba2f56038771620689f25cf6d848d4fd2faee0628f19dea972ffbf968",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10588,
+      "sha256": "31251574cd8cef459e8dfcc3f6fe269fdb5eb32ee2bd864008076389abb60c4d",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 10554,
+      "sha256": "9a72385845cbc89d33dfb074dd692545de02f57df3e184fda456e5f2ea9c51d5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 10448,
+      "sha256": "04fc7304d8e29acd1345488784ff810b93e7404be85fb2d0297153905be88367",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/compact/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 10356,
+      "sha256": "55be2a54d3c13b2b00ea045c06dcb4145de3a8c939e568610694a7fdbf1ebc28",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 10688,
+      "sha256": "91c01ec4ce65091ee210dc9554fa81f1a30f620c239cb7724e5b35235b2fb8ff",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 10610,
+      "sha256": "fba1c6cd8e031c098378709b7da691c7910614a33c35dd1d9e55784825884ced",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10608,
+      "sha256": "054eccc5e326443a9329ea49f32906f33a98b921fd27c055b9e20b0b38e18c39",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 10594,
+      "sha256": "a0f7bb0b1964195b0dbed6c96b49415d6b552424fd2ff6c85d71000a14c6d8c3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 10572,
+      "sha256": "50cda7a957cf22b0729b51f2c612d4f0036427ea39264601641fc4f91b195b45",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/ecological_priority/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 10462,
+      "sha256": "4eb9195e5b075c6e7032b6cbf104bc3fe8df765a3918b8810a91df2bfb254c8c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 10587,
+      "sha256": "8ec34153e6b15d79bb910e58649b1bfb948d88edb03200e78099b4d0acf1155d",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 10517,
+      "sha256": "bb57353803a1fa59578582a5d50a50773e3df44f52ac485c72f997c42ce428a8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10451,
+      "sha256": "fd455498320b3a9ca1c4f5439616d71313e2c423345a6094eb28c44cc2b18f5a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 10225,
+      "sha256": "fb398525b083bcaace3f3ab77794cd2554df4aefb7ca58d77712abfbc5ccb649",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 10085,
+      "sha256": "dc5794a0bb3056a5300e82ff4eb72a7828f2f0c56cceea9d97d6265ae1697b8f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geosos_flus/outward_growth/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 10013,
+      "sha256": "020b94e5ac33d81e7ba4e2da8558141072347a57b2fcafc4e878c94532196f61",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 10728,
+      "sha256": "569faa6d32d098fd6b0b5fe3b749f7653e32db133e8aaa8ec137e7e48a2da892",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 10550,
+      "sha256": "6020f25978897c01639c81058dd3153902ab34225333b2aacc08a07c95670890",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10404,
+      "sha256": "697edd1b6019d151c078973c4f84356d9ef433ac40e885e67499fd8fd12c84fb",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 10264,
+      "sha256": "a408984c72723aa9300f0b161d417149bb13498ba3a69e59b8452b917ea9703d",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 10168,
+      "sha256": "39ffac689dbe3c6b79f9adc999dcc7250cc356b650893de5c8e6957cae49f1fe",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/compact/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 10084,
+      "sha256": "76fc651fb4d27e08a447956fe1abf90e983631c065feb7407804e561c6acdf9f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 10850,
+      "sha256": "40aae86866ca5c3696d29d1c0f4c5b467e91b02825fca0c20cd85a9d576bd32a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 10692,
+      "sha256": "19f9f431ddd0d5050cfa8a25488c2e7b991a793e6a56cba5475047c1e1e434d1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10574,
+      "sha256": "5e6690d3a2ea334db53d6e85e2a88c4391f83cd7386bbbb8cd9d566ac8eb68ff",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 10494,
+      "sha256": "c8f415891dbec84b119b3cd0c6b54235d35dedbce59243f774ae09b8e5ec3d65",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 10324,
+      "sha256": "1325799ea0c448ec1a77ffa3d5d7ec139b26dbe16d6e04cccc3879a460d0f083",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/ecological_priority/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 10246,
+      "sha256": "64ad37285dd180826158917ba68064bbace65fee7a48897455bcefe18308fa43",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 10575,
+      "sha256": "9a15fcd5f315ddb886ecf9d7886ab37e98e6c330821b42f6c0c8ff18faf461d0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 10325,
+      "sha256": "8a16b2f274dca87fd247dacf6fda789af67bd9ccd3a51a7eb7273c54b2de6c60",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10109,
+      "sha256": "294c8c096f4a96483b52beb39609a552d97551afa0a0e6e0d22273a703840978",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 9959,
+      "sha256": "125c55b0e66047a6af0d4b16702e1ac27f52160229ba7bdae92dd2d2b6dffb0d",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 9847,
+      "sha256": "f3f51a86a9fb099dc8076a064899b946e3c44fda7aabec3134394a835003c21d",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/geospatial_kernel/outward_growth/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 9811,
+      "sha256": "ea442c9ba4065c9710cd10ec9b292edd0b87262c56af8da3248053a7c8ce2deb",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 11094,
+      "sha256": "151a7b5cc1ab0a842dd32e8ce7ae1270ca2887b24c3a40cbc6595ea0a92150e6",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 11048,
+      "sha256": "69f83ff17c18a0e1c1ed7d7e61af39d76ddf363446429245c63df2e97e8a2cb8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10956,
+      "sha256": "dadbac57da6b3175b0a3fa275a5f475c7d00b61a018f166346fb6ad9aa3877cd",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 10868,
+      "sha256": "cd1fe198181ab4888e3129b735460c5161dc3f8693d019f1e0fdd3ce22a8eac4",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 10816,
+      "sha256": "c8599625527b4b815785a2fd173e00035cfa7f90071b6454d528763c5974a474",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/compact/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 10768,
+      "sha256": "eb8471a0adbfeedb3af66f2f4fbfba4f7cef6f752de718fac6ffad300fc3301c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 11070,
+      "sha256": "c5f2ab555d7ddeaad9ce9380b5fc24cde63aff62d6e6a9f92f7d117e2b0f33ca",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 11088,
+      "sha256": "970c91be94f0508fb494db472adc42f4a317195887c9f22774e9a5bf63f21753",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 11126,
+      "sha256": "828f44066496a304abfeb743f5e9c1a4923f8488c29070668f59b23634367552",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 11110,
+      "sha256": "a91aa00f7c4f9cd4fd72c62fad61bb50e5e08b8d3f49fab2096efd461e17bacc",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 11102,
+      "sha256": "6bd08633f50cbf7e1835c1363fed305bee280a20a898a69d719688a09b2d016f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/ecological_priority/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 11100,
+      "sha256": "23dc6433262ac6dd9edfd46a6a23f59efb82b5d59d1cb489b6ad7e6fb8ca4b27",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2026.tif",
+      "role": "delivery",
+      "bytes": 11137,
+      "sha256": "c30d2707dc85292c56fde2562adac05375083051b2511e14d57fd2801d92fbfc",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2027.tif",
+      "role": "delivery",
+      "bytes": 10997,
+      "sha256": "d0000ad4683c2e706ce6d8d9504738c725c72d4174f91ba1c1a451760dad5f53",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2028.tif",
+      "role": "delivery",
+      "bytes": 10779,
+      "sha256": "306ee50f88c84df6f1c66b40cec30ddb92a3f3f67c89ead5e0a23820d46a85b7",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2029.tif",
+      "role": "delivery",
+      "bytes": 10585,
+      "sha256": "660c928fe6ba6638b4aa8bf707ef6ce560a44120feb9a2cab3369866e310dd14",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2030.tif",
+      "role": "delivery",
+      "bytes": 10515,
+      "sha256": "1c88213b02ddf279472a5ac026886773e21294718bb85e1e865c81d2eb25d03f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/ensembles/paper58/outward_growth/prediction_2031.tif",
+      "role": "delivery",
+      "bytes": 10411,
+      "sha256": "5e05a094abd2a0b654fb8f9e9c86fbf892dfcb8e141765f7e2eaaa1412932f0f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/historical_backtest_metrics.csv",
+      "role": "report",
+      "bytes": 5794,
+      "sha256": "578bf61f05e0217df6c5efd253416a89df9ce95e7354fa3947711b17859c92f2",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/historical_backtest_rankings.csv",
+      "role": "report",
+      "bytes": 3794,
+      "sha256": "5fad4291d7f87891aedfbca22b719ea7d08c7ee3b830089b4b44b7206e14bcef",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/product_robustness_summary.json",
+      "role": "report",
+      "bytes": 99700,
+      "sha256": "8197f8a2023d01ffe0ebecc59dff7c248d77231fb8f59c6a7f94984061ee2ee1",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/product_robustness_summary.md",
+      "role": "report",
+      "bytes": 3245,
+      "sha256": "3f6ac7743bc5effd593910b11a0ce18a90cd6748e5882f0348012dff882d55cf",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/source_agreement.csv",
+      "role": "report",
+      "bytes": 809,
+      "sha256": "3cb2cbb36a406c9f2381de78403fcb12e92712135451c7bd85baea4a486f04b5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/paper_refresh/temporal_product_diagnostics.csv",
+      "role": "report",
+      "bytes": 1134,
+      "sha256": "5820d0ad41d24836b590ff2a3bf996e1a2331d4a97fc4f65dae46a1d1692de06",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/results_summary.json",
+      "role": "report",
+      "bytes": 37642,
+      "sha256": "3a7d5f1ab1131a68edb50c995d36cc19949323ac4a175d08cc31b1acc2c24dff",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/source_comparison.json",
+      "role": "report",
+      "bytes": 6361,
+      "sha256": "7162fec55823a0531f34d14ef53f64895fbb8a685d97f6d453279e661b84a45f",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 356352,
+      "sha256": "e735cea2e2f224cd1b429db6bc2777114df4c7cf35ec361d97289feebadb81ab",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 356352,
+      "sha256": "c4afc114f43530f56c2cc1253b6465a377d6e0c78aa14f2f0641b632b0967e3b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 335872,
+      "sha256": "179b81b011e72bb848dd6eee46c65c416d41dce19308d7ca9f81e76e5e3be743",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 315392,
+      "sha256": "6613b90be6c2987def04c7c6a9a302f26d3082e3bf7b77d73901f517d2441627",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 311296,
+      "sha256": "58fdbb81007c2a81178059d2cb417b80153a8b5b4f1e7ba8a75419c71b1f66e3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_compact_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 286720,
+      "sha256": "838f9331cefe41f98beb1c3d12973011fc662e821a049058d62345a16cf6f84f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 352256,
+      "sha256": "0421b72f04bab4beb9c250f899b82aacce39eda7f863ea897f3111194cc6f43f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 356352,
+      "sha256": "035a1b5388cb63176ea436cc44261d63f06804dccd30250d37446df8e6a23160",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 331776,
+      "sha256": "62d82ae6c57754e663e690496bccc317bd2daa17ade18b8e4252505addf1aab6",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 315392,
+      "sha256": "483c0ea4f9980a39e2eca6b6b015dbc3daee0e0e0ce17b1873e2d01c219259fe",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 307200,
+      "sha256": "5308a59b8e2fa2a1eadbbe9d61f08a4107cdba13c9ea066fb1be18c09e7cc7bd",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_ecological_priority_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 286720,
+      "sha256": "82d4138defd6096ccde29bf7592d1670d621d9e5333c1e1ddf80ed387925e2b2",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 376832,
+      "sha256": "664fc15f5a992c2d88bb2df1f0bd69b24fd4f0edba4114f739e00bbb21e7a12e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 385024,
+      "sha256": "e25f8e75b90e53e15e51f7e6d7be3de75c120a96266432166607552f99bff5b1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 364544,
+      "sha256": "f55e4f3eac7baebbd62adbda1aa45267f7bb90a901a1a5e00bca3bd4205a78e9",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 344064,
+      "sha256": "a2565935c15a7ff90fac113457844c29dbf95009522595c35f186ec0a206bf5d",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 315392,
+      "sha256": "7270aa34de447eb6daa02be205e094b0d9de49e7e3584b5266a0a9bed12acad9",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geosos_flus_outward_growth_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 294912,
+      "sha256": "358597eb93262837bdc3b7934fdfdc1f08f4d4cabda8d94a94bdbea93a1eab04",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 188416,
+      "sha256": "f0b8fce7b3131a366f31280d80ad8a4302c05702d8f0f52bee81536677cc8a05",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 200704,
+      "sha256": "f836d77ca09848af572ebcee24c8dd7e5064920096a1840f0cd0f9e0750c4149",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 200704,
+      "sha256": "e31cd8b41c83eab80b3dfec36e70750f489c53d73bb8b3cced6d5c99e225c318",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 196608,
+      "sha256": "f4547ae6cf95add9745731045722ea297d11bff68abcdd6654f81da1c05f37dd",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 200704,
+      "sha256": "701b1b222c2760887d292378f59ba2d7cee1df2d520642b7b7209561e59dd591",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_compact_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 196608,
+      "sha256": "7b72b981df014994b0cf270507183627e01cd035fd8f78e5fead6e1daa573e5f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 184320,
+      "sha256": "1b9b5666eda56cecb94d1111b1f7591af3ffc060d23043da168ae200f0175a16",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 188416,
+      "sha256": "2e61b353f56606de0e01ac9703eb149c0624380a909f6aca3eb4370fb06caffc",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 196608,
+      "sha256": "6b08902599850e2179dd325cacf7583972fa6c4d785e7980c6b2a6a6fe573e18",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 192512,
+      "sha256": "00486d8dff2af8a84aa4885886a8b3218d214fcd34d9c5c96561d27378c3a321",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 196608,
+      "sha256": "6ad9b19e6401285c3a590b06d47d305ec9b9e5884baf46134bf0bd18786c58fe",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_ecological_priority_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 192512,
+      "sha256": "27ba6a15b006d654adfecae7c5db295842ae2c83a7d19a0b256a84dc686f342f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 270336,
+      "sha256": "f099f2f529fe12008ffe332c226abcb6ad02b8898627e932b5a35c9c1ae8cde4",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 266240,
+      "sha256": "5ae2e8168427bfff3026926063d9315e37ea60729cd782135441120ab84c5524",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 262144,
+      "sha256": "327f17440a5dfdb5a76f31e3efc5d80008f59046a94e2bff28faefeb467d8be2",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 262144,
+      "sha256": "621aea43cc9c36bcad06ad52472f1dbe134da2fdcd775062cbf279ba680621c4",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 245760,
+      "sha256": "901c11954cfd0b95a3d3f35aba646aa650002bec2992163cbbefe2b7660960b8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/geospatial_kernel_outward_growth_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 253952,
+      "sha256": "802f263f9aa225c388940a551a8808f7d6e47a6dca719f65035cebc03d0bb4c2",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/manifest.json",
+      "role": "delivery",
+      "bytes": 22799,
+      "sha256": "b840d0d616ff877f1a327f4f719a329dceaa988dacbabcc4469dc1674c7dd825",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 155648,
+      "sha256": "313a51fa15479304c0ac93371d306f6f393e7ac00eb502d5fa4e34f3e2d50507",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 151552,
+      "sha256": "a1aeb98719170888bdb9d3e18960894c0fa582646683044508333cdc146bc578",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 172032,
+      "sha256": "ddbe659776e655bc5554b0dd82a8d579dfbf93a3386c1b67422d6002cc86cf8b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 167936,
+      "sha256": "8a4e44d8f7422df17d190c8daaa925e1372a567fed61fe941e8308fcaae7e102",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 176128,
+      "sha256": "421addb3ea6e5bbc5744cd3729a992e13ac0bc5bdde9d38f39b6a8b872cde15e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_compact_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 163840,
+      "sha256": "a39ba206fb9883ed5d5993e26a1b7fe3a59b57f1fb9e9e1e2a015ab506016195",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 163840,
+      "sha256": "62ff20f3bbe944e0801c581f8ec9b1d025cf8fd421baebc02cdbe42a84f5a979",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 151552,
+      "sha256": "a5c27138f79e7de443138c5d3bf2757fe61d44ab87bd8a8e677973ae11a2c1f9",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 155648,
+      "sha256": "f8d851e31b8d61c307aa1a24c8ab1758467ec333ce40a6c9b8204ade8b98f1a3",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 172032,
+      "sha256": "bd12cc70f86935cec3663bc3912654e46435a5aa99ec8b705420d8a3b928e724",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 172032,
+      "sha256": "afe414e264f8c52d2d4a692b6b0fef6f83c974fd5e093f586e61fe0c00b4c65b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_ecological_priority_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 176128,
+      "sha256": "258113a3be12bcc9a693b5ca135c1fd251af97e661a54834a2f299ab73a2f7d5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2026_changes.gpkg",
+      "role": "delivery",
+      "bytes": 192512,
+      "sha256": "ba6f20c52c4a2ee44b56498d6ba52cbe5272a4795ce7d4d14314ce709d13fbd9",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2027_changes.gpkg",
+      "role": "delivery",
+      "bytes": 204800,
+      "sha256": "5a36b00475c74afac243ff4219e07c9cbb5df30bdbffd4e26b83c6ad10f4105f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2028_changes.gpkg",
+      "role": "delivery",
+      "bytes": 221184,
+      "sha256": "47f9e6eadd78e8b944b09864064a026618c6704ae0221a693579c40fd5af9faa",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2029_changes.gpkg",
+      "role": "delivery",
+      "bytes": 204800,
+      "sha256": "e79b84609fc258d6d8ae96123f7e196481411a72697249643d8949be5e581994",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2030_changes.gpkg",
+      "role": "delivery",
+      "bytes": 200704,
+      "sha256": "bf3cda120aa21d34475c2076fb1ce722feabb0856aac569f0c08bfab91dc75d4",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/annual/paper58_outward_growth_2031_changes.gpkg",
+      "role": "delivery",
+      "bytes": 188416,
+      "sha256": "800f68a0c5360fc0abfeb56d499d72b6b50c32d0447ed4e908518357157f6614",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/arcgis_observed_2024_2025_native10m.gpkg",
+      "role": "delivery",
+      "bytes": 6979584,
+      "sha256": "a8e44221a9a143717bcc835373bb186471087c21576d1e8dec3151fb461c8625",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geosos_flus_compact_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 1572864,
+      "sha256": "2a39bd27f94d0eb2fa4e131b1f377581783d688a5ae6c88487edf12ef2084de9",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geosos_flus_ecological_priority_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 1560576,
+      "sha256": "9456a3a6cab4919ce08d0b76d85d2aa65923de87299e20d14159460fe332892a",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geosos_flus_outward_growth_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 1691648,
+      "sha256": "b2aa9b6f75b4a120718d0bca46be8745d85b0be046b0d9bfc6ed4c9ade344248",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geospatial_kernel_compact_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 794624,
+      "sha256": "3fed331172c6fb3cf1f5c6137ab0c264cbd346b4b9665260c395400921c3ae9b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geospatial_kernel_ecological_priority_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 761856,
+      "sha256": "a1c1178efa9a5f6dfeb1a67cbabc62edd8516bc591449615e6c6f63f98aa8bf6",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/geospatial_kernel_outward_growth_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 1171456,
+      "sha256": "c65510d7b2b096b37c24e3cac2ac10992100371d552d75002d559cc967b6c90d",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/paper58_compact_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 598016,
+      "sha256": "8afda379b4a9ed1556348ac5fe2b794a8549f46c28ea63efb3f4de9c5ad52815",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/paper58_ecological_priority_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 602112,
+      "sha256": "2ccc6ac25e6aef6cbcd1a184abfd037b03066ea5dade8a327f2f27dde2100bc5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/paper58_outward_growth_changes_2025_2031.gpkg",
+      "role": "delivery",
+      "bytes": 823296,
+      "sha256": "52008bde7ae2dc1c77f4ca273440718bb4091a3633d7bc2892daa0868746c2fd",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 1453336,
+      "sha256": "307924cd78025320f4512140408ec3754385b26011f06739c06dfc2197ff79f8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 807548,
+      "sha256": "ace1ef63a3cf6853973c7181f0f9d77ed74fdadd531c8329a71a5eb0e86d60d4",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_compact_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 45332,
+      "sha256": "eb4cfddf7c04b3ff406001ce253817c0040b91d9407d4ab7f258cc3a8b0632e0",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 1437402,
+      "sha256": "d48a3cdef44567e89a719270a567d63160044d1dff2656c7dcde39aeddfaef85",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 797076,
+      "sha256": "6722ac4f595a71a48284bc09dc90c0b61ea06c52995d8a19912b48c8aa9bd4a7",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_ecological_priority_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 44836,
+      "sha256": "268d77c8ef3ff3761efde241e693d820d53d99cb1cba86ae9eb82d9a0e3ba4b7",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 1546884,
+      "sha256": "8c03cee8874f4bc68039003661edb8eaaec2b1a3e2088bcdd7d880d326e05573",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 880264,
+      "sha256": "db47378015b640ed2d4f034f32327129e4b7a6c5a6bcfd389050b9269472ae1b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geosos_flus_outward_growth_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 48244,
+      "sha256": "c15da86cf7909775175553e46ff59d8a2536304400912fcf0b15eb61a0c3586c",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 650211,
+      "sha256": "190bca36a03cb7a01a8b3700720dfba6171e545b84409c3564f7605f8dfd286f",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 349228,
+      "sha256": "7d14dc769feb3dba29168895d04d0b5512b11841cdf9e00610d93a7de76722f2",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_compact_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 20332,
+      "sha256": "d8f7b921127407d2e68b1088718c5713389881f7c0fafda24f479a5fc8e43781",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 611404,
+      "sha256": "0c2b25849690849b71484a0e70d3c46026fc43649cf636abbc077d622e91da0e",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 327028,
+      "sha256": "8f834f0d5b5dc6f6cba0828efd10c46fbb67e61005151e7c9048f5c7e821ff08",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_ecological_priority_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 19124,
+      "sha256": "106d95664705b17784be5453a80b2262662d45d8cfff112f73b11e6b4bae67cb",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 1010268,
+      "sha256": "d81efe7ce06d9074cbcb569c86d3dd41b9c5d8970416456196d414b4bfd680a6",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 553180,
+      "sha256": "910ffbf6fcda77517132b3fc9853207bb3aacd27d07373f2b93d650dd72dfdca",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/geospatial_kernel_outward_growth_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 31540,
+      "sha256": "799a7ff5b20b9bc142b06959644392bc3aa9c9239eaa79ba8388c98f8881efb2",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 412229,
+      "sha256": "5f865e398cb7a4f16a38ec9ba8a772d866f7d27b014d182117a200f1929a19d5",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 232584,
+      "sha256": "e139bc27926aa0c3a4ecc1df031fc81fa0403bdf6fae8b4d687a744ff1dfa685",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_compact_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 12924,
+      "sha256": "03eae29a58561c77be479c5d3212b596b83872263af30580751321dbcede34ad",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 405290,
+      "sha256": "f0c95d25009830a8cdcd18fc24d265cea7ca894089d5bc00277b38a7875809e2",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 226088,
+      "sha256": "676b9990b3d65f3256de2839de1e2049359a7fce3c8ecb2b7365f1207249a894",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_ecological_priority_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 12708,
+      "sha256": "489c96ef2fd947bbeb405174a4cefc4fef770c84c4516c51f8b21c19516cf685",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.cpg",
+      "role": "delivery",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.dbf",
+      "role": "delivery",
+      "bytes": 639417,
+      "sha256": "6ea3d9e1821ec1e53ff708d40346149c0e2558977c738613635b7d14eec24753",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.prj",
+      "role": "delivery",
+      "bytes": 401,
+      "sha256": "008a74cb2013566efcda029385213a043bd1211b1c55567ad0a3d680b417fba1",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.shp",
+      "role": "delivery",
+      "bytes": 377624,
+      "sha256": "c849df269009837e823022ef1e8c1818fd7f9d95c22f0234e4278c0a01faa61b",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "benchmarks/abu_dhabi_land_use_v2/results_arcgis_v2/vectors/shapefiles/paper58_outward_growth_changes_2025_2031.shx",
+      "role": "delivery",
+      "bytes": 19996,
+      "sha256": "181e3f09928cc102ef06cf835cb1378a1dca213bac0453cdb6023ca1076ffa31",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig04_product_robustness.pdf",
+      "role": "manuscript_evidence",
+      "bytes": 61763,
+      "sha256": "69e4c12b37f0031605b0b3e885a068edc327fda22f17f821c45f3c31c7905161",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig04_product_robustness.png",
+      "role": "manuscript_evidence",
+      "bytes": 726178,
+      "sha256": "dc3e165ad856621570a06b8fdce163ea4816aa4b3d4cbcb8a94ed70e997800e8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "figures/fig04_product_robustness.svg",
+      "role": "manuscript_evidence",
+      "bytes": 61417,
+      "sha256": "5506bda8796cd46c680c2a0f449402b9a9059a1fa5ba16e203456d7521c7d396",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "manuscript/manuscript.md",
+      "role": "manuscript_evidence",
+      "bytes": 75006,
+      "sha256": "30b750b0b48419d8dd24b6ab724dc704fbdacd6d5183bfce349894895fa58403",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "manuscript/source_data_fig04_product_robustness.csv",
+      "role": "manuscript_evidence",
+      "bytes": 6515,
+      "sha256": "5c9a89a0ca4f8f38acf3250a963e045cab74eac43efe64d3dd1141d2cb6150a8",
+      "hash_mode": "raw"
+    },
+    {
+      "path": "manuscript/supplementary_table_S6_product_robustness.md",
+      "role": "manuscript_evidence",
+      "bytes": 2363,
+      "sha256": "d45e2825bf5ec896383e51d663d9fd2527fc0ed0c55c3a19deb4079d66cc140e",
+      "hash_mode": "text_lf_normalized"
+    }
+  ]
+}
