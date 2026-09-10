@@ -130,6 +130,7 @@ def publication_outputs() -> dict[str, set[Path]]:
         add_files(evidence, (REPO / "manuscript").glob("*.docx"))
         add_tree(evidence, REPO / "manuscript" / "submission_files", ("*.pdf", "*.docx", "*.md"))
         add_files(evidence, [HERE / "reproducibility" / "WORKING_REVISION.md"])
+        add_files(evidence, [REPO / "manuscript" / "reference_revision_2026_09_10_zh.md"])
     delivery: set[Path] = set()
     add_tree(delivery, HERE / "results_arcgis_v2" / "ensembles")
     add_tree(delivery, HERE / "results_arcgis_v2" / "vectors")

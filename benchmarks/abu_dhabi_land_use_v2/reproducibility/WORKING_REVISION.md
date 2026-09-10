@@ -6,6 +6,14 @@ paired intervals, and revises the manuscript. It does not retrain models or
 replace historical or planning prediction rasters. Do not attribute the working
 revision to the published DOI as if it were already archived there.
 
+The 10 September 2026 reference revision specifies the Dynamic World temporal
+reducers and quality statistic, distinguishes the VIIRS monthly input from the
+cited annual product, identifies Copernicus GLO-30 as a DSM, and links OSM and
+ArcGIS citations to the stored source manifests. These are documentation
+corrections, not new validation results or changes to the numerical pipeline.
+See `manuscript/reference_revision_2026_09_10_zh.md` for the citation audit scope
+and unresolved source checks.
+
 From the repository root, generate the supplementary analysis:
 
 ```sh

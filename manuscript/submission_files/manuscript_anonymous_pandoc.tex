@@ -216,38 +216,82 @@ unmatched-pipeline result.
 \subsubsection{Public data and class
 semantics}\label{public-data-and-class-semantics}
 
-Dynamic World V1 provides annual scene-argmax labels and mean top-class
-probabilities (Brown et al., 2022). The nine Dynamic World labels were
-crosswalked to six canonical classes: water (source 0), woody vegetation
-(1), low vegetation (2, 4 and 5), wetland (3), built (6) and bare (7).
-Source class 8 was excluded.
+Dynamic World V1 supplies scene-level class probabilities and
+maximum-probability labels (Brown et al., 2022). We constructed annual
+labels by taking the temporal mode of the available scene labels before
+class crosswalking and export to the modelling grid. Annual composition
+is a processing choice of this study, not an official annual Dynamic
+World product. At each source pixel, the quality statistic is
+\(r_y=\max_c[|T_y|^{-1}\sum_{j\in T_y}p_{j,c}]\), where \(T_y\) denotes
+valid scenes in year \(y\) and \(c\) indexes the nine source classes.
+Thus the operation is maximum of temporal mean probabilities, not
+temporal mean of scene-wise maxima; its maximizing class need not equal
+the annual modal label. The archived band name
+\texttt{mean\_top\_probability} is retained for compatibility. This
+statistic is a weighting proxy, not a calibrated probability that the
+annual label is correct. The nine Dynamic World labels were crosswalked
+to six canonical classes: water (source 0), woody vegetation (1), low
+vegetation (2, 4 and 5), wetland (3), built (6) and bare (7). Source
+class 8 was excluded.
 
 The second sequence was materialized from the public ArcGIS ImageServer
 \texttt{Sentinel2\_10m\_LandCover}, whose metadata attributes the global
 annual series to Impact Observatory, Microsoft and Esri (Impact
-Observatory et al., 2026). Its Sentinel-2 classification lineage follows
-the deep-learning mapping approach described by Karra et al.~(2021).
-Source values were mapped to water (1), woody vegetation (2), wetland
-(4), low vegetation (5 and 11), built (7) and bare (8); snow/ice (9) and
-cloud (10) were excluded. Native 10-m labels were retained for audit,
-then aggregated after crosswalking by majority among usable cells in
-each 10 × 10 block. The resulting majority fraction served as the
-ArcGIS-track aggregation-quality term; it is not equivalent to Dynamic
-World's top-class probability. Both sequences are explicitly treated as
-public land cover. Neither provides residential, commercial or
-industrial land use, zoning, cadastral status or development approvals.
+Observatory et al., n.d.). The study by Karra et al.~(2021) describes
+the classification lineage; it does not independently validate every
+annual layer or subsequent service revision. The materialization
+manifest, created on 9 September 2026, records the service URL, temporal
+extent, class mapping and SHA-256 hashes of the downloaded and
+aggregated rasters. No immutable upstream release identifier is
+recorded, so the reproducibility target is this archived snapshot rather
+than the changing live service. Source values were mapped to water (1),
+woody vegetation (2), wetland (4), low vegetation (5 and 11), built (7)
+and bare (8); snow/ice (9) and cloud (10) were excluded. Native 10-m
+labels were retained for audit, then aggregated after crosswalking by
+majority among usable cells in each 10 × 10 block. The resulting
+majority fraction served as the ArcGIS-track aggregation-quality term;
+it is not equivalent to Dynamic World's maximum temporal-mean
+probability. Both sequences are explicitly treated as public land cover.
+Neither provides residential, commercial or industrial land use, zoning,
+cadastral status or development approvals.
 
 Annual 64-dimensional AlphaEarth embeddings were spatially averaged to
-the canonical grid and locally L2-normalized (Brown et al., 2025).
-Monthly \texttt{NOAA/VIIRS/DNB/MONTHLY\_V1/VCMSLCFG} night-time-light
-radiance was averaged by year (Elvidge et al., 2021). The Copernicus DEM
-GLO-30 \texttt{COPERNICUS/DEM/GLO30\_2024\_1} collection supplied
-elevation and a finite-difference slope derivative (European Space
-Agency, 2024). OpenStreetMap road geometries were rasterized into
-distance-to-road and distance-to-major-road surfaces. ESA WorldCover
-2021 supplied public water and wetland/mangrove constraint proxies
-(Zanaga et al., 2022). All dynamic and static layers were checked for
-exact CRS, transform, width and height agreement.
+the canonical grid and locally L2-normalized (Brown et al., 2025). The
+collection is GOOGLE/SATELLITE\_EMBEDDING/V1/ANNUAL, with raster hashes
+recorded in the GEE input manifest; Brown et al.~(2025) is cited as a
+preprint describing the embedding model.
+
+We formed the night-time-light driver from monthly
+\texttt{NOAA/VIIRS/DNB/MONTHLY\_V1/VCMSLCFG} composites (Earth
+Observation Group, n.d.). The implementation takes an unweighted mean of
+available, unmasked \texttt{avg\_rad} values within each calendar year;
+absent months are not imputed, and the collection is required to be
+nonempty rather than to contain twelve months. It does not apply an
+additional \texttt{cf\_cvg} mask or observation-count weighting. This
+author-generated annual feature is distinct from the annual product
+described by Elvidge et al.~(2021), which is cited for background. The
+monthly product documentation recommends using cloud-free observation
+counts to assess coverage and notes that temporary lights and background
+values are not separated. Uneven coverage and transient illumination can
+therefore affect this driver.
+
+Copernicus DEM GLO-30 release \texttt{2024\_1} supplied surface
+elevation and a finite-difference slope derivative (Copernicus, 2024).
+This is a digital surface model (DSM) containing buildings,
+infrastructure and vegetation, not a bare-earth terrain model. Its
+release identifier is not an acquisition year; the catalogue lists a
+2010--2020 observation range. We have not established tile-specific
+acquisition dates or quantified urban surface-object effects on slope,
+so it is treated as a static retrospective covariate. OpenStreetMap road
+geometries from the Geofabrik GCC snapshot
+\texttt{gcc-states-260731.osm.pbf} were rasterized into distance-to-road
+and distance-to-major-road surfaces (Geofabrik, 2026). The source URL,
+snapshot date and SHA-256 are preserved in
+\texttt{osm\_input\_manifest.json}; the city geometry is separately
+recorded in \texttt{boundary\_manifest.json}. ESA WorldCover 2021
+supplied public water and wetland/mangrove constraint proxies (Zanaga et
+al., 2022). All dynamic and static layers were checked for exact CRS,
+transform, width and height agreement.
 
 For an external public-product diagnostic, the ESA WorldCover 2020 v1.0
 and 2021 v2.0 built-up class (value 50) was converted to built fraction
@@ -288,20 +332,21 @@ indicators; twelve neighbourhood proportions, comprising 3 × 3 and 7 × 7
 windows for each of the six classes; and seven continuous variables,
 namely normalized row and column coordinates, clipped elevation, clipped
 slope, log-transformed VIIRS radiance, log distance to roads and log
-distance to major roads. A scikit-learn histogram gradient-boosting
-classifier estimates the six-class probability vector (Pedregosa et al.,
-2011). It uses learning rate 0.08, 120 iterations, at most 31 leaf
-nodes, minimum leaf size 40 and L2 regularization 1.0.
+distance to major roads. The HistGradientBoostingClassifier
+implementation in scikit-learn 1.9.0, as specified in the archived
+environment lock, estimates the six-class probability vector (Pedregosa
+et al., 2011). It uses learning rate 0.08, 120 iterations, at most 31
+leaf nodes, minimum leaf size 40 and L2 regularization 1.0.
 
 Training samples combine all changed valid cells and a 20\% random
 sample of stable valid cells in each fit transition. The sample weight
 is the product of a change emphasis, \(1+5\mathbf{1}(S_t\ne S_{t+1})\),
 and a quality factor, \(0.5+\min(r_t,r_{t+1})\). Here \(r\) is Dynamic
-World mean top probability in the original track and the within-block
-majority fraction in the ArcGIS-served track. These terms have different
-semantics and are retained as parts of their respective product
-pipelines. A held-out target is never used during fitting or model
-selection.
+World maximum temporal-mean probability in the original track and the
+within-block majority fraction in the ArcGIS-served track. These terms
+have different semantics and are retained as parts of their respective
+product pipelines. A held-out target is never used during fitting or
+model selection.
 
 \subsubsection{Constraint projection and state
 writeback}\label{constraint-projection-and-state-writeback}
@@ -675,26 +720,26 @@ constraints.
 
 The confidence sensitivity is a label-quality and selection-effect
 diagnostic, not an independent validation set or a model-skill test.
-Requiring both the origin and target Dynamic World mean top probability
-to exceed 0.5 retains only 25 of 4,500 observed changes (0.56\%) in 2023
-and 56 of 8,464 (0.66\%) in 2024. Strict FoM is 0.000 for all three
-models in 2023; in 2024 the means are 0.0040 for the FLUS-style console,
-0.0055 for Geospatial Kernel and 0.0188 for GeoFM-LDN. Screening only
-the confidence of the year immediately preceding the target avoids
-filtering on target-year confidence, but still retains only 129 (2.87\%)
-and 93 (1.10\%) observed changes in 2023 and 2024, respectively. Its
-2023 FoM values remain 0.000; its 2024 means are 0.0040, 0.0041 and
-0.0120 for the FLUS-style console, Kernel and GeoFM-LDN. The two filters
-therefore describe label selection rather than establishing or rescuing
-model skill. Dynamic World also reports built pixels increasing from
-9,359 in 2022 to 15,598 in 2024 (67\%), while the median one-year
-reversion fraction is 0.3611 and the mean fraction of cells below
-confidence 0.5 is 0.5497. Test-year change counts are approximately
-twice the training-transition counts. Because the same grid cells recur
-across years and the Kernel includes coordinate features, a
-training--test memory effect cannot be excluded; the reported scores
-should therefore be interpreted as conditional agreement with the public
-product.
+Requiring both the origin and target Dynamic World maximum temporal-mean
+probability to exceed 0.5 retains only 25 of 4,500 observed changes
+(0.56\%) in 2023 and 56 of 8,464 (0.66\%) in 2024. Strict FoM is 0.000
+for all three models in 2023; in 2024 the means are 0.0040 for the
+FLUS-style console, 0.0055 for Geospatial Kernel and 0.0188 for
+GeoFM-LDN. Screening only the confidence of the year immediately
+preceding the target avoids filtering on target-year confidence, but
+still retains only 129 (2.87\%) and 93 (1.10\%) observed changes in 2023
+and 2024, respectively. Its 2023 FoM values remain 0.000; its 2024 means
+are 0.0040, 0.0041 and 0.0120 for the FLUS-style console, Kernel and
+GeoFM-LDN. The two filters therefore describe label selection rather
+than establishing or rescuing model skill. Dynamic World also reports
+built pixels increasing from 9,359 in 2022 to 15,598 in 2024 (67\%),
+while the median one-year reversion fraction is 0.3611 and the mean
+fraction of cells below confidence 0.5 is 0.5497. Test-year change
+counts are approximately twice the training-transition counts. Because
+the same grid cells recur across years and the Kernel includes
+coordinate features, a training--test memory effect cannot be excluded;
+the reported scores should therefore be interpreted as conditional
+agreement with the public product.
 
 \subsubsection{Rolling-origin and external-product tests expose temporal
 and label
@@ -1090,26 +1135,29 @@ observed 2026--2031 label exists. The original headline analysis also
 uses a 31 July 2026 OSM road snapshot, which may contain roads
 constructed after 2022. Sharing this information does not guarantee an
 unchanged model ordering, because learners can exploit it differently;
-the strict rolling-origin analysis removes those road features and
-should define the no-leakage boundary. As a descriptive bound, the
-road-free rolling 2023 one-step FoM is 0.2116, of the same order as the
-headline 2023 value of 0.1961; these values are not directly comparable
-because the rolling fit uses 23 features and training through 2022,
-whereas the headline fit uses 25 features and training through 2021.
-Public wetland and protected-area layers are proxies, future drivers are
-held at the respective 2024 or 2025 origin-year values, and the
-green-priority action has no water-budget constraint. The FLUS-style
-control is an Apple-Silicon binary rebuilt from the public GeoSOS source
-base with the modified \texttt{train}/\texttt{train-update} and
-deterministic-seeding patches; its headline comparison uses seven
-drivers. The 25-feature run is a platform-sensitive identity-leakage
-diagnostic: five of six platform--seed runs collapsed to zero change, so
-the non-collapsed macOS seed-31 result is not used as a comparative
-estimate. These public-data stress tests therefore do not establish
-causal planning effects or a validated Abu Dhabi forecast. An
-authoritative deployment would replace public labels and masks with
-locally approved land-use, infrastructure, ecological and
-development-demand records while retaining the same execution contract.
+the strict rolling-origin analysis removes those road features. This
+firewall controls downstream target-label use and the late road
+snapshot; it does not establish that retrospective global products,
+pretrained embeddings or the static DSM were available to a forecaster
+at each historical origin. As a descriptive bound, the road-free rolling
+2023 one-step FoM is 0.2116, of the same order as the headline 2023
+value of 0.1961; these values are not directly comparable because the
+rolling fit uses 23 features and training through 2022, whereas the
+headline fit uses 25 features and training through 2021. Public wetland
+and protected-area layers are proxies, future drivers are held at the
+respective 2024 or 2025 origin-year values, and the green-priority
+action has no water-budget constraint. The FLUS-style control is an
+Apple-Silicon binary rebuilt from the public GeoSOS source base with the
+modified \texttt{train}/\texttt{train-update} and deterministic-seeding
+patches; its headline comparison uses seven drivers. The 25-feature run
+is a platform-sensitive identity-leakage diagnostic: five of six
+platform--seed runs collapsed to zero change, so the non-collapsed macOS
+seed-31 result is not used as a comparative estimate. These public-data
+stress tests therefore do not establish causal planning effects or a
+validated Abu Dhabi forecast. An authoritative deployment would replace
+public labels and masks with locally approved land-use, infrastructure,
+ecological and development-demand records while retaining the same
+execution contract.
 
 \subsubsection{Implications for planning use and
 validation}\label{implications-for-planning-use-and-validation}
@@ -1209,15 +1257,27 @@ Burton, E. (2000). The compact city: just or just compact? A preliminary
 analysis. \emph{Urban Studies}, 37, 1969--2006.
 https://doi.org/10.1080/00420980050162184
 
+Copernicus. (2024). Copernicus DEM GLO-30 (2024\_1): Global 30m Digital
+Elevation Model {[}Data set; digital surface model{]}. Google Earth
+Engine Data Catalog.
+https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS\_DEM\_GLO30\_2024\_1
+(accessed 10 September 2026).
+
+Earth Observation Group, Payne Institute for Public Policy, Colorado
+School of Mines. (n.d.). VIIRS Stray Light Corrected Nighttime Day/Night
+Band Composites Version 1 {[}Monthly data set; VCMSLCFG{]}. Google Earth
+Engine Data Catalog.
+https://developers.google.com/earth-engine/datasets/catalog/NOAA\_VIIRS\_DNB\_MONTHLY\_V1\_VCMSLCFG
+(accessed 10 September 2026).
+
 Elvidge, C. D., Zhizhin, M., Ghosh, T., Hsu, F.-C., \& Taneja, J.
 (2021). Annual time series of global VIIRS nighttime lights derived from
 monthly averages: 2012 to 2019. \emph{Remote Sensing}, 13, 922.
 https://doi.org/10.3390/rs13050922
 
-European Space Agency. (2024). Copernicus DEM GLO-30: global 30 m
-digital elevation model {[}Data set{]}. Google Earth Engine Data
-Catalog.
-https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS\_DEM\_GLO30\_2024\_1
+Geofabrik. (2026). GCC States OpenStreetMap extract, 31 July 2026
+{[}Data set; gcc-states-260731.osm.pbf{]}.
+https://download.geofabrik.de/asia/gcc-states-260731.osm.pbf
 
 GeoSOS team, Sun Yat-sen University. (n.d.). FLUS source code for
 non-commercial academic research.
@@ -1229,10 +1289,11 @@ Moore, R. (2017). Google Earth Engine: planetary-scale geospatial
 analysis for everyone. \emph{Remote Sensing of Environment}, 202,
 18--27. https://doi.org/10.1016/j.rse.2017.06.031
 
-Impact Observatory, Microsoft, \& Esri. (2026). Sentinel-2 10m land
+Impact Observatory, Microsoft, \& Esri. (n.d.). Sentinel-2 10m land
 cover time series of the world {[}Data set{]}. ArcGIS ImageServer.
 https://ic.imagery1.arcgis.com/arcgis/rest/services/Sentinel2\_10m\_LandCover/ImageServer
-(accessed 8 September 2026).
+(archived materialization manifest dated 9 September 2026; upstream
+release version not recorded).
 
 Karra, K., Kontgis, C., Statman-Weil, Z., Mazzariello, J. C., Mathis,
 M., \& Brumby, S. P. (2021). Global land use/land cover with Sentinel 2
@@ -1256,9 +1317,10 @@ simulating multiple land use scenarios by coupling human and natural
 effects. \emph{Landscape and Urban Planning}, 168, 94--116.
 https://doi.org/10.1016/j.landurbplan.2017.09.019
 
-OpenStreetMap contributors. (2026). OpenStreetMap data, Abu Dhabi
-relation R4479763 and Geofabrik GCC extract, accessed 31 July 2026.
-https://www.openstreetmap.org
+OpenStreetMap contributors. (2026). Abu Dhabi city boundary, relation
+4479763 {[}Data set; retrieved 1 August 2026; geometry documented in
+boundary\_manifest.json{]}.
+https://www.openstreetmap.org/relation/4479763
 
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B.,
 Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V.,
