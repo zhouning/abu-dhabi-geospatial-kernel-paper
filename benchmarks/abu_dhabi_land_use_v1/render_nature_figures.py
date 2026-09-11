@@ -246,7 +246,7 @@ def render_figure_1() -> None:
         edge="#377EB8", weight="bold")
     box(0.245, 0.17, 0.20, 0.14, "Learned proposal\n$Q_t(i,c)$", face="#EAF4E8",
         edge="#4DAF4A", weight="bold")
-    box(0.500, 0.17, 0.22, 0.14, "Constraint projection\n$\Pi_{\mathcal{C},A_t}$", face="#F1EAF5",
+    box(0.500, 0.17, 0.22, 0.14, "Constraint projection\n$\\Pi_{\\mathcal{C},A_t}$", face="#F1EAF5",
         edge="#7B3294", weight="bold")
     box(0.775, 0.17, 0.17, 0.14, "Writeback\n$S_{t+1}$", face="#FFFFFF",
         edge="#59636F", weight="bold")
@@ -796,9 +796,9 @@ def render_supplementary_figure_4() -> None:
     rgb = np.ones((*valid.shape, 3), dtype=np.float32)
     rgb[valid] = rgb_values
 
-    fig = plt.figure(figsize=(7.2, 8.25))
-    grid = fig.add_gridspec(4, 3, left=0.045, right=0.99, top=0.91, bottom=0.06,
-                            hspace=0.40, wspace=0.24, height_ratios=[1.0, 1.0, 0.08, 0.93])
+    fig = plt.figure(figsize=(7.2, 6.60))
+    grid = fig.add_gridspec(3, 3, left=0.045, right=0.99, top=0.985, bottom=0.035,
+                            hspace=0.03, wspace=0.24, height_ratios=[1.0, 1.0, 0.98])
     axes = [fig.add_subplot(grid[row, col]) for row in range(2) for col in range(3)]
     _supplementary_driver_map(axes[0], terrain[0], valid, title="A  Elevation", cmap="terrain", colorbar_label="m")
     _supplementary_driver_map(axes[1], terrain[1], valid, title="B  Slope", cmap="magma", colorbar_label="degrees", percentile=(0, 99))
@@ -814,7 +814,7 @@ def render_supplementary_figure_4() -> None:
         spine.set_linewidth(0.45)
         spine.set_color("#AAB2BC")
 
-    ax = fig.add_subplot(grid[3, :])
+    ax = fig.add_subplot(grid[2, :])
     ax.set_axis_off()
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
@@ -845,12 +845,6 @@ def render_supplementary_figure_4() -> None:
     arrow((0.71, 0.375), (0.75, 0.55))
     arrow((0.83, 0.65), (0.85, 0.735))
     arrow((0.83, 0.55), (0.85, 0.35))
-    ax.text(0.5, 0.08, "Models change spatial allocation; the grid, actions, constraints and evaluator remain fixed.",
-            ha="center", va="center", fontsize=7.2, fontweight="bold", color="#3F4A52")
-    fig.suptitle("Fig. S4 | Driver layers and unified experiment design",
-                 x=0.045, y=0.975, ha="left", fontsize=11.5, fontweight="bold")
-    fig.text(0.045, 0.025, "Continuous maps are clipped to the 2nd–98th valid-pixel percentiles unless stated otherwise; the schematic uses one coordinate system to keep arrows aligned.",
-             fontsize=6.8, color="#4A5560")
     save_publication_figure(fig, "figS04_driver_layers_and_experiment_design")
 
 

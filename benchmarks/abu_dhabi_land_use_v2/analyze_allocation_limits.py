@@ -154,7 +154,20 @@ def analyze(output_dir: Path | None = None, supplementary_path: Path | None = No
             f"{r['paper58_predicted_change_pixels_seeds_31_47_73']} | "
             f"{r['random_minimum_change_predicted_change_pixels_seeds_31_47_73']} | {r['kernel_mean_fom']:.4f} |"
         )
-    text += ["", "## Seed-specific paired spatial-block intervals", "",
+    arcgis_bounds = [float(row["count_only_fom_upper_bound"]) for row in rows if row["product"] == "ArcGIS"]
+    arcgis_bounds_without_2022 = [
+        float(row["count_only_fom_upper_bound"])
+        for row in rows
+        if row["product"] == "ArcGIS" and int(row["target_year"]) != 2022
+    ]
+    text += [
+             "",
+             "For the ArcGIS folds, the exact-count upper bounds span "
+             f"{min(arcgis_bounds):.4f}–{max(arcgis_bounds):.4f} across all targets and "
+             f"{min(arcgis_bounds_without_2022):.4f}–{max(arcgis_bounds_without_2022):.4f} after excluding the 2022 product-series-break target. "
+             "This sensitivity concerns the net-versus-gross change relation, not verified land-cover accuracy.",
+             "",
+             "## Seed-specific paired spatial-block intervals", "",
              "Each interval uses the archived 1,000 shared resamples of 8 × 8 cells. Seeds are computational replicates, not independent field samples. Intervals are conditional on each product, fold, seed and mask; no pooled confidence interval or multiple-comparison adjustment is claimed. An interval containing zero does not establish equivalence. Block-size sensitivity and spatial transfer remain untested.", "",
              "| Product | Target | Contrast | Seed | Median | Lower 95% | Upper 95% | Direction |", "|---|---:|---|---:|---:|---:|---:|---|"]
     labels = {"geospatial_kernel_minus_geosos_flus": "Kernel minus FLUS-style", "paper58_minus_geospatial_kernel": "GeoFM-LDN minus Kernel"}

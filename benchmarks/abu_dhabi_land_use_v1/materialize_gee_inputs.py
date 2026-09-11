@@ -115,6 +115,9 @@ def download_image(
         validate_raster(output_path, grid, band_count=band_count)
         return
     transform = grid["transform"]
+    # The export requests the canonical 100-m transform directly. Earth
+    # Engine therefore uses its default nearest-neighbour resampling; no
+    # post-export 10 x 10 arithmetic or modal aggregation is applied here.
     url = image.getDownloadURL(
         {
             "name": name,

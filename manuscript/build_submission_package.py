@@ -118,7 +118,14 @@ def markdown_to_pdf(source: Path, target: Path) -> None:
 def anonymize(main: str) -> str:
     body, references = main.split("## Data availability", maxsplit=1)
     references = "## References" + references.split("## References", maxsplit=1)[1]
+    # Replace complete provenance clauses before their embedded identifiers.
+    # Token-only replacement left ungrammatical prose in the blinded PDF.
     replacements = {
+        "The binary was rebuilt from the preceding source revision `deb0a54`; the retained `paper-benchmark-flus-v1.1` source tag at `47e65b3` adds invalid-input failure handling only.": "The binary was rebuilt from an earlier revision of the same anonymized source repository; the retained source release adds invalid-input failure handling only.",
+        "The archived FLUS console is a Mach-O arm64 executable rebuilt from the public GeoSOS source base with the author-modified `train`/`train-update` entry points and `FLUS_RANDOM_SEED` seeding patch; its exact source is archived at `FLUS_console_crossplatform` commit `deb0a54`.": "The archived FLUS console is a Mach-O arm64 executable rebuilt from a public source base with study-specific `train`/`train-update` entry points and `FLUS_RANDOM_SEED` seeding; its exact source is available in the anonymized source repository.",
+        "The archived FLUS console is a Mach-O arm64 executable rebuilt from the public GeoSOS source base with the study-specific `train`/`train-update` entry points and `FLUS_RANDOM_SEED` seeding patch; its exact source is archived at the public FLUS source repository, tag `paper-benchmark-flus-v1.1` at commit `47e65b3`.": "The archived FLUS console is a Mach-O arm64 executable rebuilt from a public GeoSOS source base with study-specific `train`/`train-update` entry points and `FLUS_RANDOM_SEED` seeding; its exact source is available in the anonymized source repository.",
+        "An author-controlled GitHub Actions Ubuntu x86_64 rerun": "A maintainer-run GitHub Actions Ubuntu x86_64 rerun",
+        "An author-controlled\nGitHub Actions Ubuntu x86_64 rerun": "A maintainer-run\nGitHub Actions Ubuntu x86_64 rerun",
         "`paper-benchmark-flus-v1.1`": "an anonymized source tag",
         "`FLUS_console_crossplatform`": "an anonymized source repository",
         "`deb0a54`": "an anonymized preceding revision",
@@ -130,6 +137,7 @@ def anonymize(main: str) -> str:
     }
     for original, replacement in replacements.items():
         body = body.replace(original, replacement)
+    body = body.replace("An maintained GitHub Actions", "A maintainer-run GitHub Actions")
     return "\n".join(
         [
             "---",

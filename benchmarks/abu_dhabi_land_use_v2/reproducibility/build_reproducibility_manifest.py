@@ -120,9 +120,12 @@ def publication_outputs() -> dict[str, set[Path]]:
         REPO / "figures" / "fig04_product_robustness.svg",
         REPO / "manuscript" / "source_data_fig04_product_robustness.csv",
         REPO / "manuscript" / "supplementary_table_S1_arcgis_planning_objectives.md",
+        REPO / "manuscript" / "supplementary_table_S4_cross_product_class_matrices.md",
         REPO / "manuscript" / "supplementary_table_S6_product_robustness.md",
         REPO / "manuscript" / "manuscript.md",
         REPO / "manuscript" / "supplementary_table_S7_allocation_limits.md",
+        REPO / "manuscript" / "response_to_LUP_review_round17.md",
+        REPO / "manuscript" / "response_to_LUP_review_round18.md",
     }
     if OUT.name == "working":
         # A working submission freeze covers its rendered artifacts as well as

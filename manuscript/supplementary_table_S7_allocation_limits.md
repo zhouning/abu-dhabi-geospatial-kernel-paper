@@ -16,6 +16,8 @@ The count-only bound applies only to the exact minimum-change projections (Kerne
 | ArcGIS | 2024 | 4197 | 2281 | 0.5435 | 2822/4781/3080 | 2281/2281/2281 | 2281/2281/2281 | 2281/2281/2281 | 0.1674 |
 | ArcGIS | 2025 | 3587 | 849 | 0.2367 | 1651/957/6693 | 849/849/849 | 849/849/849 | 849/849/849 | 0.0579 |
 
+For the ArcGIS folds, the exact-count upper bounds span 0.0858–0.8127 across all targets and 0.0858–0.6651 after excluding the 2022 product-series-break target. This sensitivity concerns the net-versus-gross change relation, not verified land-cover accuracy.
+
 ## Seed-specific paired spatial-block intervals
 
 Each interval uses the archived 1,000 shared resamples of 8 × 8 cells. Seeds are computational replicates, not independent field samples. Intervals are conditional on each product, fold, seed and mask; no pooled confidence interval or multiple-comparison adjustment is claimed. An interval containing zero does not establish equivalence. Block-size sensitivity and spatial transfer remain untested.

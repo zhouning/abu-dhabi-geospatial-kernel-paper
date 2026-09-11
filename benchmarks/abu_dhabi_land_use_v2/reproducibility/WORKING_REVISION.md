@@ -1,11 +1,12 @@
 # Working revision and published archive
 
 The published v2.0.0 DOI and Git tag retain their original content. This working
-revision adds a report-derived net-change limit analysis, exposes seed-specific
-paired intervals, archives the 27 per-seed 2031 ArcGIS planning states read by
-the cross-product compiler, and revises the manuscript. It does not retrain
-models or replace historical or planning prediction rasters. Do not attribute
-the working revision to the published DOI as if it were already archived there.
+revision adds report-derived net-change limits, seed-specific paired intervals,
+annual cross-product class matrices, product-series-break sensitivity intervals,
+and the 27 per-seed 2031 ArcGIS planning states read by the cross-product
+compiler. It does not retrain models or replace historical or planning
+prediction rasters. Do not attribute the working revision to the published DOI
+as if it were already archived there.
 
 The 10 September 2026 reference revision specifies the Dynamic World temporal
 reducers and quality statistic, distinguishes the VIIRS monthly input from the
@@ -47,10 +48,10 @@ The manifests under `working/` are distinct from the published manifests one
 directory above. CSV, TSV, GeoJSON and SVG use LF-normalized text hashes in the
 working revision; binary raster and model hashes remain raw byte hashes. The
 working publication-output manifest explicitly includes the 27 per-seed 2031
-ArcGIS planning rasters required by `analyze_product_robustness.py`, so Fig. 4,
-Supplementary Table S1 and Supplementary Table S6 can be recreated without an
-end-to-end simulation. The published manifests are preserved, including their
-original hash conventions. For exact published-release verification, use a
+ArcGIS planning rasters required by `analyze_product_robustness.py`, so Fig. 4
+and Supplementary Tables S1, S4 and S6 can be recreated without an end-to-end
+simulation. The published manifests are preserved, including their original
+hash conventions. For exact published-release verification, use a
 separate checkout of `v2.0.0`, retrieve Git LFS objects and preserve LF line
 endings (`git -c core.autocrlf=false checkout v2.0.0`). Do not regenerate its
 manifests to conceal differences. Default checking against the published

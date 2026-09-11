@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 import geopandas as gpd
@@ -86,11 +87,53 @@ def make_vectors(origin: np.ndarray, target: np.ndarray, profile: dict, output_g
     return {"polygon_count": int(len(gdf)), "changed_area_m2": float(gdf["area_m2"].sum()) if len(gdf) else 0.0}
 
 
+def geopackage_content_equal(existing: Path, staged: Path) -> bool:
+    """Compare feature content while ignoring GeoPackage SQLite write metadata."""
+
+    if not existing.is_file() or not staged.is_file():
+        return False
+    try:
+        existing_layers = gpd.list_layers(existing)
+        staged_layers = gpd.list_layers(staged)
+        if not existing_layers.equals(staged_layers):
+            return False
+        for layer in existing_layers["name"]:
+            existing_frame = gpd.read_file(existing, layer=layer, engine="pyogrio")
+            staged_frame = gpd.read_file(staged, layer=layer, engine="pyogrio")
+            if list(existing_frame.columns) != list(staged_frame.columns):
+                return False
+            if existing_frame.crs != staged_frame.crs or not existing_frame.equals(staged_frame):
+                return False
+    except Exception:
+        return False
+    return True
+
+
+def require_prediction_inputs() -> None:
+    """Fail before creating outputs when a planning bundle is incomplete."""
+
+    missing = [
+        PREDICTION_ROOT / model / scenario / f"seed_{seed}" / f"prediction_{year}.tif"
+        for model in MODELS
+        for scenario in SCENARIOS
+        for year in YEARS
+        for seed in (31, 47, 73)
+        if not (PREDICTION_ROOT / model / scenario / f"seed_{seed}" / f"prediction_{year}.tif").is_file()
+    ]
+    if missing:
+        raise FileNotFoundError(
+            "missing_planning_predictions:" + ",".join(str(path) for path in missing)
+        )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=HERE / "results_arcgis_v2")
     args = parser.parse_args()
     output = args.output.resolve()
+    # This check intentionally precedes every output mutation. A partial rerun
+    # must not delete an archived GeoPackage when 2026-2030 seed rasters are absent.
+    require_prediction_inputs()
     output.mkdir(parents=True, exist_ok=True)
     city, profile = read(ARTIFACT_ROOT / "abu_dhabi_city_100m_mask.tif")
     valid = city > 0
@@ -121,20 +164,31 @@ def main() -> None:
         for scenario in SCENARIOS:
             ensemble_root = output / "ensembles" / model / scenario
             vector_path = output / "vectors" / f"{model}_{scenario}_changes_2025_2031.gpkg"
-            if vector_path.exists():
-                vector_path.unlink()
+            staged_vector_path = vector_path.with_name(f".{vector_path.stem}.staging.gpkg")
+            if staged_vector_path.exists():
+                staged_vector_path.unlink()
             origin = states[2025]
-            for year in YEARS:
-                paths = [PREDICTION_ROOT / model / scenario / f"seed_{seed}" / f"prediction_{year}.tif" for seed in (31, 47, 73)]
-                pred = ensemble(paths, profile)
-                pred[~valid] = 0
-                out_raster = ensemble_root / f"prediction_{year}.tif"
-                write(out_raster, pred, profile, f"{model}_{scenario}_ensemble_{year}")
-                counts = class_counts(pred, valid)
-                changed = int(np.count_nonzero(valid & (origin != pred)))
-                vector = make_vectors(origin, pred, profile, vector_path, start_year=2025 if year == 2026 else year - 1, target_year=year)
-                rows.append({"model": model, "scenario": scenario, "target_year": year, "prediction": str(out_raster.relative_to(HERE)), "counts": counts, "changed_cells_from_previous_year": changed, "change_polygons": str(vector_path.relative_to(HERE)), **vector})
-                origin = pred
+            try:
+                for year in YEARS:
+                    paths = [PREDICTION_ROOT / model / scenario / f"seed_{seed}" / f"prediction_{year}.tif" for seed in (31, 47, 73)]
+                    pred = ensemble(paths, profile)
+                    pred[~valid] = 0
+                    out_raster = ensemble_root / f"prediction_{year}.tif"
+                    write(out_raster, pred, profile, f"{model}_{scenario}_ensemble_{year}")
+                    counts = class_counts(pred, valid)
+                    changed = int(np.count_nonzero(valid & (origin != pred)))
+                    vector = make_vectors(origin, pred, profile, staged_vector_path, start_year=2025 if year == 2026 else year - 1, target_year=year)
+                    rows.append({"model": model, "scenario": scenario, "target_year": year, "prediction": str(out_raster.relative_to(HERE)), "counts": counts, "changed_cells_from_previous_year": changed, "change_polygons": str(vector_path.relative_to(HERE)), **vector})
+                    origin = pred
+                vector_path.parent.mkdir(parents=True, exist_ok=True)
+                if geopackage_content_equal(vector_path, staged_vector_path):
+                    staged_vector_path.unlink()
+                else:
+                    os.replace(staged_vector_path, vector_path)
+            except Exception:
+                if staged_vector_path.exists():
+                    staged_vector_path.unlink()
+                raise
     report = {"schema": "gwm.abu_dhabi_land_use_v2_results.v1", "source": source_summary, "models": list(MODELS), "scenarios": list(SCENARIOS), "years": list(YEARS), "rows": rows, "claim_boundary": "ArcGIS is a public global remote-sensing land-cover product; it is not an authoritative Abu Dhabi statutory land-use database."}
     (output / "results_summary.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     lines = ["# Abu Dhabi land-use v2: ArcGIS Sentinel-2 10 m results", "", "The v2 run uses the public ArcGIS Sentinel2_10m_LandCover categorical product for 2017–2025. Native 10 m rasters are retained; the three models run on the existing aligned 100 m contract after canonical class mapping and 10×10 majority aggregation.", "", "## Source comparison", "", "| Year | ArcGIS built cells | Dynamic World built cells | ArcGIS valid cells |", "|---:|---:|---:|---:|"]

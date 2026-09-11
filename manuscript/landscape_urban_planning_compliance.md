@@ -12,7 +12,7 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 | Title | Ready | Descriptive title identifies the method and planning use without claiming an official forecast. |
 | Author and affiliation | Ready | Ning Zhou; Beijing Freedo Technology Co., Ltd. |
 | Corresponding author | Partially ready; portal address still required | Ning Zhou; `zhouning@freedotech.com`, Beijing, China, and ORCID `0009-0002-5647-7388` are listed on the title page. Enter the author's confirmed full postal correspondence address in Editorial Manager before upload. |
-| Abstract | Draft-ready; portal confirmation required | 240 words by whitespace count. It reports cross-product label dependence and preserves the 100-m/non-authoritative boundary. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
+| Abstract | Draft-ready; portal confirmation required | 244 words by whitespace count. It reports cross-product label dependence, isolates the 2022 product-series-break target, and preserves the 100-m/non-authoritative boundary. Confirm the live LUP guide and any structured abstract fields immediately before submission. |
 | Highlights | Draft-ready | Five bullets are supplied; each is below 85 characters, including spaces. They describe the completed public-data benchmark and its evidence boundary. |
 | Keywords | Ready | Six searchable terms are supplied: Geospatial World Model, land-cover change, constrained allocation, cellular automata, Abu Dhabi and scenario planning. |
 | Graphical abstract | Confirm in portal | No separate graphical abstract is included. The journal's current article-type setting should determine whether it is required or optional. Figure 1 can be adapted if requested. |

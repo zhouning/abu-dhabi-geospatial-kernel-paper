@@ -477,8 +477,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/materialize_gee_inputs.py",
       "role": "code",
-      "bytes": 24646,
-      "sha256": "7a88dbb83f4fb783dcacf297dc867f172fede0274d64322143e5b6280101c4d0",
+      "bytes": 24866,
+      "sha256": "30c534335c6e5d809190ae6a8c2e18f1cedc50da826754747b7d47e34a5e119b",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -540,8 +540,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/render_nature_figures.py",
       "role": "code",
-      "bytes": 43786,
-      "sha256": "cb458133e4b1fdf397790d15cf9b21b800ee53cde19e747d48b3713359c6c2e6",
+      "bytes": 43189,
+      "sha256": "edf3b0071816401dee5b279e10c030789675045c47bc7cdc4c6f57c506988270",
       "hash_mode": "text_lf_normalized"
     },
     {

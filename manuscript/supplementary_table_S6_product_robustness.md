@@ -14,6 +14,16 @@ All values use the frozen Abu Dhabi city 100-m grid. Strict destination-change F
 | ArcGIS-served IO/MS/Esri | 2024 | 5.26 | 28.26 | 0.0406 | 0.1197 | 0.1674 | 0.1312 |
 | ArcGIS-served IO/MS/Esri | 2025 | 4.50 | n/a | 0.0090 | 0.0731 | 0.0579 | 0.0654 |
 
+## Matched product-difference sensitivity
+
+Intervals are ArcGIS-served minus Dynamic World mean strict FoM for the four paired targets. The 2022 target follows the documented 2021–2022 ArcGIS class-composition break, so the right-hand interval isolates the remaining folds rather than treating its sign as ordinary product variation. A negative value means lower agreement with the ArcGIS-served product under the product-specific pipeline; it does not identify which product is correct.
+
+| Model | All matched targets | All-target interval | Excluding 2022 | Excluding-2022 interval | Direction excluding 2022 |
+|---|---|---:|---|---:|---|
+| FLUS-style ANN–CA | 2021,2022,2023,2024 | -0.100 to +0.161 | 2021,2023,2024 | -0.100 to +0.023 | mixed remaining folds |
+| Geospatial Kernel | 2021,2022,2023,2024 | -0.244 to +0.205 | 2021,2023,2024 | -0.244 to -0.014 | negative in every remaining fold |
+| GeoFM-LDN | 2021,2022,2023,2024 | -0.215 to +0.390 | 2021,2023,2024 | -0.215 to -0.010 | negative in every remaining fold |
+
 Same-year agreement between the two harmonized products is reported below. A 100-m cell contributes only where both products have a usable canonical label.
 
 | Year | All-class agreement | Built-class IoU | Dynamic World built (km2) | ArcGIS-served built (km2) |
@@ -71,6 +81,6 @@ The source service names raw class 11 `Rangeland`. The frozen benchmark maps it 
 | 2024 | 272030 | 2653 | 2581 | 15 | 22408 | 25052 |
 | 2025 | 282750 | 2754 | 2694 | 21 | 23151 | 25891 |
 
-ArcGIS report SHA-256: `d80d2e8ca640686a27cec24cba2ec178dd40ec654ec5f3fd3a63a12c0eb2bcbd`.
+ArcGIS report SHA-256 (LF-normalized text): `d80d2e8ca640686a27cec24cba2ec178dd40ec654ec5f3fd3a63a12c0eb2bcbd`.
 
-Dynamic World report SHA-256: `bce1043f8478288aff2b5808f3b5521c139c47e265d12a465f928379ff2f7fe8`.
+Dynamic World report SHA-256 (LF-normalized text): `bce1043f8478288aff2b5808f3b5521c139c47e265d12a465f928379ff2f7fe8`.

@@ -3223,10 +3223,12 @@
   ],
   "input_reports": {
     "arcgis": {
+      "hash_mode": "text_lf_normalized",
       "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_v2_historical_backtest/report.json",
       "sha256": "d80d2e8ca640686a27cec24cba2ec178dd40ec654ec5f3fd3a63a12c0eb2bcbd"
     },
     "dynamic_world": {
+      "hash_mode": "text_lf_normalized",
       "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/dynamic_world_matched_backtest/report.json",
       "sha256": "bce1043f8478288aff2b5808f3b5521c139c47e265d12a465f928379ff2f7fe8"
     }
@@ -5329,6 +5331,38 @@
       "wetland": 17,
       "woody_vegetation": 2,
       "year": 2025
+    }
+  ],
+  "product_difference_intervals": [
+    {
+      "all_targets_max": 0.16089821679299016,
+      "all_targets_min": -0.10021900136498643,
+      "excluding_2022_direction": "mixed_remaining_folds",
+      "excluding_2022_max": 0.02303268225759028,
+      "excluding_2022_min": -0.10021900136498643,
+      "excluding_2022_target_years": "2021,2023,2024",
+      "matched_target_years": "2021,2022,2023,2024",
+      "model_id": "geosos_flus"
+    },
+    {
+      "all_targets_max": 0.20511849635707505,
+      "all_targets_min": -0.24407411970605405,
+      "excluding_2022_direction": "negative_in_every_remaining_fold",
+      "excluding_2022_max": -0.014128418342143373,
+      "excluding_2022_min": -0.24407411970605405,
+      "excluding_2022_target_years": "2021,2023,2024",
+      "matched_target_years": "2021,2022,2023,2024",
+      "model_id": "geospatial_kernel"
+    },
+    {
+      "all_targets_max": 0.39037447436254125,
+      "all_targets_min": -0.2154764600444365,
+      "excluding_2022_direction": "negative_in_every_remaining_fold",
+      "excluding_2022_max": -0.010158746535522817,
+      "excluding_2022_min": -0.2154764600444365,
+      "excluding_2022_target_years": "2021,2023,2024",
+      "matched_target_years": "2021,2022,2023,2024",
+      "model_id": "paper58"
     }
   ],
   "rangeland_mapping_sensitivity": [

@@ -29,6 +29,14 @@ This is a whole-public-product-pipeline robustness experiment on the frozen Abu 
 | dynamic_world | 2023 | Geospatial Kernel (0.212) | GeoFM-LDN (0.166) | FLUS-style ANN–CA (0.115) |
 | dynamic_world | 2024 | Geospatial Kernel (0.182) | GeoFM-LDN (0.166) | FLUS-style ANN–CA (0.097) |
 
+## Product-difference sensitivity
+
+| Model | All matched FoM interval | Excluding 2022 series-break target |
+|---|---:|---:|
+| FLUS-style ANN–CA | -0.100 to +0.161 | -0.100 to +0.023 |
+| Geospatial Kernel | -0.244 to +0.205 | -0.244 to -0.014 |
+| GeoFM-LDN | -0.215 to +0.390 | -0.215 to -0.010 |
+
 ## Planning frontier sensitivity
 
 The planning comparison is conditional on each product-specific origin state and the same released public proxy objectives. Frontier membership is not a forecast-accuracy ranking, and stable membership does not imply unchanged objective trade-offs.

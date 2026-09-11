@@ -88,11 +88,10 @@ def read_json(path: Path) -> dict[str, Any]:
 
 
 def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    """Hash text inputs portably across Git CRLF checkout settings."""
+
+    raw = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(raw).hexdigest()
 
 
 def repository_relative(path: Path) -> str:
@@ -329,6 +328,44 @@ def backtest_rankings(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
+def product_difference_intervals(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Summarize ArcGIS-minus-Dynamic-World FoM with the series-break fold isolated."""
+
+    output = []
+    for model_id in MODEL_IDS:
+        target_years = sorted(
+            set(row["target_year"] for row in rows if row["source_track"] == "arcgis" and row["model_id"] == model_id)
+            & set(row["target_year"] for row in rows if row["source_track"] == "dynamic_world" and row["model_id"] == model_id)
+        )
+        paired = []
+        for target_year in target_years:
+            values = {
+                row["source_track"]: row["change_fom_mean"]
+                for row in rows
+                if row["model_id"] == model_id and row["target_year"] == target_year
+            }
+            paired.append((target_year, float(values["arcgis"] - values["dynamic_world"])))
+        all_differences = [difference for _, difference in paired]
+        stable_differences = [difference for target, difference in paired if target != 2022]
+        output.append(
+            {
+                "model_id": model_id,
+                "matched_target_years": ",".join(str(year) for year, _ in paired),
+                "all_targets_min": min(all_differences),
+                "all_targets_max": max(all_differences),
+                "excluding_2022_target_years": ",".join(str(year) for year, _ in paired if year != 2022),
+                "excluding_2022_min": min(stable_differences),
+                "excluding_2022_max": max(stable_differences),
+                "excluding_2022_direction": (
+                    "negative_in_every_remaining_fold"
+                    if max(stable_differences) < 0
+                    else "mixed_remaining_folds"
+                ),
+            }
+        )
+    return output
+
+
 def planning_v2() -> dict[str, Any]:
     planning_root = HERE / "artifacts" / "planning_arcgis_2026_2031"
     origin = read_band(HERE / "artifacts" / "gee" / "land_cover" / "land_cover_2025_100m.tif")
@@ -545,6 +582,23 @@ def render_supplementary_table(summary: dict[str, Any]) -> str:
             )
     lines += [
         "",
+        "## Matched product-difference sensitivity",
+        "",
+        "Intervals are ArcGIS-served minus Dynamic World mean strict FoM for the four paired targets. The 2022 target follows the documented 2021–2022 ArcGIS class-composition break, so the right-hand interval isolates the remaining folds rather than treating its sign as ordinary product variation. A negative value means lower agreement with the ArcGIS-served product under the product-specific pipeline; it does not identify which product is correct.",
+        "",
+        "| Model | All matched targets | All-target interval | Excluding 2022 | Excluding-2022 interval | Direction excluding 2022 |",
+        "|---|---|---:|---|---:|---|",
+    ]
+    for row in summary["product_difference_intervals"]:
+        lines.append(
+            f"| {MODEL_LABELS[row['model_id']]} | {row['matched_target_years']} | "
+            f"{row['all_targets_min']:+.3f} to {row['all_targets_max']:+.3f} | "
+            f"{row['excluding_2022_target_years']} | "
+            f"{row['excluding_2022_min']:+.3f} to {row['excluding_2022_max']:+.3f} | "
+            f"{row['excluding_2022_direction'].replace('_', ' ')} |"
+        )
+    lines += [
+        "",
         "Same-year agreement between the two harmonized products is reported below. A 100-m cell contributes only where both products have a usable canonical label.",
         "",
         "| Year | All-class agreement | Built-class IoU | Dynamic World built (km2) | ArcGIS-served built (km2) |",
@@ -591,12 +645,47 @@ def render_supplementary_table(summary: dict[str, Any]) -> str:
         )
     lines += [
         "",
-        f"ArcGIS report SHA-256: `{summary['input_reports']['arcgis']['sha256']}`.",
+        f"ArcGIS report SHA-256 (LF-normalized text): `{summary['input_reports']['arcgis']['sha256']}`.",
         "",
-        f"Dynamic World report SHA-256: `{summary['input_reports']['dynamic_world']['sha256']}`.",
+        f"Dynamic World report SHA-256 (LF-normalized text): `{summary['input_reports']['dynamic_world']['sha256']}`.",
         "",
     ]
     return "\n".join(lines)
+
+
+def render_supplementary_cross_product_matrix(summary: dict[str, Any]) -> str:
+    """Render the complete annual 6 x 6 matrices as an explicitly numbered table."""
+
+    rows = summary["cross_product_class_matrix"]
+    lines = [
+        "# Supplementary Table S4. Dynamic World-to-ArcGIS class matrices",
+        "",
+        "Each matrix uses the pairwise common-coverage 100-m grid. Rows are Dynamic World classes and columns are ArcGIS-served classes after the frozen six-class crosswalk. These are product-label correspondences, not verified land-cover transitions or land-use truth. Zeros are retained explicitly.",
+    ]
+    for year in sorted({int(row["year"]) for row in rows}):
+        values = {
+            (int(row["dynamic_world_class_id"]), int(row["arcgis_class_id"])): int(row["cells"])
+            for row in rows
+            if int(row["year"]) == year
+        }
+        lines.extend(
+            [
+                "",
+                f"## {year}",
+                "",
+                "| Dynamic World / ArcGIS-served | Water | Woody | Low vegetation | Wetland | Built | Bare |",
+                "|---|---:|---:|---:|---:|---:|---:|",
+            ]
+        )
+        for class_id in range(1, 7):
+            lines.append(
+                "| "
+                + CLASS_NAMES[class_id]
+                + " | "
+                + " | ".join(str(values[(class_id, target_id)]) for target_id in range(1, 7))
+                + " |"
+            )
+    return "\n".join(lines) + "\n"
 
 
 def render_supplementary_planning_table(summary: dict[str, Any]) -> str:
@@ -791,6 +880,18 @@ def render_markdown(summary: dict[str, Any]) -> str:
         lines.append(f"| {source_track} | {target_year} | " + " | ".join(cells) + " |")
     lines += [
         "",
+        "## Product-difference sensitivity",
+        "",
+        "| Model | All matched FoM interval | Excluding 2022 series-break target |",
+        "|---|---:|---:|",
+    ]
+    for row in summary["product_difference_intervals"]:
+        lines.append(
+            f"| {MODEL_LABELS[row['model_id']]} | {row['all_targets_min']:+.3f} to {row['all_targets_max']:+.3f} | "
+            f"{row['excluding_2022_min']:+.3f} to {row['excluding_2022_max']:+.3f} |"
+        )
+    lines += [
+        "",
         "## Planning frontier sensitivity",
         "",
         "The planning comparison is conditional on each product-specific origin state and the same released public proxy objectives. Frontier membership is not a forecast-accuracy ranking, and stable membership does not imply unchanged objective trade-offs.",
@@ -835,14 +936,23 @@ def main() -> None:
     temporal = temporal_product_diagnostics()
     rows = backtest_rows(arcgis) + backtest_rows(dynamic_world)
     rankings = backtest_rankings(rows)
+    product_intervals = product_difference_intervals(rows)
     planning = planning_v2()
     summary = {
         "schema": "gwm.abu_dhabi_product_robustness_analysis.v1",
         "status": "complete",
         "spatial_scope": "Frozen Abu Dhabi city research boundary (OSM R4479763)",
         "input_reports": {
-            "arcgis": {"path": repository_relative(args.arcgis_report), "sha256": sha256(args.arcgis_report)},
-            "dynamic_world": {"path": repository_relative(args.dynamic_world_report), "sha256": sha256(args.dynamic_world_report)},
+            "arcgis": {
+                "path": repository_relative(args.arcgis_report),
+                "sha256": sha256(args.arcgis_report),
+                "hash_mode": "text_lf_normalized",
+            },
+            "dynamic_world": {
+                "path": repository_relative(args.dynamic_world_report),
+                "sha256": sha256(args.dynamic_world_report),
+                "hash_mode": "text_lf_normalized",
+            },
         },
         "comparison_design": {
             "type": "whole_public_product_pipeline_robustness",
@@ -856,6 +966,7 @@ def main() -> None:
         "temporal_product_diagnostics": temporal,
         "backtest_rows": rows,
         "backtest_rankings": rankings,
+        "product_difference_intervals": product_intervals,
         "planning": planning,
         "claim_boundary": "Cross-public-product robustness, not authoritative local validation.",
     }
@@ -872,6 +983,7 @@ def main() -> None:
     write_csv(args.output / "temporal_product_diagnostics.csv", temporal)
     write_csv(args.output / "historical_backtest_metrics.csv", rows)
     write_csv(args.output / "historical_backtest_rankings.csv", rankings)
+    write_csv(args.output / "product_difference_intervals.csv", product_intervals)
     write_csv(MANUSCRIPT_ROOT / "source_data_fig04_product_robustness.csv", figure_source_rows(agreement, rows))
     (MANUSCRIPT_ROOT / "supplementary_table_S6_product_robustness.md").write_text(
         render_supplementary_table(summary),
@@ -879,6 +991,10 @@ def main() -> None:
     )
     (MANUSCRIPT_ROOT / "supplementary_table_S1_arcgis_planning_objectives.md").write_text(
         render_supplementary_planning_table(summary),
+        encoding="utf-8",
+    )
+    (MANUSCRIPT_ROOT / "supplementary_table_S4_cross_product_class_matrices.md").write_text(
+        render_supplementary_cross_product_matrix(summary),
         encoding="utf-8",
     )
     render_figure(agreement, rows)

@@ -4,10 +4,14 @@ import importlib.util
 import itertools
 import json
 from pathlib import Path
+import sys
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+V2_ROOT = ROOT / "benchmarks" / "abu_dhabi_land_use_v2"
+if str(V2_ROOT) not in sys.path:
+    sys.path.insert(0, str(V2_ROOT))
 
 
 def load(name, relative):
@@ -20,6 +24,8 @@ def load(name, relative):
 limits = load("limits", "benchmarks/abu_dhabi_land_use_v2/analyze_allocation_limits.py")
 builder = load("manifest_builder", "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py")
 checker = load("manifest_checker", "benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py")
+robustness = load("robustness", "benchmarks/abu_dhabi_land_use_v2/analyze_product_robustness.py")
+arcgis_analysis = load("arcgis_analysis", "benchmarks/abu_dhabi_land_use_v2/analyze_arcgis_v2.py")
 
 
 def normalized_text_bytes(path: Path) -> bytes:
@@ -69,6 +75,46 @@ class RevisionEvidenceTests(unittest.TestCase):
                 self.assertEqual((sha, size), (hashlib.sha256(b"a\r\nb").hexdigest(), 4))
             finally:
                 checker.REPO = previous
+
+    def test_product_report_hashes_are_line_ending_invariant(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "report.json"
+            path.write_bytes(b'{\n  "status": "complete"\n}\n')
+            lf_hash = robustness.sha256(path)
+            path.write_bytes(b'{\r\n  "status": "complete"\r\n}\r\n')
+            self.assertEqual(robustness.sha256(path), lf_hash)
+
+    def test_arcgis_preflight_does_not_touch_archived_delivery(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            delivery = root / "geosos_flus_compact_changes_2025_2031.gpkg"
+            delivery.write_bytes(b"archived-delivery")
+            previous = arcgis_analysis.PREDICTION_ROOT
+            arcgis_analysis.PREDICTION_ROOT = root / "missing_predictions"
+            try:
+                with self.assertRaisesRegex(FileNotFoundError, "missing_planning_predictions"):
+                    arcgis_analysis.require_prediction_inputs()
+                self.assertEqual(delivery.read_bytes(), b"archived-delivery")
+            finally:
+                arcgis_analysis.PREDICTION_ROOT = previous
+
+    def test_geopackage_content_check_preserves_equivalent_delivery(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            existing = root / "existing.gpkg"
+            staged = root / "staged.gpkg"
+            frame = arcgis_analysis.gpd.GeoDataFrame(
+                {"class_id": [5], "area_m2": [10000.0]},
+                geometry=arcgis_analysis.gpd.points_from_xy([1.0], [2.0]),
+                crs="EPSG:3857",
+            )
+            frame.to_file(existing, layer="y2031", driver="GPKG", engine="pyogrio")
+            frame.to_file(staged, layer="y2031", driver="GPKG", engine="pyogrio")
+            self.assertTrue(arcgis_analysis.geopackage_content_equal(existing, staged))
+            changed = frame.copy()
+            changed.loc[0, "area_m2"] = 20000.0
+            changed.to_file(staged, layer="y2031", driver="GPKG", engine="pyogrio")
+            self.assertFalse(arcgis_analysis.geopackage_content_equal(existing, staged))
 
     def test_frozen_report_analysis_regenerates_committed_outputs(self):
         source_dir = ROOT / "benchmarks" / "abu_dhabi_land_use_v2" / "results_arcgis_v2" / "allocation_limits"

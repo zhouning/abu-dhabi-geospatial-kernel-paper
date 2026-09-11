@@ -33,8 +33,12 @@ GeoFM-LDN.
   strict-FoM Supplementary Table S2.
 - `supplementary_table_S3_flus_feature_diagnostics.md`: full 13-, 19- and
   25-feature FLUS diagnostic table, including cross-platform boundary.
+- `supplementary_table_S4_cross_product_class_matrices.md`: annual paired-grid
+  six-class Dynamic World-to-ArcGIS product correspondence matrices.
 - `supplementary_table_S5_rolling_external_diagnostics.md`: expanding-window
   Kernel results, paired spatial-block intervals and WorldCover diagnostics.
+- `response_to_LUP_review_round18.md`: proof-stage response, generated-output
+  checks and remaining claim boundary for the current working revision.
 - `journal_recommendation.md`: target-journal recommendation and submission
   positioning.
 - `submission_notes_zh.md`: Chinese hand-off notes and submission checklist.
