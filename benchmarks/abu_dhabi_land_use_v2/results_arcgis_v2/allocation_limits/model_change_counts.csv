@@ -1,0 +1,109 @@
+product,target_year,model_id,seed,predicted_change_pixels,observed_change_pixels,minimum_feasible_moves,is_exact_minimum_change_projection
+Dynamic World,2021,geosos_flus,31,5820,2429,1115,False
+Dynamic World,2021,geosos_flus,47,5684,2429,1115,False
+Dynamic World,2021,geosos_flus,73,4919,2429,1115,False
+Dynamic World,2021,geospatial_kernel,31,1115,2429,1115,True
+Dynamic World,2021,geospatial_kernel,47,1115,2429,1115,True
+Dynamic World,2021,geospatial_kernel,73,1115,2429,1115,True
+Dynamic World,2021,paper58,31,1115,2429,1115,True
+Dynamic World,2021,paper58,47,1115,2429,1115,True
+Dynamic World,2021,paper58,73,1115,2429,1115,True
+Dynamic World,2021,random_minimum_change,31,1115,2429,1115,True
+Dynamic World,2021,random_minimum_change,47,1115,2429,1115,True
+Dynamic World,2021,random_minimum_change,73,1115,2429,1115,True
+Dynamic World,2022,geosos_flus,31,1174,2749,793,False
+Dynamic World,2022,geosos_flus,47,1091,2749,793,False
+Dynamic World,2022,geosos_flus,73,1139,2749,793,False
+Dynamic World,2022,geospatial_kernel,31,793,2749,793,True
+Dynamic World,2022,geospatial_kernel,47,793,2749,793,True
+Dynamic World,2022,geospatial_kernel,73,793,2749,793,True
+Dynamic World,2022,paper58,31,793,2749,793,True
+Dynamic World,2022,paper58,47,793,2749,793,True
+Dynamic World,2022,paper58,73,793,2749,793,True
+Dynamic World,2022,random_minimum_change,31,793,2749,793,True
+Dynamic World,2022,random_minimum_change,47,793,2749,793,True
+Dynamic World,2022,random_minimum_change,73,793,2749,793,True
+Dynamic World,2023,geosos_flus,31,3618,4500,3080,False
+Dynamic World,2023,geosos_flus,47,3393,4500,3080,False
+Dynamic World,2023,geosos_flus,73,4125,4500,3080,False
+Dynamic World,2023,geospatial_kernel,31,3080,4500,3080,True
+Dynamic World,2023,geospatial_kernel,47,3080,4500,3080,True
+Dynamic World,2023,geospatial_kernel,73,3080,4500,3080,True
+Dynamic World,2023,paper58,31,3080,4500,3080,True
+Dynamic World,2023,paper58,47,3080,4500,3080,True
+Dynamic World,2023,paper58,73,3080,4500,3080,True
+Dynamic World,2023,random_minimum_change,31,3080,4500,3080,True
+Dynamic World,2023,random_minimum_change,47,3080,4500,3080,True
+Dynamic World,2023,random_minimum_change,73,3080,4500,3080,True
+Dynamic World,2024,geosos_flus,31,10219,4972,3696,False
+Dynamic World,2024,geosos_flus,47,7017,4972,3696,False
+Dynamic World,2024,geosos_flus,73,9558,4972,3696,False
+Dynamic World,2024,geospatial_kernel,31,3696,4972,3696,True
+Dynamic World,2024,geospatial_kernel,47,3696,4972,3696,True
+Dynamic World,2024,geospatial_kernel,73,3696,4972,3696,True
+Dynamic World,2024,paper58,31,3696,4972,3696,True
+Dynamic World,2024,paper58,47,3696,4972,3696,True
+Dynamic World,2024,paper58,73,3696,4972,3696,True
+Dynamic World,2024,random_minimum_change,31,3696,4972,3696,True
+Dynamic World,2024,random_minimum_change,47,3696,4972,3696,True
+Dynamic World,2024,random_minimum_change,73,3696,4972,3696,True
+ArcGIS,2021,geosos_flus,31,6860,3241,278,False
+ArcGIS,2021,geosos_flus,47,779,3241,278,False
+ArcGIS,2021,geosos_flus,73,2291,3241,278,False
+ArcGIS,2021,geospatial_kernel,31,278,3241,278,True
+ArcGIS,2021,geospatial_kernel,47,278,3241,278,True
+ArcGIS,2021,geospatial_kernel,73,278,3241,278,True
+ArcGIS,2021,paper58,31,278,3241,278,True
+ArcGIS,2021,paper58,47,278,3241,278,True
+ArcGIS,2021,paper58,73,278,3241,278,True
+ArcGIS,2021,random_minimum_change,31,278,3241,278,True
+ArcGIS,2021,random_minimum_change,47,278,3241,278,True
+ArcGIS,2021,random_minimum_change,73,278,3241,278,True
+ArcGIS,2022,geosos_flus,31,7618,8446,6864,False
+ArcGIS,2022,geosos_flus,47,7552,8446,6864,False
+ArcGIS,2022,geosos_flus,73,12472,8446,6864,False
+ArcGIS,2022,geospatial_kernel,31,6864,8446,6864,True
+ArcGIS,2022,geospatial_kernel,47,6864,8446,6864,True
+ArcGIS,2022,geospatial_kernel,73,6864,8446,6864,True
+ArcGIS,2022,paper58,31,6864,8446,6864,True
+ArcGIS,2022,paper58,47,6864,8446,6864,True
+ArcGIS,2022,paper58,73,6864,8446,6864,True
+ArcGIS,2022,random_minimum_change,31,6864,8446,6864,True
+ArcGIS,2022,random_minimum_change,47,6864,8446,6864,True
+ArcGIS,2022,random_minimum_change,73,6864,8446,6864,True
+ArcGIS,2023,geosos_flus,31,5367,4846,3223,False
+ArcGIS,2023,geosos_flus,47,3975,4846,3223,False
+ArcGIS,2023,geosos_flus,73,4236,4846,3223,False
+ArcGIS,2023,geospatial_kernel,31,3223,4846,3223,True
+ArcGIS,2023,geospatial_kernel,47,3223,4846,3223,True
+ArcGIS,2023,geospatial_kernel,73,3223,4846,3223,True
+ArcGIS,2023,paper58,31,3223,4846,3223,True
+ArcGIS,2023,paper58,47,3223,4846,3223,True
+ArcGIS,2023,paper58,73,3223,4846,3223,True
+ArcGIS,2023,random_minimum_change,31,3223,4846,3223,True
+ArcGIS,2023,random_minimum_change,47,3223,4846,3223,True
+ArcGIS,2023,random_minimum_change,73,3223,4846,3223,True
+ArcGIS,2024,geosos_flus,31,2822,4197,2281,False
+ArcGIS,2024,geosos_flus,47,4781,4197,2281,False
+ArcGIS,2024,geosos_flus,73,3080,4197,2281,False
+ArcGIS,2024,geospatial_kernel,31,2281,4197,2281,True
+ArcGIS,2024,geospatial_kernel,47,2281,4197,2281,True
+ArcGIS,2024,geospatial_kernel,73,2281,4197,2281,True
+ArcGIS,2024,paper58,31,2281,4197,2281,True
+ArcGIS,2024,paper58,47,2281,4197,2281,True
+ArcGIS,2024,paper58,73,2281,4197,2281,True
+ArcGIS,2024,random_minimum_change,31,2281,4197,2281,True
+ArcGIS,2024,random_minimum_change,47,2281,4197,2281,True
+ArcGIS,2024,random_minimum_change,73,2281,4197,2281,True
+ArcGIS,2025,geosos_flus,31,1651,3587,849,False
+ArcGIS,2025,geosos_flus,47,957,3587,849,False
+ArcGIS,2025,geosos_flus,73,6693,3587,849,False
+ArcGIS,2025,geospatial_kernel,31,849,3587,849,True
+ArcGIS,2025,geospatial_kernel,47,849,3587,849,True
+ArcGIS,2025,geospatial_kernel,73,849,3587,849,True
+ArcGIS,2025,paper58,31,849,3587,849,True
+ArcGIS,2025,paper58,47,849,3587,849,True
+ArcGIS,2025,paper58,73,849,3587,849,True
+ArcGIS,2025,random_minimum_change,31,849,3587,849,True
+ArcGIS,2025,random_minimum_change,47,849,3587,849,True
+ArcGIS,2025,random_minimum_change,73,849,3587,849,True

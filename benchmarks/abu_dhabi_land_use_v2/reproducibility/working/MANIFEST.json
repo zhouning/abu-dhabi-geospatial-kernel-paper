@@ -134,8 +134,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v2/README.md",
       "role": "configuration",
-      "bytes": 6742,
-      "sha256": "d66fd5184db7a3a931d4812f48d6e19f286e8676e41609ecba03cd05f4e0c4c8",
+      "bytes": 7104,
+      "sha256": "a6f81d6e7fbe26272e31ce805beaa2b36729575772e7b74c884e478b0d13e16c",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -148,8 +148,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v2/analyze_allocation_limits.py",
       "role": "code",
-      "bytes": 7393,
-      "sha256": "2e6cc87a874e5c1a620d4931fece4641fe86eb61b87a4c20703e59d0837f5025",
+      "bytes": 10912,
+      "sha256": "d14fe73f438a5d5efddbbbf69ded8dd10407bfdda084b5bde766887ae489188a",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -162,8 +162,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v2/analyze_product_robustness.py",
       "role": "code",
-      "bytes": 29351,
-      "sha256": "d0d021abc087765eaea622a47fb04e73e62b23a68e809cd4aa28d17780f4be1a",
+      "bytes": 41244,
+      "sha256": "e88ecddbbb41853d591a14a7f39f831e8456a1d48edd95526421e2c453c0127b",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -1072,8 +1072,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py",
       "role": "code",
-      "bytes": 9039,
-      "sha256": "95cfc6e1cb0f572a0c2afa29df3df36057e64472ea99030059d21b41af4ee1a4",
+      "bytes": 9491,
+      "sha256": "fbb09136684005dfeed49236383916b8b9db40067d2aeb1f59a7b87baf47d85d",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -1184,8 +1184,8 @@
     {
       "path": "manuscript/build_submission_package.py",
       "role": "configuration",
-      "bytes": 10596,
-      "sha256": "f6f8c74e75761747de0b450516f50223608f448202c9598b3b5a6dd3993547b7",
+      "bytes": 11276,
+      "sha256": "1a35a89d16d610ad91926213bb617da45bc106678f560399c9b67724ed68bfc5",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -1205,8 +1205,8 @@
     {
       "path": "manuscript/submission_header.tex",
       "role": "configuration",
-      "bytes": 61,
-      "sha256": "33fd81d5cb6533221ebb8c48bffbcf6c3e7760630987c90779825b6bc57bad88",
+      "bytes": 43,
+      "sha256": "bbc9bdbe3ed0fa91135ada4d01cafde5ca4689f48bc23d83340bc2b6a811d655",
       "hash_mode": "text_lf_normalized"
     }
   ]

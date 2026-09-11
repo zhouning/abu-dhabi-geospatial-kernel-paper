@@ -6,14 +6,14 @@ date: ""
 
 ## Abstract
 
-Public land-cover products are increasingly used where authoritative local time series are unavailable, but product choice can alter both apparent urban change and model rankings. We present an auditable protocol for constrained spatial allocation using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. Two annual 10-m products for Abu Dhabi city, Google Dynamic World (2017–2024) and an ArcGIS-served Impact Observatory/Microsoft/Esri series (2017–2025), were harmonized to the same 100-m, six-class modelling contract. Leakage-controlled expanding-window tests compared a FLUS-style ANN–CA, Geospatial Kernel, GeoFM-LDN, persistence and random minimum-change allocation using three seeds and 1,000 spatial-block bootstrap resamples. The target year supplied oracle class totals and evaluation labels only. In 2024, the ArcGIS-served series mapped 335.57 km² as built versus 155.98 km² in Dynamic World; built-class intersection over union was 0.449. Kernel had the highest mean FoM in four Dynamic World targets and two matched ArcGIS-served targets; these numerical ranks did not uniformly imply paired-interval separation. Net-change allocation imposed product-specific count-only FoM upper bounds of 0.086–0.813 in the ArcGIS folds. Kernel's ArcGIS-minus-Dynamic World strict change Figure of Merit ranged from -0.244 to +0.205. Yet the product-specific 2031 planning frontiers retained FLUS-style and Kernel candidates in all three scenarios. The results support an inspectable proposal–projection–writeback boundary while showing that comparative skill is label-product dependent. Neither product is authoritative local land-use truth, model outputs remain 100 m, and the 2026–2031 maps are conditional stress tests rather than official forecasts.
+Public land-cover products are increasingly used where authoritative local time series are unavailable, but product choice and within-product discontinuities can alter apparent urban change and model rankings. We present an auditable protocol for constrained spatial allocation using Geospatial Kernel, the algorithmic core of a Geospatial World Model, as the focal execution layer. Two annual 10-m products for Abu Dhabi city, Google Dynamic World (2017–2024) and an ArcGIS-served Impact Observatory/Microsoft/Esri series (2017–2025), were harmonized to the same 100-m, six-class modelling contract. Leakage-controlled expanding-window tests compared a FLUS-style ANN–CA, Geospatial Kernel, GeoFM-LDN, persistence and random minimum-change allocation using three seeds and 1,000 spatial-block bootstrap resamples. The target year supplied oracle class totals and evaluation labels only. In 2024, the ArcGIS-served series mapped 335.57 km² as built versus 155.98 km² in Dynamic World; built-class intersection over union was 0.449. Its built class also rose by 30.6% between 2021 and 2022 while wetland and woody classes later nearly disappeared, an unreconciled series break. Kernel had the highest mean FoM in four Dynamic World targets and two matched ArcGIS-served targets; these numerical ranks did not uniformly imply paired-interval separation. Net-change allocation imposed product-specific count-only FoM upper bounds of 0.086–0.813 only for exact minimum-change allocators. Kernel's ArcGIS-minus-Dynamic World strict change Figure of Merit ranged from -0.244 to +0.205. The product-specific 2031 frontiers retained FLUS-style and Kernel candidates in all scenarios, but their objective trade-offs changed. The results support an inspectable proposal–projection–writeback boundary while showing that comparative skill is label-product dependent. Neither product is authoritative local land-use truth, model outputs remain 100 m, and the 2026–2031 maps are conditional stress tests rather than official forecasts.
 
 ## Highlights
 
-- Cross-product backtests expose label dependence in model rankings.
+- Cross-product backtests expose product dependence and a series discontinuity.
 - Numerical rankings depend on product and conditional paired uncertainty.
 - Proposal–projection–writeback traces preserve allocation auditability.
-- Net-change allocation restricts the attainable change-detection score.
+- Net-change allocation restricts exact minimum-change scores, not CA scores.
 - The 2026–2031 maps remain 100-m stress tests, not statutory forecasts.
 
 ## Keywords
@@ -69,11 +69,20 @@ The original Dynamic World sequence contains annual states for 2017–2024. Mode
 
 The leakage-controlled analysis used expanding one-step windows with origins in 2020–2023 for both products and an additional 2024 origin for the ArcGIS-served series. For origin year $t$, training included only observations available at or before $t$; the held-out $t+1$ label was prohibited from feature construction, model fitting and GeoFM-LDN epoch selection. The target supplied only observed class totals for oracle allocation, evaluation labels and the common-coverage mask. This design isolates spatial allocation conditional on known demand and is not an end-to-end demand forecast. Each fold locked origin-year water and wetland cells and omitted the two road-distance features, because the available OpenStreetMap snapshot was accessed in 2026. Kernel consequently used 23 features and the FLUS-style track used the remaining five continuous drivers. A machine-tested temporal firewall records permitted target-year uses for every model, seed and fold. The two product tracks match the boundary, 100-m grid, model implementations, seeds, target-year protocol, oracle-action rule, evaluator and 1,000-resample 8 × 8-cell spatial bootstrap. Annual labels, origin states, oracle totals, origin water/wetland masks and quality semantics remain product specific; the experiment therefore tests the complete public-product pipelines rather than an isolated label substitution. The original 2023–2024 headline comparison is less strict because it uses the later road snapshot and remains a secondary unmatched-pipeline result.
 
+The random minimum-change controls are deterministic within each analysis but
+not a shared cross-table estimator: the rolling-origin diagnostic derives its
+stream from the declared seed plus origin year × 1,000, whereas the matched
+product analysis uses the declared seed plus target year × 1,000. Their values
+therefore serve as local zero controls in Supplementary Tables S5 and S6,
+respectively, and are not compared numerically across those tables.
+
 ### Public data and class semantics
 
 Dynamic World V1 supplies scene-level class probabilities and maximum-probability labels (Brown et al., 2022). We constructed annual labels by taking the temporal mode of the available scene labels before class crosswalking and export to the modelling grid. Annual composition is a processing choice of this study, not an official annual Dynamic World product. At each source pixel, the quality statistic is $r_y=\max_c[|T_y|^{-1}\sum_{j\in T_y}p_{j,c}]$, where $T_y$ denotes valid scenes in year $y$ and $c$ indexes the nine source classes. Thus the operation is maximum of temporal mean probabilities, not temporal mean of scene-wise maxima; its maximizing class need not equal the annual modal label. The archived band name `mean_top_probability` is retained for compatibility. This statistic is a weighting proxy, not a calibrated probability that the annual label is correct. The nine Dynamic World labels were crosswalked to six canonical classes: water (source 0), woody vegetation (1), low vegetation (2, 4 and 5), wetland (3), built (6) and bare (7). Source class 8 was excluded.
 
-The second sequence was materialized from the public ArcGIS ImageServer `Sentinel2_10m_LandCover`, whose metadata attributes the global annual series to Impact Observatory, Microsoft and Esri (Impact Observatory et al., n.d.). The study by Karra et al. (2021) describes the classification lineage; it does not independently validate every annual layer or subsequent service revision. The materialization manifest, created on 9 September 2026, records the service URL, temporal extent, class mapping and SHA-256 hashes of the downloaded and aggregated rasters. No immutable upstream release identifier is recorded, so the reproducibility target is this archived snapshot rather than the changing live service. Source values were mapped to water (1), woody vegetation (2), wetland (4), low vegetation (5 and 11), built (7) and bare (8); snow/ice (9) and cloud (10) were excluded. Native 10-m labels were retained for audit, then aggregated after crosswalking by majority among usable cells in each 10 × 10 block. The resulting majority fraction served as the ArcGIS-track aggregation-quality term; it is not equivalent to Dynamic World's maximum temporal-mean probability. Both sequences are explicitly treated as public land cover. Neither provides residential, commercial or industrial land use, zoning, cadastral status or development approvals.
+The second sequence was materialized from the public ArcGIS ImageServer `Sentinel2_10m_LandCover`, whose metadata attributes the global annual series to Impact Observatory, Microsoft and Esri (Impact Observatory et al., n.d.). The study by Karra et al. (2021) describes the classification lineage; it does not independently validate every annual layer or subsequent service revision. The associated Living Atlas item states that its 2018–2025 layers use a more complete image collection and cautions that 2017 may be less accurate (Esri, 2026). It does not disclose annual model-version identifiers. The materialization manifest, created on 9 September 2026, records the service URL, temporal extent, class mapping and SHA-256 hashes of the downloaded and aggregated rasters. No immutable upstream release identifier is recorded, so the reproducibility target is this archived snapshot rather than the changing live service.
+
+The service labels are Water (1), Trees (2), Flooded vegetation (4), Crops (5), Built (7), Bare (8), Snow/Ice (9), Clouds (10) and Rangeland (11). We mapped them to water (1), woody vegetation (2), wetland (4), low vegetation (5 and 11), built (7) and bare (8), excluding snow/ice and clouds. Mapping Rangeland to low vegetation is a study crosswalk decision, not an official land-use statement. A descriptive counterfactual mapping it to bare before the same 10 × 10 majority aggregation changes 2,265–2,792 100-m labels per year (Supplementary Table S6); no model was refit, so this does not establish rank sensitivity. Native 10-m labels were retained for audit, then aggregated after crosswalking by majority among usable cells in each 10 × 10 block. The resulting majority fraction served as the ArcGIS-track aggregation-quality term; it is not equivalent to Dynamic World's maximum temporal-mean probability. Both sequences are explicitly treated as public land cover. Neither provides residential, commercial or industrial land use, zoning, cadastral status or development approvals.
 
 Annual 64-dimensional AlphaEarth embeddings were spatially averaged to the canonical grid and locally L2-normalized (Brown et al., 2025). The collection is GOOGLE/SATELLITE_EMBEDDING/V1/ANNUAL, with raster hashes recorded in the GEE input manifest; Brown et al. (2025) is cited as a preprint describing the embedding model.
 
@@ -113,7 +122,7 @@ The projected raster is written as the next `KernelState`. Every step records a 
 
 ### Baselines and common evaluator
 
-The baseline was run through a GeoSOS-derived FLUS-style ANN–CA console (author-modified build; `paper-benchmark-flus-v1.1`) using seven continuous drivers: normalized row and column coordinates, elevation, slope, VIIRS radiance, distance to roads and distance to major roads. Its ANN suitability surface was passed to a cellular-automata allocation stage with the common class totals and public hard mask. The archived run used one 2021 training year, eight ANN hidden neurons, a 3 × 3 CA neighbourhood, neighbourhood strength 1.0, acceleration factor 0.1 and 1,000 iterations. Its frozen transition matrix protected water and wetland but did not prohibit built-to-non-built transitions. The algorithmic base is traceable to the GeoSOS team's public FLUS source release (Liu et al., 2017; GeoSOS team, n.d.); an archived source repository at an anonymized revision contains the modifications used for this paper. Those modifications add `train`/`train-update` entry points and `FLUS_RANDOM_SEED` deterministic seeding for both ANN sampling and CA roulette draws, so the build is not the unmodified upstream executable. Version v1.1 changes only failure handling for invalid input reads; valid-input algorithmic paths and benchmark rasters are unchanged from v1. A 25-feature Kernel-matched input was then executed with absolute paths for seeds 31, 47 and 73 and is reported only as a platform-sensitive diagnostic. It shares the Kernel feature family, but not the learning target or projection semantics: the FLUS ANN estimates same-year label suitability $p(S_t\mid X_t)$, whereas the Kernel proposal is trained to estimate a next-state transition $p(S_{t+1}\mid S_t,X_t)$ before constrained projection. Matching features therefore does not match the training task. Two intermediate configurations were retained as mechanism diagnostics: 13 features (seven drivers plus current-class indicators) and 19 features (seven drivers plus neighbourhood fractions). The 25-feature run collapsed to zero change for macOS seeds 47 and 73 and for all three independent external Windows x86_64 verification runs; the remaining macOS seed-31 run is not used as a valid estimator. The external evidence is identified in Supplementary Table S3; its source rasters are not locally archived. The 19-feature mode produced changes for all three macOS seeds but underfilled the observed 4,500 and 8,464 changed cells in 2023 and 2024. Both modes are therefore diagnostic-only.
+The baseline was run through a GeoSOS-derived FLUS-style ANN–CA console (study-specific build; an anonymized source tag) using seven continuous drivers: normalized row and column coordinates, elevation, slope, VIIRS radiance, distance to roads and distance to major roads. Its ANN suitability surface was passed to a cellular-automata allocation stage with the common class totals and public hard mask. The archived run used one 2021 training year, eight ANN hidden neurons, a 3 × 3 CA neighbourhood, neighbourhood strength 1.0, acceleration factor 0.1 and 1,000 iterations. Its frozen transition matrix protected water and wetland but did not prohibit built-to-non-built transitions. The algorithmic base is traceable to the GeoSOS team's public FLUS source release (Liu et al., 2017; GeoSOS team, n.d.). The binary was rebuilt from the preceding source revision an anonymized preceding revision; the retained an anonymized source tag source tag at an anonymized retained revision adds invalid-input failure handling only. Both revisions contain the study-specific `train`/`train-update` entry points and `FLUS_RANDOM_SEED` seeding for ANN sampling and CA roulette draws, so the build is not the unmodified upstream executable. A 25-feature Kernel-matched input was then executed with absolute paths for seeds 31, 47 and 73 and is reported only as a platform-sensitive diagnostic. It shares the Kernel feature family, but not the learning target or projection semantics: the FLUS ANN estimates same-year label suitability $p(S_t\mid X_t)$, whereas the Kernel proposal is trained to estimate a next-state transition $p(S_{t+1}\mid S_t,X_t)$ before constrained projection. Matching features therefore does not match the training task. Two intermediate configurations were retained as mechanism diagnostics: 13 features (seven drivers plus current-class indicators) and 19 features (seven drivers plus neighbourhood fractions). The 25-feature run collapsed to zero change for macOS seeds 47 and 73 and for all three independent external Windows x86_64 verification runs; the remaining macOS seed-31 run is not used as a valid estimator. The external evidence is identified in Supplementary Table S3; its source rasters are not locally archived. The 19-feature mode produced changes for all three macOS seeds but underfilled the observed 4,500 and 8,464 changed cells in 2023 and 2024. Both modes are therefore diagnostic-only.
 
 GeoFM-LDN (Geospatial Foundation-Model Latent Dynamics Network; the repository's former `paper58` path identifier) was implemented as a demand-conditioned residual latent-dynamics network on 64-channel AlphaEarth patches. Three 128-channel convolutions use dilation rates 1, 2 and 4, followed by a 1 × 1 projection to a 64-dimensional latent state. A 12-dimensional action vector (origin and target counts for six classes) is encoded by a two-layer MLP and broadcast across the patch before concatenation with the embedding. Group normalization and GELU activations are used in the residual blocks. A scikit-learn logistic-regression decoder maps the predicted latent embedding to six semantic classes. Training uses 64 × 64 patches, batch size 2, eight epochs, AdamW with learning rate $3\times10^{-4}$ and weight decay $10^{-4}$; the loss is the weighted sum of cosine embedding loss, 0.5 semantic cross-entropy, 0.1 demand-consistency loss and 0.2 hard-constraint consistency loss. The released checkpoints correspond to seeds 31, 47 and 73 and were trained in August 2026. The default reproduction loads these fixed checkpoints rather than retraining; the runner exposes retraining separately. Fixed checkpoints do not remove the decoding runtime boundary: categorical output still depends on the locked Torch and scikit-learn stack. Same-stack reproduction is the declared reference; no independent cross-stack GeoFM-LDN raster comparison is claimed, and changes between pre-lock and locked-environment outputs are not attributed to CPU architecture or to one library. During allocation, GeoFM-LDN directly calls the Geospatial Kernel `allocate_action` routine, so both methods share the same constrained projection and differ primarily in their proposal model. The comparison is therefore a proposal/pipeline comparison, not a comparison of two independent projection architectures. The name describes this benchmark implementation and does not attribute an external publication or performance claim.
 
@@ -135,7 +144,7 @@ For each model–scenario pair, annual and cumulative differences from the origi
 
 The benchmark covers the Abu Dhabi city polygon represented by OpenStreetMap relation R4479763. The canonical grid is a 475 × 360 lattice in EPSG:32640 at 100-m resolution. The original Dynamic World evaluation mask contains 79,726 cells and the ArcGIS-served track contains 79,775 cells before target-specific common-coverage checks. Each cell represents 1 ha. Both annual sequences were harmonized to six land-cover classes: water, woody vegetation, low vegetation, wetland, built and bare. AlphaEarth annual embeddings, VIIRS night-time lights, Copernicus DEM derivatives and OpenStreetMap road distances supplied transition drivers. ESA WorldCover and public OpenStreetMap geometries supplied water, wetland and infrastructure exclusion proxies.
 
-The comparison shared the canonical grid, origin states, target actions, hard masks and evaluator, but the public-data run was not information-balanced. The original FLUS-style control used seven continuous drivers in its external ANN suitability model, whereas Geospatial Kernel used 25 features including current-class indicators and neighbourhood proportions; GeoFM-LDN used AlphaEarth latent embeddings and the Kernel allocator. We therefore report the original result as an unmatched-input pipeline comparison, not evidence that one learner is intrinsically superior. The additional 25-feature FLUS run is a feature-space diagnostic only, because it still learns same-year suitability rather than next-state transitions and does not use the Kernel projection implementation. Across six platform–seed runs, five produced zero-change outputs through current-class identity leakage. The archived FLUS console is a Mach-O arm64 executable rebuilt from the public GeoSOS source base with the author-modified `train`/`train-update` entry points and `FLUS_RANDOM_SEED` seeding patch; its exact source is archived at `FLUS_console_crossplatform` commit `deb0a54`. It is not asserted to be bitwise equivalent to an unmodified upstream build. All headline and diagnostic runs used seeds 31, 47 and 73.
+The comparison shared the canonical grid, origin states, target actions, hard masks and evaluator, but the public-data run was not information-balanced. The original FLUS-style control used seven continuous drivers in its external ANN suitability model, whereas Geospatial Kernel used 25 features including current-class indicators and neighbourhood proportions; GeoFM-LDN used AlphaEarth latent embeddings and the Kernel allocator. We therefore report the original result as an unmatched-input pipeline comparison, not evidence that one learner is intrinsically superior. The additional 25-feature FLUS run is a feature-space diagnostic only, because it still learns same-year suitability rather than next-state transitions and does not use the Kernel projection implementation. Across six platform–seed runs, five produced zero-change outputs through current-class identity leakage. The archived FLUS console is a Mach-O arm64 executable rebuilt from the public GeoSOS source base with the study-specific `train`/`train-update` entry points and `FLUS_RANDOM_SEED` seeding patch; its exact source is archived at an anonymized source repository commit an anonymized preceding revision. It is not asserted to be bitwise equivalent to an unmodified upstream build. All headline and diagnostic runs used seeds 31, 47 and 73.
 
 The execution trace makes the distinction between proposal and admission explicit. A Kernel step records the source state, action, probability-cube proposal, projected state, model identity, input evidence and next-state reference. The runtime checks that the action advances the source time and that the projected raster becomes the next state. This is the operational meaning of the Kernel in this study: not a claim that all GWM domains share the same learner, but a claim that they can share an auditable execution contract. The shared inputs and execution boundary are summarized in Fig. 1.
 
@@ -303,7 +312,7 @@ scikit-learn 1.9.0. The archived Linux arm64 rerun uses Python 3.12 and
 scikit-learn 1.8.0, so it measures a cross-stack boundary rather than an
 architecture-only effect. Across six rasters (2023 and 2024 for each seed), it
 differs from the current reference by 498–1,147 cells (0.62–1.44% of valid
-cells), with strict-FoM deltas from -0.0023 to 0.0010. An author-controlled
+cells), with strict-FoM deltas from -0.0023 to 0.0010. An maintained
 GitHub Actions Ubuntu x86_64 rerun under Python 3.11.16 and scikit-learn 1.9.0
 matched all six released categorical reference rasters exactly; its archived
 audit is linked in Code availability. This is a scoped locked-stack regression
@@ -323,11 +332,41 @@ to 327.31 km² in 2025. The added year improves the currency of the public origi
 state, but neither the larger built stock nor the native 10-m pixel size
 establishes greater local accuracy.
 
+The complete 6 × 6 annual cross-product matrices are supplied with the source
+data. In 2021, 2022 and 2024, 61–68% of discordant cells were Dynamic World
+bare mapped as ArcGIS-served built (13,078, 18,787 and 17,987 cells,
+respectively); a further 3,723–4,496 cells per year were Dynamic World bare
+mapped as ArcGIS-served water. The ArcGIS-served product also mapped 4,501,
+4,985 and 5,131 more water cells than Dynamic World in those three years.
+Because origin-year water and wetland are hard masks, this product difference
+reduces the feasible allocation domain in the ArcGIS track. It is therefore a
+pipeline difference, not an isolated replacement of target labels.
+
+The ArcGIS-served sequence is also not temporally homogeneous under this
+crosswalk. Its mapped built cells rise from 21,608 in 2021 to 28,214 in 2022
+(+30.6%), while bare cells fall from 34,521 to 27,821. Woody vegetation declines
+from 293 cells in 2021 to 22 in 2023 and 2 in 2025; wetland similarly declines
+from 792 to 24 and 17. Supplementary Table S6 reports all annual class stocks,
+the crosswalk sensitivity and product-agreement data. Dynamic World, in contrast,
+retains roughly 900–1,100 wetland cells and 311–917 woody cells. The Living Atlas
+documentation flags a different 2017 imagery basis but provides no annual
+model-version history, so we cannot attribute the 2021–2023 break to a specific
+service change. It must not be read as observed city conversion. In particular,
+the high 2022 ArcGIS score evaluates allocation against a target whose class
+totals partly encode this discontinuity; it is not evidence that the model
+recovered a verified one-year construction event. The ArcGIS 2025 planning origin
+likewise contains only two woody and 17 wetland cells. Water and wetland masks
+remain hard exclusions, but ecological semantics attached to the latter class are
+structurally sparse in that product track.
+
 Under the leakage-controlled matched protocol, Geospatial Kernel had the
 largest mean strict FoM in all four Dynamic World targets (0.2595, 0.0724,
 0.2116 and 0.1816 for 2021–2024), but in only two of the four matched
-ArcGIS-served targets. FLUS-style ANN–CA led the ArcGIS-served 2021 target
-(0.0625 versus Kernel 0.0154 and GeoFM-LDN 0.0314), GeoFM-LDN led in 2022
+ArcGIS-served targets. FLUS-style ANN–CA had the highest mean in the
+ArcGIS-served 2021 target (0.0625 versus Kernel 0.0154 and GeoFM-LDN 0.0314),
+but this is not a like-for-like minimum-change comparison: FLUS changed
+779–6,860 cells across seeds whereas the other three allocators changed exactly
+278. GeoFM-LDN led in 2022
 (0.4488 versus 0.2775 and 0.2227), and Kernel numerically led in 2023 and 2024
 (0.1619 and 0.1674). The Kernel-minus-random paired spatial-block interval
 excluded zero in every ArcGIS-served year and seed, including the additional
@@ -340,16 +379,20 @@ and GeoFM-LDN versus Kernel. In the ArcGIS 2023 target, all three GeoFM-LDN-minu
 Kernel intervals include zero despite Kernel's higher mean; in 2024, two exclude
 zero in Kernel's favour and one includes zero. These are conditional intervals,
 not a pooled ranking test. The additional ArcGIS 2025 target gives mean FoM of
-0.0731 for FLUS-style, 0.0654 for GeoFM-LDN and 0.0579 for Kernel; Kernel is
-therefore not the numerical leader in the latest year. Block-size sensitivity
-has not been established, and repeated seeds do not constitute independent
-spatial or temporal replication. The
+0.0731 for FLUS-style, 0.0654 for GeoFM-LDN and 0.0579 for Kernel. The FLUS mean
+is driven upward by its seed-73 result (6,693 changed cells; FoM 0.1052), while
+its other two seeds (1,651 and 957 changed cells; FoM 0.0632 and 0.0510) overlap
+the Kernel seed range. Kernel is therefore not the numerical leader in that fold,
+but neither is a seed-pooled claim of FLUS superiority supported. Block-size
+sensitivity has not been established, and repeated seeds do not constitute
+independent spatial or temporal replication. The
 finite-iteration FLUS-style CA retained demand total variation up to 0.00153 in
 the ArcGIS-served track and 0.00415 in Dynamic World; the exact-count Kernel,
 GeoFM-LDN and random allocators had zero demand error by construction.
 Supplementary Table S6 reports all target years and product-agreement values.
 
-The count-only analysis exposes an additional source of score dependence. In
+The count-only analysis exposes an additional source of score dependence for
+the exact minimum-change projections only. In
 the ArcGIS 2021 fold, the minimum-change action permits 278 moves against 3,241
 observed changes, bounding strict FoM at 0.0858 even before destination or
 hard-mask restrictions. In 2022, 6,864 permitted moves against 8,446 observed
@@ -358,23 +401,28 @@ bounds are 0.4590 and 0.2885. All nine fold bounds and observed scores are
 reported in Supplementary Table S7. The reversal in these bounds means that
 cross-product FoM differences combine allocation skill with the relationship
 between net and gross product change. It does not identify which product is
-more accurate or establish the performance of an allocator allowing simultaneous
-gain and loss of each class.
+more accurate. Supplementary Table S7 also shows that FLUS already permits
+simultaneous class inflows and outflows: its altered-cell totals span 1.1–24.7
+times M across the ArcGIS folds. The bounds therefore do not explain its 2021
+mean or constrain its FoM.
 
 Frontier membership was more stable than the historical numerical ranking. Recomputing
 the same three-objective Pareto rule on each product-specific 2031 scenario
 bundle retained FLUS-style and Kernel candidates, and excluded GeoFM-LDN, in
 all three scenarios. This does not validate either future bundle; it shows only
 that frontier membership was insensitive to this particular public-product
-replacement under the released proxy objectives. Identical membership among
-three candidates does not establish spatial agreement of their allocations or
-stability of planning benefits. Product-specific origins, horizons and actions
-also differ; this is not a controlled experiment holding demand and initial
-conditions fixed. Fig. 4 separates changes in
+replacement under the released proxy objectives. The retained candidates trade
+off different objectives after product replacement: in every ArcGIS scenario,
+FLUS has lower mean major-road distance and lower union-built component density,
+whereas Kernel has lower mean distance to pre-existing built cells (Supplementary
+Table S1). Identical membership among three candidates therefore does not
+establish spatial agreement, stable objective profiles or planning benefits.
+Product-specific origins, horizons and actions also differ; this is not a
+controlled experiment holding demand and initial conditions fixed. Fig. 4 separates changes in
 mapped stock, same-year product agreement, ArcGIS-served historical skill and
 the matched product difference.
 
-![Land-cover product robustness. Panel a compares annual mapped built area; only the ArcGIS-served Impact Observatory/Microsoft/Esri series extends to 2025. Panel b reports same-year all-class agreement and built-class intersection over union after six-class harmonization at 100 m. Panel c reports strict destination-change FoM for the ArcGIS-served expanding-window backtest; points are three-seed means and whiskers are population standard deviations. Panel d gives the ArcGIS-served-minus-Dynamic World mean FoM for the four matched one-step targets. All models omit the later road snapshot. Product-specific labels, origin states, oracle totals, origin water/wetland masks and quality semantics are retained, so this is a whole-product-pipeline test rather than authoritative validation. Source data are provided in source_data_fig04_product_robustness.csv.](figures/fig04_product_robustness.png){width=100%}
+![Land-cover product robustness. Panel a compares annual mapped built area; the dashed line marks the apparent 2021–2022 ArcGIS class-composition break, not a verified city-change event. Only the ArcGIS-served Impact Observatory/Microsoft/Esri series extends to 2025. Panel b reports same-year all-class agreement and built-class intersection over union after six-class harmonization at 100 m. Panel c reports strict destination-change FoM for the ArcGIS-served expanding-window backtest; points are three-seed means and whiskers are population standard deviations. Panel d gives the ArcGIS-served-minus-Dynamic World mean FoM for the four matched one-step targets. All models omit the later road snapshot. Product-specific labels, origin states, oracle totals, origin water/wetland masks and quality semantics are retained, so this is a whole-product-pipeline test rather than authoritative validation. Source data are provided in source_data_fig04_product_robustness.csv.](figures/fig04_product_robustness.png){width=100%}
 
 \FloatBarrier
 
@@ -393,10 +441,17 @@ is therefore retained only as a diagnostic in v6. All sensitivity variants
 retain the same FLUS-style/Kernel two-model frontier. These statements are
 conditional on public proxy layers and synthetic actions, not model superiority
 claims.
+The ArcGIS-origin bundle does not preserve the same objective ordering. In its
+three scenarios, FLUS-style ANN–CA has lower mean distance to major roads
+(368/366/389 m) and lower union-built component density (0.731/0.798/0.631 per
+1,000 cells), whereas Kernel has lower mean distance to pre-existing built
+cells (119/113/155 m; Supplementary Table S1). Thus the two retained frontier
+members are stable as a set, but the dimension supporting each member changes
+when the product-specific origin and actions change.
 The corresponding objective profiles and diagnostic trade-offs are shown in
 Fig. 5.
 
-![Conditional planning objectives. The 2031 outcomes compare the three models under moderate-growth, green-priority-growth and high-outward-growth actions. Panels show the three release objectives: distance to major roads, distance to pre-existing built cells, and connected components in the combined 2024-built and newly built footprint. Black outlines indicate membership of the within-scenario Pareto frontier.](figures/fig04_planning_objectives.png){width=100%}
+![Conditional planning objectives. The 2031 outcomes compare the three models under moderate-growth, green-priority-growth and high-outward-growth actions. Panels show the three release objectives: distance to major roads, distance to pre-existing built cells, and connected components in the combined 2024-built and newly built footprint. Black outlines indicate membership of the within-scenario Pareto frontier.](figures/fig05_planning_objectives.png){width=100%}
 
 \FloatBarrier
 
@@ -449,7 +504,7 @@ agreement with noisy labels while violating the planning contract. The
 controls therefore support an execution-level interpretation but do not prove
 that either component causes an urban outcome.
 
-![Mechanism controls. Panel A compares the full transition proposal with selected proposal controls. Panel B gives the strict destination-change FoM difference between matched runtime controls and the full Kernel. Bars show mean plus or minus population standard deviation across the three frozen seeds. The no-state-writeback control is undefined for the 2023 one-step target and is therefore shown only for 2024. These are execution diagnostics, not causal policy experiments.](figures/fig05_mechanism_ablation.png){width=100%}
+![Mechanism controls. Panel A compares the full transition proposal with selected proposal controls. Panel B gives the strict destination-change FoM difference between matched runtime controls and the full Kernel. Bars show mean plus or minus population standard deviation across the three frozen seeds. The no-state-writeback control is undefined for the 2023 one-step target and is therefore shown only for 2024. These are execution diagnostics, not causal policy experiments.](figures/fig06_mechanism_ablation.png){width=100%}
 
 \FloatBarrier
 
@@ -473,7 +528,7 @@ scenario to make the spatial contrast legible; the complete nine-panel atlas is
 provided as Fig. S1. These are raster-cell change footprints, not
 parcel boundaries or statutory zoning maps.
 
-![High-outward-growth spatial footprints. The observed 2024 state is compared with each model's 2031 majority-vote ensemble. Orange denotes cells newly built between 2024 and 2031; grey denotes cells already built in 2024. The map is a 100-m scenario stress-test product, not a cadastral or statutory land-use map.](figures/fig06_planning_maps_2031.png){width=100%}
+![High-outward-growth spatial footprints. The observed 2024 state is compared with each model's 2031 majority-vote ensemble. Orange denotes cells newly built between 2024 and 2031; grey denotes cells already built in 2024. The map is a 100-m scenario stress-test product, not a cadastral or statutory land-use map.](figures/fig07_planning_maps_2031.png){width=100%}
 
 \FloatBarrier
 
@@ -489,7 +544,12 @@ ArcGIS-served series are both global products derived from Sentinel observations
 their disagreement does not identify which label is correct. Product-native
 quality terms and origin-year water/wetland masks also differ, so the replication
 measures complete pipeline dependence rather than a causal effect of replacing
-labels alone. The available 2020–2021 WorldCover diagnostic is neither fully
+labels alone. The ArcGIS series additionally has a pronounced internal
+class-composition break between 2021 and 2023, with no published annual
+model-version history. Its 2022 change prevalence and high GeoFM-LDN FoM may
+therefore partly score a product reclassification rather than land-cover change;
+the sparse ArcGIS wetland/woody states also weaken ecological interpretation of
+the 2025-origin scenario track. The available 2020–2021 WorldCover diagnostic is neither fully
 independent nor authoritative, and no local reference change sample or observed
 2026–2031 label exists. The original headline analysis also uses a 31 July 2026 OSM road snapshot,
 which may contain roads constructed after 2022. Sharing this information does not guarantee an unchanged model ordering,
@@ -503,8 +563,16 @@ protected-area layers are proxies, future drivers are held at the respective
 2024 or 2025 origin-year values, and the
 green-priority action has no water-budget constraint. The FLUS-style
 control is an Apple-Silicon binary rebuilt from the public GeoSOS source base
-with the modified `train`/`train-update` and deterministic-seeding patches; its
-headline comparison uses seven drivers. The 25-feature run is a
+with study-specific `train`/`train-update` and deterministic-seeding patches;
+its headline comparison uses seven drivers. It is already a gross-transition
+allocator: across ArcGIS folds it changes 1.1–24.7 times the exact minimum-change
+budget while retaining near-zero demand error. This extra transition budget does
+not itself deliver higher FoM: FLUS is below Kernel on Dynamic World 2021 despite
+changing 4.4–5.2 times as many cells, and its apparent ArcGIS 2021/2025 mean
+advantages occur where its seed-specific altered-cell totals are highly variable.
+The next gross-transition experiment should therefore hold the proposal model,
+candidate pool and constraints fixed rather than treating the existing FLUS
+baseline as a direct test of Kernel's projection. The 25-feature run is a
 platform-sensitive identity-leakage diagnostic: five of six platform–seed runs
 collapsed to zero change, so the non-collapsed macOS seed-31 result is not used
 as a comparative estimate.
@@ -532,22 +600,27 @@ from contemporaneous independent imagery or locally approved records. Reference
 interpretation should be blinded to model identity, record ambiguous cases and
 report sampling weights and class-specific gain/loss accuracy. In parallel, a
 transition-budget allocator permitting simultaneous gain and loss should be
-compared with the minimum-change projection under the same proposal and masks.
-Neither independent reference validation nor this gross-transition experiment
-has been performed. They are requirements for extending the present conditional
-allocation findings to operational planning claims.
+compared with the minimum-change projection under the same proposal, candidate
+pool and masks. The FLUS baseline provides only partial evidence because its
+suitability learner, finite CA iterations and candidate mechanism also differ.
+Neither independent reference validation nor this controlled gross-transition
+experiment has been performed. They are requirements for extending the present
+conditional allocation findings to operational planning claims.
 
 ## Conclusions
 
 Replacing Dynamic World with a newer ArcGIS-served 10-m annual product did not
 simply raise or lower every score. It changed mapped built stock, transition
-prevalence and the leading model by year. Geospatial Kernel remained consistently
-better than random minimum-change allocation, but it was not universally the
-best learned model. Its strongest transferable property in this experiment is
-therefore the auditable separation of learned proposal, constrained projection
-and state writeback, not a product-independent accuracy claim. The count-only bounds further show
-that net-change allocation can suppress much of the gross change represented by
-a product; future work must separate that restriction from proposal-model skill.
+prevalence and the leading model by year, while its 2021–2023 class-composition
+break made part of the apparent change unsuitable as evidence of city change.
+Geospatial Kernel remained consistently better than random minimum-change
+allocation, but it was not universally the best learned model. Its strongest
+transferable property in this experiment is therefore the auditable separation
+of learned proposal, constrained projection and state writeback, not a
+product-independent accuracy claim. The count-only bounds constrain only the
+exact minimum-change projections; the FLUS baseline already shows that allowing
+more gross change alone does not determine FoM. A controlled gross-transition
+comparison must separate that budget from proposal-model skill.
 
 The refreshed series adds a 2025 public origin state, native-10-m audit rasters
 and complete 2026–2031 raster and vector scenario deliveries. Model execution
@@ -582,6 +655,8 @@ Copernicus. (2024). Copernicus DEM GLO-30 (2024_1): Global 30m Digital Elevation
 Earth Observation Group, Payne Institute for Public Policy, Colorado School of Mines. (n.d.). VIIRS Stray Light Corrected Nighttime Day/Night Band Composites Version 1 [Monthly data set; VCMSLCFG]. Google Earth Engine Data Catalog. https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_MONTHLY_V1_VCMSLCFG (accessed 10 September 2026).
 
 Elvidge, C. D., Zhizhin, M., Ghosh, T., Hsu, F.-C., & Taneja, J. (2021). Annual time series of global VIIRS nighttime lights derived from monthly averages: 2012 to 2019. *Remote Sensing*, 13, 922. https://doi.org/10.3390/rs13050922
+
+Esri. (2026). Sentinel-2 10 m land cover time series of the world [Data set]. ArcGIS Living Atlas of the World. https://www.arcgis.com/home/item.html?id=cfcb7609de5f478eb7666240902d4d3d (accessed 11 September 2026).
 
 Geofabrik. (2026). GCC States OpenStreetMap extract, 31 July 2026 [Data set; gcc-states-260731.osm.pbf]. https://download.geofabrik.de/asia/gcc-states-260731.osm.pbf
 
@@ -623,12 +698,9 @@ Zanaga, D., Van De Kerchove, R., Daems, D., De Keersmaecker, W., Brockmann, C., 
 
 ## Supplementary information outline
 
-- **Supplementary Note 1:** Complete data crosswalk, quality metrics and public/proxy status.
-- **Supplementary Note 2:** Kernel runtime schemas, audit fields and adapter boundary.
-- **Supplementary Table S1:** Full 2025–2031 model–scenario objective matrix with per-seed values.
+- **Supplementary Table S1:** ArcGIS-served 2031 model–scenario objective profiles with per-seed dispersion (see `supplementary_table_S1_arcgis_planning_objectives.md`).
 - **Supplementary Table S2:** Neighbourhood-weight sensitivity at 0, 0.175, 0.35 and 0.7 (see `supplementary_table_S2_neighbourhood_weight_sensitivity.md`).
 - **Supplementary Table S3:** FLUS 13-, 19- and 25-feature diagnostics, platform boundary and demand-underfill evidence (see `supplementary_table_S3_flus_feature_diagnostics.md`).
-- **Supplementary Table S4:** Raster and vector delivery audit, hashes and layer counts.
 - **Supplementary Table S5:** Rolling-origin and WorldCover external-product diagnostics (see `supplementary_table_S5_rolling_external_diagnostics.md`).
 - **Supplementary Table S6:** Matched Dynamic World and ArcGIS-served whole-product-pipeline backtests (see `supplementary_table_S6_product_robustness.md`).
 - **Supplementary Table S7:** Net-change FoM upper bounds and 54 seed-specific paired model intervals (see `supplementary_table_S7_allocation_limits.md`).

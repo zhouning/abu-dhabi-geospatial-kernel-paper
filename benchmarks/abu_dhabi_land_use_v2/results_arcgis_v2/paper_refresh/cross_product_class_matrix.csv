@@ -1,0 +1,289 @@
+year,dynamic_world_class_id,dynamic_world_class,arcgis_class_id,arcgis_class,cells
+2017,1,Water,1,Water,14887
+2017,1,Water,2,Woody vegetation,17
+2017,1,Water,3,Low vegetation,26
+2017,1,Water,4,Wetland,37
+2017,1,Water,5,Built,154
+2017,1,Water,6,Bare,269
+2017,2,Woody vegetation,1,Water,170
+2017,2,Woody vegetation,2,Woody vegetation,97
+2017,2,Woody vegetation,3,Low vegetation,68
+2017,2,Woody vegetation,4,Wetland,83
+2017,2,Woody vegetation,5,Built,21
+2017,2,Woody vegetation,6,Bare,1
+2017,3,Low vegetation,1,Water,9
+2017,3,Low vegetation,2,Woody vegetation,0
+2017,3,Low vegetation,3,Low vegetation,297
+2017,3,Low vegetation,4,Wetland,5
+2017,3,Low vegetation,5,Built,76
+2017,3,Low vegetation,6,Bare,1
+2017,4,Wetland,1,Water,441
+2017,4,Wetland,2,Woody vegetation,148
+2017,4,Wetland,3,Low vegetation,9
+2017,4,Wetland,4,Wetland,374
+2017,4,Wetland,5,Built,1
+2017,4,Wetland,6,Bare,1
+2017,5,Built,1,Water,34
+2017,5,Built,2,Woody vegetation,0
+2017,5,Built,3,Low vegetation,181
+2017,5,Built,4,Wetland,0
+2017,5,Built,5,Built,8711
+2017,5,Built,6,Bare,179
+2017,6,Bare,1,Water,4726
+2017,6,Bare,2,Woody vegetation,3
+2017,6,Bare,3,Low vegetation,1630
+2017,6,Bare,4,Wetland,115
+2017,6,Bare,5,Built,12762
+2017,6,Bare,6,Bare,34227
+2018,1,Water,1,Water,14466
+2018,1,Water,2,Woody vegetation,17
+2018,1,Water,3,Low vegetation,25
+2018,1,Water,4,Wetland,17
+2018,1,Water,5,Built,148
+2018,1,Water,6,Bare,178
+2018,2,Woody vegetation,1,Water,141
+2018,2,Woody vegetation,2,Woody vegetation,48
+2018,2,Woody vegetation,3,Low vegetation,48
+2018,2,Woody vegetation,4,Wetland,57
+2018,2,Woody vegetation,5,Built,17
+2018,2,Woody vegetation,6,Bare,0
+2018,3,Low vegetation,1,Water,7
+2018,3,Low vegetation,2,Woody vegetation,1
+2018,3,Low vegetation,3,Low vegetation,266
+2018,3,Low vegetation,4,Wetland,2
+2018,3,Low vegetation,5,Built,85
+2018,3,Low vegetation,6,Bare,2
+2018,4,Wetland,1,Water,387
+2018,4,Wetland,2,Woody vegetation,194
+2018,4,Wetland,3,Low vegetation,7
+2018,4,Wetland,4,Wetland,329
+2018,4,Wetland,5,Built,0
+2018,4,Wetland,6,Bare,1
+2018,5,Built,1,Water,34
+2018,5,Built,2,Woody vegetation,0
+2018,5,Built,3,Low vegetation,135
+2018,5,Built,4,Wetland,0
+2018,5,Built,5,Built,7321
+2018,5,Built,6,Bare,92
+2018,6,Bare,1,Water,5378
+2018,6,Bare,2,Woody vegetation,2
+2018,6,Bare,3,Low vegetation,1806
+2018,6,Bare,4,Wetland,79
+2018,6,Bare,5,Built,14163
+2018,6,Bare,6,Bare,34316
+2019,1,Water,1,Water,14901
+2019,1,Water,2,Woody vegetation,13
+2019,1,Water,3,Low vegetation,26
+2019,1,Water,4,Wetland,28
+2019,1,Water,5,Built,183
+2019,1,Water,6,Bare,183
+2019,2,Woody vegetation,1,Water,182
+2019,2,Woody vegetation,2,Woody vegetation,71
+2019,2,Woody vegetation,3,Low vegetation,53
+2019,2,Woody vegetation,4,Wetland,112
+2019,2,Woody vegetation,5,Built,21
+2019,2,Woody vegetation,6,Bare,1
+2019,3,Low vegetation,1,Water,30
+2019,3,Low vegetation,2,Woody vegetation,1
+2019,3,Low vegetation,3,Low vegetation,288
+2019,3,Low vegetation,4,Wetland,7
+2019,3,Low vegetation,5,Built,102
+2019,3,Low vegetation,6,Bare,4
+2019,4,Wetland,1,Water,412
+2019,4,Wetland,2,Woody vegetation,197
+2019,4,Wetland,3,Low vegetation,8
+2019,4,Wetland,4,Wetland,390
+2019,4,Wetland,5,Built,1
+2019,4,Wetland,6,Bare,1
+2019,5,Built,1,Water,37
+2019,5,Built,2,Woody vegetation,0
+2019,5,Built,3,Low vegetation,160
+2019,5,Built,4,Wetland,1
+2019,5,Built,5,Built,8612
+2019,5,Built,6,Bare,97
+2019,6,Bare,1,Water,4650
+2019,6,Bare,2,Woody vegetation,6
+2019,6,Bare,3,Low vegetation,1798
+2019,6,Bare,4,Wetland,108
+2019,6,Bare,5,Built,15384
+2019,6,Bare,6,Bare,31691
+2020,1,Water,1,Water,15100
+2020,1,Water,2,Woody vegetation,14
+2020,1,Water,3,Low vegetation,24
+2020,1,Water,4,Wetland,34
+2020,1,Water,5,Built,190
+2020,1,Water,6,Bare,205
+2020,2,Woody vegetation,1,Water,192
+2020,2,Woody vegetation,2,Woody vegetation,111
+2020,2,Woody vegetation,3,Low vegetation,71
+2020,2,Woody vegetation,4,Wetland,148
+2020,2,Woody vegetation,5,Built,22
+2020,2,Woody vegetation,6,Bare,0
+2020,3,Low vegetation,1,Water,30
+2020,3,Low vegetation,2,Woody vegetation,3
+2020,3,Low vegetation,3,Low vegetation,305
+2020,3,Low vegetation,4,Wetland,32
+2020,3,Low vegetation,5,Built,109
+2020,3,Low vegetation,6,Bare,1
+2020,4,Wetland,1,Water,417
+2020,4,Wetland,2,Woody vegetation,139
+2020,4,Wetland,3,Low vegetation,7
+2020,4,Wetland,4,Wetland,448
+2020,4,Wetland,5,Built,1
+2020,4,Wetland,6,Bare,2
+2020,5,Built,1,Water,43
+2020,5,Built,2,Woody vegetation,0
+2020,5,Built,3,Low vegetation,139
+2020,5,Built,4,Wetland,0
+2020,5,Built,5,Built,9179
+2020,5,Built,6,Bare,281
+2020,6,Bare,1,Water,4231
+2020,6,Bare,2,Woody vegetation,6
+2020,6,Bare,3,Low vegetation,1883
+2020,6,Bare,4,Wetland,183
+2020,6,Bare,5,Built,11928
+2020,6,Bare,6,Bare,34283
+2021,1,Water,1,Water,15103
+2021,1,Water,2,Woody vegetation,9
+2021,1,Water,3,Low vegetation,33
+2021,1,Water,4,Wetland,37
+2021,1,Water,5,Built,179
+2021,1,Water,6,Bare,173
+2021,2,Woody vegetation,1,Water,188
+2021,2,Woody vegetation,2,Woody vegetation,109
+2021,2,Woody vegetation,3,Low vegetation,55
+2021,2,Woody vegetation,4,Wetland,170
+2021,2,Woody vegetation,5,Built,11
+2021,2,Woody vegetation,6,Bare,1
+2021,3,Low vegetation,1,Water,36
+2021,3,Low vegetation,2,Woody vegetation,5
+2021,3,Low vegetation,3,Low vegetation,320
+2021,3,Low vegetation,4,Wetland,18
+2021,3,Low vegetation,5,Built,88
+2021,3,Low vegetation,6,Bare,1
+2021,4,Wetland,1,Water,434
+2021,4,Wetland,2,Woody vegetation,162
+2021,4,Wetland,3,Low vegetation,9
+2021,4,Wetland,4,Wetland,407
+2021,4,Wetland,5,Built,2
+2021,4,Wetland,6,Bare,2
+2021,5,Built,1,Water,34
+2021,5,Built,2,Woody vegetation,0
+2021,5,Built,3,Low vegetation,146
+2021,5,Built,4,Wetland,0
+2021,5,Built,5,Built,8249
+2021,5,Built,6,Bare,124
+2021,6,Bare,1,Water,4222
+2021,6,Bare,2,Woody vegetation,8
+2021,6,Bare,3,Low vegetation,1963
+2021,6,Bare,4,Wetland,154
+2021,6,Bare,5,Built,13078
+2021,6,Bare,6,Bare,34217
+2022,1,Water,1,Water,14930
+2022,1,Water,2,Woody vegetation,5
+2022,1,Water,3,Low vegetation,39
+2022,1,Water,4,Wetland,29
+2022,1,Water,5,Built,209
+2022,1,Water,6,Bare,226
+2022,2,Woody vegetation,1,Water,271
+2022,2,Woody vegetation,2,Woody vegetation,42
+2022,2,Woody vegetation,3,Low vegetation,59
+2022,2,Woody vegetation,4,Wetland,102
+2022,2,Woody vegetation,5,Built,21
+2022,2,Woody vegetation,6,Bare,1
+2022,3,Low vegetation,1,Water,45
+2022,3,Low vegetation,2,Woody vegetation,0
+2022,3,Low vegetation,3,Low vegetation,337
+2022,3,Low vegetation,4,Wetland,0
+2022,3,Low vegetation,5,Built,88
+2022,3,Low vegetation,6,Bare,1
+2022,4,Wetland,1,Water,636
+2022,4,Wetland,2,Woody vegetation,33
+2022,4,Wetland,3,Low vegetation,22
+2022,4,Wetland,4,Wetland,319
+2022,4,Wetland,5,Built,1
+2022,4,Wetland,6,Bare,0
+2022,5,Built,1,Water,35
+2022,5,Built,2,Woody vegetation,0
+2022,5,Built,3,Low vegetation,157
+2022,5,Built,4,Wetland,0
+2022,5,Built,5,Built,9108
+2022,5,Built,6,Bare,59
+2022,6,Bare,1,Water,4496
+2022,6,Bare,2,Woody vegetation,8
+2022,6,Bare,3,Low vegetation,2125
+2022,6,Bare,4,Wetland,40
+2022,6,Bare,5,Built,18787
+2022,6,Bare,6,Bare,27534
+2023,1,Water,1,Water,15442
+2023,1,Water,2,Woody vegetation,0
+2023,1,Water,3,Low vegetation,39
+2023,1,Water,4,Wetland,0
+2023,1,Water,5,Built,230
+2023,1,Water,6,Bare,276
+2023,2,Woody vegetation,1,Water,591
+2023,2,Woody vegetation,2,Woody vegetation,9
+2023,2,Woody vegetation,3,Low vegetation,65
+2023,2,Woody vegetation,4,Wetland,0
+2023,2,Woody vegetation,5,Built,23
+2023,2,Woody vegetation,6,Bare,0
+2023,3,Low vegetation,1,Water,60
+2023,3,Low vegetation,2,Woody vegetation,0
+2023,3,Low vegetation,3,Low vegetation,313
+2023,3,Low vegetation,4,Wetland,0
+2023,3,Low vegetation,5,Built,86
+2023,3,Low vegetation,6,Bare,2
+2023,4,Wetland,1,Water,1054
+2023,4,Wetland,2,Woody vegetation,3
+2023,4,Wetland,3,Low vegetation,20
+2023,4,Wetland,4,Wetland,13
+2023,4,Wetland,5,Built,2
+2023,4,Wetland,6,Bare,4
+2023,5,Built,1,Water,52
+2023,5,Built,2,Woody vegetation,0
+2023,5,Built,3,Low vegetation,155
+2023,5,Built,4,Wetland,0
+2023,5,Built,5,Built,11839
+2023,5,Built,6,Bare,75
+2023,6,Bare,1,Water,3944
+2023,6,Bare,2,Woody vegetation,10
+2023,6,Bare,3,Low vegetation,1993
+2023,6,Bare,4,Wetland,11
+2023,6,Bare,5,Built,19108
+2023,6,Bare,6,Bare,24331
+2024,1,Water,1,Water,15570
+2024,1,Water,2,Woody vegetation,0
+2024,1,Water,3,Low vegetation,34
+2024,1,Water,4,Wetland,0
+2024,1,Water,5,Built,236
+2024,1,Water,6,Bare,222
+2024,2,Woody vegetation,1,Water,822
+2024,2,Woody vegetation,2,Woody vegetation,9
+2024,2,Woody vegetation,3,Low vegetation,59
+2024,2,Woody vegetation,4,Wetland,0
+2024,2,Woody vegetation,5,Built,27
+2024,2,Woody vegetation,6,Bare,0
+2024,3,Low vegetation,1,Water,32
+2024,3,Low vegetation,2,Woody vegetation,0
+2024,3,Low vegetation,3,Low vegetation,316
+2024,3,Low vegetation,4,Wetland,0
+2024,3,Low vegetation,5,Built,60
+2024,3,Low vegetation,6,Bare,0
+2024,4,Wetland,1,Water,964
+2024,4,Wetland,2,Woody vegetation,4
+2024,4,Wetland,3,Low vegetation,12
+2024,4,Wetland,4,Wetland,11
+2024,4,Wetland,5,Built,5
+2024,4,Wetland,6,Bare,4
+2024,5,Built,1,Water,59
+2024,5,Built,2,Woody vegetation,0
+2024,5,Built,3,Low vegetation,193
+2024,5,Built,4,Wetland,0
+2024,5,Built,5,Built,15242
+2024,5,Built,6,Bare,104
+2024,6,Bare,1,Water,3723
+2024,6,Bare,2,Woody vegetation,3
+2024,6,Bare,3,Low vegetation,1967
+2024,6,Bare,4,Wetland,9
+2024,6,Bare,5,Built,17987
+2024,6,Bare,6,Bare,22075

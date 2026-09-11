@@ -376,7 +376,7 @@ def render_figure_3() -> None:
              "2031 scenario stress tests. Bars show mean +/- population SD across three seeds; black outlines denote\n"
              "membership of the three-objective within-scenario frontier. Ecological conversion remains a diagnostic only.",
              fontsize=7.5, color="#4A5560")
-    save_publication_figure(fig, "fig04_planning_objectives")
+    save_publication_figure(fig, "fig05_planning_objectives")
 
 
 def _historical_rows(report, proposal_variant=None, runtime_variant=None, target_year=None):
@@ -474,7 +474,7 @@ def render_figure_4() -> None:
              "identify causal planning effects. No-state-writeback is undefined for the 2023 one-step target (n/a). Removing\n"
              "hard constraints can raise label agreement while violating the contract.",
              fontsize=7.5, color="#4A5560")
-    save_publication_figure(fig, "fig05_mechanism_ablation")
+    save_publication_figure(fig, "fig06_mechanism_ablation")
 
 
 def render_figure_5() -> None:
@@ -532,7 +532,7 @@ def render_figure_5() -> None:
              "Each map is a 100-m majority-vote ensemble. The full 3 scenarios x 3 models atlas is supplied as Fig. S1;\n"
              "change footprints are raster-cell products and not cadastral parcels.",
              fontsize=7.5, color="#4A5560")
-    save_publication_figure(fig, "fig06_planning_maps_2031")
+    save_publication_figure(fig, "fig07_planning_maps_2031")
 
 
 def render_supplementary_figure_1() -> None:
@@ -828,20 +828,23 @@ def render_supplementary_figure_4() -> None:
         ax.add_patch(FancyArrowPatch(start, end, arrowstyle="-|>", mutation_scale=9, linewidth=0.8,
                                      color="#69737B", shrinkA=2, shrinkB=2))
 
-    box(0.02, 0.57, 0.19, 0.28, "Public annual labels\nand spatial drivers\n2017–2024", "#E8F1F8", edge="#377EB8")
-    box(0.27, 0.57, 0.20, 0.28, "Common contract\n100-m grid, valid mask\nactions and hard masks", "#F1F0EA")
+    box(0.02, 0.57, 0.19, 0.28, "Two public annual labels\nDynamic World 2017–2024\nArcGIS IO/MS/Esri 2017–2025", "#E8F1F8", edge="#377EB8", fontsize=6.5)
+    box(0.27, 0.57, 0.20, 0.28, "Common contract\n100-m grid, valid mask\nproduct-specific quality", "#F1F0EA")
     box(0.53, 0.70, 0.18, 0.15, "FLUS-style\nANN–CA", "#E8F1F8", edge="#377EB8")
     box(0.53, 0.50, 0.18, 0.15, "Geospatial\nKernel", "#EAF4E8", edge="#4DAF4A")
     box(0.53, 0.30, 0.18, 0.15, "GeoFM-LDN\nlatent dynamics", "#F1EAF5", edge="#7B3294")
-    box(0.79, 0.57, 0.18, 0.28, "Historical allocation\n2022 → 2023 → 2024\nthree seeds", "#FFF1E5", edge="#D55E00")
-    box(0.79, 0.22, 0.18, 0.24, "Planning stress tests\n2024 → 2031\nthree actions", "#EDEAF5", edge="#7B3294")
+    box(0.75, 0.48, 0.08, 0.24, "All three\nmodels\nthree seeds", "#F1F0EA", fontsize=5.9)
+    box(0.85, 0.62, 0.12, 0.23, "Historical\nDW: 2021–2024\nArcGIS: 2021–2025", "#FFF1E5", edge="#D55E00", fontsize=5.9)
+    box(0.85, 0.25, 0.12, 0.20, "Planning\nDW: 2025–2031\nArcGIS: 2026–2031", "#EDEAF5", edge="#7B3294", fontsize=5.9)
     arrow((0.21, 0.71), (0.27, 0.71))
     arrow((0.47, 0.71), (0.53, 0.775))
     arrow((0.47, 0.71), (0.53, 0.575))
     arrow((0.47, 0.71), (0.53, 0.375))
-    arrow((0.71, 0.775), (0.79, 0.71))
-    arrow((0.71, 0.575), (0.79, 0.71))
-    arrow((0.71, 0.375), (0.79, 0.34))
+    arrow((0.71, 0.775), (0.75, 0.65))
+    arrow((0.71, 0.575), (0.75, 0.60))
+    arrow((0.71, 0.375), (0.75, 0.55))
+    arrow((0.83, 0.65), (0.85, 0.735))
+    arrow((0.83, 0.55), (0.85, 0.35))
     ax.text(0.5, 0.08, "Models change spatial allocation; the grid, actions, constraints and evaluator remain fixed.",
             ha="center", va="center", fontsize=7.2, fontweight="bold", color="#3F4A52")
     fig.suptitle("Fig. S4 | Driver layers and unified experiment design",

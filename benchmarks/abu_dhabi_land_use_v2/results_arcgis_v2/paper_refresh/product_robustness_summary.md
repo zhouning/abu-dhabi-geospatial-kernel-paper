@@ -31,7 +31,7 @@ This is a whole-public-product-pipeline robustness experiment on the frozen Abu 
 
 ## Planning frontier sensitivity
 
-The planning comparison is conditional on each product-specific origin state and the same released public proxy objectives. Frontier membership is not a forecast-accuracy ranking.
+The planning comparison is conditional on each product-specific origin state and the same released public proxy objectives. Frontier membership is not a forecast-accuracy ranking, and stable membership does not imply unchanged objective trade-offs.
 
 | Scenario | Dynamic World v1 frontier | ArcGIS v2 frontier |
 |---|---|---|

@@ -25,21 +25,35 @@
 
 ## Figure 3
 
-- Core conclusion: under the released public-data objective set, the three models trade off road accessibility, prior-built proximity and union-built fragmentation differently within each scenario; ecological conversion is a diagnostic because it is structurally zero for the exact-count allocators.
+- Core conclusion: rolling-origin and external-product diagnostics expose how observed stock, change count and the public label product affect historical allocation scores.
 - Archetype: quantitative grid.
-- Panel map: demand error, ecological conversion, compactness, distance to major roads, distance to prior built cells and built retirement.
-- Statistics: three-seed means and population standard deviations where available; objective directions are stated in each panel.
+- Panel map: rolling strict change FoM, paired spatial-block contrasts, WorldCover stock comparison and count-controlled gain comparison.
+- Statistics: three-seed means and spatial-block interval summaries, with no claim of authoritative validation.
 
 ## Figure 4
 
-- Core conclusion: the historical and planning differences can be decomposed into learned proposal features and runtime allocation semantics.
+- Core conclusion: the mapped state, measured historical allocation score and planning-objective profile depend on the annual land-cover product.
 - Archetype: quantitative grid with mechanism contrasts.
-- Panel map: proposal ablation, runtime-control deltas, planning compactness, and hard-constraint violations.
-- Boundary: these are public-data mechanism controls, not causal policy experiments.
+- Panel map: annual mapped built stock, same-year product agreement, ArcGIS-served historical skill and matched cross-product FoM difference.
+- Boundary: the dashed 2021–2022 marker denotes a possible product-series break, not a verified city-change event.
 
 ## Figure 5
 
+- Core conclusion: under the released public proxy objectives, the three models trade off road accessibility, prior-built proximity and union-built fragmentation differently within each scenario.
+- Archetype: quantitative objective grid.
+- Panel map: mean distances to major roads and prior built cells, plus union-built component density.
+- Statistics: three-seed means and population standard deviations; black outlines mark the within-scenario Pareto frontier.
+
+## Figure 6
+
+- Core conclusion: the historical and planning differences can be decomposed into learned proposal features and runtime allocation semantics.
+- Archetype: quantitative mechanism-control grid.
+- Panel map: proposal ablation and runtime-control deltas.
+- Boundary: these are public-data execution controls, not causal policy experiments.
+
+## Figure 7
+
 - Core conclusion: the three models produce visibly different 2031 transition footprints under the same scenario targets.
 - Archetype: image plate plus categorical transition overlay.
-- Panel map: compact, ecological-priority and outward-growth rows crossed with the three models.
+- Panel map: observed 2024 state and three high-outward-growth model outputs.
 - Boundary: pixels are 100-m transition units, not cadastral parcels.

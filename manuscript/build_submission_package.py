@@ -118,11 +118,18 @@ def markdown_to_pdf(source: Path, target: Path) -> None:
 def anonymize(main: str) -> str:
     body, references = main.split("## Data availability", maxsplit=1)
     references = "## References" + references.split("## References", maxsplit=1)[1]
-    body = body.replace(
-        "the accompanying source repository `FLUS_console_crossplatform` at commit `47e65b3` contains the author modifications used for this paper.",
-        "an archived source repository at an anonymized revision contains the modifications used for this paper.",
-    )
-    body = body.replace("the author's `train`/`train-update`", "the modified `train`/`train-update`")
+    replacements = {
+        "`paper-benchmark-flus-v1.1`": "an anonymized source tag",
+        "`FLUS_console_crossplatform`": "an anonymized source repository",
+        "`deb0a54`": "an anonymized preceding revision",
+        "`47e65b3`": "an anonymized retained revision",
+        "author-modified": "study-specific",
+        "the author's `train`/`train-update`": "the study-specific `train`/`train-update`",
+        "author-controlled": "maintained",
+        "An author self-check": "A build self-check",
+    }
+    for original, replacement in replacements.items():
+        body = body.replace(original, replacement)
     return "\n".join(
         [
             "---",
@@ -158,7 +165,7 @@ def submission_texts(main: str) -> dict[str, str]:
 
 Dear Editor,
 
-Please consider our manuscript entitled \"{TITLE}\" for publication as a Research Article in *Landscape and Urban Planning*.
+Please consider my manuscript entitled \"{TITLE}\" for publication as a Research Article in *Landscape and Urban Planning*.
 
 The manuscript evaluates Geospatial Kernel, the algorithmic core of a Geospatial World Model, as an auditable execution layer for constrained spatial allocation. Using two public annual land-cover product tracks for Abu Dhabi, it tests whether model rankings are robust to product choice while retaining explicit proposal, constraint-projection and state-writeback traces.
 
@@ -170,6 +177,8 @@ The corresponding author is:
 
 Ning Zhou\\
 Beijing Freedo Technology Co., Ltd.\\
+Beijing, China\\
+ORCID: https://orcid.org/0009-0002-5647-7388\\
 Email: zhouning@freedotech.com
 
 Sincerely,
@@ -194,6 +203,8 @@ Beijing Freedo Technology Co., Ltd.
 
 Ning Zhou\\
 Beijing Freedo Technology Co., Ltd.\\
+Beijing, China\\
+ORCID: https://orcid.org/0009-0002-5647-7388\\
 Email: zhouning@freedotech.com
 
 ## Declarations
@@ -207,6 +218,8 @@ Email: zhouning@freedotech.com
 **Acknowledgements.** The author thanks the anonymous reviewers for independent technical verification and constructive methodological comments.
 
 **Ethics statement.** Not applicable; the study used geospatial raster, vector and derived public-data products and did not involve human or animal participants.
+
+**Declaration of generative AI and AI-assisted technologies in the writing process.** During preparation of this work, the author used OpenAI Codex for language editing, code review and document-formatting assistance. The author reviewed and revised all outputs and takes full responsibility for the content of the publication.
 
 **Data and code.** The ArcGIS-served public benchmark source release is archived at https://doi.org/10.5281/zenodo.22689057 (v2.0.0; GitHub tag `v2.0.0`, commit `77e2c59`; concept DOI https://doi.org/10.5281/zenodo.22663475). The Zenodo-generated ZIP preserves Git LFS pointer identities; hydrated large artifacts required for a full numerical rerun are retrieved from the tagged repository and verified against the included manifests.
 """

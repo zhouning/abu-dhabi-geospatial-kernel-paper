@@ -2,17 +2,19 @@
 
 Derived from frozen three-seed expanding-window reports; no models were refit. Origin counts are recovered from persistence outputs on the same evaluation mask. M is half the L1 difference between origin and feasible target class totals. O is observed gross change. For strict destination-change FoM, hits cannot exceed min(M,O), and the union contains at least max(M,O) cells, hence FoM <= min(M,O)/max(M,O). This loose count-only upper bound is not necessarily attainable: destination, hard-mask and spatial restrictions can lower the achievable maximum. Feasible counts may differ from observed counts. The bound is not a corrected skill score or a validation reference.
 
-| Product | Target | Observed changes O | Feasible moves M | Count-only FoM upper bound | Kernel FoM |
-|---|---:|---:|---:|---:|---:|
-| Dynamic World | 2021 | 2429 | 1115 | 0.4590 | 0.2595 |
-| Dynamic World | 2022 | 2749 | 793 | 0.2885 | 0.0724 |
-| Dynamic World | 2023 | 4500 | 3080 | 0.6844 | 0.2116 |
-| Dynamic World | 2024 | 4972 | 3696 | 0.7434 | 0.1816 |
-| ArcGIS | 2021 | 3241 | 278 | 0.0858 | 0.0154 |
-| ArcGIS | 2022 | 8446 | 6864 | 0.8127 | 0.2775 |
-| ArcGIS | 2023 | 4846 | 3223 | 0.6651 | 0.1619 |
-| ArcGIS | 2024 | 4197 | 2281 | 0.5435 | 0.1674 |
-| ArcGIS | 2025 | 3587 | 849 | 0.2367 | 0.0579 |
+The count-only bound applies only to the exact minimum-change projections (Kernel, GeoFM-LDN and random minimum-change), each of which changes exactly M cells. The finite-iteration FLUS-style CA can meet near-exact final class totals through simultaneous class inflows and outflows and therefore can change more than M cells; it is not constrained by this bound. The seed triplets below expose this asymmetric transition budget.
+
+| Product | Target | O | M | Exact-count FoM upper bound | FLUS changed cells (31/47/73) | Kernel changed cells (31/47/73) | GeoFM-LDN changed cells (31/47/73) | Random changed cells (31/47/73) | Kernel FoM |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Dynamic World | 2021 | 2429 | 1115 | 0.4590 | 5820/5684/4919 | 1115/1115/1115 | 1115/1115/1115 | 1115/1115/1115 | 0.2595 |
+| Dynamic World | 2022 | 2749 | 793 | 0.2885 | 1174/1091/1139 | 793/793/793 | 793/793/793 | 793/793/793 | 0.0724 |
+| Dynamic World | 2023 | 4500 | 3080 | 0.6844 | 3618/3393/4125 | 3080/3080/3080 | 3080/3080/3080 | 3080/3080/3080 | 0.2116 |
+| Dynamic World | 2024 | 4972 | 3696 | 0.7434 | 10219/7017/9558 | 3696/3696/3696 | 3696/3696/3696 | 3696/3696/3696 | 0.1816 |
+| ArcGIS | 2021 | 3241 | 278 | 0.0858 | 6860/779/2291 | 278/278/278 | 278/278/278 | 278/278/278 | 0.0154 |
+| ArcGIS | 2022 | 8446 | 6864 | 0.8127 | 7618/7552/12472 | 6864/6864/6864 | 6864/6864/6864 | 6864/6864/6864 | 0.2775 |
+| ArcGIS | 2023 | 4846 | 3223 | 0.6651 | 5367/3975/4236 | 3223/3223/3223 | 3223/3223/3223 | 3223/3223/3223 | 0.1619 |
+| ArcGIS | 2024 | 4197 | 2281 | 0.5435 | 2822/4781/3080 | 2281/2281/2281 | 2281/2281/2281 | 2281/2281/2281 | 0.1674 |
+| ArcGIS | 2025 | 3587 | 849 | 0.2367 | 1651/957/6693 | 849/849/849 | 849/849/849 | 849/849/849 | 0.0579 |
 
 ## Seed-specific paired spatial-block intervals
 

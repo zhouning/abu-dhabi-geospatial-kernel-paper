@@ -46,6 +46,15 @@ MODEL_COLORS = {
     "paper58": "#009E73",
     "random_minimum_change": "#6B7280",
 }
+CLASS_NAMES = {
+    1: "Water",
+    2: "Woody vegetation",
+    3: "Low vegetation",
+    4: "Wetland",
+    5: "Built",
+    6: "Bare",
+}
+ARCGIS_RAW_TO_CANONICAL = {1: 1, 2: 2, 4: 4, 5: 3, 7: 5, 8: 6, 9: 0, 10: 0, 11: 3}
 SCENARIOS = ("compact", "ecological_priority", "outward_growth")
 SCENARIO_LABELS = {
     "compact": "Moderate growth",
@@ -134,6 +143,116 @@ def source_agreement() -> list[dict[str, Any]]:
                 "built_intersection_cells": both_built,
                 "built_iou": float(both_built / (old_built + new_built - both_built)),
                 "built_f1": float(2 * both_built / (old_built + new_built)),
+            }
+        )
+    return rows
+
+
+def cross_product_class_matrix() -> list[dict[str, Any]]:
+    """Materialize the frozen 6 x 6 annual cross-product matrices in long form."""
+
+    source = read_json(HERE / "results_arcgis_v2" / "source_comparison.json")
+    rows = []
+    for year, entries in sorted(source["dynamic_world_cross_product_100m"].items()):
+        for dynamic_world_class in range(1, 7):
+            for arcgis_class in range(1, 7):
+                key = f"{dynamic_world_class}->{arcgis_class}"
+                rows.append(
+                    {
+                        "year": int(year),
+                        "dynamic_world_class_id": dynamic_world_class,
+                        "dynamic_world_class": CLASS_NAMES[dynamic_world_class],
+                        "arcgis_class_id": arcgis_class,
+                        "arcgis_class": CLASS_NAMES[arcgis_class],
+                        "cells": int(entries.get(key, 0)),
+                    }
+                )
+    return rows
+
+
+def product_class_counts() -> list[dict[str, Any]]:
+    """Report product-native annual stocks without conflating them with truth."""
+
+    tracks = (
+        (
+            "Dynamic World",
+            V1_ROOT / "artifacts" / "abu_dhabi_city_100m_mask.tif",
+            V1_ROOT / "artifacts" / "gee" / "land_cover",
+            range(2017, 2025),
+        ),
+        (
+            "ArcGIS-served IO/MS/Esri",
+            HERE / "artifacts" / "abu_dhabi_city_100m_mask.tif",
+            HERE / "artifacts" / "gee" / "land_cover",
+            range(2017, 2026),
+        ),
+    )
+    rows = []
+    for product, mask_path, state_root, years in tracks:
+        city = read_band(mask_path).astype(bool)
+        for year in years:
+            state = read_band(state_root / f"land_cover_{year}_100m.tif")
+            valid = city & np.isin(state, range(1, 7))
+            rows.append(
+                {
+                    "product": product,
+                    "year": int(year),
+                    "valid_cells": int(valid.sum()),
+                    **{
+                        CLASS_NAMES[class_id].lower().replace(" ", "_"): int(
+                            np.count_nonzero(valid & (state == class_id))
+                        )
+                        for class_id in range(1, 7)
+                    },
+                }
+            )
+    return rows
+
+
+def _aggregate_raw_to_canonical(raw: np.ndarray, mapping: dict[int, int], city: np.ndarray) -> np.ndarray:
+    """Apply the frozen 10 m-to-100 m majority contract without writing a raster."""
+
+    height, width = city.shape
+    if raw.shape != (height * 10, width * 10):
+        raise ValueError(f"native_shape_mismatch:{raw.shape}:{height},{width}")
+    canonical_native = np.zeros_like(raw, dtype=np.uint8)
+    for raw_class, canonical_class in mapping.items():
+        canonical_native[raw == raw_class] = canonical_class
+    blocks = canonical_native.reshape(height, 10, width, 10)
+    class_counts = np.stack(
+        [(blocks == class_id).sum(axis=(1, 3)) for class_id in range(1, 7)], axis=0
+    )
+    canonical = np.arange(1, 7, dtype=np.uint8)[class_counts.argmax(axis=0)]
+    canonical[class_counts.max(axis=0) == 0] = 0
+    canonical[~city] = 0
+    return canonical
+
+
+def rangeland_mapping_sensitivity() -> list[dict[str, Any]]:
+    """Quantify the descriptive effect of mapping raw class 11 to bare instead.
+
+    This uses the archived native labels and aggregation rule only. It does not
+    refit any model, so it cannot be interpreted as a model-rank sensitivity.
+    """
+
+    city = read_band(HERE / "artifacts" / "abu_dhabi_city_100m_mask.tif").astype(bool)
+    alternate = {**ARCGIS_RAW_TO_CANONICAL, 11: 6}
+    rows = []
+    native_root = HERE / "artifacts" / "arcgis_sentinel2_landcover" / "native"
+    for year in range(2017, 2026):
+        raw = read_band(native_root / f"arcgis_sentinel2_landcover_{year}_10m.tif")
+        baseline = _aggregate_raw_to_canonical(raw, ARCGIS_RAW_TO_CANONICAL, city)
+        alternate_state = _aggregate_raw_to_canonical(raw, alternate, city)
+        valid = city & np.isin(baseline, range(1, 7))
+        rows.append(
+            {
+                "year": year,
+                "raw_rangeland_10m_pixels": int(np.count_nonzero(raw == 11)),
+                "changed_100m_labels": int(np.count_nonzero(valid & (baseline != alternate_state))),
+                "baseline_low_vegetation_cells": int(np.count_nonzero(valid & (baseline == 3))),
+                "alternate_low_vegetation_cells": int(np.count_nonzero(valid & (alternate_state == 3))),
+                "baseline_bare_cells": int(np.count_nonzero(valid & (baseline == 6))),
+                "alternate_bare_cells": int(np.count_nonzero(valid & (alternate_state == 6))),
             }
         )
     return rows
@@ -263,12 +382,21 @@ def planning_v2() -> dict[str, Any]:
                 if key not in {"model_id", "scenario_id", "target_year", "seed", "actual_class_counts", "target_class_counts"}
                 and isinstance(selected[0][key], (int, float))
             }
+            objective_uncertainty = {
+                objective: {
+                    "mean": float(statistics.mean(float(row[objective]) for row in selected)),
+                    "population_std": float(statistics.pstdev(float(row[objective]) for row in selected)),
+                    "values": [float(row[objective]) for row in selected],
+                }
+                for objective in OBJECTIVES
+            }
             candidates.append(
                 {
                     "candidate_id": f"{model_id}:{scenario_id}",
                     "model_id": model_id,
                     "scenario_id": scenario_id,
                     **mean_metrics,
+                    "objective_uncertainty": objective_uncertainty,
                 }
             )
     frontiers = {}
@@ -429,6 +557,40 @@ def render_supplementary_table(summary: dict[str, Any]) -> str:
         )
     lines += [
         "",
+        "## Product-native annual class stocks",
+        "",
+        "Counts below use each product's own city-valid 100-m state layer, rather than the smaller pairwise common-coverage mask. They describe mapped class prevalence, not verified land-cover change or land-use truth.",
+        "",
+        "| Product | Year | Valid cells | Water | Woody vegetation | Low vegetation | Wetland | Built | Bare |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for row in summary["product_class_counts"]:
+        lines.append(
+            f"| {row['product']} | {row['year']} | {row['valid_cells']} | {row['water']} | "
+            f"{row['woody_vegetation']} | {row['low_vegetation']} | {row['wetland']} | "
+            f"{row['built']} | {row['bare']} |"
+        )
+    lines += [
+        "",
+        "The ArcGIS-served sequence has a material class-composition discontinuity: built rises from 21,608 cells in 2021 to 28,214 in 2022, while bare falls from 34,521 to 27,821; woody vegetation and wetland later approach zero. The upstream Living Atlas item does not publish annual model-version identifiers, so this table cannot assign a cause. It is therefore evidence of a product-series break, not evidence that these mapped transitions occurred on the ground.",
+        "",
+        "The full annual 6 x 6 Dynamic World-to-ArcGIS class matrix is supplied as `results_arcgis_v2/paper_refresh/cross_product_class_matrix.csv`. Its rows use the pairwise common-coverage grid; zeros are retained so every annual matrix is explicit.",
+        "",
+        "## Rangeland crosswalk sensitivity",
+        "",
+        "The source service names raw class 11 `Rangeland`. The frozen benchmark maps it to low vegetation. The counterfactual below maps only raw class 11 to bare before the identical 10 x 10 majority aggregation. No model was refit, so this is a label-aggregation sensitivity, not a historical-skill or planning-rank sensitivity.",
+        "",
+        "| Year | Raw rangeland 10-m pixels | Changed 100-m labels | Baseline low vegetation | Alternate low vegetation | Baseline bare | Alternate bare |",
+        "|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for row in summary["rangeland_mapping_sensitivity"]:
+        lines.append(
+            f"| {row['year']} | {row['raw_rangeland_10m_pixels']} | {row['changed_100m_labels']} | "
+            f"{row['baseline_low_vegetation_cells']} | {row['alternate_low_vegetation_cells']} | "
+            f"{row['baseline_bare_cells']} | {row['alternate_bare_cells']} |"
+        )
+    lines += [
+        "",
         f"ArcGIS report SHA-256: `{summary['input_reports']['arcgis']['sha256']}`.",
         "",
         f"Dynamic World report SHA-256: `{summary['input_reports']['dynamic_world']['sha256']}`.",
@@ -437,8 +599,45 @@ def render_supplementary_table(summary: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def render_supplementary_planning_table(summary: dict[str, Any]) -> str:
+    """Expose the ArcGIS-track objective trade-offs behind frontier membership."""
+
+    planning = summary["planning"]
+    frontiers = planning["arcgis_v2_frontier_within_scenario"]
+    lines = [
+        "# Supplementary Table S1. ArcGIS-served 2031 planning objective profiles",
+        "",
+        "Values are means plus or minus population standard deviations across computational seeds 31, 47 and 73. All values are conditional on the ArcGIS-served 2025 origin state and product-specific 2026–2031 scenario actions. Lower values are preferred for all three public proxy objectives. A frontier mark denotes non-domination within that scenario only; it is not a forecast-accuracy or welfare ranking.",
+        "",
+        "| Scenario | Model | New built to major roads (m) | New built to prior built (m) | Union-built components per 1,000 cells | Within-scenario frontier |",
+        "|---|---|---:|---:|---:|:---:|",
+    ]
+    for scenario in SCENARIOS:
+        candidates = [
+            row for row in planning["arcgis_v2_final_candidates"] if row["scenario_id"] == scenario
+        ]
+        for row in candidates:
+            uncertainty = row["objective_uncertainty"]
+            road = uncertainty["new_built_mean_major_road_distance_m"]
+            prior = uncertainty["new_built_mean_prior_built_distance_m"]
+            components = uncertainty["combined_built_components_per_1000_pixels"]
+            mark = "*" if row["candidate_id"] in frontiers[scenario] else ""
+            lines.append(
+                f"| {SCENARIO_LABELS[scenario]} | {MODEL_LABELS[row['model_id']]} | "
+                f"{road['mean']:.1f} +/- {road['population_std']:.1f} | "
+                f"{prior['mean']:.1f} +/- {prior['population_std']:.1f} | "
+                f"{components['mean']:.3f} +/- {components['population_std']:.3f} | {mark} |"
+            )
+    lines += [
+        "",
+        "In this product track, FLUS-style ANN-CA has lower mean major-road distance and lower union-built component density, while Kernel has lower mean distance to prior built cells in all three scenarios. This dimension-specific trade-off differs from the Dynamic World-origin table and is why unchanged frontier membership must not be interpreted as unchanged planning behaviour.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def panel_label(axis: plt.Axes, label: str) -> None:
-    axis.text(-0.12, 1.10, label, transform=axis.transAxes, fontweight="bold", fontsize=10, va="top")
+    axis.text(-0.15, 1.10, label, transform=axis.transAxes, fontweight="bold", fontsize=10, va="top")
 
 
 def render_figure(
@@ -456,8 +655,26 @@ def render_figure(
     axis.plot([2025], [arcgis_2025], "s", color="#C65B4B")
     axis.plot([2024, 2025], [agreement[-1]["arcgis_built_cells"] / 100, arcgis_2025], "--", color="#C65B4B", linewidth=1)
     axis.set(title="Built-area stock differs by product", xlabel="Year", ylabel="Mapped built area (km²)")
-    axis.legend(frameon=False)
-    panel_label(axis, "a")
+    axis.annotate(
+        "IO/Microsoft/Esri",
+        xy=(2024, agreement[-1]["arcgis_built_cells"] / 100),
+        xytext=(2021.9, 344),
+        color="#A34434",
+        fontsize=7.2,
+        ha="left",
+        va="bottom",
+    )
+    axis.annotate(
+        "Dynamic World",
+        xy=(2024, agreement[-1]["dynamic_world_built_cells"] / 100),
+        xytext=(2022.0, 132),
+        color="#40577F",
+        fontsize=7.2,
+        ha="left",
+        va="top",
+    )
+    axis.set_ylim(60, 360)
+    panel_label(axis, "A")
 
     axis = axes[0, 1]
     axis.plot(years, [row["same_class_agreement"] for row in agreement], "o-", color="#6B7280", label="All-class agreement")
@@ -465,7 +682,7 @@ def render_figure(
     axis.set(title="Same-year cross-product agreement", xlabel="Year", ylabel="Agreement")
     axis.set_ylim(0, 1)
     axis.legend(frameon=False)
-    panel_label(axis, "b")
+    panel_label(axis, "B")
 
     axis = axes[1, 0]
     arcgis_rows = [row for row in rows if row["source_track"] == "arcgis"]
@@ -487,7 +704,7 @@ def render_figure(
     axis.set(title="ArcGIS-served product: one-step allocation skill", xlabel="Target year", ylabel="Strict change FoM")
     axis.set_ylim(0, 0.62)
     axis.legend(frameon=False, ncol=2, fontsize=6.7, loc="upper center")
-    panel_label(axis, "c")
+    panel_label(axis, "C")
 
     axis = axes[1, 1]
     matched_years = sorted(
@@ -513,11 +730,30 @@ def render_figure(
     axis.set_yticks(range(len(MODEL_IDS)), [MODEL_LABELS[value] for value in MODEL_IDS])
     axis.set(title="Product difference in strict FoM", xlabel="Matched one-step target year")
     fig.colorbar(image, ax=axis, fraction=0.045, pad=0.04, label="FoM difference")
-    panel_label(axis, "d")
+    panel_label(axis, "D")
 
-    fig.suptitle("Land-cover product choice changes both the mapped state and measured model skill", fontsize=10.5, fontweight="bold", y=0.995)
-    fig.text(0.5, 0.005, "Both products are public remote-sensing classifications; neither is authoritative Abu Dhabi land-use truth.", ha="center", fontsize=7.4, color="#4B5563")
-    fig.tight_layout(rect=(0, 0.03, 1, 0.97), h_pad=2.0, w_pad=1.5)
+    axis = axes[0, 0]
+    axis.axvline(2021.5, color="#4B5563", linestyle="--", linewidth=0.8, zorder=0)
+    axis.annotate(
+        "possible series\nbreak",
+        xy=(2021.5, 276),
+        xytext=(2020.1, 310),
+        arrowprops={"arrowstyle": "-", "color": "#4B5563", "linewidth": 0.6},
+        color="#4B5563",
+        fontsize=6.6,
+        ha="center",
+        va="bottom",
+    )
+    axes[1, 0].legend(
+        frameon=False,
+        ncol=2,
+        fontsize=6.5,
+        loc="upper center",
+        bbox_to_anchor=(0.58, 0.99),
+        handletextpad=0.4,
+        columnspacing=0.8,
+    )
+    fig.tight_layout(h_pad=2.0, w_pad=1.5)
     base = FIGURE_ROOT / "fig04_product_robustness"
     svg = base.with_suffix(".svg")
     fig.savefig(svg, bbox_inches="tight", pad_inches=0.04)
@@ -557,7 +793,7 @@ def render_markdown(summary: dict[str, Any]) -> str:
         "",
         "## Planning frontier sensitivity",
         "",
-        "The planning comparison is conditional on each product-specific origin state and the same released public proxy objectives. Frontier membership is not a forecast-accuracy ranking.",
+        "The planning comparison is conditional on each product-specific origin state and the same released public proxy objectives. Frontier membership is not a forecast-accuracy ranking, and stable membership does not imply unchanged objective trade-offs.",
         "",
         "| Scenario | Dynamic World v1 frontier | ArcGIS v2 frontier |",
         "|---|---|---|",
@@ -593,6 +829,9 @@ def main() -> None:
     arcgis = require_backtest(args.arcgis_report, "arcgis")
     dynamic_world = require_backtest(args.dynamic_world_report, "dynamic_world")
     agreement = source_agreement()
+    class_matrix = cross_product_class_matrix()
+    class_counts = product_class_counts()
+    rangeland_sensitivity = rangeland_mapping_sensitivity()
     temporal = temporal_product_diagnostics()
     rows = backtest_rows(arcgis) + backtest_rows(dynamic_world)
     rankings = backtest_rankings(rows)
@@ -611,6 +850,9 @@ def main() -> None:
             "product_specific": ["annual_labels", "origin_state", "oracle_class_totals", "origin_water_wetland_mask", "quality_weight_semantics"],
         },
         "source_agreement": agreement,
+        "cross_product_class_matrix": class_matrix,
+        "product_class_counts": class_counts,
+        "rangeland_mapping_sensitivity": rangeland_sensitivity,
         "temporal_product_diagnostics": temporal,
         "backtest_rows": rows,
         "backtest_rankings": rankings,
@@ -624,12 +866,19 @@ def main() -> None:
     )
     (args.output / "product_robustness_summary.md").write_text(render_markdown(summary), encoding="utf-8")
     write_csv(args.output / "source_agreement.csv", agreement)
+    write_csv(args.output / "cross_product_class_matrix.csv", class_matrix)
+    write_csv(args.output / "product_class_counts.csv", class_counts)
+    write_csv(args.output / "rangeland_mapping_sensitivity.csv", rangeland_sensitivity)
     write_csv(args.output / "temporal_product_diagnostics.csv", temporal)
     write_csv(args.output / "historical_backtest_metrics.csv", rows)
     write_csv(args.output / "historical_backtest_rankings.csv", rankings)
     write_csv(MANUSCRIPT_ROOT / "source_data_fig04_product_robustness.csv", figure_source_rows(agreement, rows))
     (MANUSCRIPT_ROOT / "supplementary_table_S6_product_robustness.md").write_text(
         render_supplementary_table(summary),
+        encoding="utf-8",
+    )
+    (MANUSCRIPT_ROOT / "supplementary_table_S1_arcgis_planning_objectives.md").write_text(
+        render_supplementary_planning_table(summary),
         encoding="utf-8",
     )
     render_figure(agreement, rows)

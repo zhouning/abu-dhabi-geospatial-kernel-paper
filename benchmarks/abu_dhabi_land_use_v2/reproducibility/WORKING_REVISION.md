@@ -2,9 +2,10 @@
 
 The published v2.0.0 DOI and Git tag retain their original content. This working
 revision adds a report-derived net-change limit analysis, exposes seed-specific
-paired intervals, and revises the manuscript. It does not retrain models or
-replace historical or planning prediction rasters. Do not attribute the working
-revision to the published DOI as if it were already archived there.
+paired intervals, archives the 27 per-seed 2031 ArcGIS planning states read by
+the cross-product compiler, and revises the manuscript. It does not retrain
+models or replace historical or planning prediction rasters. Do not attribute
+the working revision to the published DOI as if it were already archived there.
 
 The 10 September 2026 reference revision specifies the Dynamic World temporal
 reducers and quality statistic, distinguishes the VIIRS monthly input from the
@@ -30,11 +31,11 @@ Check the declared working revision (verification never updates hashes):
 python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py --working
 ```
 
-The generator is deterministic: it emits LF-delimited CSV files and fixed
-12-decimal derived floats. After a normal regeneration of an already frozen
-working revision, the three CSV/JSON outputs and Supplementary Table S7 must
-remain unchanged in Git. Run `git diff --check` and inspect the four generated
-paths before rebuilding a manifest.
+The generator is deterministic: it emits LF-delimited CSV, Markdown and JSON
+files and fixed 12-decimal derived floats. After a normal regeneration of an
+already frozen working revision, the four CSV/JSON outputs and Supplementary
+Table S7 must remain unchanged in Git after LF normalization. Run `git diff
+--check` and inspect the five generated paths before rebuilding a manifest.
 
 Maintainers may deliberately freeze a new working revision after reviewing changes:
 
@@ -45,9 +46,13 @@ python benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_ma
 The manifests under `working/` are distinct from the published manifests one
 directory above. CSV, TSV, GeoJSON and SVG use LF-normalized text hashes in the
 working revision; binary raster and model hashes remain raw byte hashes. The
-published manifests are preserved, including their original hash conventions.
-For exact published-release verification, use a separate checkout of `v2.0.0`,
-retrieve Git LFS objects and preserve LF line endings. Do not regenerate its
+working publication-output manifest explicitly includes the 27 per-seed 2031
+ArcGIS planning rasters required by `analyze_product_robustness.py`, so Fig. 4,
+Supplementary Table S1 and Supplementary Table S6 can be recreated without an
+end-to-end simulation. The published manifests are preserved, including their
+original hash conventions. For exact published-release verification, use a
+separate checkout of `v2.0.0`, retrieve Git LFS objects and preserve LF line
+endings (`git -c core.autocrlf=false checkout v2.0.0`). Do not regenerate its
 manifests to conceal differences. Default checking against the published
 manifests on this edited branch is expected to fail.
 

@@ -19,7 +19,9 @@ model grid.
   reused as explicitly declared static proxies.
 - Models: GeoSOS-derived FLUS-style ANN–CA, Geospatial Kernel and a newly
   trained GeoFM-LDN checkpoint, each with seeds 31, 47 and 73.
-- Scenarios: compact, ecological-priority and outward-growth; origin 2025;
+- Scenarios: moderate growth, green-priority growth and high outward growth
+  (legacy artifact identifiers: `compact`, `ecological_priority`,
+  `outward_growth`); origin 2025;
   conditional projections 2026–2031.
 
 ## Important interpretation boundary
@@ -34,33 +36,32 @@ robustness, not authoritative legal land-use prediction. Model rasters remain
 ## Reproduce
 
 ```bash
-cd /Users/zhouning/abu-dhabi-geospatial-kernel-paper
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/materialize_arcgis_sentinel2_landcover.py \
+python benchmarks/abu_dhabi_land_use_v2/materialize_arcgis_sentinel2_landcover.py \
   --years 2017,2018,2019,2020,2021,2022,2023,2024,2025
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/build_arcgis_bundle.py
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/materialize_gee_2025_drivers.py \
+python benchmarks/abu_dhabi_land_use_v2/build_arcgis_bundle.py
+python benchmarks/abu_dhabi_land_use_v2/materialize_gee_2025_drivers.py \
   --products viirs,alphaearth
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/train_arcgis_geofm_ldn.py \
+python benchmarks/abu_dhabi_land_use_v2/train_arcgis_geofm_ldn.py \
   --seeds 31,47,73 --epochs 8 --device cpu
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/run_planning_scenarios.py \
+python benchmarks/abu_dhabi_land_use_v2/run_planning_scenarios.py \
   --models geospatial_kernel,geosos_flus,paper58 --seeds 31,47,73 \
   --start-year 2026 --end-year 2031 \
   --output benchmarks/abu_dhabi_land_use_v2/artifacts/planning_arcgis_2026_2031 \
   --report benchmarks/abu_dhabi_land_use_v2/planning_scenario_report_arcgis_2026_2031.json
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/analyze_arcgis_v2.py
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/export_shapefiles_arcgis_v2.py
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/export_native_10m_observed_change.py
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/run_arcgis_historical_backtest.py \
+python benchmarks/abu_dhabi_land_use_v2/analyze_arcgis_v2.py
+python benchmarks/abu_dhabi_land_use_v2/export_shapefiles_arcgis_v2.py
+python benchmarks/abu_dhabi_land_use_v2/export_native_10m_observed_change.py
+python benchmarks/abu_dhabi_land_use_v2/run_arcgis_historical_backtest.py \
   --output benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_v2_historical_backtest \
   --source-track arcgis --seeds 31,47,73 \
   --target-years 2021,2022,2023,2024,2025 --epochs 8 --batch-size 2 \
   --device cpu --bootstrap-resamples 1000
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/run_arcgis_historical_backtest.py \
+python benchmarks/abu_dhabi_land_use_v2/run_arcgis_historical_backtest.py \
   --output benchmarks/abu_dhabi_land_use_v2/artifacts/dynamic_world_matched_backtest \
   --source-track dynamic_world --seeds 31,47,73 \
   --target-years 2021,2022,2023,2024 --epochs 8 --batch-size 2 \
   --device cpu --bootstrap-resamples 1000
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/analyze_product_robustness.py
+python benchmarks/abu_dhabi_land_use_v2/analyze_product_robustness.py
 ```
 
 The service may change its mosaic catalog or availability. The materializer
@@ -75,13 +76,16 @@ The v2 archive uses two separate manifests under `reproducibility/`:
 `MANIFEST.json` freezes the materialized public inputs, model assets,
 configuration and code required to rerun the experiment, whereas
 `PUBLICATION_OUTPUTS.json` freezes the reports, Figure 4 source data/artwork and
-the released raster/vector products. This distinction prevents a generated map
-from being represented as an input while allowing the delivery set to be
-checked independently.
+the released raster/vector products. The working-revision publication manifest
+also freezes the 27 per-seed ArcGIS 2031 planning rasters consumed by the
+cross-product compiler, so its headline figure and supplementary planning table
+can be regenerated without rerunning the scenario models. This distinction
+prevents a generated map from being represented as an input while allowing the
+delivery set to be checked independently.
 
 ```bash
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py
-./.venv-lup/bin/python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproduce.py --device cpu
+python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py
+python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproduce.py --device cpu
 ```
 
 The rerun command intentionally starts from the archived source tiles and
@@ -91,6 +95,10 @@ than a reproducible rerun. The first command verifies both pre-existing
 manifests; the second rebuilds the outputs and manifests and verifies the
 resulting archive. It can take substantial time because it includes the two
 three-seed historical backtests and 1,000-resample spatial bootstrap.
+The archived FLUS executable used by the end-to-end rerun is macOS arm64. The
+integrity gate and analysis of frozen outputs run on other platforms, but a
+full FLUS rerun elsewhere requires a locally built compatible binary and is not
+asserted to be bitwise identical.
 
 ## Outputs
 

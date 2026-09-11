@@ -31,11 +31,27 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install resolved dependencies
+        shell: pwsh
+        run: >-
+          python -m pip install -r
+          benchmarks/abu_dhabi_land_use_v1/reproducibility/requirements.lock.txt
+
       - name: Verify reproducibility manifest
         shell: pwsh
         run: >-
           python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
           --output "$env:RUNNER_TEMP/reproducibility_check_windows_crlf.json"
+
+      - name: Verify v2 working-revision manifests
+        shell: pwsh
+        run: >-
+          python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py
+          --working
+
+      - name: Run evidence tests
+        shell: pwsh
+        run: python -m pytest tests
 
   categorical-reference:
     name: Ubuntu x86_64 categorical reference
@@ -58,6 +74,14 @@ jobs:
         run: >-
           python benchmarks/abu_dhabi_land_use_v1/reproducibility_check.py
           --output $RUNNER_TEMP/reproducibility_check.json
+
+      - name: Verify v2 working-revision manifests
+        run: >-
+          python benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py
+          --working
+
+      - name: Run evidence tests
+        run: python -m pytest tests
 
       - name: Rerun all Kernel seeds
         run: >-

@@ -22,6 +22,12 @@ builder = load("manifest_builder", "benchmarks/abu_dhabi_land_use_v2/reproducibi
 checker = load("manifest_checker", "benchmarks/abu_dhabi_land_use_v2/reproducibility/reproducibility_check.py")
 
 
+def normalized_text_bytes(path: Path) -> bytes:
+    """Compare deterministic text outputs independently of checkout line endings."""
+
+    return path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 class RevisionEvidenceTests(unittest.TestCase):
     def test_bound_covers_all_three_class_three_cell_maps(self):
         maps = list(itertools.product(range(3), repeat=3))
@@ -71,9 +77,9 @@ class RevisionEvidenceTests(unittest.TestCase):
             generated_dir = Path(folder) / "allocation_limits"
             generated_table = Path(folder) / "supplementary_table_S7_allocation_limits.md"
             self.assertEqual(limits.analyze(generated_dir, generated_table)["status"], "PASS")
-            for name in ("count_limits.csv", "paired_intervals.csv", "sources.json"):
-                self.assertEqual((generated_dir / name).read_bytes(), (source_dir / name).read_bytes(), name)
-            self.assertEqual(generated_table.read_bytes(), source_table.read_bytes())
+            for name in ("count_limits.csv", "model_change_counts.csv", "paired_intervals.csv", "sources.json"):
+                self.assertEqual(normalized_text_bytes(generated_dir / name), normalized_text_bytes(source_dir / name), name)
+            self.assertEqual(normalized_text_bytes(generated_table), normalized_text_bytes(source_table))
 
     def test_analysis_invariants_are_explicit_exceptions(self):
         with self.assertRaisesRegex(ValueError, "inconsistent_report"):

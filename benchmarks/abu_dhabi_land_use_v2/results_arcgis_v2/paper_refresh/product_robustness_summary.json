@@ -915,6 +915,2312 @@
     ],
     "type": "whole_public_product_pipeline_robustness"
   },
+  "cross_product_class_matrix": [
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 14887,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 17,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 26,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 37,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 154,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 269,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 170,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 97,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 68,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 83,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 21,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 9,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 297,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 5,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 76,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 441,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 148,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 9,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 374,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 1,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 34,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 181,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 8711,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 179,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 4726,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 3,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 1630,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 115,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 12762,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 34227,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2017
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 14466,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 17,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 25,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 17,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 148,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 178,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 141,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 48,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 48,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 57,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 17,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 0,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 7,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 1,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 266,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 2,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 85,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 2,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 387,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 194,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 7,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 329,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 0,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 34,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 135,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 7321,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 92,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 5378,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 2,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 1806,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 79,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 14163,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 34316,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2018
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 14901,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 13,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 26,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 28,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 183,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 183,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 182,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 71,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 53,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 112,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 21,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 30,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 1,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 288,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 7,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 102,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 4,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 412,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 197,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 8,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 390,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 1,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 37,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 160,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 1,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 8612,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 97,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 4650,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 6,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 1798,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 108,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 15384,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 31691,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2019
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 15100,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 14,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 24,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 34,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 190,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 205,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 192,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 111,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 71,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 148,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 22,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 0,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 30,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 3,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 305,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 32,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 109,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 417,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 139,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 7,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 448,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 1,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 2,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 43,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 139,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 9179,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 281,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 4231,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 6,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 1883,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 183,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 11928,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 34283,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2020
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 15103,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 9,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 33,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 37,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 179,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 173,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 188,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 109,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 55,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 170,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 11,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 36,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 5,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 320,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 18,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 88,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 434,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 162,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 9,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 407,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 2,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 2,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 34,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 146,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 8249,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 124,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 4222,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 8,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 1963,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 154,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 13078,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 34217,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2021
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 14930,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 5,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 39,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 29,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 209,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 226,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 271,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 42,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 59,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 102,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 21,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 45,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 337,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 88,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 1,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 636,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 33,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 22,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 319,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 1,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 0,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 35,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 157,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 9108,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 59,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 4496,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 8,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 2125,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 40,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 18787,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 27534,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2022
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 15442,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 39,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 230,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 276,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 591,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 9,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 65,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 23,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 0,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 60,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 313,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 86,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 2,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 1054,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 3,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 20,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 13,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 2,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 4,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 52,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 155,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 11839,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 75,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 3944,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 10,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 1993,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 11,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 19108,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 24331,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2023
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 15570,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 34,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 236,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 222,
+      "dynamic_world_class": "Water",
+      "dynamic_world_class_id": 1,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 822,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 9,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 59,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 27,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 0,
+      "dynamic_world_class": "Woody vegetation",
+      "dynamic_world_class_id": 2,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 32,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 316,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 60,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 0,
+      "dynamic_world_class": "Low vegetation",
+      "dynamic_world_class_id": 3,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 964,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 4,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 12,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 11,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 5,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 4,
+      "dynamic_world_class": "Wetland",
+      "dynamic_world_class_id": 4,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 59,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 193,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 0,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 15242,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 104,
+      "dynamic_world_class": "Built",
+      "dynamic_world_class_id": 5,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Water",
+      "arcgis_class_id": 1,
+      "cells": 3723,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Woody vegetation",
+      "arcgis_class_id": 2,
+      "cells": 3,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Low vegetation",
+      "arcgis_class_id": 3,
+      "cells": 1967,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Wetland",
+      "arcgis_class_id": 4,
+      "cells": 9,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Built",
+      "arcgis_class_id": 5,
+      "cells": 17987,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2024
+    },
+    {
+      "arcgis_class": "Bare",
+      "arcgis_class_id": 6,
+      "cells": 22075,
+      "dynamic_world_class": "Bare",
+      "dynamic_world_class_id": 6,
+      "year": 2024
+    }
+  ],
   "input_reports": {
     "arcgis": {
       "path": "benchmarks/abu_dhabi_land_use_v2/artifacts/arcgis_v2_historical_backtest/report.json",
@@ -955,6 +3261,35 @@
         "new_built_p90_prior_built_distance_m": 386.851709182133,
         "new_built_p90_road_distance_m": 100.0,
         "new_built_pixels": 5411.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 0.7312232320066855,
+            "population_std": 0.06580179984549722,
+            "values": [
+              0.7646505797555625,
+              0.6392980256972736,
+              0.7897210905672203
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 368.0251271278505,
+            "population_std": 15.01464006588991,
+            "values": [
+              361.7831144345484,
+              388.72273959214647,
+              353.5695273568567
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 194.25476636933095,
+            "population_std": 28.26390214049986,
+            "values": [
+              165.68891511052274,
+              232.75062971199824,
+              184.32475428547187
+            ]
+          }
+        },
         "removed_built_pixels": 2411.0,
         "scenario_id": "compact",
         "valid_pixel_count": 79775.0
@@ -987,6 +3322,35 @@
         "new_built_p90_prior_built_distance_m": 366.356826163819,
         "new_built_p90_road_distance_m": 33.333333333333336,
         "new_built_pixels": 4671.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 0.7980779275044395,
+            "population_std": 0.0726131711980895,
+            "values": [
+              0.8147916013788781,
+              0.701974302726418,
+              0.8774678784080225
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 365.9767557691184,
+            "population_std": 6.854154674061652,
+            "values": [
+              359.09157824112197,
+              375.32822786670187,
+              363.5104611995314
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 184.80337237767648,
+            "population_std": 30.729494683956876,
+            "values": [
+              154.6568640127075,
+              226.98462889061022,
+              172.7686242297117
+            ]
+          }
+        },
         "removed_built_pixels": 2571.0,
         "scenario_id": "ecological_priority",
         "valid_pixel_count": 79775.0
@@ -1019,6 +3383,35 @@
         "new_built_p90_prior_built_distance_m": 469.65785320637593,
         "new_built_p90_road_distance_m": 100.0,
         "new_built_pixels": 7784.333333333333,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 0.6309411887600543,
+            "population_std": 0.05151500263632279,
+            "values": [
+              0.6392980256972736,
+              0.5640864932623002,
+              0.6894390473205891
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 388.51344208164625,
+            "population_std": 29.791416024656534,
+            "values": [
+              368.06803732105226,
+              430.63883668788014,
+              366.8334522360064
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 228.66774172804293,
+            "population_std": 24.69240132192273,
+            "values": [
+              194.13645500618594,
+              250.4350184107797,
+              241.43175176716315
+            ]
+          }
+        },
         "removed_built_pixels": 1784.3333333333333,
         "scenario_id": "outward_growth",
         "valid_pixel_count": 79775.0
@@ -1051,6 +3444,35 @@
         "new_built_p90_prior_built_distance_m": 200.0,
         "new_built_p90_road_distance_m": 0.0,
         "new_built_pixels": 3000.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 0.9902851770604826,
+            "population_std": 0.02046998635983017,
+            "values": [
+              0.9902851770604826,
+              1.0153556878721404,
+              0.9652146662488248
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 466.8596660563151,
+            "population_std": 5.917609059973189,
+            "values": [
+              462.1446275126139,
+              463.2294099375407,
+              475.2049607187907
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 119.12007080317504,
+            "population_std": 1.7365856095089731,
+            "values": [
+              118.30992973386888,
+              121.53296303175367,
+              117.51731964390255
+            ]
+          }
+        },
         "removed_built_pixels": 0.0,
         "scenario_id": "compact",
         "valid_pixel_count": 79775.0
@@ -1083,6 +3505,35 @@
         "new_built_p90_prior_built_distance_m": 141.4213562373095,
         "new_built_p90_road_distance_m": 0.0,
         "new_built_pixels": 2100.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 1.1031024757129426,
+            "population_std": 0.017727528202733878,
+            "values": [
+              1.1156377311187715,
+              1.0780319649012848,
+              1.1156377311187715
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 486.87773670014883,
+            "population_std": 8.659978180055163,
+            "values": [
+              487.56461677914575,
+              475.9447272673107,
+              497.12386605398996
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 113.42089525184285,
+            "population_std": 0.9973112543730268,
+            "values": [
+              114.04143427137743,
+              114.2075045417043,
+              112.01374694244684
+            ]
+          }
+        },
         "removed_built_pixels": 0.0,
         "scenario_id": "ecological_priority",
         "valid_pixel_count": 79775.0
@@ -1115,6 +3566,35 @@
         "new_built_p90_prior_built_distance_m": 282.842712474619,
         "new_built_p90_road_distance_m": 100.0,
         "new_built_pixels": 6000.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 0.7688289982241722,
+            "population_std": 0.005909176067577959,
+            "values": [
+              0.7646505797555625,
+              0.7771858351613914,
+              0.7646505797555625
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 447.85361731211344,
+            "population_std": 1.0735473099151915,
+            "values": [
+              447.0696123784383,
+              449.3715673522949,
+              447.1196722056071
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 155.25855337888902,
+            "population_std": 2.1571621366028246,
+            "values": [
+              153.6042785785907,
+              158.30550020536575,
+              153.86588135271057
+            ]
+          }
+        },
         "removed_built_pixels": 0.0,
         "scenario_id": "outward_growth",
         "valid_pixel_count": 79775.0
@@ -1147,6 +3627,35 @@
         "new_built_p90_prior_built_distance_m": 615.5701308466345,
         "new_built_p90_road_distance_m": 100.0,
         "new_built_pixels": 3000.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 1.2953097252689856,
+            "population_std": 0.05909176067577959,
+            "values": [
+              1.2535255405828893,
+              1.3788780946411783,
+              1.2535255405828893
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 487.02514456685384,
+            "population_std": 52.89626087218396,
+            "values": [
+              423.53665203857423,
+              553.0320543111166,
+              484.5067273508708
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 262.55308096852644,
+            "population_std": 37.95505182870585,
+            "values": [
+              224.33837963200637,
+              314.3040587376472,
+              249.0168045359258
+            ]
+          }
+        },
         "removed_built_pixels": 0.0,
         "scenario_id": "compact",
         "valid_pixel_count": 79775.0
@@ -1179,6 +3688,35 @@
         "new_built_p90_prior_built_distance_m": 556.1079501975853,
         "new_built_p90_road_distance_m": 100.0,
         "new_built_pixels": 2100.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 1.3203802360806434,
+            "population_std": 0.05819863481535201,
+            "values": [
+              1.2409902851770604,
+              1.3788780946411783,
+              1.3412723284236916
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 495.14521535722037,
+            "population_std": 59.073300545946935,
+            "values": [
+              420.3748664565313,
+              564.8031097121466,
+              500.25766990298314
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 249.37760188212812,
+            "population_std": 36.05306412630579,
+            "values": [
+              219.3140804062542,
+              300.0727003311589,
+              228.74602490897124
+            ]
+          }
+        },
         "removed_built_pixels": 0.0,
         "scenario_id": "ecological_priority",
         "valid_pixel_count": 79775.0
@@ -1211,6 +3749,35 @@
         "new_built_p90_prior_built_distance_m": 654.7674419636771,
         "new_built_p90_road_distance_m": 100.0,
         "new_built_pixels": 6000.0,
+        "objective_uncertainty": {
+          "combined_built_components_per_1000_pixels": {
+            "mean": 1.2493471221142798,
+            "population_std": 0.0726131711980895,
+            "values": [
+              1.2660607959887182,
+              1.3287370730178627,
+              1.1532434973362582
+            ]
+          },
+          "new_built_mean_major_road_distance_m": {
+            "mean": 465.2178490176731,
+            "population_std": 38.97040005859177,
+            "values": [
+              431.7840365956624,
+              519.8777817459106,
+              443.9917287114461
+            ]
+          },
+          "new_built_mean_prior_built_distance_m": {
+            "mean": 295.17439106456413,
+            "population_std": 47.111693773742395,
+            "values": [
+              249.59491799958644,
+              360.0491755557467,
+              275.87907963835937
+            ]
+          }
+        },
         "removed_built_pixels": 0.0,
         "scenario_id": "outward_growth",
         "valid_pixel_count": 79775.0
@@ -2575,6 +5142,278 @@
       "new_built_mean_prior_built_distance_m": "min"
     }
   },
+  "product_class_counts": [
+    {
+      "bare": 53463,
+      "built": 9105,
+      "low_vegetation": 388,
+      "product": "Dynamic World",
+      "valid_cells": 79760,
+      "water": 15390,
+      "wetland": 974,
+      "woody_vegetation": 440,
+      "year": 2017
+    },
+    {
+      "bare": 55744,
+      "built": 7582,
+      "low_vegetation": 363,
+      "product": "Dynamic World",
+      "valid_cells": 79769,
+      "water": 14851,
+      "wetland": 918,
+      "woody_vegetation": 311,
+      "year": 2018
+    },
+    {
+      "bare": 53637,
+      "built": 8907,
+      "low_vegetation": 432,
+      "product": "Dynamic World",
+      "valid_cells": 79759,
+      "water": 15334,
+      "wetland": 1009,
+      "woody_vegetation": 440,
+      "year": 2019
+    },
+    {
+      "bare": 52514,
+      "built": 9642,
+      "low_vegetation": 480,
+      "product": "Dynamic World",
+      "valid_cells": 79761,
+      "water": 15567,
+      "wetland": 1014,
+      "woody_vegetation": 544,
+      "year": 2020
+    },
+    {
+      "bare": 53642,
+      "built": 8553,
+      "low_vegetation": 468,
+      "product": "Dynamic World",
+      "valid_cells": 79747,
+      "water": 15534,
+      "wetland": 1016,
+      "woody_vegetation": 534,
+      "year": 2021
+    },
+    {
+      "bare": 52990,
+      "built": 9359,
+      "low_vegetation": 471,
+      "product": "Dynamic World",
+      "valid_cells": 79765,
+      "water": 15438,
+      "wetland": 1011,
+      "woody_vegetation": 496,
+      "year": 2022
+    },
+    {
+      "bare": 49397,
+      "built": 12121,
+      "low_vegetation": 461,
+      "product": "Dynamic World",
+      "valid_cells": 79750,
+      "water": 15987,
+      "wetland": 1096,
+      "woody_vegetation": 688,
+      "year": 2023
+    },
+    {
+      "bare": 45764,
+      "built": 15598,
+      "low_vegetation": 408,
+      "product": "Dynamic World",
+      "valid_cells": 79749,
+      "water": 16062,
+      "wetland": 1000,
+      "woody_vegetation": 917,
+      "year": 2024
+    },
+    {
+      "bare": 34678,
+      "built": 21725,
+      "low_vegetation": 2211,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 20281,
+      "wetland": 615,
+      "woody_vegetation": 265,
+      "year": 2017
+    },
+    {
+      "bare": 34589,
+      "built": 21734,
+      "low_vegetation": 2287,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 20419,
+      "wetland": 484,
+      "woody_vegetation": 262,
+      "year": 2018
+    },
+    {
+      "bare": 31977,
+      "built": 24303,
+      "low_vegetation": 2333,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 20226,
+      "wetland": 648,
+      "woody_vegetation": 288,
+      "year": 2019
+    },
+    {
+      "bare": 34773,
+      "built": 21429,
+      "low_vegetation": 2429,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 20021,
+      "wetland": 850,
+      "woody_vegetation": 273,
+      "year": 2020
+    },
+    {
+      "bare": 34521,
+      "built": 21608,
+      "low_vegetation": 2526,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 20035,
+      "wetland": 792,
+      "woody_vegetation": 293,
+      "year": 2021
+    },
+    {
+      "bare": 27821,
+      "built": 28214,
+      "low_vegetation": 2739,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 20423,
+      "wetland": 490,
+      "woody_vegetation": 88,
+      "year": 2022
+    },
+    {
+      "bare": 24688,
+      "built": 31288,
+      "low_vegetation": 2585,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 21168,
+      "wetland": 24,
+      "woody_vegetation": 22,
+      "year": 2023
+    },
+    {
+      "bare": 22408,
+      "built": 33557,
+      "low_vegetation": 2581,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 21193,
+      "wetland": 20,
+      "woody_vegetation": 16,
+      "year": 2024
+    },
+    {
+      "bare": 23151,
+      "built": 32731,
+      "low_vegetation": 2694,
+      "product": "ArcGIS-served IO/MS/Esri",
+      "valid_cells": 79775,
+      "water": 21180,
+      "wetland": 17,
+      "woody_vegetation": 2,
+      "year": 2025
+    }
+  ],
+  "rangeland_mapping_sensitivity": [
+    {
+      "alternate_bare_cells": 36937,
+      "alternate_low_vegetation_cells": 23,
+      "baseline_bare_cells": 34678,
+      "baseline_low_vegetation_cells": 2211,
+      "changed_100m_labels": 2265,
+      "raw_rangeland_10m_pixels": 233306,
+      "year": 2017
+    },
+    {
+      "alternate_bare_cells": 36928,
+      "alternate_low_vegetation_cells": 16,
+      "baseline_bare_cells": 34589,
+      "baseline_low_vegetation_cells": 2287,
+      "changed_100m_labels": 2346,
+      "raw_rangeland_10m_pixels": 242279,
+      "year": 2018
+    },
+    {
+      "alternate_bare_cells": 34355,
+      "alternate_low_vegetation_cells": 16,
+      "baseline_bare_cells": 31977,
+      "baseline_low_vegetation_cells": 2333,
+      "changed_100m_labels": 2384,
+      "raw_rangeland_10m_pixels": 247521,
+      "year": 2019
+    },
+    {
+      "alternate_bare_cells": 37248,
+      "alternate_low_vegetation_cells": 12,
+      "baseline_bare_cells": 34773,
+      "baseline_low_vegetation_cells": 2429,
+      "changed_100m_labels": 2484,
+      "raw_rangeland_10m_pixels": 257835,
+      "year": 2020
+    },
+    {
+      "alternate_bare_cells": 37102,
+      "alternate_low_vegetation_cells": 12,
+      "baseline_bare_cells": 34521,
+      "baseline_low_vegetation_cells": 2526,
+      "changed_100m_labels": 2589,
+      "raw_rangeland_10m_pixels": 268400,
+      "year": 2021
+    },
+    {
+      "alternate_bare_cells": 30605,
+      "alternate_low_vegetation_cells": 24,
+      "baseline_bare_cells": 27821,
+      "baseline_low_vegetation_cells": 2739,
+      "changed_100m_labels": 2792,
+      "raw_rangeland_10m_pixels": 289017,
+      "year": 2022
+    },
+    {
+      "alternate_bare_cells": 27325,
+      "alternate_low_vegetation_cells": 15,
+      "baseline_bare_cells": 24688,
+      "baseline_low_vegetation_cells": 2585,
+      "changed_100m_labels": 2652,
+      "raw_rangeland_10m_pixels": 275034,
+      "year": 2023
+    },
+    {
+      "alternate_bare_cells": 25052,
+      "alternate_low_vegetation_cells": 15,
+      "baseline_bare_cells": 22408,
+      "baseline_low_vegetation_cells": 2581,
+      "changed_100m_labels": 2653,
+      "raw_rangeland_10m_pixels": 272030,
+      "year": 2024
+    },
+    {
+      "alternate_bare_cells": 25891,
+      "alternate_low_vegetation_cells": 21,
+      "baseline_bare_cells": 23151,
+      "baseline_low_vegetation_cells": 2694,
+      "changed_100m_labels": 2754,
+      "raw_rangeland_10m_pixels": 282750,
+      "year": 2025
+    }
+  ],
   "schema": "gwm.abu_dhabi_product_robustness_analysis.v1",
   "source_agreement": [
     {

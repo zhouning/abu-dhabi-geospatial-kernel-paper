@@ -119,6 +119,7 @@ def publication_outputs() -> dict[str, set[Path]]:
         REPO / "figures" / "fig04_product_robustness.pdf",
         REPO / "figures" / "fig04_product_robustness.svg",
         REPO / "manuscript" / "source_data_fig04_product_robustness.csv",
+        REPO / "manuscript" / "supplementary_table_S1_arcgis_planning_objectives.md",
         REPO / "manuscript" / "supplementary_table_S6_product_robustness.md",
         REPO / "manuscript" / "manuscript.md",
         REPO / "manuscript" / "supplementary_table_S7_allocation_limits.md",
@@ -144,6 +145,13 @@ def publication_outputs() -> dict[str, set[Path]]:
     delivery: set[Path] = set()
     add_tree(delivery, HERE / "results_arcgis_v2" / "ensembles")
     add_tree(delivery, HERE / "results_arcgis_v2" / "vectors")
+    # The cross-product compiler reads these 27 frozen per-seed end states to
+    # recreate Fig. 4, Supplementary Table S1 and Supplementary Table S6
+    # without rerunning the macOS-only FLUS executable.
+    add_files(
+        delivery,
+        HERE.glob("artifacts/planning_arcgis_2026_2031/*/*/seed_*/prediction_2031.tif"),
+    )
     return {
         "report": reports,
         "manuscript_evidence": evidence,
@@ -197,7 +205,7 @@ def build() -> tuple[int, int]:
     write_manifest(
         "PUBLICATION_OUTPUTS.json",
         "gwm.abu_dhabi_v2.publication_outputs.v1",
-        "Reports, source data, figures and delivered v2 raster/vector products cited by the refreshed paper.",
+        "Reports, source data, figures, delivered v2 raster/vector products and per-seed 2031 planning states cited by the refreshed paper.",
         outputs,
     )
     sums = "# SHA-256 hashes. Text files use CRLF/CR -> LF normalization; see manifests.\n"

@@ -2,7 +2,7 @@
 
 Dear Editor,
 
-Please consider our manuscript entitled "Auditing constrained geospatial allocation under annual land-cover product uncertainty" for publication as a Research Article in *Landscape and Urban Planning*.
+Please consider my manuscript entitled "Auditing constrained geospatial allocation under annual land-cover product uncertainty" for publication as a Research Article in *Landscape and Urban Planning*.
 
 The manuscript evaluates Geospatial Kernel, the algorithmic core of a Geospatial World Model, as an auditable execution layer for constrained spatial allocation. Using two public annual land-cover product tracks for Abu Dhabi, it tests whether model rankings are robust to product choice while retaining explicit proposal, constraint-projection and state-writeback traces.
 
@@ -14,6 +14,8 @@ The corresponding author is:
 
 Ning Zhou\
 Beijing Freedo Technology Co., Ltd.\
+Beijing, China\
+ORCID: https://orcid.org/0009-0002-5647-7388\
 Email: zhouning@freedotech.com
 
 Sincerely,

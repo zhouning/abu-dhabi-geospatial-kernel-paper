@@ -8,8 +8,8 @@
     {
       "path": ".github/workflows/kernel-x86_64-reference.yml",
       "role": "configuration",
-      "bytes": 2474,
-      "sha256": "914c3d22eb07461b3c1ab68934fd44007500f5fdc840fd6ad2997d0cf16a05ff",
+      "bytes": 3209,
+      "sha256": "8fa3cfb66ac15c3fca8d9fb0cd6e0769385ef126b81060cfd33502e8f93c20e5",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -540,8 +540,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v1/render_nature_figures.py",
       "role": "code",
-      "bytes": 43561,
-      "sha256": "6202cbd632d2b8af506f22276e46485b1627fbdec7dd44f1947e02dfa71b1bb6",
+      "bytes": 43786,
+      "sha256": "cb458133e4b1fdf397790d15cf9b21b800ee53cde19e747d48b3713359c6c2e6",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -576,7 +576,7 @@
       "path": "benchmarks/abu_dhabi_land_use_v1/reproducibility/reproduce.py",
       "role": "configuration",
       "bytes": 22351,
-      "sha256": "51ecceb3a22c84c658ded16e23ecf4615abe6b1ba34cf90ae125d215df9e1d64",
+      "sha256": "677b12bb79539b60d04f08c133ef072ef8b6a0c42320336a025364a633cf523e",
       "hash_mode": "text_lf_normalized"
     },
     {
