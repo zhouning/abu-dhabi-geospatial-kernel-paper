@@ -1072,8 +1072,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/build_reproducibility_manifest.py",
       "role": "code",
-      "bytes": 9713,
-      "sha256": "f902278dd4d1b03547007158792affe7a56b0d7dfaf6c48b9ed0d05123df76cf",
+      "bytes": 9778,
+      "sha256": "989f0e648b07955de1db6894398d7072e148ee8063eff8923f737e6ad509508a",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -1186,6 +1186,13 @@
       "role": "configuration",
       "bytes": 13229,
       "sha256": "05a922f1b798e268bde4315ceb84a2d00d1c415ec8ac9b580765ec5024ee72e9",
+      "hash_mode": "text_lf_normalized"
+    },
+    {
+      "path": "manuscript/build_supplementary_material.py",
+      "role": "configuration",
+      "bytes": 3160,
+      "sha256": "948874528cf458e88824318975179b7490d216715100cebc5a396c40c55f7ba9",
       "hash_mode": "text_lf_normalized"
     },
     {

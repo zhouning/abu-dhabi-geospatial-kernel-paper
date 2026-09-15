@@ -79,6 +79,7 @@ def rerun_inputs() -> dict[str, set[Path]]:
         V1 / "reproducibility" / "requirements.lock.txt",
         V1 / "reproducibility" / "environment.json",
         REPO / "manuscript" / "build_submission_package.py",
+        REPO / "manuscript" / "build_supplementary_material.py",
         REPO / "manuscript" / "main.tex",
         REPO / "manuscript" / "lup_submission.tex",
         REPO / "manuscript" / "submission_header.tex",

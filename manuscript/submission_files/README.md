@@ -16,6 +16,7 @@ Landscape and Urban Planning submission system.
 | Title page with author details | `title_page.pdf` | `title_page.docx` |
 | Manuscript without author details | `manuscript_anonymous.pdf` | `manuscript_anonymous.docx` |
 | Abstract | `abstract.pdf` | `abstract.docx` |
+| Supplementary material | `Supplementary_Material.pdf` | `Supplementary_Material.docx` |
 
 The anonymous manuscript intentionally withholds author names, affiliation,
 contact information, repository identifiers and archival DOI. These details
@@ -33,3 +34,11 @@ manifest checks.
 Main figures, if requested as separate artwork, are in the parent `figures/`
 directory. Supplementary figures are also in that directory and should be
 uploaded under the system's supplementary-material category.
+
+`Supplementary_Material.pdf` compiles Supplementary Tables S1--S7 from their
+tracked Markdown sources. From `manuscript/`, regenerate the PDF and editable
+Word copy with:
+
+```sh
+python build_supplementary_material.py
+```

@@ -37,6 +37,10 @@ GeoFM-LDN.
   six-class Dynamic World-to-ArcGIS product correspondence matrices.
 - `supplementary_table_S5_rolling_external_diagnostics.md`: expanding-window
   Kernel results, paired spatial-block intervals and WorldCover diagnostics.
+- `submission_files/Supplementary_Material.pdf`: submission-ready compilation
+  of Supplementary Tables S1--S7. The editable companion is
+  `submission_files/Supplementary_Material.docx`; regenerate both with
+  `python build_supplementary_material.py`.
 - `response_to_LUP_review_round18.md`: proof-stage response, generated-output
   checks and remaining claim boundary for the current working revision.
 - `journal_recommendation.md`: target-journal recommendation and submission
