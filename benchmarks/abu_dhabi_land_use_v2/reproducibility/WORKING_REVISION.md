@@ -1,7 +1,8 @@
 # Working revision and published archive
 
-The published v2.0.0 DOI and Git tag retain their original content. This working
-revision adds report-derived net-change limits, seed-specific paired intervals,
+The published v2.1.0 DOI and Git tag retain their original content. This working
+tree adds reproducible journal-submission packaging to the released report-derived
+net-change limits, seed-specific paired intervals,
 annual cross-product class matrices, product-series-break sensitivity intervals,
 and the 27 per-seed 2031 ArcGIS planning states read by the cross-product
 compiler. It does not retrain models or replace historical or planning
@@ -52,8 +53,8 @@ ArcGIS planning rasters required by `analyze_product_robustness.py`, so Fig. 4
 and Supplementary Tables S1, S4 and S6 can be recreated without an end-to-end
 simulation. The published manifests are preserved, including their original
 hash conventions. For exact published-release verification, use a
-separate checkout of `v2.0.0`, retrieve Git LFS objects and preserve LF line
-endings (`git -c core.autocrlf=false checkout v2.0.0`). Do not regenerate its
+separate checkout of `v2.1.0`, retrieve Git LFS objects and preserve LF line
+endings (`git -c core.autocrlf=false checkout v2.1.0`). Do not regenerate its
 manifests to conceal differences. Default checking against the published
 manifests on this edited branch is expected to fail.
 

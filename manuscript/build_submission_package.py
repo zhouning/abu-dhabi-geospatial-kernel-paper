@@ -177,7 +177,7 @@ Please consider my manuscript entitled \"{TITLE}\" for publication as a Research
 
 The manuscript evaluates Geospatial Kernel, the algorithmic core of a Geospatial World Model, as an auditable execution layer for constrained spatial allocation. Using two public annual land-cover product tracks for Abu Dhabi, it tests whether model rankings are robust to product choice while retaining explicit proposal, constraint-projection and state-writeback traces.
 
-The study is deliberately framed as a public-data benchmark and conditional planning stress test, rather than as an official forecast of Abu Dhabi statutory land-use change. The refreshed source release, including the ArcGIS-served product track, is archived at https://doi.org/10.5281/zenodo.22689057; hydrated Git LFS artifacts are retrieved from the corresponding `v2.0.0` repository tag.
+The study is deliberately framed as a public-data benchmark and conditional planning stress test, rather than as an official forecast of Abu Dhabi statutory land-use change. The refreshed source release, including the ArcGIS-served product track, is archived at https://doi.org/10.5281/zenodo.22763326; hydrated Git LFS artifacts are retrieved from the corresponding `v2.1.0` repository tag.
 
 I confirm that the manuscript is original, is not under consideration by another journal, and has been approved for submission.
 
@@ -229,7 +229,7 @@ Email: zhouning@freedotech.com
 
 **Declaration of generative AI and AI-assisted technologies in the writing process.** During preparation of this work, the author used OpenAI Codex for language editing, code review and document-formatting assistance. The author reviewed and revised all outputs and takes full responsibility for the content of the publication.
 
-**Data and code.** The ArcGIS-served public benchmark source release is archived at https://doi.org/10.5281/zenodo.22689057 (v2.0.0; GitHub tag `v2.0.0`, commit `77e2c59`; concept DOI https://doi.org/10.5281/zenodo.22663475). The Zenodo-generated ZIP preserves Git LFS pointer identities; hydrated large artifacts required for a full numerical rerun are retrieved from the tagged repository and verified against the included manifests.
+**Data and code.** The ArcGIS-served public benchmark source release is archived at https://doi.org/10.5281/zenodo.22763326 (v2.1.0; GitHub tag `v2.1.0`, commit `efb0961`; concept DOI https://doi.org/10.5281/zenodo.22663475). The Zenodo-generated ZIP preserves Git LFS pointer identities; hydrated large artifacts required for a full numerical rerun are retrieved from the tagged repository and verified against the included manifests.
 """
     return {
         "abstract.md": f"# Abstract\n\n{abstract}\n",

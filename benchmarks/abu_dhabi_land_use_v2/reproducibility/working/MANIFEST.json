@@ -1185,7 +1185,7 @@
       "path": "manuscript/build_submission_package.py",
       "role": "configuration",
       "bytes": 13229,
-      "sha256": "05a922f1b798e268bde4315ceb84a2d00d1c415ec8ac9b580765ec5024ee72e9",
+      "sha256": "243c425da4c885e87f4d2450ac2ff1c9bc3bbacc9d59d7eeb5b733ea445e7010",
       "hash_mode": "text_lf_normalized"
     },
     {

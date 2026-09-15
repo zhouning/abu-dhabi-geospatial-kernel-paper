@@ -3,8 +3,8 @@
 The working revision includes the allocation-limit analysis and conditional
 paired-interval interpretation described in `../revision_2026_09_10_zh.md`.
 Supplementary Table S7 must accompany this revision. This working manuscript
-is newer than the published v2.0.0 DOI; verify the separate working manifests
-before using it as a submission package.
+contains post-release supplementary-material packaging; verify the separate
+working manifests before using it as a submission package.
 
 Use the files below for the five required upload categories shown by the
 Landscape and Urban Planning submission system.
@@ -24,11 +24,11 @@ are supplied through the separate title page and Editorial Manager metadata.
 Do not upload `manuscript.md`, `manuscript_pandoc.tex`, the review-response
 file or internal database information as submission files.
 
-The author-facing title page cites the published v2 Zenodo source release,
-https://doi.org/10.5281/zenodo.22689057. The anonymous manuscript continues to
+The author-facing title page cites the published v2.1 Zenodo source release,
+https://doi.org/10.5281/zenodo.22763326. The anonymous manuscript continues to
 withhold repository and DOI identifiers for double-anonymized review. The
 Zenodo-generated ZIP contains Git LFS pointers, so a full numerical rerun also
-requires the hydrated LFS objects from GitHub tag `v2.0.0` and successful v2
+requires the hydrated LFS objects from GitHub tag `v2.1.0` and successful v2.1
 manifest checks.
 
 Main figures, if requested as separate artwork, are in the parent `figures/`

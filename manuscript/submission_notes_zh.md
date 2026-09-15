@@ -28,9 +28,9 @@
 2. 通讯作者邮箱已设置为 `zhouning@freedotech.com`；投稿时仍应按 Editorial Manager 的字段要求确认完整通讯地址。
 3. 如果期刊要求尺度鲁棒性，可增加 30 m 或多分辨率敏感性实验。
 4. 如果要把结果用于客户决策，应替换为权威本地土地利用、规划红线、基础设施容量和审批需求数据，并完成语义交叉表和真实历史验证。
-5. 公共仓库 URL、DOI、许可证和大文件存储策略已完成审核；v2 版本 DOI 为
-   `https://doi.org/10.5281/zenodo.22689057`（Zenodo v2.0.0，对应 GitHub
-   `v2.0.0` / `77e2c59`；概念 DOI 为 `10.5281/zenodo.22663475`）。Zenodo
+5. 公共仓库 URL、DOI、许可证和大文件存储策略已完成审核；v2.1 版本 DOI 为
+   `https://doi.org/10.5281/zenodo.22763326`（Zenodo v2.1.0，对应 GitHub
+   `v2.1.0` / `efb0961`；概念 DOI 为 `10.5281/zenodo.22663475`）。Zenodo
    自动生成的 ZIP 只含 Git LFS 指针，完整数值复现还必须从该标签执行
    `git lfs pull` 并通过 v2 清单校验。
 6. 当前完整复现命令为 `reproducibility/reproduce.py --device cpu`；它加载固定 GeoFM-LDN 检查点，并在 macOS arm64 上调用随仓库提供的 FLUS 二进制。

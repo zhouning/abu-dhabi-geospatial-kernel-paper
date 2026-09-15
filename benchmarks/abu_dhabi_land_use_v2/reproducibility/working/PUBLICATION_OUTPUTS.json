@@ -218,8 +218,8 @@
     {
       "path": "benchmarks/abu_dhabi_land_use_v2/reproducibility/WORKING_REVISION.md",
       "role": "manuscript_evidence",
-      "bytes": 3633,
-      "sha256": "d6150b0c268811f42ce62cb44723fb325d0c2480f28f19560e228a9bdf2a5f07",
+      "bytes": 3687,
+      "sha256": "8db58b6f1999134a406662fd33ed616cf6317ff185d1a6639f0d05625c890f5e",
       "hash_mode": "text_lf_normalized"
     },
     {
@@ -1548,36 +1548,36 @@
     {
       "path": "manuscript/lup_submission.pdf",
       "role": "manuscript_evidence",
-      "bytes": 3006968,
-      "sha256": "18fdb0ab5bd1e98269a10e9c8861c7045389ef7bf3fc8454ced1bb10b151f69b",
+      "bytes": 3006967,
+      "sha256": "ccaa3b7b84eacf05425df7073c6f58d4cdd2e4a7e9dd4bd2ec8ff256d4adf77a",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/main.pdf",
       "role": "manuscript_evidence",
-      "bytes": 3006975,
-      "sha256": "f9e958ecf6ffe79dc0e85f44ebc4b6bb28a0c3a2021e7e3bb5946a12009bf87c",
+      "bytes": 3006972,
+      "sha256": "22aa26defd192b3ac2cab2f583d9c8cb0335603c6c052afebc4cd19f09bd5a53",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.docx",
       "role": "manuscript_evidence",
-      "bytes": 2538996,
-      "sha256": "5c6c14d0288a000cc598d89df1abb235ad483c79353d97e410f8b989bf174fdd",
+      "bytes": 2538997,
+      "sha256": "278c6825ff38b96eba1783de7a69379b766faf0f1d4e4eb81befdba817d38a9f",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/manuscript.md",
       "role": "manuscript_evidence",
-      "bytes": 92794,
-      "sha256": "22cfd3ccde2ebee31da809ad50f0b3760d7af7b2aab6f70b8d50bf2cd4827c73",
+      "bytes": 92796,
+      "sha256": "bda4240e545546119931d90c4a777daf64cc26b332919f3d700b6b8dd18c84f8",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/manuscript.pdf",
       "role": "manuscript_evidence",
-      "bytes": 3006975,
-      "sha256": "f9e958ecf6ffe79dc0e85f44ebc4b6bb28a0c3a2021e7e3bb5946a12009bf87c",
+      "bytes": 3006972,
+      "sha256": "22aa26defd192b3ac2cab2f583d9c8cb0335603c6c052afebc4cd19f09bd5a53",
       "hash_mode": "raw"
     },
     {
@@ -1611,29 +1611,29 @@
     {
       "path": "manuscript/submission_files/README.md",
       "role": "manuscript_evidence",
-      "bytes": 2199,
-      "sha256": "8cb3b288e76945ddb4da8104bccc224ac4eee7022e5f1fd13cdf93d2810ee7a0",
+      "bytes": 2219,
+      "sha256": "0aecb3588d0d8e7508b3457eac451b89d2d648d1431ee420bf42a21d44fb7c29",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/submission_files/Supplementary_Material.docx",
       "role": "manuscript_evidence",
       "bytes": 24968,
-      "sha256": "84f00bebd095b6599fb3307350efbe70147c781dc99a232c729953ed38a71496",
+      "sha256": "72c8bc0b92d6097cda5439d4fffaa6a3ad43dcdf442bc42a755312c46a245db5",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/Supplementary_Material.pdf",
       "role": "manuscript_evidence",
       "bytes": 61560,
-      "sha256": "7915b94367943743d4773b89ea63c8df48e07065a5242620f257ae4e881a2dde",
+      "sha256": "8a3321b5466d23fdd3dd5ce5cfce3b81fc34476f21c741f3f0d60c2654baa333",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/abstract.docx",
       "role": "manuscript_evidence",
-      "bytes": 11236,
-      "sha256": "1057bd867b42ec403a708bdc7675dd593db01ae14020f2d0f6080f33aa576717",
+      "bytes": 11235,
+      "sha256": "882dc02415fd151c6bc746d347bcf618f8751e4cb95af4c84f72bbf0d5d823ba",
       "hash_mode": "raw"
     },
     {
@@ -1646,36 +1646,36 @@
     {
       "path": "manuscript/submission_files/abstract.pdf",
       "role": "manuscript_evidence",
-      "bytes": 26963,
-      "sha256": "b0b23713ddf7c545c131b122224879ae4eda9a77495f789b693d8a92dec12fbf",
+      "bytes": 26962,
+      "sha256": "8b9076a3d8082fe9d1b9e2dfb753e4529f43877a117e6e91d18b74ff82e9d700",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/cover_letter.docx",
       "role": "manuscript_evidence",
-      "bytes": 11052,
-      "sha256": "c3969eba1851406a344e3dc627d3e7fef9df7122564abc018d4ebe51b432a3a6",
+      "bytes": 11050,
+      "sha256": "204feb7a856abf137ebee9551aa13a6ee1e22e927bc2564a7a803f231b5827b8",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/cover_letter.md",
       "role": "manuscript_evidence",
       "bytes": 1322,
-      "sha256": "dc2e87d821d8f229966a2ab6cbfe0c63e5944bac059f5a661a39c6d4ced02147",
+      "sha256": "50ad8d05535bdd3195a61aa7be3e3aed15c55b927b5039cd2c02d2d85ab28675",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/submission_files/cover_letter.pdf",
       "role": "manuscript_evidence",
-      "bytes": 28330,
-      "sha256": "25138814887a77dd2573677649bc7ffce607be203b0e801ac1e5baa2076d277e",
+      "bytes": 28415,
+      "sha256": "8d4b52de39922e468c2c76f9f84af693499cb86508b54b45e0d05b48e3c28e3e",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/highlights.docx",
       "role": "manuscript_evidence",
-      "bytes": 10680,
-      "sha256": "e6aca7022f29a802bfb19282d6d86290664ea25428fde1f7466155920a8f71d8",
+      "bytes": 10679,
+      "sha256": "6dfb29c570042ffef191e57b2fcb0484ace4b3d3322b3d1d3225b8a9b1e1e2de",
       "hash_mode": "raw"
     },
     {
@@ -1688,15 +1688,15 @@
     {
       "path": "manuscript/submission_files/highlights.pdf",
       "role": "manuscript_evidence",
-      "bytes": 21210,
-      "sha256": "d719bece4852f311ef70e4e33b8270bbe365028117e29d300555984dbf469b1a",
+      "bytes": 21208,
+      "sha256": "5a978a391e1b55dcd7833912f2b75b09f1485dd03c584205e0693a104fe2262a",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/manuscript_anonymous.docx",
       "role": "manuscript_evidence",
-      "bytes": 2535302,
-      "sha256": "8b6f112d896a6ada7099f499b52b3a9b25dbb1effac07387eb0d7793fe2380fc",
+      "bytes": 2535303,
+      "sha256": "f09271f731b7605e6f6c16d0dceaec30978aa6cd4f3707cbd14063c88d2b98f3",
       "hash_mode": "raw"
     },
     {
@@ -1710,28 +1710,28 @@
       "path": "manuscript/submission_files/manuscript_anonymous.pdf",
       "role": "manuscript_evidence",
       "bytes": 2993649,
-      "sha256": "488af7744776b0c07b8a16d36eab7bb1f19ca3dcb6ee3aeeb2f85c0d5f93c411",
+      "sha256": "f0378fb0f8d6e26fc61767ec73ff243447ecf515467349329c0d55d2d68a4aa9",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/title_page.docx",
       "role": "manuscript_evidence",
       "bytes": 11369,
-      "sha256": "52f5c557c51d9b0d8d1e1513e970664f88d006fb3133b0b4561f0156f565e0a2",
+      "sha256": "3f65e93d5e505b0d048072539d97c28fc43866a8d8e9c3b98451160a323a0b68",
       "hash_mode": "raw"
     },
     {
       "path": "manuscript/submission_files/title_page.md",
       "role": "manuscript_evidence",
       "bytes": 1902,
-      "sha256": "24a9ea22627b669df8e11f8696349dc780bf4e1631cf8762b982619809e8460a",
+      "sha256": "9b1218dd4d2e81b4fd053135963537ad4a29a542de9751d640aa9945e2ca42ec",
       "hash_mode": "text_lf_normalized"
     },
     {
       "path": "manuscript/submission_files/title_page.pdf",
       "role": "manuscript_evidence",
-      "bytes": 28938,
-      "sha256": "f0ce27f28e57b5936eb31f6db21ffe814e9e2a0aa66353dd2cadf91899ebfc2e",
+      "bytes": 29060,
+      "sha256": "77538999b6011969529d328b57729e162e67aa59062fda6bea85dc82e9c708c6",
       "hash_mode": "raw"
     },
     {

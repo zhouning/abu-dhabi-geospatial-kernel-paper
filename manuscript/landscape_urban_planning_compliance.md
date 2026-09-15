@@ -35,8 +35,8 @@ Target journal: *Landscape and Urban Planning* (Elsevier, ISSN 0169-2046)
 
 | Requirement | Status | Check |
 |---|---|---|
-| Data availability | Versioned source release; LFS caveat | The v2 source release is published at https://doi.org/10.5281/zenodo.22689057 with immutable-input and publication-output manifests plus a fail-closed verifier. Its GitHub-generated ZIP contains LFS pointers, so hydrated large artifacts must be fetched from tag `v2.0.0` for a full numerical rerun. Authoritative local validation data remain unavailable. |
-| Code availability | Ready | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are versioned at tag `v2.0.0`; large LFS-tracked files require `git lfs pull`. |
+| Data availability | Versioned source release; LFS caveat | The v2.1 source release is published at https://doi.org/10.5281/zenodo.22763326 with immutable-input and publication-output manifests plus a fail-closed verifier. Its GitHub-generated ZIP contains LFS pointers, so hydrated large artifacts must be fetched from tag `v2.1.0` for a full numerical rerun. Authoritative local validation data remain unavailable. |
+| Code availability | Ready | Runtime, evaluators, GeoFM-LDN source/checkpoints and the macOS arm64 FLUS executable are versioned at tag `v2.1.0`; large LFS-tracked files require `git lfs pull`. |
 | CRediT statement | Ready | Ning Zhou is credited for conceptualization, methodology, software, curation, analysis, visualization and writing. |
 | Funding | Ready | No external funding statement included. |
 | Competing interests | Updated | Employment by the software company is disclosed; this should be checked against the portal's structured declaration field. |

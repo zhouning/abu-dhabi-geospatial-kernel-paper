@@ -4,8 +4,9 @@ The current working revision adds Supplementary Table S7 (nine net-change
 FoM bounds and 54 seed-specific paired intervals), distinguishes numerical
 rankings from interval-supported differences, and limits exact-count claims
 to the appropriate seed-level outputs. See `revision_2026_09_10_zh.md` for
-completed changes and unresolved experiments. The original v2.0.0 archive
-is unchanged; working-revision verification uses `--working`.
+completed changes and unresolved experiments. Zenodo v2.1.0 archives the
+research evidence at GitHub tag `v2.1.0`; working-revision verification uses
+`--working`.
 
 This package contains a revised LUP-oriented research-article draft based on
 the public-data Abu Dhabi Land-Use Benchmark V1. The manuscript evaluates
@@ -86,9 +87,9 @@ not official Abu Dhabi forecasts.
 2. The corresponding-author e-mail is `zhouning@freedotech.com`; confirm the
    submission portal's full correspondence-address field before upload.
 3. The public repository is `https://github.com/zhouning/abu-dhabi-geospatial-kernel-paper`;
-   the versioned source release is Zenodo v2.0.0,
-   `https://doi.org/10.5281/zenodo.22689057` (GitHub tag `v2.0.0`, commit
-   `77e2c59`; concept DOI `10.5281/zenodo.22663475`).
+   the versioned source release is Zenodo v2.1.0,
+   `https://doi.org/10.5281/zenodo.22763326` (GitHub tag `v2.1.0`, commit
+   `efb0961`; concept DOI `10.5281/zenodo.22663475`).
 4. Fetch the tag's Git LFS objects and pass the v2 integrity checks if full
    numerical reproduction is required; the Zenodo-generated ZIP contains LFS
    pointers rather than hydrated large artifacts.

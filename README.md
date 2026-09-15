@@ -45,9 +45,10 @@ for the evidence boundary.
 
 ## Start here
 
-The current working manuscript includes a post-v2.0.0 allocation-limit analysis
-and revised paired-uncertainty interpretation. The published DOI still identifies
-the original tag. See
+Zenodo v2.1.0 archives the allocation-limit analysis and revised
+paired-uncertainty interpretation. The current working tree additionally contains
+the reproducible supplementary-material packaging used for journal submission.
+See
 [`WORKING_REVISION.md`](benchmarks/abu_dhabi_land_use_v2/reproducibility/WORKING_REVISION.md)
 for separate working-revision verification and
 [`Supplementary Table S7`](manuscript/supplementary_table_S7_allocation_limits.md)
@@ -99,19 +100,19 @@ two product-track reports and retain their hashes.
 
 For the ArcGIS-served refresh, cite the current version:
 
-> Zhou, N. (2026). *Geospatial Kernel for Abu Dhabi Land-Cover Simulation and Planning* (v2.0.0). Zenodo. https://doi.org/10.5281/zenodo.22689057
+> Zhou, N. (2026). *Geospatial Kernel for Abu Dhabi Land-Cover Simulation and Planning* (v2.1.0). Zenodo. https://doi.org/10.5281/zenodo.22763326
 
-The v2 DOI corresponds to GitHub tag `v2.0.0` at commit `77e2c59`. It identifies
+The v2.1 DOI corresponds to GitHub tag `v2.1.0` at commit `efb0961`. It identifies
 the public-data benchmark source release, not the eventual journal article DOI
 and not an authoritative Abu Dhabi land-use data release. The concept DOI for
 all versions is `10.5281/zenodo.22663475`.
 
 Large rasters, GeoPackages and model checkpoints are tracked with Git LFS in
-the GitHub repository. The Zenodo v2 record currently contains GitHub's
+the GitHub repository. The Zenodo v2.1 record currently contains GitHub's
 automatically generated source ZIP; direct inspection confirmed that this ZIP
 contains LFS pointer files rather than the hydrated large artifacts. A full
-numerical rerun therefore requires checking out tag `v2.0.0`, running
-`git lfs pull`, and passing both v2 manifest checks. See
+numerical rerun therefore requires checking out tag `v2.1.0`, running
+`git lfs pull`, and passing both v2.1 manifest checks. See
 [`docs/zenodo_v2_archival_audit.md`](docs/zenodo_v2_archival_audit.md).
 
 ## License and data attribution

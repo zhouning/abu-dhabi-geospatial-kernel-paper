@@ -43,8 +43,8 @@
 2. The corresponding-author e-mail is set to `zhouning@freedotech.com`; confirm any full correspondence-address field in the submission portal.
 3. Add a 30-m or multi-resolution sensitivity analysis if the target journal requires scale robustness.
 4. Replace public labels and proxy constraints with authoritative local data before presenting outputs as client-facing planning evidence.
-5. The public repository URL and v2 source-release DOI are recorded: Zenodo
-   `10.5281/zenodo.22689057`, GitHub tag `v2.0.0`, commit `77e2c59`.
+5. The public repository URL and v2.1 source-release DOI are recorded: Zenodo
+   `10.5281/zenodo.22763326`, GitHub tag `v2.1.0`, commit `efb0961`.
 6. The Zenodo-generated ZIP has been inspected and contains Git LFS pointers.
    Fetch and verify the hydrated tag objects, or publish a subsequent
    self-contained archive version, if DOI-only numerical reproduction is
